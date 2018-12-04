@@ -1,0 +1,5 @@
+name = Farm NFA
+description = Uganda National Forestry Authority farmOS module.
+package = farmOS Contrib
+core = 7.x
+dependencies[] = farm_forest
