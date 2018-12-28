@@ -16,6 +16,7 @@ function farm_nfa_farm_access_roles() {
       'access' => array(
         'view' => 'all',
         'edit' => 'all',
+        'config' => TRUE,
       ),
     ),
     'hq_officer' => array(
