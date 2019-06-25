@@ -22,6 +22,18 @@ function farm_nfa_menu() {
     'weight' => 15,
   );
 
+  // Remove a budget item.
+  $items['farm/plan/%farm_plan/budget/%/remove'] = array(
+    'title' => 'Remove Budget Item',
+    'description' => 'This budget item be removed from the plan.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('farm_nfa_plantation_plan_budget_remove_form', 2, 4),
+    'access callback' => 'farm_forest_plantation_plan_access',
+    'access arguments' => array(2),
+    'file' => 'farm_nfa.plantation.budget.inc',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 

@@ -247,6 +247,9 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
   // Add CSS.
   drupal_add_css(drupal_get_path('module', 'farm_nfa') . '/css/farm_nfa.budget.css');
 
+  // Get the plan object.
+  $plan = $form['plan']['#value'];
+
   // Render the budget item fields in a table.
   $header = array(
     t('Description'),
@@ -258,6 +261,7 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
     t('Added'),
     t('Updated'),
     t('Author'),
+    t('Remove'),
   );
   $rows = array();
   if (!empty($form['items'])) {
@@ -275,6 +279,12 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
         }
       }
 
+      // Create a link for removing the item, if it was saved to the database.
+      $remove_link = '';
+      if (!empty($item['id']['#value'])) {
+        $remove_link = l('Remove', 'farm/plan/' . $plan->id . '/budget/' . $item['id']['#value'] . '/remove');
+      }
+
       // Assemble the row.
       $rows[] = array(
         'data' => array(
@@ -287,6 +297,7 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
           !empty($item['date_created']['#value']) ? date($date_format, $item['date_created']['#value']) : '',
           !empty($item['date_updated']['#value']) ? date($date_format, $item['date_updated']['#value']) : '',
           $author_name,
+          $remove_link,
         ),
       );
     }
@@ -301,4 +312,61 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
   $output .= drupal_render_children($form);
 
   return $output;
+}
+
+/**
+ * Form for removing a budget item the plan.
+ */
+function farm_nfa_plantation_plan_budget_remove_form($form, &$form_state, $plan, $item_id) {
+
+  // Load the item from the database.
+  $item = db_query('SELECT * FROM {farm_nfa_budget} WHERE id = :item_id', array(':item_id' => $item_id))->fetchAssoc();
+
+  // If the plan or item is empty, show page not found.
+  if (empty($plan) || empty($item)) {
+    drupal_not_found();
+    drupal_exit();
+  }
+
+  // Store the plan ID and item ID for use in the submit function.
+  $form['plan_id'] = array(
+    '#type' => 'value',
+    '#value' => $plan->id,
+  );
+  $form['item_id'] = array(
+    '#type' => 'value',
+    '#value' => $item_id,
+  );
+
+  // Build a return path.
+  $plan_uri = entity_uri('farm_plan', $plan);
+  $path = $plan_uri['path'] . '/';
+
+  // Build and return a confirmation form.
+  return confirm_form($form,
+    t('Are you sure you want to delete the budget item %item_name from the plan %plan_name?', array('%item_name' => $item['description'], '%plan_name' => $plan->name)),
+    $path,
+    t('This cannot be undone.'),
+    t('Delete'),
+    t('Cancel')
+  );
+}
+
+/**
+ * Submit handler for the budget item removal form.
+ */
+function farm_nfa_plantation_plan_budget_remove_form_submit($form, &$form_state) {
+
+  // If a plan ID and item ID are not available, bail.
+  if (empty($form_state['values']['plan_id']) || empty($form_state['values']['item_id'])) {
+    return;
+  }
+
+  // Delete the record from the {farm_nfa_budget} table.
+  db_delete('farm_nfa_budget')
+    ->condition('id', $form_state['values']['item_id'])
+    ->execute();
+
+  // Redirect to the budget form.
+  $form_state['redirect'] = 'farm/plan/' . $form_state['values']['plan_id'] . '/budget';
 }
