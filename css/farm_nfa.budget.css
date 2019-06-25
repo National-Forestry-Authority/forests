@@ -1,0 +1,4 @@
+/* Hide date field descriptions. */
+.form-type-date-popup .help-block {
+  display:none;
+}

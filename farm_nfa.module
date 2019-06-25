@@ -6,6 +6,26 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function farm_nfa_menu() {
+
+  // Plantation plan budget form.
+  $items['farm/plan/%farm_plan/budget'] = array(
+    'title' => 'Budget',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('farm_nfa_plantation_plan_budget_form', 2),
+    'access callback' => 'farm_forest_plantation_plan_access',
+    'access arguments' => array(2),
+    'file' => 'farm_nfa.plantation.budget.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 15,
+  );
+
+  return $items;
+}
+
+/**
  * Load NFA budget items from the database for a particular plan.
  *
  * @param $plan_id
@@ -36,4 +56,16 @@ function farm_nfa_budget_items($plan_id) {
 
   // Return the items.
   return $items;
+}
+
+/**
+ * Implements hook_theme
+ */
+function farm_nfa_theme() {
+  return array(
+    'farm_nfa_plantation_plan_budget_form' => array(
+      'render element' => 'form',
+      'file' => 'farm_nfa.plantation.budget.inc',
+    ),
+  );
 }
