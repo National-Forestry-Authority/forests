@@ -4,3 +4,36 @@
  * @file
  * farmOS module for Uganda's National Forestry Authority.
  */
+
+/**
+ * Load NFA budget items from the database for a particular plan.
+ *
+ * @param $plan_id
+ *   The plan ID.
+ *
+ * @return array
+ *   Returns an array of budget items from the {farm_nfa_budget} database.
+ */
+function farm_nfa_budget_items($plan_id) {
+
+  // Start with an empty array.
+  $items = array();
+
+  // If a plan ID isn't provided, bail.
+  if (empty($plan_id)) {
+    return $items;
+  }
+
+  // Perform the query.
+  $query = 'SELECT * FROM {farm_nfa_budget} WHERE plan_id = :plan_id';
+  $args = array(':plan_id' => $plan_id);
+  $result = db_query($query, $args);
+
+  // Assemble the results.
+  while ($item = $result->fetchAssoc()) {
+    $items[] = $item;
+  }
+
+  // Return the items.
+  return $items;
+}
