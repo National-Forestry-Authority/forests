@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * Farm NFA install.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function farm_nfa_schema() {
+  $schema['farm_nfa_budget'] = array(
+    'description' => 'NFA plan budget items.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key for a single budget item.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'plan_id' => array(
+        'description' => 'The ID of the plan this budget item is associated with.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'description' => array(
+        'description' => 'Description of the budget item.',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+      ),
+      'type' => array(
+        'description' => 'Budget item type.',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+      ),
+      'unit_cost' => array(
+        'description' => 'Budget item unit cost.',
+        'type' => 'numeric',
+        'unsigned' => TRUE,
+        'precision' => 16,
+        'scale' => 2,
+        'not null' => FALSE,
+      ),
+      'quantity' => array(
+        'description' => 'Budget item quantity.',
+        'type' => 'numeric',
+        'unsigned' => TRUE,
+        'precision' => 16,
+        'scale' => 2,
+        'not null' => FALSE,
+      ),
+      'total_cost' => array(
+        'description' => 'Budget item total cost.',
+        'type' => 'numeric',
+        'unsigned' => TRUE,
+        'precision' => 16,
+        'scale' => 2,
+        'not null' => FALSE,
+      ),
+      'date_required' => array(
+        'description' => 'Timestamp when the budget item is needed by.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'date_created' => array(
+        'description' => 'Timestamp when the budget item was created.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'date_updated' => array(
+        'description' => 'Timestamp when the budget item was last updated.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'user_id' => array(
+        'description' => 'ID of the user who added the budget item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'plan_id' => array('plan_id'),
+    ),
+  );
+  return $schema;
+}
