@@ -320,6 +320,9 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
     'empty' => t('No budget items have been added to this plan.'),
   ));
 
+  // Add a container for the grand budget total (calculated via JS).
+  $output .= '<div id="budget-total"></div>';
+
   // Render any remaining form elements.
   $output .= drupal_render_children($form);
 
