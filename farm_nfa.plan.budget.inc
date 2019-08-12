@@ -74,6 +74,9 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#title_display' => 'invisible',
       '#default_value' => !empty($item['unit_cost']) ? $item['unit_cost'] : '',
       '#element_validate' => array('element_validate_number'),
+      '#attributes' => array(
+        'class' => array('cost'),
+      ),
     );
 
     // Quantity.
@@ -83,6 +86,9 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#title_display' => 'invisible',
       '#default_value' => !empty($item['quantity']) ? $item['quantity'] : '',
       '#element_validate' => array('element_validate_number'),
+      '#attributes' => array(
+        'class' => array('qty'),
+      ),
     );
 
     // Total cost.
@@ -92,6 +98,9 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#title_display' => 'invisible',
       '#default_value' => !empty($item['total_cost']) ? $item['total_cost'] : '',
       '#element_validate' => array('element_validate_number'),
+      '#attributes' => array(
+        'class' => array('total'),
+      ),
     );
 
     // Date required.
@@ -246,6 +255,9 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
 
   // Add CSS.
   drupal_add_css(drupal_get_path('module', 'farm_nfa') . '/css/farm_nfa.budget.css');
+
+  // Add JS.
+  drupal_add_js(drupal_get_path('module', 'farm_nfa') . '/js/farm_nfa.budget.js');
 
   // Get the plan object.
   $plan = $form['plan']['#value'];
