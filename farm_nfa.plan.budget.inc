@@ -2,13 +2,13 @@
 
 /**
  * @file
- * NFA forest plantation plan budget form.
+ * NFA forest plan budget form.
  */
 
 /**
- * Plantation plan budget form.
+ * Forest plan budget form.
  */
-function farm_nfa_plantation_plan_budget_form($form, &$form_state, $plan) {
+function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
 
   // Start an empty form array.
   $form = array(
@@ -135,9 +135,9 @@ function farm_nfa_plantation_plan_budget_form($form, &$form_state, $plan) {
 }
 
 /**
- * Plantation plan budget form validation.
+ * Forest plan budget form validation.
  */
-function farm_nfa_plantation_plan_budget_form_validate($form, &$form_state) {
+function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
 
   // Iterate through the budget items.
   foreach ($form_state['values']['items'] as $delta => $item) {
@@ -169,9 +169,9 @@ function farm_nfa_plantation_plan_budget_form_validate($form, &$form_state) {
 }
 
 /**
- * Plantation plan budget form submit.
+ * Forest plan budget form submit.
  */
-function farm_nfa_plantation_plan_budget_form_submit($form, &$form_state) {
+function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
 
   // Iterate through the budget items.
   foreach ($form_state['values']['items'] as $delta => $item) {
@@ -235,9 +235,9 @@ function farm_nfa_plantation_plan_budget_form_submit($form, &$form_state) {
 }
 
 /**
- * Plantation plan budget theme function.
+ * Forest plan budget theme function.
  */
-function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
+function theme_farm_nfa_forest_plan_budget_form(&$vars) {
   $form = $vars['form'];
   $output = '';
 
@@ -317,7 +317,7 @@ function theme_farm_nfa_plantation_plan_budget_form(&$vars) {
 /**
  * Form for removing a budget item the plan.
  */
-function farm_nfa_plantation_plan_budget_remove_form($form, &$form_state, $plan, $item_id) {
+function farm_nfa_forest_plan_budget_remove_form($form, &$form_state, $plan, $item_id) {
 
   // Load the item from the database.
   $item = db_query('SELECT * FROM {farm_nfa_budget} WHERE id = :item_id', array(':item_id' => $item_id))->fetchAssoc();
@@ -355,7 +355,7 @@ function farm_nfa_plantation_plan_budget_remove_form($form, &$form_state, $plan,
 /**
  * Submit handler for the budget item removal form.
  */
-function farm_nfa_plantation_plan_budget_remove_form_submit($form, &$form_state) {
+function farm_nfa_forest_plan_budget_remove_form_submit($form, &$form_state) {
 
   // If a plan ID and item ID are not available, bail.
   if (empty($form_state['values']['plan_id']) || empty($form_state['values']['item_id'])) {

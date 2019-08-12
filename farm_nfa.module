@@ -10,14 +10,14 @@
  */
 function farm_nfa_menu() {
 
-  // Plantation plan budget form.
+  // Forest plan budget form.
   $items['farm/plan/%farm_plan/budget'] = array(
     'title' => 'Budget',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('farm_nfa_plantation_plan_budget_form', 2),
-    'access callback' => 'farm_forest_plantation_plan_access',
+    'page arguments' => array('farm_nfa_forest_plan_budget_form', 2),
+    'access callback' => 'farm_forest_plan_access',
     'access arguments' => array(2),
-    'file' => 'farm_nfa.plantation.budget.inc',
+    'file' => 'farm_nfa.plan.budget.inc',
     'type' => MENU_LOCAL_TASK,
     'weight' => 15,
   );
@@ -25,12 +25,12 @@ function farm_nfa_menu() {
   // Remove a budget item.
   $items['farm/plan/%farm_plan/budget/%/remove'] = array(
     'title' => 'Remove Budget Item',
-    'description' => 'This budget item be removed from the plan.',
+    'description' => 'This budget item will be removed from the plan.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('farm_nfa_plantation_plan_budget_remove_form', 2, 4),
-    'access callback' => 'farm_forest_plantation_plan_access',
+    'page arguments' => array('farm_nfa_forest_plan_budget_remove_form', 2, 4),
+    'access callback' => 'farm_forest_plan_access',
     'access arguments' => array(2),
-    'file' => 'farm_nfa.plantation.budget.inc',
+    'file' => 'farm_nfa.plan.budget.inc',
     'type' => MENU_CALLBACK,
   );
 
@@ -75,9 +75,9 @@ function farm_nfa_budget_items($plan_id) {
  */
 function farm_nfa_theme() {
   return array(
-    'farm_nfa_plantation_plan_budget_form' => array(
+    'farm_nfa_forest_plan_budget_form' => array(
       'render element' => 'form',
-      'file' => 'farm_nfa.plantation.budget.inc',
+      'file' => 'farm_nfa.plan.budget.inc',
     ),
   );
 }
