@@ -8,7 +8,7 @@
       this.attachTableBehaviors(income_table, 'income');
     },
     attachTableBehaviors: function(table, type) {
-      $('.cost', table).on('keyup', function() {
+      $('.value', table).on('keyup', function() {
         var row = $(this).closest('tr');
         var table = row.closest('table');
         Drupal.behaviors.farm_nfa_forest_budget.calculateRowTotal(row);
@@ -27,9 +27,9 @@
       Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal(table, type);
     },
     calculateRowTotal: function(row) {
-      var cost = $('.cost', row).val();
+      var value = $('.value', row).val();
       var qty = $('.qty', row).val();
-      var total = cost * qty;
+      var total = value * qty;
       if (total === total) {
         $('.total', row).val(total);
       }

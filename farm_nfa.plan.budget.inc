@@ -172,15 +172,15 @@ function farm_nfa_forest_plan_budget_items_form($plan_id, $type) {
       '#default_value' => !empty($item['category']) ? $item['category'] : '',
     );
 
-    // Unit cost.
-    $form['items'][$key]['unit_cost'] = array(
+    // Unit value.
+    $form['items'][$key]['unit_value'] = array(
       '#type' => 'textfield',
-      '#title' => t('Unit cost'),
+      '#title' => t('Unit value'),
       '#title_display' => 'invisible',
-      '#default_value' => !empty($item['unit_cost']) ? $item['unit_cost'] : '',
+      '#default_value' => !empty($item['unit_value']) ? $item['unit_value'] : '',
       '#element_validate' => array('element_validate_number'),
       '#attributes' => array(
-        'class' => array('cost'),
+        'class' => array('value'),
       ),
     );
 
@@ -196,12 +196,12 @@ function farm_nfa_forest_plan_budget_items_form($plan_id, $type) {
       ),
     );
 
-    // Total cost.
-    $form['items'][$key]['total_cost'] = array(
+    // Total value.
+    $form['items'][$key]['total_value'] = array(
       '#type' => 'textfield',
-      '#title' => t('Total cost'),
+      '#title' => t('Total'),
       '#title_display' => 'invisible',
-      '#default_value' => !empty($item['total_cost']) ? $item['total_cost'] : '',
+      '#default_value' => !empty($item['total_value']) ? $item['total_value'] : '',
       '#element_validate' => array('element_validate_number'),
       '#attributes' => array(
         'class' => array('total'),
@@ -266,9 +266,9 @@ function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
       $fields = array(
         'description',
         'category',
-        'unit_cost',
+        'unit_value',
         'quantity',
-        'total_cost',
+        'total_value',
         'date_required',
       );
       foreach ($fields as $field) {
@@ -349,9 +349,9 @@ function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
         $fields = array(
           'description',
           'category',
-          'unit_cost',
+          'unit_value',
           'quantity',
-          'total_cost',
+          'total_value',
           'date_required',
         );
         foreach ($fields as $field) {
@@ -404,9 +404,9 @@ function theme_farm_nfa_forest_plan_budget_fieldset(&$vars) {
     t('Log'),
     t('Description'),
     t('Category'),
-    t('Unit cost'),
+    t('Unit value'),
     t('Quantity'),
-    t('Total cost'),
+    t('Total'),
     t('Date required'),
     t('Added'),
     t('Updated'),
@@ -453,9 +453,9 @@ function theme_farm_nfa_forest_plan_budget_fieldset(&$vars) {
           $log_link,
           drupal_render($item['description']),
           drupal_render($item['category']),
-          drupal_render($item['unit_cost']),
+          drupal_render($item['unit_value']),
           drupal_render($item['quantity']),
-          drupal_render($item['total_cost']),
+          drupal_render($item['total_value']),
           drupal_render($item['date_required']),
           !empty($item['date_created']['#value']) ? date($date_format, $item['date_created']['#value']) : '',
           !empty($item['date_updated']['#value']) ? date($date_format, $item['date_updated']['#value']) : '',

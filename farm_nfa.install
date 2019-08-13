@@ -86,8 +86,8 @@ function farm_nfa_schema() {
         'length' => '255',
         'not null' => FALSE,
       ),
-      'unit_cost' => array(
-        'description' => 'Budget item unit cost.',
+      'unit_value' => array(
+        'description' => 'Budget item unit value.',
         'type' => 'numeric',
         'unsigned' => TRUE,
         'precision' => 16,
@@ -102,8 +102,8 @@ function farm_nfa_schema() {
         'scale' => 2,
         'not null' => FALSE,
       ),
-      'total_cost' => array(
-        'description' => 'Budget item total cost.',
+      'total_value' => array(
+        'description' => 'Budget item total value.',
         'type' => 'numeric',
         'unsigned' => TRUE,
         'precision' => 16,
