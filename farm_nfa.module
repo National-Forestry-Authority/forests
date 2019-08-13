@@ -80,8 +80,8 @@ function farm_nfa_budget_items($plan_id, $type) {
  */
 function farm_nfa_theme() {
   return array(
-    'farm_nfa_forest_plan_budget_form' => array(
-      'render element' => 'form',
+    'farm_nfa_forest_plan_budget_fieldset' => array(
+      'render element' => 'fieldset',
       'file' => 'farm_nfa.plan.budget.inc',
     ),
   );
