@@ -82,7 +82,7 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
   $form['income'] = array(
     '#type' => 'fieldset',
     '#title' => t('Income'),
-    '#description' => t('Record income in the table below.'),
+    '#description' => t('Record income in the table below, or by recording harvests on the Harvest tab.'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
     '#theme' => 'farm_nfa_forest_plan_budget_fieldset',

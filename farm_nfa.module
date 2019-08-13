@@ -174,6 +174,132 @@ function farm_nfa_farm_plan_form_submit($form, &$form_state) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function farm_nfa_form_farm_forest_plan_harvest_form_alter(&$form, &$form_state, $form_id) {
+
+  // Alter forest plan harvest form...
+
+  // Iterate through the log fieldsets.
+  foreach (element_children($form['logs']) as $key) {
+
+    // These fields are stored in the notes field, so they are only available
+    // as separate fields when creating a new log.
+    if ($key == 'new') {
+
+      // Coup number.
+      $form['logs'][$key]['coup'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Coup number'),
+        '#weight' => 5,
+      );
+
+      // Tender.
+      $form['logs'][$key]['tender'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Tender name'),
+        '#weight' => 25,
+      );
+
+      // Supervisor.
+      $form['logs'][$key]['supervisor'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Supervisor'),
+        '#weight' => 25,
+      );
+    }
+
+    // Price (saved to a budget line item).
+    $harvest_price = '';
+    if ($key != 'new') {
+      $budget_line_value = db_query('SELECT unit_value FROM {farm_nfa_budget_item} WHERE log_id = :log_id', array(':log_id' => $key))->fetchField();
+      if (!empty($budget_line_value)) {
+        $harvest_price = $budget_line_value;
+      }
+    }
+    $form['logs'][$key]['price'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Price'),
+      '#default_value' => $harvest_price,
+      '#weight' => 35,
+    );
+  }
+
+  // Add submit function.
+  /**
+   * @see farm_nfa_form_alter()
+   * We add the submit function there because it needs to be added after
+   * farm_nfa_budget_item_log_submit().
+   */
+}
+
+/**
+ * Submit function for extra fields added to harvest and inventory forms.
+ */
+function farm_nfa_plan_log_fields_submit($form, &$form_state) {
+
+  // If there are no logs saved in form state storage, bail.
+  if (empty($form_state['storage']['logs'])) {
+    return;
+  }
+
+  // Iterate through logs.
+  foreach ($form_state['storage']['logs'] as $log) {
+
+    // Match up the log to the form values. If a match is not found, assume that
+    // it is a new log.
+    if (!empty($form_state['values']['logs'][$log->id])) {
+      $key = $log->id;
+    }
+    else {
+      $key = 'new';
+    }
+
+    // If any of the text fields are set, add them to notes (these will only be
+    // set on new logs.
+    if ($key == 'new') {
+      $notes = array();
+      $text_fields = array(
+        'coup' => t('Coup number'),
+        'tender' => t('Tender'),
+        'supervisor' => t('Supervisor'),
+      );
+      foreach ($text_fields as $name => $label) {
+        if (!empty($form_state['values']['logs'][$key][$name])) {
+          $notes[] = $label . ': ' . $form_state['values']['logs'][$key][$name];
+        }
+      }
+
+      // Get notes already set on the log.
+      if (!empty($log->field_farm_notes[LANGUAGE_NONE][0]['value'])) {
+        $notes[] = $log->field_farm_notes[LANGUAGE_NONE][0]['value'];
+      }
+
+      // Implode notes array and save it to the log.
+      if (!empty($notes)) {
+        $log->field_farm_notes[LANGUAGE_NONE][0]['value'] = implode("\n\n", $notes);
+        log_save($log);
+      }
+    }
+
+    // If the log is a harvest, process the price field.
+    if ($log->type == 'farm_harvest') {
+
+      // If the price has changed, update the budget item.
+      if ($form_state['values']['logs'][$key]['price'] != $form['logs'][$key]['price']['#default_value']) {
+        if (!empty($log->id)) {
+          $price = $form_state['values']['logs'][$key]['price'];
+          if (empty($price)) {
+            $price = 0;
+          }
+          db_query('UPDATE {farm_nfa_budget_item} SET unit_value = :price, quantity = 1, total_value = :price WHERE log_id = :log_id', array(':price' => $price, ':log_id' => $log->id));
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
@@ -182,6 +308,7 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
   $form_ids = array(
     'farm_forest_plan_planting_form',
     'farm_forest_plan_management_form',
+    'farm_forest_plan_harvest_form',
   );
   if (!in_array($form_id, $form_ids)) {
     return;
@@ -189,6 +316,11 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
 
   // Add our submit function for linking budget items to logs.
   $form['#submit'][] = 'farm_nfa_budget_item_log_submit';
+
+  // If this is the harvest form, add the log fields submit function.
+  if ($form_id == 'farm_forest_plan_harvest_form') {
+    $form['#submit'][] = 'farm_nfa_plan_log_fields_submit';
+  }
 }
 
 /**
@@ -237,6 +369,10 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
       case 'farm_transplanting':
         $type = 'expense';
         $category = t('Planting');
+        break;
+      case 'farm_harvest':
+        $type = 'income';
+        $category = t('Harvest');
         break;
     }
     if (empty($linked) && !empty($type) && !empty($category)) {
