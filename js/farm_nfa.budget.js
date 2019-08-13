@@ -43,7 +43,7 @@
         }
       });
       if (!isNaN(total)) {
-        $('.budget-' + type + '-total').html('<strong>Total</strong>: ' + total);
+        $('.budget-' + type + '-total').html('<strong>Total ' + type + '</strong>: ' + total.toFixed(2));
       }
       else {
         $('.budget-' + type + '-total').html('');
