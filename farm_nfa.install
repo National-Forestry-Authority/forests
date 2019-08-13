@@ -9,6 +9,42 @@
  * Implements hook_schema().
  */
 function farm_nfa_schema() {
+  $schema['farm_nfa_budget_projection'] = array(
+    'description' => 'NFA plan budget projections.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key for a projection row.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'plan_id' => array(
+        'description' => 'The ID of the plan this projection is associated with.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'type' => array(
+        'description' => 'Projection type (income or expense).',
+        'type' => 'varchar',
+        'length' => '8',
+        'not null' => FALSE,
+      ),
+      'value' => array(
+        'description' => 'The projection value.',
+        'type' => 'numeric',
+        'unsigned' => TRUE,
+        'precision' => 16,
+        'scale' => 2,
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'plan_id' => array('plan_id'),
+    ),
+  );
   $schema['farm_nfa_budget_item'] = array(
     'description' => 'NFA plan budget items.',
     'fields' => array(

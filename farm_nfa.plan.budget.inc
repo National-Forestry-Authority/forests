@@ -145,6 +145,41 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
     );
   }
 
+  // Projected cost and income fields.
+  $projection_query = 'SELECT * FROM {farm_nfa_budget_projection} WHERE plan_id = :plan_id AND type = :type';
+  $projections = array(
+    'expense' => '',
+    'income' => '',
+  );
+  foreach ($projections as $type => &$projection) {
+    $args = array(
+      ':plan_id' => $plan->id,
+      ':type' => $type,
+    );
+    $row = db_query($projection_query, $args)->fetch();
+    if (!empty($row->value)) {
+      $projection = $row->value;
+    }
+  }
+  $form['projections'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Projections'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['projections']['expense'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Projected cost'),
+    '#default_value' => $projections['expense'],
+    '#element_validate' => array('element_validate_number'),
+  );
+  $form['projections']['income'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Projected income'),
+    '#default_value' => $projections['income'],
+    '#element_validate' => array('element_validate_number'),
+  );
+
   // Submit button.
   $form['submit'] = array(
     '#type' => 'submit',
@@ -193,6 +228,29 @@ function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
  * Forest plan budget form submit.
  */
 function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
+
+  // If the plan ID is not set, bail.
+  if (empty($form_state['values']['plan']->id)) {
+    return;
+  }
+  $plan_id = $form_state['values']['plan']->id;
+
+  // Save the projected cost and income.
+  db_query('DELETE FROM {farm_nfa_budget_projection} WHERE plan_id = :plan_id', array(':plan_id' => $plan_id));
+  $types = array(
+    'expense',
+    'income',
+  );
+  foreach ($types as $type) {
+    if (!empty($form_state['values']['projections'][$type])) {
+      $projection = array(
+        'plan_id' => $plan_id,
+        'type' => $type,
+        'value' => $form_state['values']['projections'][$type],
+      );
+      drupal_write_record('farm_nfa_budget_projection', $projection);
+    }
+  }
 
   // Iterate through the budget items.
   foreach ($form_state['values']['items'] as $delta => $item) {
@@ -348,6 +406,9 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
     'rows' => $rows,
     'empty' => t('No budget items have been added to this plan.'),
   ));
+
+  // Render the projections fields.
+  $output .= drupal_render($form['projections']);
 
   // Add a container for the grand budget total (calculated via JS).
   $output .= '<div id="budget-total"></div>';
