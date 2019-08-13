@@ -9,7 +9,7 @@
  * Implements hook_schema().
  */
 function farm_nfa_schema() {
-  $schema['farm_nfa_budget'] = array(
+  $schema['farm_nfa_budget_item'] = array(
     'description' => 'NFA plan budget items.',
     'fields' => array(
       'id' => array(

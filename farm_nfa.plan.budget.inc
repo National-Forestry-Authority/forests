@@ -239,7 +239,7 @@ function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
     if (!empty($item['id'])) {
       $keys = array('id');
     }
-    drupal_write_record('farm_nfa_budget', $item, $keys);
+    drupal_write_record('farm_nfa_budget_item', $item, $keys);
   }
 }
 
@@ -335,7 +335,7 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
 function farm_nfa_forest_plan_budget_remove_form($form, &$form_state, $plan, $item_id) {
 
   // Load the item from the database.
-  $item = db_query('SELECT * FROM {farm_nfa_budget} WHERE id = :item_id', array(':item_id' => $item_id))->fetchAssoc();
+  $item = db_query('SELECT * FROM {farm_nfa_budget_item} WHERE id = :item_id', array(':item_id' => $item_id))->fetchAssoc();
 
   // If the plan or item is empty, show page not found.
   if (empty($plan) || empty($item)) {
@@ -378,7 +378,7 @@ function farm_nfa_forest_plan_budget_remove_form_submit($form, &$form_state) {
   }
 
   // Delete the record from the {farm_nfa_budget} table.
-  db_delete('farm_nfa_budget')
+  db_delete('farm_nfa_budget_item')
     ->condition('id', $form_state['values']['item_id'])
     ->execute();
 

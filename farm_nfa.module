@@ -44,7 +44,7 @@ function farm_nfa_menu() {
  *   The plan ID.
  *
  * @return array
- *   Returns an array of budget items from the {farm_nfa_budget} database.
+ *   Returns an array of budget items from the {farm_nfa_budget_item} database.
  */
 function farm_nfa_budget_items($plan_id) {
 
@@ -57,7 +57,7 @@ function farm_nfa_budget_items($plan_id) {
   }
 
   // Perform the query.
-  $query = 'SELECT * FROM {farm_nfa_budget} WHERE plan_id = :plan_id';
+  $query = 'SELECT * FROM {farm_nfa_budget_item} WHERE plan_id = :plan_id';
   $args = array(':plan_id' => $plan_id);
   $result = db_query($query, $args);
 
