@@ -169,7 +169,7 @@ function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
     }
     if ($required) {
       foreach ($fields as $field) {
-        if (empty($item[$field])) {
+        if (empty($item[$field]) && $item[$field] != 0) {
           form_set_error('items][' . $delta . '][' . $field, t('Missing required fields.'));
         }
       }
