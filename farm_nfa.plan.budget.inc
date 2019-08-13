@@ -131,6 +131,12 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#type' => 'value',
       '#value' => !empty($item['user_id']) ? $item['user_id'] : NULL,
     );
+
+    // Log ID.
+    $form['items'][$key]['log_id'] = array(
+      '#type' => 'value',
+      '#value' => !empty($item['log_id']) ? $item['log_id'] : NULL,
+    );
   }
 
   // Submit button.
@@ -264,6 +270,7 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
 
   // Render the budget item fields in a table.
   $header = array(
+    t('Log'),
     t('Description'),
     t('Unit type'),
     t('Unit cost'),
@@ -291,15 +298,28 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
         }
       }
 
+      // Create a link to the log, if available.
+      $log_link = '';
+      if (!empty($item['log_id']['#value'])) {
+        $log = log_load($item['log_id']['#value']);
+        if (!empty($log)) {
+          $log_uri = entity_uri('log', $log);
+          $log_link = l($log->id, $log_uri['path']);
+        }
+      }
+
       // Create a link for removing the item, if it was saved to the database.
+      // If the item is linked to a log, then it can only be deleted by deleting
+      // the log.
       $remove_link = '';
-      if (!empty($item['id']['#value'])) {
+      if (!empty($item['id']['#value']) && empty($item['log_id']['#value'])) {
         $remove_link = l('Remove', 'farm/plan/' . $plan->id . '/budget/' . $item['id']['#value'] . '/remove');
       }
 
       // Assemble the row.
       $rows[] = array(
         'data' => array(
+          $log_link,
           drupal_render($item['description']),
           drupal_render($item['type']),
           drupal_render($item['unit_cost']),

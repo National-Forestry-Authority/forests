@@ -81,3 +81,105 @@ function farm_nfa_theme() {
     ),
   );
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
+
+  // Alter forms that are part of the forest plan.
+  $form_ids = array(
+    'farm_forest_plan_planting_form',
+    'farm_forest_plan_management_form',
+  );
+  if (!in_array($form_id, $form_ids)) {
+    return;
+  }
+
+  // Add our submit function for linking budget items to logs.
+  $form['#submit'][] = 'farm_nfa_budget_item_log_submit';
+}
+
+/**
+ * Submit function for linking budget items to logs.
+ */
+function farm_nfa_budget_item_log_submit($form, &$form_state) {
+
+  // Get the current user.
+  global $user;
+
+  // If the plan ID is not set, bail.
+  if (empty($form_state['values']['plan']->id)) {
+    return;
+  }
+  $plan_id = $form_state['values']['plan']->id;
+
+  // If logs have not been saved to form state storage, bail.
+  if (empty($form_state['storage']['logs'])) {
+    return;
+  }
+
+  // Retrieve the logs.
+  $logs = $form_state['storage']['logs'];
+
+  // Iterate through the logs.
+  foreach ($logs as $log) {
+
+    // If it doesn't have an ID, skip it.
+    if (empty($log->id)) {
+      continue;
+    }
+
+    // Check to see if the log is already linked to a budget item.
+    $linked = db_query('SELECT COUNT(*) FROM {farm_nfa_budget_item} WHERE log_id = :log_id', array(':log_id' => $log->id))->fetchField();
+
+    // If it isn't linked, create a new budget item using the title of the log.
+    switch ($log->type) {
+      case 'farm_activity':
+        $type = t('Activity');
+        break;
+      case 'farm_observation':
+        $type = t('Observation');
+        break;
+      case 'farm_transplanting':
+        $type = t('Planting');
+        break;
+    }
+    if (empty($linked) && !empty($type)) {
+      $budget_item = array(
+        'plan_id' => $plan_id,
+        'log_id' => $log->id,
+        'description' => $log->name,
+        'type' => $type,
+        'unit_cost' => 0,
+        'quantity' => 0,
+        'total_cost' => 0,
+        'date_required' => $log->timestamp,
+        'date_created' => REQUEST_TIME,
+        'date_updated' => REQUEST_TIME,
+        'user_id' => $user->uid,
+      );
+      drupal_write_record('farm_nfa_budget_item', $budget_item);
+      drupal_set_message(t('A budget item has been added. <a href="!budget_path">View budget</a>.', array('!budget_path' => url('farm/plan/' . $plan_id . '/budget'))));
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function farm_nfa_entity_delete($entity, $type) {
+
+  // If the entity is not a log, bail.
+  if ($type != 'log') {
+    return;
+  }
+
+  // If the log ID is empty, bail.
+  if (empty($entity->id)) {
+    return;
+  }
+
+  // Delete any budget items associated with this log.
+  db_query('DELETE FROM {farm_nfa_budget_item} WHERE log_id = :log_id', array(':log_id' => $entity->id));
+}
