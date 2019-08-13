@@ -28,7 +28,7 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
   );
 
   // Load budget items from the database.
-  $budget_items = farm_nfa_budget_items($plan->id);
+  $budget_items = farm_nfa_budget_items($plan->id, 'expense');
 
   // Add one blank one for creating new items.
   $new_item = array(
