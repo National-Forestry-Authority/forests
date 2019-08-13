@@ -43,6 +43,19 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
   // Add the budget items sub-form for expenses.
   $form['expense'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'expense');
 
+  // Create a fieldset for income.
+  $form['income'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Income'),
+    '#description' => t('Record income in the table below.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#theme' => 'farm_nfa_forest_plan_budget_fieldset',
+  );
+
+  // Add the budget items sub-form for income.
+  $form['income'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'income');
+
   // Projected cost and income fields.
   $projection_query = 'SELECT * FROM {farm_nfa_budget_projection} WHERE plan_id = :plan_id AND type = :type';
   $projections = array(
@@ -234,29 +247,35 @@ function farm_nfa_forest_plan_budget_items_form($plan_id, $type) {
  */
 function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
 
-  // Iterate through the budget items.
-  foreach ($form_state['values']['expense']['items'] as $delta => $item) {
+  // Iterate through the budget items for each type.
+  $types = array(
+    'expense',
+    'income',
+  );
+  foreach ($types as $type) {
+    foreach ($form_state['values'][$type]['items'] as $delta => $item) {
 
-    // If any of the fields are filled, all of them are required.
-    $required = FALSE;
-    $fields = array(
-      'description',
-      'category',
-      'unit_cost',
-      'quantity',
-      'total_cost',
-      'date_required',
-    );
-    foreach ($fields as $field) {
-      if (!empty($item[$field])) {
-        $required = TRUE;
-        break;
-      }
-    }
-    if ($required) {
+      // If any of the fields are filled, all of them are required.
+      $required = FALSE;
+      $fields = array(
+        'description',
+        'category',
+        'unit_cost',
+        'quantity',
+        'total_cost',
+        'date_required',
+      );
       foreach ($fields as $field) {
-        if (empty($item[$field]) && $item[$field] != 0) {
-          form_set_error('expense][items][' . $delta . '][' . $field, t('Missing required fields.'));
+        if (!empty($item[$field])) {
+          $required = TRUE;
+          break;
+        }
+      }
+      if ($required) {
+        foreach ($fields as $field) {
+          if (empty($item[$field]) && $item[$field] != 0) {
+            form_set_error($type . '][items][' . $delta . '][' . $field, t('Missing required fields.'));
+          }
         }
       }
     }
@@ -291,67 +310,73 @@ function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
     }
   }
 
-  // Iterate through the budget items.
-  foreach ($form_state['values']['expense']['items'] as $delta => $item) {
+  // Iterate through the budget items for each type.
+  $types = array(
+    'expense',
+    'income',
+  );
+  foreach ($types as $type) {
+    foreach ($form_state['values'][$type]['items'] as $delta => $item) {
 
-    // If this is a new item (no ID), and it doesn't have a description, skip
-    // it. The validation function above will check to make sure other fields
-    // are set, so we just need to check one.
-    if (empty($item['id']) && empty($item['description'])) {
-      continue;
-    }
+      // If this is a new item (no ID), and it doesn't have a description, skip
+      // it. The validation function above will check to make sure other fields
+      // are set, so we just need to check one.
+      if (empty($item['id']) && empty($item['description'])) {
+        continue;
+      }
 
-    // Set the type to expense.
-    $item['type'] = 'expense';
+      // Set the type.
+      $item['type'] = $type;
 
-    // If date_created is not set, set it to the current time.
-    if (empty($item['date_created'])) {
-      $item['date_created'] = REQUEST_TIME;
-    }
+      // If date_created is not set, set it to the current time.
+      if (empty($item['date_created'])) {
+        $item['date_created'] = REQUEST_TIME;
+      }
 
-    // We will set the date_updated field to the current timestamp if it is
-    // empty, or if any of the item's fields were updated.
-    $updated = FALSE;
-    if (empty($item['date_updated'])) {
-      $updated = TRUE;
-    }
-    else {
-      $fields = array(
-        'description',
-        'category',
-        'unit_cost',
-        'quantity',
-        'total_cost',
-        'date_required',
-      );
-      foreach ($fields as $field) {
-        if ($item[$field] != $form['expense']['items'][$delta][$field]['#default_value']) {
-          $updated = TRUE;
-          break;
+      // We will set the date_updated field to the current timestamp if it is
+      // empty, or if any of the item's fields were updated.
+      $updated = FALSE;
+      if (empty($item['date_updated'])) {
+        $updated = TRUE;
+      }
+      else {
+        $fields = array(
+          'description',
+          'category',
+          'unit_cost',
+          'quantity',
+          'total_cost',
+          'date_required',
+        );
+        foreach ($fields as $field) {
+          if ($item[$field] != $form[$type]['items'][$delta][$field]['#default_value']) {
+            $updated = TRUE;
+            break;
+          }
         }
       }
-    }
-    if ($updated) {
-      $item['date_updated'] = REQUEST_TIME;
-    }
+      if ($updated) {
+        $item['date_updated'] = REQUEST_TIME;
+      }
 
-    // Convert date_required to a timestamp.
-    if (!empty($item['date_required'])) {
-      $item['date_required'] = strtotime($item['date_required']);
-    }
+      // Convert date_required to a timestamp.
+      if (!empty($item['date_required'])) {
+        $item['date_required'] = strtotime($item['date_required']);
+      }
 
-    // If a user ID is not set, set it to the current user.
-    if (empty($item['user_id'])) {
-      global $user;
-      $item['user_id'] = $user->uid;
-    }
+      // If a user ID is not set, set it to the current user.
+      if (empty($item['user_id'])) {
+        global $user;
+        $item['user_id'] = $user->uid;
+      }
 
-    // If the item has an ID, we will update it. Otherwise, we will insert.
-    $keys = array();
-    if (!empty($item['id'])) {
-      $keys = array('id');
+      // If the item has an ID, we will update it. Otherwise, we will insert.
+      $keys = array();
+      if (!empty($item['id'])) {
+        $keys = array('id');
+      }
+      drupal_write_record('farm_nfa_budget_item', $item, $keys);
     }
-    drupal_write_record('farm_nfa_budget_item', $item, $keys);
   }
 }
 
