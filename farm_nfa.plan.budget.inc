@@ -117,6 +117,12 @@ function farm_nfa_forest_plan_budget_items_form($plan_id, $type) {
   // Start a form array.
   $form = array();
 
+  // Save the budget item type to the form.
+  $form['budget_type'] = array(
+    '#type' => 'value',
+    '#value' => $type,
+  );
+
   // Define the date format used throughout the form.
   $date_format = 'Y-m-d';
 
@@ -387,6 +393,9 @@ function theme_farm_nfa_forest_plan_budget_fieldset(&$vars) {
   $fieldset = $vars['fieldset'];
   $output = '';
 
+  // Get the budget type (expense or income).
+  $type = $fieldset['budget_type']['#value'];
+
   // Define the date format used throughout the form.
   $date_format = 'Y-m-d';
 
@@ -460,10 +469,13 @@ function theme_farm_nfa_forest_plan_budget_fieldset(&$vars) {
     'header' => $header,
     'rows' => $rows,
     'empty' => t('No budget items have been added to this plan.'),
+    'attributes' => array(
+      'class' => array($type),
+    ),
   ));
 
-  // Add a container for the grand budget total (calculated via JS).
-  $output .= '<div id="budget-total"></div>';
+  // Add a container for the grand budget total (calculated via JS);
+  $output .= '<div class="budget-' . $type . '-total"></div>';
 
   // Render any remaining form elements.
   $output .= drupal_render_children($fieldset);

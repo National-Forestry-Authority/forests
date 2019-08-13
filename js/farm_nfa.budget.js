@@ -2,20 +2,29 @@
   Drupal.behaviors.farm_nfa_forest_budget = {
     attach: function (context, settings) {
       var form_id = 'farm-nfa-forest-plan-budget-form';
-      $('#' + form_id + ' .cost', context).on('keyup', function() {
+      var expense_table = $('#' + form_id + ' table.expense', context);
+      this.attachTableBehaviors(expense_table, 'expense');
+      var income_table = $('#' + form_id + ' table.income', context);
+      this.attachTableBehaviors(income_table, 'income');
+    },
+    attachTableBehaviors: function(table, type) {
+      $('.cost', table).on('keyup', function() {
         var row = $(this).closest('tr');
+        var table = row.closest('table');
         Drupal.behaviors.farm_nfa_forest_budget.calculateRowTotal(row);
-        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal();
+        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal(table, type);
       });
-      $('#' + form_id + ' .qty', context).on('keyup', function() {
+      $('.qty', table).on('keyup', function() {
         var row = $(this).closest('tr');
+        var table = row.closest('table');
         Drupal.behaviors.farm_nfa_forest_budget.calculateRowTotal(row);
-        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal();
+        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal(table, type);
       });
-      $('#' + form_id + ' .total', context).on('keyup', function() {
-        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal();
+      $('.total', table).on('keyup', function() {
+        var table = row.closest('table');
+        Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal(table, type);
       });
-      this.calculateGrandTotal();
+      Drupal.behaviors.farm_nfa_forest_budget.calculateGrandTotal(table, type);
     },
     calculateRowTotal: function(row) {
       var cost = $('.cost', row).val();
@@ -25,20 +34,19 @@
         $('.total', row).val(total);
       }
     },
-    calculateGrandTotal: function() {
-      var form_id = 'farm-nfa-forest-plan-budget-form';
+    calculateGrandTotal: function(table, type) {
       var total = 0;
-      $('#' + form_id + ' table tr').each(function() {
+      $('tr', table).each(function() {
         var rowTotal = parseFloat($(this).find('input.total').val());
         if (!isNaN(rowTotal)) {
           total += rowTotal;
         }
       });
       if (!isNaN(total)) {
-        $('#budget-total').html('<strong>Total expenses</strong>: ' + total);
+        $('.budget-' + type + '-total').html('<strong>Total</strong>: ' + total);
       }
       else {
-        $('#budget-total').html('');
+        $('.budget-' + type + '-total').html('');
       }
     }
   };
