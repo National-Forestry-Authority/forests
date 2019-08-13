@@ -150,6 +150,7 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
         'plan_id' => $plan_id,
         'log_id' => $log->id,
         'description' => $log->name,
+        'type' => 'expense',
         'category' => $category,
         'unit_cost' => 0,
         'quantity' => 0,

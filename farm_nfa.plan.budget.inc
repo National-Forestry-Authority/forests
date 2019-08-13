@@ -59,6 +59,12 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#default_value' => !empty($item['description']) ? $item['description'] : '',
     );
 
+    // Type.
+    $form['items'][$key]['type'] = array(
+      '#type' => 'value',
+      '#value' => !empty($item['type']) ? $item['type'] : '',
+    );
+
     // Category.
     $form['items'][$key]['category'] = array(
       '#type' => 'textfield',
@@ -197,6 +203,9 @@ function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
     if (empty($item['id']) && empty($item['description'])) {
       continue;
     }
+
+    // Set the type to expense.
+    $item['type'] = 'expense';
 
     // If date_created is not set, set it to the current time.
     if (empty($item['date_created'])) {

@@ -35,7 +35,7 @@
         }
       });
       if (!isNaN(total)) {
-        $('#budget-total').html('<strong>Budget Total</strong>: ' + total);
+        $('#budget-total').html('<strong>Total expenses</strong>: ' + total);
       }
       else {
         $('#budget-total').html('');
