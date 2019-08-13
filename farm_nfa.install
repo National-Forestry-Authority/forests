@@ -38,8 +38,8 @@ function farm_nfa_schema() {
         'length' => '255',
         'not null' => FALSE,
       ),
-      'type' => array(
-        'description' => 'Budget item type.',
+      'category' => array(
+        'description' => 'Budget item category.',
         'type' => 'varchar',
         'length' => '255',
         'not null' => FALSE,

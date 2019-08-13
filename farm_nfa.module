@@ -136,21 +136,21 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
     // If it isn't linked, create a new budget item using the title of the log.
     switch ($log->type) {
       case 'farm_activity':
-        $type = t('Activity');
+        $category = t('Activity');
         break;
       case 'farm_observation':
-        $type = t('Observation');
+        $category = t('Observation');
         break;
       case 'farm_transplanting':
-        $type = t('Planting');
+        $category = t('Planting');
         break;
     }
-    if (empty($linked) && !empty($type)) {
+    if (empty($linked) && !empty($category)) {
       $budget_item = array(
         'plan_id' => $plan_id,
         'log_id' => $log->id,
         'description' => $log->name,
-        'type' => $type,
+        'category' => $category,
         'unit_cost' => 0,
         'quantity' => 0,
         'total_cost' => 0,

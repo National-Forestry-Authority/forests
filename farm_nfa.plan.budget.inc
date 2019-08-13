@@ -59,12 +59,12 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
       '#default_value' => !empty($item['description']) ? $item['description'] : '',
     );
 
-    // Type.
-    $form['items'][$key]['type'] = array(
+    // Category.
+    $form['items'][$key]['category'] = array(
       '#type' => 'textfield',
-      '#title' => t('Unit type'),
+      '#title' => t('Category'),
       '#title_display' => 'invisible',
-      '#default_value' => !empty($item['type']) ? $item['type'] : '',
+      '#default_value' => !empty($item['category']) ? $item['category'] : '',
     );
 
     // Unit cost.
@@ -161,7 +161,7 @@ function farm_nfa_forest_plan_budget_form_validate($form, &$form_state) {
     $required = FALSE;
     $fields = array(
       'description',
-      'type',
+      'category',
       'unit_cost',
       'quantity',
       'total_cost',
@@ -212,7 +212,7 @@ function farm_nfa_forest_plan_budget_form_submit($form, &$form_state) {
     else {
       $fields = array(
         'description',
-        'type',
+        'category',
         'unit_cost',
         'quantity',
         'total_cost',
@@ -272,7 +272,7 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
   $header = array(
     t('Log'),
     t('Description'),
-    t('Unit type'),
+    t('Category'),
     t('Unit cost'),
     t('Quantity'),
     t('Total cost'),
@@ -321,7 +321,7 @@ function theme_farm_nfa_forest_plan_budget_form(&$vars) {
         'data' => array(
           $log_link,
           drupal_render($item['description']),
-          drupal_render($item['type']),
+          drupal_render($item['category']),
           drupal_render($item['unit_cost']),
           drupal_render($item['quantity']),
           drupal_render($item['total_cost']),
