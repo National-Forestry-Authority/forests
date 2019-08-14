@@ -30,32 +30,6 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
     '#value' => $plan,
   );
 
-  // Create a fieldset for expenses.
-  $form['expense'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Expenses'),
-    '#description' => t('Record expenses in the table below. Expense lines will be automatically added for each activity that is created on the Planting, Management, and Harvest tabs.'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#theme' => 'farm_nfa_forest_plan_budget_fieldset',
-  );
-
-  // Add the budget items sub-form for expenses.
-  $form['expense'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'expense');
-
-  // Create a fieldset for income.
-  $form['income'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Income'),
-    '#description' => t('Record income in the table below.'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#theme' => 'farm_nfa_forest_plan_budget_fieldset',
-  );
-
-  // Add the budget items sub-form for income.
-  $form['income'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'income');
-
   // Projected cost and income fields.
   $projection_query = 'SELECT * FROM {farm_nfa_budget_projection} WHERE plan_id = :plan_id AND type = :type';
   $projections = array(
@@ -90,6 +64,32 @@ function farm_nfa_forest_plan_budget_form($form, &$form_state, $plan) {
     '#default_value' => $projections['income'],
     '#element_validate' => array('element_validate_number'),
   );
+
+  // Create a fieldset for expenses.
+  $form['expense'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Expenses'),
+    '#description' => t('Record expenses in the table below. Expense lines will be automatically added for each activity that is created on the Planting, Management, and Harvest tabs.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#theme' => 'farm_nfa_forest_plan_budget_fieldset',
+  );
+
+  // Add the budget items sub-form for expenses.
+  $form['expense'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'expense');
+
+  // Create a fieldset for income.
+  $form['income'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Income'),
+    '#description' => t('Record income in the table below.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#theme' => 'farm_nfa_forest_plan_budget_fieldset',
+  );
+
+  // Add the budget items sub-form for income.
+  $form['income'] += farm_nfa_forest_plan_budget_items_form($plan->id, 'income');
 
   // Submit button.
   $form['submit'] = array(
