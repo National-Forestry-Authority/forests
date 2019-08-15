@@ -21,9 +21,37 @@ function farm_nfa_init() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function farm_nfa_permission() {
+  return array(
+    'access nfa dashboard' => array(
+      'title' => t('Access NFA dashboard'),
+      'description' => t('Access the NFA forest management dashboard'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_farm_access_perms().
+ */
+function farm_nfa_farm_access_perms($role) {
+  return array('access nfa dashboard');
+}
+
+/**
  * Implements hook_menu().
  */
 function farm_nfa_menu() {
+
+  // NFA dashboard.
+  $items['fmis'] = array(
+    'title' => 'FMIS',
+    'page callback' => 'farm_nfa_dashboard',
+    'access arguments' => array('access nfa dashboard'),
+    'file' => 'farm_nfa.dashboard.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
 
   // Forest plan budget form.
   $items['farm/plan/%farm_plan/budget'] = array(
