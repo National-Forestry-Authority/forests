@@ -176,6 +176,37 @@ function farm_nfa_farm_plan_form_submit($form, &$form_state) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function farm_nfa_form_farm_forest_plan_inventory_form_alter(&$form, &$form_state, $form_id) {
+
+  // Alter forest plan inventory form...
+
+  // Iterate through the log fieldsets.
+  foreach (element_children($form['logs']) as $key) {
+
+    // These fields are stored in the notes field, so they are only available
+    // as separate fields when creating a new log.
+    if ($key == 'new') {
+
+      // Coup number.
+      $form['logs'][$key]['coup'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Coup number'),
+        '#weight' => 5,
+      );
+    }
+  }
+
+  // Add submit function.
+  /**
+   * @see farm_nfa_form_alter()
+   * We add the submit function there because it needs to be added after
+   * farm_nfa_budget_item_log_submit().
+   */
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function farm_nfa_form_farm_forest_plan_harvest_form_alter(&$form, &$form_state, $form_id) {
 
   // Alter forest plan harvest form...
@@ -308,6 +339,7 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
   $form_ids = array(
     'farm_forest_plan_planting_form',
     'farm_forest_plan_management_form',
+    'farm_forest_plan_inventory_form',
     'farm_forest_plan_harvest_form',
   );
   if (!in_array($form_id, $form_ids)) {
@@ -317,8 +349,9 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
   // Add our submit function for linking budget items to logs.
   $form['#submit'][] = 'farm_nfa_budget_item_log_submit';
 
-  // If this is the harvest form, add the log fields submit function.
-  if ($form_id == 'farm_forest_plan_harvest_form') {
+  // If this is the harvest or inventory form, add the log fields submit
+  // function.
+  if (in_array($form_id, array('farm_forest_plan_harvest_form', 'farm_forest_plan_inventory_form'))) {
     $form['#submit'][] = 'farm_nfa_plan_log_fields_submit';
   }
 }
