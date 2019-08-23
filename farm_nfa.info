@@ -1,10 +1,13 @@
 name = Farm NFA
 description = Uganda National Forestry Authority farmOS module.
-package = farmOS NFA
 core = 7.x
+package = farmOS NFA
 dependencies[] = ctools
 dependencies[] = farm_forest
+dependencies[] = strongarm
 dependencies[] = views
+features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
+features[variable][] = theme_farm_theme_settings
 features[views_view][] = farm_nfa_famps

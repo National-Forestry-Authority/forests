@@ -8,6 +8,19 @@
 include_once 'farm_nfa.features.inc';
 
 /**
+ * Implements hook_init().
+ */
+function farm_nfa_init() {
+
+  // Set the site name to "FMIS".
+  global $conf;
+  $conf['site_name'] = 'FMIS';
+
+  // Add CSS to all pages.
+  drupal_add_css(drupal_get_path('module', 'farm_nfa') . '/css/farm_nfa.css');
+}
+
+/**
  * Implements hook_menu().
  */
 function farm_nfa_menu() {
