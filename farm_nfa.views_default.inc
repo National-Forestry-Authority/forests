@@ -167,6 +167,11 @@ function farm_nfa_views_default_views() {
   $handler->display->display_options['filters']['active']['expose']['label'] = 'Active';
   $handler->display->display_options['filters']['active']['expose']['operator'] = 'active_op';
   $handler->display->display_options['filters']['active']['expose']['identifier'] = 'active';
+  /* Filter criterion: NFA forest plan type: Forest plan type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'farm_nfa_forest_plan_type';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['value'] = 'natural';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
