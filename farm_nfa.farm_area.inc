@@ -10,10 +10,15 @@
  */
 function farm_nfa_farm_area_type_info() {
   return array(
+    'sector' => array(
+      'label' => t('Sector'),
+      'style' => 'farm_map_style_yellow',
+      'weight' => 100,
+    ),
     'cfr' => array(
       'label' => t('Central Forest Reserve'),
       'style' => 'farm_map_style_purple',
-      'weight' => 100,
+      'weight' => 90,
     ),
     'zone' => array(
       'label' => t('Zone'),
