@@ -5,6 +5,8 @@
  * farmOS module for Uganda's National Forestry Authority.
  */
 
+include_once 'farm_nfa.features.inc';
+
 /**
  * Implements hook_menu().
  */
