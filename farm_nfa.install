@@ -9,6 +9,27 @@
  * Implements hook_schema().
  */
 function farm_nfa_schema() {
+  $schema['farm_nfa_forest_plan_type'] = array(
+    'description' => 'NFA forest plan types.',
+    'fields' => array(
+      'plan_id' => array(
+        'description' => 'Plan ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'Plan type.',
+        'type' => 'varchar',
+        'length' => '16',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('plan_id'),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+  );
   $schema['farm_nfa_budget_projection'] = array(
     'description' => 'NFA plan budget projections.',
     'fields' => array(

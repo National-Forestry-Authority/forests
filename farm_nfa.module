@@ -103,6 +103,49 @@ function farm_nfa_theme() {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function farm_nfa_form_farm_plan_form_alter(&$form, &$form_state, $form_id) {
+
+  // If this is not a forest plan, bail.
+  if (empty($form['farm_plan']['#value']->type) || $form['farm_plan']['#value']->type != 'forest') {
+    return;
+  }
+
+  // Add a forest plan type field and submit function for processing it.
+  $plan_type = NULL;
+  if (!empty($form['farm_plan']['#value']->id)) {
+    $plan_type = db_query('SELECT type FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $form['farm_plan']['#value']->id))->fetchField();
+  }
+  $form['forest_plan_type'] = array(
+    '#type' => 'select',
+    '#title' => t('Forest plan type'),
+    '#options' => array(
+      'natural' => t('Natural management plan'),
+      'plantation' => t('Plantation plan'),
+    ),
+    '#default_value' => $plan_type,
+    '#required' => TRUE,
+  );
+  $form['#group_children']['forest_plan_type'] = 'group_farm_general';
+  $form['actions']['submit']['#submit'][] = 'farm_nfa_farm_plan_form_submit';
+}
+
+/**
+ * Submit handler for saving forest_plan_type in farm_plan_form.
+ */
+function farm_nfa_farm_plan_form_submit($form, &$form_state) {
+  if (!empty($form_state['values']['farm_plan']->id) && !empty($form_state['values']['forest_plan_type'])) {
+    $record = array(
+      'plan_id' => $form_state['values']['farm_plan']->id,
+      'type' => $form_state['values']['forest_plan_type'],
+    );
+    db_query('DELETE FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $record['plan_id']));
+    drupal_write_record('farm_nfa_forest_plan_type', $record);
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
