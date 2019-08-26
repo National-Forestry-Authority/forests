@@ -346,6 +346,15 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
     return;
   }
 
+  // Iterate through the log fieldsets.
+  foreach (element_children($form['logs']) as $key) {
+
+    // Rename "Category" to "Working circle".
+    if (!empty($form['logs'][$key]['category']['#title'])) {
+      $form['logs'][$key]['category']['#title'] = t('Working circle');
+    }
+  }
+
   // Add our submit function for linking budget items to logs.
   $form['#submit'][] = 'farm_nfa_budget_item_log_submit';
 
