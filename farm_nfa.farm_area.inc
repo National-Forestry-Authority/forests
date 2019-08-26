@@ -20,20 +20,25 @@ function farm_nfa_farm_area_type_info() {
       'style' => 'farm_map_style_purple',
       'weight' => 90,
     ),
+    'compartment' => array(
+      'label' => t('Compartment'),
+      'style' => 'farm_map_style_purple',
+      'weight' => 80,
+    ),
     'zone' => array(
       'label' => t('Zone'),
       'style' => 'farm_map_style_purple',
-      'weight' => 80,
+      'weight' => 70,
     ),
     'cfm' => array(
       'label' => t('Collaborative Forest Management'),
       'style' => 'farm_map_style_purple',
-      'weight' => 70,
+      'weight' => 60,
     ),
     'tourism' => array(
       'label' => t('Tourism'),
       'style' => 'farm_map_style_purple',
-      'weight' => 60,
+      'weight' => 50,
     ),
   );
 }
