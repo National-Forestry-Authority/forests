@@ -46,6 +46,25 @@ function farm_nfa_schema() {
       'type' => array('type'),
     ),
   );
+  $schema['farm_nfa_forest_plan_categories'] = array(
+    'description' => 'Associates forest plans with log categories.',
+    'fields' => array(
+      'plan_id' => array(
+        'description' => 'Plan ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'tid' => array(
+        'description' => 'Category term ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('plan_id', 'tid'),
+  );
   $schema['farm_nfa_budget_projection'] = array(
     'description' => 'NFA plan budget projections.',
     'fields' => array(
@@ -177,4 +196,31 @@ function farm_nfa_schema() {
     ),
   );
   return $schema;
+}
+
+/**
+ * Add table: {farm_nfa_forest_plan_categories}
+ */
+function farm_nfa_update_7000(&$sandbox) {
+  $table = 'farm_nfa_forest_plan_categories';
+  $schema[$table] = array(
+    'description' => 'Associates forest plans with log categories.',
+    'fields' => array(
+      'plan_id' => array(
+        'description' => 'Plan ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'tid' => array(
+        'description' => 'Category term ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('plan_id', 'tid'),
+  );
+  db_create_table($table, $schema[$table]);
 }

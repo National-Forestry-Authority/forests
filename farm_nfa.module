@@ -140,7 +140,7 @@ function farm_nfa_form_farm_plan_form_alter(&$form, &$form_state, $form_id) {
     return;
   }
 
-  // Add a forest plan type field and submit function for processing it.
+  // Add a forest plan type field.
   $plan_type = NULL;
   if (!empty($form['farm_plan']['#value']->id)) {
     $plan_type = db_query('SELECT type FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $form['farm_plan']['#value']->id))->fetchField();
@@ -156,6 +156,43 @@ function farm_nfa_form_farm_plan_form_alter(&$form, &$form_state, $form_id) {
     '#required' => TRUE,
   );
   $form['#group_children']['forest_plan_type'] = 'group_farm_general';
+
+  // Add a log category field. This is used to hide/show tabs based on which
+  // categories (NFA working circles) the plan is associated with.
+  $categories = array();
+  $category_options = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term');
+  $query->entityCondition('bundle', 'farm_log_categories');
+  $result = $query->execute();
+  if (isset($result['taxonomy_term'])) {
+    $category_ids = array_keys($result['taxonomy_term']);
+    $categories = entity_load('taxonomy_term', $category_ids);
+  }
+  foreach ($categories as $category) {
+    $entity_label = entity_label('taxonomy_term', $category);
+    $category_options[$category->tid] = $entity_label;
+  }
+  $selected_categories = array();
+  if (!empty($form['farm_plan']['#value']->id)) {
+    $result = db_query('SELECT tid FROM {farm_nfa_forest_plan_categories} WHERE plan_id=:plan_id', array(':plan_id' => $form['farm_plan']['#value']->id));
+    foreach ($result as $row) {
+      if (!empty($row->tid)) {
+        $selected_categories[$row->tid] = $row->tid;
+      }
+    }
+  }
+  $form['forest_plan_working_circles'] = array(
+    '#type' => 'select',
+    '#title' => t('Working circles'),
+    '#options' => $category_options,
+    '#default_value' => $selected_categories,
+    '#multiple' => TRUE,
+    '#weight' => 90,
+  );
+  $form['#group_children']['forest_plan_working_circles'] = 'group_farm_general';
+
+  // Add submit function for processing additional fields.
   $form['actions']['submit']['#submit'][] = 'farm_nfa_farm_plan_form_submit';
 }
 
@@ -163,13 +200,36 @@ function farm_nfa_form_farm_plan_form_alter(&$form, &$form_state, $form_id) {
  * Submit handler for saving forest_plan_type in farm_plan_form.
  */
 function farm_nfa_farm_plan_form_submit($form, &$form_state) {
-  if (!empty($form_state['values']['farm_plan']->id) && !empty($form_state['values']['forest_plan_type'])) {
+
+  // If the plan ID is not available, bail.
+  if (empty($form_state['values']['farm_plan']->id)) {
+    return;
+  }
+  $plan_id = $form_state['values']['farm_plan']->id;
+
+  // If a plan type is selected, save it.
+  if (!empty($form_state['values']['forest_plan_type'])) {
     $record = array(
-      'plan_id' => $form_state['values']['farm_plan']->id,
+      'plan_id' => $plan_id,
       'type' => $form_state['values']['forest_plan_type'],
     );
-    db_query('DELETE FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $record['plan_id']));
+    db_query('DELETE FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $plan_id));
     drupal_write_record('farm_nfa_forest_plan_type', $record);
+  }
+
+  // If log categories are selected, save them.
+  if (!empty($form_state['values']['forest_plan_working_circles'])) {
+    $records = array();
+    foreach ($form_state['values']['forest_plan_working_circles'] as $tid) {
+      $records[] = array(
+        'plan_id' => $plan_id,
+        'tid' => $tid,
+      );
+    }
+    db_query('DELETE FROM {farm_nfa_forest_plan_categories} WHERE plan_id=:plan_id', array(':plan_id' => $plan_id));
+    foreach ($records as $record) {
+      drupal_write_record('farm_nfa_forest_plan_categories', $record);
+    }
   }
 }
 
