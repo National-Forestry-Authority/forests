@@ -81,6 +81,84 @@ function farm_nfa_menu() {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function farm_nfa_menu_alter(&$items) {
+
+  // Replace the access callback for forest management plan tabs with our own.
+  $menu_items = array(
+    'area' => 'farm/plan/%farm_plan/area',
+    'budget' => 'farm/plan/%farm_plan/budget',
+    'planting' => 'farm/plan/%farm_plan/planting',
+    'inventory' => 'farm/plan/%farm_plan/inventory',
+    'management' => 'farm/plan/%farm_plan/management',
+    'harvest' => 'farm/plan/%farm_plan/harvest',
+  );
+  foreach ($menu_items as $tab => $path) {
+    if (!empty($items[$path])) {
+      $items[$path]['access callback'] = 'farm_nfa_forest_plan_access';
+      $items[$path]['access arguments'] = array(2, $tab);
+    }
+  }
+}
+
+/**
+ * Replacement access callback for forest plan tabs, to enable/disable them
+ * based on working circles (log categories) associated with the plan.
+ */
+function farm_nfa_forest_plan_access($farm_plan, $tab) {
+
+  // Load working circles associated with the plan.
+  $categories = array();
+  if (!empty($farm_plan->id)) {
+    $result = db_query('SELECT tid FROM {farm_nfa_forest_plan_categories} WHERE plan_id=:plan_id', array(':plan_id' => $farm_plan->id));
+    foreach ($result as $row) {
+      if (!empty($row->tid)) {
+        $term = taxonomy_term_load($row->tid);
+        if (!empty($term)) {
+          $categories[] = $term;
+        }
+      }
+    }
+  }
+
+  // Define which working circles allow access to each tab.
+  // Conservation - area, management, (enrichment) planting, budget, (report) (plse see question below).
+  // Partnerships & community livelihoods - area, management, planting (enrichment), budget, (report)
+  // Production - same as for plantations
+  // Research and Education - area, management, budget, (report)
+  // Tourism - area, management, budget, (report)
+  $circle_tabs = array(
+    t('Conservation') => array('area', 'budget', 'planting', 'management'),
+    t('Partnerships & community livelihoods') => array('area', 'budget', 'planting', 'management'),
+    t('Production') => array('area', 'planting', 'budget', 'inventory', 'management', 'harvest'),
+    t('Research and Education') => array('area', 'budget', 'management'),
+    t('Tourism') => array('area', 'management', 'budget'),
+  );
+
+  // Iterate through the categories associated with the plan and build an array
+  // of allowed tabs.
+  $allowed_tabs = array();
+  foreach ($categories as $category) {
+    $term_label = entity_label('taxonomy_term', $category);
+    if (array_key_exists($term_label, $circle_tabs)) {
+      $allowed_tabs += $circle_tabs[$term_label];
+    }
+  }
+
+  // If allowed tabs were collected, deny access if the current tab is not
+  // included.
+  if (!empty($allowed_tabs)) {
+    if (!in_array($tab, $allowed_tabs)) {
+      return FALSE;
+    }
+  }
+
+  // Finally, delegate to the original access callback.
+  return farm_forest_plan_access($farm_plan);
+}
+
+/**
  * Load NFA budget items from the database for a particular plan.
  *
  * @param $plan_id
