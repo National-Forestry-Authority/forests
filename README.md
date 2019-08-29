@@ -12,7 +12,7 @@ DEPENDENCIES
 This module depends on [farmOS](http://drupal.org/project/farm), and a number
 of contrib modules that are packaged with it.
 
-It also depends on the [Farm Forest](https://github.com/mstenta/farm_forest)
+It also depends on the [Farm Forest](https://github.com/farmOS/farm_forest)
 module.
 
 INSTALLATION
