@@ -484,16 +484,46 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
     return;
   }
 
+  // Build a list of log category options, which will represent working circles.
+  $categories = array();
+  $category_options = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term');
+  $query->entityCondition('bundle', 'farm_log_categories');
+  $result = $query->execute();
+  if (isset($result['taxonomy_term'])) {
+    $category_ids = array_keys($result['taxonomy_term']);
+    $categories = entity_load('taxonomy_term', $category_ids);
+  }
+  foreach ($categories as $category) {
+    $entity_label = entity_label('taxonomy_term', $category);
+    $category_options[$category->tid] = $entity_label;
+  }
+
   // Iterate through the log fieldsets.
   foreach (element_children($form['logs']) as $key) {
 
-    // Rename "Category" to "Working circle".
-    if (!empty($form['logs'][$key]['category']['#title'])) {
-      $form['logs'][$key]['category']['#title'] = t('Working circle');
+    // Add a log category field, named "Working Circle".
+    $selected_categories = array();
+    if (!empty($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE])) {
+      foreach ($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE] as $term_ref) {
+        if (!empty($term_ref['tid'])) {
+          $selected_categories[$term_ref['tid']] = $term_ref['tid'];
+        }
+      }
     }
+    $form['logs'][$key]['category'] = array(
+      '#type' => 'select',
+      '#title' => t('Working circle'),
+      '#options' => $category_options,
+      '#default_value' => $selected_categories,
+      '#multiple' => TRUE,
+      '#weight' => 95,
+    );
   }
 
-  // Add our submit function for linking budget items to logs.
+  // Add our submit function for linking budget items to logs and saving log
+  // categories.
   $form['#submit'][] = 'farm_nfa_budget_item_log_submit';
 
   // If this is the harvest or inventory form, add the log fields submit
@@ -504,7 +534,7 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Submit function for linking budget items to logs.
+ * Submit function for linking budget items to logs and saving log categories.
  */
 function farm_nfa_budget_item_log_submit($form, &$form_state) {
 
@@ -531,6 +561,15 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
     // If it doesn't have an ID, skip it.
     if (empty($log->id)) {
       continue;
+    }
+
+    // Match up the log to the form values. If a match is not found, assume that
+    // it is a new log.
+    if (!empty($form_state['values']['logs'][$log->id])) {
+      $key = $log->id;
+    }
+    else {
+      $key = 'new';
     }
 
     // Check to see if the log is already linked to a budget item.
@@ -573,6 +612,11 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
       drupal_write_record('farm_nfa_budget_item', $budget_item);
       drupal_set_message(t('A budget item has been added. <a href="!budget_path">View budget</a>.', array('!budget_path' => url('farm/plan/' . $plan_id . '/budget'))));
     }
+
+    // Update categories on the log.
+    $log_wrapper = entity_metadata_wrapper('log', $log);
+    $log_wrapper->field_farm_log_category = $form_state['values']['logs'][$key]['category'];
+    $log_wrapper->save();
   }
 }
 
