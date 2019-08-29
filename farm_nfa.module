@@ -263,6 +263,7 @@ function farm_nfa_form_farm_plan_form_alter(&$form, &$form_state, $form_id) {
   $form['forest_plan_working_circles'] = array(
     '#type' => 'select',
     '#title' => t('Working circles'),
+    '#description' => t('Select the working circles that are involved with this plan. This will affect what planning functions are available. Leaving this blank will enable all functionality.'),
     '#options' => $category_options,
     '#default_value' => $selected_categories,
     '#multiple' => TRUE,
