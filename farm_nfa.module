@@ -62,7 +62,7 @@ function farm_nfa_menu() {
     'access arguments' => array(2),
     'file' => 'farm_nfa.plan.budget.inc',
     'type' => MENU_LOCAL_TASK,
-    'weight' => 15,
+    'weight' => 35,
   );
 
   // Remove a budget item.
