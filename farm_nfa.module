@@ -297,7 +297,7 @@ function farm_nfa_farm_plan_form_submit($form, &$form_state) {
   }
 
   // If log categories are selected, save them.
-  if (!empty($form_state['values']['forest_plan_working_circles'])) {
+  if (isset($form_state['values']['forest_plan_working_circles'])) {
     $records = array();
     foreach ($form_state['values']['forest_plan_working_circles'] as $tid) {
       $records[] = array(
