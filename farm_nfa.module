@@ -484,42 +484,52 @@ function farm_nfa_form_alter(&$form, &$form_state, $form_id) {
     return;
   }
 
-  // Build a list of log category options, which will represent working circles.
-  $categories = array();
-  $category_options = array();
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'taxonomy_term');
-  $query->entityCondition('bundle', 'farm_log_categories');
-  $result = $query->execute();
-  if (isset($result['taxonomy_term'])) {
-    $category_ids = array_keys($result['taxonomy_term']);
-    $categories = entity_load('taxonomy_term', $category_ids);
-  }
-  foreach ($categories as $category) {
-    $entity_label = entity_label('taxonomy_term', $category);
-    $category_options[$category->tid] = $entity_label;
+  // Load the plan type.
+  $plan_type = NULL;
+  if (!empty($form['plan']['#value']->id)) {
+    $plan_type = db_query('SELECT type FROM {farm_nfa_forest_plan_type} WHERE plan_id=:plan_id', array(':plan_id' => $form['plan']['#value']->id))->fetchField();
   }
 
-  // Iterate through the log fieldsets.
-  foreach (element_children($form['logs']) as $key) {
+  // If the plan type is "natural", add category field to logs.
+  if ($plan_type == 'natural') {
 
-    // Add a log category field, named "Working Circle".
-    $selected_categories = array();
-    if (!empty($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE])) {
-      foreach ($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE] as $term_ref) {
-        if (!empty($term_ref['tid'])) {
-          $selected_categories[$term_ref['tid']] = $term_ref['tid'];
+    // Build a list of log category options, which will represent working circles.
+    $categories = array();
+    $category_options = array();
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'taxonomy_term');
+    $query->entityCondition('bundle', 'farm_log_categories');
+    $result = $query->execute();
+    if (isset($result['taxonomy_term'])) {
+      $category_ids = array_keys($result['taxonomy_term']);
+      $categories = entity_load('taxonomy_term', $category_ids);
+    }
+    foreach ($categories as $category) {
+      $entity_label = entity_label('taxonomy_term', $category);
+      $category_options[$category->tid] = $entity_label;
+    }
+
+    // Iterate through the log fieldsets.
+    foreach (element_children($form['logs']) as $key) {
+
+      // Add a log category field, named "Working Circle".
+      $selected_categories = array();
+      if (!empty($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE])) {
+        foreach ($form['logs'][$key]['log']['#value']->field_farm_log_category[LANGUAGE_NONE] as $term_ref) {
+          if (!empty($term_ref['tid'])) {
+            $selected_categories[$term_ref['tid']] = $term_ref['tid'];
+          }
         }
       }
+      $form['logs'][$key]['category'] = array(
+        '#type' => 'select',
+        '#title' => t('Working circle'),
+        '#options' => $category_options,
+        '#default_value' => $selected_categories,
+        '#multiple' => TRUE,
+        '#weight' => 95,
+      );
     }
-    $form['logs'][$key]['category'] = array(
-      '#type' => 'select',
-      '#title' => t('Working circle'),
-      '#options' => $category_options,
-      '#default_value' => $selected_categories,
-      '#multiple' => TRUE,
-      '#weight' => 95,
-    );
   }
 
   // Add our submit function for linking budget items to logs and saving log
@@ -614,9 +624,11 @@ function farm_nfa_budget_item_log_submit($form, &$form_state) {
     }
 
     // Update categories on the log.
-    $log_wrapper = entity_metadata_wrapper('log', $log);
-    $log_wrapper->field_farm_log_category = $form_state['values']['logs'][$key]['category'];
-    $log_wrapper->save();
+    if (isset($form_state['values']['logs'][$key]['category'])) {
+      $log_wrapper = entity_metadata_wrapper('log', $log);
+      $log_wrapper->field_farm_log_category = $form_state['values']['logs'][$key]['category'];
+      $log_wrapper->save();
+    }
   }
 }
 
