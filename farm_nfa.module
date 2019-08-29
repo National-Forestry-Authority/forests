@@ -346,6 +346,54 @@ function farm_nfa_form_farm_forest_plan_inventory_form_alter(&$form, &$form_stat
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function farm_nfa_form_farm_forest_plan_area_form_alter(&$form, &$form_state, $form_id) {
+
+  // Add our validation callback.
+  $form['#validate'][] = 'farm_nfa_forest_plan_area_form_validate';
+}
+
+/**
+ * Validate callback for the forest plan area form.
+ */
+function farm_nfa_forest_plan_area_form_validate($form, &$form_state) {
+
+  // Get the plan ID. Bail if it's not available.
+  if (empty($form_state['values']['plan']->id)) {
+    return;
+  }
+  $plan_id = $form_state['values']['plan']->id;
+
+  // Load areas already associated with the plan.
+  $area_ids = farm_plan_linked_records('area', $plan_id);
+  $areas = array();
+  if (!empty($area_ids)) {
+    $areas = entity_load('taxonomy_term', $area_ids);
+  }
+
+  // If there are no areas, bail.
+  if (empty($areas)) {
+    return;
+  }
+
+  // Iterate through the areas to see if there are any CFRs.
+  $cfr = FALSE;
+  foreach ($areas as $area) {
+    if (!empty($area->field_farm_area_type[LANGUAGE_NONE][0]['value']) && $area->field_farm_area_type[LANGUAGE_NONE][0]['value'] == 'cfr') {
+      $cfr = TRUE;
+      break;
+    }
+  }
+
+  // If the area being added is a CFR, but a CFR is already associated with the
+  // plan, set a validation error.
+  if ($cfr && !empty($form_state['storage']['area']->field_farm_area_type[LANGUAGE_NONE][0]['value']) && $form_state['storage']['area']->field_farm_area_type[LANGUAGE_NONE][0]['value'] == 'cfr') {
+    form_set_error('area', t('A CFR is already associated with this plan. You may only associate one CFR with a plan.'));
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function farm_nfa_form_farm_forest_plan_harvest_form_alter(&$form, &$form_state, $form_id) {
 
   // Alter forest plan harvest form...
