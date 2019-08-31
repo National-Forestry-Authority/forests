@@ -10,6 +10,11 @@
  */
 function farm_nfa_farm_area_type_info() {
   return array(
+    'range' => array(
+      'label' => t('Range'),
+      'style' => t('farm_map_style_dark_green'),
+      'weight' => 110,
+    ),
     'sector' => array(
       'label' => t('Sector'),
       'style' => 'farm_map_style_yellow',
