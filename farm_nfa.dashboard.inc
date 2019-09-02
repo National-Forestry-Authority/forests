@@ -61,7 +61,7 @@ function farm_nfa_dashboard() {
   // Natural forest planning.
   $build['left']['natural'] = array(
     '#type' => 'markup',
-    '#markup' => '<h3 class="text-center">' . t('Natural Forest Planning') . '</h3><p>' . t('Select a Forest Area Management Plan Sector below to see plans within that sector.') . '</p>' . $famps,
+    '#markup' => '<h3 class="text-center">' . t('Natural Forest Management') . '</h3><p>' . t('Select a Forest Area Management Plan Sector below to see plans within that sector.') . '</p>' . $famps,
   );
 
   // Create a list of links to plantation plans.
@@ -85,7 +85,7 @@ function farm_nfa_dashboard() {
   // Plantation forest planning.
   $build['right']['plantation'] = array(
     '#type' => 'markup',
-    '#markup' => '<h3 class="text-center">' . t('Plantation Planning') . '</h3><p>' . t('Select a Forest Plantation Plan below to manage activities within it.') . '</p>' . $plantation_plans,
+    '#markup' => '<h3 class="text-center">' . t('Plantation Management') . '</h3><p>' . t('Select a Forest Plantation Plan below to manage activities within it.') . '</p>' . $plantation_plans,
   );
 
   // Return the build array.
