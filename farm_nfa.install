@@ -224,3 +224,54 @@ function farm_nfa_update_7000(&$sandbox) {
   );
   db_create_table($table, $schema[$table]);
 }
+
+/**
+ * Split CFRs into Natural Forest, Plantation, and Urban Forest.
+ */
+function farm_nfa_update_7001(&$sandbox) {
+
+  // Get the vocabulary ID for farm_areas.
+  $vid = db_query("SELECT vid FROM {taxonomy_vocabulary} WHERE machine_name = 'farm_areas'")->fetchField();
+
+  // If no vid was found, bail.
+  if (empty($vid)) {
+    return;
+  }
+
+  // Define a common query for finding CFRs with a specific term description.
+  $query = "SELECT t.tid FROM {taxonomy_term_data} t
+  LEFT JOIN {field_data_field_farm_area_type} at ON t.tid = at.entity_id AND at.entity_type = 'taxonomy_term'
+  LEFT JOIN {field_data_field_farm_description} d ON d.entity_id = at.entity_id AND d.entity_type = 'taxonomy_term'
+	WHERE t.vid = :vid
+	AND at.field_farm_area_type_value = 'cfr'";
+
+  // Define common query arguments.
+  $args = array(
+    ':vid' => $vid,
+  );
+
+  // Find all plantation, natural forest, and urban forest CFR IDs.
+  $tids = array();
+  $tids['cfr_plantation'] = db_query($query . " AND t.description LIKE '%Plantation%'", $args)->fetchCol();
+  $tids['cfr_natural'] = db_query($query . " AND t.description LIKE '%Natural Forest%'", $args)->fetchCol();
+  $tids['cfr_urban'] = db_query($query . " AND t.description LIKE '%Urban Forest%'", $args)->fetchCol();
+
+  // Define the tables and field name to update.
+  $tables = array(
+    'field_data_field_farm_area_type',
+    'field_revision_field_farm_area_type',
+  );
+  $field = 'field_farm_area_type_value';
+
+  // Convert all CFRs to their new area type.
+  foreach ($tids as $type => $type_tids) {
+    foreach ($tables as $table) {
+      $query = "UPDATE {$table} SET $field = :type WHERE entity_type = 'taxonomy_term' AND entity_id IN (:tids)";
+      $args = array(
+        ':type' => $type,
+        ':tids' => $type_tids,
+      );
+      db_query($query, $args);
+    }
+  }
+}
