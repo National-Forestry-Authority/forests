@@ -12,7 +12,7 @@ function farm_nfa_farm_area_type_info() {
   return array(
     'range' => array(
       'label' => t('Range'),
-      'style' => t('farm_map_style_dark_green'),
+      'style' => t('farm_map_style_red'),
       'weight' => 110,
     ),
     'sector' => array(
@@ -20,9 +20,19 @@ function farm_nfa_farm_area_type_info() {
       'style' => 'farm_map_style_yellow',
       'weight' => 100,
     ),
-    'cfr' => array(
-      'label' => t('Central Forest Reserve'),
+    'cfr_natural' => array(
+      'label' => t('Central Forest Reserve - Natural Forest'),
+      'style' => 'farm_map_style_dark_green',
+      'weight' => 90,
+    ),
+    'cfr_plantation' => array(
+      'label' => t('Central Forest Reserve - Plantation'),
       'style' => 'farm_map_style_purple',
+      'weight' => 90,
+    ),
+    'cfr_urban' => array(
+      'label' => t('Central Forest Reserve - Urban Forest'),
+      'style' => 'farm_map_style_blue',
       'weight' => 90,
     ),
     'compartment' => array(
