@@ -55,5 +55,20 @@ function farm_nfa_farm_area_type_info() {
       'style' => 'farm_map_style_blue',
       'weight' => 50,
     ),
+    'survey' => array(
+      'label' => t('Surveyed boundary'),
+      'style' => 'farm_map_style_red',
+      'weight' => 40,
+    ),
+    'nursery' => array(
+      'label' => t('Nursery bed'),
+      'style' => 'farm_map_style_green',
+      'weight' => 30,
+    ),
+    'observations' => array(
+      'label' => t('Field observations'),
+      'style' => 'farm_map_style_blue',
+      'weight' => 20,
+    ),
   );
 }
