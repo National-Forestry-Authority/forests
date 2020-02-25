@@ -19,9 +19,6 @@ function farm_nfa_dashboard() {
     '#markup' => '<h2>National Forestry Authority Forest Management Information System</h2>',
   );
 
-  // Map.
-  $build['map'] = farm_map_build('farm_areas', TRUE, t('Areas (click to expand/collapse)'));
-
   // Left and right columns.
   $build['left'] = array(
     '#type' => 'container',
