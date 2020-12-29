@@ -1,0 +1,64 @@
+{
+    "name": "farmos/project",
+    "description": "farmOS project template.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://farmOS.org",
+    "support": {
+        "docs": "https://farmOS.org/guide",
+        "forum": "https://farmOS.discourse.group",
+        "chat": "https://matrix.to/#/#farmOS:matrix.org"
+    },
+    "authors": [
+        {
+            "name": "Michael Stenta",
+            "email": "mike@farmier.com"
+        }
+    ],
+    "repositories": [ {"type": "git", "url": "https://github.com/farmOS/farmOS.git"},
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core-composer-scaffold": "~9.1.0",
+        "drush/drush": "^9.0||^10.0",
+        "farmos/farmos": "2.x-dev"
+    },
+    "require-dev": {
+        "drupal/core-dev": "~9.1.0",
+        "phpspec/prophecy-phpunit": "^2",
+        "zaporylie/composer-drupal-optimizations": "^1.1"
+    },
+    "_comments": {
+        "phpspec/prophecy-phpunit": "Required to fix ProphecyTrait not found, until Drupal core drops support for PHPUnit 8. See https://www.drupal.org/node/3176567"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "enable-patching": true,
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/profiles/farm": ["farmos/farmos"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/themes/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+        }
+    }
+}
