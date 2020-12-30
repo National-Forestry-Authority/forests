@@ -1,3 +1,7 @@
 vendor
 /.editorconfig
 /.gitattributes
+
+web/*
+!web/modules/custom
+!web/themes/custom
