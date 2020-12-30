@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04f9f83599567cdbb8852a8c1a7abcf4",
+    "content-hash": "b9c238d6912820dca96ba98f3de3ff3f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2105,6 +2105,37 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/entity_reference_validators"
             }
+        },
+        {
+            "name": "drupal/farm_forest",
+            "version": "2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/farmOS/farm_forest.git",
+                "reference": "c555d5ac66ae1002e0402494cb45f66b366b6b9f"
+            },
+            "provide": {
+                "drupal/farm_entity": "*",
+                "drupal/plan": "*"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Stenta",
+                    "email": "mike@farmier.com"
+                }
+            ],
+            "description": "Forest management features for farmOS.",
+            "homepage": "https://www.drupal.org/project/farm_forest",
+            "support": {
+                "docs": "https://farmOS.org/guide",
+                "forum": "https://farmOS.discourse.group",
+                "chat": "https://matrix.to/#/#farmOS:matrix.org"
+            },
+            "time": "2020-12-30T17:32:12+00:00"
         },
         {
             "name": "drupal/geofield",

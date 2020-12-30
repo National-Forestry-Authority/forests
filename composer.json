@@ -15,7 +15,15 @@
             "email": "mike@farmier.com"
         }
     ],
-    "repositories": [ {"type": "git", "url": "https://github.com/farmOS/farmOS.git"},
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/farmOS/farmOS.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/farmOS/farm_forest.git"
+        },
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -25,6 +33,7 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/core-composer-scaffold": "~9.1.0",
+        "drupal/farm_forest": "2.x",
         "drush/drush": "^9.0||^10.0",
         "farmos/farmos": "2.x-dev"
     },
@@ -55,6 +64,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/farm": ["farmos/farmos"],
+            "web/modules/contrib/farm_forest": ["drupal/farm_forest"],
             "web/libraries/{$name}": ["type:drupal-library"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/themes/{$name}": ["type:drupal-theme"],
