@@ -1,6 +1,6 @@
 {
-    "name": "farmos/project",
-    "description": "farmOS project template.",
+    "name": "farm_nfa",
+    "description": "farmOS Deployment for National Forestry Authority of Uganda",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://farmOS.org",
