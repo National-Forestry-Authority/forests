@@ -3,3 +3,5 @@ description: Uganda National Forestry Authority farmOS module.
 type: module
 package: farmOS NFA
 core_version_requirement: ^9
+dependencies:
+  - farm:farm_forest
