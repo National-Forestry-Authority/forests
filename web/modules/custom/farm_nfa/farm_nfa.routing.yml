@@ -1,4 +1,4 @@
-farm_nfa.forest_plan_management_form:
+entity.plan.management:
   path: '/plan/{plan}/management'
   defaults:
     _title: 'Management'
@@ -12,7 +12,7 @@ farm_nfa.forest_plan_management_form:
     parameters:
       plan:
         type: entity:plan
-farm_nfa.forest_plan_budget_form:
+entity.plan.budget:
   path: '/plan/{plan}/budget'
   defaults:
     _title: 'Budget'
@@ -26,7 +26,7 @@ farm_nfa.forest_plan_budget_form:
     parameters:
       plan:
         type: entity:plan
-farm_nfa.forest_plan_inventory_form:
+entity.plan.inventory:
   path: '/plan/{plan}/inventory'
   defaults:
     _title: 'Inventory'
@@ -40,7 +40,7 @@ farm_nfa.forest_plan_inventory_form:
     parameters:
       plan:
         type: entity:plan
-farm_nfa.forest_plan_harvest_form:
+entity.plan.harvest:
   path: '/plan/{plan}/harvest'
   defaults:
     _title: 'Harvest'
