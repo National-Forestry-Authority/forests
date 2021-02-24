@@ -4,4 +4,9 @@ type: module
 package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
+  - drupal:datetime_range
+  - drupal:file
+  - drupal:image
+  - drupal:text
+  - farm:asset
   - farm:farm_forest

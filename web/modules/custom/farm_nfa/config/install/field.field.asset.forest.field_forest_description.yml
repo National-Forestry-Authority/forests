@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_description
+  module:
+    - text
+id: asset.forest.field_forest_description
+field_name: field_forest_description
+entity_type: asset
+bundle: forest
+label: ' Size, location, and brief description of the forest'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

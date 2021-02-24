@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_vision_local
+  module:
+    - text
+id: asset.forest.field_forest_vision_local
+field_name: field_forest_vision_local
+entity_type: asset
+bundle: forest
+label: 'Local representation vision'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
