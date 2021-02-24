@@ -1,0 +1,56 @@
+farm_nfa.forest_plan_management_form:
+  path: '/plan/{plan}/management'
+  defaults:
+    _title: 'Management'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+farm_nfa.forest_plan_budget_form:
+  path: '/plan/{plan}/budget'
+  defaults:
+    _title: 'Budget'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanBudgetForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+farm_nfa.forest_plan_inventory_form:
+  path: '/plan/{plan}/inventory'
+  defaults:
+    _title: 'Inventory'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+farm_nfa.forest_plan_harvest_form:
+  path: '/plan/{plan}/harvest'
+  defaults:
+    _title: 'Harvest'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan

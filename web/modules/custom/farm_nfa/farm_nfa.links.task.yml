@@ -1,0 +1,25 @@
+farm_nfa.summary:
+  title: 'Summary'
+  route_name: entity.plan.canonical
+  parent_id: entity.plan.canonical
+  weight: 0
+farm_nfa.management:
+  title: 'Management'
+  route_name: farm_nfa.forest_plan_management_form
+  parent_id: entity.plan.canonical
+  weight: 1
+farm_nfa.budget:
+  title: 'Budget'
+  route_name: farm_nfa.forest_plan_budget_form
+  parent_id: entity.plan.canonical
+  weight: 2
+farm_nfa.inventory:
+  title: 'Inventory'
+  route_name: farm_nfa.forest_plan_inventory_form
+  parent_id: entity.plan.canonical
+  weight: 3
+farm_nfa.harvest:
+  title: 'Harvest'
+  route_name: farm_nfa.forest_plan_harvest_form
+  parent_id: entity.plan.canonical
+  weight: 4
