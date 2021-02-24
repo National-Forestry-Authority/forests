@@ -1,6 +1,9 @@
+keys
 vendor
 /.editorconfig
 /.gitattributes
+/phpcs.xml
+/phpunit.xml
 
 web/*
 !web/modules
