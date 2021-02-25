@@ -27,9 +27,47 @@ class ForestPlanManagementForm extends FormBase {
     // Set the form title.
     $form['#title'] = $this->t('Management');
 
-    $form['placeholder'] = [
+    $form['edit'] = [
+      '#type' => 'details',
+      '#title' => t('Add/edit management task'),
+      '#description' => t('Use this form to create a new management task. Or select a task below to edit it here.')
+    ];
+
+    $form['edit']['name'] = [
+      '#type' => 'textfield',
+      '#title' => t('Task name'),
+    ];
+
+    $form['edit']['date'] = [
+      '#type' => 'datetime',
+      '#title' => t('Date'),
+    ];
+
+    $form['edit']['notes'] = [
+      '#type' => 'textarea',
+      '#title' => t('Notes'),
+    ];
+
+    $form['edit']['working_circle'] = [
+      '#type' => 'select',
+      '#title' => t('Working circle'),
+      '#options' => [
+        'Conservation',
+        'Partnerships & community livelihoods',
+        'Production',
+        'Research and education',
+        'Tourism',
+      ],
+    ];
+
+    $form['edit']['done'] = [
+      '#type' => 'checkbox',
+      '#title' => t('This task is done'),
+    ];
+
+    $form['list'] = [
       '#type' => 'markup',
-      '#markup' => '(management form placeholder)',
+      '#markup' => '(placeholder: View of management tasks - load into form above for quick editing)',
     ];
 
     return $form;
