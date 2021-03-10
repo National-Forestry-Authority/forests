@@ -9,5 +9,5 @@ dependencies:
   - drupal:image
   - drupal:text
   - farm:asset
-  - farm:farm_forest
+  - farm_forest:farm_forest
   - farm:plan
