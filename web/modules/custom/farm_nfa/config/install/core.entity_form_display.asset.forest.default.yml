@@ -65,11 +65,9 @@ content:
     region: content
   field_forest_category:
     weight: 5
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
   field_forest_concerns:
     weight: 21
@@ -129,11 +127,9 @@ content:
     region: content
   field_forest_opportunities:
     weight: 22
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
   field_forest_priority_actions:
     weight: 27
@@ -145,11 +141,9 @@ content:
     region: content
   field_forest_purpose:
     weight: 13
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
   field_forest_resources:
     weight: 20
@@ -177,11 +171,9 @@ content:
     region: content
   field_forest_vegetation:
     weight: 6
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
   field_forest_vegetation_detail:
     weight: 17

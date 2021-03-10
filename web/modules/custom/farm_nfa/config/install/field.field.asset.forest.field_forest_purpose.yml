@@ -4,6 +4,14 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_purpose
+    - taxonomy.vocabulary.forest_purpose
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
 id: asset.forest.field_forest_purpose
 field_name: field_forest_purpose
 entity_type: asset
@@ -14,5 +22,14 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      forest_purpose: forest_purpose
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

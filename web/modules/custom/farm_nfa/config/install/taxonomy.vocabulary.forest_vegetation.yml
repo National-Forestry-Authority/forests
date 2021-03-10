@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Forest vegetation'
+vid: forest_vegetation
+description: ''
+weight: 0
