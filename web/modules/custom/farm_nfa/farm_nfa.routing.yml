@@ -1,17 +1,3 @@
-entity.plan.management:
-  path: '/plan/{plan}/management'
-  defaults:
-    _title: 'Management'
-    _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
-  requirements:
-    _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
-    _module_dependencies: 'plan'
-    plan: \d+
-  options:
-    parameters:
-      plan:
-        type: entity:plan
 entity.plan.budget:
   path: '/plan/{plan}/budget'
   defaults:
@@ -45,6 +31,34 @@ entity.plan.harvest:
   defaults:
     _title: 'Harvest'
     _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+entity.plan.management:
+  path: '/plan/{plan}/management'
+  defaults:
+    _title: 'Management'
+    _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.edit'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+farm_nfa.plan.add_task:
+  path: '/plan/{plan}/add-task'
+  defaults:
+    _title: 'Add Task'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
   requirements:
     _entity_bundles: 'plan:forest'
     _entity_access: 'plan.edit'

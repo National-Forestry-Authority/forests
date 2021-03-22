@@ -5,6 +5,11 @@
  * Provides alters and hooks for the farm nfa module.
  */
 
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+use Drupal\log\Entity\LogInterface;
+
 /**
  * Implements hook_entity_type_alter().
  */
@@ -22,4 +27,49 @@ function farm_nfa_entity_type_alter(array &$entity_types) {
 function farm_nfa_entity_type_build(array &$entity_types) {
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
   $entity_types['plan']->setHandlerClass('local_task_provider', ['default' => 'Drupal\farm_nfa\Menu\NfaEntityLocalTaskProvider']);
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function farm_nfa_css_alter(&$css) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Workaround to display the css of the offcanvas dialog in a way Gin/Claro
+  // don't mess with the styles.
+  if ($route_name == 'entity.plan.management') {
+    unset($css['core/misc/dialog/off-canvas.reset.css']);
+    unset($css['core/misc/dialog/off-canvas.base.css']);
+    unset($css['core/misc/dialog/off-canvas.table.css']);
+    unset($css['core/misc/dialog/off-canvas.form.css']);
+    unset($css['core/misc/dialog/off-canvas.button.css']);
+  }
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $entity) {
+  if ($entity instanceof LogInterface &&
+    $entity->access('update') &&
+    in_array(\Drupal::routeMatch()->getRouteName(), ['entity.plan.management', 'farm_nfa.plan.add_task'])) {
+    // Replace the edit operation.
+    $operations['edit'] = [
+      'title' => t('Edit'),
+      'url' => Url::fromRoute('farm_nfa.plan.add_task',
+        ['plan' => \Drupal::routeMatch()->getRawParameter('plan')],
+        [
+          'attributes' => [
+            'class' => ['use-ajax'],
+            'data-dialog-type' => 'dialog',
+            'data-dialog-renderer' => 'off_canvas',
+            'data-dialog-options' => Json::encode([
+              'width' => '50%',
+             ]),
+           ],
+          'query' => ['log' => $entity->id()]
+        ]
+      ),
+    ];
+  }
 }

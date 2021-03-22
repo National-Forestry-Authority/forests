@@ -1,0 +1,7 @@
+farm_nfa.plan.add_task:
+  route_name: farm_nfa.plan.add_task
+  title: 'Add Task'
+  weight: -20
+  class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
+  appears_on:
+    - entity.plan.management

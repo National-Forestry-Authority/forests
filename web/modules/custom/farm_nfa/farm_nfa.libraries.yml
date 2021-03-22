@@ -1,0 +1,12 @@
+off_canvas:
+  version: 1.x
+  css:
+    theme:
+      css/offcanvas-overrides.css: {}
+  dependencies:
+    - core/drupal.dialog.off_canvas
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - core/drupal.ajax
+    - core/views.ajax
