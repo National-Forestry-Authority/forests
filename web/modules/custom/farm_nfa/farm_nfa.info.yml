@@ -8,6 +8,7 @@ dependencies:
   - drupal:file
   - drupal:image
   - drupal:text
+  - drupal:views
   - farm:asset
   - farm:farm_land
   - farm_forest:farm_forest
