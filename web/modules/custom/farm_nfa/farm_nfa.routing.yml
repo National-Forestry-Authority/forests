@@ -5,7 +5,7 @@ entity.plan.budget:
     _form: 'Drupal\farm_nfa\Form\ForestPlanBudgetForm'
   requirements:
     _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
+    _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
   options:
@@ -19,7 +19,7 @@ entity.plan.inventory:
     _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
   requirements:
     _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
+    _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
   options:
@@ -33,7 +33,7 @@ entity.plan.harvest:
     _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
   requirements:
     _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
+    _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
   options:
@@ -47,7 +47,7 @@ entity.plan.management:
     _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
   requirements:
     _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
+    _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
   options:
@@ -61,7 +61,7 @@ farm_nfa.plan.add_task:
     _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
   requirements:
     _entity_bundles: 'plan:forest'
-    _entity_access: 'plan.edit'
+    _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
   options:
