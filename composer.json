@@ -1,5 +1,5 @@
 {
-    "name": "farm_nfa",
+    "name": "mstenta/farm_nfa",
     "description": "farmOS Deployment for National Forestry Authority of Uganda",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -27,20 +27,23 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
-        "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal/core-composer-scaffold": "~9.1.0",
         "drupal/farm_forest": "2.x",
-        "drush/drush": "^9.0||^10.0",
-        "farmos/farmos": "2.x-dev"
+        "farmos/farmos": "2.x-dev",
+        "oomphinc/composer-installers-extender": "^2"
     },
     "require-dev": {
+        "brianium/paratest": "^4",
         "drupal/core-dev": "~9.1.0",
-        "phpspec/prophecy-phpunit": "^2",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "phpspec/prophecy-phpunit": "^2"
     },
     "_comments": {
         "phpspec/prophecy-phpunit": "Required to fix ProphecyTrait not found, until Drupal core drops support for PHPUnit 8. See https://www.drupal.org/node/3176567"
@@ -61,14 +64,22 @@
             }
         },
         "enable-patching": true,
+        "installer-types": ["npm-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/farm": ["farmos/farmos"],
             "web/modules/contrib/farm_forest": ["drupal/farm_forest"],
             "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/libraries/farmOS-map": ["npm-asset/farmos.org--farmos-map"],
+            "web/modules/{$name}": ["type:drupal-module"],
             "web/themes/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "vendor/npm-asset/{$name}": ["type:npm-asset"]
+        },
+        "patches": {
+            "drupal/core": {
+                "Issue #3192365: Race Condition in 'public://simpletest' mkdir Call": "https://www.drupal.org/files/issues/2021-01-12/3192365-3.patch"
+            }
         }
     }
 }
