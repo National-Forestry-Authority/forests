@@ -10,6 +10,7 @@ dependencies:
     - field.field.asset.forest.field_forest_description
     - field.field.asset.forest.field_forest_land_use_condition
     - field.field.asset.forest.field_forest_legal_category
+    - field.field.asset.forest.field_forest_management_type
     - field.field.asset.forest.field_forest_map_ref_no
     - field.field.asset.forest.field_forest_mgmt_objectives
     - field.field.asset.forest.field_forest_obstacles
@@ -48,7 +49,7 @@ content:
     region: content
     third_party_settings: {  }
   field_forest_area:
-    weight: 12
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -56,104 +57,6 @@ content:
     type: string_textfield
     region: content
   field_forest_boundary_plan:
-    weight: 9
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_category:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_concerns:
-    weight: 21
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_description:
-    weight: 14
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_land_use_condition:
-    weight: 18
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_legal_category:
-    weight: 15
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_map_ref_no:
-    weight: 11
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_mgmt_objectives:
-    weight: 16
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_obstacles:
-    weight: 26
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_opportunities:
-    weight: 22
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_priority_actions:
-    weight: 27
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_purpose:
-    weight: 13
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_resources:
-    weight: 20
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_serial_number_1994:
     weight: 10
     settings:
       size: 60
@@ -161,21 +64,59 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_forest_strategies:
-    weight: 23
+  field_forest_category:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_forest_concerns:
+    weight: 22
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_forest_description:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_forest_land_use_condition:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_forest_legal_category:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_forest_management_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_forest_map_ref_no:
+    weight: 12
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_forest_vegetation:
-    weight: 6
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_vegetation_detail:
+  field_forest_mgmt_objectives:
     weight: 17
     settings:
       rows: 5
@@ -183,15 +124,73 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_forest_vision_local:
-    weight: 24
+  field_forest_obstacles:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_forest_opportunities:
+    weight: 23
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_forest_priority_actions:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_forest_purpose:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_forest_resources:
+    weight: 21
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_forest_vision_nfa:
+  field_forest_serial_number_1994:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_forest_strategies:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_forest_vegetation:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_forest_vegetation_detail:
+    weight: 18
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_forest_vision_local:
     weight: 25
     settings:
       rows: 5
@@ -199,15 +198,15 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_forest_year_gazetted:
-    weight: 7
+  field_forest_vision_nfa:
+    weight: 26
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
-  field_forest_year_survey:
+  field_forest_year_gazetted:
     weight: 8
     settings:
       size: 60
@@ -215,8 +214,16 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_forest_year_survey:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_forest_zonation:
-    weight: 19
+    weight: 20
     settings:
       rows: 5
       placeholder: ''
@@ -227,7 +234,7 @@ content:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 31
+    weight: 32
     region: content
     third_party_settings: {  }
   flag:
@@ -247,7 +254,7 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 30
+    weight: 31
     region: content
     third_party_settings: {  }
   intrinsic_geometry:
@@ -269,12 +276,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 28
+    weight: 29
     region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 29
+    weight: 30
     settings:
       match_operator: CONTAINS
       match_limit: 10

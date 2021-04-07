@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_management_type
+  module:
+    - options
+id: asset.forest.field_forest_management_type
+field_name: field_forest_management_type
+entity_type: asset
+bundle: forest
+label: 'Management type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
