@@ -36,6 +36,7 @@
     "require": {
         "cweagans/composer-patches": "^1.6",
         "drupal/core-composer-scaffold": "~9.1.0",
+        "drupal/default_content": "^2.0@alpha",
         "drupal/farm_forest": "2.x",
         "farmos/farmos": "2.x-dev",
         "oomphinc/composer-installers-extender": "^2"

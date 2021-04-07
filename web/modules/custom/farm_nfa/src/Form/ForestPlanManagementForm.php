@@ -76,16 +76,19 @@ class ForestPlanManagementForm extends FormBase {
       '#default_value' => !empty($log) ? $log->get('notes')->value : '',
     ];
 
+    $taxonomy_term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+    $working_circle_ids = $taxonomy_term_storage->getQuery()->condition('vid', 'working_circle')->execute();
+    $working_circles = $taxonomy_term_storage->loadMultiple($working_circle_ids);
+    $working_circle_options = [];
+    foreach ($working_circles as $working_circle) {
+      $working_circle_options[$working_circle->id()] = $working_circle->label();
+    }
     $form['working_circle'] = [
-      '#type' => 'select',
       '#title' => t('Working circle'),
-      '#options' => [
-        $this->t('Conservation'),
-        $this->t('Partnerships & community livelihoods'),
-        $this->t('Production'),
-        $this->t('Research and education'),
-        $this->t('Tourism'),
-      ],
+      '#type' => 'select',
+      '#options' => $working_circle_options,
+      '#multiple' => TRUE,
+      '#default_value' => array_column($log->get('working_circle')->getValue(), 'target_id'),
     ];
 
     $status_options = [];
@@ -163,6 +166,7 @@ class ForestPlanManagementForm extends FormBase {
         $log->set('notes', $values['notes']);
         $log->set('status', $values['status']);
         $log->set('timestamp', $values['date']->getTimestamp());
+        $log->set('working_circle', $values['working_circle']);
       }
       else {
         if (empty($plan)) {
