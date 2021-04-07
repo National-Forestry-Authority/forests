@@ -22,9 +22,7 @@ source:
     - cfr_natural
     - cfr_plantation
     - cfr_urban
-    - compartment
     - zone
-    - nursery
     - other
 destination:
   plugin: 'entity:asset'
@@ -42,9 +40,7 @@ process:
       cfr_natural: cfr
       cfr_plantation: cfr
       cfr_urban: cfr
-      compartment: compartment
       zone: zone
-      nursery: nursery
       other: other
 migration_dependencies:
   required: {  }

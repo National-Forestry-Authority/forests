@@ -17,6 +17,8 @@ cck_plugin_method: null
 source:
   plugin: d7_farm_area
   area_type:
+    - compartment
+    - nursery
 destination:
   plugin: 'entity:asset'
 process:
@@ -28,6 +30,8 @@ process:
     plugin: static_map
     source: field_farm_area_type
     map:
+      compartment: plantation
+      nursery: plantation
 migration_dependencies:
   required: {  }
   optional: {  }
