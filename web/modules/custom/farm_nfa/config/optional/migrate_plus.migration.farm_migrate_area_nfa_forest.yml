@@ -17,9 +17,6 @@ cck_plugin_method: null
 source:
   plugin: d7_farm_area
   area_type:
-    - cfr_natural
-    - cfr_plantation
-    - cfr_urban
 destination:
   plugin: 'entity:asset'
 process:
@@ -31,10 +28,6 @@ process:
     plugin: static_map
     source: field_farm_area_type
     map:
-      cfr_natural: natural
-      cfr_plantation: plantation
-      cfr_urban: plantation
 migration_dependencies:
-  required:
-    - farm_migrate_area_nfa_land
+  required: {  }
   optional: {  }
