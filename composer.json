@@ -69,7 +69,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/farm": ["farmos/farmos"],
-            "web/modules/contrib/farm_forest": ["drupal/farm_forest"],
+            "web/modules/farm_forest": ["drupal/farm_forest"],
             "web/libraries/{$name}": ["type:drupal-library"],
             "web/libraries/farmOS-map": ["npm-asset/farmos.org--farmos-map"],
             "web/modules/{$name}": ["type:drupal-module"],
