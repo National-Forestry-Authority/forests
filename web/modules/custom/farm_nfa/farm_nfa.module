@@ -33,16 +33,21 @@ function farm_nfa_entity_type_build(array &$entity_types) {
  * Implements hook_css_alter().
  */
 function farm_nfa_css_alter(&$css) {
-  $route_name = \Drupal::routeMatch()->getRouteName();
-
   // Workaround to display the css of the offcanvas dialog in a way Gin/Claro
   // don't mess with the styles.
-  if ($route_name == 'entity.plan.management') {
-    unset($css['core/misc/dialog/off-canvas.reset.css']);
+  $options = \Drupal::routeMatch()->getRouteObject()->getOptions();
+  if (isset($options['parameters']) && !empty($options['parameters']['task_route'])) {
     unset($css['core/misc/dialog/off-canvas.base.css']);
-    unset($css['core/misc/dialog/off-canvas.table.css']);
-    unset($css['core/misc/dialog/off-canvas.form.css']);
     unset($css['core/misc/dialog/off-canvas.button.css']);
+    unset($css['core/misc/dialog/off-canvas.css']);
+    unset($css['core/misc/dialog/off-canvas.details.css']);
+    unset($css['core/misc/dialog/off-canvas.dropbutton.css']);
+    unset($css['core/misc/dialog/off-canvas.form.css']);
+    unset($css['core/misc/dialog/off-canvas.layout.css']);
+    unset($css['core/misc/dialog/off-canvas.motion.css']);
+    unset($css['core/misc/dialog/off-canvas.reset.css']);
+    unset($css['core/misc/dialog/off-canvas.table.css']);
+    unset($css['core/misc/dialog/off-canvas.theme.css']);
   }
 }
 
@@ -50,13 +55,18 @@ function farm_nfa_css_alter(&$css) {
  * Implements hook_entity_operation_alter().
  */
 function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $entity) {
-  if ($entity instanceof LogInterface &&
-    $entity->access('update') &&
-    in_array(\Drupal::routeMatch()->getRouteName(), ['entity.plan.management', 'farm_nfa.plan.add_task'])) {
+  if (!$entity instanceof LogInterface) {
+    return;
+  }
+  if (!$entity->access('update')) {
+    return;
+  }
+  $options = \Drupal::routeMatch()->getRouteObject()->getOptions();
+  if (isset($options['parameters']) && !empty($options['parameters']['task_route'])) {
     // Replace the edit operation.
     $operations['edit'] = [
       'title' => t('Edit'),
-      'url' => Url::fromRoute('farm_nfa.plan.add_task',
+      'url' => Url::fromRoute($options['parameters']['task_route'],
         ['plan' => \Drupal::routeMatch()->getRawParameter('plan')],
         [
           'attributes' => [

@@ -1,7 +1,21 @@
 farm_nfa.plan.add_task:
   route_name: farm_nfa.plan.add_task
-  title: 'Add Task'
+  title: 'Add management task'
   weight: -20
   class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
   appears_on:
     - entity.plan.management
+farm_nfa.plan.add_inventotry:
+  route_name: farm_nfa.plan.add_inventory
+  title: 'Record an inventory observation'
+  weight: -20
+  class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
+  appears_on:
+    - entity.plan.inventory
+farm_nfa.plan.add_harvest:
+  route_name: farm_nfa.plan.add_harvest
+  title: 'Record a harvest'
+  weight: -20
+  class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
+  appears_on:
+    - entity.plan.harvest

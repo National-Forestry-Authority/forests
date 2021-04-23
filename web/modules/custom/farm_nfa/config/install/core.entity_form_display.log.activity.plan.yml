@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.log.plan
+    - field.field.log.activity.working_circle
+    - log.type.activity
+  module:
+    - text
+_core:
+  default_config_hash: q1sWvLJoGF7AApmf4W9qhlvDU1AjS5WFojNm3LPdg_U
+id: log.activity.plan
+targetEntityType: log
+bundle: activity
+mode: plan
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 2
+    region: content
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timestamp:
+    type: datetime_timestamp
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  working_circle:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  asset: true
+  category: true
+  created: true
+  data: true
+  equipment: true
+  file: true
+  flag: true
+  geometry: true
+  image: true
+  is_movement: true
+  location: true
+  owner: true
+  quantity: true

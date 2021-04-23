@@ -117,12 +117,13 @@
   color: #222330;
 }
 
-#drupal-off-canvas .button {
-  color: #222330;
+#drupal-off-canvas .button:not(.ief-entity-submit):not(:focus):not(:hover) {
+  background-color: #fff;
 }
 
 #drupal-off-canvas .button--primary {
   color: #fff;
+  box-shadow: none;
 }
 
 #drupal-off-canvas summary,
@@ -138,6 +139,13 @@
   margin: 0 -20px;
   padding: 0 20px;
   border-width: 0;
+}
+
+#drupal-off-canvas .fieldset__label {
+  color: #ddd;
+}
+#drupal-off-canvas .fieldset__description {
+  color: #ddd;
 }
 
 #drupal-off-canvas legend {
@@ -289,4 +297,10 @@
 #drupal-off-canvas .form-item {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+#drupal-off-canvas .form-item__description {
+  color: #ddd;
+}
+#drupal-off-canvas .layer-wrapper {
+  box-shadow: none;
 }

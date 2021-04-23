@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+id: log.plan
+label: Plan
+targetEntityType: log
+cache: true

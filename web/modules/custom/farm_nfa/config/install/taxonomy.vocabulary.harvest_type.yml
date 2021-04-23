@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Harvest type'
+vid: harvest_type
+description: ''
+weight: 0

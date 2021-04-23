@@ -14,6 +14,8 @@ dependencies:
     - image
     - inline_entity_form
     - text
+_core:
+  default_config_hash: ycZ_SdQbAH11L71zFuS63ajasCwcIoFCW-RjYIMIKNU
 id: log.input.default
 targetEntityType: log
 bundle: input
@@ -38,6 +40,16 @@ content:
     weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  equipment:
+    type: entity_reference_autocomplete
+    weight: 55
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
     third_party_settings: {  }
   file:
     type: file_generic

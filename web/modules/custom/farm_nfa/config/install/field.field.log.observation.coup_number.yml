@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.coup_number
+    - log.type.observation
+id: log.observation.coup_number
+field_name: coup_number
+entity_type: log
+bundle: observation
+label: 'Coup number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

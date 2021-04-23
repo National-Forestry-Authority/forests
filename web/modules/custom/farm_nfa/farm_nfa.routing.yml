@@ -16,7 +16,9 @@ entity.plan.inventory:
   path: '/plan/{plan}/inventory'
   defaults:
     _title: 'Inventory'
-    _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
+    _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+    log_types:
+      - observation
   requirements:
     _entity_bundles: 'plan:forest'
     _entity_access: 'plan.update'
@@ -26,11 +28,14 @@ entity.plan.inventory:
     parameters:
       plan:
         type: entity:plan
+      task_route: farm_nfa.plan.add_inventory
 entity.plan.harvest:
   path: '/plan/{plan}/harvest'
   defaults:
     _title: 'Harvest'
-    _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
+    _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+    log_types:
+      - harvest
   requirements:
     _entity_bundles: 'plan:forest'
     _entity_access: 'plan.update'
@@ -40,11 +45,15 @@ entity.plan.harvest:
     parameters:
       plan:
         type: entity:plan
+      task_route: farm_nfa.plan.add_harvest
 entity.plan.management:
   path: '/plan/{plan}/management'
   defaults:
     _title: 'Management'
     _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+    log_types:
+      - activity
+      - input
   requirements:
     _entity_bundles: 'plan:forest'
     _entity_access: 'plan.update'
@@ -54,6 +63,7 @@ entity.plan.management:
     parameters:
       plan:
         type: entity:plan
+      task_route: farm_nfa.plan.add_task
 farm_nfa.plan.add_task:
   path: '/plan/{plan}/add-task'
   defaults:
@@ -68,3 +78,34 @@ farm_nfa.plan.add_task:
     parameters:
       plan:
         type: entity:plan
+      task_route: farm_nfa.plan.add_task
+farm_nfa.plan.add_inventory:
+  path: '/plan/{plan}/add-inventory'
+  defaults:
+    _title: 'Record an inventory observation'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+      task_route: farm_nfa.plan.add_inventory
+farm_nfa.plan.add_harvest:
+  path: '/plan/{plan}/add-harvest'
+  defaults:
+    _title: 'Record a harvest'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
+  requirements:
+    _entity_bundles: 'plan:forest'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+      task_route: farm_nfa.plan.add_harvest

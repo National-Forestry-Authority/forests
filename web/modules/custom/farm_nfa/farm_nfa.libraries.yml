@@ -5,6 +5,7 @@ off_canvas:
       css/offcanvas-overrides.css: {}
   dependencies:
     - core/drupal.dialog.off_canvas
+    - core/drupal.dropbutton
     - core/drupal
     - core/jquery
     - core/jquery.once

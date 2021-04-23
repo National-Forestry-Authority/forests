@@ -2,7 +2,6 @@
 
 namespace Drupal\farm_nfa\Form;
 
-use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -10,7 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @ingroup farm_nfa
  */
-class ForestPlanHarvestForm extends FormBase {
+class ForestPlanHarvestForm extends ForestPlanBaseForm {
 
   /**
    * {@inheritdoc}
@@ -22,24 +21,12 @@ class ForestPlanHarvestForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
-
-    // Set the form title.
-    $form['#title'] = $this->t('Harvest');
-
-    $form['placeholder'] = [
-      '#type' => 'markup',
-      '#markup' => '(harvest form placeholder)',
-    ];
-
-    return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-
+  public static function defaultSettings() : array {
+    return [
+      'log_type' => 'harvest',
+      'display_log_types' => ['harvest'],
+      'form_title' => t('Harvest'),
+    ] + parent::defaultSettings();
   }
 
 }
