@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Average silviculture score'
+vid: average_silviculture_score
+description: ''
+weight: 0
