@@ -1,7 +1,7 @@
 # To reinstall from scratch with all modules needed
 
 ```
-drush site-install farm farm.modules='["farm_land", "farm_activity", "farm_observation", "farm_input", "farm_harvest", "farm_quantity_standard", "farm_role_roles", "farm_api", "farm_dashboard", "farm_login", "farm_ui", "farm_nfa", "farm_migrate","farm_map_mapbox"]'
+./vendor/bin/drush site-install farm farm.modules='["farm_land", "farm_activity", "farm_observation", "farm_input", "farm_harvest", "farm_quantity_standard", "farm_role_roles", "farm_api", "farm_dashboard", "farm_login", "farm_ui", "farm_nfa", "farm_migrate","farm_map_mapbox"]'
 ```
 
 # Migration
@@ -43,4 +43,6 @@ git checkout 2.x
 ```
 
 # Update from farm_nfa repo
-@TODO
+```
+composer update farmos/farmos --with-dependencies
+```
