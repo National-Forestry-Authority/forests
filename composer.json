@@ -80,6 +80,9 @@
         "patches": {
             "drupal/core": {
                 "Issue #3192365: Race Condition in 'public://simpletest' mkdir Call": "https://www.drupal.org/files/issues/2021-01-12/3192365-3.patch"
+            },
+            "drupal/entity_reference_revisions": {
+                "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "https://www.drupal.org/files/issues/2020-04-14/allow_scalar_values-2667748-D8-41.patch"
             }
         }
     }
