@@ -38,7 +38,7 @@
         "drupal/core-composer-scaffold": "~9.1.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/farm_forest": "2.x",
-        "farmos/farmos": "2.x-dev",
+        "farmos/farmos": "2.0.0-alpha2",
         "oomphinc/composer-installers-extender": "^2"
     },
     "require-dev": {
