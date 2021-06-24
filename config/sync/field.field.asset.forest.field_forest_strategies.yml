@@ -5,8 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_strategies
-_core:
-  default_config_hash: tS6kiAEheWGKZOmki-NxmqZFlUUqQdZFWspW2yXSGQM
 id: asset.forest.field_forest_strategies
 field_name: field_forest_strategies
 entity_type: asset

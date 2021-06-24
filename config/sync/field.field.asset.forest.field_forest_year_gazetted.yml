@@ -5,8 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_year_gazetted
-_core:
-  default_config_hash: Hh7Fyve9KM0uemDSa-fz6jM_Cz7q7Ti0ZdIbYKPrbm8
 id: asset.forest.field_forest_year_gazetted
 field_name: field_forest_year_gazetted
 entity_type: asset

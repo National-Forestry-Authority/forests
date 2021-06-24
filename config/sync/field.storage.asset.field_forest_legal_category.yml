@@ -5,8 +5,6 @@ dependencies:
   module:
     - asset
     - text
-_core:
-  default_config_hash: GVuBZ9nJQ0MmpCs7kAGK23A4VMuqnFgIx9hfDmM_Rws
 id: asset.field_forest_legal_category
 field_name: field_forest_legal_category
 entity_type: asset

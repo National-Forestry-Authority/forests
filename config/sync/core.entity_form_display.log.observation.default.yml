@@ -15,8 +15,6 @@ dependencies:
     - image
     - inline_entity_form
     - text
-_core:
-  default_config_hash: 57dYFsyPXLAcePkYSX68wnoG9c3WFvxR1jzUsCkUUA4
 id: log.observation.default
 targetEntityType: log
 bundle: observation

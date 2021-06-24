@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.log.tender_name
     - log.type.harvest
-_core:
-  default_config_hash: l0ipo8-NHnPWvwMvfRV7-QQjd22JGyDQPVZOfZNCu1g
 id: log.harvest.tender_name
 field_name: tender_name
 entity_type: log

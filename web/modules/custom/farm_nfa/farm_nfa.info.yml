@@ -9,12 +9,123 @@ dependencies:
   - drupal:image
   - drupal:text
   - drupal:views
+  - config_devel:config_devel
   - config_rewrite:config_rewrite
   - default_content:default_content
   - farm:asset
   - farm:farm_land
   - farm_forest:farm_forest
   - farm:plan
+  - select_or_other:select_or_other
+
+config_devel:
+  - asset.type.land
+  - core.entity_view_display.asset.land.default
+  - core.entity_form_display.asset.land.default
+  - core.entity_form_display.asset.forest.default
+  - core.entity_form_display.asset.land.default
+  - core.entity_form_display.log.activity.default
+  - core.entity_form_display.log.activity.plan
+  - core.entity_form_display.log.harvest.default
+  - core.entity_form_display.log.harvest.plan
+  - core.entity_form_display.log.input.default
+  - core.entity_form_display.log.input.plan
+  - core.entity_form_display.log.observation.default
+  - core.entity_form_display.log.observation.plan
+  - core.entity_form_display.plan.forest.default
+  - core.entity_form_display.user.user.default
+  - core.entity_form_mode.log.plan
+  - core.entity_view_display.asset.forest.default
+  - core.entity_view_display.asset.land.default
+  - core.entity_view_display.log.activity.default
+  - core.entity_view_display.log.harvest.default
+  - core.entity_view_display.log.input.default
+  - core.entity_view_display.log.observation.default
+  - core.entity_view_display.plan.forest.default
+  - core.entity_view_display.user.user.default
+  - core.entity_view_display.user.user.person_in_charge
+  - core.entity_view_mode.user.person_in_charge
+  - farm_land.land_type.beat
+  - farm_land.land_type.range
+  - farm_land.land_type.sector
+  - farm_land.land_type.zone
+  - field.field.asset.forest.field_forest_area
+  - field.field.asset.forest.field_forest_boundary_plan
+  - field.field.asset.forest.field_forest_category
+  - field.field.asset.forest.field_forest_concerns
+  - field.field.asset.forest.field_forest_description
+  - field.field.asset.forest.field_forest_land_use_condition
+  - field.field.asset.forest.field_forest_legal_category
+  - field.field.asset.forest.field_forest_management_type
+  - field.field.asset.forest.field_forest_map_ref_no
+  - field.field.asset.forest.field_forest_mgmt_objectives
+  - field.field.asset.forest.field_forest_obstacles
+  - field.field.asset.forest.field_forest_opportunities
+  - field.field.asset.forest.field_forest_priority_actions
+  - field.field.asset.forest.field_forest_purpose
+  - field.field.asset.forest.field_forest_resources
+  - field.field.asset.forest.field_forest_serial_number_1994
+  - field.field.asset.forest.field_forest_strategies
+  - field.field.asset.forest.field_forest_vegetation
+  - field.field.asset.forest.field_forest_vegetation_detail
+  - field.field.asset.forest.field_forest_vision_local
+  - field.field.asset.forest.field_forest_vision_nfa
+  - field.field.asset.forest.field_forest_year_gazetted
+  - field.field.asset.forest.field_forest_year_survey
+  - field.field.asset.forest.field_forest_zonation
+  - field.field.asset.land.person_in_charge
+  - field.field.log.activity.working_circle
+  - field.field.log.harvest.coup_number
+  - field.field.log.harvest.harvest_type
+  - field.field.log.harvest.supervisor
+  - field.field.log.harvest.tender_name
+  - field.field.log.harvest.working_circle
+  - field.field.log.input.working_circle
+  - field.field.log.observation.average_silviculture_score
+  - field.field.log.observation.coup_number
+  - field.field.log.observation.working_circle
+  - field.field.plan.forest.field_forest_plan_period
+  - field.field.user.user.contact_phone_number
+  - field.storage.asset.field_forest_area
+  - field.storage.asset.field_forest_boundary_plan
+  - field.storage.asset.field_forest_category
+  - field.storage.asset.field_forest_concerns
+  - field.storage.asset.field_forest_description
+  - field.storage.asset.field_forest_land_use_condition
+  - field.storage.asset.field_forest_legal_category
+  - field.storage.asset.field_forest_management_type
+  - field.storage.asset.field_forest_map_ref_no
+  - field.storage.asset.field_forest_mgmt_objectives
+  - field.storage.asset.field_forest_obstacles
+  - field.storage.asset.field_forest_opportunities
+  - field.storage.asset.field_forest_priority_actions
+  - field.storage.asset.field_forest_purpose
+  - field.storage.asset.field_forest_resources
+  - field.storage.asset.field_forest_serial_number_1994
+  - field.storage.asset.field_forest_strategies
+  - field.storage.asset.field_forest_vegetation
+  - field.storage.asset.field_forest_vegetation_detail
+  - field.storage.asset.field_forest_vision_local
+  - field.storage.asset.field_forest_vision_nfa
+  - field.storage.asset.field_forest_year_gazetted
+  - field.storage.asset.field_forest_year_survey
+  - field.storage.asset.field_forest_zonation
+  - field.storage.asset.person_in_charge
+  - field.storage.log.average_silviculture_score
+  - field.storage.user.contact_phone_number
+  - field.storage.log.coup_number
+  - field.storage.log.harvest_type
+  - field.storage.log.supervisor
+  - field.storage.log.tender_name
+  - field.storage.log.working_circle
+  - field.storage.plan.field_forest_plan_period
+  - taxonomy.vocabulary.average_silviculture_score
+  - taxonomy.vocabulary.forest_category
+  - taxonomy.vocabulary.forest_opportunities
+  - taxonomy.vocabulary.forest_purpose
+  - taxonomy.vocabulary.forest_vegetation
+  - taxonomy.vocabulary.harvest_type
+  - taxonomy.vocabulary.working_circle
 
 default_content:
   taxonomy_term:

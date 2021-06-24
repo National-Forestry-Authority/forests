@@ -4,54 +4,36 @@ status: true
 dependencies:
   config:
     - asset.type.land
-    - field.field.asset.land.field_boundary_opening_history
-    - field.field.asset.land.field_boundary_plan_details
+    - field.field.asset.land.person_in_charge
     - image.style.medium
   module:
     - farm_id_tag
     - farm_map
     - file
     - image
+    - select_or_other
     - text
-_core:
-  default_config_hash: xqAfIZsgmuk8w6cpf9GBTay7Xb3tQU60qxm_n88LGlQ
 id: asset.land.default
 targetEntityType: asset
 bundle: land
 mode: default
 content:
-  field_boundary_opening_history:
-    weight: 5
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_boundary_plan_details:
-    weight: 4
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
   file:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 10
+    weight: 9
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 2
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   id_tag:
     type: id_tag
-    weight: 8
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -60,12 +42,12 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 9
+    weight: 8
     region: content
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
-    weight: 11
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -73,21 +55,24 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 12
     region: content
     third_party_settings: {  }
   is_location:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 11
     region: content
     third_party_settings: {  }
   land_type:
-    type: options_buttons
-    weight: 3
+    type: select_or_other_list
+    weight: 1
     region: content
-    settings: {  }
+    settings:
+      select_element_type: select_or_other_select
+      sort_options: ''
+      add_other_value_to_allowed_values: false
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -102,12 +87,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 6
+    weight: 3
     region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -115,9 +100,19 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  person_in_charge:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   status:
     type: options_select
-    weight: 1
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

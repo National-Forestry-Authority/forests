@@ -12,8 +12,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: P8P8P1Dq-k4g00U8aXtFwJ9rACgNLoa8zGJJfE1is3M
 id: plan.forest.default
 targetEntityType: plan
 bundle: forest

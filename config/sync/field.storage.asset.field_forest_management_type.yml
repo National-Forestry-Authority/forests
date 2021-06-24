@@ -5,8 +5,6 @@ dependencies:
   module:
     - asset
     - options
-_core:
-  default_config_hash: HbUllsIsFHkcDewFb3XYUW_aKlCI3pr0Xnp3asgobH0
 id: asset.field_forest_management_type
 field_name: field_forest_management_type
 entity_type: asset

@@ -5,8 +5,6 @@ dependencies:
   module:
     - asset
     - text
-_core:
-  default_config_hash: lShp_TRDb3fApIzruMTgIX_zew_83Z6Rrd-v1ErNuYo
 id: asset.field_forest_vegetation_detail
 field_name: field_forest_vegetation_detail
 entity_type: asset

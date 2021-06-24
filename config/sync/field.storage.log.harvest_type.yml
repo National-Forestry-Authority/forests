@@ -5,8 +5,6 @@ dependencies:
   module:
     - log
     - taxonomy
-_core:
-  default_config_hash: lXBqUq5M3TJ1ZhwRhQ_VYeXMGY3BvMnQE5WVCORqJNk
 id: log.harvest_type
 field_name: harvest_type
 entity_type: log

@@ -7,8 +7,6 @@ dependencies:
     - log.type.input
   module:
     - text
-_core:
-  default_config_hash: ycZ_SdQbAH11L71zFuS63ajasCwcIoFCW-RjYIMIKNU
 id: log.input.plan
 targetEntityType: log
 bundle: input

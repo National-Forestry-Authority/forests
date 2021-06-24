@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.log.coup_number
     - log.type.harvest
-_core:
-  default_config_hash: emRaeg2rZHfeOQzSeI38tXFzlVYhub-7xasFHpMfv38
 id: log.harvest.coup_number
 field_name: coup_number
 entity_type: log

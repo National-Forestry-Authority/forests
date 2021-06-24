@@ -2,8 +2,6 @@ uuid: 1326a9d3-45ae-42e8-a42c-67dbd552cf08
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: KF1Pd_mExZxkW7HOqgoAOixVC3DH6r-WpK68aAIutUQ
 name: 'Working circle'
 vid: working_circle
 description: ''

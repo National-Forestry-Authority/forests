@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: ZRCAHZ0m2R2I21bcGWA_pTORvvFMGuM87uTPvyaJSXQ
 id: asset.field_forest_boundary_plan
 field_name: field_forest_boundary_plan
 entity_type: asset

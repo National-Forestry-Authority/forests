@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.log.coup_number
     - log.type.observation
-_core:
-  default_config_hash: D3ZHyrVRMETFnLAZT2sx58POvNfP7larGCHlxKfqod4
 id: log.observation.coup_number
 field_name: coup_number
 entity_type: log

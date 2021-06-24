@@ -13,8 +13,6 @@ dependencies:
   module:
     - inline_entity_form
     - text
-_core:
-  default_config_hash: dHmSwgnfvtZBGulIIwFVoNB9IqvG4xDhJ5LURNl_1UQ
 id: log.harvest.plan
 targetEntityType: log
 bundle: harvest

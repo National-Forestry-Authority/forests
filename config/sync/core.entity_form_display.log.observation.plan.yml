@@ -11,8 +11,6 @@ dependencies:
   module:
     - inline_entity_form
     - text
-_core:
-  default_config_hash: mTA_BD4aj7bxn4XgV-EC1y9QtLtdrbvYhF-wnUdw9Jc
 id: log.observation.plan
 targetEntityType: log
 bundle: observation

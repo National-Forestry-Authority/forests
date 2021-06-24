@@ -13,8 +13,6 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
-_core:
-  default_config_hash: HAuisY3CTEEJMQG8_xe0nNVmXh6O0ZZJNbs7GegbCXw
 id: log.observation.average_silviculture_score
 field_name: average_silviculture_score
 entity_type: log

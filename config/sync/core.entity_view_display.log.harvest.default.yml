@@ -18,8 +18,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: 2er95xoAiqP2n6Ng2rRsi3Ae8G8ojwSj3ArinRyMtJ0
 id: log.harvest.default
 targetEntityType: log
 bundle: harvest

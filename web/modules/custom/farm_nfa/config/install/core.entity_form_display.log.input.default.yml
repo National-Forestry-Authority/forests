@@ -14,8 +14,6 @@ dependencies:
     - image
     - inline_entity_form
     - text
-_core:
-  default_config_hash: ycZ_SdQbAH11L71zFuS63ajasCwcIoFCW-RjYIMIKNU
 id: log.input.default
 targetEntityType: log
 bundle: input

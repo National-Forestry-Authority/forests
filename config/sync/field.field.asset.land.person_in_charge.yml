@@ -1,0 +1,36 @@
+uuid: 943d2e77-ca9f-494b-af7e-afdcfc62e556
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.land
+    - field.storage.asset.person_in_charge
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: asset.land.person_in_charge
+field_name: person_in_charge
+entity_type: asset
+bundle: land
+label: 'Person in Charge (i/c)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

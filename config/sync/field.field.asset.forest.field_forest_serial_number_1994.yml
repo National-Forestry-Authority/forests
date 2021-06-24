@@ -5,8 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_serial_number_1994
-_core:
-  default_config_hash: DPySw_yYfMlg3Vo_n0oP6okCQsNL5epRqnETCwapGD0
 id: asset.forest.field_forest_serial_number_1994
 field_name: field_forest_serial_number_1994
 entity_type: asset

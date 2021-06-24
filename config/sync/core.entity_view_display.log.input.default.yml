@@ -14,8 +14,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: XUSbGUZqMFzV1WOYnK0S2Tk351bF-2qUB-_9MPJOBzo
 id: log.input.default
 targetEntityType: log
 bundle: input

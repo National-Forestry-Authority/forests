@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: aCHRNFuV9hfVeJpTsJIxl4A-CF97qSY9vIZColke3bQ
 id: asset.field_forest_year_survey
 field_name: field_forest_year_survey
 entity_type: asset

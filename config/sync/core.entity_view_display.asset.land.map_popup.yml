@@ -5,8 +5,7 @@ dependencies:
   config:
     - asset.type.land
     - core.entity_view_mode.asset.map_popup
-    - field.field.asset.land.field_boundary_opening_history
-    - field.field.asset.land.field_boundary_plan_details
+    - field.field.asset.land.person_in_charge
   module:
     - options
     - text
@@ -46,8 +45,6 @@ content:
     third_party_settings: {  }
 hidden:
   data: true
-  field_boundary_opening_history: true
-  field_boundary_plan_details: true
   file: true
   geometry: true
   id_tag: true
@@ -56,5 +53,6 @@ hidden:
   is_fixed: true
   is_location: true
   parent: true
+  person_in_charge: true
   status: true
   uid: true

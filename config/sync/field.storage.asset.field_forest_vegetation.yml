@@ -5,8 +5,6 @@ dependencies:
   module:
     - asset
     - taxonomy
-_core:
-  default_config_hash: J63wNVq01Vu4v2GOMM4smYs1nHcZKyHk8sMZ0WQcr-8
 id: asset.field_forest_vegetation
 field_name: field_forest_vegetation
 entity_type: asset

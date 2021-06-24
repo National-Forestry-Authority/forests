@@ -7,8 +7,6 @@ dependencies:
     - log.type.activity
   module:
     - text
-_core:
-  default_config_hash: q1sWvLJoGF7AApmf4W9qhlvDU1AjS5WFojNm3LPdg_U
 id: log.activity.plan
 targetEntityType: log
 bundle: activity

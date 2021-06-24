@@ -5,8 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_boundary_plan
-_core:
-  default_config_hash: z1dFCydFm7AZh7cltNZk8MiKtbtikHV1m0rv4ALAMVk
 id: asset.forest.field_forest_boundary_plan
 field_name: field_forest_boundary_plan
 entity_type: asset

@@ -7,8 +7,6 @@ dependencies:
     - field.storage.asset.field_forest_resources
   module:
     - text
-_core:
-  default_config_hash: t6CxDI_n1gTe_gB-B76Ch7cadiSwT5q2u5TPbNA14yA
 id: asset.forest.field_forest_resources
 field_name: field_forest_resources
 entity_type: asset

@@ -5,7 +5,5 @@ dependencies:
   enforced:
     module:
       - farm_nfa
-_core:
-  default_config_hash: _vREG3_9u_d_SeerCdzoldtbB79DuzhLEOhqrRRYIdY
 id: zone
 label: Zone

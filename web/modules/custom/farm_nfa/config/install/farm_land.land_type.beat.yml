@@ -4,5 +4,5 @@ dependencies:
   enforced:
     module:
       - farm_nfa
-id: fma
-label: Forest Management Area
+id: beat
+label: Beat

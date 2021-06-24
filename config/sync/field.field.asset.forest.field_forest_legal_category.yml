@@ -7,8 +7,6 @@ dependencies:
     - field.storage.asset.field_forest_legal_category
   module:
     - text
-_core:
-  default_config_hash: hBbv7SKdPiRXLlMINzukddi44G7ogjFEV1Fhr6upiIU
 id: asset.forest.field_forest_legal_category
 field_name: field_forest_legal_category
 entity_type: asset

@@ -5,8 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.field_forest_priority_actions
-_core:
-  default_config_hash: vMAp5LnCnidgYqlXGT9k1nIPWviS-m7jJcsVP6efgd8
 id: asset.forest.field_forest_priority_actions
 field_name: field_forest_priority_actions
 entity_type: asset

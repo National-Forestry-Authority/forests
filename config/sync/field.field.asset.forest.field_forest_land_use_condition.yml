@@ -7,8 +7,6 @@ dependencies:
     - field.storage.asset.field_forest_land_use_condition
   module:
     - text
-_core:
-  default_config_hash: A13aIrecnc2Nb5xUiKa66tMQ2Dk2_OFSKFK6Q-rDpw8
 id: asset.forest.field_forest_land_use_condition
 field_name: field_forest_land_use_condition
 entity_type: asset

@@ -5,8 +5,6 @@ dependencies:
   module:
     - log
     - taxonomy
-_core:
-  default_config_hash: DF0A9MWrAM6htCbaDHOS3zKfkoW-U70Goqc9VeN8844
 id: log.working_circle
 field_name: working_circle
 entity_type: log

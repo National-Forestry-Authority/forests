@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.log.supervisor
     - log.type.harvest
-_core:
-  default_config_hash: F9xBCge2dcPCxDZJITjVyIaajBSNZwBFgjttkMAFeGE
 id: log.harvest.supervisor
 field_name: supervisor
 entity_type: log

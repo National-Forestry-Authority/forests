@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: 1b9wodzINfjwc_Jw_JmHrOAj1rwfcnTiDdYk_DYpvqQ
 id: asset.field_forest_year_gazetted
 field_name: field_forest_year_gazetted
 entity_type: asset

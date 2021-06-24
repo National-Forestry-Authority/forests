@@ -5,8 +5,6 @@ dependencies:
   module:
     - asset
     - text
-_core:
-  default_config_hash: aN_xrFxmhkDeHlB0DwFWegoTy8B3uYEyLhesc17W8lE
 id: asset.field_forest_vision_nfa
 field_name: field_forest_vision_nfa
 entity_type: asset

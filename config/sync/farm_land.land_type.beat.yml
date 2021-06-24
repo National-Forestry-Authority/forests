@@ -1,8 +1,9 @@
+uuid: 0652ecdb-997a-40c2-aeb3-4166b599729c
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
-id: cfr
-label: Central Forest Reserve
+id: beat
+label: Beat

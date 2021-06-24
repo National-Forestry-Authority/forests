@@ -1,0 +1,10 @@
+uuid: 785dafe7-9d76-44b9-9b58-2fa29ee5362b
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.person_in_charge
+label: 'Person in Charge'
+targetEntityType: user
+cache: true

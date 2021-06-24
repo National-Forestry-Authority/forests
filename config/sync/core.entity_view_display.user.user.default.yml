@@ -1,0 +1,26 @@
+uuid: aab7b74f-56f8-4cfe-b9be-ab44b4ee62ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.contact_phone_number
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  contact_phone_number:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  member_for:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

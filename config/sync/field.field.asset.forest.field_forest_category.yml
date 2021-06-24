@@ -13,8 +13,6 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
-_core:
-  default_config_hash: m5sZkoWhdXrEAvcBopjNw1r0jozFY2r4Fk4zy-HIN9g
 id: asset.forest.field_forest_category
 field_name: field_forest_category
 entity_type: asset

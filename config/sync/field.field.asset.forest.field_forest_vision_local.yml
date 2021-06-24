@@ -7,8 +7,6 @@ dependencies:
     - field.storage.asset.field_forest_vision_local
   module:
     - text
-_core:
-  default_config_hash: IaGjP-41s9nyb4KpjhWe0Xl4nbdIAihFRqMPndp9pUU
 id: asset.forest.field_forest_vision_local
 field_name: field_forest_vision_local
 entity_type: asset

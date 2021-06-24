@@ -5,8 +5,6 @@ dependencies:
   module:
     - log
     - taxonomy
-_core:
-  default_config_hash: hTBSTXrRjVyNa74KXCXmm39qY8P1dEzVQRWFTXLB1B4
 id: log.average_silviculture_score
 field_name: average_silviculture_score
 entity_type: log

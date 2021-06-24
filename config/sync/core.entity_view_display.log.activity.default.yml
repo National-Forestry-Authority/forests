@@ -14,8 +14,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: a2n3UjQQHQgb96Eq-M0NPlBSNBqg9z6aqo7IyFaIjEk
 id: log.activity.default
 targetEntityType: log
 bundle: activity

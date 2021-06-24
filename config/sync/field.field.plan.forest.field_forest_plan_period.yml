@@ -7,8 +7,6 @@ dependencies:
     - plan.type.forest
   module:
     - datetime_range
-_core:
-  default_config_hash: qF-kiParJQYeW4gwYJXyMgH2R9whclSRA1k6VqZWoWY
 id: plan.forest.field_forest_plan_period
 field_name: field_forest_plan_period
 entity_type: plan

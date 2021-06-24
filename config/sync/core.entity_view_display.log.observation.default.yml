@@ -16,8 +16,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: dvlRhEbynVtDVQTwGkDQFhnHg2y4y0PXvQMiMFIxNWQ
 id: log.observation.default
 targetEntityType: log
 bundle: observation

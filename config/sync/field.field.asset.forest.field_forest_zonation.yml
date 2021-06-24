@@ -7,8 +7,6 @@ dependencies:
     - field.storage.asset.field_forest_zonation
   module:
     - text
-_core:
-  default_config_hash: 1H7NvA9Ei2V4DVgngR00eDC-LmKm_rMT1eHOq6qOYHg
 id: asset.forest.field_forest_zonation
 field_name: field_forest_zonation
 entity_type: asset

@@ -2,8 +2,6 @@ uuid: 5c8ecaaf-0936-4167-8c49-ade8523d5a8e
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: FyyVLHElpCTFaf_VyBydHHIFC06GDS_GqdLIvhK4wqk
 name: 'Forest category'
 vid: forest_category
 description: ''

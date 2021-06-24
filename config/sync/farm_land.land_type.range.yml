@@ -5,7 +5,5 @@ dependencies:
   enforced:
     module:
       - farm_nfa
-_core:
-  default_config_hash: nCzaF6ZNfjyOJx6BYWrMF12bLy-0wW4Yhwmb63kVKtc
 id: range
 label: Range

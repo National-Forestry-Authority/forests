@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - log
-_core:
-  default_config_hash: mhYJQKEoNkZGoyhKqgFpUqESIMRcSbOR0Qk3ziD48hw
 id: log.supervisor
 field_name: supervisor
 entity_type: log

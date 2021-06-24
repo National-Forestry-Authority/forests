@@ -13,8 +13,6 @@ dependencies:
     - image
     - inline_entity_form
     - text
-_core:
-  default_config_hash: q1sWvLJoGF7AApmf4W9qhlvDU1AjS5WFojNm3LPdg_U
 id: log.activity.default
 targetEntityType: log
 bundle: activity

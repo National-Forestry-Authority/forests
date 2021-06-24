@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: PTFD84RALZfdQ8DTzez7hpWD2x1yAuHrCvTpkwSNVwg
 id: asset.field_forest_strategies
 field_name: field_forest_strategies
 entity_type: asset

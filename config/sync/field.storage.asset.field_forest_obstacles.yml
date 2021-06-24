@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: ZAUBrdiuZrRApt29CQJyUgu3OlGGr5k5Euy8VEZNQpA
 id: asset.field_forest_obstacles
 field_name: field_forest_obstacles
 entity_type: asset

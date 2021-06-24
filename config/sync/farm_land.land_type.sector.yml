@@ -5,7 +5,5 @@ dependencies:
   enforced:
     module:
       - farm_nfa
-_core:
-  default_config_hash: zEK18x3YwL8IYiBPxJjWsoqCozf52RnQ7HQBEoOhvD4
 id: sector
 label: Sector

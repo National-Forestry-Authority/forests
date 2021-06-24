@@ -2,8 +2,6 @@ uuid: a898c129-dba9-45ba-84d5-f39b9abbe10f
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: _reTRHVfbZzvICpS4hRlYWMZUlZ80ZnhCxweZ1w9ZXs
 name: 'Forest opportunities'
 vid: forest_opportunities
 description: ''

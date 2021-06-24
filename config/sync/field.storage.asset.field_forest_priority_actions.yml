@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: P5QCqQr2YSEmyM1Ga6iJgVVYzbXd_uKXnnoAguwpyCo
 id: asset.field_forest_priority_actions
 field_name: field_forest_priority_actions
 entity_type: asset

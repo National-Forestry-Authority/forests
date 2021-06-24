@@ -1,0 +1,25 @@
+uuid: 6ca461df-b7ea-460e-91e6-91ec0855ceb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.person_in_charge
+    - field.field.user.user.contact_phone_number
+  module:
+    - telephone
+    - user
+id: user.user.person_in_charge
+targetEntityType: user
+bundle: user
+mode: person_in_charge
+content:
+  contact_phone_number:
+    type: telephone_link
+    weight: 0
+    region: content
+    label: inline
+    settings:
+      title: ''
+    third_party_settings: {  }
+hidden:
+  member_for: true

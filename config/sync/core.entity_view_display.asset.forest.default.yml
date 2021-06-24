@@ -35,8 +35,6 @@ dependencies:
     - image
     - options
     - text
-_core:
-  default_config_hash: cOGjBZWteK--n9L2NmsADohTbOH9y1wOihhMxfjE5R4
 id: asset.forest.default
 targetEntityType: asset
 bundle: forest
