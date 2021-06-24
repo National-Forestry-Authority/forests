@@ -1,0 +1,22 @@
+uuid: 1aa16757-c908-4d0e-8e65-99eaf380fdd8
+langcode: en
+status: false
+dependencies:
+  module:
+    - farm_ui_metrics
+  theme:
+    - gin
+_core:
+  default_config_hash: Iuy1ASxhUiHnr_bTz3G7nCiu6Zlb55b-a-bt3a_2PPo
+id: farm_metrics
+theme: gin
+region: content
+weight: 0
+provider: null
+plugin: farm_metrics_block
+settings:
+  id: farm_metrics_block
+  label: Metrics
+  provider: farm_ui_metrics
+  label_display: '0'
+visibility: {  }

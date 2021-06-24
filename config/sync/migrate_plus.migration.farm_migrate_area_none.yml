@@ -1,0 +1,38 @@
+uuid: 9408c754-31c9-401e-ba3b-7ad3581d1cf0
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+      - farm_land
+_core:
+  default_config_hash: MC-gC3dRd4_LY24kGAD14e1L4xP36IPDJ3eEIG7Hu0w
+id: farm_migrate_area_none
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_area
+label: 'Areas of unknown type'
+source:
+  plugin: d7_farm_area
+process:
+  type:
+    plugin: default_value
+    default_value: land
+  land_type:
+    plugin: default_value
+    default_value: other
+  status:
+    plugin: default_value
+    default_value: archived
+  archived:
+    plugin: request_time
+destination:
+  plugin: 'entity:asset'
+migration_dependencies:
+  required: {  }
+  optional: {  }

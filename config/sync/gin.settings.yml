@@ -1,0 +1,16 @@
+preset_accent_color: green
+preset_focus_color: orange
+enable_darkmode: false
+classic_toolbar: vertical
+icon_default: false
+icon_path: profiles/farm/modules/ui/theme/logo.png
+high_contrast_mode: false
+show_user_theme_settings: false
+third_party_settings:
+  shortcut:
+    module_link: true
+_core:
+  default_config_hash: QdiqmcH9tjpstXqCQKv4G4rHYE4HjWLFkVzyqooqEWM
+favicon:
+  use_default: false
+  path: profiles/farm/modules/ui/theme/favicon.ico

@@ -1,0 +1,15 @@
+uuid: 2c6eeab1-9b7b-4377-9edb-c9a8992680fe
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_input
+_core:
+  default_config_hash: lMGGbEuZcWflACPqnUZzp9GF-19YSGYwZpRm-xjIW3U
+id: input
+label: Input
+description: ''
+name_pattern: 'Input log [log:id]'
+workflow: log_default
+new_revision: true

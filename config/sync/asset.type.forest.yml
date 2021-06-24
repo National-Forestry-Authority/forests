@@ -1,0 +1,20 @@
+uuid: 46c0ef24-17bc-4310-8148-32a32eb3156e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_forest
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
+_core:
+  default_config_hash: kMqB0d3YvF7ArIEkxr30rgxpS2euVPR0lTxVyNPZ3oA
+id: forest
+label: 'Forest (CFR)'
+description: ''
+workflow: asset_default
+new_revision: true

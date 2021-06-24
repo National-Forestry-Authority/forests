@@ -1,0 +1,21 @@
+uuid: 3c1ec13a-b8d6-4a49-b82e-518ed8f3d5a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_boundary_plan
+_core:
+  default_config_hash: z1dFCydFm7AZh7cltNZk8MiKtbtikHV1m0rv4ALAMVk
+id: asset.forest.field_forest_boundary_plan
+field_name: field_forest_boundary_plan
+entity_type: asset
+bundle: forest
+label: 'Boundary plan number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,12 @@
+uuid: b3527577-a963-4ebb-ae79-8b689163b1d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+_core:
+  default_config_hash: OiDtTwpqWB68gQhnYKFOxlty4gI4DJF6-4Wwuavk3Hg
+id: log.plan
+label: Plan
+targetEntityType: log
+cache: true

@@ -1,0 +1,13 @@
+uuid: c185fe69-92cc-43cf-b526-4fca5097f7fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+_core:
+  default_config_hash: yeZh0YbQJgBQqxB4gEzLpn9foVyFCZ64_sHsHdCoSTg
+id: plan_delete_action
+label: 'Delete plan'
+type: plan
+plugin: 'entity:delete_action:plan'
+configuration: {  }

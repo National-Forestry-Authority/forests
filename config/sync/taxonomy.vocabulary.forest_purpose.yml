@@ -1,0 +1,10 @@
+uuid: a661d340-ab28-464c-a92f-f71f41035068
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: xPO8gaNLxevzY9q2jRZxcyDlMGnj5u4r8bzyaV0_spU
+name: 'Forest purpose'
+vid: forest_purpose
+description: ''
+weight: 0

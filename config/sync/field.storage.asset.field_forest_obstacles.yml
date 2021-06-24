@@ -1,0 +1,23 @@
+uuid: 6050efea-e96a-42b4-977d-d7dd27ca8eaa
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+_core:
+  default_config_hash: ZAUBrdiuZrRApt29CQJyUgu3OlGGr5k5Euy8VEZNQpA
+id: asset.field_forest_obstacles
+field_name: field_forest_obstacles
+entity_type: asset
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

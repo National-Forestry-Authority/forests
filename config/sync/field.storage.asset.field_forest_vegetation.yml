@@ -1,0 +1,22 @@
+uuid: 7cbb0b9d-2bbe-4959-a961-55a5ef42bca4
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - taxonomy
+_core:
+  default_config_hash: J63wNVq01Vu4v2GOMM4smYs1nHcZKyHk8sMZ0WQcr-8
+id: asset.field_forest_vegetation
+field_name: field_forest_vegetation
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

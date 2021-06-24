@@ -1,0 +1,21 @@
+uuid: f93df238-763e-4fcf-8aac-72c7e0fdfe85
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.tender_name
+    - log.type.harvest
+_core:
+  default_config_hash: l0ipo8-NHnPWvwMvfRV7-QQjd22JGyDQPVZOfZNCu1g
+id: log.harvest.tender_name
+field_name: tender_name
+entity_type: log
+bundle: harvest
+label: 'Tender name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

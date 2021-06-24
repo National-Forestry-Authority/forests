@@ -1,0 +1,46 @@
+uuid: 0e797d46-4dd6-4ee4-9f82-4fd593f5ed58
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_material
+      - farm_migrate
+_core:
+  default_config_hash: YvMObPV_pkiDCPAre8nag-ES4I_M0-Z_9fvnGFPZaWQ
+id: farm_migrate_taxonomy_material
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_taxonomy
+label: 'Taxonomy terms (Materials)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: farm_materials
+process:
+  vid:
+    plugin: default_value
+    default_value: material
+  tid:
+    plugin: get
+    source: tid
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: farm_migrate_taxonomy_material
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies:
+  required: {  }
+  optional: {  }

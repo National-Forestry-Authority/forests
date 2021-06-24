@@ -1,0 +1,23 @@
+uuid: 878b155f-418f-417c-9d73-195ccc575bec
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+_core:
+  default_config_hash: 1b9wodzINfjwc_Jw_JmHrOAj1rwfcnTiDdYk_DYpvqQ
+id: asset.field_forest_year_gazetted
+field_name: field_forest_year_gazetted
+entity_type: asset
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

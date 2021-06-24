@@ -1,0 +1,22 @@
+uuid: e2ab132e-4e4c-4d0a-b8e9-e15092a89a8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - taxonomy
+_core:
+  default_config_hash: lXBqUq5M3TJ1ZhwRhQ_VYeXMGY3BvMnQE5WVCORqJNk
+id: log.harvest_type
+field_name: harvest_type
+entity_type: log
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

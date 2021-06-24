@@ -1,0 +1,22 @@
+uuid: c531a315-217d-4e09-a70e-be4574b1a855
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - taxonomy
+_core:
+  default_config_hash: hTBSTXrRjVyNa74KXCXmm39qY8P1dEzVQRWFTXLB1B4
+id: log.average_silviculture_score
+field_name: average_silviculture_score
+entity_type: log
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,41 @@
+uuid: 2c7ab523-0ba1-4760-b149-7d9c7dec25bd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+_core:
+  default_config_hash: rGBxog2kveT9RFpSfUhTl8dVev4AGMMDNJVC7Y9ZIT8
+id: farm_migrate_system_date
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_config
+label: 'System date configuration'
+source:
+  plugin: variable
+  variables:
+    - site_default_country
+    - date_first_day
+    - date_default_timezone
+    - configurable_timezones
+    - empty_timezone_message
+    - user_default_timezone
+  source_module: system
+process:
+  country/default: site_default_country
+  first_day: date_first_day
+  timezone/default: date_default_timezone
+  timezone/user/configurable: configurable_timezones
+  timezone/user/warn: empty_timezone_message
+  timezone/user/default: user_default_timezone
+destination:
+  plugin: config
+  config_name: system.date
+migration_dependencies:
+  required: {  }
+  optional: {  }

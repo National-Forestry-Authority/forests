@@ -1,0 +1,22 @@
+uuid: 2e015ba3-d8fa-48f0-812c-2cb4dd78f479
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - taxonomy
+_core:
+  default_config_hash: DF0A9MWrAM6htCbaDHOS3zKfkoW-U70Goqc9VeN8844
+id: log.working_circle
+field_name: working_circle
+entity_type: log
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: bf2c92b3-dcbd-440c-9244-58b6a3c9050c
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: GVuBZ9nJQ0MmpCs7kAGK23A4VMuqnFgIx9hfDmM_Rws
+id: asset.field_forest_legal_category
+field_name: field_forest_legal_category
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

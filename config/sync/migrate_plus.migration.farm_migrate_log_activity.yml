@@ -1,0 +1,34 @@
+uuid: 89f4b259-5c67-445e-94f5-689565c0d1ed
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_activity
+      - farm_migrate
+_core:
+  default_config_hash: o4w516wH3G8NKywJSdebhiUDTdBvpHlhqqbSGgx7YmI
+id: farm_migrate_log_activity
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_log
+label: 'Logs (Activities)'
+source:
+  plugin: d7_farm_log
+  bundle: farm_activity
+process:
+  type:
+    plugin: default_value
+    default_value: activity
+  id:
+    plugin: get
+    source: id
+destination:
+  plugin: 'entity:log'
+migration_dependencies:
+  required: {  }
+  optional: {  }

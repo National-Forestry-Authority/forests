@@ -1,0 +1,15 @@
+uuid: 720426fc-2b9e-4ec4-99ab-69acd42964a6
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_observation
+_core:
+  default_config_hash: rfqUeBTLizQmuYVlcmXBZFYx59ITQLJl7s3qcCpNiA0
+id: observation
+label: Observation
+description: ''
+name_pattern: 'Observation log [log:id]'
+workflow: log_default
+new_revision: true

@@ -1,0 +1,21 @@
+uuid: 18c98a75-1219-456e-bb8c-4d8faf7f2ea6
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: nDlzxlxF0XBebBly_5GKyd5kYhyf4aAivohs1-xBmZA
+id: asset.field_forest_concerns
+field_name: field_forest_concerns
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

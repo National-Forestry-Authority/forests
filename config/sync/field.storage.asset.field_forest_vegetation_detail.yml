@@ -1,0 +1,21 @@
+uuid: 8cd36b72-6510-47d1-a7e0-1c42662b865a
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: lShp_TRDb3fApIzruMTgIX_zew_83Z6Rrd-v1ErNuYo
+id: asset.field_forest_vegetation_detail
+field_name: field_forest_vegetation_detail
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

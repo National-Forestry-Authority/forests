@@ -1,0 +1,13 @@
+uuid: 32c5de4f-42a3-4065-ad2b-0e95e2cd7de4
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+_core:
+  default_config_hash: UzrGhzKs9kMC7Km1xyxNLY3kd_Yigo3tZJdS_VPg_Us
+id: log_clone_action
+label: Clone
+type: log
+plugin: log_clone_action
+configuration: {  }

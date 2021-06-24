@@ -1,0 +1,13 @@
+uuid: c09877d4-d523-4c40-bd43-3146665149c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+_core:
+  default_config_hash: j-ewlu0QiQA_uWt9MHnghpKGsG9tAZlzaXld_39Sajo
+id: log_delete_action
+label: 'Delete log'
+type: log
+plugin: 'entity:delete_action:log'
+configuration: {  }

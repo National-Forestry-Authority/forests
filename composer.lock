@@ -2440,7 +2440,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/farmOS/farm_forest.git",
-                "reference": "77341da9bd363f18cce03be79e550ab25a65b8fa"
+                "reference": "7c089b4d1a1e1d72f507a3ca3cbb27cd71d1d211"
             },
             "type": "drupal-module",
             "license": [
@@ -2459,7 +2459,7 @@
                 "forum": "https://farmOS.discourse.group",
                 "chat": "https://matrix.to/#/#farmOS:matrix.org"
             },
-            "time": "2021-02-25T20:19:30+00:00"
+            "time": "2021-06-21T14:13:02+00:00"
         },
         {
             "name": "drupal/fraction",

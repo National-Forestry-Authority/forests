@@ -1,0 +1,14 @@
+uuid: 291a7ce7-e3fb-4fd1-854b-11075fcd40fd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_forest
+_core:
+  default_config_hash: ffrsWixwdDCBO2Yck8wsatPXyKkjJtlEbT2gtVtmR1M
+id: forest
+label: Forest
+description: ''
+workflow: plan_default
+new_revision: true

@@ -1,0 +1,49 @@
+uuid: f75ce543-7922-4dce-b11b-e61169bcc814
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+      - farm_nfa
+_core:
+  default_config_hash: 66zN-pnEgdQgHmFsNSQVgJ8WhojIeVMAATliHGaiGu8
+id: farm_migrate_area_nfa_land
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_area
+label: 'NFA Land assets (from areas)'
+source:
+  plugin: d7_farm_area
+  area_type:
+    - range
+    - sector
+    - cfr_natural
+    - cfr_plantation
+    - cfr_urban
+    - zone
+    - other
+process:
+  type:
+    plugin: default_value
+    default_value: land
+  land_type:
+    plugin: static_map
+    source: field_farm_area_type
+    map:
+      range: range
+      sector: sector
+      cfr_natural: cfr
+      cfr_plantation: cfr
+      cfr_urban: cfr
+      zone: zone
+      other: other
+destination:
+  plugin: 'entity:asset'
+migration_dependencies:
+  required: {  }
+  optional: {  }

@@ -1,0 +1,44 @@
+uuid: 23d0202f-2271-41e7-8198-7614ae783917
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+      - farm_quantity_standard
+_core:
+  default_config_hash: bGEPIrTh05v3iIGcEQEbbvL9yyL6PUDURFakmyowZQQ
+id: farm_migrate_quantity_standard
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_quantity
+label: 'Quantities (Standard)'
+source:
+  plugin: d7_farm_quantity
+process:
+  type:
+    plugin: default_value
+    default_value: standard
+  measure: measure
+  value/numerator: value_numerator
+  value/denominator: value_denominator
+  units:
+    plugin: migration_lookup
+    migration: farm_migrate_taxonomy_unit
+    source: units
+  label: label
+  uid:
+    plugin: migration_lookup
+    migration: farm_migrate_user
+    source: uid
+destination:
+  plugin: 'entity_reference_revisions:quantity'
+migration_dependencies:
+  required:
+    - farm_migrate_user
+    - farm_migrate_taxonomy_unit
+  optional: {  }

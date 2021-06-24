@@ -1,0 +1,22 @@
+uuid: e6c71241-6e7b-4f6e-aa65-2f95b75619c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - taxonomy
+_core:
+  default_config_hash: m-PGW2OZ_Vo17EuhiW4nOFiY7OjzD6Th8a9VEvKAjGQ
+id: asset.field_forest_opportunities
+field_name: field_forest_opportunities
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

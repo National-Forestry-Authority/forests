@@ -1,0 +1,15 @@
+uuid: 66a4beca-5772-4db8-a313-887592d9c11c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_activity
+_core:
+  default_config_hash: NxMgj1EgVCkW4HXTEWOqHhhp4PTUVzSPkQSXu3l2y44
+id: activity
+label: Activity
+description: ''
+name_pattern: 'Activity log [log:id]'
+workflow: log_default
+new_revision: true

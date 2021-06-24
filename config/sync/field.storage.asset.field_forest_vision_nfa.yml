@@ -1,0 +1,21 @@
+uuid: 578a36be-d6c3-453b-97e2-c0878fb5328d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: aN_xrFxmhkDeHlB0DwFWegoTy8B3uYEyLhesc17W8lE
+id: asset.field_forest_vision_nfa
+field_name: field_forest_vision_nfa
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

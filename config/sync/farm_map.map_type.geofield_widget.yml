@@ -1,0 +1,14 @@
+uuid: ec8e1a7b-b58d-4712-8596-d3abe68fe91a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_map
+_core:
+  default_config_hash: Jmqg4Zg83TmawM1-ZuPV0NYrF81qETa2xFegOOlx7Og
+id: geofield_widget
+label: 'Geofield widget'
+description: 'Renders a geofield widget using farmOS-map.'
+behaviors: {  }
+options: {  }

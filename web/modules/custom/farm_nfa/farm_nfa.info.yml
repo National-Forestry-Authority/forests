@@ -9,6 +9,7 @@ dependencies:
   - drupal:image
   - drupal:text
   - drupal:views
+  - config_rewrite:config_rewrite
   - default_content:default_content
   - farm:asset
   - farm:farm_land

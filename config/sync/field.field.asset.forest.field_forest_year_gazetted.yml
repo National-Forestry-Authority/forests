@@ -1,0 +1,21 @@
+uuid: 1ae1fc5d-03f7-4865-830d-9f64852da1da
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_year_gazetted
+_core:
+  default_config_hash: Hh7Fyve9KM0uemDSa-fz6jM_Cz7q7Ti0ZdIbYKPrbm8
+id: asset.forest.field_forest_year_gazetted
+field_name: field_forest_year_gazetted
+entity_type: asset
+bundle: forest
+label: 'Year gazetted (estimated)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

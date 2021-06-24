@@ -1,0 +1,15 @@
+uuid: eb0dcdbd-e4d2-4d8b-9ab4-29a27a03da54
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+_core:
+  default_config_hash: BMpW2kDfSisexgBcv0FgHK-Th3z3vVLeV2c2WMl9wJw
+id: farm_migrate_sensor_data
+label: 'farmOS 1.x Sensor Data Migration'
+description: 'Migrates sensor data from farmOS 1.x to farmOS 2.x'
+source_type: 'farmOS 1.x'
+module: null
+shared_configuration: null

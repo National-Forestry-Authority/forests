@@ -1,0 +1,13 @@
+uuid: f7cd7222-f2c4-431d-b02f-0badce2c49b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+_core:
+  default_config_hash: hUW_kg6CVdxLXOdbhHiTg2I913ghaEmedM3tEP1Tc4U
+id: log_mark_as_done_action
+label: 'Mark as done'
+type: log
+plugin: log_mark_as_done_action
+configuration: {  }

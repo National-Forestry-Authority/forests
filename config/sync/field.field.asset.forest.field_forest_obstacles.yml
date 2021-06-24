@@ -1,0 +1,21 @@
+uuid: 880ba86b-e749-4eb5-b1f9-42bafe45192f
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_obstacles
+_core:
+  default_config_hash: 0rBbGEfEs7yHEsaG-Ujf08C7VurG8HPiQ_1V-IJcwYA
+id: asset.forest.field_forest_obstacles
+field_name: field_forest_obstacles
+entity_type: asset
+bundle: forest
+label: 'Obstacles/roadblocks to achieving vision'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

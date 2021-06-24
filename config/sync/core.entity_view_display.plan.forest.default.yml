@@ -1,0 +1,81 @@
+uuid: 770af9b1-2a06-4cf5-991e-81853cfe1118
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.plan.forest.field_forest_plan_period
+    - image.style.large
+    - plan.type.forest
+  module:
+    - datetime_range
+    - file
+    - image
+    - options
+    - text
+_core:
+  default_config_hash: P8P8P1Dq-k4g00U8aXtFwJ9rACgNLoa8zGJJfE1is3M
+id: plan.forest.default
+targetEntityType: plan
+bundle: forest
+mode: default
+content:
+  asset:
+    label: inline
+    type: entity_reference_label
+    weight: 2
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  field_forest_plan_period:
+    weight: 3
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  flag:
+    label: inline
+    type: list_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  notes:
+    label: inline
+    type: text_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    label: inline
+    type: list_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  data: true
+  log: true
+  uid: true

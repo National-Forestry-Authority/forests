@@ -1,0 +1,38 @@
+uuid: 3bffa15f-40bc-4b82-927f-c06d410002bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_vegetation
+    - taxonomy.vocabulary.forest_vegetation
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+_core:
+  default_config_hash: WvXInITKyozGXZp8FxsidKcDOnJt22tfZm6uJ-yuA0Y
+id: asset.forest.field_forest_vegetation
+field_name: field_forest_vegetation
+entity_type: asset
+bundle: forest
+label: 'Predominant vegetation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      forest_vegetation: forest_vegetation
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

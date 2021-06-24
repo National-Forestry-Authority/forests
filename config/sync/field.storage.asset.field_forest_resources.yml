@@ -1,0 +1,21 @@
+uuid: 9bc671f5-8685-4b4d-99ae-9ad9db1dfaec
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: L9Gpomqp8SLnA4_qbT9GdBgkvL2qJykln4qtWrYL_G8
+id: asset.field_forest_resources
+field_name: field_forest_resources
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

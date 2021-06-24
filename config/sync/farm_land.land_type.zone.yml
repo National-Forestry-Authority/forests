@@ -1,0 +1,11 @@
+uuid: 4b8c1d1f-228e-40ba-9e6f-909285e9d43d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+_core:
+  default_config_hash: _vREG3_9u_d_SeerCdzoldtbB79DuzhLEOhqrRRYIdY
+id: zone
+label: Zone

@@ -1,0 +1,15 @@
+uuid: 26b8b6d8-ef43-449d-9ac7-3d8fbd73f3b1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+_core:
+  default_config_hash: LbJB-VKlDLqJJgnhRDPXPIESmuT7AsEt0FqdsF10yUo
+id: farm_migrate_quantity
+label: 'farmOS 1.x Quantity Migration'
+description: 'Migrates quantity measurements from farmOS 1.x to farmOS 2.x'
+source_type: 'farmOS 1.x'
+module: null
+shared_configuration: null

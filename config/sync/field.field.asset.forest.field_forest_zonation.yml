@@ -1,0 +1,23 @@
+uuid: f3854abf-ee72-4853-bcba-6af8b0750254
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_zonation
+  module:
+    - text
+_core:
+  default_config_hash: 1H7NvA9Ei2V4DVgngR00eDC-LmKm_rMT1eHOq6qOYHg
+id: asset.forest.field_forest_zonation
+field_name: field_forest_zonation
+entity_type: asset
+bundle: forest
+label: Zonation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,14 @@
+uuid: 66a1651a-b540-4f31-b718-517159a9604a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.farm_manager
+  module:
+    - user
+id: user_remove_role_action.farm_manager
+label: 'Remove the Manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: farm_manager

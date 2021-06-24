@@ -1,0 +1,47 @@
+uuid: 9d22c04b-1fc0-42db-81c6-71582b5ea04f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asset
+      - farm_migrate
+_core:
+  default_config_hash: 0xkI54sl-rSDUj4OvaCKhj8fol-Nfq3k3KgZ1CQcATc
+id: farm_migrate_area_field_parent
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_reference
+label: 'Area parent references'
+source:
+  plugin: d7_farm_area
+  area_type: any
+process:
+  id:
+    -
+      plugin: farm_migration_group_lookup
+      migration_group: farm_migrate_area
+      source: tid
+      no_stub: true
+    -
+      plugin: skip_on_empty
+      method: row
+  parent:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: farm_migration_group_lookup
+      migration_group: farm_migrate_area
+      source: parent
+      no_stub: true
+destination:
+  plugin: 'entity:asset'
+migration_dependencies:
+  required: {  }
+  optional: {  }

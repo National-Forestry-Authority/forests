@@ -1,0 +1,91 @@
+uuid: a23385c9-bee3-4373-bd78-4d7e42625e4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.log.plan
+    - field.field.log.observation.average_silviculture_score
+    - field.field.log.observation.coup_number
+    - field.field.log.observation.working_circle
+    - log.type.observation
+  module:
+    - inline_entity_form
+    - text
+_core:
+  default_config_hash: mTA_BD4aj7bxn4XgV-EC1y9QtLtdrbvYhF-wnUdw9Jc
+id: log.observation.plan
+targetEntityType: log
+bundle: observation
+mode: plan
+content:
+  average_silviculture_score:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  coup_number:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  quantity:
+    type: inline_entity_form_complex
+    settings:
+      form_mode: default
+      revision: true
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+    weight: 2
+    region: content
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timestamp:
+    type: datetime_timestamp
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  working_circle:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  asset: true
+  category: true
+  created: true
+  data: true
+  equipment: true
+  file: true
+  flag: true
+  geometry: true
+  image: true
+  is_movement: true
+  location: true
+  name: true
+  owner: true

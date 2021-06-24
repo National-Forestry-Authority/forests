@@ -1,0 +1,23 @@
+uuid: 228394e3-4298-4395-bb7d-501ac20760b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.land
+    - field.storage.asset.field_boundary_opening_history
+  module:
+    - text
+_core:
+  default_config_hash: Xj0i_djt2fHMN40m8uMODGvY_Y50snGg7guxanIjC9Y
+id: asset.land.field_boundary_opening_history
+field_name: field_boundary_opening_history
+entity_type: asset
+bundle: land
+label: 'Boundary opening history'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

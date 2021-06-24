@@ -1,0 +1,14 @@
+uuid: 4f30a572-523d-4c80-bccd-8210145d0798
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.farm_manager
+  module:
+    - user
+id: user_add_role_action.farm_manager
+label: 'Add the Manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: farm_manager

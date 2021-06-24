@@ -1,0 +1,25 @@
+uuid: 2430f043-a1ea-4526-b8a5-0644a39fa0cd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_role_roles
+  module:
+    - farm_role
+third_party_settings:
+  farm_role:
+    access:
+      config: true
+      entity:
+        'view all': true
+        'create all': true
+        'update all': true
+        'delete all': true
+_core:
+  default_config_hash: B0v5SxvmSEncd5Au-vx96vQNcvK7Kjdw9grF4vKKpEw
+id: farm_manager
+label: Manager
+weight: 1
+is_admin: false
+permissions: {  }

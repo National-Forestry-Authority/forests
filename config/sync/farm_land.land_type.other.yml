@@ -1,0 +1,11 @@
+uuid: 25075ea9-51d1-43ee-805f-1f3d345294e1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_land
+_core:
+  default_config_hash: '-1px762uDgq4mB06lZjYvNY8MMtQixYpZzd8VtRh9ow'
+id: other
+label: Other

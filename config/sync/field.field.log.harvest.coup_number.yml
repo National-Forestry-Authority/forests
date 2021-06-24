@@ -1,0 +1,21 @@
+uuid: dfa930a5-9ad4-4c45-8c12-c6cf86e70506
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.coup_number
+    - log.type.harvest
+_core:
+  default_config_hash: emRaeg2rZHfeOQzSeI38tXFzlVYhub-7xasFHpMfv38
+id: log.harvest.coup_number
+field_name: coup_number
+entity_type: log
+bundle: harvest
+label: 'Coup number'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

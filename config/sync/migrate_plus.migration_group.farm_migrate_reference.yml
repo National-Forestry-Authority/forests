@@ -1,0 +1,15 @@
+uuid: 0b29216a-9ee0-4a5c-ad46-bd6ea506598c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+_core:
+  default_config_hash: gApRtW_gItQxlbFR7cPzvCcSGErd489p1a6cdTYGB0E
+id: farm_migrate_reference
+label: 'farmOS 1.x References Migration'
+description: 'Migrates asset references from farmOS 1.x to farmOS 2.x'
+source_type: 'farmOS 1.x'
+module: null
+shared_configuration: null

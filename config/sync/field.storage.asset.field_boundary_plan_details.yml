@@ -1,0 +1,21 @@
+uuid: af9bab70-64e7-4d7a-842f-07d09a881a27
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: ruOdNKZmg2UtLRCZfQzNvvfpjYvsr-kS65k7UHK--as
+id: asset.field_boundary_plan_details
+field_name: field_boundary_plan_details
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

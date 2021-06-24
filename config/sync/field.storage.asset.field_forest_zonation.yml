@@ -1,0 +1,21 @@
+uuid: 87c32853-bcd5-49ba-9ca6-ecb7c7638b0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: ukdwOiLBap9ysgRGnA3wu6DfVufhTv-vm_8xRpLlu3k
+id: asset.field_forest_zonation
+field_name: field_forest_zonation
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

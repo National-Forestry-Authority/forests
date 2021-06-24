@@ -1,0 +1,23 @@
+uuid: d4f4ccbd-bc3a-4fad-bc36-e7b494a584bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+_core:
+  default_config_hash: mhYJQKEoNkZGoyhKqgFpUqESIMRcSbOR0Qk3ziD48hw
+id: log.supervisor
+field_name: supervisor
+entity_type: log
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+uuid: f59f2086-616d-43da-94ca-b1cf4dadbe74
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.farm_viewer
+  module:
+    - user
+id: user_add_role_action.farm_viewer
+label: 'Add the Viewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: farm_viewer

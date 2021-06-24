@@ -1,0 +1,15 @@
+uuid: 37cf7380-7600-449e-a5fa-cf8a8e952968
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_harvest
+_core:
+  default_config_hash: Gd2h4NLJ5jFiX8AMKvP4hSmSFDl6_VtggqXMDqQfzpM
+id: harvest
+label: Harvest
+description: ''
+name_pattern: 'Harvest log [log:id]'
+workflow: log_default
+new_revision: true

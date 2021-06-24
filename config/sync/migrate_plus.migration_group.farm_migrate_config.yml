@@ -1,0 +1,15 @@
+uuid: 52475883-ca56-4bc8-9625-0ba974fea423
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+_core:
+  default_config_hash: 8fbX90REsswBmZkYRu3DYwEqkrBM0ybGGm34Vp-cRwA
+id: farm_migrate_config
+label: 'farmOS 1.x Config Migration'
+description: 'Migrate config from farmOS 1.x to 2.x'
+source_type: 'farmOS 1.x'
+module: null
+shared_configuration: null

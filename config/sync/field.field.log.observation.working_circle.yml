@@ -1,0 +1,38 @@
+uuid: d933a421-c1f5-4e5d-b936-ba6bc0165331
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.working_circle
+    - log.type.observation
+    - taxonomy.vocabulary.working_circle
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+_core:
+  default_config_hash: pjHeDrg6iNccf8gWIxNK8GWHmnk8FfixuS_PHQe9-P4
+id: log.observation.working_circle
+field_name: working_circle
+entity_type: log
+bundle: observation
+label: 'Working circle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      working_circle: working_circle
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

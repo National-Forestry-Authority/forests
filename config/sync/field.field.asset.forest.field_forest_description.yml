@@ -1,0 +1,23 @@
+uuid: 4943653c-74cc-412d-a160-2ae7b8782462
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.field_forest_description
+  module:
+    - text
+_core:
+  default_config_hash: TYc8dw_RKFLs6rnSsocqq9RDBLfmvLAHCu0DaIH1HWs
+id: asset.forest.field_forest_description
+field_name: field_forest_description
+entity_type: asset
+bundle: forest
+label: ' Size, location, and brief description of the forest'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

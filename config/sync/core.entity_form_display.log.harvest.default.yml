@@ -1,0 +1,207 @@
+uuid: 1fce3d0c-7e79-4e9c-a99c-58fde8447b3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.farm_asset
+    - field.field.log.harvest.coup_number
+    - field.field.log.harvest.harvest_type
+    - field.field.log.harvest.supervisor
+    - field.field.log.harvest.tender_name
+    - field.field.log.harvest.working_circle
+    - image.style.medium
+    - log.type.harvest
+  module:
+    - entity_browser
+    - farm_map
+    - file
+    - image
+    - inline_entity_form
+    - text
+_core:
+  default_config_hash: 6nkugDotKKUIDlNWrlXYpfxW57DReh7JESGm43gkOWM
+id: log.harvest.default
+targetEntityType: log
+bundle: harvest
+mode: default
+content:
+  asset:
+    type: entity_browser_entity_reference
+    weight: 50
+    settings:
+      entity_browser: farm_asset
+      field_widget_display: label
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_edit: false
+      field_widget_replace: false
+      field_widget_display_settings: {  }
+    region: content
+    third_party_settings: {  }
+  category:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  coup_number:
+    weight: 97
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  equipment:
+    type: entity_reference_autocomplete
+    weight: 55
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  file:
+    type: file_generic
+    settings:
+      progress_indicator: throbber
+    weight: 90
+    region: content
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: -75
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  geometry:
+    type: farm_map_geofield
+    weight: 95
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  harvest_type:
+    weight: 100
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  image:
+    type: image_image
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    weight: 89
+    region: content
+    third_party_settings: {  }
+  is_movement:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 95
+    region: content
+    third_party_settings: {  }
+  location:
+    type: entity_reference_autocomplete
+    weight: 90
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  lot_number:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 20
+    region: content
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -100
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 0
+    region: content
+    third_party_settings: {  }
+  owner:
+    type: options_select
+    weight: -70
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  quantity:
+    type: inline_entity_form_complex
+    settings:
+      form_mode: default
+      revision: true
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+    weight: 0
+    region: content
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: -80
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  supervisor:
+    weight: 99
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  tender_name:
+    weight: 98
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  timestamp:
+    type: datetime_timestamp
+    weight: -90
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  working_circle:
+    weight: 96
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  data: true

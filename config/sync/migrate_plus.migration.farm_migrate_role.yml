@@ -1,0 +1,35 @@
+uuid: f30eb5df-7763-453c-a071-8d12568df244
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+      - farm_role_roles
+_core:
+  default_config_hash: 4J2JXgw0Vl9ZCkYdbqJ9yKjcs97BzU7JlcTMPeWvbuk
+id: farm_migrate_role
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_role
+label: Roles
+source:
+  plugin: d7_user_role
+process:
+  role:
+    plugin: static_map
+    source: name
+    map:
+      'Farm Manager': farm_manager
+      'Farm Worker': farm_worker
+      'Farm Viewer': farm_viewer
+    bypass: true
+destination:
+  plugin: 'entity:user_role'
+migration_dependencies:
+  required: {  }
+  optional: {  }

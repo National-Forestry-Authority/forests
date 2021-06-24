@@ -1,0 +1,20 @@
+uuid: 1178d378-4019-4a9f-954b-cc6b6a59ae41
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_land
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
+_core:
+  default_config_hash: H1m6-yqbUBMCq58wNHw7k6b4b68iJyCpoOg4NHqCK2I
+id: land
+label: Land
+description: ''
+workflow: asset_default
+new_revision: true

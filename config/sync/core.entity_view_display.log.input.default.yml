@@ -1,0 +1,185 @@
+uuid: 10f703b1-994b-4357-8ba8-e1113e37d542
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.log.input.working_circle
+    - image.style.large
+    - log.type.input
+  module:
+    - entity_reference_revisions
+    - farm_field
+    - farm_map
+    - file
+    - image
+    - options
+    - text
+_core:
+  default_config_hash: XUSbGUZqMFzV1WOYnK0S2Tk351bF-2qUB-_9MPJOBzo
+id: log.input.default
+targetEntityType: log
+bundle: input
+mode: default
+content:
+  asset:
+    label: inline
+    type: entity_reference_label
+    weight: -10
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  category:
+    label: inline
+    type: entity_reference_label
+    weight: 80
+    settings:
+      link: false
+    region: content
+    third_party_settings: {  }
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    weight: 90
+    region: content
+    third_party_settings: {  }
+  flag:
+    label: inline
+    type: list_default
+    weight: -75
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  geometry:
+    label: inline
+    type: farm_map_geofield
+    settings: {  }
+    weight: 95
+    region: content
+    third_party_settings: {  }
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
+    weight: 89
+    region: content
+    third_party_settings: {  }
+  is_movement:
+    label: inline
+    type: hideable_boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    weight: 95
+    region: content
+    third_party_settings: {  }
+  location:
+    label: inline
+    type: entity_reference_label
+    weight: 90
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  lot_number:
+    label: inline
+    type: string
+    weight: -45
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  material:
+    label: inline
+    type: entity_reference_label
+    weight: -50
+    settings:
+      link: false
+    region: content
+    third_party_settings: {  }
+  method:
+    label: inline
+    type: string
+    weight: -30
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  notes:
+    label: inline
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  owner:
+    label: inline
+    type: entity_reference_label
+    weight: -70
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  purchase_date:
+    label: inline
+    type: timestamp
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    weight: -35
+    region: content
+    third_party_settings: {  }
+  quantity:
+    label: inline
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: default
+      link: ''
+    weight: 0
+    region: content
+    third_party_settings: {  }
+  source:
+    label: inline
+    type: string
+    weight: -40
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  status:
+    label: inline
+    type: list_default
+    weight: -80
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timestamp:
+    label: inline
+    type: timestamp
+    weight: -90
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  working_circle:
+    weight: 96
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  created: true
+  data: true
+  uid: true
