@@ -1,0 +1,21 @@
+uuid: 9ffafb44-26b7-4b87-b95b-3f5e748b72fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.size_location_desc
+  module:
+    - text
+id: asset.cfr.size_location_desc
+field_name: size_location_desc
+entity_type: asset
+bundle: cfr
+label: 'Size, location and brief description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

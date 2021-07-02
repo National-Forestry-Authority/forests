@@ -1,0 +1,21 @@
+uuid: 5866e8a6-49b6-4497-961a-2cdbbc45674c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.date
+    - media.type.boundary_plan_maps
+  module:
+    - datetime
+id: media.boundary_plan_maps.date
+field_name: date
+entity_type: media
+bundle: boundary_plan_maps
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

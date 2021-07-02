@@ -1,0 +1,21 @@
+uuid: 7bc64281-dc6a-4a1d-8a47-38392d2c8eaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.key_resources
+  module:
+    - text
+id: asset.cfr.key_resources
+field_name: key_resources
+entity_type: asset
+bundle: cfr
+label: 'Key resources used / extracted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

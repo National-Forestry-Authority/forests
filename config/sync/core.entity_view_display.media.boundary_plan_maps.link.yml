@@ -1,0 +1,31 @@
+uuid: 42d29b1d-1184-4aec-a453-cd60e47a425a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.link
+    - field.field.media.boundary_plan_maps.boundary_plan_number
+    - field.field.media.boundary_plan_maps.date
+    - field.field.media.boundary_plan_maps.field_media_image
+    - media.type.boundary_plan_maps
+id: media.boundary_plan_maps.link
+targetEntityType: media
+bundle: boundary_plan_maps
+mode: link
+content:
+  boundary_plan_number:
+    weight: 0
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  created: true
+  date: true
+  field_media_image: true
+  name: true
+  thumbnail: true
+  uid: true

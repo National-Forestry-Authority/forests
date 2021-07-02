@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.est_year_gazetted
+id: asset.cfr.est_year_gazetted
+field_name: est_year_gazetted
+entity_type: asset
+bundle: cfr
+label: 'Est. Year Gazetted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

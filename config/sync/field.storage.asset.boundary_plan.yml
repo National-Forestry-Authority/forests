@@ -1,0 +1,21 @@
+uuid: d1e55208-fa9b-484a-a546-a4e265d3c026
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.boundary_plan
+field_name: boundary_plan
+entity_type: asset
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

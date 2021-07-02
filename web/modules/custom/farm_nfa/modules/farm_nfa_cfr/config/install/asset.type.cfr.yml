@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cfr
+label: CFR
+description: ''
+workflow: asset_default
+new_revision: true

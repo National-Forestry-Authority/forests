@@ -1,0 +1,14 @@
+uuid: d88f7d0c-8817-46ca-b745-9703b9905756
+langcode: en
+status: true
+dependencies: {  }
+id: boundary_plan_maps
+label: 'Boundary plan maps'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

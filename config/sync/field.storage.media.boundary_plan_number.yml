@@ -1,0 +1,20 @@
+uuid: 90f9c405-9287-4663-9fa7-f5054ea8ab59
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.boundary_plan_number
+field_name: boundary_plan_number
+entity_type: media
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

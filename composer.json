@@ -38,7 +38,9 @@
         "drupal/config_devel": "^1.8",
         "drupal/core-composer-scaffold": "~9.1.0",
         "drupal/default_content": "^2.0@alpha",
+        "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
+        "drupal/field_group": "^3.1",
         "drupal/select_or_other": "1.x-dev#1812d2bcd0a0165308e8163d856261b72652b98e",
         "farmos/farmos": "2.0.0-alpha2",
         "oomphinc/composer-installers-extender": "^2"

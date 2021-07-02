@@ -1,0 +1,67 @@
+name: NFA CFR
+description: Central Forest Reserves NFA submodule.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - drupal:media
+  - entity_dialog_formatter:entity_dialog_formatter
+  - farm_nfa:farm_nfa
+  - field_group:field_group
+
+config_devel:
+  - asset.type.cfr
+  - core.entity_form_display.asset.cfr.default
+  - core.entity_form_display.media.boundary_plan_maps.default
+  - core.entity_view_display.asset.cfr.default
+  - core.entity_view_display.media.boundary_plan_maps.default
+  - core.entity_view_display.media.boundary_plan_maps.dialog
+  - core.entity_view_display.media.boundary_plan_maps.link
+  - field.field.asset.cfr.area
+  - field.field.asset.cfr.boundary_plan
+  - field.field.asset.cfr.current_purpose
+  - field.field.asset.cfr.description_of_plans_and_sheets
+  - field.field.asset.cfr.detailed_vegetation
+  - field.field.asset.cfr.est_year_gazetted
+  - field.field.asset.cfr.issues_concerns
+  - field.field.asset.cfr.key_resources
+  - field.field.asset.cfr.land_use_and_forest_condition
+  - field.field.asset.cfr.legal_category
+  - field.field.asset.cfr.map_ref_sheets
+  - field.field.asset.cfr.map_sheet_uploads
+  - field.field.asset.cfr.opportunities
+  - field.field.asset.cfr.original_management_objectives
+  - field.field.asset.cfr.predominant_vegetation
+  - field.field.asset.cfr.priority_actions
+  - field.field.asset.cfr.proposed_strategies
+  - field.field.asset.cfr.serial
+  - field.field.asset.cfr.size_location_desc
+  - field.field.asset.cfr.year_of_survey
+  - field.field.media.boundary_plan_maps.boundary_plan_number
+  - field.field.media.boundary_plan_maps.date
+  - field.field.media.boundary_plan_maps.field_media_image
+  - field.storage.asset.area
+  - field.storage.asset.boundary_plan
+  - field.storage.asset.current_purpose
+  - field.storage.asset.description_of_plans_and_sheets
+  - field.storage.asset.detailed_vegetation
+  - field.storage.asset.est_year_gazetted
+  - field.storage.asset.issues_concerns
+  - field.storage.asset.key_resources
+  - field.storage.asset.land_use_and_forest_condition
+  - field.storage.asset.legal_category
+  - field.storage.asset.map_ref_sheets
+  - field.storage.asset.map_sheet_uploads
+  - field.storage.asset.opportunities
+  - field.storage.asset.original_management_objectives
+  - field.storage.asset.predominant_vegetation
+  - field.storage.asset.priority_actions
+  - field.storage.asset.proposed_strategies
+  - field.storage.asset.serial
+  - field.storage.asset.size_location_desc
+  - field.storage.asset.year_of_survey
+  - field.storage.media.boundary_plan_number
+  - field.storage.media.date
+  - field.storage.media.field_media_image
+  - media.type.boundary_plan_maps
+  - taxonomy.vocabulary.predominant_vegetation

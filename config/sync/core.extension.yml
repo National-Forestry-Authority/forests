@@ -18,6 +18,7 @@ module:
   default_content: 0
   entity: 0
   entity_browser: 0
+  entity_dialog_formatter: 0
   entity_reference_integrity: 0
   entity_reference_integrity_enforce: 0
   entity_reference_revisions: 0
@@ -44,6 +45,7 @@ module:
   farm_material: 0
   farm_migrate: 0
   farm_nfa: 0
+  farm_nfa_cfr: 0
   farm_observation: 0
   farm_quantity_standard: 0
   farm_role: 0
@@ -62,6 +64,7 @@ module:
   farm_ui_views: 0
   farm_unit: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -77,6 +80,7 @@ module:
   jsonapi_schema: 0
   layout_discovery: 0
   log: 0
+  media: 0
   migrate: 0
   migrate_drupal: 0
   migrate_plus: 0

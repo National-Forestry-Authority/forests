@@ -1,0 +1,19 @@
+uuid: 0cda9a33-d42a-4432-878c-5effeed69ad3
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.opportunities
+field_name: opportunities
+entity_type: asset
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

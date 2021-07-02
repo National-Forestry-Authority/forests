@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.proposed_strategies
+  module:
+    - text
+id: asset.cfr.proposed_strategies
+field_name: proposed_strategies
+entity_type: asset
+bundle: cfr
+label: 'Proposed strategies for improved management'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

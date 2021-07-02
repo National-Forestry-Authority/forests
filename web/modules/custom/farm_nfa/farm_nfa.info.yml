@@ -44,6 +44,8 @@ config_devel:
   - core.entity_view_display.plan.forest.default
   - core.entity_view_display.user.user.default
   - core.entity_view_display.user.user.person_in_charge
+  - core.entity_view_mode.media.dialog
+  - core.entity_view_mode.media.link
   - core.entity_view_mode.user.person_in_charge
   - farm_land.land_type.beat
   - farm_land.land_type.range

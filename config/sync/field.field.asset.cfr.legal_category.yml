@@ -1,0 +1,21 @@
+uuid: 8859bad2-c7af-4cf5-8b24-35536d44e9d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.legal_category
+  module:
+    - text
+id: asset.cfr.legal_category
+field_name: legal_category
+entity_type: asset
+bundle: cfr
+label: 'Legal category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

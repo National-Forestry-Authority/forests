@@ -1,0 +1,19 @@
+uuid: 55416f0d-e223-4c89-9908-42fb1d9b93d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.map_ref_sheets
+id: asset.cfr.map_ref_sheets
+field_name: map_ref_sheets
+entity_type: asset
+bundle: cfr
+label: 'Map Ref. Sheets'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

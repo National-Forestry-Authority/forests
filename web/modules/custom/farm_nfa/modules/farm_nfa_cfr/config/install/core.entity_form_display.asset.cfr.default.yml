@@ -1,0 +1,345 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.field.asset.cfr.area
+    - field.field.asset.cfr.boundary_plan
+    - field.field.asset.cfr.current_purpose
+    - field.field.asset.cfr.description_of_plans_and_sheets
+    - field.field.asset.cfr.detailed_vegetation
+    - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.issues_concerns
+    - field.field.asset.cfr.key_resources
+    - field.field.asset.cfr.land_use_and_forest_condition
+    - field.field.asset.cfr.legal_category
+    - field.field.asset.cfr.map_ref_sheets
+    - field.field.asset.cfr.map_sheet_uploads
+    - field.field.asset.cfr.opportunities
+    - field.field.asset.cfr.original_management_objectives
+    - field.field.asset.cfr.predominant_vegetation
+    - field.field.asset.cfr.priority_actions
+    - field.field.asset.cfr.proposed_strategies
+    - field.field.asset.cfr.serial
+    - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.year_of_survey
+    - image.style.medium
+  module:
+    - farm_id_tag
+    - farm_map
+    - field_group
+    - file
+    - image
+    - inline_entity_form
+    - text
+third_party_settings:
+  field_group:
+    group_legal_details:
+      children:
+        - area
+        - est_year_gazetted
+        - year_of_survey
+        - boundary_plan
+        - serial
+        - map_ref_sheets
+        - map_sheet_uploads
+        - description_of_plans_and_sheets
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Legal details'
+    group_description:
+      children:
+        - size_location_desc
+        - legal_category
+        - original_management_objectives
+        - current_purpose
+        - predominant_vegetation
+        - detailed_vegetation
+        - land_use_and_forest_condition
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: true
+      label: Description
+    group_management_issues:
+      children:
+        - key_resources
+        - issues_concerns
+        - opportunities
+        - proposed_strategies
+        - priority_actions
+      parent_name: ''
+      weight: 5
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: true
+      label: 'Management issues'
+id: asset.cfr.default
+targetEntityType: asset
+bundle: cfr
+mode: default
+content:
+  area:
+    weight: 12
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  boundary_plan:
+    weight: 15
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  current_purpose:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  description_of_plans_and_sheets:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  detailed_vegetation:
+    weight: 19
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  est_year_gazetted:
+    weight: 13
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  file:
+    type: file_generic
+    settings:
+      progress_indicator: throbber
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  id_tag:
+    type: id_tag
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image_image
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  intrinsic_geometry:
+    type: farm_map_geofield
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  is_fixed:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 13
+    region: content
+    third_party_settings: {  }
+  is_location:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 12
+    region: content
+    third_party_settings: {  }
+  issues_concerns:
+    weight: 14
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  key_resources:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  land_use_and_forest_condition:
+    weight: 20
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  legal_category:
+    weight: 14
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  map_ref_sheets:
+    weight: 17
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  map_sheet_uploads:
+    weight: 18
+    settings:
+      form_mode: default
+      revision: false
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+    third_party_settings: {  }
+    type: inline_entity_form_simple
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 2
+    region: content
+    third_party_settings: {  }
+  opportunities:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  original_management_objectives:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  parent:
+    type: entity_reference_autocomplete
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  predominant_vegetation:
+    weight: 17
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  priority_actions:
+    weight: 17
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  proposed_strategies:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  serial:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  size_location_desc:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  status:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  year_of_survey:
+    weight: 14
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  data: true
+  geometry: true
+  location: true
+  uid: true

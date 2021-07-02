@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.dialog
+    - field.field.media.boundary_plan_maps.boundary_plan_number
+    - field.field.media.boundary_plan_maps.date
+    - field.field.media.boundary_plan_maps.field_media_image
+    - image.style.large
+    - media.type.boundary_plan_maps
+  module:
+    - datetime
+    - image
+id: media.boundary_plan_maps.dialog
+targetEntityType: media
+bundle: boundary_plan_maps
+mode: dialog
+content:
+  boundary_plan_number:
+    weight: 0
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  date:
+    weight: 2
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_media_image:
+    label: hidden
+    weight: 1
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,8 @@
+uuid: 1a320708-bfd6-49f2-8e68-241cd1361dad
+langcode: en
+status: true
+dependencies: {  }
+name: 'Predominant vegetation'
+vid: predominant_vegetation
+description: ''
+weight: 0

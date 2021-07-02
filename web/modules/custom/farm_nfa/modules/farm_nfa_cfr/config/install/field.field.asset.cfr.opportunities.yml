@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.opportunities
+id: asset.cfr.opportunities
+field_name: opportunities
+entity_type: asset
+bundle: cfr
+label: Opportunities
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

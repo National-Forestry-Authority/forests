@@ -1,0 +1,19 @@
+uuid: 96521c74-519c-46a1-940a-c3fb970f33c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.land_use_and_forest_condition
+field_name: land_use_and_forest_condition
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

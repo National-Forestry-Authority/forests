@@ -1,0 +1,51 @@
+uuid: bf26a4a2-c503-4d61-8b52-2eec582dbce3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.boundary_plan_maps.boundary_plan_number
+    - field.field.media.boundary_plan_maps.date
+    - field.field.media.boundary_plan_maps.field_media_image
+    - image.style.thumbnail
+    - media.type.boundary_plan_maps
+  module:
+    - datetime
+    - image
+id: media.boundary_plan_maps.default
+targetEntityType: media
+bundle: boundary_plan_maps
+mode: default
+content:
+  boundary_plan_number:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  date:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_media_image:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

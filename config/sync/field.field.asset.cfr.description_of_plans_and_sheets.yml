@@ -1,0 +1,21 @@
+uuid: 82f83f2c-3f6a-49e1-8ed1-f6a13af8da90
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.description_of_plans_and_sheets
+  module:
+    - text
+id: asset.cfr.description_of_plans_and_sheets
+field_name: description_of_plans_and_sheets
+entity_type: asset
+bundle: cfr
+label: 'Description of plans and sheets'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

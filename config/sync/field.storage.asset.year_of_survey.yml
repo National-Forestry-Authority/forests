@@ -1,0 +1,20 @@
+uuid: ee8e98b6-27a8-4295-85bc-0d1143c3a9a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.year_of_survey
+field_name: year_of_survey
+entity_type: asset
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

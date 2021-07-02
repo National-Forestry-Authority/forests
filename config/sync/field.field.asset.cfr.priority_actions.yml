@@ -1,0 +1,21 @@
+uuid: 36dc9138-e650-496e-b02a-1d9903480a7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.priority_actions
+  module:
+    - text
+id: asset.cfr.priority_actions
+field_name: priority_actions
+entity_type: asset
+bundle: cfr
+label: 'Priority actions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

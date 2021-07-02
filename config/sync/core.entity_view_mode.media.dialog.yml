@@ -1,0 +1,10 @@
+uuid: fd74a694-8837-4da6-8f40-70cc7629552a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dialog
+label: Dialog
+targetEntityType: media
+cache: true

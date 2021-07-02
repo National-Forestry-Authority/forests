@@ -1,0 +1,20 @@
+uuid: dd076a8e-8536-4206-8615-aa0b9321efc7
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.est_year_gazetted
+field_name: est_year_gazetted
+entity_type: asset
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

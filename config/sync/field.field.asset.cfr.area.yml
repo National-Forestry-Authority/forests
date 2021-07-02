@@ -1,0 +1,23 @@
+uuid: 274c2051-0235-4719-97a4-d5f1ff5df7b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.area
+id: asset.cfr.area
+field_name: area
+entity_type: asset
+bundle: cfr
+label: Area
+description: 'Area in  hectares'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,23 @@
+uuid: 490eabc5-8ef8-4ced-bafd-d48f8f778eb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.boundary_plan_number
+    - media.type.boundary_plan_maps
+id: media.boundary_plan_maps.boundary_plan_number
+field_name: boundary_plan_number
+entity_type: media
+bundle: boundary_plan_maps
+label: 'Boundary plan number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

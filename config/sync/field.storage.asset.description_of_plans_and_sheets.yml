@@ -1,0 +1,19 @@
+uuid: 7548e9f3-e9aa-4cbd-939d-c663d7006cc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.description_of_plans_and_sheets
+field_name: description_of_plans_and_sheets
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

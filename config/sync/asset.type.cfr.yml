@@ -1,0 +1,9 @@
+uuid: 3910349c-f063-4cf8-9ea9-17bce690492c
+langcode: en
+status: true
+dependencies: {  }
+id: cfr
+label: CFR
+description: ''
+workflow: asset_default
+new_revision: true

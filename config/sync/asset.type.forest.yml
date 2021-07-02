@@ -14,7 +14,7 @@ third_party_settings:
 _core:
   default_config_hash: kMqB0d3YvF7ArIEkxr30rgxpS2euVPR0lTxVyNPZ3oA
 id: forest
-label: 'Forest (CFR)'
+label: Forest
 description: ''
 workflow: asset_default
 new_revision: true

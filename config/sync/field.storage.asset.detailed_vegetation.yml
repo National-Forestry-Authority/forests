@@ -1,0 +1,19 @@
+uuid: 3374ddfc-cdc9-4a11-a757-c6fbc0e812d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.detailed_vegetation
+field_name: detailed_vegetation
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

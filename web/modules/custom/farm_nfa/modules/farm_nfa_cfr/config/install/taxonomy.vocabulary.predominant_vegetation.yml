@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Predominant vegetation'
+vid: predominant_vegetation
+description: ''
+weight: 0

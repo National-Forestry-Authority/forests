@@ -1,0 +1,19 @@
+uuid: 2eea3fa4-75dc-4435-b9d4-a5ddc076f6e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.original_management_objectives
+field_name: original_management_objectives
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
