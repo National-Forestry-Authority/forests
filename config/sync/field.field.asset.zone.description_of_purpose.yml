@@ -1,0 +1,21 @@
+uuid: 3013117b-deff-488c-90bd-3b29a0a0e71b
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.zone
+    - field.storage.asset.description_of_purpose
+  module:
+    - text
+id: asset.zone.description_of_purpose
+field_name: description_of_purpose
+entity_type: asset
+bundle: zone
+label: 'Description of purpose'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

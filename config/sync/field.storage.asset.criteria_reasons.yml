@@ -1,0 +1,19 @@
+uuid: 62a25986-3b48-4e6b-9ce3-3e4d6d7f8c73
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.criteria_reasons
+field_name: criteria_reasons
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

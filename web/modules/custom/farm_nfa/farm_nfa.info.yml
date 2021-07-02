@@ -7,6 +7,7 @@ dependencies:
   - drupal:datetime_range
   - drupal:file
   - drupal:image
+  - drupal:media
   - drupal:text
   - drupal:views
   - config_devel:config_devel

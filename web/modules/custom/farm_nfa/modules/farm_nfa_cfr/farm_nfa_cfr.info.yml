@@ -4,7 +4,6 @@ type: module
 package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
-  - drupal:media
   - entity_dialog_formatter:entity_dialog_formatter
   - farm_nfa:farm_nfa
   - field_group:field_group

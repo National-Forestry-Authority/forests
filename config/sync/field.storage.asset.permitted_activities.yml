@@ -1,0 +1,19 @@
+uuid: cd05cb20-4ce3-4178-94d9-4db7fc1350d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.permitted_activities
+field_name: permitted_activities
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

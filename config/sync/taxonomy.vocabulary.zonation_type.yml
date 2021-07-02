@@ -1,0 +1,8 @@
+uuid: eb8f9d6d-2369-4cd2-9471-82fe11ad0cfd
+langcode: en
+status: true
+dependencies: {  }
+name: 'Zonation type'
+vid: zonation_type
+description: ''
+weight: 0

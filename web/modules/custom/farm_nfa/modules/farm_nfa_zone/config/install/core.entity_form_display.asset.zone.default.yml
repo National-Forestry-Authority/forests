@@ -1,0 +1,136 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.zone
+    - field.field.asset.zone.criteria_reasons
+    - field.field.asset.zone.description_of_purpose
+    - field.field.asset.zone.permitted_activities
+    - field.field.asset.zone.zonation_type
+    - image.style.medium
+  module:
+    - farm_id_tag
+    - farm_map
+    - file
+    - image
+    - text
+id: asset.zone.default
+targetEntityType: asset
+bundle: zone
+mode: default
+content:
+  criteria_reasons:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  description_of_purpose:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  file:
+    type: file_generic
+    settings:
+      progress_indicator: throbber
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  id_tag:
+    type: id_tag
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image_image
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  intrinsic_geometry:
+    type: farm_map_geofield
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  is_fixed:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 13
+    region: content
+    third_party_settings: {  }
+  is_location:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 12
+    region: content
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  parent:
+    type: entity_reference_autocomplete
+    weight: 8
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  permitted_activities:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  status:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  zonation_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  data: true
+  geometry: true
+  location: true
+  uid: true

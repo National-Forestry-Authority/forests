@@ -1,0 +1,9 @@
+uuid: 2a708852-787d-4c16-9bb4-5da4aadf298a
+langcode: en
+status: true
+dependencies: {  }
+id: zone
+label: Zone
+description: ''
+workflow: asset_default
+new_revision: true

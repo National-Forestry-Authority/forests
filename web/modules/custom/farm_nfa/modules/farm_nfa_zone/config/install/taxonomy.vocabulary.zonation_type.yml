@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Zonation type'
+vid: zonation_type
+description: ''
+weight: 0

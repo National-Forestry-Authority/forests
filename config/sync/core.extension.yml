@@ -46,6 +46,7 @@ module:
   farm_migrate: 0
   farm_nfa: 0
   farm_nfa_cfr: 0
+  farm_nfa_zone: 0
   farm_observation: 0
   farm_quantity_standard: 0
   farm_role: 0

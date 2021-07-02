@@ -1,0 +1,27 @@
+name: NFA Zone
+description: Zone NFA submodule.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - asset.type.zone
+  - core.entity_form_display.asset.zone.default
+  - core.entity_view_display.asset.zone.default
+  - field.field.asset.zone.criteria_reasons
+  - field.field.asset.zone.description_of_purpose
+  - field.field.asset.zone.permitted_activities
+  - field.field.asset.zone.zonation_type
+  - field.storage.asset.criteria_reasons
+  - field.storage.asset.description_of_purpose
+  - field.storage.asset.permitted_activities
+  - field.storage.asset.zonation_type
+  - taxonomy.vocabulary.zonation_type
+
+default_content:
+  taxonomy_term:
+    - 7ea156a2-808e-4739-b3bf-60942af66dca
+    - 5d3dbfc6-1f84-4055-9521-7cb7c1721bd5
+    - 1dda4953-f0f1-4366-80b0-336d3afbb36f

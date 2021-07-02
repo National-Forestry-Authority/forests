@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.zone
+    - field.storage.asset.permitted_activities
+  module:
+    - text
+id: asset.zone.permitted_activities
+field_name: permitted_activities
+entity_type: asset
+bundle: zone
+label: 'Permitted activities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

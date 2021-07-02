@@ -1,0 +1,148 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.zone
+    - field.field.asset.zone.criteria_reasons
+    - field.field.asset.zone.description_of_purpose
+    - field.field.asset.zone.permitted_activities
+    - field.field.asset.zone.zonation_type
+    - image.style.large
+  module:
+    - farm_field
+    - farm_id_tag
+    - farm_map
+    - file
+    - image
+    - options
+    - text
+id: asset.zone.default
+targetEntityType: asset
+bundle: zone
+mode: default
+content:
+  criteria_reasons:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  description_of_purpose:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  flag:
+    label: inline
+    type: list_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  geometry:
+    label: inline
+    type: farm_map_geofield
+    settings: {  }
+    weight: 12
+    region: content
+    third_party_settings: {  }
+  id_tag:
+    label: inline
+    type: id_tag
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  is_fixed:
+    label: inline
+    type: hideable_boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    weight: 14
+    region: content
+    third_party_settings: {  }
+  is_location:
+    label: inline
+    type: hideable_boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    weight: 13
+    region: content
+    third_party_settings: {  }
+  location:
+    label: inline
+    type: entity_reference_label
+    weight: 11
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  notes:
+    label: above
+    type: text_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  parent:
+    label: inline
+    type: entity_reference_label
+    weight: 7
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  permitted_activities:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  status:
+    label: inline
+    type: list_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  zonation_type:
+    weight: 3
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  data: true
+  intrinsic_geometry: true
+  uid: true
