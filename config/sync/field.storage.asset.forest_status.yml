@@ -1,0 +1,19 @@
+uuid: 684a1495-13a8-4060-9c00-d6a752ad5e87
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - state_machine
+id: asset.forest_status
+field_name: forest_status
+entity_type: asset
+type: state
+settings: {  }
+module: state_machine
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

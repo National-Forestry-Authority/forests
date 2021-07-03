@@ -47,6 +47,7 @@ module:
   farm_nfa: 0
   farm_nfa_block_compartment: 0
   farm_nfa_cfr: 0
+  farm_nfa_forest: 0
   farm_nfa_zone: 0
   farm_observation: 0
   farm_quantity_standard: 0
@@ -77,6 +78,8 @@ module:
   image: 0
   inline_entity_form: 0
   inspire_tree: 0
+  jquery_ui: 0
+  jquery_ui_datepicker: 0
   jsonapi: 0
   jsonapi_extras: 0
   jsonapi_schema: 0
@@ -87,6 +90,7 @@ module:
   migrate_drupal: 0
   migrate_plus: 0
   migrate_tools: 0
+  month_year: 0
   options: 0
   path_alias: 0
   plan: 0

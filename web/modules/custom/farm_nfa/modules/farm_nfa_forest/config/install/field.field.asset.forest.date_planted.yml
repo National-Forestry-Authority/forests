@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.date_planted
+  module:
+    - datetime_range
+id: asset.forest.date_planted
+field_name: date_planted
+entity_type: asset
+bundle: forest
+label: 'Date planted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

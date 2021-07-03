@@ -1,0 +1,21 @@
+uuid: ed4c7a78-87b7-46a0-bd7b-30d01828e458
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.planned_prescriptions
+  module:
+    - month_year
+id: asset.forest.planned_prescriptions
+field_name: planned_prescriptions
+entity_type: asset
+bundle: forest
+label: 'Planned prescriptions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

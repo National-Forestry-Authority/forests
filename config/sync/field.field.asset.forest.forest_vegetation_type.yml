@@ -1,0 +1,36 @@
+uuid: 6e3f24b1-2803-4003-8126-9eb4b7d74f47
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.forest_vegetation_type
+    - taxonomy.vocabulary.forest_vegetation
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: asset.forest.forest_vegetation_type
+field_name: forest_vegetation_type
+entity_type: asset
+bundle: forest
+label: 'Forest vegetation type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      forest_vegetation: forest_vegetation
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,24 @@
+nfa_forest_asset:
+  id: nfa_forest_asset
+  group: asset
+  label: 'Forest'
+  states:
+    existing:
+      label: Existing
+    planned:
+      label: Planned
+    development:
+      label: Under development
+  transitions:
+    plan:
+      label: 'Plan'
+      from: [existing]
+      to: planned
+    under_development:
+      label: 'Under development'
+      from: [planned]
+      to: development
+    reset:
+      label: 'Reset'
+      from: [planned, development]
+      to: existing

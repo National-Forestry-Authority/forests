@@ -31,6 +31,20 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "lucianocosta/jquery.mtz.monthpicker",
+                "version": "master",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/lucianocosta/jquery.mtz.monthpicker.git",
+                    "type": "git",
+                    "reference":"master"
+
+                }
+            }
         }
     ],
     "require": {
@@ -41,8 +55,10 @@
         "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.1",
+        "drupal/month_year": "^2.0",
         "drupal/select_or_other": "1.x-dev#1812d2bcd0a0165308e8163d856261b72652b98e",
         "farmos/farmos": "2.0.0-alpha2",
+        "lucianocosta/jquery.mtz.monthpicker": "master",
         "oomphinc/composer-installers-extender": "^2"
     },
     "require-dev": {

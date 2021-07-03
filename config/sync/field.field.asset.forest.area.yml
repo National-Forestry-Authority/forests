@@ -1,0 +1,23 @@
+uuid: f08c2813-cbd2-43eb-b4d5-d93e27d1a3fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.area
+id: asset.forest.area
+field_name: area
+entity_type: asset
+bundle: forest
+label: Area
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

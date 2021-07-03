@@ -3,41 +3,73 @@ status: true
 dependencies:
   config:
     - asset.type.forest
-    - field.field.asset.forest.field_forest_area
-    - field.field.asset.forest.field_forest_boundary_plan
-    - field.field.asset.forest.field_forest_category
-    - field.field.asset.forest.field_forest_concerns
-    - field.field.asset.forest.field_forest_description
-    - field.field.asset.forest.field_forest_land_use_condition
-    - field.field.asset.forest.field_forest_legal_category
-    - field.field.asset.forest.field_forest_management_type
-    - field.field.asset.forest.field_forest_map_ref_no
-    - field.field.asset.forest.field_forest_mgmt_objectives
-    - field.field.asset.forest.field_forest_obstacles
-    - field.field.asset.forest.field_forest_opportunities
-    - field.field.asset.forest.field_forest_priority_actions
-    - field.field.asset.forest.field_forest_purpose
-    - field.field.asset.forest.field_forest_resources
-    - field.field.asset.forest.field_forest_serial_number_1994
-    - field.field.asset.forest.field_forest_strategies
-    - field.field.asset.forest.field_forest_vegetation
-    - field.field.asset.forest.field_forest_vegetation_detail
-    - field.field.asset.forest.field_forest_vision_local
-    - field.field.asset.forest.field_forest_vision_nfa
-    - field.field.asset.forest.field_forest_year_gazetted
-    - field.field.asset.forest.field_forest_year_survey
-    - field.field.asset.forest.field_forest_zonation
+    - field.field.asset.forest.area
+    - field.field.asset.forest.date_planted
+    - field.field.asset.forest.forest_status
+    - field.field.asset.forest.forest_vegetation_type
+    - field.field.asset.forest.planned_harvest_date
+    - field.field.asset.forest.planned_prescriptions
+    - field.field.asset.forest.purpose
+    - field.field.asset.forest.species
+    - field.field.asset.forest.stand_number
+    - field.field.asset.forest.variety
     - image.style.medium
   module:
+    - datetime_range
     - farm_map
+    - field_group
     - file
     - image
+    - month_year
     - text
+third_party_settings:
+  field_group:
+    group_natural_forest_stand:
+      children:
+        - forest_vegetation_type
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: true
+      label: 'Natural forest stand'
+    group_plantation_stand:
+      children:
+        - stand_number
+        - species
+        - variety
+        - date_planted
+        - area
+        - planned_harvest_date
+        - planned_prescriptions
+      parent_name: ''
+      weight: 5
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: true
+      label: 'Plantation stand'
 id: asset.forest.default
 targetEntityType: asset
 bundle: forest
 mode: default
 content:
+  area:
+    weight: 10
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   asset:
     type: entity_reference_autocomplete
     weight: 3
@@ -48,218 +80,54 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-  field_forest_area:
-    weight: 13
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_boundary_plan:
-    weight: 10
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_category:
-    weight: 6
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_concerns:
-    weight: 22
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_description:
-    weight: 15
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_land_use_condition:
-    weight: 19
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_legal_category:
-    weight: 16
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_management_type:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
-    region: content
-  field_forest_map_ref_no:
-    weight: 12
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_mgmt_objectives:
-    weight: 17
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_obstacles:
-    weight: 27
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_opportunities:
-    weight: 23
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_priority_actions:
-    weight: 28
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_purpose:
-    weight: 14
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_resources:
-    weight: 21
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_serial_number_1994:
-    weight: 11
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_strategies:
-    weight: 24
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_vegetation:
-    weight: 7
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_forest_vegetation_detail:
-    weight: 18
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_vision_local:
-    weight: 25
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_vision_nfa:
-    weight: 26
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_forest_year_gazetted:
-    weight: 8
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_year_survey:
+  date_planted:
     weight: 9
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_forest_zonation:
-    weight: 20
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
+    type: daterange_default
     region: content
   file:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 32
+    weight: 19
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 2
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
+  forest_status:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   forest_type:
     type: options_buttons
-    weight: 4
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
+  forest_vegetation_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   image:
     type: image_image
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 31
+    weight: 18
     region: content
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
-    weight: 3
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -276,12 +144,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 29
+    weight: 16
     region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -289,12 +157,56 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  planned_harvest_date:
+    weight: 11
+    settings:
+      min_year: 2021
+      adjustment: 25
+      disabled_months: {  }
+    third_party_settings: {  }
+    type: month_year_widget
+    region: content
+  planned_prescriptions:
+    weight: 12
+    settings:
+      min_year: 2021
+      adjustment: 25
+      disabled_months: {  }
+    third_party_settings: {  }
+    type: month_year_widget
+    region: content
+  purpose:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  species:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  stand_number:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   status:
     type: options_select
-    weight: 1
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
+  variety:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   created: true
   data: true

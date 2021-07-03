@@ -1,0 +1,21 @@
+uuid: 2c133b18-466b-484d-b3b3-d1ac1e21ca76
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.planned_harvest_date
+  module:
+    - month_year
+id: asset.forest.planned_harvest_date
+field_name: planned_harvest_date
+entity_type: asset
+bundle: forest
+label: 'Planned harvest date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

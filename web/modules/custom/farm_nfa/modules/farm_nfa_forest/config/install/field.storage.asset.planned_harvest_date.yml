@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - month_year
+id: asset.planned_harvest_date
+field_name: planned_harvest_date
+entity_type: asset
+type: month_year
+settings: {  }
+module: month_year
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

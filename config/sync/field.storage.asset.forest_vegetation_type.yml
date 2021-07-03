@@ -1,0 +1,20 @@
+uuid: c54f6095-6955-4b24-a1de-d87c1fb6dc1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - taxonomy
+id: asset.forest_vegetation_type
+field_name: forest_vegetation_type
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

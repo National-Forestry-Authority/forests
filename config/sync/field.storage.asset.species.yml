@@ -1,0 +1,20 @@
+uuid: 4651a05e-9942-4c62-a0eb-9a40d76b13cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - taxonomy
+id: asset.species
+field_name: species
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

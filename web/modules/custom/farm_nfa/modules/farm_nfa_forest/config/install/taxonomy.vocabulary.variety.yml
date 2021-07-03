@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Variety
+vid: variety
+description: ''
+weight: 0

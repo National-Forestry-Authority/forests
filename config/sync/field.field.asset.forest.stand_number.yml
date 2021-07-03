@@ -1,0 +1,19 @@
+uuid: d1b9076e-1220-4e86-a1f1-27e63858368a
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.stand_number
+id: asset.forest.stand_number
+field_name: stand_number
+entity_type: asset
+bundle: forest
+label: 'Stand number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
