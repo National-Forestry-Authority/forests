@@ -1,0 +1,19 @@
+uuid: 15245948-a3cb-4a94-b343-6e4b7d5ef190
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.block
+    - field.storage.asset.cfr_name
+id: asset.block.cfr_name
+field_name: cfr_name
+entity_type: asset
+bundle: block
+label: 'CFR name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

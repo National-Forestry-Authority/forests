@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.block
+    - field.storage.asset.block_number
+id: asset.block.block_number
+field_name: block_number
+entity_type: asset
+bundle: block
+label: 'Block number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

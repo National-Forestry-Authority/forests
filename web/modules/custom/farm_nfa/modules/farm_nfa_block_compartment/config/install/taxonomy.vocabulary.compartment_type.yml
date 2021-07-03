@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Compartment type'
+vid: compartment_type
+description: ''
+weight: 0

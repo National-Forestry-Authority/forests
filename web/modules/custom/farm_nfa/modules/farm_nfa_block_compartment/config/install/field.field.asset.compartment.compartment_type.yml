@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.compartment
+    - field.storage.asset.compartment_type
+    - taxonomy.vocabulary.compartment_type
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: asset.compartment.compartment_type
+field_name: compartment_type
+entity_type: asset
+bundle: compartment
+label: 'Compartment type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      compartment_type: compartment_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

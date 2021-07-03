@@ -1,0 +1,8 @@
+uuid: dacba6ec-9b0b-4e9d-8add-6615670ce176
+langcode: en
+status: true
+dependencies: {  }
+name: 'Compartment type'
+vid: compartment_type
+description: ''
+weight: 0

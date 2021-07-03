@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.block
+    - field.storage.asset.intended_purpose
+  module:
+    - text
+id: asset.block.intended_purpose
+field_name: intended_purpose
+entity_type: asset
+bundle: block
+label: 'Intended purpose / reason created'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,20 @@
+uuid: b9f4bc79-ea60-41e4-8c64-c5bce3699914
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - user
+id: asset.kml_created_by
+field_name: kml_created_by
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

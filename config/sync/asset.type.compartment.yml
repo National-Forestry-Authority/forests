@@ -1,0 +1,9 @@
+uuid: 8cb31f95-6ddd-493a-a99e-692cb3d5bc62
+langcode: en
+status: true
+dependencies: {  }
+id: compartment
+label: Compartment
+description: ''
+workflow: asset_default
+new_revision: true

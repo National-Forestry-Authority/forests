@@ -1,0 +1,19 @@
+uuid: 57749e2f-2919-46c4-a53a-fa1d3026cbfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.block
+    - field.storage.asset.compartment_number
+id: asset.block.compartment_number
+field_name: compartment_number
+entity_type: asset
+bundle: block
+label: 'Compartment number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

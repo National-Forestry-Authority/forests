@@ -45,6 +45,7 @@ module:
   farm_material: 0
   farm_migrate: 0
   farm_nfa: 0
+  farm_nfa_block_compartment: 0
   farm_nfa_cfr: 0
   farm_nfa_zone: 0
   farm_observation: 0

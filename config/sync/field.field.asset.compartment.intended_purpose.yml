@@ -1,0 +1,21 @@
+uuid: fb013e5e-a06e-4c84-bb12-d6f3ff5113bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.compartment
+    - field.storage.asset.intended_purpose
+  module:
+    - text
+id: asset.compartment.intended_purpose
+field_name: intended_purpose
+entity_type: asset
+bundle: compartment
+label: 'Intended purpose / reason created'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

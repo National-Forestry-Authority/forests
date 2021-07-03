@@ -1,0 +1,20 @@
+uuid: 2bd754e2-8db6-4437-8c8f-7171b36af33a
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - taxonomy
+id: asset.compartment_type
+field_name: compartment_type
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

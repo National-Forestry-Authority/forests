@@ -1,0 +1,37 @@
+name: NFA Block & Compartment
+description: Compartment and Block NFA submodule.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - asset.type.block
+  - asset.type.compartment
+  - core.entity_form_display.asset.block.default
+  - core.entity_form_display.asset.compartment.default
+  - core.entity_view_display.asset.block.default
+  - core.entity_view_display.asset.compartment.default
+  - field.field.asset.block.block_number
+  - field.field.asset.block.cfr_name
+  - field.field.asset.block.compartment_number
+  - field.field.asset.block.intended_purpose
+  - field.field.asset.block.kml_created_by
+  - field.field.asset.compartment.cfr_name
+  - field.field.asset.compartment.compartment_number
+  - field.field.asset.compartment.compartment_type
+  - field.field.asset.compartment.intended_purpose
+  - field.field.asset.compartment.kml_created_by
+  - field.storage.asset.block_number
+  - field.storage.asset.cfr_name
+  - field.storage.asset.compartment_number
+  - field.storage.asset.compartment_type
+  - field.storage.asset.intended_purpose
+  - field.storage.asset.kml_created_by
+  - taxonomy.vocabulary.compartment_type
+
+default_content:
+  taxonomy_term:
+    - dcdc96bd-4a82-4bca-bf12-cc38f97eb53a
+    - 2ea5cf00-b2ea-4cb2-8f09-7e68477a92b1

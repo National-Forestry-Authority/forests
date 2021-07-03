@@ -1,0 +1,167 @@
+uuid: 846cb28f-5b28-4c17-a395-cdc1d100cee8
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.block
+    - field.field.asset.block.block_number
+    - field.field.asset.block.cfr_name
+    - field.field.asset.block.compartment_number
+    - field.field.asset.block.intended_purpose
+    - field.field.asset.block.kml_created_by
+    - image.style.large
+  module:
+    - farm_field
+    - farm_id_tag
+    - farm_map
+    - file
+    - image
+    - options
+    - text
+id: asset.block.default
+targetEntityType: asset
+bundle: block
+mode: default
+content:
+  block_number:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  cfr_name:
+    weight: 1
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  compartment_number:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    weight: 12
+    region: content
+    third_party_settings: {  }
+  flag:
+    label: inline
+    type: list_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  geometry:
+    label: inline
+    type: farm_map_geofield
+    settings: {  }
+    weight: 14
+    region: content
+    third_party_settings: {  }
+  id_tag:
+    label: inline
+    type: id_tag
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  intended_purpose:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  is_fixed:
+    label: inline
+    type: hideable_boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  is_location:
+    label: inline
+    type: hideable_boolean
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    weight: 15
+    region: content
+    third_party_settings: {  }
+  kml_created_by:
+    weight: 4
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  location:
+    label: inline
+    type: entity_reference_label
+    weight: 13
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  notes:
+    label: inline
+    type: text_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  parent:
+    label: inline
+    type: entity_reference_label
+    weight: 9
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  status:
+    label: inline
+    type: list_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden:
+  data: true
+  intrinsic_geometry: true
