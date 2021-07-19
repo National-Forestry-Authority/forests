@@ -163,7 +163,7 @@ content:
     settings:
       min_year: 2021
       adjustment: 25
-      disabled_months: []
+      disabled_months: {  }
     third_party_settings: {  }
     type: month_year_widget
     region: content
@@ -172,7 +172,7 @@ content:
     settings:
       min_year: 2021
       adjustment: 25
-      disabled_months: []
+      disabled_months: {  }
     third_party_settings: {  }
     type: month_year_widget
     region: content

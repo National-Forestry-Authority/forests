@@ -1,8 +1,0 @@
-uuid: 5c8ecaaf-0936-4167-8c49-ade8523d5a8e
-langcode: en
-status: true
-dependencies: {  }
-name: 'Forest category'
-vid: forest_category
-description: ''
-weight: 0
