@@ -5,8 +5,9 @@ dependencies:
     module:
       - farm_migrate
       - farm_nfa
-id: farm_migrate_area_nfa_forest
-label: 'NFA Forest assets (from areas)'
+      - farm_nfa_block_compartment
+id: farm_migrate_area_nfa_compartment
+label: 'NFA Compartment assets (from areas)'
 migration_group: farm_migrate_area
 migration_tags:
   - 'Drupal 7'
@@ -17,22 +18,14 @@ cck_plugin_method: null
 source:
   plugin: d7_farm_area
   area_type:
-    - nursery
+    - compartment
 destination:
   plugin: 'entity:asset'
 process:
   # Hard-code the bundle.
   type:
     plugin: default_value
-    default_value: forest
-  forest_type:
-    plugin: default_value
-    default_value: plantation
-  field_forest_management_type:
-    plugin: static_map
-    source: field_farm_area_type
-    map:
-      nursery: nursery
+    default_value: compartment
 migration_dependencies:
   required: {  }
   optional: {  }
