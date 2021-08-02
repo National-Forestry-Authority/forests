@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_block_compartment
+id: asset_block
+color: purple
+conditions:
+  asset_type:
+    - block

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_cfr
+id: asset_cfr
+color: green
+conditions:
+  asset_type:
+    - cfr
