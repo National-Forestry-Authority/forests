@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: natural
+label: 'Forest plantation'
+description: ''
+workflow: plan_default
+new_revision: true
