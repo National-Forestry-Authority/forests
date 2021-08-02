@@ -6,3 +6,7 @@ label: CFR
 description: ''
 workflow: asset_default
 new_revision: true
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
