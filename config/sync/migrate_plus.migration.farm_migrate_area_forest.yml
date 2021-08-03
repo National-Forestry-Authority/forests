@@ -27,8 +27,12 @@ process:
     plugin: default_value
     default_value: forest
   forest_type:
-    plugin: get
+    plugin: static_map
     source: field_farm_area_type
+    map:
+      stand: natural
+      plantation: plantation
+    default_value: natural
 destination:
   plugin: 'entity:asset'
 migration_dependencies:

@@ -4,7 +4,7 @@ status: true
 dependencies:
   enforced:
     module:
-      - farm_forest
+      - farm_forest_plan
       - farm_migrate
 _core:
   default_config_hash: gLpQmPMFgFt4J5t5OYhzodnUs4xK1GuDqmZNzYywBOU

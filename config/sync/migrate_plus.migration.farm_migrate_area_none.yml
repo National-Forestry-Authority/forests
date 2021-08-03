@@ -26,9 +26,6 @@ process:
   land_type:
     plugin: default_value
     default_value: other
-  status:
-    plugin: default_value
-    default_value: archived
   archived:
     plugin: request_time
 destination:

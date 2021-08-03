@@ -22,10 +22,6 @@ source:
   area_type:
     - range
     - sector
-    - cfr_natural
-    - cfr_plantation
-    - cfr_urban
-    - zone
     - other
 process:
   type:
@@ -37,10 +33,6 @@ process:
     map:
       range: range
       sector: sector
-      cfr_natural: cfr
-      cfr_plantation: cfr
-      cfr_urban: cfr
-      zone: zone
       other: other
 destination:
   plugin: 'entity:asset'

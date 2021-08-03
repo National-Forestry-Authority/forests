@@ -1,4 +1,4 @@
-uuid: 5ffc016f-fc84-4839-b471-086663ad3403
+uuid: 0d0ee6b3-46d5-49b7-ba60-1b18313bdec0
 langcode: en
 status: true
 dependencies:
@@ -6,9 +6,8 @@ dependencies:
     module:
       - farm_migrate
       - farm_nfa
-_core:
-  default_config_hash: iNjJ9fQ9wSSFGzY9WjLr0k3q1SSkNx-bucllyjWFXdM
-id: farm_migrate_area_nfa_forest
+      - farm_nfa_cfr
+id: farm_migrate_area_nfa_cfr
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -16,23 +15,17 @@ migration_tags:
   - 'Drupal 7'
   - 'farmOS 1.x'
 migration_group: farm_migrate_area
-label: 'NFA Forest assets (from areas)'
+label: 'NFA CFR assets (from areas)'
 source:
   plugin: d7_farm_area
   area_type:
-    - nursery
+    - cfr_natural
+    - cfr_plantation
+    - cfr_urban
 process:
   type:
     plugin: default_value
-    default_value: forest
-  forest_type:
-    plugin: default_value
-    default_value: plantation
-  field_forest_management_type:
-    plugin: static_map
-    source: field_farm_area_type
-    map:
-      nursery: nursery
+    default_value: cfr
 destination:
   plugin: 'entity:asset'
 migration_dependencies:
