@@ -2552,7 +2552,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/farmOS/farm_forest.git",
-                "reference": "7c089b4d1a1e1d72f507a3ca3cbb27cd71d1d211"
+                "reference": "c7caa8e405d2b81daa199c6972ba804da171dfeb"
             },
             "type": "drupal-module",
             "license": [
@@ -2571,7 +2571,7 @@
                 "forum": "https://farmOS.discourse.group",
                 "chat": "https://matrix.to/#/#farmOS:matrix.org"
             },
-            "time": "2021-06-21T14:13:02+00:00"
+            "time": "2021-08-02T15:40:53+00:00"
         },
         {
             "name": "drupal/field_group",
