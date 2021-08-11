@@ -4,7 +4,7 @@ entity.plan.budget:
     _title: 'Budget'
     _form: 'Drupal\farm_nfa\Form\ForestPlanBudgetForm'
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -20,7 +20,7 @@ entity.plan.inventory:
     log_types:
       - observation
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -37,7 +37,7 @@ entity.plan.harvest:
     log_types:
       - harvest
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -55,7 +55,7 @@ entity.plan.management:
       - activity
       - input
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -70,7 +70,7 @@ farm_nfa.plan.add_task:
     _title: 'Add Task'
     _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -85,7 +85,7 @@ farm_nfa.plan.add_inventory:
     _title: 'Record an inventory observation'
     _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -100,7 +100,7 @@ farm_nfa.plan.add_harvest:
     _title: 'Record a harvest'
     _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
   requirements:
-    _entity_bundles: 'plan:forest'
+    _entity_bundles: 'plan:forest|plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+

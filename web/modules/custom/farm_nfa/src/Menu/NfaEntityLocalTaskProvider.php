@@ -6,7 +6,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\entity\Menu\DefaultEntityLocalTaskProvider;
 
 /**
- * Provides a set of tasks to view, edit and duplicate an entity.
+ * Provides a set of tasks for plan logs.
  */
 class NfaEntityLocalTaskProvider extends DefaultEntityLocalTaskProvider {
 

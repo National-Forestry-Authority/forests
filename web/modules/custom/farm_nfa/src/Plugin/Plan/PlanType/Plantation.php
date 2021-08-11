@@ -34,7 +34,7 @@ class Plantation extends FarmPlanType {
         'view' => -10,
       ],
     ];
-    $fields['cfr'] = $this->farmFieldFactory->bundleFieldDefinition($options);
+    $fields['asset'] = $this->farmFieldFactory->bundleFieldDefinition($options);
 
     return $fields;
   }
