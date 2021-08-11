@@ -55,8 +55,9 @@
         "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.1",
+        "drupal/migrate_source_csv": "^3.4",
         "drupal/month_year": "^2.0",
-        "drupal/select_or_other": "1.x-dev#1812d2bcd0a0165308e8163d856261b72652b98e",
+        "drupal/select_or_other": "^4.0",
         "farmos/farmos": "2.0.0-alpha2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "oomphinc/composer-installers-extender": "^2"
@@ -103,6 +104,9 @@
             },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "https://www.drupal.org/files/issues/2020-04-14/allow_scalar_values-2667748-D8-41.patch"
+            },
+            "drupal/select_or_other": {
+                "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             }
         }
     }
