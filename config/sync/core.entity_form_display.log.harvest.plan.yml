@@ -11,6 +11,7 @@ dependencies:
     - field.field.log.harvest.working_circle
     - log.type.harvest
   module:
+    - farm_map
     - inline_entity_form
     - text
 id: log.harvest.plan
@@ -26,6 +27,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  geometry:
+    type: farm_map_geofield
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   harvest_type:
     type: options_select
     weight: 2
@@ -37,7 +44,7 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   quantity:
@@ -59,7 +66,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -87,7 +94,7 @@ content:
     third_party_settings: {  }
   working_circle:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -99,7 +106,6 @@ hidden:
   equipment: true
   file: true
   flag: true
-  geometry: true
   image: true
   is_movement: true
   location: true

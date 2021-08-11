@@ -1,0 +1,12 @@
+uuid: ec86317f-c992-4b22-b03e-22ceecf86a35
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: plantation
+label: 'Forest plantation'
+description: ''
+workflow: plan_default
+new_revision: true

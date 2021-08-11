@@ -272,7 +272,7 @@
   display: block;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", sans-serif;
 }
-#drupal-off-canvas label {
+#drupal-off-canvas label, #drupal-off-canvas h4, #drupal-off-canvas summary {
   color: #ddd;
   font-family: inherit;
   font-size: 12px;
@@ -287,6 +287,7 @@
 }
 #drupal-off-canvas .description,
 #drupal-off-canvas .form-item .description,
+#drupal-off-canvas .claro-details__description,
 #drupal-off-canvas .details-description {
   margin-top: 5px;
   color: #ddd;

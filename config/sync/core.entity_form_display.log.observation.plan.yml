@@ -9,6 +9,7 @@ dependencies:
     - field.field.log.observation.working_circle
     - log.type.observation
   module:
+    - farm_map
     - inline_entity_form
     - text
 id: log.observation.plan
@@ -30,12 +31,18 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  geometry:
+    type: farm_map_geofield
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   notes:
     type: text_textarea
     settings:
       rows: 5
       placeholder: ''
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   quantity:
@@ -57,7 +64,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -68,7 +75,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   working_circle:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -81,7 +88,6 @@ hidden:
   equipment: true
   file: true
   flag: true
-  geometry: true
   image: true
   is_movement: true
   location: true

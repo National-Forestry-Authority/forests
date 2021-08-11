@@ -1,0 +1,12 @@
+uuid: c6389909-8566-44a2-81f5-1cf0f6293b90
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: natural
+label: 'Natural forest'
+description: ''
+workflow: plan_default
+new_revision: true
