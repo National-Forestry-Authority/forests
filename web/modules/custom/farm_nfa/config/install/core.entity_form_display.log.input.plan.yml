@@ -1,3 +1,4 @@
+uuid: 790cfdc8-3b35-40be-8e81-0ed753bfc4a6
 langcode: en
 status: true
 dependencies:
@@ -6,12 +7,19 @@ dependencies:
     - field.field.log.input.working_circle
     - log.type.input
   module:
+    - farm_map
     - text
 id: log.input.plan
 targetEntityType: log
 bundle: input
 mode: plan
 content:
+  geometry:
+    type: farm_map_geofield
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -25,12 +33,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 2
+    weight: 3
     region: content
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -41,7 +49,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   working_circle:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -54,7 +62,6 @@ hidden:
   equipment: true
   file: true
   flag: true
-  geometry: true
   image: true
   is_movement: true
   location: true
