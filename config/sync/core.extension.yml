@@ -16,6 +16,8 @@ module:
   datetime_range: 0
   dblog: 0
   default_content: 0
+  devel: 0
+  devel_entity_updates: 0
   entity: 0
   entity_browser: 0
   entity_dialog_formatter: 0
