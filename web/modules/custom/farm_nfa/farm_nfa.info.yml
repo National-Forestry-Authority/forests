@@ -14,6 +14,7 @@ dependencies:
   - config_rewrite:config_rewrite
   - default_content:default_content
   - farm:asset
+  - farm:farm_entity
   - farm:farm_land
   - farm_forest:farm_forest
   - farm:plan

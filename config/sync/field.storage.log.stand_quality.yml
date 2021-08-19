@@ -1,0 +1,19 @@
+uuid: fbd24639-1ef8-4973-8b8e-c442270dbe42
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - text
+id: log.stand_quality
+field_name: stand_quality
+entity_type: log
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

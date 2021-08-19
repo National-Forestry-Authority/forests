@@ -1,0 +1,21 @@
+uuid: c4d1dc35-0e5a-4377-b10b-bf42b118b164
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.inventory_date
+    - log.type.plantation_inventory
+  module:
+    - month_year
+id: log.plantation_inventory.inventory_date
+field_name: inventory_date
+entity_type: log
+bundle: plantation_inventory
+label: 'Inventory date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

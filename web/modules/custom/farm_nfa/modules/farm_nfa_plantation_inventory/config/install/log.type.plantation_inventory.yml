@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_plantation_inventory
+id: plantation_inventory
+label: 'Plantation inventory'
+description: ''
+name_pattern: 'Plantation inventory log [log:id]'
+workflow: log_default
+new_revision: true

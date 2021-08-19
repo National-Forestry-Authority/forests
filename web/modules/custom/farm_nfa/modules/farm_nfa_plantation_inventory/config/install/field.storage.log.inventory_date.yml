@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - month_year
+id: log.inventory_date
+field_name: inventory_date
+entity_type: log
+type: month_year
+settings: {  }
+module: month_year
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,30 @@
+name: Plantation inventory log
+description: Adds an Plantation inventory log type.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - drupal:user
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - log.type.plantation_inventory
+  - field.storage.log.compartment
+  - field.storage.log.inventory_date
+  - field.storage.log.volume
+  - field.storage.log.mai
+  - field.storage.log.cai
+  - field.storage.log.stand_quality
+  - field.storage.log.inventory_methodology
+  - field.storage.log.inventory_officer_name
+  - field.field.log.plantation_inventory.compartment
+  - field.field.log.plantation_inventory.inventory_date
+  - field.field.log.plantation_inventory.volume
+  - field.field.log.plantation_inventory.mai
+  - field.field.log.plantation_inventory.cai
+  - field.field.log.plantation_inventory.working_circle
+  - field.field.log.plantation_inventory.stand_quality
+  - field.field.log.plantation_inventory.inventory_methodology
+  - field.field.log.plantation_inventory.inventory_officer_name
+  - core.entity_view_display.log.plantation_inventory.default
+  - core.entity_form_display.log.plantation_inventory.default

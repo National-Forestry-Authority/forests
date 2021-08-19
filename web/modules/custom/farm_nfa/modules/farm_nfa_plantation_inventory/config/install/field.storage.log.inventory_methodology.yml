@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - text
+id: log.inventory_methodology
+field_name: inventory_methodology
+entity_type: log
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

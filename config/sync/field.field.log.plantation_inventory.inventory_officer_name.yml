@@ -1,0 +1,36 @@
+uuid: 9a6f93e7-63a5-443d-baba-221a6663bac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.inventory_officer_name
+    - log.type.plantation_inventory
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: log.plantation_inventory.inventory_officer_name
+field_name: inventory_officer_name
+entity_type: log
+bundle: plantation_inventory
+label: 'Inventory officer name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

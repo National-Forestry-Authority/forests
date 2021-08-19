@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.compartment
+    - field.storage.log.compartment
+    - log.type.plantation_inventory
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: log.plantation_inventory.compartment
+field_name: compartment
+entity_type: log
+bundle: plantation_inventory
+label: Compartment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:asset'
+  handler_settings:
+    target_bundles:
+      compartment: compartment
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

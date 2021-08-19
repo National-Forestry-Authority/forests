@@ -1,0 +1,20 @@
+uuid: 154f13e6-6ea2-48f5-b508-5c6be82eef01
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - quantity
+id: log.mai
+field_name: mai
+entity_type: log
+type: entity_reference
+settings:
+  target_type: quantity
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

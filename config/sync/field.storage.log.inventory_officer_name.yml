@@ -1,0 +1,20 @@
+uuid: f26705c7-c46c-4ac2-936e-d31edc68d70b
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - user
+id: log.inventory_officer_name
+field_name: inventory_officer_name
+entity_type: log
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
