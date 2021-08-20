@@ -1,0 +1,19 @@
+uuid: 2ffac89e-d5ad-42cd-8d8b-927783d8e001
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - text
+id: log.silvicultural_recommendations
+field_name: silvicultural_recommendations
+entity_type: log
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

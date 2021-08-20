@@ -2,11 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.log.plantation_inventory.avg_height
     - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
     - field.field.log.plantation_inventory.mai
+    - field.field.log.plantation_inventory.mean_diameter
+    - field.field.log.plantation_inventory.silvicilutural_score
+    - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
     - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
@@ -34,6 +38,17 @@ content:
       link: true
     region: content
     third_party_settings: {  }
+  avg_height:
+    weight: 106
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
   cai:
     weight: 102
     label: above
@@ -131,6 +146,17 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  mean_diameter:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
   notes:
     label: inline
     type: text_default
@@ -155,6 +181,22 @@ content:
     weight: 0
     region: content
     third_party_settings: {  }
+  silvicilutural_score:
+    weight: 110
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  silvicultural_recommendations:
+    weight: 109
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   stand_quality:
     weight: 104
     label: above

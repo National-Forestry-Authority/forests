@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.silvicilutural_score
+    - log.type.plantation_inventory
+id: log.plantation_inventory.silvicilutural_score
+field_name: silvicilutural_score
+entity_type: log
+bundle: plantation_inventory
+label: 'Silvicilutural score'
+description: 'Enter a value from 1 to 5'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 5
+  prefix: ''
+  suffix: ''
+field_type: integer

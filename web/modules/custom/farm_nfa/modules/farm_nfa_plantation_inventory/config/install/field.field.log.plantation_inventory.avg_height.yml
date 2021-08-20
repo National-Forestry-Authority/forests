@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.avg_height
+    - log.type.plantation_inventory
+id: log.plantation_inventory.avg_height
+field_name: avg_height
+entity_type: log
+bundle: plantation_inventory
+label: 'Average height'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

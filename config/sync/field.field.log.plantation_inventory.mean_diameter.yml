@@ -1,0 +1,23 @@
+uuid: 729c27ff-9ad0-4ac9-8c23-7efaddad8aba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.mean_diameter
+    - log.type.plantation_inventory
+id: log.plantation_inventory.mean_diameter
+field_name: mean_diameter
+entity_type: log
+bundle: plantation_inventory
+label: 'Mean diameter'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

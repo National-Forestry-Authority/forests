@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+id: log.mean_diameter
+field_name: mean_diameter
+entity_type: log
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

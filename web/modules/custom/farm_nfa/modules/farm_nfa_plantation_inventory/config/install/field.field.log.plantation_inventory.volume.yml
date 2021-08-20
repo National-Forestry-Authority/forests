@@ -16,7 +16,7 @@ id: log.plantation_inventory.volume
 field_name: volume
 entity_type: log
 bundle: plantation_inventory
-label: Volume
+label: 'Computed stand volume'
 description: ''
 required: false
 translatable: false

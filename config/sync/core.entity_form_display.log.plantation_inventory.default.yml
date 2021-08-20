@@ -3,11 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.log.plantation_inventory.avg_height
     - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
     - field.field.log.plantation_inventory.mai
+    - field.field.log.plantation_inventory.mean_diameter
+    - field.field.log.plantation_inventory.silvicilutural_score
+    - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
     - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
@@ -21,6 +25,13 @@ targetEntityType: log
 bundle: plantation_inventory
 mode: default
 content:
+  avg_height:
+    weight: 27
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   cai:
     weight: 7
     settings:
@@ -99,6 +110,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  mean_diameter:
+    weight: 28
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   name:
     type: string_textfield
     weight: 0
@@ -125,6 +143,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  silvicilutural_score:
+    weight: 31
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  silvicultural_recommendations:
+    weight: 30
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   stand_quality:
     weight: 8
     settings:

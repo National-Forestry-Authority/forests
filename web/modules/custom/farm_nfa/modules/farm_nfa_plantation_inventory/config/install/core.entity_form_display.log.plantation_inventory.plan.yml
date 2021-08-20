@@ -3,11 +3,15 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.log.plan
+    - field.field.log.plantation_inventory.avg_height
     - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
     - field.field.log.plantation_inventory.mai
+    - field.field.log.plantation_inventory.mean_diameter
+    - field.field.log.plantation_inventory.silvicilutural_score
+    - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
     - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
@@ -24,6 +28,13 @@ targetEntityType: log
 bundle: plantation_inventory
 mode: plan
 content:
+  avg_height:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   cai:
     weight: 7
     settings:
@@ -48,18 +59,18 @@ content:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 13
+    weight: 17
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 15
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 10
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -68,7 +79,7 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 12
+    weight: 16
     region: content
     third_party_settings: {  }
   inventory_date:
@@ -99,7 +110,7 @@ content:
     region: content
   location:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 15
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -117,6 +128,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  mean_diameter:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -130,7 +148,7 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 14
+    weight: 18
     region: content
     third_party_settings: {  }
   owner:
@@ -143,6 +161,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  silvicilutural_score:
+    type: number
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  silvicultural_recommendations:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   stand_quality:
     weight: 8
     settings:
@@ -153,13 +186,13 @@ content:
     region: content
   status:
     type: options_select
-    weight: 16
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 9
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }

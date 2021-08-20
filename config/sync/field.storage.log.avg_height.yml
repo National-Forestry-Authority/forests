@@ -1,0 +1,20 @@
+uuid: b070bb97-53f8-4b93-bc8d-d8b723088cd3
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+id: log.avg_height
+field_name: avg_height
+entity_type: log
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

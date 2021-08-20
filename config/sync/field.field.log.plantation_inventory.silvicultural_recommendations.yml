@@ -1,0 +1,21 @@
+uuid: 4b78d605-b3f6-4372-8da5-e84f4bdc4fa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.silvicultural_recommendations
+    - log.type.plantation_inventory
+  module:
+    - text
+id: log.plantation_inventory.silvicultural_recommendations
+field_name: silvicultural_recommendations
+entity_type: log
+bundle: plantation_inventory
+label: 'Silvicultural recommendations'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -16,6 +16,10 @@ config_devel:
   - field.storage.log.cai
   - field.storage.log.stand_quality
   - field.storage.log.inventory_methodology
+  - field.storage.log.silvicilutural_score
+  - field.storage.log.mean_diameter
+  - field.storage.log.avg_height
+  - field.storage.log.silvicultural_recommendations
   - field.field.log.plantation_inventory.compartment
   - field.field.log.plantation_inventory.inventory_date
   - field.field.log.plantation_inventory.volume
@@ -24,6 +28,10 @@ config_devel:
   - field.field.log.plantation_inventory.working_circle
   - field.field.log.plantation_inventory.stand_quality
   - field.field.log.plantation_inventory.inventory_methodology
+  - field.field.log.plantation_inventory.silvicilutural_score
+  - field.field.log.plantation_inventory.mean_diameter
+  - field.field.log.plantation_inventory.avg_height
+  - field.field.log.plantation_inventory.silvicultural_recommendations
   - core.entity_view_display.log.plantation_inventory.default
   - core.entity_form_display.log.plantation_inventory.default
   - core.entity_form_display.log.plantation_inventory.plan
