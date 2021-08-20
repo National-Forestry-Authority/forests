@@ -12,6 +12,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\log\Entity\Log;
 use Drupal\plan\Entity\Plan;
+use Drupal\plan\Entity\PlanInterface;
 use Drupal\quantity\Entity\QuantityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,6 +68,13 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   /**
    * {@inheritdoc}
    */
+  public function getLogType($plan = NULL) : string {
+    return is_array($this->settings['log_type']) ? $this->settings['log_type'][$plan->bundle()] : $this->settings['log_type'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $plan_id = $this->getRouteMatch()->getRawParameter('plan');
     $log_id = $this->request->query->get('log');
@@ -82,7 +90,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
 
     if (empty($log)) {
       $log = Log::create([
-        'type' => $this->settings['log_type'],
+        // @TODO Should we add a log_type_callback instead?
+        'type' => $this->getLogType($form['#plan']),
       ]);
     }
 
@@ -101,7 +110,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       '#type' => 'submit',
       '#value' => $this->t('Save'),
       '#ajax' => [
-        'callback' => '::saveTask',
+        'callback' => '::ajaxSubmit',
       ],
       '#attributes' => [
         'class' => [
@@ -117,7 +126,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   /**
    * {@inheritdoc}
    */
-  public function saveTask(&$form, FormStateInterface $form_state) : AjaxResponse {
+  public function ajaxSubmit(&$form, FormStateInterface $form_state) : AjaxResponse {
     $response = new AjaxResponse();
     $values = $form_state->getValue('log');
     /** @var \Drupal\log\Entity\LogInterface $log */
@@ -128,40 +137,53 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $asset = reset($assets);
 
     try {
-      if ($log) {
-        foreach ($values as $value_name => $value) {
-          $log->set($value_name, $value);
-        }
-      }
-      else {
-        if (empty($plan)) {
-          throw new \Exception($this->t('Cannot save a task without a plan.'));
-        }
-        $log = Log::create($values + [
-            'type' => $this->settings['log_type'],
-            'asset' => $assets,
-          ]);
-      }
-      if (!$log->validate()) {
-        throw new \Exception($this->t('Task cannot be saved.'));
-      }
-      $saved_status = $log->save();
-
-      if (in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
-        $view = views_embed_view('plan_logs', 'embed', $asset, implode('+', $this->settings['display_log_types']));
-        $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
-        $form['#attached']['library'][] = 'farm_nfa/off_canvas';
-        $response->setAttachments($form['#attached']);
-        $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status']));
-      }
-    } catch (\Exception $e) {
+      $log = $this->saveTask($plan, $assets, $values, $log);
+      $view = views_embed_view('plan_logs', 'embed', $asset, implode('+', $this->settings['display_log_types']));
+      $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
+      $form['#attached']['library'][] = 'farm_nfa/off_canvas';
+      $response->setAttachments($form['#attached']);
+      $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status']));
+    }
+    catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning']));
       watchdog_exception('forest_nfa', $e);
-    } finally {
+    }
+    finally {
       $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
     }
 
     return $response;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function saveTask(PlanInterface $plan, array $assets, array $values, $log = FALSE) {
+    if ($log) {
+      foreach ($values as $value_name => $value) {
+        // @TODO Do we need to add a preprocess plugin?
+        $log->set($value_name, $value);
+      }
+    }
+    else {
+      if (empty($plan)) {
+        throw new \Exception($this->t('Cannot save a task without a plan.'));
+      }
+      $log = Log::create($values + [
+        'type' => $this->getLogType($plan),
+        'asset' => $assets,
+      ]);
+    }
+    if (!$log->validate()) {
+      throw new \Exception($this->t('Task cannot be saved.'));
+    }
+    $saved_status = $log->save();
+    if (in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
+      return $log;
+    }
+    else {
+      throw new \Exception($this->t('Task cannot be saved.'));
+    }
   }
 
   /**
@@ -172,11 +194,12 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // "fit" exactly from the log form display to the entity save, at this
     // point in time is the date fields and the quantity, that uses a complex
     // IEF widget.
+    $form_state->cleanValues();
     $log_values = $form_state->getValue('log');
 
     // Ensure timestamp is saved correctly.
     foreach ($log_values as &$value) {
-      if ($value[0]['value'] instanceof DrupalDateTime) {
+      if (isset($value[0]['value']) && $value[0]['value'] instanceof DrupalDateTime) {
         $value[0]['value'] = $value[0]['value']->getTimestamp();
       }
     }
@@ -196,8 +219,9 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         }
       }
       $log_values['quantity'] = $quantities;
-      $form_state->setValue('log', $log_values);
     }
+
+    $form_state->setValue('log', $log_values);
   }
 
 }

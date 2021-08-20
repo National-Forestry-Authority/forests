@@ -111,6 +111,7 @@
 #drupal-off-canvas input[type="tel"],
 #drupal-off-canvas input[type="number"],
 #drupal-off-canvas input[type="time"],
+#drupal-off-canvas .layer-wrapper th.field-label,
 #drupal-off-canvas select,
 #drupal-off-canvas textarea {
   background-color: #fff;
@@ -304,4 +305,5 @@
 }
 #drupal-off-canvas .layer-wrapper {
   box-shadow: none;
+  background: #fff;
 }

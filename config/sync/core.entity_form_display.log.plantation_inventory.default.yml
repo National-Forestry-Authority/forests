@@ -3,24 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.farm_asset
     - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
-    - field.field.log.plantation_inventory.inventory_officer_name
     - field.field.log.plantation_inventory.mai
     - field.field.log.plantation_inventory.stand_quality
     - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
-    - image.style.medium
     - log.type.plantation_inventory
   module:
-    - entity_browser
     - farm_map
-    - file
-    - image
-    - inline_entity_form
     - month_year
     - text
 id: log.plantation_inventory.default
@@ -28,22 +21,8 @@ targetEntityType: log
 bundle: plantation_inventory
 mode: default
 content:
-  asset:
-    type: entity_browser_entity_reference
-    weight: 50
-    settings:
-      entity_browser: farm_asset
-      field_widget_display: label
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_edit: false
-      field_widget_replace: false
-      field_widget_display_settings: {  }
-    region: content
-    third_party_settings: {  }
   cai:
-    weight: 102
+    weight: 7
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -52,14 +31,8 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  category:
-    type: options_select
-    weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   compartment:
-    weight: 105
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -68,35 +41,20 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  file:
-    type: file_generic
-    settings:
-      progress_indicator: throbber
-    weight: 90
-    region: content
-    third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: -75
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 95
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
-  image:
-    type: image_image
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
-    weight: 89
-    region: content
-    third_party_settings: {  }
   inventory_date:
-    weight: 97
+    weight: 2
     settings:
       min_year: 2015
       adjustment: 5
@@ -114,33 +72,16 @@ content:
     type: month_year_widget
     region: content
   inventory_methodology:
-    weight: 103
+    weight: 4
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
     region: content
-  inventory_officer_name:
-    weight: 98
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  is_movement:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 95
-    region: content
-    third_party_settings: {  }
   location:
     type: entity_reference_autocomplete
-    weight: 90
+    weight: 13
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -149,7 +90,7 @@ content:
     region: content
     third_party_settings: {  }
   mai:
-    weight: 101
+    weight: 6
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -160,7 +101,7 @@ content:
     region: content
   name:
     type: string_textfield
-    weight: -100
+    weight: 0
     region: content
     settings:
       size: 60
@@ -171,34 +112,21 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 0
+    weight: 12
     region: content
     third_party_settings: {  }
   owner:
-    type: options_select
-    weight: -70
+    type: entity_reference_autocomplete
+    weight: 3
     region: content
-    settings: {  }
-    third_party_settings: {  }
-  quantity:
-    type: inline_entity_form_complex
     settings:
-      form_mode: default
-      revision: true
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      collapsible: false
-      collapsed: false
-      allow_new: true
-      allow_existing: false
       match_operator: CONTAINS
-      allow_duplicate: false
-    weight: 0
-    region: content
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   stand_quality:
-    weight: 104
+    weight: 8
     settings:
       rows: 5
       placeholder: ''
@@ -207,18 +135,18 @@ content:
     region: content
   status:
     type: options_select
-    weight: -80
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: -90
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   volume:
-    weight: 100
+    weight: 5
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -228,7 +156,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   working_circle:
-    weight: 96
+    weight: 15
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -238,5 +166,11 @@ content:
     type: entity_reference_autocomplete
     region: content
 hidden:
+  asset: true
+  category: true
   created: true
   data: true
+  file: true
+  image: true
+  is_movement: true
+  quantity: true

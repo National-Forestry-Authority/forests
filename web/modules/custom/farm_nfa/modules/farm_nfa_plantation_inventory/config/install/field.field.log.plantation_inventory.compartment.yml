@@ -23,13 +23,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:asset'
+  handler: farm_nfa_plantation_inventory
   handler_settings:
     target_bundles:
       compartment: compartment
     sort:
-      field: _none
+      field: name
       direction: ASC
-    auto_create: false
+    auto_create: 0
     auto_create_bundle: ''
 field_type: entity_reference
