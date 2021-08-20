@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - asset.type.compartment
-    - field.field.asset.compartment.cfr_name
     - field.field.asset.compartment.compartment_number
     - field.field.asset.compartment.compartment_type
     - field.field.asset.compartment.intended_purpose
@@ -20,14 +19,6 @@ targetEntityType: asset
 bundle: compartment
 mode: default
 content:
-  cfr_name:
-    weight: 3
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   compartment_number:
     weight: 2
     settings:
