@@ -28,7 +28,7 @@ class ForestPlanInventoryForm extends ForestPlanBaseForm {
     return [
         'log_type' => [
           'forest' => 'observation',
-          'natural_forest' => 'observation',
+          'natural' => 'observation',
           'plantation' => 'plantation_inventory',
         ],
         'display_log_types' => ['observation', 'plantation_inventory'],

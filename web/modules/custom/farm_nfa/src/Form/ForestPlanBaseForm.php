@@ -8,8 +8,11 @@ use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\field\FieldConfigInterface;
 use Drupal\log\Entity\Log;
 use Drupal\plan\Entity\Plan;
 use Drupal\plan\Entity\PlanInterface;
@@ -209,16 +212,14 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // saving it again, we need to get the id and assign it to the quantity
     // reference array.
     // @see \Drupal\inline_entity_form\WidgetSubmit::doSubmit()
-    if (!empty($log_values['quantity'])) {
-      $quantities = [];
-      foreach ($form_state->get('inline_entity_form') as $ief) {
-        foreach ($ief['entities'] as $ief_value) {
-          if ($ief_value['entity'] instanceof QuantityInterface) {
-            $quantities[] = $ief_value['entity']->id();
-          }
+    foreach ($form_state->get('inline_entity_form') as $ief) {
+      $field_name = $ief['instance']->getName();
+      $log_values[$field_name] = [];
+      foreach ($ief['entities'] as $ief_value) {
+        if ($ief_value['entity'] instanceof QuantityInterface) {
+          $log_values[$field_name][] = $ief_value['entity']->id();
         }
       }
-      $log_values['quantity'] = $quantities;
     }
 
     $form_state->setValue('log', $log_values);

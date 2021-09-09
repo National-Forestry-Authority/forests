@@ -8,6 +8,7 @@
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
+use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
 
 /**
@@ -19,6 +20,7 @@ function farm_nfa_entity_type_alter(array &$entity_types) {
   $entity_types['plan']->setLinkTemplate('budget', '/plan/{plan}/budget');
   $entity_types['plan']->setLinkTemplate('inventory', '/plan/{plan}/inventory');
   $entity_types['plan']->setLinkTemplate('harvest', '/plan/{plan}/harvest');
+  $entity_types['quantity']->setHandlerClass('inline_form', FarmNfaQuantityInlineForm::class);
 }
 
 /**
