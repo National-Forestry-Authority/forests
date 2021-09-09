@@ -53,6 +53,7 @@
         "drupal/core-composer-scaffold": "~9.1.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/devel_entity_updates": "^3.0",
+        "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.1",

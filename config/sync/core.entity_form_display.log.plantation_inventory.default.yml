@@ -4,16 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
-    - field.field.log.plantation_inventory.mai
     - field.field.log.plantation_inventory.mean_diameter
     - field.field.log.plantation_inventory.silvicilutural_score
     - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
-    - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
     - log.type.plantation_inventory
   module:
@@ -26,24 +23,14 @@ bundle: plantation_inventory
 mode: default
 content:
   avg_height:
-    weight: 27
+    weight: 16
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
-  cai:
-    weight: 7
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   compartment:
-    weight: 26
+    weight: 15
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -54,18 +41,18 @@ content:
     region: content
   flag:
     type: options_buttons
-    weight: 11
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   inventory_date:
-    weight: 2
+    weight: 1
     settings:
       min_year: 2015
       adjustment: 5
@@ -83,7 +70,7 @@ content:
     type: month_year_widget
     region: content
   inventory_methodology:
-    weight: 4
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
@@ -92,7 +79,7 @@ content:
     region: content
   location:
     type: entity_reference_autocomplete
-    weight: 13
+    weight: 12
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -100,18 +87,8 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-  mai:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   mean_diameter:
-    weight: 28
+    weight: 17
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -130,12 +107,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 12
+    weight: 11
     region: content
     third_party_settings: {  }
   owner:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -144,14 +121,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   silvicilutural_score:
-    weight: 31
+    weight: 19
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   silvicultural_recommendations:
-    weight: 30
+    weight: 18
     settings:
       rows: 5
       placeholder: ''
@@ -159,7 +136,7 @@ content:
     type: text_textarea
     region: content
   stand_quality:
-    weight: 8
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
@@ -168,28 +145,18 @@ content:
     region: content
   status:
     type: options_select
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
-  volume:
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   working_circle:
-    weight: 15
+    weight: 14
     settings:
       match_operator: CONTAINS
       match_limit: 10

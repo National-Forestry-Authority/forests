@@ -10,6 +10,7 @@ dependencies:
   - drupal:media
   - drupal:text
   - drupal:views
+  - element_multiple:element_multiple
   - config_devel:config_devel
   - config_rewrite:config_rewrite
   - default_content:default_content
