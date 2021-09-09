@@ -25,7 +25,6 @@ class FarmNfaQuantityInlineForm extends QuantityInlineForm {
 
       $entity_form = parent::entityForm($entity_form, $form_state);
 
-      $entity_form['value']['#required'] = TRUE;
       $entity_form['measure']['#disabled'] = TRUE;
       $entity_form['units']['#disabled'] = TRUE;
       $entity_form['label']['#disabled'] = TRUE;

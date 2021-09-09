@@ -9,6 +9,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
+use Drupal\quantity\Entity\Quantity;
 
 /**
  * Inline widget for quantity.
@@ -30,6 +31,8 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
    */
   public static function defaultSettings() {
     return [
+      // TODO update the schema.
+        // Unset unused properties.
         'quantity' => [],
       ] + parent::defaultSettings();
   }
@@ -61,8 +64,6 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
     $element['quantity'] = [
       '#type' => 'element_multiple',
       '#title' => $this->t('Quantity'),
-      '#sorting' => FALSE,
-      '#operations' => FALSE,
       '#add_more_input' => FALSE,
       '#add_more_button_label' => $this->t('Add more'),
       '#min_items' => 0,
@@ -122,7 +123,6 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
     if ($this->getSetting('quantity')) {
       $element['#$default_quantity'] = $this->getSetting('quantity');
     }
-
     $element['#widget_type'] = $this->pluginId;
 
     return $element;
@@ -176,6 +176,21 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
     $this->prepareFormState($form_state, $items, $element['#translating']);
     $entities = $form_state->get(['inline_entity_form', $this->getIefId(), 'entities']);
 
+    if (empty($entities)) {
+      $create_bundles = $this->getCreateBundles();
+      $bundle = reset($create_bundles);
+      foreach ($this->getSetting('quantity') as $quantity) {
+        $qty_entity = Quantity::create(['type' => $bundle] + $quantity);
+        $entities[] = [
+          'entity' => $qty_entity,
+          'needs_save' => TRUE,
+          'weight' => 0,
+        ];
+      }
+      $form_state->set(['inline_entity_form', $this->getIefId(), 'entities'], $entities);
+    }
+
+
     // Prepare cardinality information.
     $entities_count = count($entities);
     $cardinality = count($this->getSetting('quantity'));
@@ -214,8 +229,8 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
       // @see template_preprocess_inline_entity_form_entity_table()
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
       $entity = $value['entity'];
-      $element['entities'][$key]['#label'] = $this->inlineFormHandler->getEntityLabel($value['entity']);
-      $element['entities'][$key]['#entity'] = $value['entity'];
+      $element['entities'][$key]['#label'] = $entity->get('label')->value;
+      $element['entities'][$key]['#entity'] = $entity;
       $element['entities'][$key]['#needs_save'] = $value['needs_save'];
 
       // Handle row weights.
@@ -250,22 +265,6 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
             [get_class($this), 'buildEntityFormActions'],
           ];
         }
-        elseif ($value['form'] == 'remove') {
-          $element['entities'][$key]['form'] = [
-            '#type' => 'container',
-            '#attributes' => ['class' => ['ief-form', 'ief-form-row']],
-            // Used by Field API and controller methods to find the relevant
-            // values in $form_state.
-            '#parents' => array_merge($parents, ['entities', $key, 'form']),
-            // Store the entity on the form, later modified in the controller.
-            '#entity' => $entity,
-            // Identifies the IEF widget to which the form belongs.
-            '#ief_id' => $this->getIefId(),
-            // Identifies the table row to which the form belongs.
-            '#ief_row_delta' => $key,
-          ];
-          $this->buildRemoveForm($element['entities'][$key]['form']);
-        }
       }
       else {
         $row = &$element['entities'][$key];
@@ -287,7 +286,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
         if (empty($entity_id) || $entity->access('update')) {
           $row['actions']['ief_entity_edit'] = [
             '#type' => 'submit',
-            '#value' => $this->t('Edit'),
+            '#value' => (empty($entity_id) || $entity->get('value')->value != '') ? $this->t('Add') : $this->t('Edit'),
             '#name' => 'ief-' . $this->getIefId() . '-entity-edit-' . $key,
             '#limit_validation_errors' => [],
             '#ajax' => [
@@ -297,43 +296,6 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
             '#submit' => ['inline_entity_form_open_row_form'],
             '#ief_row_delta' => $key,
             '#ief_row_form' => 'edit',
-          ];
-        }
-
-        // Add the duplicate button, if allowed.
-        if ($settings['allow_duplicate'] && !$cardinality_reached && $entity->access('create')) {
-          $row['actions']['ief_entity_duplicate'] = [
-            '#type' => 'submit',
-            '#value' => $this->t('Duplicate'),
-            '#name' => 'ief-' . $this->getIefId() . '-entity-duplicate-' . $key,
-            '#limit_validation_errors' => [array_merge($parents, ['actions'])],
-            '#ajax' => [
-              'callback' => 'inline_entity_form_get_element',
-              'wrapper' => $wrapper,
-            ],
-            '#submit' => ['inline_entity_form_open_row_form'],
-            '#ief_row_delta' => $key,
-            '#ief_row_form' => 'duplicate',
-          ];
-        }
-
-        // If 'allow_existing' is on, the default removal operation is unlink
-        // and the access check for deleting happens inside the controller
-        // removeForm() method.
-        if (empty($entity_id) || $settings['allow_existing'] || $entity->access('delete')) {
-          $row['actions']['ief_entity_remove'] = [
-            '#type' => 'submit',
-            '#value' => $this->t('Remove'),
-            '#name' => 'ief-' . $this->getIefId() . '-entity-remove-' . $key,
-            '#limit_validation_errors' => [],
-            '#ajax' => [
-              'callback' => 'inline_entity_form_get_element',
-              'wrapper' => $wrapper,
-            ],
-            '#submit' => ['inline_entity_form_open_row_form'],
-            '#ief_row_delta' => $key,
-            '#ief_row_form' => 'remove',
-            '#access' => !$element['#translating'],
           ];
         }
       }
@@ -425,34 +387,6 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
             '#value' => reset($create_bundles),
           ];
         }
-
-        $element['actions']['ief_add'] = [
-          '#type' => 'submit',
-          '#value' => $this->t('Add new @type_singular', ['@type_singular' => $labels['singular']]),
-          '#name' => 'ief-' . $this->getIefId() . '-add',
-          '#limit_validation_errors' => [array_merge($parents, ['actions'])],
-          '#ajax' => [
-            'callback' => 'inline_entity_form_get_element',
-            'wrapper' => $wrapper,
-          ],
-          '#submit' => ['inline_entity_form_open_form'],
-          '#ief_form' => 'add',
-        ];
-      }
-
-      if ($settings['allow_existing']) {
-        $element['actions']['ief_add_existing'] = [
-          '#type' => 'submit',
-          '#value' => $this->t('Add existing @type_singular', ['@type_singular' => $labels['singular']]),
-          '#name' => 'ief-' . $this->getIefId() . '-add-existing',
-          '#limit_validation_errors' => [array_merge($parents, ['actions'])],
-          '#ajax' => [
-            'callback' => 'inline_entity_form_get_element',
-            'wrapper' => $wrapper,
-          ],
-          '#submit' => ['inline_entity_form_open_form'],
-          '#ief_form' => 'ief_add_existing',
-        ];
       }
     }
     else {
