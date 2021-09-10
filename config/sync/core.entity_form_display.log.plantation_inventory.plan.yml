@@ -159,16 +159,12 @@ content:
           measure: volume
           units: '1791'
       form_mode: default
-      revision: false
       override_labels: false
       label_singular: ''
       label_plural: ''
-      collapsible: false
-      collapsed: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
-      allow_duplicate: false
     third_party_settings: {  }
   silvicilutural_score:
     type: number

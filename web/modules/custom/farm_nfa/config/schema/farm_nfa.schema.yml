@@ -23,9 +23,12 @@ field.widget.settings.farm_nfa_inline_entity_form_quantity:
     match_operator:
       type: string
       label: "Match operator"
-    measure:
-      type: string
-      label: "Measure"
-    units:
-      type: integer
-      label: "Units"
+    quantity:
+      type: sequence
+      label: "Quantity"
+      sequence:
+          type: sequence
+          label: "Quantity"
+          sequence:
+            type: string
+            label: 'Quantity elements'

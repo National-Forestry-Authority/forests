@@ -1,24 +1,23 @@
+uuid: 3d2b5be7-9871-4660-b6d2-4229eeb96218
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.log.plan
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
-    - field.field.log.plantation_inventory.mai
     - field.field.log.plantation_inventory.mean_diameter
     - field.field.log.plantation_inventory.silvicilutural_score
     - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
-    - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
     - image.style.medium
     - log.type.plantation_inventory
   module:
     - farm_map
+    - farm_nfa
     - file
     - image
     - month_year
@@ -35,16 +34,6 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
-  cai:
-    weight: 7
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   compartment:
     type: entity_reference_autocomplete
     weight: 1
@@ -118,16 +107,6 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-  mai:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   mean_diameter:
     type: number
     weight: 10
@@ -160,6 +139,32 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  quantity:
+    type: farm_nfa_inline_entity_form_quantity
+    weight: 21
+    region: content
+    settings:
+      quantity:
+        -
+          label: 'Computed stand volume'
+          measure: volume
+          units: '1791'
+        -
+          label: MAI
+          measure: volume
+          units: '1791'
+        -
+          label: CAI
+          measure: volume
+          units: '1791'
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
     third_party_settings: {  }
   silvicilutural_score:
     type: number
@@ -196,21 +201,10 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  volume:
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
 hidden:
   asset: true
   category: true
   created: true
   data: true
   is_movement: true
-  quantity: true
   working_circle: true

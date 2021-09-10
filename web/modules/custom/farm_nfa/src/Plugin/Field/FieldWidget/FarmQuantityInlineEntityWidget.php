@@ -2,14 +2,13 @@
 
 namespace Drupal\farm_nfa\Plugin\Field\FieldWidget;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
 use Drupal\quantity\Entity\Quantity;
+use Drupal\quantity\Entity\QuantityInterface;
 
 /**
  * Inline widget for quantity.
@@ -30,11 +29,14 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
    * {@inheritdoc}
    */
   public static function defaultSettings() {
+    $parent_settings = parent::defaultSettings();
+    unset($parent_settings['revision']);
+    unset($parent_settings['collapsible']);
+    unset($parent_settings['collapsed']);
+    unset($parent_settings['allow_duplicate']);
     return [
-      // TODO update the schema.
-        // Unset unused properties.
         'quantity' => [],
-      ] + parent::defaultSettings();
+      ] + $parent_settings;
   }
 
   /**
@@ -61,6 +63,8 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
       }
     }
 
+    // @TODO Should we be disabling editing existing config if there's any
+    // quantity that references this bundle?
     $element['quantity'] = [
       '#type' => 'element_multiple',
       '#title' => $this->t('Quantity'),
@@ -82,8 +86,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
           '#type' => 'entity_autocomplete',
           '#title' => $this->t('Units of the quantity.'),
           '#target_type' => 'taxonomy_term',
-          '#selection_handler' => 'default:taxonomy_term',
-          '#selection_settings' => ['target_bundles' => 'unit'],
+          '#selection_settings' => ['target_bundles' => ['unit']],
         ],
       ],
       '#default_value' => $quantity_settings,
@@ -175,21 +178,10 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
 
     $this->prepareFormState($form_state, $items, $element['#translating']);
     $entities = $form_state->get(['inline_entity_form', $this->getIefId(), 'entities']);
-
-    if (empty($entities)) {
-      $create_bundles = $this->getCreateBundles();
-      $bundle = reset($create_bundles);
-      foreach ($this->getSetting('quantity') as $quantity) {
-        $qty_entity = Quantity::create(['type' => $bundle] + $quantity);
-        $entities[] = [
-          'entity' => $qty_entity,
-          'needs_save' => TRUE,
-          'weight' => 0,
-        ];
-      }
-      $form_state->set(['inline_entity_form', $this->getIefId(), 'entities'], $entities);
-    }
-
+    /** @var \Drupal\Core\Entity\EntityInterface $parent_entity */
+    $parent_entity = $items->getParent()->getValue();
+    $entities = $this->mergeQuantityEntities($entities, $parent_entity);
+    $form_state->set(['inline_entity_form', $this->getIefId(), 'entities'], $entities);
 
     // Prepare cardinality information.
     $entities_count = count($entities);
@@ -286,7 +278,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
         if (empty($entity_id) || $entity->access('update')) {
           $row['actions']['ief_entity_edit'] = [
             '#type' => 'submit',
-            '#value' => (empty($entity_id) || $entity->get('value')->value != '') ? $this->t('Add') : $this->t('Edit'),
+            '#value' => (empty($entity_id) || strlen($entity->get('value')->value) === 0) ? $this->t('Add') : $this->t('Edit'),
             '#name' => 'ief-' . $this->getIefId() . '-entity-edit-' . $key,
             '#limit_validation_errors' => [],
             '#ajax' => [
@@ -412,31 +404,12 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
           [get_class($this), 'buildEntityFormActions'],
         ];
       }
-      elseif ($form_state->get(['inline_entity_form', $this->getIefId(), 'form']) == 'ief_add_existing') {
-        $element['form'] = [
-          '#type' => 'fieldset',
-          '#attributes' => ['class' => ['ief-form', 'ief-form-bottom']],
-          // Identifies the IEF widget to which the form belongs.
-          '#ief_id' => $this->getIefId(),
-          // Used by Field API and controller methods to find the relevant
-          // values in $form_state.
-          '#parents' => array_merge($parents, [$new_key]),
-          '#entity_type' => $target_type,
-          '#ief_labels' => $this->getEntityTypeLabels(),
-          '#match_operator' => $this->getSetting('match_operator'),
-        ];
-
-        $element['form'] += inline_entity_form_reference_form($element['form'], $form_state);
-      }
 
       // Pre-opened forms can't be closed in order to force the user to
       // add / reference an entity.
       if ($hide_cancel) {
         if ($open_form == 'add') {
           $process_element = &$element['form']['inline_entity_form'];
-        }
-        elseif ($open_form == 'ief_add_existing') {
-          $process_element = &$element['form'];
         }
         $process_element['#process'][] = [get_class($this), 'hideCancel'];
       }
@@ -446,11 +419,84 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
   }
 
   /**
+   * Merges existing entities with the default quantities from configuration.
+   *
+   * @param \Drupal\quantity\Entity\QuantityInterface[] $entities
+   *   Array of existing quantities.
+   * @param \Drupal\Core\Entity\EntityInterface $parent_entity
+   *   Parent entity.
+   *
+   * @return \Drupal\quantity\Entity\QuantityInterface[]
+   *   Array of entities.
+   */
+  protected function mergeQuantityEntities(array $entities, EntityInterface $parent_entity) {
+    $create_bundles = $this->getCreateBundles();
+    $bundle = reset($create_bundles);
+    foreach ($this->getSetting('quantity') as $delta => $quantity) {
+      $qty_entity = Quantity::create(['type' => $bundle] + $quantity);
+      $default_entities[] = [
+        'entity' => $qty_entity,
+        'needs_save' => TRUE,
+        'weight' => 0,
+      ];
+    }
+    // If the parent is new OR the entities are empty, return the default ones
+    // as there's nothing to merge.
+    if ($parent_entity->isNew() || empty($entities)) {
+      return $entities + $default_entities;
+    }
+
+    $max_weight = max(array_column($default_entities, 'weight'));
+    // For the edit worflow, add the new quantities at the end of the table.
+    foreach ($default_entities as $default_entity) {
+      if (!$this->isDefaultQuantityInExistingQuantities($default_entity, $entities)) {
+        $default_entity['weight'] = $max_weight;
+        $entities[] = $default_entity;
+        $max_weight++;
+      }
+    }
+
+    return $entities;
+  }
+
+  /**
+   * Best guess to see if the default quantity is already in the existing ones.
+   *
+   * @param array $default_entity
+   *   Array in the IEF structure that includes the default quantity entity.
+   * @param array $entities
+   *  Array in the IEF structure that includes the existing quantity entities.
+   *
+   * @return bool
+   *   TRUE if the quantity is present in the existing ones, FALSE, otherwise.
+   */
+  protected function isDefaultQuantityInExistingQuantities(array $default_entity, array $entities) {
+    foreach ($entities as $entity) {
+      if (!empty($default_entity['entity']) && !empty($entity['entity']) &&
+          $default_entity['entity'] instanceof QuantityInterface &&
+          $entity['entity'] instanceof QuantityInterface &&
+          $default_entity['entity']->get('label')->value === $entity['entity']->get('label')->value &&
+          $default_entity['entity']->get('measure')->value === $entity['entity']->get('measure')->value &&
+          $default_entity['entity']->get('units')->value === $entity['entity']->get('units')->value) {
+        return TRUE;
+      }
+    }
+
+    return FALSE;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
-    // @TODO.
-    return TRUE;
+    if (!in_array($field_definition->getType(),['entity_reference', 'entity_reference_revisions'])) {
+      return FALSE;
+    }
+    $settings = $field_definition->getItemDefinition()->getSettings();
+    if ($settings['target_type'] == 'quantity') {
+      return TRUE;
+    }
+    return FALSE;
   }
 
 }
