@@ -85,3 +85,19 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
     ];
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function farm_nfa_preprocess_block__local_actions_block(&$variables) {
+  // Hide action buttons in dashboard page.
+  if (\Drupal::routeMatch()->getRouteName() == 'farm.dashboard') {
+    foreach ($variables['content'] as $key => $action) {
+      $action_route = substr($key, 0, 12);
+      // Check that action route belongs to farm actions.
+      if ($action_route == 'farm.actions') {
+        $variables['content'][$key]['#access'] = FALSE;
+      }
+    }
+  }
+}
