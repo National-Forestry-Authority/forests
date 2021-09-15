@@ -37,7 +37,7 @@ entity.plan.harvest:
     log_types:
       - harvest
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:forest|plantation'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
