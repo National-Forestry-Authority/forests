@@ -2,10 +2,7 @@
 
 namespace Drupal\farm_nfa\EventSubscriber;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\farm_map\Event\MapRenderEvent;
-use Drupal\farm_map\layerStyleLoaderInterface;
 use Drupal\plan\Entity\Plan;
 use Drupal\plan\Entity\PlanInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -14,35 +11,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * An event subscriber for the MapRenderEvent.
  */
 class FarmNfaMapActivitiesEventSubscriber implements EventSubscriberInterface {
-
-  use StringTranslationTrait;
-
-  /**
-   * Asset types.
-   *
-   * @var \Drupal\asset\Entity\AssetTypeInterface[]
-   */
-  protected $assetTypes;
-
-  /**
-   * The layer style loader service.
-   *
-   * @var \Drupal\farm_map\layerStyleLoader
-   */
-  protected $layerStyleLoader;
-
-  /**
-   * MapRenderEventSubscriber Constructor.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager service.
-   * @param \Drupal\farm_map\layerStyleLoaderInterface $layer_style_loader
-   *   The layer style loader service.
-   */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, layerStyleLoaderInterface $layer_style_loader) {
-    $this->assetTypes = $entity_type_manager->getStorage('asset_type')->loadMultiple();
-    $this->layerStyleLoader = $layer_style_loader;
-  }
 
   /**
    * {@inheritdoc}
@@ -67,17 +35,18 @@ class FarmNfaMapActivitiesEventSubscriber implements EventSubscriberInterface {
       if (\Drupal::routeMatch()->getRouteName()== 'farm_nfa.plan.add_task') {
         $plan_id = $this->getPlanId();
         if (!empty($plan_id) && is_numeric($plan_id)) {
+          // @TODO use entityTypeManager instead.
           $plan = Plan::load($plan_id);
           if ($plan instanceof PlanInterface) {
             $assets = $plan->get('asset')->referencedEntities();
             foreach ($assets as $asset) {
+              // @TODO: Inject this.
               $geometries[] = \Drupal::service('asset.location')->getGeometry($asset);
             }
           }
         }
       }
     }
-
 
     if (!empty($geometries)) {
       $event->addBehavior('farm_nfa_map_activities');
@@ -98,6 +67,7 @@ class FarmNfaMapActivitiesEventSubscriber implements EventSubscriberInterface {
    */
   protected function getPlanId() {
     // @TODO Inject this
+    // @TODO Expose this as a service as it is being used in several locations.
     $referer = \Drupal::requestStack()->getCurrentRequest()->server->get('HTTP_REFERER');
     $referer_path = parse_url($referer, PHP_URL_PATH);
     $referer_partial_path = substr($referer_path, strlen(base_path()));

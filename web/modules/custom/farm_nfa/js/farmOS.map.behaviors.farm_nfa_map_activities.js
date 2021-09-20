@@ -10,6 +10,7 @@
           })
         })
         instance.zoomToVectors()
+        instance.map.getView().setZoom((instance.map.getView().getZoom() - 7.5))
       }
     }
   }
