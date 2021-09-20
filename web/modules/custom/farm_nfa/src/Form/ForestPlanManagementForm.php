@@ -25,7 +25,7 @@ class ForestPlanManagementForm extends ForestPlanBaseForm {
   public static function defaultSettings() : array {
     return [
         'log_type' => 'activity',
-        'display_log_types' => ['activity', 'input'],
+        'display_log_types' => ['activity'],
         'form_title' => t('Management'),
       ] + parent::defaultSettings();
   }
@@ -34,23 +34,55 @@ class ForestPlanManagementForm extends ForestPlanBaseForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $form += parent::buildForm($form, $form_state);
+
+    $default_value = '';
     $log_id = $this->request->query->get('log');
     if (!empty($log_id) && is_numeric($log_id)) {
       /** @var \Drupal\log\Entity\LogInterface $log */
       $log = Log::load($log_id);
+      if ($log->get('compartment')->referencedEntities()) {
+        $default_value = 'compartment';
+      }
+      if ($log->get('geometry')->value) {
+        $default_value = 'map';
+      }
+      if ($log->get('file')->referencedEntities()) {
+        $default_value = 'kml';
+      }
     }
-    $form += parent::buildForm($form, $form_state);
-    $form['log']['type'] = [
+    $form['log']['location_widget'] = [
       '#type' => 'select',
-      '#title' => $this->t('Task type'),
+      '#title' => $this->t('Location selector'),
+      '#description' => $this->t('Input the location - the more specific and accurate the location, the better.'),
       '#options' => [
-        'activity' => $this->t('Activity'),
-        'input' => $this->t('Input'),
+        'compartment' => $this->t('Compartments'),
+        'kml' => $this->t('KML Upload'),
+        'map' => $this->t('Draw a map'),
       ],
-      '#default_value' => !empty($log) ? $log->bundle() : '',
-      '#disabled' => !empty($log),
-      '#weight' => -99,
-      '#parents' => ['log', 'type'],
+      '#default_value' => '',
+    ];
+
+    $form['log']['compartment']['#states'] = [
+      'visible' => [
+        [
+          [':input[name="location_widget"]' => ['value' => 'compartment']],
+        ],
+      ],
+    ];
+    $form['log']['geometry']['#states'] = [
+      'visible' => [
+        [
+          [':input[name="location_widget"]' => ['value' => 'map']],
+        ],
+      ],
+    ];
+    $form['log']['file']['#states'] = [
+      'visible' => [
+        [
+          [':input[name="location_widget"]' => ['value' => 'kml']],
+        ],
+      ],
     ];
     return $form;
   }
