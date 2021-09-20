@@ -1,9 +1,11 @@
-uuid: b070bb97-53f8-4b93-bc8d-d8b723088cd3
+uuid: e7e243e6-db80-4136-8e75-fe7cbc05e23b
 langcode: en
 status: true
 dependencies:
   module:
     - log
+_core:
+  default_config_hash: kslXo3Wq6PvvXmhcX7fwK_k0XdEaGRgYNPJrsDjqv2M
 id: log.avg_height
 field_name: avg_height
 entity_type: log

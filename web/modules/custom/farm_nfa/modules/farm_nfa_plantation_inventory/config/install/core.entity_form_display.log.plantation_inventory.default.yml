@@ -3,16 +3,13 @@ status: true
 dependencies:
   config:
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
-    - field.field.log.plantation_inventory.mai
     - field.field.log.plantation_inventory.mean_diameter
     - field.field.log.plantation_inventory.silvicilutural_score
     - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
-    - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
     - log.type.plantation_inventory
   module:
@@ -30,16 +27,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
-  cai:
-    weight: 7
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   compartment:
     weight: 26
@@ -99,16 +86,6 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-  mai:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   mean_diameter:
     weight: 28
     settings:
@@ -177,16 +154,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  volume:
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   working_circle:
     weight: 15
     settings:

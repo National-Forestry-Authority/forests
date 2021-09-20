@@ -1,4 +1,4 @@
-uuid: c4d1dc35-0e5a-4377-b10b-bf42b118b164
+uuid: 753a8f16-e82b-4236-add7-0fef4965886e
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - log.type.plantation_inventory
   module:
     - month_year
+_core:
+  default_config_hash: UrrdlhZGguHMOaZK2p_oSdgoMtop0DkWtw4ZBR7tCF0
 id: log.plantation_inventory.inventory_date
 field_name: inventory_date
 entity_type: log

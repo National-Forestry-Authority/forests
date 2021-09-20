@@ -2,14 +2,15 @@ langcode: en
 status: true
 dependencies:
   module:
-    - log
-    - quantity
-id: log.volume
-field_name: volume
-entity_type: log
-type: entity_reference
+    - asset
+id: asset.cfr_name
+field_name: cfr_name
+entity_type: asset
+type: string
 settings:
-  target_type: quantity
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

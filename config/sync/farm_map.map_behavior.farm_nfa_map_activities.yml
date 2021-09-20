@@ -1,0 +1,12 @@
+uuid: 8c21faaf-9bd3-46ad-9c59-f7b32aea686d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: farm_nfa_map_activities
+label: 'Map behavior for activity creation'
+description: 'Centers the activity map in the geometries associated with the plan.'
+library: farm_nfa/farm_nfa_map_activities
+settings: {  }

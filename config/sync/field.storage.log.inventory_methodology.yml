@@ -1,10 +1,12 @@
-uuid: 84de1dbe-d943-462c-95cb-8e8600e53851
+uuid: 2b21a7ca-1d75-40d3-9be5-7200cd536d03
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - text
+_core:
+  default_config_hash: Op6qFPeT9u5RysFBj7fetbn2GP4lI7WTozb5RVRFWws
 id: log.inventory_methodology
 field_name: inventory_methodology
 entity_type: log

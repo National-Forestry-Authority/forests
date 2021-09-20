@@ -1,4 +1,4 @@
-uuid: ef1c1ef6-a77d-4d71-b5e2-1fb22f77e1ff
+uuid: f65347f1-d90c-4ac9-989e-bec23e0da2b2
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: 9ciD503uY59jGBtNmcqm9DEL0x6qcWtABleGrRE8VFA
 id: log.plantation_inventory.working_circle
 field_name: working_circle
 entity_type: log

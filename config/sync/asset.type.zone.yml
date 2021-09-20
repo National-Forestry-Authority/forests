@@ -1,7 +1,13 @@
 uuid: 2a708852-787d-4c16-9bb4-5da4aadf298a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
 id: zone
 label: Zone
 description: ''

@@ -1,10 +1,12 @@
-uuid: e20cae4c-ef6d-4537-b53b-f371b5d6422e
+uuid: b0154ca7-ee9f-4693-a01a-6930ee71182c
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - log
+_core:
+  default_config_hash: bAbrJDQ9ypNuzIh4uKljSI7dOQ_YSlenftwBnosAuQI
 id: log.compartment
 field_name: compartment
 entity_type: log
@@ -13,7 +15,7 @@ settings:
   target_type: asset
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

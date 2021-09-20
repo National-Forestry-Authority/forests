@@ -2,34 +2,34 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.log.volume
-    - log.type.plantation_inventory
-    - quantity.type.standard
+    - asset.type.compartment
+    - field.storage.log.compartment
+    - log.type.activity
   module:
     - entity_reference_validators
 third_party_settings:
   entity_reference_validators:
     circular_reference: false
     circular_reference_deep: false
-    duplicate_reference: false
-id: log.plantation_inventory.volume
-field_name: volume
+    duplicate_reference: true
+id: log.activity.compartment
+field_name: compartment
 entity_type: log
-bundle: plantation_inventory
-label: 'Computed stand volume'
+bundle: activity
+label: Compartment
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:quantity'
+  handler: farm_nfa_plantation_inventory
   handler_settings:
     target_bundles:
-      standard: standard
+      compartment: compartment
     sort:
-      field: _none
+      field: name
       direction: ASC
-    auto_create: false
+    auto_create: 0
     auto_create_bundle: ''
 field_type: entity_reference

@@ -1,10 +1,12 @@
-uuid: a5031eeb-fa2b-4578-b664-30982b871edc
+uuid: 4cd8be7d-c2b1-4af4-bafc-60012512f282
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.log.avg_height
     - log.type.plantation_inventory
+_core:
+  default_config_hash: 8NajsTkV2xQ-tVmhGRpFiYcXRxXW2yj8d-o8RuTR6KQ
 id: log.plantation_inventory.avg_height
 field_name: avg_height
 entity_type: log

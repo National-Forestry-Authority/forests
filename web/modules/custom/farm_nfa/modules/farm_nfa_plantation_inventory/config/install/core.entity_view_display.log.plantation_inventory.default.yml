@@ -3,16 +3,13 @@ status: true
 dependencies:
   config:
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.cai
     - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
-    - field.field.log.plantation_inventory.mai
     - field.field.log.plantation_inventory.mean_diameter
     - field.field.log.plantation_inventory.silvicilutural_score
     - field.field.log.plantation_inventory.silvicultural_recommendations
     - field.field.log.plantation_inventory.stand_quality
-    - field.field.log.plantation_inventory.volume
     - field.field.log.plantation_inventory.working_circle
     - image.style.large
     - log.type.plantation_inventory
@@ -48,14 +45,6 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_decimal
-    region: content
-  cai:
-    weight: 102
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   category:
     label: inline
@@ -138,14 +127,6 @@ content:
       link: true
     region: content
     third_party_settings: {  }
-  mai:
-    weight: 101
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   mean_diameter:
     weight: 107
     label: above
@@ -221,14 +202,6 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-  volume:
-    weight: 100
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   working_circle:
     weight: 96
     label: above

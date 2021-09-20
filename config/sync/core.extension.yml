@@ -10,15 +10,12 @@ module:
   config_update: 0
   config_update_ui: 0
   consumers: 0
-  csv_importer: 0
   csv_serialization: 0
   date_popup: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
   default_content: 0
-  devel: 0
-  devel_entity_updates: 0
   element_multiple: 0
   entity: 0
   entity_browser: 0
@@ -94,7 +91,6 @@ module:
   migrate: 0
   migrate_drupal: 0
   migrate_plus: 0
-  migrate_source_csv: 0
   migrate_tools: 0
   month_year: 0
   options: 0

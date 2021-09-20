@@ -5,6 +5,7 @@ dependencies:
   config:
     - asset.type.block
     - field.field.asset.block.block_number
+    - field.field.asset.block.cfr_name
     - field.field.asset.block.compartment_number
     - field.field.asset.block.intended_purpose
     - field.field.asset.block.kml_created_by
@@ -22,6 +23,14 @@ mode: default
 content:
   block_number:
     weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  cfr_name:
+    weight: 2
     settings:
       size: 60
       placeholder: ''

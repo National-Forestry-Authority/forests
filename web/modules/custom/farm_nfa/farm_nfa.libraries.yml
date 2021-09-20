@@ -11,3 +11,9 @@ off_canvas:
     - core/jquery.once
     - core/drupal.ajax
     - core/views.ajax
+
+behavior_farm_nfa_map_activities:
+  js:
+    js/farmOS.map.behaviors.farm_nfa_map_activities.js: { }
+  dependencies:
+    - farm_map/farm_map

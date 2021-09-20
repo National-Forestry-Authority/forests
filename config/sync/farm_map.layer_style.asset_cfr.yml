@@ -1,0 +1,12 @@
+uuid: ac0da10c-983a-478f-9fff-80e245b6e567
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_cfr
+id: asset_cfr
+color: green
+conditions:
+  asset_type:
+    - cfr

@@ -1,9 +1,11 @@
-uuid: f93098e1-602c-423b-9332-170ebe7bf0df
+uuid: 76363e6b-70d6-4863-b674-9d96b6ae0232
 langcode: en
 status: true
 dependencies:
   module:
     - log
+_core:
+  default_config_hash: Q04JxUbk5nCHAbq_3ELwnBjpg_HK0H9BlgK3T8cVx_I
 id: log.silvicilutural_score
 field_name: silvicilutural_score
 entity_type: log

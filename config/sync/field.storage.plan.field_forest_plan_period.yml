@@ -1,0 +1,20 @@
+uuid: 850c2b28-a9dc-487e-9bca-9947b83f2e16
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - plan
+id: plan.field_forest_plan_period
+field_name: field_forest_plan_period
+entity_type: plan
+type: daterange
+settings:
+  datetime_type: date
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

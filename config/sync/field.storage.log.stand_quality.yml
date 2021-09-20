@@ -1,10 +1,12 @@
-uuid: fbd24639-1ef8-4973-8b8e-c442270dbe42
+uuid: 9108259c-fe85-4c64-9a07-34dc3ef89186
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - text
+_core:
+  default_config_hash: 9bFKV2omlPhRkIOxYYYkT_BPQzFYCE7fjtwjgts-Jmk
 id: log.stand_quality
 field_name: stand_quality
 entity_type: log

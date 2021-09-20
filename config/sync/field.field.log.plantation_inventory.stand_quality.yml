@@ -1,4 +1,4 @@
-uuid: 7d86f980-188e-4011-a0c1-f200d0c89c57
+uuid: fd45342c-21cb-4e84-8830-49d65f36b766
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - log.type.plantation_inventory
   module:
     - text
+_core:
+  default_config_hash: c-VEdj3EpeEilZjIkFgTYnFwE1LF7pDS2ldOpt0cB3k
 id: log.plantation_inventory.stand_quality
 field_name: stand_quality
 entity_type: log

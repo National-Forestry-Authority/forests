@@ -1,7 +1,13 @@
 uuid: 53445ee3-d3cd-4412-b68c-871d3a3aec2c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
 id: block
 label: Block
 description: ''

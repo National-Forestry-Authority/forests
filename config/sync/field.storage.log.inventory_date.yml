@@ -1,10 +1,12 @@
-uuid: 252af036-5975-434b-86fe-84eb9f846385
+uuid: 4f838963-9b4c-43a3-8cb8-4a818d43d37b
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - month_year
+_core:
+  default_config_hash: bjBF5PLOiyDB80wiC3qNQizpVOvKbydlMcCfnx8q9ck
 id: log.inventory_date
 field_name: inventory_date
 entity_type: log

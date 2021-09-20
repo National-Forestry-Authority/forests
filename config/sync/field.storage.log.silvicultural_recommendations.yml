@@ -1,10 +1,12 @@
-uuid: 2ffac89e-d5ad-42cd-8d8b-927783d8e001
+uuid: 2739691d-d549-4a6e-b492-e985f2b00a31
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - text
+_core:
+  default_config_hash: v_q7Y_KTkPqh2-ofgtfbHxWzgtIFsuQbpQbRDx_QIE8
 id: log.silvicultural_recommendations
 field_name: silvicultural_recommendations
 entity_type: log

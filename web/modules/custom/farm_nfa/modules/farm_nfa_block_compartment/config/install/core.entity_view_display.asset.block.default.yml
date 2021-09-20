@@ -4,6 +4,7 @@ dependencies:
   config:
     - asset.type.block
     - field.field.asset.block.block_number
+    - field.field.asset.block.cfr_name
     - field.field.asset.block.compartment_number
     - field.field.asset.block.intended_purpose
     - field.field.asset.block.kml_created_by
@@ -23,6 +24,14 @@ mode: default
 content:
   block_number:
     weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  cfr_name:
+    weight: 1
     label: inline
     settings:
       link_to_entity: false

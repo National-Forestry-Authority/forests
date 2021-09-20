@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - asset.type.compartment
+    - field.field.asset.compartment.cfr_name
     - field.field.asset.compartment.compartment_number
     - field.field.asset.compartment.compartment_type
     - field.field.asset.compartment.intended_purpose
@@ -22,6 +23,14 @@ targetEntityType: asset
 bundle: compartment
 mode: default
 content:
+  cfr_name:
+    weight: 2
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   compartment_number:
     weight: 1
     label: inline

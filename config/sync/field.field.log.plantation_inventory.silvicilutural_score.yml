@@ -1,10 +1,12 @@
-uuid: fb52307d-e3ab-45f5-8986-b915e879e0e6
+uuid: 17bdaa88-618a-4666-bea7-35bddc9ac31b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.log.silvicilutural_score
     - log.type.plantation_inventory
+_core:
+  default_config_hash: KtTQ9qPArWsWUFhYk3V1nAmXVyY_lKISk7MH0pjwYUA
 id: log.plantation_inventory.silvicilutural_score
 field_name: silvicilutural_score
 entity_type: log

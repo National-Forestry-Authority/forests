@@ -1,4 +1,4 @@
-uuid: 4b78d605-b3f6-4372-8da5-e84f4bdc4fa0
+uuid: 1d8845a8-0875-489a-a765-ac41589adbe5
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - log.type.plantation_inventory
   module:
     - text
+_core:
+  default_config_hash: P9h_renkRBts1kkjgbW0SdganRM9WKz19qnfdnY0gUM
 id: log.plantation_inventory.silvicultural_recommendations
 field_name: silvicultural_recommendations
 entity_type: log

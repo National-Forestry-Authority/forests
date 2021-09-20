@@ -1,0 +1,12 @@
+uuid: 373f3f2b-1a73-4a8b-87f6-599643886724
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_block_compartment
+id: asset_compartment
+color: blue
+conditions:
+  asset_type:
+    - compartment

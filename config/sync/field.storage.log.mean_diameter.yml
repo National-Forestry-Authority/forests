@@ -1,9 +1,11 @@
-uuid: 1632ad5c-31f9-44bf-8b0a-1a4a7739e35b
+uuid: e5056b34-8630-4f7d-9776-92aef9ca421e
 langcode: en
 status: true
 dependencies:
   module:
     - log
+_core:
+  default_config_hash: T7zn399SVxS10cm9TUOeN5MNDFOsctCJZbrCNh_MPsQ
 id: log.mean_diameter
 field_name: mean_diameter
 entity_type: log

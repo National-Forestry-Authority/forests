@@ -1,7 +1,13 @@
 uuid: 3910349c-f063-4cf8-9ea9-17bce690492c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
 id: cfr
 label: CFR
 description: ''

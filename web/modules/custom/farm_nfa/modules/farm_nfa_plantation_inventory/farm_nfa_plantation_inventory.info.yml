@@ -11,9 +11,6 @@ config_devel:
   - log.type.plantation_inventory
   - field.storage.log.compartment
   - field.storage.log.inventory_date
-  - field.storage.log.volume
-  - field.storage.log.mai
-  - field.storage.log.cai
   - field.storage.log.stand_quality
   - field.storage.log.inventory_methodology
   - field.storage.log.silvicilutural_score
@@ -22,9 +19,6 @@ config_devel:
   - field.storage.log.silvicultural_recommendations
   - field.field.log.plantation_inventory.compartment
   - field.field.log.plantation_inventory.inventory_date
-  - field.field.log.plantation_inventory.volume
-  - field.field.log.plantation_inventory.mai
-  - field.field.log.plantation_inventory.cai
   - field.field.log.plantation_inventory.working_circle
   - field.field.log.plantation_inventory.stand_quality
   - field.field.log.plantation_inventory.inventory_methodology

@@ -1,0 +1,12 @@
+uuid: 70ff0c51-1173-458e-914e-3161651a6b3d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_zone
+id: asset_zone
+color: red
+conditions:
+  asset_type:
+    - zone

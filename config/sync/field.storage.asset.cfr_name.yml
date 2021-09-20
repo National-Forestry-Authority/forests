@@ -1,15 +1,17 @@
+uuid: 1f2d5f4b-3274-4a58-9463-359fd318d21f
 langcode: en
 status: true
 dependencies:
   module:
-    - log
-    - quantity
-id: log.mai
-field_name: mai
-entity_type: log
-type: entity_reference
+    - asset
+id: asset.cfr_name
+field_name: cfr_name
+entity_type: asset
+type: string
 settings:
-  target_type: quantity
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1
