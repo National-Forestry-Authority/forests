@@ -60,7 +60,7 @@ class ForestPlanManagementForm extends ForestPlanBaseForm {
         'kml' => $this->t('KML Upload'),
         'map' => $this->t('Draw a map'),
       ],
-      '#default_value' => '',
+      '#default_value' => $default_value,
     ];
 
     $form['log']['compartment']['#states'] = [

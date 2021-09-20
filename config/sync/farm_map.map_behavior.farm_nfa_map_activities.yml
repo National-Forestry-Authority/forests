@@ -8,5 +8,5 @@ dependencies:
 id: farm_nfa_map_activities
 label: 'Map behavior for activity creation'
 description: 'Centers the activity map in the geometries associated with the plan.'
-library: farm_nfa/farm_nfa_map_activities
+library: farm_nfa/behavior_farm_nfa_map_activities
 settings: {  }
