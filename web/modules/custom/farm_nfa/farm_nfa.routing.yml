@@ -109,3 +109,11 @@ farm_nfa.plan.add_harvest:
       plan:
         type: entity:plan
       task_route: farm_nfa.plan.add_harvest
+
+farm_nfa.search_autocomplete:
+  path: '/autocomplete/{entity_type}'
+  defaults:
+    _controller: '\Drupal\farm_nfa\Controller\JsonApiAutocompleteController::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'access content'
