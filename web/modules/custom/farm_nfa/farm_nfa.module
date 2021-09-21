@@ -116,5 +116,14 @@ function farm_nfa_farm_dashboard_panes() {
         'entity_type' => 'asset'
       ],
     ],
+    'dashboard_plans_search' => [
+      'title' => t('Plans'),
+      'block_plugin' => 'farm_nfa_search_form_block',
+      'region'  => 'second',
+      'args'  => [
+        'route' => 'entity.plan.collection',
+        'entity_type' => 'plan'
+      ],
+    ],
   ];
 }
