@@ -19,6 +19,7 @@ dependencies:
   - farm:farm_land
   - farm_forest:farm_forest
   - farm:plan
+  - farm:farm_ui_dashboard
   - select_or_other:select_or_other
 
 config_devel:

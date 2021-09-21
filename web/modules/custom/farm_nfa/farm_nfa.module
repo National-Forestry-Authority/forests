@@ -134,7 +134,7 @@ function farm_nfa_farm_dashboard_panes() {
   return [
     'dashboard_assets_search' => [
       'title' => t('Assets'),
-      'block_plugin' => 'farm_nfa_search_form_block',
+      'block_plugin' => 'farm_nfa_dashboard_search_form_block',
       'region'  => 'first',
       'args'  => [
         'route' => 'entity.asset.collection',

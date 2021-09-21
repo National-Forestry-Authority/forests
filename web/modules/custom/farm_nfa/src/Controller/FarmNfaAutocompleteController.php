@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Returns the plan tabs.
+ * Autocomplete controller for the custom dashboard blocks.
  */
-class JsonApiAutocompleteController extends ControllerBase {
+class FarmNfaAutocompleteController extends ControllerBase {
 
   /**
    * The entity type manager service.
@@ -23,7 +23,7 @@ class JsonApiAutocompleteController extends ControllerBase {
   protected $entityTypeManager;
 
   /**
-   * Constructs a JsonApiAutocompleteController object.
+   * Constructs a FarmNfaAutocompleteController object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager service.
@@ -52,18 +52,19 @@ class JsonApiAutocompleteController extends ControllerBase {
    */
   public function handleAutocomplete(Request $request, string $entity_type) {
     $results = [];
+    $storage = $this->entityTypeManager->getStorage($entity_type);
     $input = $request->query->get('q');
     if (!$input) {
       return new JsonResponse($results);
     }
     $input = Xss::filter($input);
-    $query = \Drupal::entityQuery($entity_type)
+    $query = $storage->getQuery()
       ->condition('name', $input, 'CONTAINS')
       ->groupBy('nid')
       ->sort('created', 'DESC')
       ->range(0, 10);
     $ids = $query->execute();
-    $entities = $ids ? $this->entityTypeManager->getStorage($entity_type)->loadMultiple($ids) : [];
+    $entities = $ids ? $storage->loadMultiple($ids) : [];
     foreach ($entities as $entity) {
       $results[] = [
         'value' => EntityAutocomplete::getEntityLabels([$entity]),

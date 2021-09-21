@@ -7,12 +7,9 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Url;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Builds the Farm NFA search form for the Farm NFA search block.
- *
- * @internal
  */
 class FarmNfaSearchBlockForm extends FormBase {
 
@@ -35,14 +32,14 @@ class FarmNfaSearchBlockForm extends FormBase {
    *
    * @var string
    */
-  protected $view_route;
+  protected $viewRoute;
 
   /**
    * The form type defined in the block to generates an id per entity type.
    *
    * @var string
    */
-  protected $form_type;
+  protected $formType;
 
   /**
    * Constructs a new SearchBlockForm.
@@ -55,21 +52,21 @@ class FarmNfaSearchBlockForm extends FormBase {
   public function __construct($form_type, ConfigFactoryInterface $config_factory, RendererInterface $renderer) {
     $this->configFactory = $config_factory;
     $this->renderer = $renderer;
-    $this->form_type = $form_type;
+    $this->formType = $form_type;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'farm_nfa_' . $this->form_type . '_search_block_form';
+    return 'farm_nfa_' . $this->formType . '_search_block_form';
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $route = NULL, $entity_type = NULL) {
-    $this->view_route = $route;
+    $this->viewRoute = $route;
 
     $form['search'] = [
       '#type' => 'textfield',
@@ -78,7 +75,7 @@ class FarmNfaSearchBlockForm extends FormBase {
       ],
     ];
 
-    // If the entity type is defined then add autocomplete functionallity.
+    // If the entity type is defined then add autocomplete functionality.
     if (!empty($entity_type)) {
       $form['search']['#autocomplete_route_name'] = 'farm_nfa.search_autocomplete';
       $form['search']['#autocomplete_route_parameters'] = ['entity_type' => $entity_type];
@@ -104,7 +101,7 @@ class FarmNfaSearchBlockForm extends FormBase {
     // Redirect to the route filtering by the parameters introduced.
     if (isset($form_state_values['search'])) {
       $redirect_params['name'] = $form_state_values['search'];
-      $url = Url::fromRoute($this->view_route, $redirect_params);
+      $url = Url::fromRoute($this->viewRoute, $redirect_params);
       $form_state->setRedirectUrl($url);
     }
   }

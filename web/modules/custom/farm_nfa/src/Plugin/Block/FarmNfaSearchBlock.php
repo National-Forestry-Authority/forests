@@ -15,8 +15,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides a Farm NFA search block.
  *
  * @Block(
- *   id = "farm_nfa_search_form_block",
- *   admin_label = @Translation("Farm NFA search form"),
+ *   id = "farm_nfa_dashboard_search_form_block",
+ *   admin_label = @Translation("Farm NFA dashboard search form"),
  *   category = @Translation("Farm NFA")
  * )
  */
