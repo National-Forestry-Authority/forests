@@ -38,6 +38,13 @@ class FarmNfaSearchBlockForm extends FormBase {
   protected $view_route;
 
   /**
+   * The form type defined in the block to generates an id per entity type.
+   *
+   * @var string
+   */
+  protected $form_type;
+
+  /**
    * Constructs a new SearchBlockForm.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -45,26 +52,17 @@ class FarmNfaSearchBlockForm extends FormBase {
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, RendererInterface $renderer) {
+  public function __construct($form_type, ConfigFactoryInterface $config_factory, RendererInterface $renderer) {
     $this->configFactory = $config_factory;
     $this->renderer = $renderer;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('config.factory'),
-      $container->get('renderer')
-    );
+    $this->form_type = $form_type;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'farm_nfa_search_block_form';
+    return 'farm_nfa_' . $this->form_type . '_search_block_form';
   }
 
   /**

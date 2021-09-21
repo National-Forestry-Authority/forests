@@ -3,9 +3,11 @@
 namespace Drupal\farm_nfa\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\farm_nfa\Form\FarmNfaSearchBlockForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -28,6 +30,20 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
   protected $formBuilder;
 
   /**
+   * The config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
+   * The renderer.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
    * Constructs a new FarmNfaSearchBlock.
    *
    * @param array $configuration
@@ -38,10 +54,16 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
    *   The plugin implementation definition.
    * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
    *   The form builder.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The renderer.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, FormBuilderInterface $form_builder) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, FormBuilderInterface $form_builder, ConfigFactoryInterface $config_factory, RendererInterface $renderer) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->formBuilder = $form_builder;
+    $this->configFactory = $config_factory;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -50,6 +72,8 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($configuration, $plugin_id, $plugin_definition,
       $container->get('form_builder'),
+      $container->get('config.factory'),
+      $container->get('renderer')
     );
   }
 
@@ -63,9 +87,11 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
       return [];
     }
 
+    // Create the form object to set an unique form id per entity type.
+    $form = new FarmNfaSearchBlockForm($entity_type, $this->configFactory, $this->renderer);
     // Render the Farm NFA search form with route and entity type as parameters
     // which they will be used in the autocomplete json api controller.
-    return $this->formBuilder->getForm(FarmNfaSearchBlockForm::class, $route, $entity_type);
+    return $this->formBuilder->getForm($form, $route, $entity_type);
   }
 
   /**
