@@ -143,7 +143,7 @@ function farm_nfa_farm_dashboard_panes() {
     ],
     'dashboard_plans_search' => [
       'title' => t('Plans'),
-      'block_plugin' => 'farm_nfa_search_form_block',
+      'block_plugin' => 'farm_nfa_dashboard_search_form_block',
       'region'  => 'second',
       'args'  => [
         'route' => 'entity.plan.collection',
