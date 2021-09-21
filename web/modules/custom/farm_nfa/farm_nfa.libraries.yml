@@ -17,3 +17,9 @@ behavior_farm_nfa_map_activities:
     js/farmOS.map.behaviors.farm_nfa_map_activities.js: { }
   dependencies:
     - farm_map/farm_map
+
+search_autocomplete:
+  js:
+    js/farm_nfa_search_autocomplete.js: { }
+  dependencies:
+    - core/drupal.autocomplete
