@@ -77,6 +77,7 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
       '#title' => $this->t('View route'),
       '#description' => $this->t('The view page route where the form submits to.'),
       '#default_value' => $this->configuration['route'],
+      '#required' => TRUE,
     ];
 
     $form['entity_type'] = [
@@ -84,6 +85,7 @@ class FarmNfaSearchBlock extends BlockBase implements ContainerFactoryPluginInte
       '#title' => $this->t('Entity type'),
       '#description' => $this->t('This generates an autocomplete with the content of the selected entity bundles.'),
       '#default_value' => $this->configuration['entity_type'],
+      '#required' => TRUE,
     ];
 
     return $form;
