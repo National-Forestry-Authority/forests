@@ -64,6 +64,23 @@ entity.plan.management:
       plan:
         type: entity:plan
       task_route: farm_nfa.plan.add_task
+entity.plan.gfw:
+  path: '/plan/{plan}/gfw'
+  defaults:
+    _title: 'GFW'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanGfwForm'
+    log_types:
+      - activity
+      - input
+  requirements:
+    _entity_bundles: 'plan:forest|natural'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
 farm_nfa.plan.add_task:
   path: '/plan/{plan}/add-task'
   defaults:

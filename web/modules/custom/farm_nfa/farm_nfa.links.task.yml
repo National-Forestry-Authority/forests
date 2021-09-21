@@ -28,3 +28,8 @@ farm_nfa.harvest:
   route_name: entity.plan.harvest
   parent_id: entity.plan.canonical
   weight: 4
+farm_nfa.gfw:
+  title: 'GFW'
+  route_name: entity.plan.gfw
+  parent_id: entity.plan.canonical
+  weight: 5
