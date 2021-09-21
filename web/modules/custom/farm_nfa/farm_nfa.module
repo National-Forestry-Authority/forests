@@ -125,3 +125,4 @@ function farm_nfa_preprocess_block__local_actions_block(&$variables) {
       }
     }
   }
+}
