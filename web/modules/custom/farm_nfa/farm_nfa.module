@@ -87,6 +87,31 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
 }
 
 /**
+ * Implements hook_preprocess_menu__toolbar__gin().
+ */
+function farm_nfa_preprocess_menu__toolbar__gin(&$variables) {
+  if (!empty($variables['items'])) {
+    // Unset locations menu item.
+    if (array_key_exists('farm.locations', $variables['items'])) {
+      unset($variables['items']['farm.locations']);
+    }
+    if (array_key_exists('farm.records', $variables['items']) && !empty($variables['items']['farm.records']['below'])) {
+      $records_below = $variables['items']['farm.records']['below'];
+      // Unset block and land menu items inside of assets menu.
+      if (array_key_exists('views_view:views.farm_asset.page', $records_below) && !empty($records_below['views_view:views.farm_asset.page']['below'])) {
+        unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.block']);
+        unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.land']);
+      }
+
+      // Unset quantity menu item.
+      if (array_key_exists('views_view:views.farm_quantity.page', $records_below)) {
+        unset($variables['items']['farm.records']['below']['views_view:views.farm_quantity.page']);
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  */
 function farm_nfa_preprocess_block__local_actions_block(&$variables) {
@@ -100,4 +125,3 @@ function farm_nfa_preprocess_block__local_actions_block(&$variables) {
       }
     }
   }
-}

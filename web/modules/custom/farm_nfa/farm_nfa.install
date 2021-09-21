@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function farm_nfa_install($is_syncing){
+  removeToolbarLinks();
+}
+
+/**
+ * Disable modules farm_forest_plan and farm_input.
+ */
+function farm_nfa_update_9001(&$sandbox) {
+  removeToolbarLinks();
+}
+
+/*
+ * Uninstall farm_forest_plan and farm_input modules to remove toolbar links.
+ */
+function removeToolbarLinks() {
+  // Delete entities of the following content type that have a dependency
+  // with the disabled modules.
+  $forest_plans = \Drupal::entityQuery('plan')
+    ->condition('type', 'forest')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if ($forest_plans) {
+    $storage_handler = \Drupal::service('entity_type.manager')
+      ->getStorage('plan');
+    $forest_entities = $storage_handler->loadMultiple($forest_plans);
+    $storage_handler->delete($forest_entities);
+  }
+
+  $input_logs = \Drupal::entityQuery('log')
+    ->condition('type', 'input')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if ($input_logs) {
+    $storage_handler = \Drupal::service('entity_type.manager')
+      ->getStorage('log');
+    $input_entities = $storage_handler->loadMultiple($input_logs);
+    $storage_handler->delete($input_entities);
+  }
+
+  // Disable the following modules to hide its toolbar menu links.
+  \Drupal::service('module_installer')->uninstall(
+    ['farm_forest_plan', 'farm_input']
+  );
+}
