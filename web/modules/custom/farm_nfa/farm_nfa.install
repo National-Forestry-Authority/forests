@@ -1,9 +1,23 @@
 <?php
 
 /**
- * Disable modules farm_forest_plan and farm_input to remove toolbar links.
+ * Implements hook_install().
+ */
+function farm_nfa_install($is_syncing){
+  removeToolbarLinks();
+}
+
+/**
+ * Disable modules farm_forest_plan and farm_input.
  */
 function farm_nfa_update_9001(&$sandbox) {
+  removeToolbarLinks();
+}
+
+/*
+ * Uninstall farm_forest_plan and farm_input modules to remove toolbar links.
+ */
+function removeToolbarLinks() {
   // Delete entities of the following content type that have a dependency
   // with the disabled modules.
   $forest_plans = \Drupal::entityQuery('plan')
