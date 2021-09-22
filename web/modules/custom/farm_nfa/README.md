@@ -13,27 +13,8 @@ Migration documentation: https://docs.farmos.org/hosting/migration/
 From the nfa_php container:
 
 ```
-./vendor/bin/drush migrate:import --group=farm_migrate_config
-./vendor/bin/drush migrate:import --group=farm_migrate_role
-./vendor/bin/drush migrate:import --group=farm_migrate_user
-./vendor/bin/drush migrate:import --group=farm_migrate_file
-./vendor/bin/drush migrate:import --group=farm_migrate_taxonomy
+./vendor/bin/drush farm_migrate:import
 ```
-
-It's advisable at this point to take a quick snapshot before going on:
-
-```
-./vendor/bin/drush migrate:import --group=farm_migrate_area
-./vendor/bin/drush migrate:import --group=farm_migrate_quantity
-```
-
-And finally this one (which cannot currently be rolled back):
-
-```
-./vendor/bin/drush migrate:import --group=farm_migrate_reference
-```
-
-**Note**: no assets or logs need to be migrated.
 
 # Get farm_forest
 
