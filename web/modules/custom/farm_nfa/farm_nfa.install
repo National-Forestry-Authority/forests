@@ -40,6 +40,10 @@ function farm_nfa_remove_toolbar_links_helper() {
  * Implements hook_install().
  */
 function farm_nfa_install(){
+
+  // Rename "Land" assets to "Land (Admin)".
+  \Drupal::configFactory()->getEditable('asset.type.land')->set('label', 'Land (Admin)')->save();
+
   farm_nfa_remove_toolbar_links_helper();
 }
 
