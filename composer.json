@@ -109,9 +109,6 @@
             },
             "drupal/select_or_other": {
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
-            },
-            "farmos/farmos": {
-                "Issue #3236712: Allow render custom blocks in the dashboard": "patches/3236712-allow-render-custom-blocks.patch"
             }
         }
     }
