@@ -6,10 +6,10 @@ core_version_requirement: ^9
 dependencies:
   - drupal:user
   - farm_nfa:farm_nfa
+  - farm_nfa:farm_nfa_block_compartment
 
 config_devel:
   - log.type.plantation_inventory
-  - field.storage.log.compartment
   - field.storage.log.inventory_date
   - field.storage.log.stand_quality
   - field.storage.log.inventory_methodology

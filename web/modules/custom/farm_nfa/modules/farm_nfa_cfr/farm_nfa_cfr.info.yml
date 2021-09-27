@@ -39,7 +39,6 @@ config_devel:
   - field.field.media.boundary_plan_maps.boundary_plan_number
   - field.field.media.boundary_plan_maps.date
   - field.field.media.boundary_plan_maps.field_media_image
-  - field.storage.asset.area
   - field.storage.asset.boundary_plan
   - field.storage.asset.current_purpose
   - field.storage.asset.description_of_plans_and_sheets
@@ -64,3 +63,4 @@ config_devel:
   - field.storage.media.field_media_image
   - media.type.boundary_plan_maps
   - taxonomy.vocabulary.predominant_vegetation
+  - farm_map.layer_style.asset_cfr

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\farm_nfa\Plugin\Plan\PlanType;
+namespace Drupal\farm_nfa_plantation_forest\Plugin\Plan\PlanType;
 
 use Drupal\farm_entity\Plugin\Plan\PlanType\FarmPlanType;
 

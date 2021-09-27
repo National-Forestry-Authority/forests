@@ -4,48 +4,42 @@ type: module
 package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
+  - default_content:default_content
   - drupal:datetime_range
   - drupal:file
   - drupal:image
   - drupal:media
   - drupal:text
+  - drupal:telephone
   - drupal:views
   - element_multiple:element_multiple
   - config_devel:config_devel
-  - config_rewrite:config_rewrite
-  - default_content:default_content
+  - field_group:field_group
   - farm:asset
   - farm:farm_entity
   - farm:farm_land
-  - farm_forest:farm_forest
+  - farm:farm_map
   - farm:plan
   - farm:farm_ui_dashboard
+  - farm_forest:farm_forest
+  - month_year:month_year
   - select_or_other:select_or_other
+  - state_machine:state_machine
 
 config_devel:
-  - asset.type.land
   - core.entity_view_display.asset.land.default
   - core.entity_form_display.asset.land.default
-  - core.entity_form_display.asset.forest.default
   - core.entity_form_display.asset.land.default
-  - core.entity_form_display.log.activity.default
   - core.entity_form_display.log.activity.plan
   - core.entity_form_display.log.harvest.default
   - core.entity_form_display.log.harvest.plan
-  - core.entity_form_display.log.input.default
-  - core.entity_form_display.log.input.plan
   - core.entity_form_display.log.observation.default
   - core.entity_form_display.log.observation.plan
-  - core.entity_form_display.plan.forest.default
   - core.entity_form_display.user.user.default
   - core.entity_form_mode.log.plan
-  - core.entity_view_display.asset.forest.default
   - core.entity_view_display.asset.land.default
-  - core.entity_view_display.log.activity.default
   - core.entity_view_display.log.harvest.default
-  - core.entity_view_display.log.input.default
   - core.entity_view_display.log.observation.default
-  - core.entity_view_display.plan.forest.default
   - core.entity_view_display.user.user.default
   - core.entity_view_display.user.user.person_in_charge
   - core.entity_view_mode.media.dialog
@@ -55,35 +49,26 @@ config_devel:
   - farm_land.land_type.range
   - farm_land.land_type.sector
   - farm_map.map_behavior.farm_nfa_map_activities
-  - farm_map.layer_style.asset_compartment
-  - farm_map.layer_style.asset_block
-  - farm_map.layer_style.asset_cfr
-  - farm_map.layer_style.asset_zone
   - field.field.asset.land.person_in_charge
-  - field.field.log.activity.compartment
   - field.field.log.activity.working_circle
   - field.field.log.harvest.coup_number
   - field.field.log.harvest.harvest_type
   - field.field.log.harvest.supervisor
   - field.field.log.harvest.tender_name
   - field.field.log.harvest.working_circle
-  - field.field.log.input.working_circle
   - field.field.log.observation.average_silviculture_score
   - field.field.log.observation.coup_number
   - field.field.log.observation.working_circle
-  - field.field.plan.forest.field_forest_plan_period
   - field.field.user.user.contact_phone_number
   - field.storage.asset.person_in_charge
   - field.storage.log.average_silviculture_score
   - field.storage.user.contact_phone_number
+  - field.storage.asset.area
   - field.storage.log.coup_number
   - field.storage.log.harvest_type
   - field.storage.log.supervisor
   - field.storage.log.tender_name
   - field.storage.log.working_circle
-  - field.storage.plan.field_forest_plan_period
-  - plan.type.natural
-  - plan.type.plantation
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose
   - taxonomy.vocabulary.forest_vegetation

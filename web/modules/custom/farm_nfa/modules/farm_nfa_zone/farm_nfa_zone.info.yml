@@ -19,6 +19,7 @@ config_devel:
   - field.storage.asset.permitted_activities
   - field.storage.asset.zonation_type
   - taxonomy.vocabulary.zonation_type
+  - farm_map.layer_style.asset_zone
 
 default_content:
   taxonomy_term:
