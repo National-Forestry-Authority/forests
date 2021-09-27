@@ -29,6 +29,10 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "lucianocosta/jquery.mtz.monthpicker",
@@ -90,7 +94,7 @@
             "web/core": ["type:drupal-core"],
             "web/profiles/farm": ["farmos/farmos"],
             "web/modules/farm_forest": ["drupal/farm_forest"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset"],
             "web/modules/{$name}": ["type:drupal-module"],
             "web/themes/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
