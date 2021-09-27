@@ -6,8 +6,6 @@ core_version_requirement: ^9
 dependencies:
   - farm_forest:farm_forest
   - farm_nfa:farm_nfa
-  - month_year:month_year
-  - state_machine:state_machine
 
 config_devel:
   - field.field.asset.forest.area
@@ -31,3 +29,6 @@ config_devel:
   - field.storage.asset.variety
   - taxonomy.vocabulary.species
   - taxonomy.vocabulary.variety
+  - core.entity_form_display.asset.forest.default
+  - core.entity_view_display.asset.forest.default
+
