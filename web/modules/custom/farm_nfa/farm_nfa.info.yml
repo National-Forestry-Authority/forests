@@ -77,11 +77,6 @@ config_devel:
 
 default_content:
   taxonomy_term:
-    - b0236bd7-067a-4484-92d6-6b483aa48aef
-    - a9ed4a97-7dcf-4a9b-a0a3-d0f75a332a5f
-    - d0e2cba5-016b-450a-b823-59dd372413db
-    - 5867019b-df3b-4805-93c2-163b3a1d31b3
-    - a954389d-a65b-42cd-aa76-006533238cc9
     - 0fe6a451-a837-4ff9-b265-c1d4545ea0c0
     - 40143a27-e0d1-4d5a-aefe-9c22c9ca15e4
     - c675a439-3744-46bb-86dd-7bddc2431e76
