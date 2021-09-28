@@ -1,4 +1,4 @@
-uuid: e7a3722c-03ad-49e3-b67d-c018e29f5bf0
+uuid: 6235d764-7b68-41fe-b9ba-427e0287388a
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
       - farm_migrate
       - farm_unit
 _core:
-  default_config_hash: IFokEm0_u2TBb0lqOlvlpn1fH5MjSzU1qub8Q8OW4DY
+  default_config_hash: trdz18gMrZjW_DHH9-EwNfK9gN-riFjGIPJYH9AUarw
 id: farm_migrate_taxonomy_unit
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
@@ -34,7 +34,6 @@ process:
       source: parent
     -
       plugin: migration_lookup
-      source: tid
       migration: farm_migrate_taxonomy_unit
   parent:
     plugin: default_value

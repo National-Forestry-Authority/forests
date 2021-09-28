@@ -1,4 +1,4 @@
-uuid: f40f908e-5f2d-4e83-9dd7-271cea37e251
+uuid: dab1d053-e5dd-43ae-a614-3fc18a7ca44a
 langcode: en
 status: true
 dependencies:
@@ -11,6 +11,8 @@ dependencies:
     - farm_map
     - file
     - text
+_core:
+  default_config_hash: 5UV1CIIfjDb4Rl_cGhWvgnkJJDNTAH7ERIOBHdqSgLc
 id: log.activity.plan
 targetEntityType: log
 bundle: activity

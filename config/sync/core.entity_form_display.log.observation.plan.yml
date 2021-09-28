@@ -1,4 +1,4 @@
-uuid: a23385c9-bee3-4373-bd78-4d7e42625e4d
+uuid: 4db97a04-c991-4fda-b27f-5e57a2d4555d
 langcode: en
 status: true
 dependencies:
@@ -12,6 +12,8 @@ dependencies:
     - farm_map
     - inline_entity_form
     - text
+_core:
+  default_config_hash: sH231r2nOO3lhCbwgAjx3muUI_byOp07yuHfXeSNl4w
 id: log.observation.plan
 targetEntityType: log
 bundle: observation

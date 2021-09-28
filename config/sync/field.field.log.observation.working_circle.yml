@@ -1,4 +1,4 @@
-uuid: d933a421-c1f5-4e5d-b936-ba6bc0165331
+uuid: ccc8e86b-aecd-4648-a57e-86ea4ee5c3cd
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: pjHeDrg6iNccf8gWIxNK8GWHmnk8FfixuS_PHQe9-P4
 id: log.observation.working_circle
 field_name: working_circle
 entity_type: log

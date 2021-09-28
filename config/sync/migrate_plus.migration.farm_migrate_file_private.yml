@@ -1,4 +1,4 @@
-uuid: fb30434e-cdb9-45a9-b5cf-d00f3889dc99
+uuid: 05fec1e4-2020-4a2c-b403-30f8ef91e7fa
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: USKd8jAMQ-GdUJEckLnE6BBDSlp0Irp7kjdDtIcOHqY
+  default_config_hash: 4Zk4vQDQg4AnDs1fxHMU3EYtzk7ddfvJlZQ2feUF7jo
 id: farm_migrate_file_private
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
@@ -52,13 +52,13 @@ process:
     source: timestamp
   uid:
     -
-      plugin: skip_on_empty
-      method: process
-      source: uid
-    -
       plugin: migration_lookup
       migration: farm_migrate_user
       source: uid
+      no_stub: true
+    -
+      plugin: default_value
+      default_value: 1
 destination:
   plugin: 'entity:file'
 migration_dependencies:

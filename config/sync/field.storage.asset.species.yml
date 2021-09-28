@@ -1,10 +1,12 @@
-uuid: 4651a05e-9942-4c62-a0eb-9a40d76b13cd
+uuid: 51a4ab4a-51fd-492d-8079-85bc6f233061
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
+_core:
+  default_config_hash: PvKDQpkWElO3w-7HcYUTWn_zlPpSeFz-KAiR3fHI8UQ
 id: asset.species
 field_name: species
 entity_type: asset

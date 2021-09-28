@@ -1,0 +1,10 @@
+uuid: 3e6b0119-89a0-43eb-a938-b89493685fb5
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _reTRHVfbZzvICpS4hRlYWMZUlZ80ZnhCxweZ1w9ZXs
+name: 'Forest opportunities'
+vid: forest_opportunities
+description: ''
+weight: 0

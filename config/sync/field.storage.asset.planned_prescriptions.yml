@@ -1,10 +1,12 @@
-uuid: 9af829e5-09ec-4528-ad75-9d851b18b811
+uuid: 15476759-30ed-4429-8c54-cd3d0ffc4e6d
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - month_year
+_core:
+  default_config_hash: YmAffn1SqucVmVTsf0V8MAut3ur8PfKKDoGpPvOoAlw
 id: asset.planned_prescriptions
 field_name: planned_prescriptions
 entity_type: asset

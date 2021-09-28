@@ -1,10 +1,12 @@
-uuid: 490eabc5-8ef8-4ced-bafd-d48f8f778eb9
+uuid: 499d7244-8056-4606-8459-2dc99e5fab79
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.media.boundary_plan_number
     - media.type.boundary_plan_maps
+_core:
+  default_config_hash: _YM3XiAQXNJu6fj1RLpcJyxGTiQS08-U1_6c76JVVQ8
 id: media.boundary_plan_maps.boundary_plan_number
 field_name: boundary_plan_number
 entity_type: media

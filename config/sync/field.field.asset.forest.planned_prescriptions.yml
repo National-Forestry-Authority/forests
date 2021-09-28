@@ -1,4 +1,4 @@
-uuid: ed4c7a78-87b7-46a0-bd7b-30d01828e458
+uuid: bb86a1e6-2e29-4633-afb4-5e8c6a8ecd47
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.planned_prescriptions
   module:
     - month_year
+_core:
+  default_config_hash: h_C4av0lqL0XZOPraAzjXqPAz6SOjrpyYNH8_a4bUrs
 id: asset.forest.planned_prescriptions
 field_name: planned_prescriptions
 entity_type: asset

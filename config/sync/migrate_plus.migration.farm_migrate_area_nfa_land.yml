@@ -1,4 +1,4 @@
-uuid: f75ce543-7922-4dce-b11b-e61169bcc814
+uuid: 1dbecb20-e092-4f97-ab50-139d23c12f16
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
       - farm_migrate
       - farm_nfa
 _core:
-  default_config_hash: 66zN-pnEgdQgHmFsNSQVgJ8WhojIeVMAATliHGaiGu8
+  default_config_hash: le5qRwlnDYAbA25IM4P1SFoQFMx7Nygz0fS84_4OZ_4
 id: farm_migrate_area_nfa_land
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null

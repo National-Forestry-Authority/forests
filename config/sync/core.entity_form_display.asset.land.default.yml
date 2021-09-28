@@ -1,9 +1,11 @@
-uuid: e6d794bc-98f8-4677-bc95-a6cc8bef726c
+uuid: fd6b9ecf-44ad-4268-9dfc-a6cecd3fc269
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.land
+    - field.field.asset.land.field_boundary_opening_history
+    - field.field.asset.land.field_boundary_plan_details
     - field.field.asset.land.person_in_charge
     - image.style.medium
   module:
@@ -13,6 +15,8 @@ dependencies:
     - image
     - select_or_other
     - text
+_core:
+  default_config_hash: LC9myK_Ge6FmvRpeQv36vyhCZu7eT6iiVEAs0hHPKOw
 id: asset.land.default
 targetEntityType: asset
 bundle: land
@@ -119,6 +123,8 @@ content:
 hidden:
   created: true
   data: true
+  field_boundary_opening_history: true
+  field_boundary_plan_details: true
   geometry: true
   location: true
   uid: true

@@ -1,4 +1,4 @@
-uuid: b0154ca7-ee9f-4693-a01a-6930ee71182c
+uuid: 69f94cac-7057-4a37-b33c-fbb23f37bbab
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - asset
     - log
 _core:
-  default_config_hash: bAbrJDQ9ypNuzIh4uKljSI7dOQ_YSlenftwBnosAuQI
+  default_config_hash: YK4wH2F32vnYxoDr-8YGOkXjf0VyMAB5BZmx_DfXZ0E
 id: log.compartment
 field_name: compartment
 entity_type: log

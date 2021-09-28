@@ -1,4 +1,4 @@
-uuid: 29271a9b-a51e-4658-a0cd-61618abdf7cb
+uuid: 09970ef3-2859-4b37-85ea-554698872c00
 langcode: en
 status: true
 dependencies:
@@ -16,6 +16,8 @@ dependencies:
     - file
     - image
     - text
+_core:
+  default_config_hash: KVW-2kDLlTov6q276IvZfjZ-i8WzLLp41nvZ8jHhyhw
 id: asset.compartment.default
 targetEntityType: asset
 bundle: compartment

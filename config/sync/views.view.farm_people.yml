@@ -1,11 +1,11 @@
-uuid: d564e0b3-5dac-4238-bf2a-8b7f6b4cf20e
+uuid: 79a0b57e-a909-4e91-84c4-2b6edf4beb3e
 langcode: en
 status: true
 dependencies:
   module:
     - user
 _core:
-  default_config_hash: TFLPjIGDZtrpTnZigIgBcGbUaIBKebxw_O3gospUScM
+  default_config_hash: 17oiub-eebWxXxnvW9sUw_YoAnCmI2SA7uN1qAFqWmw
 id: farm_people
 label: 'Farm People'
 module: views
@@ -419,11 +419,11 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
+          type: timestamp_ago
           settings:
-            date_format: html_date
-            custom_date_format: ''
-            timezone: ''
+            future_format: '@interval hence'
+            past_format: '@interval ago'
+            granularity: 2
           group_column: value
           group_columns: {  }
           group_rows: true

@@ -1,10 +1,12 @@
-uuid: bf706a0e-3b88-4be5-abea-3b8ec562b9ef
+uuid: bb0aede5-763b-4077-b7f3-6ffc8226b469
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: Oe0K7JFijOTmSFkiLJD5YMl7wJ1mWX42Ev7fxUNWicY
 id: asset.proposed_strategies
 field_name: proposed_strategies
 entity_type: asset

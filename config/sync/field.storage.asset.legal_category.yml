@@ -1,10 +1,12 @@
-uuid: 6e644cdb-5d85-4827-b7b2-cb043f9392e1
+uuid: 8be30b54-efe0-46ea-b100-09360d8cf77c
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: dpXV0WRe8d9eFQAFTHOT8n2kwgCFXOy9R7Jq99tyGbs
 id: asset.legal_category
 field_name: legal_category
 entity_type: asset

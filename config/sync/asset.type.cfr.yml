@@ -1,4 +1,4 @@
-uuid: 3910349c-f063-4cf8-9ea9-17bce690492c
+uuid: 5c4c3776-7ae8-4f7c-a141-5e171775068d
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ third_party_settings:
   farm_location:
     is_location: true
     is_fixed: true
+_core:
+  default_config_hash: SdvgcYpD_grdWvVvAv1WzdWDe1Vaw1XVu2gpG-af24Q
 id: cfr
 label: CFR
 description: ''

@@ -1,10 +1,12 @@
-uuid: 684a1495-13a8-4060-9c00-d6a752ad5e87
+uuid: 72b8c4db-8b8a-4d98-967d-82afd06336b2
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - state_machine
+_core:
+  default_config_hash: SL0mGBtvAMP3fPSGi24Gis6Gh2Rz46yWjrAGN1K_B9k
 id: asset.forest_status
 field_name: forest_status
 entity_type: asset

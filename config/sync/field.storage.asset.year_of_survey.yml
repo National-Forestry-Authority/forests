@@ -1,9 +1,11 @@
-uuid: ee8e98b6-27a8-4295-85bc-0d1143c3a9a1
+uuid: cf80fa1f-9794-41a8-849c-da0e73d7c921
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: H6thqVmFuVeD40TXsR7QXlWF7D7Uf3Ve3smzcYRNUFg
 id: asset.year_of_survey
 field_name: year_of_survey
 entity_type: asset

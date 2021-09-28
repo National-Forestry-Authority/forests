@@ -1,10 +1,12 @@
-uuid: 59302c55-1351-485d-b00e-5387465d8489
+uuid: 1a4b81ae-d165-44c5-acfe-8f4516deb65a
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: _tNapHs5NtqtyOb5IBJmONyJTfcluPMGMO8_CNqUFxA
 id: asset.priority_actions
 field_name: priority_actions
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: 2e5df62d-1894-4770-baf3-364b71fa00b3
+uuid: eed3a521-16be-4aae-8a71-8fca2a4a732a
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: jyTnENHw-vc4uhoaNKxE2vOv4B7z-kjpCjMV5copBfY
 id: asset.key_resources
 field_name: key_resources
 entity_type: asset

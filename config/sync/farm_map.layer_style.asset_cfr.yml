@@ -1,10 +1,12 @@
-uuid: ac0da10c-983a-478f-9fff-80e245b6e567
+uuid: e16aafa3-0750-434a-ab2e-b7b840501d08
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa_cfr
+_core:
+  default_config_hash: JVPYYqXfZSI7Wl32N16X2XK42JGHXuvupzVANuTKOCw
 id: asset_cfr
 color: green
 conditions:

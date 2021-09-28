@@ -1,0 +1,13 @@
+uuid: 50852d5f-d6fd-4658-a7c8-e58432d47d76
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+_core:
+  default_config_hash: _9mIPDKEX-ENesD7AeS91f2EY2CjJhgpuIm2qYLrmGY
+id: plan_activate_action
+label: 'Unarchive plan'
+type: plan
+plugin: plan_activate_action
+configuration: {  }

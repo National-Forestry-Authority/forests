@@ -1,10 +1,12 @@
-uuid: 15245948-a3cb-4a94-b343-6e4b7d5ef190
+uuid: b699e3e1-b27b-4917-9f9b-c9bbfae84b62
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.block
     - field.storage.asset.cfr_name
+_core:
+  default_config_hash: zp9YZkLvMPVXQU3BgDEM1ZxeGVGshseXK-Z08qS-QqA
 id: asset.block.cfr_name
 field_name: cfr_name
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: 96521c74-519c-46a1-940a-c3fb970f33c6
+uuid: 5f52f399-aec6-4588-98cd-336e68e7d30f
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: U_6isIjGJguGoh9EDy-NumHmQ0VuUmUBB7LKumuPGvA
 id: asset.land_use_and_forest_condition
 field_name: land_use_and_forest_condition
 entity_type: asset

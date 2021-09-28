@@ -1,10 +1,12 @@
-uuid: 70ff0c51-1173-458e-914e-3161651a6b3d
+uuid: c59516c9-5370-4449-a21b-0c2838a9e197
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa_zone
+_core:
+  default_config_hash: 2o-7BUH1JMn1A1aKVNlG875IXgW0Pgvg527myFvKZXc
 id: asset_zone
 color: red
 conditions:

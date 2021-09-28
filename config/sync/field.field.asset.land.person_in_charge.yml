@@ -1,4 +1,4 @@
-uuid: 943d2e77-ca9f-494b-af7e-afdcfc62e556
+uuid: b0901ec2-82ae-46ee-8903-e23506ea3699
 langcode: en
 status: true
 dependencies:
@@ -12,6 +12,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: GfUvHQIZPLxMBKsAkWhzSY4DAsEPETsBzW3gOXzfhO0
 id: asset.land.person_in_charge
 field_name: person_in_charge
 entity_type: asset

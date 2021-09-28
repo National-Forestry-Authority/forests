@@ -1,10 +1,12 @@
-uuid: 62a25986-3b48-4e6b-9ce3-3e4d6d7f8c73
+uuid: 1d46518d-ff6a-4887-bbbf-3e422d9bce30
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: Juou3gadYirEeHHDhd2dFGeUucip_kz0S4xSuAMV3nc
 id: asset.criteria_reasons
 field_name: criteria_reasons
 entity_type: asset

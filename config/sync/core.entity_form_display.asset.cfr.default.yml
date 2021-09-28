@@ -1,4 +1,4 @@
-uuid: 27089123-992b-4d3e-a42d-c7b69fcfe444
+uuid: a69f9aa3-664e-4912-8e2b-aa8fb5afc22b
 langcode: en
 status: true
 dependencies:
@@ -94,6 +94,8 @@ third_party_settings:
         open: true
         required_fields: true
       label: 'Management issues'
+_core:
+  default_config_hash: FckjpRUYHktPfRe_BW1r-lkDQwSFsSYdvd7F9wH9Bds
 id: asset.cfr.default
 targetEntityType: asset
 bundle: cfr

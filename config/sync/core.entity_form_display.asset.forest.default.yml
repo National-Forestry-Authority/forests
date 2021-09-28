@@ -1,4 +1,4 @@
-uuid: e9976321-4f21-4b41-9d2b-5ac5d6d46182
+uuid: 6299eb05-fdb7-4554-8a1b-8cebe3a60e57
 langcode: en
 status: true
 dependencies:
@@ -59,6 +59,8 @@ third_party_settings:
         open: true
         required_fields: true
       label: 'Plantation stand'
+_core:
+  default_config_hash: 8YV8HS0jGqYOxCkps9m5ixDGiMQhkQE0z4eo8lSWf8w
 id: asset.forest.default
 targetEntityType: asset
 bundle: forest

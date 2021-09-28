@@ -1,13 +1,14 @@
-uuid: 1f2b152b-2fc8-4c50-ac21-1beb4be8db06
+uuid: 3bdd27a1-a419-4813-a9c0-6bfdc16a9555
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - farm_ui_theme
   module:
     - farm_ui_theme
   theme:
     - gin
-_core:
-  default_config_hash: ZEI8u8-SBeVt4t67IUR-16U5mmsCkztkOrfEn0GJwCA
 id: farm_powered
 theme: gin
 region: content

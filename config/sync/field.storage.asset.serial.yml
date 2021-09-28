@@ -1,9 +1,11 @@
-uuid: 0ab5b171-ccab-44e6-97c6-39af603abf48
+uuid: 0896013e-3b58-45f8-9521-9fe788616e3e
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: 1vpg7ksb112gg8gKyNKq_eJLJyErkxmqbrpojLSRMRs
 id: asset.serial
 field_name: serial
 entity_type: asset

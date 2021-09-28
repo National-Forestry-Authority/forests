@@ -1,9 +1,11 @@
-uuid: 493be425-bb9a-4d85-989f-636bc7f453fe
+uuid: eb1d15cf-39ca-4b31-8576-1622831609ce
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: Ku_lpMlRHRv_FUvczuOlRsztsmntyxh7iY_XvztLu1Y
 id: asset.compartment_number
 field_name: compartment_number
 entity_type: asset

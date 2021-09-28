@@ -1,9 +1,11 @@
-uuid: 79a60e21-b7a9-471c-afc0-8cc1030adc4f
+uuid: 866b7198-b13f-43aa-a7aa-cf3c63847379
 langcode: en
 status: true
 dependencies:
   module:
     - media
+_core:
+  default_config_hash: hRB_4b3-hvPqg-xkeX3VfDfMHtGm1rW96R-fVStukjI
 id: media.link
 label: Link
 targetEntityType: media

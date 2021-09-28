@@ -1,10 +1,12 @@
-uuid: 3bc5e09f-254f-4e84-ac2a-f887d02df9d4
+uuid: 72a15749-8dd4-49e5-b32c-f733a5cb0782
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.log.supervisor
     - log.type.harvest
+_core:
+  default_config_hash: F9xBCge2dcPCxDZJITjVyIaajBSNZwBFgjttkMAFeGE
 id: log.harvest.supervisor
 field_name: supervisor
 entity_type: log

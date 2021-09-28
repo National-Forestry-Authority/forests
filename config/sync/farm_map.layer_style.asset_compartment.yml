@@ -1,10 +1,12 @@
-uuid: 373f3f2b-1a73-4a8b-87f6-599643886724
+uuid: 490d36da-3f1f-407b-a737-0eb08bd8622c
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa_block_compartment
+_core:
+  default_config_hash: nWgpZ-SLxRhPj6jINyJGIpXZuNIQ9CaBEtc2aLzf_Bc
 id: asset_compartment
 color: blue
 conditions:

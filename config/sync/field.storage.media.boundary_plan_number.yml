@@ -1,9 +1,11 @@
-uuid: 90f9c405-9287-4663-9fa7-f5054ea8ab59
+uuid: fc32549a-1138-4109-815d-ec54725329b1
 langcode: en
 status: true
 dependencies:
   module:
     - media
+_core:
+  default_config_hash: N5pvYSdnIw1XHZ626lapuwvDvsCAOxSLKKR7FgGnZbc
 id: media.boundary_plan_number
 field_name: boundary_plan_number
 entity_type: media

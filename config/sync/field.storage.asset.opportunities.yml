@@ -1,9 +1,11 @@
-uuid: 0cda9a33-d42a-4432-878c-5effeed69ad3
+uuid: b1bf383e-81c3-4cf8-bfc0-a0b057d84ed4
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: kkeW05Po8MmhpMOAMhrK9DRmeK-xNJkv00o5Uo93GvQ
 id: asset.opportunities
 field_name: opportunities
 entity_type: asset

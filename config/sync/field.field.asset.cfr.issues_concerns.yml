@@ -1,10 +1,12 @@
-uuid: 80bed309-79c1-4e56-85ab-4880371c7a55
+uuid: 1f5c4cd4-1c78-4331-90b8-b4a5a1f8d989
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.issues_concerns
+_core:
+  default_config_hash: T5jfx_LpcSswRfxJ7jU3wCMX8YBdpo17mboFFdyiGKE
 id: asset.cfr.issues_concerns
 field_name: issues_concerns
 entity_type: asset

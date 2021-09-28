@@ -1,4 +1,4 @@
-uuid: 4739b5b6-4d21-409a-b248-c5ccd584b516
+uuid: 86eec9ef-cfe7-4ca4-90ba-5d19b1597fb5
 langcode: en
 status: true
 dependencies:
@@ -6,26 +6,28 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: GYwRNscW7rk2O5YWkXl-YJwEZdFJsBSOMCBCpkRt8n4
+  default_config_hash: II7d5jJNXEO3VUjT9DCrERbtKTWPG0ri8QyrBubNQBY
 id: farm_migrate_plan
 label: 'farmOS 1.x Plan Migration'
 description: 'Migrates plans from farmOS 1.x to farmOS 2.x'
 source_type: 'farmOS 1.x'
 module: null
 shared_configuration:
+  destination:
+    validate: true
   process:
     name:
       plugin: get
       source: name
     uid:
       -
-        plugin: skip_on_empty
-        method: process
-        source: uid
-      -
         plugin: migration_lookup
         migration: farm_migrate_user
         source: uid
+        no_stub: true
+      -
+        plugin: default_value
+        default_value: 1
     created:
       plugin: get
       source: created

@@ -1,10 +1,12 @@
-uuid: 3374ddfc-cdc9-4a11-a757-c6fbc0e812d5
+uuid: 4e227b24-8bdb-4f01-8215-6ba70e7b4698
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: v-qNls5ZWb27B7BQgXd45SC2yARroPgGrvOpyhXCGuM
 id: asset.detailed_vegetation
 field_name: detailed_vegetation
 entity_type: asset

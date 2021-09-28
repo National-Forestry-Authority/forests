@@ -1,4 +1,4 @@
-uuid: 8859bad2-c7af-4cf5-8b24-35536d44e9d2
+uuid: b96c1a4f-9450-438a-962f-411c6db3d38b
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.legal_category
   module:
     - text
+_core:
+  default_config_hash: rF3KRKFia-rmkTSo_UD-vN1vaRV1HifUEdtJmqNQjUg
 id: asset.cfr.legal_category
 field_name: legal_category
 entity_type: asset

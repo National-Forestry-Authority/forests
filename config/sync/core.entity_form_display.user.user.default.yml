@@ -1,4 +1,4 @@
-uuid: 7219b85e-fcef-49c0-905e-62a121e8c51a
+uuid: b096fd93-f982-427c-a665-28eb157142bb
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
   module:
     - telephone
     - user
+_core:
+  default_config_hash: buoe3_-NfyID-cUmvKAkkxnZR8_F4xZGCpUON9s8mvc
 id: user.user.default
 targetEntityType: user
 bundle: user

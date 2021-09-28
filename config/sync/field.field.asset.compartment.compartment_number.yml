@@ -1,10 +1,12 @@
-uuid: 7b8372f0-cac4-4103-a075-149818dd3597
+uuid: 205d5bfe-6a39-4191-9c99-f6b941269547
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.compartment
     - field.storage.asset.compartment_number
+_core:
+  default_config_hash: fAuYHxSllJ4wZw8nlyMa8-KDvwOL7WrM0D4qpLgDlVY
 id: asset.compartment.compartment_number
 field_name: compartment_number
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: c54f6095-6955-4b24-a1de-d87c1fb6dc1d
+uuid: 8ca6ba5e-40cc-4c39-9fd8-1982c64c571e
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
+_core:
+  default_config_hash: 9H6ZZBIWyTRvxPLtEHrqp0SpRGxypju7dsV7WXsP_tg
 id: asset.forest_vegetation_type
 field_name: forest_vegetation_type
 entity_type: asset

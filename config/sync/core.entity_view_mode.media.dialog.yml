@@ -1,9 +1,11 @@
-uuid: fd74a694-8837-4da6-8f40-70cc7629552a
+uuid: 4cd7898a-58d3-493b-8737-ea009a85b848
 langcode: en
 status: true
 dependencies:
   module:
     - media
+_core:
+  default_config_hash: Dh1fa62Zo1W0A7i61J7LEnfu4XIERCA05iJYQmeiZ38
 id: media.dialog
 label: Dialog
 targetEntityType: media

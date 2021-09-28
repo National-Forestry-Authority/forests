@@ -1,4 +1,4 @@
-uuid: 34ef4487-5c10-43ee-93cf-a8b38ace4545
+uuid: 45b87e7a-ce65-444b-b6af-42b518564e2f
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: PMihpGrFKJvj_EiTHu6grPGAgFMdEVoEUJQbTtP8l2w
 id: asset.cfr.predominant_vegetation
 field_name: predominant_vegetation
 entity_type: asset

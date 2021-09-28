@@ -1,10 +1,12 @@
-uuid: d1b9076e-1220-4e86-a1f1-27e63858368a
+uuid: fa236bc2-90d5-422a-85aa-ad2d7c38c4d9
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.stand_number
+_core:
+  default_config_hash: 8Xl41p3LCXQ8Iy_Zlpp5OxDVAf63H0o3WLS2V2namls
 id: asset.forest.stand_number
 field_name: stand_number
 entity_type: asset

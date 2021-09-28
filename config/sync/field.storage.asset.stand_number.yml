@@ -1,9 +1,11 @@
-uuid: 8cf373a0-16a0-4d70-9d33-f0d6e036c356
+uuid: c26b8afe-0b8b-4f1c-8163-edf47d6da49c
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: VwZF_W6bRIwN5MqCZ3VB1K1Nj_8v_-ef4FyO9e9T_O0
 id: asset.stand_number
 field_name: stand_number
 entity_type: asset

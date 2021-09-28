@@ -1,4 +1,4 @@
-uuid: 098e175d-618a-40d5-95ff-b44e112d8f93
+uuid: 7fc13a3b-0891-452e-9043-cb682a8ca9eb
 langcode: en
 status: true
 dependencies:
@@ -18,6 +18,8 @@ dependencies:
     - image
     - options
     - text
+_core:
+  default_config_hash: DYhigjq3jnIHNEoAZ_tGqus6phZ8M40kkAP8XzJdDnI
 id: asset.compartment.default
 targetEntityType: asset
 bundle: compartment

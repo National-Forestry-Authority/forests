@@ -1,4 +1,4 @@
-uuid: 3013117b-deff-488c-90bd-3b29a0a0e71b
+uuid: a3a56bc5-ffe1-4faa-bbfa-d1fb816ff7fe
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.description_of_purpose
   module:
     - text
+_core:
+  default_config_hash: uS4slJoS6FAtN2FxRPM3JVdn2i2C_DJWjzbiNc2gT78
 id: asset.zone.description_of_purpose
 field_name: description_of_purpose
 entity_type: asset

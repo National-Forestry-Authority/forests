@@ -1,4 +1,4 @@
-uuid: 9f49a80f-cedc-45f0-aa4d-e620e9074ff9
+uuid: 4bf87694-261b-4c90-9d01-6cd9a6141c45
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,9 @@ dependencies:
     module:
       - farm_quantity_standard
 _core:
-  default_config_hash: 9ozBOqW-Lj7wHqY5zIV6YJ3H6oO9Jgus22O9NsJqWhU
+  default_config_hash: l0WIavQCcVqi-VLuH23dvprnTw9xtGvSP_wd4RApmQ4
 id: standard
 label: Standard
 description: 'Standard quantity type.'
+default_measure: ''
 new_revision: true

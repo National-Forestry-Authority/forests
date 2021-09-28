@@ -1,4 +1,4 @@
-uuid: 82f83f2c-3f6a-49e1-8ed1-f6a13af8da90
+uuid: cc200340-e006-46a5-a774-955ef34e77c8
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.description_of_plans_and_sheets
   module:
     - text
+_core:
+  default_config_hash: jUZvp7CCA1apfpsQGG6ISGwqiWpP-aHwaRYHnxMPj20
 id: asset.cfr.description_of_plans_and_sheets
 field_name: description_of_plans_and_sheets
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: ae444357-e11f-4cbd-8ec7-a188c9764f3e
+uuid: c1517854-c6a9-43f2-b10f-0cf0edf45c98
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
+_core:
+  default_config_hash: fzOgrhyHHLdbhIhSHvbt2QOfO7Dr3TAPcw8LzGYAmJg
 id: asset.variety
 field_name: variety
 entity_type: asset

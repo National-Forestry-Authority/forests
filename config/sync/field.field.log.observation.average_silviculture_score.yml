@@ -1,4 +1,4 @@
-uuid: c5031ce2-8ec6-4c70-83e6-492401df1b8a
+uuid: 6ccce851-1e0f-4a54-aa88-0069c931fd7f
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: HAuisY3CTEEJMQG8_xe0nNVmXh6O0ZZJNbs7GegbCXw
 id: log.observation.average_silviculture_score
 field_name: average_silviculture_score
 entity_type: log

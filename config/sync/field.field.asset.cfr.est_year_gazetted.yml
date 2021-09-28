@@ -1,10 +1,12 @@
-uuid: 2b2c158b-94ac-473b-8f9f-b6bada89e5e3
+uuid: f43e8995-2bcc-4285-847d-55fa96d21ca2
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.est_year_gazetted
+_core:
+  default_config_hash: MFEzTqR-LnT1MhMtfIMKpXXSf-E54ZrgOXBcebD3p-E
 id: asset.cfr.est_year_gazetted
 field_name: est_year_gazetted
 entity_type: asset

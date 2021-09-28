@@ -1,9 +1,11 @@
-uuid: 2b9d20ee-7395-4091-9a39-dcf52091a786
+uuid: f973c84b-7105-4cff-bc3d-056a400a9f24
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: XCyEvKWHBoT5oq6GqCveOBIfMAOM63jurAcf360vl90
 id: asset.area
 field_name: area
 entity_type: asset

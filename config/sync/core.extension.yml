@@ -6,9 +6,6 @@ module:
   breakpoint: 0
   config: 0
   config_devel: 0
-  config_rewrite: 0
-  config_update: 0
-  config_update_ui: 0
   consumers: 0
   csv_serialization: 0
   date_popup: 0
@@ -31,25 +28,25 @@ module:
   farm_field: 0
   farm_flag: 0
   farm_forest: 0
-  farm_forest_plan: 0
   farm_format: 0
+  farm_geo: 0
   farm_harvest: 0
   farm_id_tag: 0
-  farm_input: 0
   farm_land: 0
   farm_location: 0
   farm_log: 0
   farm_log_category: 0
+  farm_log_quantity: 0
   farm_login: 0
   farm_map: 0
   farm_map_mapbox: 0
-  farm_material: 0
   farm_migrate: 0
   farm_nfa: 0
   farm_nfa_block_compartment: 0
   farm_nfa_cfr: 0
   farm_nfa_forest: 0
-  farm_nfa_plantation_inventory: 0
+  farm_nfa_natural_forest: 0
+  farm_nfa_plantation_forest: 0
   farm_nfa_zone: 0
   farm_observation: 0
   farm_quantity_standard: 0
@@ -111,7 +108,6 @@ module:
   update: 0
   user: 0
   views_geojson: 0
-  views_ui: 0
   views: 10
   farm: 1000
 theme:

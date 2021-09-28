@@ -1,4 +1,4 @@
-uuid: 5dff25c6-1375-4a5a-9afb-6831b5e38ab3
+uuid: 1ded58b9-6dad-43cb-844d-a345f8280fd3
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.land_use_and_forest_condition
   module:
     - text
+_core:
+  default_config_hash: NQvU6UiDPmxwS1aqhBeC0gAhasq7i_LjwsDpGaPVbT0
 id: asset.cfr.land_use_and_forest_condition
 field_name: land_use_and_forest_condition
 entity_type: asset

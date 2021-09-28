@@ -1,4 +1,4 @@
-uuid: aab7b74f-56f8-4cfe-b9be-ab44b4ee62ca
+uuid: 65e05352-ef90-4546-9667-51bafeb44ac8
 langcode: en
 status: true
 dependencies:
@@ -6,6 +6,8 @@ dependencies:
     - field.field.user.user.contact_phone_number
   module:
     - user
+_core:
+  default_config_hash: 3rjZmjVfzfhhpxC8Ux3bGM1GszgZNB9bXlnBteH3DMU
 id: user.user.default
 targetEntityType: user
 bundle: user

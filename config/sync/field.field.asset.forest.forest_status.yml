@@ -1,4 +1,4 @@
-uuid: fa24c042-2f24-45a6-8c63-6f0a82a3a965
+uuid: 100e3943-4778-4ac3-a71f-945e2c715f70
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.forest_status
   module:
     - state_machine
+_core:
+  default_config_hash: QpyF6VwvooN5LwFLbiJc4H5djzqdVioV6MNBmdwrmlI
 id: asset.forest.forest_status
 field_name: forest_status
 entity_type: asset

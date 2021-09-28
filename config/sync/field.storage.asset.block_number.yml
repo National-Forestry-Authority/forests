@@ -1,9 +1,11 @@
-uuid: b1901937-c89d-4036-921e-affa4c37e01e
+uuid: 7ff6e3e8-9c6e-424d-b8c7-abb6b48bb269
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: me17cTwGg6MG5xg3Irvk3FPMzaYPPjw5v7apJleXqB8
 id: asset.block_number
 field_name: block_number
 entity_type: asset

@@ -1,4 +1,4 @@
-uuid: 6a8a8e5b-cd8b-4c11-af59-1f6fc242ce70
+uuid: 5282c889-c7ea-4fb2-be4c-e96507b77804
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.permitted_activities
   module:
     - text
+_core:
+  default_config_hash: TwBSRkY_fyY3e2AS5fDPE8r6XVIQzbM8GZxLL4rQhWE
 id: asset.zone.permitted_activities
 field_name: permitted_activities
 entity_type: asset

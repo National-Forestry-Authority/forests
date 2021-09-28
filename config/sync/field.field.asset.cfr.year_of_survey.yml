@@ -1,10 +1,12 @@
-uuid: 52fde701-6815-4b13-b410-a9048a6db8d7
+uuid: ebe08d41-1e16-4d38-86db-187bb8cea07d
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.year_of_survey
+_core:
+  default_config_hash: 8VqZ8ABhsulvjoyo8HSlEegRHgkM6y4v6KHo2kM0F3U
 id: asset.cfr.year_of_survey
 field_name: year_of_survey
 entity_type: asset

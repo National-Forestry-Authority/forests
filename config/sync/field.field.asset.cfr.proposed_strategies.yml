@@ -1,4 +1,4 @@
-uuid: 5e01ac7b-f7f0-44c7-8225-9372288484f4
+uuid: 0e50a013-d7aa-44b7-9489-e72172a393d3
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.proposed_strategies
   module:
     - text
+_core:
+  default_config_hash: ofLng7Bv-6rpLJPT0svEG8_d5InPk6nw4vDt5FN0BGE
 id: asset.cfr.proposed_strategies
 field_name: proposed_strategies
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: 061b6efc-9395-4681-8467-51626c749876
+uuid: 095e9bbe-b13e-48f1-845f-563a777cf5ce
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
+_core:
+  default_config_hash: 1HW7jNnRQ7XZUsJI7jHLluRVROD9-hXe-rTmPH6o4P0
 id: asset.zonation_type
 field_name: zonation_type
 entity_type: asset

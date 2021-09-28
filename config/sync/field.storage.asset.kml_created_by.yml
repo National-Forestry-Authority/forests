@@ -1,10 +1,12 @@
-uuid: b9f4bc79-ea60-41e4-8c64-c5bce3699914
+uuid: 18b9e96e-cbea-48d6-8e67-f687d7a83c77
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - user
+_core:
+  default_config_hash: eC3VEMH0he1q6ww8fhdWBDJQQE5LBW7sa_OUCxxNrqc
 id: asset.kml_created_by
 field_name: kml_created_by
 entity_type: asset

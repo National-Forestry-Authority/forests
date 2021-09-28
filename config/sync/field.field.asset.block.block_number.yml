@@ -1,10 +1,12 @@
-uuid: b266daff-f4ec-41b2-af87-0781195197be
+uuid: 22e6f989-f8ee-43ef-b53d-5454f1003fff
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.block
     - field.storage.asset.block_number
+_core:
+  default_config_hash: 7OKuXe7DSThZXKVZ-VRKVmMraDdOM657dcqf1fpp_Pg
 id: asset.block.block_number
 field_name: block_number
 entity_type: asset

@@ -1,4 +1,4 @@
-uuid: 6e3f24b1-2803-4003-8126-9eb4b7d74f47
+uuid: 99824d47-2f99-42d7-bc3e-7bc0b715ed07
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: 39IMxFuf6XOZrMdRiaEEWpzJcygCpTJ1edSOJ2UeXsc
 id: asset.forest.forest_vegetation_type
 field_name: forest_vegetation_type
 entity_type: asset

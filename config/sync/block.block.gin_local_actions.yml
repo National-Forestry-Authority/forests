@@ -1,4 +1,4 @@
-uuid: 0282c510-66ef-40d9-85f8-d62f82236892
+uuid: 35c04adb-7554-4898-85e6-2583d2a0833c
 langcode: en
 status: true
 dependencies:
@@ -11,10 +11,10 @@ theme: gin
 region: content
 weight: -10
 provider: null
-plugin: local_actions_block
+plugin: farm_local_actions_block
 settings:
-  id: local_actions_block
+  id: farm_local_actions_block
   label: 'Primary admin actions'
-  provider: core
+  provider: farm_ui_theme
   label_display: '0'
 visibility: {  }

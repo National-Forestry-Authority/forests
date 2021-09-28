@@ -1,4 +1,4 @@
-uuid: 8cb31f95-6ddd-493a-a99e-692cb3d5bc62
+uuid: ba06809d-2b28-4a6a-9c27-4a658fb1240f
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ third_party_settings:
   farm_location:
     is_location: true
     is_fixed: true
+_core:
+  default_config_hash: qruuI2NB2M3hKwI5pyQwJISRug_b_YZz2Qnt-jvN8qs
 id: compartment
 label: Compartment
 description: ''

@@ -1,4 +1,4 @@
-uuid: 3ce75c7b-ac77-4024-b470-9bef2c269cb3
+uuid: 9169c9d1-5212-4c71-a03c-fafae647bcc0
 langcode: en
 status: true
 dependencies:
@@ -16,6 +16,8 @@ dependencies:
     - image
     - options
     - text
+_core:
+  default_config_hash: dvlRhEbynVtDVQTwGkDQFhnHg2y4y0PXvQMiMFIxNWQ
 id: log.observation.default
 targetEntityType: log
 bundle: observation

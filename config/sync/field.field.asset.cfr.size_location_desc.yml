@@ -1,4 +1,4 @@
-uuid: 9ffafb44-26b7-4b87-b95b-3f5e748b72fc
+uuid: d1d921a7-9014-43bf-b8eb-07090a3318db
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.size_location_desc
   module:
     - text
+_core:
+  default_config_hash: t44ElySGaKqsz5xoGc6Pl4LXimjx0ktdZAEqDUZtjfk
 id: asset.cfr.size_location_desc
 field_name: size_location_desc
 entity_type: asset

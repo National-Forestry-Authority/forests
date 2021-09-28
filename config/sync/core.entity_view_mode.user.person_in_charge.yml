@@ -1,9 +1,11 @@
-uuid: 785dafe7-9d76-44b9-9b58-2fa29ee5362b
+uuid: 60b375d8-6454-45ba-b427-cfdb706d3675
 langcode: en
 status: true
 dependencies:
   module:
     - user
+_core:
+  default_config_hash: xTVkuNhRxX6CF4Q4ANrnU4eXDgHcT_b9YHUofb3KnLI
 id: user.person_in_charge
 label: 'Person in Charge'
 targetEntityType: user

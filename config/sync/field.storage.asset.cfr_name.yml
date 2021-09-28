@@ -1,9 +1,11 @@
-uuid: 1f2d5f4b-3274-4a58-9463-359fd318d21f
+uuid: f4779d85-2a2d-4cf8-86a8-9ae626d08d76
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: V7baekkRgntBEsGifmGnYNrOGag2bKgQDnA-CXWmlO0
 id: asset.cfr_name
 field_name: cfr_name
 entity_type: asset

@@ -1,10 +1,12 @@
-uuid: 52edf857-678c-4170-9db3-5bafced26877
+uuid: 1d8864c0-6c32-469b-88a8-381c7a6dd132
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: Q0WP8Iw6QCN4QpmL49WOzBUgCKwnnJzJbXPuvSWjE2o
 id: natural
 label: 'Natural forest'
 description: ''

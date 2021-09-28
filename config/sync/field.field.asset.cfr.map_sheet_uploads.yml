@@ -1,4 +1,4 @@
-uuid: 5e2f1366-8e3c-4c34-917c-a0ee714507e2
+uuid: a7fdd605-29a1-4d7e-8bba-2f49bd6b8329
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: sozyigQ_oGZulUifY1St_CZvJKjzMQWBfVx_Ntxxvos
 id: asset.cfr.map_sheet_uploads
 field_name: map_sheet_uploads
 entity_type: asset

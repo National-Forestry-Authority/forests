@@ -1,4 +1,4 @@
-uuid: 060d0aa1-e293-4fe0-a40a-db3569c18628
+uuid: b44525ef-8fc2-4e8f-a113-b0b7d6f7451a
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.criteria_reasons
   module:
     - text
+_core:
+  default_config_hash: HledECb8sIpLBej7jiD3F3dx2u5HFAJoiI4WDzuZCFk
 id: asset.zone.criteria_reasons
 field_name: criteria_reasons
 entity_type: asset

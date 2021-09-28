@@ -1,4 +1,4 @@
-uuid: 134bb6b3-ecc3-4595-ba65-9a57d3f6262a
+uuid: 77d64ea3-1e0d-4305-84f7-4c0b401ce004
 langcode: en
 status: true
 dependencies:
@@ -6,17 +6,22 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: JjW2GR62FtMGIQI4aouUwAKNjEh-6tfSz0H5HTbEmVM
+  default_config_hash: IIMzrWSPqX2CYXqFbumbdVa9o1sbNiCHIEkvEc4A9A4
 id: farm_migrate_area
 label: 'farmOS 1.x Area Migration'
 description: 'Migrates areas from farmOS 1.x to farmOS 2.x'
 source_type: 'farmOS 1.x'
 module: null
 shared_configuration:
+  destination:
+    validate: true
   process:
     name:
       plugin: get
       source: name
+    uid:
+      plugin: default_value
+      default_value: 1
     status:
       plugin: default_value
       default_value: active

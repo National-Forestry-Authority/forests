@@ -1,4 +1,4 @@
-uuid: 30c008d7-23cb-43b5-b1de-b26c021013de
+uuid: 18946a29-c399-42ed-ac82-ac708f74202e
 langcode: en
 status: true
 dependencies:
@@ -6,13 +6,15 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: UDfGJFi1mlZMk5jsZ_dHHOIej32_KFLP92PRAnD242U
+  default_config_hash: l8I4GuxWuA-60TYt-olYiNZk_-yZBoAo1VkeQyiE3mU
 id: farm_migrate_taxonomy
 label: 'farmOS 1.x Taxonomy Migration'
 description: 'Migrates taxonomy terms from farmOS 1.x to farmOS 2.x'
 source_type: 'farmOS 1.x'
 module: null
 shared_configuration:
+  destination:
+    validate: true
   process:
     name:
       plugin: get

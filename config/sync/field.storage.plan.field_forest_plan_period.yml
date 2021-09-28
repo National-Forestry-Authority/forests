@@ -1,10 +1,12 @@
-uuid: 850c2b28-a9dc-487e-9bca-9947b83f2e16
+uuid: f1fd3c8a-21f5-496c-b822-90d5c8cea7eb
 langcode: en
 status: true
 dependencies:
   module:
     - datetime_range
     - plan
+_core:
+  default_config_hash: dwtmJ_Q8hbN4M3Pp-DGCMNm9h4pODLcFTOyn204loIE
 id: plan.field_forest_plan_period
 field_name: field_forest_plan_period
 entity_type: plan

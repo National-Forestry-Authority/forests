@@ -1,10 +1,12 @@
-uuid: 6b957ed7-d87c-4067-bbbd-aed1f8e5334a
+uuid: 0d699a8b-b620-4e30-8286-2ca186e1f089
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.current_purpose
+_core:
+  default_config_hash: PEQ45sOowBqYgKb9xpk6mKmRjbLGB2hTL0tE9yOeaME
 id: asset.cfr.current_purpose
 field_name: current_purpose
 entity_type: asset

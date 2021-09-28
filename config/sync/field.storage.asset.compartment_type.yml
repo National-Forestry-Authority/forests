@@ -1,10 +1,12 @@
-uuid: 2bd754e2-8db6-4437-8c8f-7171b36af33a
+uuid: c5a84340-653b-4d0a-b716-63b969bd1fbd
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
+_core:
+  default_config_hash: HHche5SXyNUzKd-vLbFDbV-aRl0ai5OwmC7OzOrrWYo
 id: asset.compartment_type
 field_name: compartment_type
 entity_type: asset
