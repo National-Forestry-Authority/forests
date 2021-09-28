@@ -24,7 +24,7 @@ class Plantation extends FarmPlanType {
     $options = [
       'type' => 'entity_reference',
       'label' => $this->t('CFRs'),
-      'description' => $this->t('Select the CFRs that this plan pertains to.'),
+      'description' => $this->t('Select the CFRs that this plan pertains to. If the desired compartment does not yet exist in the system, a new record must be created for it. This can be done via the <a href="@add">Add Compartment</a> form.', ['@add' => '/asset/add/compartment']),
       'target_type' => 'asset',
       'target_bundle' => 'cfr',
       'multiple' => TRUE,
