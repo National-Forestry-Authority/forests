@@ -1,4 +1,4 @@
-uuid: 53445ee3-d3cd-4412-b68c-871d3a3aec2c
+uuid: 5633bb54-e9cb-4ce1-b6e6-1c9a813996cb
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ third_party_settings:
   farm_location:
     is_location: true
     is_fixed: true
+_core:
+  default_config_hash: GIUbM1rBwzJ4cy_XXjYNpFdfSZBqZsCYYT0ToMwLyJs
 id: block
 label: Block
 description: ''

@@ -1,10 +1,12 @@
-uuid: 55416f0d-e223-4c89-9908-42fb1d9b93d7
+uuid: 653b4d34-8465-4b81-8b2d-ad4dac787726
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.map_ref_sheets
+_core:
+  default_config_hash: cZDxLiJXLM8BuHF4QQR5bRf-5D3WQ5wB2N9r4BEF5HI
 id: asset.cfr.map_ref_sheets
 field_name: map_ref_sheets
 entity_type: asset

@@ -1,4 +1,4 @@
-uuid: 6ca461df-b7ea-460e-91e6-91ec0855ceb6
+uuid: c56422de-de15-4dd1-80d9-4db17ea445a7
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ dependencies:
   module:
     - telephone
     - user
+_core:
+  default_config_hash: PIOuX_Yfyv2X81U23_LInPWR6F5nJVdpFEZG-ebLQco
 id: user.user.person_in_charge
 targetEntityType: user
 bundle: user

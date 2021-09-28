@@ -1,10 +1,12 @@
-uuid: 52a1f954-715d-472f-bbbe-b4576bc14554
+uuid: abc112bd-8198-409d-80e5-0e64aabcb398
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.opportunities
+_core:
+  default_config_hash: PqKLEXCJNSLxgT8nuhJ23oBAou8SOW-DA1W_IDEZ150
 id: asset.cfr.opportunities
 field_name: opportunities
 entity_type: asset

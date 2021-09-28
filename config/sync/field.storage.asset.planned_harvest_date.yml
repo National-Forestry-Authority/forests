@@ -1,10 +1,12 @@
-uuid: 2e04dafa-35fc-48f7-a2bd-3269f7a7b38b
+uuid: e4947dc6-2d86-4453-860b-67db4820b40a
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - month_year
+_core:
+  default_config_hash: S0ludup7i4hAJRWpg9VuhHEuH0Q2ABF5e_m1yMEjSTQ
 id: asset.planned_harvest_date
 field_name: planned_harvest_date
 entity_type: asset

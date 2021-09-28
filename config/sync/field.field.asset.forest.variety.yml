@@ -1,4 +1,4 @@
-uuid: 59b6149d-be02-4e1e-9499-693c58513d58
+uuid: e9701258-e349-4050-af2f-937f9efc1bda
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: 9W-3HnYjCVUBieEAyF-rFMBhRoGf8pm4afUgmQGzeMg
 id: asset.forest.variety
 field_name: variety
 entity_type: asset

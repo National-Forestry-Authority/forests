@@ -1,9 +1,11 @@
-uuid: 0652ecdb-997a-40c2-aeb3-4166b599729c
+uuid: 84b3a7ca-f3b5-49ef-8095-4a8162b39553
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: rITpfwM8hd6uhsrSx16OxagXetkN4swB79TU3MU1dR0
 id: beat
 label: Beat

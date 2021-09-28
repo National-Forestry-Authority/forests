@@ -1,4 +1,4 @@
-uuid: 8e20ea14-f7e0-411c-a9f1-8758fcf8351f
+uuid: 0839e4a7-9df9-4feb-ba0e-3297357b2c9f
 langcode: en
 status: true
 dependencies:
@@ -17,6 +17,8 @@ dependencies:
     - image
     - options
     - text
+_core:
+  default_config_hash: zFrwx8XatZ03ofeFYsObPTrD_LYf_ooxcd8Fk5MTqYc
 id: asset.zone.default
 targetEntityType: asset
 bundle: zone

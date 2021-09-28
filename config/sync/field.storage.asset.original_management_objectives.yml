@@ -1,10 +1,12 @@
-uuid: 2eea3fa4-75dc-4435-b9d4-a5ddc076f6e3
+uuid: 82596122-3c51-4285-b291-8635b177f3ea
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: gOLyAKGhn_r2slXe7_dPgxZJrHxU0lyqYNCLYdlKUyk
 id: asset.original_management_objectives
 field_name: original_management_objectives
 entity_type: asset

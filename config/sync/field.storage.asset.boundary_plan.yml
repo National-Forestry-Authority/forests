@@ -1,9 +1,11 @@
-uuid: d1e55208-fa9b-484a-a546-a4e265d3c026
+uuid: a70ca77b-bf3f-4f8d-bcde-01c009dadd32
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: K9lSwIn-6pkF_wGRNP1Tn85NVOJDs4EQZ4phbpKyxA4
 id: asset.boundary_plan
 field_name: boundary_plan
 entity_type: asset

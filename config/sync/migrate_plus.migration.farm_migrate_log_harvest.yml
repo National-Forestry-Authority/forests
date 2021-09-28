@@ -1,4 +1,4 @@
-uuid: 26cd8c2f-585b-4125-b18b-0252e60c4ba0
+uuid: 9394dcf7-96f2-4faf-bc20-ada6f5827320
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
       - farm_harvest
       - farm_migrate
 _core:
-  default_config_hash: 4xEnWHwU902OkaEfBQeF5uC_wGHprdiem_HCQq_f54Y
+  default_config_hash: HH6K4myvULw9U9abqIafqeFhOmeXzZUrd6M5W8ABFX4
 id: farm_migrate_log_harvest
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
@@ -27,6 +27,9 @@ process:
   id:
     plugin: get
     source: id
+  quantity:
+    plugin: get
+    source: '@_log_quantities'
   lot_number:
     plugin: get
     source: field_farm_lot_number

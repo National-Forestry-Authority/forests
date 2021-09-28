@@ -1,9 +1,11 @@
-uuid: dd076a8e-8536-4206-8615-aa0b9321efc7
+uuid: f5259b14-9fc6-44f6-b7f9-a2735e725625
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: YRCFpc2360CJeB93iZ3zUSBv7tYLBChNCIPFXoIKdTU
 id: asset.est_year_gazetted
 field_name: est_year_gazetted
 entity_type: asset

@@ -1,0 +1,21 @@
+uuid: 2705acca-2430-48b7-8c2d-f0aaebdf919d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+_core:
+  default_config_hash: VeA4HDGeReGTywjlpV2HyEb_g41Ow04Nn1O14kz2-Ow
+id: asset.field_boundary_opening_history
+field_name: field_boundary_opening_history
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

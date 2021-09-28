@@ -1,7 +1,9 @@
-uuid: a6722bc0-c252-4bca-a02e-9b92eb871112
+uuid: b5c9f766-b5f4-492f-ae9c-92db7d61716b
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: EWLeNLrPfCp1Z93fgtxDyYDX6ctNQR0mSgndNcIBxGI
 name: 'Average silviculture score'
 vid: average_silviculture_score
 description: ''

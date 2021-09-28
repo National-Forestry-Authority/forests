@@ -1,7 +1,9 @@
-uuid: 1a320708-bfd6-49f2-8e68-241cd1361dad
+uuid: 50315296-8d6c-4f4f-b223-d8cb4164fcbd
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: k8AOf47I2uKY2I0kKIQWEn212eLWP-LlXp_VeVCpa_8
 name: 'Predominant vegetation'
 vid: predominant_vegetation
 description: ''

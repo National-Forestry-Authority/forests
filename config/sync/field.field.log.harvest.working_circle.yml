@@ -1,4 +1,4 @@
-uuid: a33e979b-4795-4abb-99df-9b8024cf50fa
+uuid: dbb46b90-929d-4d30-a00f-dda88e60d490
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: 0M7Gd4CT1tVYnAc62xSuxnEiYmkUqrxZCke7vj9fMPQ
 id: log.harvest.working_circle
 field_name: working_circle
 entity_type: log

@@ -1,4 +1,4 @@
-uuid: 73b47375-22ae-4ace-99da-6f3c7b167fce
+uuid: 07c97f37-2484-45bf-b9f5-73da2da25348
 langcode: en
 status: true
 dependencies:
@@ -11,6 +11,8 @@ dependencies:
   module:
     - datetime
     - image
+_core:
+  default_config_hash: dgUoCq6jVENvdYTqqKpv86hCrWwlnxWTr-maIAJKp1s
 id: media.boundary_plan_maps.default
 targetEntityType: media
 bundle: boundary_plan_maps

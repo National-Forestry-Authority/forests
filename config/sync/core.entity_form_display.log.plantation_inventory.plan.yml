@@ -1,4 +1,4 @@
-uuid: c06cf9d9-4f18-48d1-ac94-5265b1fbd75a
+uuid: 95af9937-925e-40d2-9704-1b38b6510ec3
 langcode: en
 status: true
 dependencies:
@@ -23,7 +23,7 @@ dependencies:
     - month_year
     - text
 _core:
-  default_config_hash: I73tNz_GAQF9vTBN4Moqxrih8MWv-e2PQKwmJRyyBAU
+  default_config_hash: cUucaNhSve6nbOTImFOWk_ySImuwGIcGzo_DzHB8yzk
 id: log.plantation_inventory.plan
 targetEntityType: log
 bundle: plantation_inventory

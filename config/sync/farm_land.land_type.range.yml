@@ -1,9 +1,11 @@
-uuid: fe8a297c-802d-459d-8356-b7f09c7fa92f
+uuid: 98874fb7-3258-436a-82de-20002d12108e
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: nCzaF6ZNfjyOJx6BYWrMF12bLy-0wW4Yhwmb63kVKtc
 id: range
 label: Range

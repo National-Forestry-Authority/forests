@@ -1,4 +1,4 @@
-uuid: 1178d378-4019-4a9f-954b-cc6b6a59ae41
+uuid: f026a6b5-3369-4dcb-b36e-4d79425eaf06
 langcode: en
 status: true
 dependencies:
@@ -11,6 +11,8 @@ third_party_settings:
   farm_location:
     is_location: true
     is_fixed: true
+_core:
+  default_config_hash: H1m6-yqbUBMCq58wNHw7k6b4b68iJyCpoOg4NHqCK2I
 id: land
 label: 'Land (Admin)'
 description: ''

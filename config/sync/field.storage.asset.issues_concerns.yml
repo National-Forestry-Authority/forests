@@ -1,9 +1,11 @@
-uuid: 37c833c1-92e8-4a67-b7cb-ecf00927ac7f
+uuid: 19079b80-0d99-4e83-afb5-618111ea5e7b
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: jTzcMctFKB0Nb-BT9-ybO9m1C2Ixe43ALs1rszO2l24
 id: asset.issues_concerns
 field_name: issues_concerns
 entity_type: asset

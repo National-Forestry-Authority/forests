@@ -1,4 +1,4 @@
-uuid: d5340d89-97f9-4161-ab5c-dccb6c8228c4
+uuid: eba41625-415f-46e4-833d-e2cb58fbb383
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.intended_purpose
   module:
     - text
+_core:
+  default_config_hash: VmV7ZWJGAXpGlvFy5DQT_fxWpEKtTixWzfqs-4dAVMI
 id: asset.block.intended_purpose
 field_name: intended_purpose
 entity_type: asset

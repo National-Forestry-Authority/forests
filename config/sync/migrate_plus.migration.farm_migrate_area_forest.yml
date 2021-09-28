@@ -1,4 +1,4 @@
-uuid: 18bc268a-9785-4094-b29c-5d062464f4f7
+uuid: 6a1e4267-500a-4382-b687-5d2074dad69b
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
       - farm_migrate
       - farm_forest
 _core:
-  default_config_hash: 9z1KaPcMC2ipxxBi16_7DTSWTGZ1xORkWZ0Z6Y_pFvU
+  default_config_hash: P0QTADO6-xXoCgsF0a33CAlD7gpgNwwIojryopSKksI
 id: farm_migrate_area_forest
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
@@ -27,8 +27,12 @@ process:
     plugin: default_value
     default_value: forest
   forest_type:
-    plugin: get
+    plugin: static_map
     source: field_farm_area_type
+    map:
+      stand: natural
+      plantation: plantation
+    default_value: natural
 destination:
   plugin: 'entity:asset'
 migration_dependencies:

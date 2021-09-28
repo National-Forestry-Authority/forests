@@ -1,4 +1,4 @@
-uuid: 5866e8a6-49b6-4497-961a-2cdbbc45674c
+uuid: d22c1c97-3ebd-4934-964d-a8ffbb9f3003
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - media.type.boundary_plan_maps
   module:
     - datetime
+_core:
+  default_config_hash: Fwy4mD921zRaE3YQvj3YZ8nnbeAWdsd5A7x420FS9Mw
 id: media.boundary_plan_maps.date
 field_name: date
 entity_type: media

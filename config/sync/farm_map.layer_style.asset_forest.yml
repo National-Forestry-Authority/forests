@@ -1,0 +1,14 @@
+uuid: 064ab04b-9262-4aa7-808e-f848baa1537a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_forest
+_core:
+  default_config_hash: D8bfRgU-rKkdWdfA1xBjrQSxhFacd00lDm4y4eHMUwU
+id: asset_forest
+color: darkgreen
+conditions:
+  asset_type:
+    - forest

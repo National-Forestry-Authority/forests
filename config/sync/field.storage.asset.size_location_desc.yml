@@ -1,10 +1,12 @@
-uuid: 17f100ec-aea9-411b-be72-fbde1972a140
+uuid: f37422da-6ed0-4914-9ada-88ff3e613c2d
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: 30nhzk7-Se-9Bqk0uuth42ldzhDqd_lJJipEocZy9ew
 id: asset.size_location_desc
 field_name: size_location_desc
 entity_type: asset

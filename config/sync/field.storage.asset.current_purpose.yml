@@ -1,9 +1,11 @@
-uuid: 0e77fdcc-41d8-4146-8f29-9f15fa1e70cb
+uuid: 3c3030e7-602f-4f85-9c3d-f8abaadfa800
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: dFvHgHFpkd6v6c0x9MES9y8zl5b-9KfiE8EKkkx5ouU
 id: asset.current_purpose
 field_name: current_purpose
 entity_type: asset

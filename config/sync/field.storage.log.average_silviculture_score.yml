@@ -1,10 +1,12 @@
-uuid: c531a315-217d-4e09-a70e-be4574b1a855
+uuid: 81480a7e-de1b-4166-89c0-b527b5c1b565
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - taxonomy
+_core:
+  default_config_hash: hTBSTXrRjVyNa74KXCXmm39qY8P1dEzVQRWFTXLB1B4
 id: log.average_silviculture_score
 field_name: average_silviculture_score
 entity_type: log

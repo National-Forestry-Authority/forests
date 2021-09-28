@@ -1,4 +1,4 @@
-uuid: d49ed7e0-e0db-48eb-a97a-51a762c79c19
+uuid: 2b21ee19-206f-464c-a14f-a7ad37655cd5
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
   module:
     - telephone
     - user
+_core:
+  default_config_hash: mm6JYV-EHlMjLk7aX91mCUULb3AEIlLhyWSBdHrZ_wc
 id: user.user.contact_phone_number
 field_name: contact_phone_number
 entity_type: user

@@ -1,7 +1,9 @@
-uuid: eb8f9d6d-2369-4cd2-9471-82fe11ad0cfd
+uuid: a5a67727-e39f-4f68-a75c-8a8bcb99b5b7
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: oTJAgmN-chpadMVIduKyXMkubJPXX6HVl6_O26EG5Gw
 name: 'Zonation type'
 vid: zonation_type
 description: ''

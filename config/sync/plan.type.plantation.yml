@@ -1,10 +1,12 @@
-uuid: e66db8eb-5034-475b-9390-455507b892db
+uuid: 766f6bb2-c54e-4cc2-a287-b12076cdc10a
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: Sotbey6vTLM0IaP3m6bPj-iyKNgpNYJ56XC4Hb_wfzU
 id: plantation
 label: 'Forest plantation'
 description: ''

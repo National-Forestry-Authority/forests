@@ -1,4 +1,4 @@
-uuid: 42d29b1d-1184-4aec-a453-cd60e47a425a
+uuid: 32119842-d41d-4ddf-9465-7bb28ec027c5
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ dependencies:
     - field.field.media.boundary_plan_maps.date
     - field.field.media.boundary_plan_maps.field_media_image
     - media.type.boundary_plan_maps
+_core:
+  default_config_hash: 4Svk5xqm_LwqR3ZG9Qc1fEfEVzeph-g5OWg0Zee5tP4
 id: media.boundary_plan_maps.link
 targetEntityType: media
 bundle: boundary_plan_maps

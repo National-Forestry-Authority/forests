@@ -1,9 +1,11 @@
-uuid: 7298f152-22e8-4e43-8faa-8bfec25d4f7a
+uuid: 985e4ad7-8fb3-4541-95d6-21f5bfb6d7e2
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: zEK18x3YwL8IYiBPxJjWsoqCozf52RnQ7HQBEoOhvD4
 id: sector
 label: Sector

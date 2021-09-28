@@ -1,4 +1,4 @@
-uuid: 89f4b259-5c67-445e-94f5-689565c0d1ed
+uuid: 42624525-5935-405d-a404-fc7e9445d39f
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
       - farm_activity
       - farm_migrate
 _core:
-  default_config_hash: o4w516wH3G8NKywJSdebhiUDTdBvpHlhqqbSGgx7YmI
+  default_config_hash: E44L4oQVE0_oqG0Ui30kCUvaamliIOGqP5MRLBwrG2w
 id: farm_migrate_log_activity
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
@@ -27,6 +27,9 @@ process:
   id:
     plugin: get
     source: id
+  quantity:
+    plugin: get
+    source: '@_log_quantities'
 destination:
   plugin: 'entity:log'
 migration_dependencies:

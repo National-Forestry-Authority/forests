@@ -1,7 +1,9 @@
-uuid: dbdceea9-d531-49ff-b6af-b016008e37b0
+uuid: cadbbc3e-a6ae-4000-9361-7755ab048302
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: eiZHzbKyO4RqT70Mz_CL0Dxc9SJBrO8ogV_MdbZ__nI
 name: 'Harvest type'
 vid: harvest_type
 description: ''

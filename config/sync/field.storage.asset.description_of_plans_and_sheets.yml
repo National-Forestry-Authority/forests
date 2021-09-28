@@ -1,10 +1,12 @@
-uuid: 7548e9f3-e9aa-4cbd-939d-c663d7006cc9
+uuid: 9f63be43-d18b-4755-ae23-fbc839bd161b
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - text
+_core:
+  default_config_hash: HPjm0wTe2aAh3BEgMg5kSFFajfr2xxmEnrRmXZtnSDY
 id: asset.description_of_plans_and_sheets
 field_name: description_of_plans_and_sheets
 entity_type: asset

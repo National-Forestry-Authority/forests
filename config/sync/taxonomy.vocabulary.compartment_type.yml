@@ -1,7 +1,9 @@
-uuid: dacba6ec-9b0b-4e9d-8add-6615670ce176
+uuid: f35549e8-0764-4fab-97df-064a586f05c7
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: vgh_7qE1oD16RV8kQarXIVvrV2oaunxmbbrjjRytdyY
 name: 'Compartment type'
 vid: compartment_type
 description: ''

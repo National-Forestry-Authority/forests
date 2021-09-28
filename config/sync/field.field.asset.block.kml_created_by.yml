@@ -1,4 +1,4 @@
-uuid: ff6858d0-586c-47b4-9073-271b57cccae9
+uuid: 6ffdf7f6-efb9-44df-bab0-62699aa9eab3
 langcode: en
 status: true
 dependencies:
@@ -12,6 +12,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: ldiLAzX2weFtydyGjA8x79Movy9ncE0C4yF7bTllwP4
 id: asset.block.kml_created_by
 field_name: kml_created_by
 entity_type: asset

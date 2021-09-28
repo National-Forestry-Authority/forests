@@ -1,4 +1,4 @@
-uuid: 4df997be-820e-4726-bb60-c10708c40096
+uuid: ec247bf8-e481-4d44-b05f-fea912bdffef
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: VJ0ih17ib2e2dVOX8bbfcgC3KmUqdUfdrUPut3r3iGQ
 id: asset.forest.species
 field_name: species
 entity_type: asset

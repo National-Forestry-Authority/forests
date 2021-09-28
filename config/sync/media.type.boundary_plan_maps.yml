@@ -1,7 +1,9 @@
-uuid: d88f7d0c-8817-46ca-b745-9703b9905756
+uuid: 61318974-d4c1-4a05-b9da-521a16d49fa2
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: vv_1e5h9b_Q5WZLdTivBMhyt5xFsXul9Tk0GtIX8RQY
 id: boundary_plan_maps
 label: 'Boundary plan maps'
 description: ''

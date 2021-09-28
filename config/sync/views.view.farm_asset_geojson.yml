@@ -1,4 +1,4 @@
-uuid: eff35037-1d69-4359-9173-322a4a5694be
+uuid: 67c74c55-8f8f-449c-bf1b-ae65408d88b6
 langcode: en
 status: true
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
     - user
     - views_geojson
 _core:
-  default_config_hash: KYb7-hSQw4raFrd3csECqNPPKLqs5o_zLtY3DkUlud0
+  default_config_hash: BYw-WHrsrrskJ2d8DOkDfK-3oz5LG_wOdhmLt-zY7ds
 id: farm_asset_geojson
 label: 'Farm Asset GeoJSON'
 module: views

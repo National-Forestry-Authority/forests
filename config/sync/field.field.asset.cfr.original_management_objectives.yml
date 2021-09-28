@@ -1,4 +1,4 @@
-uuid: f5685280-f3c1-4fe1-aace-63b54b01018f
+uuid: 8ce818df-5d88-4223-bc7a-55b82fd82e6c
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.original_management_objectives
   module:
     - text
+_core:
+  default_config_hash: J9f2MWnVUqueyNdK9XZ-JSSYX_uNULNvZN0IUVTI01M
 id: asset.cfr.original_management_objectives
 field_name: original_management_objectives
 entity_type: asset

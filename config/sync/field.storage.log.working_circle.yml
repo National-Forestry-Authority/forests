@@ -1,10 +1,12 @@
-uuid: 2e015ba3-d8fa-48f0-812c-2cb4dd78f479
+uuid: 0b3a0c1c-0756-45af-8411-210f42582d7a
 langcode: en
 status: true
 dependencies:
   module:
     - log
     - taxonomy
+_core:
+  default_config_hash: DF0A9MWrAM6htCbaDHOS3zKfkoW-U70Goqc9VeN8844
 id: log.working_circle
 field_name: working_circle
 entity_type: log

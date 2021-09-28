@@ -1,10 +1,12 @@
-uuid: 8c21faaf-9bd3-46ad-9c59-f7b32aea686d
+uuid: 2b797554-a039-4d4f-a24b-54f203c3e1ee
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - farm_nfa
+_core:
+  default_config_hash: 6SNDjcv9oYwbWsC74KMSGgwHJFfveW-eXA9x7HRiWQk
 id: farm_nfa_map_activities
 label: 'Map behavior for activity creation'
 description: 'Centers the activity map in the geometries associated with the plan.'

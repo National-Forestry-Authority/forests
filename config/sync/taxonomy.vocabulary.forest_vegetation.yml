@@ -1,7 +1,9 @@
-uuid: 06c1735a-c10c-45f7-9159-dd4f5685c8b9
+uuid: b59da25b-3e06-483c-aac1-05cf4d3461f5
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: eShaQYVZg5EBrr7MCdbdbTrWVZ2htzfEAYjdg6Uh9_g
 name: 'Forest vegetation'
 vid: forest_vegetation
 description: ''

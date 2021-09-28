@@ -1,4 +1,4 @@
-uuid: 846cb28f-5b28-4c17-a395-cdc1d100cee8
+uuid: 494841c4-6e19-4331-baec-ad9a19bb928a
 langcode: en
 status: true
 dependencies:
@@ -18,6 +18,8 @@ dependencies:
     - image
     - options
     - text
+_core:
+  default_config_hash: 9612Vm3NdxhMI-pDW9iWQ7RXXGTBWaMt4fNc8GEnmdA
 id: asset.block.default
 targetEntityType: asset
 bundle: block

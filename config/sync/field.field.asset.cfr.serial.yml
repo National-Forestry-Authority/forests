@@ -1,10 +1,12 @@
-uuid: e2aedd18-2978-4a27-919b-04bf239205a3
+uuid: 223c93a0-1d56-4fd7-a555-6b4cad981ecb
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.serial
+_core:
+  default_config_hash: HK_hLNrEwuhPevKon0HcBKNKv9TIu2VXJaYjE3qU2rs
 id: asset.cfr.serial
 field_name: serial
 entity_type: asset

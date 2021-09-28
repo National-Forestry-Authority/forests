@@ -1,10 +1,12 @@
-uuid: 2f6d06ae-77ea-4302-a35f-5e1f64dca900
+uuid: 8d0128b5-a8dc-484d-ac73-ea7c7e683a2f
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.boundary_plan
+_core:
+  default_config_hash: BYf1RpiGirwHE2BQx2_IaOZzSo3CiOhi5x80I39kGnI
 id: asset.cfr.boundary_plan
 field_name: boundary_plan
 entity_type: asset

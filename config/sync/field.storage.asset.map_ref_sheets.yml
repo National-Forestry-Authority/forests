@@ -1,9 +1,11 @@
-uuid: 373acafd-8fc7-4610-b0e7-d8ed87765663
+uuid: 1fc75677-4378-4570-89eb-1217d4e2da65
 langcode: en
 status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: Jk9SIIEOaoj02A7iUXiyRIxFjadPW1Th80vXk2AhWKc
 id: asset.map_ref_sheets
 field_name: map_ref_sheets
 entity_type: asset

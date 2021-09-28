@@ -1,0 +1,13 @@
+uuid: 1d62ebc8-4b38-4594-9068-ea8a1ca77534
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+_core:
+  default_config_hash: wSnzwU-wYzlH7mHd2XxQmK8MGs18xMY2_nfpsmlPMDY
+id: plan_archive_action
+label: 'Archive plan'
+type: plan
+plugin: plan_archive_action
+configuration: {  }

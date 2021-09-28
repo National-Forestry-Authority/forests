@@ -1,4 +1,4 @@
-uuid: b546d8cc-0ccd-4a51-8a7a-9962ad7b3f82
+uuid: 17f9e129-b188-4f8d-8c6c-f23b3988717b
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - field.storage.asset.date_planted
   module:
     - datetime_range
+_core:
+  default_config_hash: IifDQSQA7erY4Lr1piHQ9jWprecptkO7uBqDWIwUdBw
 id: asset.forest.date_planted
 field_name: date_planted
 entity_type: asset

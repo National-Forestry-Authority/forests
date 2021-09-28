@@ -1,4 +1,4 @@
-uuid: 58199c67-343f-4886-912a-2a7a22b4d53c
+uuid: 64a0bd96-a3fd-4404-a397-8c171ac9c114
 langcode: en
 status: true
 dependencies:
@@ -20,7 +20,7 @@ dependencies:
     - state_machine
     - user
 _core:
-  default_config_hash: UW5wMoXlNvAyFbiHcVMpdMvGGHz45U8sXY8tWRdzkd4
+  default_config_hash: lgoyzKOucYpGEhrKDAUe4THB81SdokwMTkQ9U9MAnaI
 id: farm_asset
 label: 'Farm Assets'
 module: views
@@ -275,7 +275,7 @@ display:
           group_column: ''
           group_columns: {  }
           group_rows: true
-          delta_limit: 0
+          delta_limit: 1
           delta_offset: 0
           delta_reversed: false
           delta_first_last: false

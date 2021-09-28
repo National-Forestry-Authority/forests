@@ -1,10 +1,12 @@
-uuid: 7d82c5c8-e338-4b38-8763-89ef724a094f
+uuid: 2c7eae43-d9f1-445e-ad53-57ed1bcc174d
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - media
+_core:
+  default_config_hash: cLcPyHWT1Gf0X0pmnJNxA8gL4UcaJ_5Y6GBiJNt9hsI
 id: asset.map_sheet_uploads
 field_name: map_sheet_uploads
 entity_type: asset

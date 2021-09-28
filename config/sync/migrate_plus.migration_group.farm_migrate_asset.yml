@@ -1,4 +1,4 @@
-uuid: 3709348d-dfbe-4908-a615-a8b40717764f
+uuid: 802a1f25-a2a5-4a71-8436-6ae4cac2d4f2
 langcode: en
 status: true
 dependencies:
@@ -6,26 +6,28 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: syLtyIFwSmkOSmAiFYOQ4Bc9qhIu0GyeVnlU8V6SGlE
+  default_config_hash: I-b-hmVOqLhnw_wBH7KBpR5iEqKfDdVL447MQSFPVjU
 id: farm_migrate_asset
 label: 'farmOS 1.x Asset Migration'
 description: 'Migrates assets from farmOS 1.x to farmOS 2.x'
 source_type: 'farmOS 1.x'
 module: null
 shared_configuration:
+  destination:
+    validate: true
   process:
     name:
       plugin: get
       source: name
     uid:
       -
-        plugin: skip_on_empty
-        method: process
-        source: uid
-      -
         plugin: migration_lookup
         migration: farm_migrate_user
         source: uid
+        no_stub: true
+      -
+        plugin: default_value
+        default_value: 1
     created:
       plugin: get
       source: created

@@ -1,4 +1,4 @@
-uuid: 73ef935f-f81f-4b81-a0a6-a06d9425665c
+uuid: b321b7f4-77d5-44c0-b8de-85436782ec5c
 langcode: en
 status: true
 dependencies:
@@ -6,26 +6,28 @@ dependencies:
     module:
       - farm_migrate
 _core:
-  default_config_hash: 76OLJRg23EGTCySudK38tsD2yjMDY1rdUgodHfUpDFI
+  default_config_hash: n5RgSFBO-pUCjDQKA7YOanN5Ay8-jQtDh5V6_6eCOu8
 id: farm_migrate_log
 label: 'farmOS 1.x Log Migration'
 description: 'Migrates logs from farmOS 1.x to farmOS 2.x'
 source_type: 'farmOS 1.x'
 module: null
 shared_configuration:
+  destination:
+    validate: true
   process:
     name:
       plugin: get
       source: name
     uid:
       -
-        plugin: skip_on_empty
-        method: process
-        source: uid
-      -
         plugin: migration_lookup
         migration: farm_migrate_user
         source: uid
+        no_stub: true
+      -
+        plugin: default_value
+        default_value: 1
     timestamp:
       plugin: get
       source: timestamp
@@ -147,12 +149,15 @@ shared_configuration:
         title: title
         width: width
         height: height
-    quantity:
+    _log_quantities:
       -
         plugin: farm_migration_group_lookup
         migration_group: farm_migrate_quantity
         source: log_quantities
         no_stub: true
+      -
+        plugin: skip_on_empty
+        method: process
       -
         plugin: sub_process
         process:

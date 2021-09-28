@@ -1,10 +1,12 @@
-uuid: e819177c-3a4f-4eb1-b2a2-8f72aea36faa
+uuid: 38276eaf-139c-400c-aca8-7663fa1a0151
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - datetime_range
+_core:
+  default_config_hash: YJZJcN73u2uzrOyaVXFAEKX2DxO5mEPHE-5sa-vNTyU
 id: asset.date_planted
 field_name: date_planted
 entity_type: asset

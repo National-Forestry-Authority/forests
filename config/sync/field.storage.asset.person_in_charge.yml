@@ -1,10 +1,12 @@
-uuid: ab388836-34e1-47ab-b9cc-1b2c09ffc560
+uuid: 0618cd9b-ccec-434c-930f-1be591718566
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - user
+_core:
+  default_config_hash: WY5QI1OKP2Bw5oCBEBqlGQQ2BQ9foCWRdj0lVeifWCE
 id: asset.person_in_charge
 field_name: person_in_charge
 entity_type: asset

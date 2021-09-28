@@ -1,4 +1,4 @@
-uuid: 993fabee-a4a3-442e-a234-ef5231f89888
+uuid: 22b4b384-34e0-4ae1-947e-7499e6d13fd0
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,8 @@ dependencies:
     - media.type.boundary_plan_maps
   module:
     - image
+_core:
+  default_config_hash: sdZAMzV6i9F3OjhPl25Y-pstS50VYbh4Q_-c6LUzbPs
 id: media.boundary_plan_maps.field_media_image
 field_name: field_media_image
 entity_type: media
