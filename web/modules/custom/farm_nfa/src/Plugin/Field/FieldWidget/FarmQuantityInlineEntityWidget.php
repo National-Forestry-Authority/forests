@@ -59,7 +59,10 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
     $quantity_settings =  $this->getSetting('quantity');
     foreach ($quantity_settings as $delta => $quantity_setting) {
       if (!empty($quantity_setting['units'])) {
-        $quantity_settings[$delta]['units'] = $this->entityTypeManager->getStorage('taxonomy_term')->load($quantity_setting['units']);
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($quantity_setting['units']);
+        if ($term) {
+          $quantity_settings[$delta]['units'] = $term;
+        }
       }
     }
 
@@ -105,13 +108,15 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
     $quantity_settings =  $this->getSetting('quantity');
     foreach ($quantity_settings as $quantity_setting) {
       $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($quantity_setting['units']);
-      $summary[] = $this->t('@label: Measure @measure, Units: @units',
-        [
-          '@label' => $quantity_setting['label'],
-          '@measure' => $quantity_setting['measure'],
-          '@units' => $term->label(),
-        ]
-      );
+      if ($term) {
+        $summary[] = $this->t('@label: Measure @measure, Units: @units',
+          [
+            '@label' => $quantity_setting['label'],
+            '@measure' => $quantity_setting['measure'],
+            '@units' => $term->label(),
+          ]
+        );
+      }
     }
 
     return $summary;
