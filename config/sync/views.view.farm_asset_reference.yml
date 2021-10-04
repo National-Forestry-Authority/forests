@@ -1,14 +1,14 @@
-uuid: 29b7f123-2efc-47d9-8a67-ceecfec946f9
+uuid: aa26e4e5-69a9-4fd1-b66b-2fcb744edf6c
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
-      - farm_entity
+      - farm_entity_views
   module:
     - asset
 _core:
-  default_config_hash: Z4Y4vxo-01SQd4M-jahWU9_SYNDmroGS32yIRBPZkaA
+  default_config_hash: WIBhuPeKbsK1rza8WpPMlTENnicn3qzt5rlzJ6pNR2c
 id: farm_asset_reference
 label: 'Farm Asset Reference'
 module: views

@@ -31,7 +31,6 @@ config_devel:
   - field.storage.asset.compartment_type
   - field.storage.asset.intended_purpose
   - field.storage.asset.kml_created_by
-  - field.storage.log.compartment
   - taxonomy.vocabulary.compartment_type
   - farm_map.layer_style.asset_block
   - farm_map.layer_style.asset_compartment

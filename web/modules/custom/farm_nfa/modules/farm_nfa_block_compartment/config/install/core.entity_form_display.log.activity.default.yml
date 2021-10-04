@@ -12,7 +12,6 @@ dependencies:
     - farm_map
     - file
     - image
-    - inline_entity_form
     - text
 id: log.activity.default
 targetEntityType: log
@@ -41,13 +40,9 @@ content:
     third_party_settings: {  }
   compartment:
     weight: 1
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   equipment:
     type: entity_reference_autocomplete
@@ -76,7 +71,9 @@ content:
     type: farm_map_geofield
     weight: 2
     region: content
-    settings: {  }
+    settings:
+      display_raw_geometry: '1'
+      populate_file_field: file
     third_party_settings: {  }
   image:
     type: image_image
@@ -126,19 +123,8 @@ content:
     settings: {  }
     third_party_settings: {  }
   quantity:
-    type: inline_entity_form_complex
-    settings:
-      form_mode: default
-      revision: true
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      collapsible: false
-      collapsed: false
-      allow_new: true
-      allow_existing: false
-      match_operator: CONTAINS
-      allow_duplicate: false
+    type: options_select
+    settings: {  }
     weight: 9
     region: content
     third_party_settings: {  }

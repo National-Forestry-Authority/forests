@@ -1,12 +1,12 @@
-uuid: 41acae09-3f23-4b8c-b328-54d2b1ad1c00
+uuid: 59c80cce-14f9-4935-9e54-387f3c6b1b62
 langcode: en
 status: true
 dependencies:
   module:
-    - farm_log
+    - farm_owner
     - log
 _core:
-  default_config_hash: 8fOG3IrqJClU1fe2DbIp6HOL_Dj6eXCQufM4I4bodro
+  default_config_hash: H6rHArlo1kxydCNnGkWF81NmJGv9qOEPyQtohUoB5CM
 id: log_assign_action
 label: 'Assign log'
 type: log

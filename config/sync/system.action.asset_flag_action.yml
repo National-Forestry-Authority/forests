@@ -1,15 +1,12 @@
-uuid: 0ac1435d-5e30-46e0-927a-25e212434c88
+uuid: a31067a7-9537-45d3-937f-33164944ae2d
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - farm_entity
   module:
     - asset
     - farm_flag
 _core:
-  default_config_hash: uWVc3-NHL6E3qGoDTNiqG2YjyhD6SG_z5vqEMgYSSWg
+  default_config_hash: nfoVtVz9L9X1MaFE-vYVBBlI9IMcRGwY28Dcs5vQBiw
 id: asset_flag_action
 label: 'Flag asset'
 type: asset

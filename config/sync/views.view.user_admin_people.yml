@@ -1,11 +1,11 @@
-uuid: 6ffce16e-7759-4473-9ad3-990a0be7c14f
+uuid: 5c6b8038-51fe-4d4f-ac9c-73b2dd570ecf
 langcode: en
 status: true
 dependencies:
   module:
     - user
 _core:
-  default_config_hash: J5EbGNdz0YUaSIYKwomyFSOtZjsV9TrBA3qdb3ZwBS0
+  default_config_hash: GbPVHdpSCucZ1MunS3Lai6FtyVVfmP9rJHk1GZ73JY0
 id: user_admin_people
 label: People
 module: user
@@ -17,7 +17,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Default
     position: 0
     display_options:
       access:

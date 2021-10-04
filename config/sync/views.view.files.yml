@@ -1,4 +1,4 @@
-uuid: 90464ac3-a805-4f51-9305-61e34778aef3
+uuid: 57268d26-7b54-4b62-a3a0-e88f212323fc
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - file
     - user
 _core:
-  default_config_hash: gLmoA0yjvlXfMRp9ihOhRKSSQQlbdLdvpDkbVwkYPrg
+  default_config_hash: hfAVzEhCVBiV_vsgQ0UP4CfSHmh2YSiEUhfRz-LMYAQ
 id: files
 label: Files
 module: file
@@ -18,7 +18,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Default
     position: 0
     display_options:
       access:

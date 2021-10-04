@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - asset.type.land
+    - field.field.asset.land.field_boundary_opening_history
+    - field.field.asset.land.field_boundary_plan_details
     - field.field.asset.land.person_in_charge
     - image.style.medium
   module:
@@ -118,6 +120,8 @@ content:
 hidden:
   created: true
   data: true
+  field_boundary_opening_history: true
+  field_boundary_plan_details: true
   geometry: true
   location: true
   uid: true

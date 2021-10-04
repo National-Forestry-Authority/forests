@@ -17,7 +17,6 @@ config_devel:
   - field.storage.log.mean_diameter
   - field.storage.log.avg_height
   - field.storage.log.silvicultural_recommendations
-  - field.field.log.plantation_inventory.compartment
   - field.field.log.plantation_inventory.inventory_date
   - field.field.log.plantation_inventory.working_circle
   - field.field.log.plantation_inventory.stand_quality

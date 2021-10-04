@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
     - field.field.log.plantation_inventory.mean_diameter
@@ -27,16 +26,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
-  compartment:
-    weight: 26
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   flag:
     type: options_buttons

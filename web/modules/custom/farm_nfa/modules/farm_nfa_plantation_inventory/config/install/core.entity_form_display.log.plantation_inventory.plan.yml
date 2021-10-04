@@ -4,7 +4,6 @@ dependencies:
   config:
     - core.entity_form_mode.log.plan
     - field.field.log.plantation_inventory.avg_height
-    - field.field.log.plantation_inventory.compartment
     - field.field.log.plantation_inventory.inventory_date
     - field.field.log.plantation_inventory.inventory_methodology
     - field.field.log.plantation_inventory.mean_diameter
@@ -28,50 +27,42 @@ mode: plan
 content:
   avg_height:
     type: number
-    weight: 9
+    weight: 5
     region: content
     settings:
-      placeholder: ''
-    third_party_settings: {  }
-  compartment:
-    type: entity_reference_autocomplete
-    weight: 1
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
       placeholder: ''
     third_party_settings: {  }
   file:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 17
+    weight: 12
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 19
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 14
+    weight: 11
     region: content
-    settings: {  }
+    settings:
+      display_raw_geometry: '1'
+      populate_file_field: file
     third_party_settings: {  }
   image:
     type: image_image
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 16
+    weight: 13
     region: content
     third_party_settings: {  }
   inventory_date:
-    weight: 2
+    weight: 1
     settings:
       min_year: 2015
       adjustment: 5
@@ -89,7 +80,7 @@ content:
     type: month_year_widget
     region: content
   inventory_methodology:
-    weight: 4
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
@@ -98,7 +89,7 @@ content:
     region: content
   location:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 10
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -108,7 +99,7 @@ content:
     third_party_settings: {  }
   mean_diameter:
     type: number
-    weight: 10
+    weight: 6
     region: content
     settings:
       placeholder: ''
@@ -126,12 +117,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 18
+    weight: 14
     region: content
     third_party_settings: {  }
   owner:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -141,7 +132,7 @@ content:
     third_party_settings: {  }
   quantity:
     type: farm_nfa_inline_entity_form_quantity
-    weight: 21
+    weight: 17
     region: content
     settings:
       quantity:
@@ -167,21 +158,21 @@ content:
     third_party_settings: {  }
   silvicilutural_score:
     type: number
-    weight: 11
+    weight: 7
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   silvicultural_recommendations:
     type: text_textarea
-    weight: 12
+    weight: 8
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
   stand_quality:
-    weight: 8
+    weight: 4
     settings:
       rows: 5
       placeholder: ''
@@ -190,13 +181,13 @@ content:
     region: content
   status:
     type: options_select
-    weight: 20
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 13
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

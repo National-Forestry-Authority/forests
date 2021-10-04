@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - asset.type.land
+    - field.field.asset.land.field_boundary_opening_history
+    - field.field.asset.land.field_boundary_plan_details
     - field.field.asset.land.person_in_charge
     - image.style.large
   module:
@@ -128,5 +130,7 @@ content:
     third_party_settings: {  }
 hidden:
   data: true
+  field_boundary_opening_history: true
+  field_boundary_plan_details: true
   intrinsic_geometry: true
   uid: true

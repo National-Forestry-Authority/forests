@@ -1,4 +1,4 @@
-uuid: 35095ef3-c8b9-4f36-b10f-cf86520e0f15
+uuid: e95acc0e-1fc6-4895-9429-22d8a0535c54
 langcode: en
 status: true
 dependencies:
@@ -20,7 +20,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: _S6ADxC_t2kSxayZfLKs9mJm_YH49BL-K4KIUSilc-k
+  default_config_hash: rUzjwuNlBHKkSQioELEEAnRgjBQclMw0CNThO4sygDw
 id: farm_log
 label: 'Farm Logs'
 module: views
@@ -1275,6 +1275,112 @@ display:
           entity_type: log
           entity_field: status
           plugin_id: state_machine_state
+        asset_target_id:
+          id: asset_target_id
+          table: log__asset
+          field: asset_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: asset_target_id_op
+            label: Assets
+            description: ''
+            use_operator: false
+            operator: asset_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: asset_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              farm_manager: '0'
+              farm_viewer: '0'
+              farm_worker: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          handler: views
+          handler_settings:
+            view:
+              view_name: farm_asset_reference
+              display_name: entity_reference
+              arguments: {  }
+          widget: autocomplete
+          entity_type: log
+          entity_field: asset
+          plugin_id: entity_reference
+        location_target_id:
+          id: location_target_id
+          table: log__location
+          field: location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: location_target_id_op
+            label: Location
+            description: ''
+            use_operator: false
+            operator: location_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: location_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              farm_manager: '0'
+              farm_viewer: '0'
+              farm_worker: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          handler: views
+          handler_settings:
+            view:
+              view_name: farm_location_reference
+              display_name: entity_reference
+              arguments: {  }
+          widget: autocomplete
+          entity_type: log
+          entity_field: location
+          plugin_id: entity_reference
       sorts: {  }
       header: {  }
       footer:
