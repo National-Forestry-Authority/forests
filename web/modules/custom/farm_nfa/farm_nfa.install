@@ -32,7 +32,7 @@ function farm_nfa_remove_toolbar_links_helper() {
 
   // Uninstall the following modules to hide its toolbar menu links.
   \Drupal::service('module_installer')->uninstall(
-    ['farm_forest_plan', 'farm_input']
+    ['farm_forest_plan', 'farm_input', 'farm_update']
   );
 }
 
