@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\farm_nfa_plantation_inventory\Plugin\EntityReferenceSelection;
+namespace Drupal\farm_nfa\Plugin\EntityReferenceSelection;
 
 use Drupal\Core\Entity\Plugin\EntityReferenceSelection\DefaultSelection;
 use Drupal\plan\Entity\Plan;
@@ -10,10 +10,10 @@ use Drupal\plan\Entity\PlanInterface;
  * Asset by plan ER selection.
  *
  * @EntityReferenceSelection(
- *   id = "farm_nfa_plantation_inventory",
+ *   id = "farm_nfa_asset_by_plan",
  *   label = @Translation("Asset by plan"),
  *   entity_types = {"asset"},
- *   group = "farm_nfa_plantation_inventory",
+ *   group = "farm_nfa_asset_by_plan",
  *   weight = 10
  * )
  */
