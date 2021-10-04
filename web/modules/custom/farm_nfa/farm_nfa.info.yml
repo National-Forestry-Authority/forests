@@ -17,6 +17,7 @@ dependencies:
   - field_group:field_group
   - farm:asset
   - farm:farm_entity
+  - farm:farm_report
   - farm:farm_land
   - farm:farm_map
   - farm:plan
