@@ -13,8 +13,6 @@ config_devel:
   - core.entity_form_display.asset.compartment.default
   - core.entity_view_display.asset.block.default
   - core.entity_view_display.asset.compartment.default
-  - core.entity_form_display.log.activity.default
-  - core.entity_view_display.log.activity.default
   - field.field.asset.block.block_number
   - field.field.asset.block.cfr_name
   - field.field.asset.block.compartment_number

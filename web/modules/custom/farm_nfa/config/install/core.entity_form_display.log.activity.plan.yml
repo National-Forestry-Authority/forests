@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.log.plan
-    - field.field.log.activity.compartment
     - field.field.log.activity.working_circle
     - log.type.activity
   module:
