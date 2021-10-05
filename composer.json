@@ -67,7 +67,7 @@
             "web/core": ["type:drupal-core"],
             "web/profiles/farm": ["farmos/farmos"],
             "web/modules/farm_forest": ["drupal/farm_forest"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "vendor:npm-asset"],
             "web/modules/{$name}": ["type:drupal-module"],
             "web/themes/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
