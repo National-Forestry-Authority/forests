@@ -1,0 +1,95 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.log.plan
+    - field.field.log.natural_inventory.average_silviculture_score
+    - field.field.log.natural_inventory.coup_number
+    - field.field.log.natural_inventory.working_circle
+    - log.type.natural_inventory
+  module:
+    - farm_map
+    - inline_entity_form
+    - text
+id: log.natural_inventory.plan
+targetEntityType: log
+bundle: natural_inventory
+mode: plan
+content:
+  average_silviculture_score:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  coup_number:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  geometry:
+    type: farm_map_geofield
+    weight: 4
+    settings:
+      populate_file_field: file
+      display_raw_geometry: true
+    region: content
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  quantity:
+    type: inline_entity_form_complex
+    settings:
+      form_mode: default
+      revision: true
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+    weight: 2
+    region: content
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timestamp:
+    type: datetime_timestamp
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  working_circle:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  asset: true
+  category: true
+  created: true
+  data: true
+  file: true
+  flag: true
+  image: true
+  is_movement: true
+  location: true
+  name: true
+  owner: true

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.coup_number
+    - log.type.natural_inventory
+id: log.natural_inventory.coup_number
+field_name: coup_number
+entity_type: log
+bundle: natural_inventory
+label: 'Coup number'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

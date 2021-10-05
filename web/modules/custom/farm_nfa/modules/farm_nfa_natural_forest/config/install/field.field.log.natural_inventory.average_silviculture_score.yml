@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.average_silviculture_score
+    - log.type.natural_inventory
+    - taxonomy.vocabulary.average_silviculture_score
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: log.natural_inventory.average_silviculture_score
+field_name: average_silviculture_score
+entity_type: log
+bundle: natural_inventory
+label: 'Average silviculture score'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      average_silviculture_score: average_silviculture_score
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

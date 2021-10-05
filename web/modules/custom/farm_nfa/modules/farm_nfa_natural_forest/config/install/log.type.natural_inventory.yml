@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_natural_forest
+id: natural_inventory
+label: 'Natural inventory'
+description: ''
+name_pattern: 'Natural inventory log [log:id]'
+workflow: log_default
+new_revision: true

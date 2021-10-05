@@ -27,11 +27,10 @@ class ForestPlanInventoryForm extends ForestPlanBaseForm {
     // along or make these forms some sort of plugin based on the plan type.
     return [
         'log_type' => [
-          'forest' => 'observation',
-          'natural' => 'observation',
+          'natural' => 'natural_inventory',
           'plantation' => 'plantation_inventory',
         ],
-        'display_log_types' => ['observation', 'plantation_inventory'],
+        'display_log_types' => ['natural_inventory', 'plantation_inventory'],
         'form_title' => t('Inventory'),
       ] + parent::defaultSettings();
   }
