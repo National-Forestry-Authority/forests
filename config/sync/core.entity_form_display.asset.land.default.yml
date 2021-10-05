@@ -1,4 +1,4 @@
-uuid: 892755f9-1f05-4be7-89c3-b2bc7718e8be
+uuid: 7fd58da3-b55d-4c1e-ad9c-aaa5c9ac34a2
 langcode: en
 status: true
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
     - select_or_other
     - text
 _core:
-  default_config_hash: LC9myK_Ge6FmvRpeQv36vyhCZu7eT6iiVEAs0hHPKOw
+  default_config_hash: i-roQn8pl5tV6tj6nDXnAM8yT5IYx-E0MnWFF3Ibbq8
 id: asset.land.default
 targetEntityType: asset
 bundle: land

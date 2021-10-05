@@ -1,10 +1,9 @@
-uuid: e45d9fee-232f-48bc-93b8-e41a0f7d999c
+uuid: 36cfc612-1c31-46f7-ab04-d4e43d712537
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.log.plan
-    - field.field.log.activity.compartment
     - field.field.log.activity.working_circle
     - log.type.activity
   module:
@@ -12,7 +11,7 @@ dependencies:
     - file
     - text
 _core:
-  default_config_hash: 5UV1CIIfjDb4Rl_cGhWvgnkJJDNTAH7ERIOBHdqSgLc
+  default_config_hash: wx58EYBswmAq8vMZGY_EqcDwKwhZm-IS3Z8egOgvSjA
 id: log.activity.plan
 targetEntityType: log
 bundle: activity
