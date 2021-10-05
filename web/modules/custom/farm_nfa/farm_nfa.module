@@ -83,6 +83,26 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
         ]
       ),
     ];
+    // Replace the delete operation.
+    if ($operations['delete']) {
+      /** @var \Drupal\Core\Url $delete_url */
+      $delete_url = $operations['delete']['url'];
+      $operations['delete']['url'] = Url::fromRoute(
+        $delete_url->getRouteName(),
+        $delete_url->getRouteParameters(),
+        $delete_url->getOptions() + [
+          'attributes' => [
+            'class' => ['use-ajax'],
+            'data-dialog-type' => 'dialog',
+            'data-dialog-renderer' => 'off_canvas',
+            'data-dialog-options' => Json::encode([
+              'width' => '50%',
+            ]),
+          ],
+        ],
+      );
+    }
+
   }
 }
 
