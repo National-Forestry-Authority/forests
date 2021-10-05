@@ -25,6 +25,4 @@ config_devel:
   - field.field.log.plantation_inventory.mean_diameter
   - field.field.log.plantation_inventory.avg_height
   - field.field.log.plantation_inventory.silvicultural_recommendations
-  - core.entity_view_display.log.plantation_inventory.default
-  - core.entity_form_display.log.plantation_inventory.default
   - core.entity_form_display.log.plantation_inventory.plan

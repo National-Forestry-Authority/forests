@@ -10,5 +10,8 @@ dependencies:
 
 config_devel:
   - plan.type.natural
-
-
+  - log.type.natural_inventory
+  - field.field.log.natural_inventory.average_silviculture_score
+  - field.field.log.natural_inventory.coup_number
+  - field.field.log.natural_inventory.working_circle
+  - core.entity_form_display.log.natural_inventory.plan
