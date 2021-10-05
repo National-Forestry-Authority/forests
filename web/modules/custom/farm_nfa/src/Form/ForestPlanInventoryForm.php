@@ -47,7 +47,9 @@ class ForestPlanInventoryForm extends ForestPlanBaseForm {
       'langcode' => 'en',
     ]);
     $term = reset($terms);
-    $values['working_circle'] = [0 => ['target_id' => $term->id()]];
+    if ($term) {
+      $values['working_circle'] = [0 => ['target_id' => $term->id()]];
+    }
     return parent::saveTask($plan,$assets, $values, $log);
   }
 
