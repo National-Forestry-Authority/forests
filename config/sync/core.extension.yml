@@ -9,6 +9,7 @@ module:
   config_update: 0
   config_update_ui: 0
   consumers: 0
+  contextual: 0
   csv_serialization: 0
   date_popup: 0
   datetime: 0
@@ -87,6 +88,7 @@ module:
   jsonapi: 0
   jsonapi_extras: 0
   jsonapi_schema: 0
+  layout_builder: 0
   layout_discovery: 0
   log: 0
   media: 0

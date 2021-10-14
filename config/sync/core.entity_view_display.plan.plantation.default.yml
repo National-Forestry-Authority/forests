@@ -1,0 +1,188 @@
+uuid: f3b1a782-7508-45ab-980e-be51c67cd70b
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.large
+    - plan.type.plantation
+    - views.view.priority_logs
+  module:
+    - file
+    - image
+    - layout_builder
+    - layout_discovery
+    - options
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          b353e51b-9200-4c43-8823-dd9fbc7fcbe8:
+            uuid: b353e51b-9200-4c43-8823-dd9fbc7fcbe8
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:status'
+              formatter:
+                label: inline
+                type: list_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 0
+          8bffafd7-9ed8-492c-84af-bd2883472b4e:
+            uuid: 8bffafd7-9ed8-492c-84af-bd2883472b4e
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:flag'
+              formatter:
+                label: inline
+                type: list_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 1
+          b97d71cc-b3e8-4826-99b0-02a23c7b2c25:
+            uuid: b97d71cc-b3e8-4826-99b0-02a23c7b2c25
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:asset'
+              formatter:
+                label: inline
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+            additional: {  }
+            weight: 2
+          f7614190-2215-4c0d-888a-b76425acab35:
+            uuid: f7614190-2215-4c0d-888a-b76425acab35
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:notes'
+              formatter:
+                label: inline
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+            additional: {  }
+            weight: 3
+          62eb922c-e10b-4087-a617-4b139f3f8997:
+            uuid: 62eb922c-e10b-4087-a617-4b139f3f8997
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:image'
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_style: large
+                  image_link: file
+                third_party_settings: {  }
+            additional: {  }
+            weight: 4
+          0625ce13-d83f-4218-87e8-7cfc5a78e1cb:
+            uuid: 0625ce13-d83f-4218-87e8-7cfc5a78e1cb
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:file'
+              formatter:
+                type: file_table
+                label: visually_hidden
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            additional: {  }
+            weight: 6
+          02df667b-ca42-468c-8e78-52862cd207e8:
+            uuid: 02df667b-ca42-468c-8e78-52862cd207e8
+            region: content
+            configuration:
+              id: 'views_block:priority_logs-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: '10'
+              context_mapping: {  }
+            additional: {  }
+            weight: 5
+        third_party_settings: {  }
+id: plan.plantation.default
+targetEntityType: plan
+bundle: plantation
+mode: default
+content:
+  asset:
+    label: inline
+    type: entity_reference_label
+    weight: -10
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    weight: 90
+    region: content
+    third_party_settings: {  }
+  flag:
+    label: inline
+    type: list_default
+    weight: -75
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_style: large
+      image_link: file
+    weight: 89
+    region: content
+    third_party_settings: {  }
+  notes:
+    label: inline
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    label: inline
+    type: list_default
+    weight: -80
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  data: true
+  uid: true

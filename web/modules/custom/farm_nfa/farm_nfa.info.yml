@@ -8,9 +8,11 @@ dependencies:
   - drupal:datetime_range
   - drupal:file
   - drupal:image
+  - drupal:layout_builder
   - drupal:media
   - drupal:text
   - drupal:telephone
+  - drupal:user
   - drupal:views
   - element_multiple:element_multiple
   - config_devel:config_devel
@@ -78,6 +80,7 @@ config_devel:
   - taxonomy.vocabulary.forest_vegetation
   - taxonomy.vocabulary.harvest_type
   - taxonomy.vocabulary.working_circle
+  - views.view.priority_logs
 
 default_content:
   taxonomy_term:

@@ -4,12 +4,12 @@ type: module
 package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
-  - drupal:user
   - farm_nfa:farm_nfa
   - farm_nfa:farm_nfa_block_compartment
 
 config_devel:
   - log.type.plantation_inventory
+  - core.entity_view_display.plan.natural.default
   - field.storage.log.inventory_date
   - field.storage.log.stand_quality
   - field.storage.log.inventory_methodology
