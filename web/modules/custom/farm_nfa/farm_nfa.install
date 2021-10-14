@@ -45,6 +45,7 @@ function farm_nfa_install(){
   \Drupal::configFactory()->getEditable('asset.type.land')->set('label', 'Land (Admin)')->save();
 
   farm_nfa_remove_toolbar_links_helper();
+  \Drupal::service('module_installer')->uninstall(['farm_ui_action']);
 }
 
 /**
@@ -54,4 +55,13 @@ function farm_nfa_install(){
  */
 function farm_nfa_update_9001(&$sandbox) {
   farm_nfa_remove_toolbar_links_helper();
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Uninstall module farm_ui_action module.
+ */
+function farm_nfa_update_9002(&$sandbox) {
+  \Drupal::service('module_installer')->uninstall(['farm_ui_action']);
 }
