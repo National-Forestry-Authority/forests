@@ -10,6 +10,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\log\Entity\Log;
 use Drupal\plan\Entity\Plan;
 use Drupal\plan\Entity\PlanInterface;
@@ -106,12 +107,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $form['log']['revision_log_message']['#access'] = FALSE;
 
     if ($form['log']['location']) {
-      $form['log']['location']['widget'][0]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
-      $form['log']['location']['widget'][0]['target_id']['#selection_settings'] = [
-        'target_bundles' => [
-          'compartment' => 'compartment'
-        ]
-      ];
+      foreach (Element::children($form['log']['location']['widget']) as $delta => $widget) {
+        if (is_numeric($widget)) {
+          $form['log']['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
+          $form['log']['location']['widget'][$delta]['target_id']['#selection_settings'] = [
+            'target_bundles' => [
+              'compartment' => 'compartment'
+            ]
+          ];
+        }
+      }
     }
 
     $form['actions'] = ['#type' => 'actions'];
