@@ -26,11 +26,19 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  flag:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   geometry:
     type: farm_map_geofield
     weight: 6
     region: content
-    settings: {  }
+    settings:
+      display_raw_geometry: true
+      populate_file_field: false
     third_party_settings: {  }
   harvest_type:
     type: options_select
@@ -65,7 +73,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -104,7 +112,6 @@ hidden:
   data: true
   equipment: true
   file: true
-  flag: true
   image: true
   is_movement: true
   location: true

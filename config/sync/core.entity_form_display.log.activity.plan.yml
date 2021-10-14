@@ -24,6 +24,12 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  flag:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   geometry:
     type: farm_map_geofield
     weight: 2
@@ -60,7 +66,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -83,7 +89,6 @@ hidden:
   created: true
   data: true
   equipment: true
-  flag: true
   image: true
   is_movement: true
   owner: true

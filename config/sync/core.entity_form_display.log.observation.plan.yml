@@ -33,11 +33,19 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  flag:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   geometry:
     type: farm_map_geofield
     weight: 4
     region: content
-    settings: {  }
+    settings:
+      display_raw_geometry: true
+      populate_file_field: false
     third_party_settings: {  }
   notes:
     type: text_textarea
@@ -66,7 +74,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -89,7 +97,6 @@ hidden:
   data: true
   equipment: true
   file: true
-  flag: true
   image: true
   is_movement: true
   location: true

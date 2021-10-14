@@ -59,8 +59,6 @@ module:
   farm_report: 0
   farm_role: 0
   farm_role_roles: 0
-  farm_ui: 0
-  farm_ui_action: 0
   farm_ui_breadcrumb: 0
   farm_ui_dashboard: 0
   farm_ui_help: 0
