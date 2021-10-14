@@ -135,7 +135,7 @@ content:
     third_party_settings: {  }
   quantity:
     type: farm_nfa_inline_entity_form_quantity
-    weight: 17
+    weight: 18
     region: content
     settings:
       quantity:
@@ -194,10 +194,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  working_circle:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   asset: true
   category: true
   created: true
   data: true
   is_movement: true
-  working_circle: true

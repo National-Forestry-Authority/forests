@@ -4,9 +4,11 @@ dependencies:
   enforced:
     module:
       - farm_nfa_plantation_inventory
+  module:
+    - farm_nfa
 id: plantation_inventory
 label: 'Plantation inventory'
 description: ''
 name_pattern: 'Plantation inventory log [log:id]'
-workflow: log_default
+workflow: farm_nfa_log_default
 new_revision: true

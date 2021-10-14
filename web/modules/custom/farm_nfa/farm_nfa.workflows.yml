@@ -1,0 +1,24 @@
+farm_nfa_log_default:
+  id: farm_nfa_log_default
+  group: farm_nfa_log
+  label: 'Default (NFA)'
+  states:
+    pending:
+      label: Pending
+    ongoing:
+      label: Ongoing
+    done:
+      label: Done
+  transitions:
+    to_pending:
+      label: 'Move to Pending'
+      from: [ done, ongoing ]
+      to: pending
+    to_ongoing:
+      label: 'Move to Ongoing'
+      from: [ pending, done ]
+      to: ongoing
+    done:
+      label: 'Done'
+      from: [pending, ongoing]
+      to: done

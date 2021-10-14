@@ -3,12 +3,12 @@ status: true
 dependencies:
   enforced:
     module:
-      - farm_nfa_natural_forest
+      - farm_harvest
   module:
     - farm_nfa
-id: natural_inventory
-label: 'Natural inventory'
+id: harvest
+label: Harvest
 description: ''
-name_pattern: 'Natural inventory log [log:id]'
+name_pattern: 'Harvest log [log:id]'
 workflow: farm_nfa_log_default
 new_revision: true
