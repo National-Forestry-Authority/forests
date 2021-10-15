@@ -17,12 +17,23 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
    *   The MapRenderEvent.
    */
   public function onMapRender(MapRenderEvent $event) {
-    $excluded_routes = [
+    parent::onMapRender($event);
+
+    $farm_nfa_routes = [
       'farm_nfa.plan.add_task'
     ];
 
-    if (!in_array(\Drupal::routeMatch()->getRouteName(), $excluded_routes)) {
-      parent::onMapRender($event);
+    // @TODO inject this.
+    if (in_array(\Drupal::routeMatch()->getRouteName(), $farm_nfa_routes)) {
+      $settings[$event->getMapTargetId()]['asset_type_layers']['all_locations'] = [
+        'label' => $this->t('All locations'),
+        'filters' => [
+          'is_location' => 1,
+        ],
+        'color' => 'grey',
+        'zoom' => FALSE,
+      ];
+      $event->addSettings($settings);
     }
   }
 

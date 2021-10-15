@@ -11,11 +11,13 @@ off_canvas:
     - core/jquery.once
     - core/drupal.ajax
     - core/views.ajax
+    - farm_map/farmOS-map
 
 behavior_farm_nfa_map_activities:
   js:
     js/farmOS.map.behaviors.farm_nfa_map_activities.js: { }
   dependencies:
+    - core/drupalSettings
     - farm_map/farm_map
 
 search_autocomplete:
