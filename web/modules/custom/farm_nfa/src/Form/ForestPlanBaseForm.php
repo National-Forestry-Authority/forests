@@ -106,7 +106,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $form['#title'] = $this->settings['form_title'];
     $form['log']['revision_log_message']['#access'] = FALSE;
 
-    if ($form['log']['location']) {
+    if (isset($form['log']['location'])) {
       foreach (Element::children($form['log']['location']['widget']) as $delta => $widget) {
         if (is_numeric($widget)) {
           $form['log']['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
