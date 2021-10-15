@@ -117,6 +117,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           ];
         }
       }
+
+      $form['log']['location']['widget']['#description'] = $this->t('If the compartment you are looking for does not appear in your search, the compartment has not yet been created in the system. Please ask the system administrator to create the compartment for you or if you have privileges, please create it via <a href="@href" target="_blank" rel="noopener noreferrer">Add Compartment</a>. Once the compartment has been created, you can continue.', ['@href' => '/asset/add/compartment']);
     }
 
     $form['actions'] = ['#type' => 'actions'];
