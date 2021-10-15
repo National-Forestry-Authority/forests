@@ -148,6 +148,16 @@ function farm_nfa_preprocess_block__local_actions_block(&$variables) {
 }
 
 /**
+ * Implements hook_menu_local_actions_alter().
+ */
+function farm_nfa_menu_local_actions_alter(&$local_actions) {
+  unset($local_actions['entity.asset.add_page']);
+  unset($local_actions['entity.log.add_page']);
+  unset($local_actions['entity.plan.add_page']);
+  unset($local_actions['farm.actions:farm.add.log.bundle']);
+}
+
+/**
  * Implements hook_farm_dashboard_panes().
  */
 function farm_nfa_farm_dashboard_panes() {

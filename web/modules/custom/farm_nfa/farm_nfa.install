@@ -80,3 +80,12 @@ function farm_nfa_update_9003(&$sandbox) {
     $log_type->save();
   }
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Reinstall module farm_ui_action module.
+ */
+function farm_nfa_update_9004(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_ui_action']);
+}
