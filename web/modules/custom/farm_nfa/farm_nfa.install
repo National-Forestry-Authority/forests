@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\log\Entity\LogType;
+
 /**
  * @file
  * Install, update and uninstall functions for the farm_nfa module.
@@ -64,4 +66,17 @@ function farm_nfa_update_9001(&$sandbox) {
  */
 function farm_nfa_update_9002(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(['farm_ui_action']);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Update the default workflow for the farmOS core modules.
+ */
+function farm_nfa_update_9003(&$sandbox) {
+  foreach (['activity', 'harvest', 'observation'] as $log_type_id) {
+    $log_type = LogType::load($log_type_id);
+    $log_type->setWorkflowId('farm_nfa_log_default');
+    $log_type->save();
+  }
 }

@@ -72,9 +72,6 @@ config_devel:
   - field.storage.log.supervisor
   - field.storage.log.tender_name
   - field.storage.log.working_circle
-  - log.type.activity
-  - log.type.harvest
-  - log.type.observation
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose
   - taxonomy.vocabulary.forest_vegetation
