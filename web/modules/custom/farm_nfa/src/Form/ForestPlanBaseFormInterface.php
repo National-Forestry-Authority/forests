@@ -46,20 +46,4 @@ interface ForestPlanBaseFormInterface {
    */
   public function ajaxSubmit(&$form, FormStateInterface $form_state) : AjaxResponse;
 
-  /**
-   * Saves the log(task).
-   *
-   * @param \Drupal\plan\Entity\PlanInterface $plan
-   *    The plan entity.
-   * @param \Drupal\asset\Entity\AssetInterface[] $assets
-   *    Array of asset entities.
-   * @param array $values
-   *    Values as submitted to the form.
-   * @param \Drupal\log\Entity\LogInterface|bool $log
-   *    The log entity or FALSE if new.
-   *
-   * @return \Drupal\log\Entity\LogInterface
-   *    The saved log.
-   */
-  public function saveTask(PlanInterface $plan, array $assets, array $values, $log = FALSE);
 }

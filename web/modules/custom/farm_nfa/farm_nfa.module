@@ -7,6 +7,7 @@
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Url;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
@@ -190,5 +191,14 @@ function farm_nfa_theme_registry_alter(&$theme_registry) {
   // Override the farm_ui layout to use layout builder instead.
   if (isset($theme_registry['plan__full']['preprocess functions'])) {
     $theme_registry['plan__full']['preprocess functions'] = array_filter($theme_registry['plan__full']['preprocess functions'], fn($f) => $f != 'farm_ui_theme_preprocess_plan__full');
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function farm_nfa_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'log') {
+    $fields['location']->addConstraint('DuplicateReference');
   }
 }
