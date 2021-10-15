@@ -5,3 +5,10 @@ services:
       [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
     tags:
       - { name: 'event_subscriber' }
+  farm_nfa.map_render_event_subscriber_decorator:
+    class: Drupal\farm_nfa\MapRenderEventSubscriberDecorator
+    public: false
+    decorates: farm_ui_map.map_render_event_subscriber
+    decoration_priority: 1
+    arguments:
+      [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
