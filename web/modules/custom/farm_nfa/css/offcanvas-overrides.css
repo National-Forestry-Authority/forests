@@ -99,10 +99,6 @@
   font-size: inherit;
 }
 
-#drupal-off-canvas label {
-  font-size: inherit;
-}
-
 #drupal-off-canvas input[type="text"],
 #drupal-off-canvas input[type="date"],
 #drupal-off-canvas input[type="search"],
@@ -306,4 +302,8 @@
 #drupal-off-canvas .layer-wrapper {
   box-shadow: none;
   background: #fff;
+}
+
+#drupal-off-canvas .ol-side-panel-content label {
+  color: #222330;
 }

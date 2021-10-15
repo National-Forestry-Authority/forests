@@ -79,6 +79,9 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $plan_id = $this->getRouteMatch()->getRawParameter('plan');
     $log_id = $this->request->query->get('log');
 
+    // Disable cache to allow KML uploads.
+    $form_state->disableCache();
+
     $form['#plan'] = $form['#log'] = FALSE;
     if (!empty($plan_id) && is_numeric($plan_id)) {
       $form['#plan'] = Plan::load($plan_id);
@@ -96,20 +99,17 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
 
     // Build the form in 'plan' form display mode.
-    $form['log'] = [
-      '#parents' => ['log'],
-    ];
     $form_display = EntityFormDisplay::collectRenderDisplay($log, 'plan');
-    $form_display->buildForm($log, $form['log'], $form_state);
+    $form_display->buildForm($log, $form, $form_state);
 
     $form['#title'] = $this->settings['form_title'];
-    $form['log']['revision_log_message']['#access'] = FALSE;
+    $form['revision_log_message']['#access'] = FALSE;
 
-    if (isset($form['log']['location'])) {
-      foreach (Element::children($form['log']['location']['widget']) as $delta => $widget) {
+    if (isset($form['location'])) {
+      foreach (Element::children($form['location']['widget']) as $delta => $widget) {
         if (is_numeric($widget)) {
-          $form['log']['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
-          $form['log']['location']['widget'][$delta]['target_id']['#selection_settings'] = [
+          $form['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
+          $form['location']['widget'][$delta]['target_id']['#selection_settings'] = [
             'target_bundles' => [
               'compartment' => 'compartment'
             ]
@@ -117,7 +117,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         }
       }
 
-      $form['log']['location']['widget']['#description'] = $this->t('If the compartment you are looking for does not appear in your search, the compartment has not yet been created in the system. Please ask the system administrator to create the compartment for you or if you have privileges, please create it via <a href="@href" target="_blank" rel="noopener noreferrer">Add Compartment</a>. Once the compartment has been created, you can continue.', ['@href' => '/asset/add/compartment']);
+      $form['location']['widget']['#description'] = $this->t('If the compartment you are looking for does not appear in your search, the compartment has not yet been created in the system. Please ask the system administrator to create the compartment for you or if you have privileges, please create it via <a href="@href" target="_blank" rel="noopener noreferrer">Add Compartment</a>. Once the compartment has been created, you can continue.', ['@href' => '/asset/add/compartment']);
     }
 
     $form['actions'] = ['#type' => 'actions'];
@@ -153,20 +153,23 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $asset = reset($assets);
 
     try {
-      if ($log) {
-        foreach ($values as $value_name => $value) {
+      if (empty($plan)) {
+        throw new \Exception($this->t('Cannot save a task without a plan.'));
+      }
+
+      if (!$log) {
+        $log = Log::create([
+          'type' => $this->getLogType($plan),
+          'asset' => $assets,
+        ]);
+      }
+
+      foreach ($values as $value_name => $value) {
+        if ($log->hasField($value_name)) {
           $log->set($value_name, $value);
         }
       }
-      else {
-        if (empty($plan)) {
-          throw new \Exception($this->t('Cannot save a task without a plan.'));
-        }
-        $log = Log::create($values + [
-            'type' => $this->getLogType($plan),
-            'asset' => $assets,
-          ]);
-      }
+
       $violations = $log->validate();
       if ($violations->count() == 0) {
         $saved_status = $log->save();
@@ -209,7 +212,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // point in time is the date fields and the quantity, that uses a complex
     // IEF widget.
     $form_state->cleanValues();
-    $log_values = $form_state->getValue('log');
+    $log_values = $form_state->getValues();
 
     // Ensure timestamp is saved correctly.
     foreach ($log_values as &$value) {
