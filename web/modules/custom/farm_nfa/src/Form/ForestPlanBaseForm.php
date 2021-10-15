@@ -79,24 +79,21 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $plan_id = $this->getRouteMatch()->getRawParameter('plan');
     $log_id = $this->request->query->get('log');
 
-    // Disable cache to allow KML uploads.
-    $form_state->disableCache();
-
     $form['#plan'] = $form['#log'] = FALSE;
     if (!empty($plan_id) && is_numeric($plan_id)) {
       $form['#plan'] = Plan::load($plan_id);
     }
     if (!empty($log_id) && is_numeric($log_id)) {
       /** @var \Drupal\log\Entity\LogInterface $log */
-      $form['#log'] = $log = Log::load($log_id);
+      $log = Log::load($log_id);
     }
 
     if (empty($log)) {
       $log = Log::create([
-        // @TODO Should we add a log_type_callback instead?
         'type' => $this->getLogType($form['#plan']),
       ]);
     }
+    $form['#log'] = $log;
 
     // Build the form in 'plan' form display mode.
     $form_display = EntityFormDisplay::collectRenderDisplay($log, 'plan');
@@ -157,18 +154,12 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         throw new \Exception($this->t('Cannot save a task without a plan.'));
       }
 
-      if (!$log) {
-        $log = Log::create([
-          'type' => $this->getLogType($plan),
-          'asset' => $assets,
-        ]);
-      }
-
       foreach ($values as $value_name => $value) {
         if ($log->hasField($value_name)) {
           $log->set($value_name, $value);
         }
       }
+      $log->set('asset', $assets);
 
       $violations = $log->validate();
       if ($violations->count() == 0) {
