@@ -6,6 +6,7 @@ dependencies:
     - plan.type.natural
     - views.view.priority_logs
   module:
+    - farm_nfa
     - file
     - image
     - layout_builder
@@ -19,13 +20,15 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: layout_twocol_section
         layout_settings:
           label: ''
+          column_widths: 50-50
+          context_mapping: {  }
         components:
           62d0efda-6c7a-4d85-a9f2-1a722e38ea2c:
             uuid: 62d0efda-6c7a-4d85-a9f2-1a722e38ea2c
-            region: content
+            region: first
             configuration:
               label_display: '0'
               context_mapping:
@@ -37,10 +40,10 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 0
+            weight: 4
           bb6548bd-3b2d-4ac0-b1a6-f714c86cb1ec:
             uuid: bb6548bd-3b2d-4ac0-b1a6-f714c86cb1ec
-            region: content
+            region: first
             configuration:
               label_display: '0'
               context_mapping:
@@ -52,10 +55,10 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 1
+            weight: 3
           76bd6999-0607-4da1-8c72-5e4b833e03c2:
             uuid: 76bd6999-0607-4da1-8c72-5e4b833e03c2
-            region: content
+            region: first
             configuration:
               label_display: '0'
               context_mapping:
@@ -71,7 +74,7 @@ third_party_settings:
             weight: 2
           19170a49-3d31-4b64-8e64-3b958b1d536f:
             uuid: 19170a49-3d31-4b64-8e64-3b958b1d536f
-            region: content
+            region: first
             configuration:
               label_display: '0'
               context_mapping:
@@ -83,10 +86,10 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             additional: {  }
-            weight: 3
+            weight: 1
           244f28fc-9f59-4bc7-b590-c888818a2826:
             uuid: 244f28fc-9f59-4bc7-b590-c888818a2826
-            region: content
+            region: first
             configuration:
               label_display: '0'
               context_mapping:
@@ -100,7 +103,24 @@ third_party_settings:
                   image_link: file
                 third_party_settings: {  }
             additional: {  }
-            weight: 4
+            weight: 0
+          fda47ea3-b54b-46cd-b59c-b1354ac70258:
+            uuid: fda47ea3-b54b-46cd-b59c-b1354ac70258
+            region: second
+            configuration:
+              id: farm_nfa_plan_map_block
+              label: 'Plan map'
+              provider: farm_nfa
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
           73ad8821-29fd-4327-b996-5743220a83f2:
             uuid: 73ad8821-29fd-4327-b996-5743220a83f2
             region: content

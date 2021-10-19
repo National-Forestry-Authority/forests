@@ -28,6 +28,7 @@ dependencies:
   - month_year:month_year
   - select_or_other:select_or_other
   - state_machine:state_machine
+  - views_geojson:views_geojson
 
 config_devel:
   - core.entity_view_display.asset.land.default
@@ -52,6 +53,8 @@ config_devel:
   - farm_land.land_type.range
   - farm_land.land_type.sector
   - farm_map.map_behavior.farm_nfa_map_activities
+  - farm_map.map_behavior.farm_nfa_plan_locations_layers
+  - farm_map.map_type.farm_nfa_plan_locations
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.working_circle
   - field.field.log.harvest.coup_number
@@ -78,6 +81,7 @@ config_devel:
   - taxonomy.vocabulary.harvest_type
   - taxonomy.vocabulary.working_circle
   - views.view.priority_logs
+  - views.view.nfa_farm_asset_geojson
 
 default_content:
   taxonomy_term:

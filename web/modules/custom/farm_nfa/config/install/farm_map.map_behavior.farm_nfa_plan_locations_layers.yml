@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: farm_nfa_plan_locations_layers
+label: 'Locations for plan'
+description: 'Displays locations on plan details.'
+library: farm_nfa/behavior_farm_nfa_plan_locations_layers
+settings: {  }

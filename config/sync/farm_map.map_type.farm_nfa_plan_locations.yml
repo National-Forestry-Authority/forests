@@ -1,0 +1,13 @@
+uuid: f05555f0-9e68-4961-9329-ad6a62b7fdc0
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: farm_nfa_plan_locations
+label: 'Locations for plan'
+description: 'The map displayed on the plan details.'
+behaviors:
+  - farm_nfa_plan_locations_layers
+options: {  }
