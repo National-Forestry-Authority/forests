@@ -9,7 +9,6 @@ dependencies:
     - field.field.asset.zone.zonation_type
     - image.style.large
   module:
-    - farm_field
     - farm_id_tag
     - farm_map
     - file
@@ -73,30 +72,6 @@ content:
     weight: 9
     region: content
     third_party_settings: {  }
-  is_fixed:
-    label: inline
-    type: hideable_boolean
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-      hide_if_false: true
-      hide_if_true: false
-    weight: 14
-    region: content
-    third_party_settings: {  }
-  is_location:
-    label: inline
-    type: hideable_boolean
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-      hide_if_false: true
-      hide_if_true: false
-    weight: 13
-    region: content
-    third_party_settings: {  }
   location:
     label: inline
     type: entity_reference_label
@@ -145,4 +120,6 @@ content:
 hidden:
   data: true
   intrinsic_geometry: true
+  is_fixed: true
+  is_location: true
   uid: true

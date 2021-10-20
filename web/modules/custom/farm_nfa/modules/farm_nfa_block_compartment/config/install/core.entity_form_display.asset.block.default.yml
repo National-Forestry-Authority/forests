@@ -54,18 +54,18 @@ content:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 14
+    weight: 13
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   id_tag:
     type: id_tag
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -74,7 +74,7 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 13
+    weight: 12
     region: content
     third_party_settings: {  }
   intended_purpose:
@@ -87,23 +87,11 @@ content:
     region: content
   intrinsic_geometry:
     type: farm_map_geofield
-    weight: 17
+    weight: 14
     region: content
-    settings: {  }
-    third_party_settings: {  }
-  is_fixed:
-    type: boolean_checkbox
     settings:
-      display_label: true
-    weight: 16
-    region: content
-    third_party_settings: {  }
-  is_location:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 15
-    region: content
+      display_raw_geometry: '1'
+      populate_file_field: file
     third_party_settings: {  }
   kml_created_by:
     weight: 6
@@ -128,12 +116,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 10
+    weight: 9
     region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 10
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -143,7 +131,7 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 8
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -160,4 +148,6 @@ content:
 hidden:
   data: true
   geometry: true
+  is_fixed: true
+  is_location: true
   location: true

@@ -26,18 +26,18 @@ content:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 9
+    weight: 8
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   id_tag:
     type: id_tag
-    weight: 7
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -46,28 +46,16 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 8
+    weight: 7
     region: content
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
-    weight: 10
+    weight: 9
     region: content
-    settings: {  }
-    third_party_settings: {  }
-  is_fixed:
-    type: boolean_checkbox
     settings:
-      display_label: true
-    weight: 12
-    region: content
-    third_party_settings: {  }
-  is_location:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 11
-    region: content
+      display_raw_geometry: '1'
+      populate_file_field: file
     third_party_settings: {  }
   land_type:
     type: select_or_other_list
@@ -96,7 +84,7 @@ content:
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -116,7 +104,7 @@ content:
     region: content
   status:
     type: options_select
-    weight: 4
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -126,5 +114,7 @@ hidden:
   field_boundary_opening_history: true
   field_boundary_plan_details: true
   geometry: true
+  is_fixed: true
+  is_location: true
   location: true
   uid: true

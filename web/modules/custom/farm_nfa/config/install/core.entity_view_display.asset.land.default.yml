@@ -8,7 +8,6 @@ dependencies:
     - field.field.asset.land.person_in_charge
     - image.style.large
   module:
-    - farm_field
     - farm_id_tag
     - farm_map
     - file
@@ -56,30 +55,6 @@ content:
       image_style: large
       image_link: file
     weight: 7
-    region: content
-    third_party_settings: {  }
-  is_fixed:
-    label: inline
-    type: hideable_boolean
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-      hide_if_false: true
-      hide_if_true: false
-    weight: 12
-    region: content
-    third_party_settings: {  }
-  is_location:
-    label: inline
-    type: hideable_boolean
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-      hide_if_false: true
-      hide_if_true: false
-    weight: 11
     region: content
     third_party_settings: {  }
   land_type:
@@ -133,4 +108,6 @@ hidden:
   field_boundary_opening_history: true
   field_boundary_plan_details: true
   intrinsic_geometry: true
+  is_fixed: true
+  is_location: true
   uid: true
