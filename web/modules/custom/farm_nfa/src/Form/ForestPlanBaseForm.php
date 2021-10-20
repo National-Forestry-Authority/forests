@@ -167,7 +167,9 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
           throw new \Exception($this->t('Task cannot be saved.'));
         }
-        $view = views_embed_view('plan_logs', 'embed', $asset, implode('+', $this->settings['display_log_types']));
+        $route = farm_nfa_plan_route_log_types($plan, $log);
+        $log_types = $route->getDefault('log_types');
+        $view = views_embed_view('plan_logs', 'embed', $asset, implode('+', $log_types));
         $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
         $form['#attached']['library'][] = 'farm_nfa/off_canvas';
         $response->setAttachments($form['#attached']);

@@ -25,7 +25,6 @@ class ForestPlanManagementForm extends ForestPlanBaseForm {
   public static function defaultSettings() : array {
     return [
         'log_type' => 'activity',
-        'display_log_types' => ['activity'],
         'form_title' => t('Management'),
       ] + parent::defaultSettings();
   }

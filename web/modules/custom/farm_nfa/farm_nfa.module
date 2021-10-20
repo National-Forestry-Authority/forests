@@ -16,6 +16,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
+use Drupal\plan\Entity\PlanInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -56,67 +57,6 @@ function farm_nfa_css_alter(&$css) {
     unset($css['core/misc/dialog/off-canvas.reset.css']);
     unset($css['core/misc/dialog/off-canvas.table.css']);
     unset($css['core/misc/dialog/off-canvas.theme.css']);
-  }
-}
-
-/**
- * Implements hook_entity_operation_alter().
- */
-function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $entity) {
-  if (!$entity instanceof LogInterface) {
-    return;
-  }
-  if (!$entity->access('update')) {
-    return;
-  }
-  $options = \Drupal::routeMatch()->getRouteObject()->getOptions();
-  if (empty(($options['parameters']))) {
-    return;
-  }
-  $request_stack = \Drupal::requestStack();
-  $current_request = $request_stack->getCurrentRequest();
-  if (!empty($options['parameters']['task_route']) || $current_request->request->get('_drupal_ajax') == 1) {
-    $plan_id = \Drupal::routeMatch()->getRawParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->getParameterFromReferer(1);
-    $edit_route = $options['parameters']['task_route'] ??  $request_stack->getParentRequest()->query->get('edit_route');;
-    $log_types = \Drupal::routeMatch()->getRouteObject()->getDefault('log_types') ?? $request_stack->getParentRequest()->query->get('log_types');
-    // Replace the edit operation.
-    $operations['edit'] = [
-      'title' => t('Edit'),
-      'url' => Url::fromRoute($edit_route,
-        ['plan' => $plan_id],
-        [
-          'attributes' => [
-            'class' => ['use-ajax'],
-            'data-dialog-type' => 'dialog',
-            'data-dialog-renderer' => 'off_canvas',
-            'data-dialog-options' => Json::encode([
-              'width' => '50%',
-             ]),
-           ],
-          'query' => ['log' => $entity->id()]
-        ]
-      ),
-    ];
-    // Replace the delete operation.
-    if ($operations['delete']) {
-      /** @var \Drupal\Core\Url $delete_url */
-      $delete_url = $operations['delete']['url'];
-      $operations['delete']['url'] = Url::fromRoute(
-        $delete_url->getRouteName(),
-        $delete_url->getRouteParameters() + ['log_types' => $log_types, 'edit_route' => $edit_route],
-        $delete_url->getOptions() + [
-          'attributes' => [
-            'class' => ['use-ajax'],
-            'data-dialog-type' => 'dialog',
-            'data-dialog-renderer' => 'off_canvas',
-            'data-dialog-options' => Json::encode([
-              'width' => '50%',
-            ]),
-          ],
-        ],
-      );
-    }
-
   }
 }
 
@@ -192,6 +132,95 @@ function farm_nfa_farm_dashboard_panes() {
 }
 
 /**
+ * Centralised way to know what route corresponds to a plan/log.
+ *
+ * @param \Drupal\plan\Entity\PlanInterface $plan
+ *  The plan entity.
+ * @param \Drupal\log\Entity\LogInterface $log
+ *  The log entity.
+ *
+ * @return \Symfony\Component\Routing\Route
+ *  The plan route object.
+*/
+function farm_nfa_plan_route_log_types(PlanInterface $plan, LogInterface $log) {
+  // This is a centralised way to know what tab goes where, otherwise we're
+  // spreading this logic all over the place.
+  // @TODO Instead of a random function, this might be better off being saved on
+  // the entity types as third party so it is not hardcoded.
+  $log_types_plan_routes = [
+    'plantation' => [
+      'activity' => 'management',
+      'harvest' => 'harvest',
+      'plantation_inventory' => 'inventory',
+    ],
+    'natural' => [
+      'activity' => 'management',
+      'harvest' => 'harvest',
+      'natural_inventory' => 'inventory',
+    ],
+  ];
+
+  $route_name = 'entity.plan.' . $log_types_plan_routes[$plan->bundle()][$log->bundle()];
+  return \Drupal::service('router.route_provider')->getRouteByName($route_name);
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $entity) {
+  if (!$entity instanceof LogInterface) {
+    return;
+  }
+  if (!$entity->access('update')) {
+    return;
+  }
+  /** @var \Drupal\plan\Entity\PlanInterface $plan */
+  $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
+  if (!$plan) {
+    return;
+  }
+  $route = farm_nfa_plan_route_log_types($plan, $entity);
+
+  // Replace the edit operation.
+  $operations['edit'] = [
+    'title' => t('Edit'),
+    'url' => Url::fromRoute($route->getOption('parameters')['task_route'],
+      ['plan' => $plan->id()],
+      [
+        'attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-renderer' => 'off_canvas',
+          'data-dialog-options' => Json::encode([
+            'width' => '50%',
+          ]),
+        ],
+        'query' => ['log' => $entity->id()]
+      ]
+    ),
+  ];
+  // Replace the delete operation.
+  if ($operations['delete']) {
+    /** @var \Drupal\Core\Url $delete_url */
+    $delete_url = $operations['delete']['url'];
+    $operations['delete']['url'] = Url::fromRoute(
+      $delete_url->getRouteName(),
+      $delete_url->getRouteParameters(),
+      $delete_url->getOptions() + [
+        'attributes' => [
+          'class' => ['use-ajax'],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-renderer' => 'off_canvas',
+          'data-dialog-options' => Json::encode([
+            'width' => '50%',
+          ]),
+        ],
+      ],
+    );
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
 function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
@@ -203,11 +232,10 @@ function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
     if ($current_request->request->get('_drupal_ajax') != 1) {
       return;
     }
+
     $form['actions']['submit']['#ajax'] = [
       'callback' => 'farm_nfa_confirm_form_ajax_helper',
     ];
-    $log_types = $request_stack->getParentRequest()->query->get('log_types');
-    $form_state->set('log_types', $log_types);
     $form['actions']['cancel'] = [
       '#type' => 'button',
       '#value' => t('Cancel'),
@@ -230,7 +258,9 @@ function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state
   if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
     $assets = $plan->get('asset')->referencedEntities();
     $asset = reset($assets);
-    $log_types = $form_state->get('log_types');
+    $log = $form_state->getFormObject()->getEntity();
+    $route = farm_nfa_plan_route_log_types($plan, $log);
+    $log_types = $route->getDefault('log_types');
     $view = views_embed_view('plan_logs', 'embed', $asset->id(), implode('+', $log_types));
     $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
     $form['#attached']['library'][] = 'farm_nfa/off_canvas';

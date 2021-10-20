@@ -24,7 +24,6 @@ class ForestPlanHarvestForm extends ForestPlanBaseForm {
   public static function defaultSettings() : array {
     return [
       'log_type' => 'harvest',
-      'display_log_types' => ['harvest'],
       'form_title' => t('Harvest'),
     ] + parent::defaultSettings();
   }
