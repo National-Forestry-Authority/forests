@@ -3,8 +3,6 @@
 namespace Drupal\farm_nfa\EventSubscriber;
 
 use Drupal\farm_map\Event\MapRenderEvent;
-use Drupal\plan\Entity\Plan;
-use Drupal\plan\Entity\PlanInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -31,18 +29,18 @@ class FarmNfaMapActivitiesEventSubscriber implements EventSubscriberInterface {
     $map_id = $event->getmapType()->id();
     $geometries = [];
     if ($map_id == 'geofield_widget') {
+      $routes = [
+        'farm_nfa.plan.add_inventory',
+        'farm_nfa.plan.add_task',
+        'farm_nfa.plan.add_harvest',
+      ];
       // @TODO Inject this
-      if (\Drupal::routeMatch()->getRouteName()== 'farm_nfa.plan.add_task') {
-        $plan_id = $this->getPlanId();
-        if (!empty($plan_id) && is_numeric($plan_id)) {
-          // @TODO use entityTypeManager instead.
-          $plan = Plan::load($plan_id);
-          if ($plan instanceof PlanInterface) {
-            $assets = $plan->get('asset')->referencedEntities();
-            foreach ($assets as $asset) {
-              // @TODO: Inject this.
-              $geometries[] = \Drupal::service('asset.location')->getGeometry($asset);
-            }
+      if (in_array(\Drupal::routeMatch()->getRouteName(), $routes)) {
+        if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
+          $assets = $plan->get('asset')->referencedEntities();
+          foreach ($assets as $asset) {
+            // @TODO: Inject this.
+            $geometries[] = \Drupal::service('asset.location')->getGeometry($asset);
           }
         }
       }
@@ -55,24 +53,6 @@ class FarmNfaMapActivitiesEventSubscriber implements EventSubscriberInterface {
       ];
       $event->addSettings($settings);
     }
-  }
-
-  /**
-   * Get the plan id from the URL referer.
-   *
-   * Because the form is displayed on a
-   *
-   * @return mixed|string|null
-   *  Plan id.
-   */
-  protected function getPlanId() {
-    // @TODO Inject this
-    // @TODO Expose this as a service as it is being used in several locations.
-    $referer = \Drupal::requestStack()->getCurrentRequest()->server->get('HTTP_REFERER');
-    $referer_path = parse_url($referer, PHP_URL_PATH);
-    $referer_partial_path = substr($referer_path, strlen(base_path()));
-    $referer_args = explode('/', $referer_partial_path);
-    return isset($referer_args[1]) ? $referer_args[1] : NULL;
   }
 
 }

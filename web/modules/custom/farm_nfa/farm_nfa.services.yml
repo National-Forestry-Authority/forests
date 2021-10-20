@@ -12,3 +12,6 @@ services:
     decoration_priority: 1
     arguments:
       [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
+  farm_nfa.referer_plan_loader:
+    class: Drupal\farm_nfa\FarmNfaRefererPlanLoader
+

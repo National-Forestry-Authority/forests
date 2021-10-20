@@ -6,12 +6,16 @@
  */
 
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\CloseDialogCommand;
+use Drupal\Core\Ajax\MessageCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
-use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_type_alter().
@@ -66,12 +70,20 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
     return;
   }
   $options = \Drupal::routeMatch()->getRouteObject()->getOptions();
-  if (isset($options['parameters']) && !empty($options['parameters']['task_route'])) {
+  if (empty(($options['parameters']))) {
+    return;
+  }
+  $request_stack = \Drupal::requestStack();
+  $current_request = $request_stack->getCurrentRequest();
+  if (!empty($options['parameters']['task_route']) || $current_request->request->get('_drupal_ajax') == 1) {
+    $plan_id = \Drupal::routeMatch()->getRawParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->getParameterFromReferer(1);
+    $edit_route = $options['parameters']['task_route'] ??  $request_stack->getParentRequest()->query->get('edit_route');;
+    $log_types = \Drupal::routeMatch()->getRouteObject()->getDefault('log_types') ?? $request_stack->getParentRequest()->query->get('log_types');
     // Replace the edit operation.
     $operations['edit'] = [
       'title' => t('Edit'),
-      'url' => Url::fromRoute($options['parameters']['task_route'],
-        ['plan' => \Drupal::routeMatch()->getRawParameter('plan')],
+      'url' => Url::fromRoute($edit_route,
+        ['plan' => $plan_id],
         [
           'attributes' => [
             'class' => ['use-ajax'],
@@ -91,7 +103,7 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
       $delete_url = $operations['delete']['url'];
       $operations['delete']['url'] = Url::fromRoute(
         $delete_url->getRouteName(),
-        $delete_url->getRouteParameters(),
+        $delete_url->getRouteParameters() + ['log_types' => $log_types, 'edit_route' => $edit_route],
         $delete_url->getOptions() + [
           'attributes' => [
             'class' => ['use-ajax'],
@@ -177,6 +189,68 @@ function farm_nfa_farm_dashboard_panes() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
+  $build_info = $form_state->getBuildInfo();
+  if (isset($build_info['base_form_id']) && $build_info['base_form_id'] == 'log_confirm_form') {
+    // Do not ajaxify outside the off canvas.
+    $request_stack = \Drupal::requestStack();
+    $current_request = $request_stack->getCurrentRequest();
+    if ($current_request->request->get('_drupal_ajax') != 1) {
+      return;
+    }
+    $form['actions']['submit']['#ajax'] = [
+      'callback' => 'farm_nfa_confirm_form_ajax_helper',
+    ];
+    $log_types = $request_stack->getParentRequest()->query->get('log_types');
+    $form_state->set('log_types', $log_types);
+    $form['actions']['cancel'] = [
+      '#type' => 'button',
+      '#value' => t('Cancel'),
+      '#button_type' => 'danger',
+      '#ajax' => [
+        'callback' => 'farm_nfa_confirm_form_cancel_ajax_helper',
+      ],
+      '#weight' => 10,
+    ];
+  }
+}
+
+/**
+ * Reload the log listing after deleting.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state) {
+  $response = new AjaxResponse();
+  if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
+    $assets = $plan->get('asset')->referencedEntities();
+    $asset = reset($assets);
+    $log_types = $form_state->get('log_types');
+    $view = views_embed_view('plan_logs', 'embed', $asset->id(), implode('+', $log_types));
+    $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
+    $form['#attached']['library'][] = 'farm_nfa/off_canvas';
+    $response->setAttachments($form['#attached']);
+    $response->addCommand(new MessageCommand(t('The task has been deleted.')));
+  }
+
+  $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
+  return $response;
+}
+
+/**
+ * Replaces the cancel link by a button that closes the dialog.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function farm_nfa_confirm_form_cancel_ajax_helper($form, FormStateInterface $form_state) {
+  $response = new AjaxResponse();
+  $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
+  return $response;
 }
 
 /**
