@@ -4,7 +4,7 @@ entity.plan.budget:
     _title: 'Budget'
     _form: 'Drupal\farm_nfa\Form\ForestPlanBudgetForm'
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -18,9 +18,10 @@ entity.plan.inventory:
     _title: 'Inventory'
     _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
     log_types:
-      - observation
+      - natural_inventory
+      - plantation_inventory
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -37,7 +38,7 @@ entity.plan.harvest:
     log_types:
       - harvest
   requirements:
-    _entity_bundles: 'plan:forest|plantation'
+    _entity_bundles: 'plan:plantation'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -53,9 +54,8 @@ entity.plan.management:
     _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
     log_types:
       - activity
-      - input
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -71,9 +71,8 @@ entity.plan.gfw:
     _form: 'Drupal\farm_nfa\Form\ForestPlanGfwForm'
     log_types:
       - activity
-      - input
   requirements:
-    _entity_bundles: 'plan:forest|natural'
+    _entity_bundles: 'plan:natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -87,7 +86,7 @@ farm_nfa.plan.add_task:
     _title: 'Add Task'
     _form: 'Drupal\farm_nfa\Form\ForestPlanManagementForm'
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -102,7 +101,7 @@ farm_nfa.plan.add_inventory:
     _title: 'Record an inventory observation'
     _form: 'Drupal\farm_nfa\Form\ForestPlanInventoryForm'
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+
@@ -117,7 +116,7 @@ farm_nfa.plan.add_harvest:
     _title: 'Record a harvest'
     _form: 'Drupal\farm_nfa\Form\ForestPlanHarvestForm'
   requirements:
-    _entity_bundles: 'plan:forest|plantation|natural'
+    _entity_bundles: 'plan:plantation|natural'
     _entity_access: 'plan.update'
     _module_dependencies: 'plan'
     plan: \d+

@@ -1,4 +1,3 @@
-uuid: 3670119c-9a20-4a9c-9aff-ee0ee948b0cd
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - log
     - options
     - user
-_core:
-  default_config_hash: 3hbERFQSzZcLKaLeziIha51N7SiK8L1EwGlkIKkkVuk
 id: plan_logs
 label: 'Plan logs'
 module: views

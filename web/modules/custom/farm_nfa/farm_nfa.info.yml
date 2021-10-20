@@ -80,6 +80,7 @@ config_devel:
   - taxonomy.vocabulary.forest_vegetation
   - taxonomy.vocabulary.harvest_type
   - taxonomy.vocabulary.working_circle
+  - views.view.plan_logs
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
 
