@@ -7,6 +7,7 @@ use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -23,6 +24,34 @@ use Symfony\Component\HttpFoundation\Request;
  * @ingroup farm_nfa
  */
 abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseFormInterface {
+
+  use DependencySerializationTrait {
+    __sleep as traitSleep;
+    __wakeup as traitWakeup;
+  }
+
+  /**
+   * Implements the magic __sleep() method to avoid serializing the request.
+   */
+  public function __sleep() {
+    $keys = $this->traitSleep();
+    return array_diff($keys, [
+      // Remove request from serialization as it's throwing an ugly exception:
+      // "Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed in serialize()"
+      // @see https://www.drupal.org/project/drupal/issues/2647812
+      'request',
+    ]);
+  }
+
+  /**
+   * Implements the magic __wakeup() method to reload the request.
+   */
+  public function __wakeup() {
+    if (!isset($this->request)) {
+      $this->request = \Drupal::request();
+    }
+    $this->traitWakeup();
+  }
 
   /**
    * Current request.
