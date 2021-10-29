@@ -12,6 +12,7 @@ dependencies:
     - field.field.asset.forest.purpose
     - field.field.asset.forest.species
     - field.field.asset.forest.stand_number
+    - field.field.asset.forest.tree_species
     - field.field.asset.forest.variety
     - image.style.medium
   module:
@@ -201,6 +202,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  tree_species:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   variety:
     weight: 8
     settings: {  }

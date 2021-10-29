@@ -1,0 +1,46 @@
+uuid: e528b7b9-64d3-454a-9e7f-c2e8a792b440
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_migrate
+      - farm_nfa_migrate
+_core:
+  default_config_hash: e2Mv8jDgtUwjqBlvcgmAvoB8FNgcCPwYTgz_ufaaaNk
+id: farm_migrate_taxonomy_tree_species
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'farmOS 1.x'
+migration_group: farm_migrate_taxonomy
+label: 'Taxonomy terms (Tree species)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: farm_crops
+process:
+  vid:
+    plugin: default_value
+    default_value: tree_species
+  tid:
+    plugin: get
+    source: tid
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: farm_migrate_taxonomy_tree_species
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies:
+  required: {  }
+  optional: {  }

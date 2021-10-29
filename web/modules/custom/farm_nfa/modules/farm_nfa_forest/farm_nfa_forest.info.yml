@@ -17,6 +17,7 @@ config_devel:
   - field.field.asset.forest.purpose
   - field.field.asset.forest.species
   - field.field.asset.forest.stand_number
+  - field.field.asset.forest.tree_species
   - field.field.asset.forest.variety
   - field.storage.asset.date_planted
   - field.storage.asset.forest_status
@@ -25,10 +26,12 @@ config_devel:
   - field.storage.asset.planned_prescriptions
   - field.storage.asset.purpose
   - field.storage.asset.species
+  - field.storage.asset.tree_species
   - field.storage.asset.stand_number
   - field.storage.asset.variety
   - taxonomy.vocabulary.species
   - taxonomy.vocabulary.variety
+  - taxonomy.vocabulary.tree_species
   - core.entity_form_display.asset.forest.default
   - core.entity_view_display.asset.forest.default
 
