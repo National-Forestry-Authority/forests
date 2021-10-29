@@ -27,5 +27,5 @@ git checkout 2.x
 
 # Update from farm_nfa repo
 ```
-composer update farmos/farmos --with-dependencies
+composer update farmos/farmos:^2 -W
 ```

@@ -49,7 +49,7 @@
         "drupal/migrate_source_csv": "^3.4",
         "drupal/month_year": "^2.0",
         "drupal/select_or_other": "^4.0",
-        "farmos/farmos": "2.0.0-alpha4",
+        "farmos/farmos": "2.0.0-alpha5",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
