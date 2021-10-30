@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\farm_nfa_plantation_forest\Plugin\Log\LogType;
+namespace Drupal\farm_nfa_plantation_inventory\Plugin\Log\LogType;
 
 use Drupal\farm_entity\Plugin\Log\LogType\FarmLogType;
 

@@ -2,9 +2,6 @@
 
 namespace Drupal\farm_nfa\Form;
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\plan\Entity\PlanInterface;
-
 /**
  * Forest plan inventory form.
  *
@@ -32,24 +29,6 @@ class ForestPlanInventoryForm extends ForestPlanBaseForm {
         ],
         'form_title' => t('Inventory'),
       ] + parent::defaultSettings();
-  }
-
-    /**
-   * {@inheritdoc}
-   */
-  public function saveTask(PlanInterface $plan, array $assets, array $values, $log = FALSE) {
-    //@TODO inject this.
-    $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-    $terms = $term_storage->loadByProperties([
-      'vid' => 'working_circle',
-      'name' => 'Production',
-      'langcode' => 'en',
-    ]);
-    $term = reset($terms);
-    if ($term) {
-      $values['working_circle'] = [0 => ['target_id' => $term->id()]];
-    }
-    return parent::saveTask($plan,$assets, $values, $log);
   }
 
 }

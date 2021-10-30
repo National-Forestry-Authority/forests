@@ -186,7 +186,6 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         throw new \Exception($this->t('Cannot save a task without a plan.'));
       }
 
-      $values = $this->preprocessValues($values);
       foreach ($values as $value_name => $value) {
         if ($log->hasField($value_name)) {
           $log->set($value_name, $value);

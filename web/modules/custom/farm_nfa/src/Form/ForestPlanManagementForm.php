@@ -2,9 +2,6 @@
 
 namespace Drupal\farm_nfa\Form;
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\log\Entity\Log;
-
 /**
  * Forest plan management form.
  *
