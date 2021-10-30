@@ -89,3 +89,12 @@ function farm_nfa_update_9003(&$sandbox) {
 function farm_nfa_update_9004(&$sandbox) {
   \Drupal::service('module_installer')->install(['farm_ui_action']);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Install module farm_nfa_migrate module.
+ */
+function farm_nfa_update_9005(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_migrate']);
+}
