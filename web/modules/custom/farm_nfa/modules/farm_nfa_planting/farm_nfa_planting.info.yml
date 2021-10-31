@@ -5,6 +5,7 @@ package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
   - farm_nfa:farm_nfa
+  - farm_nfa_forest:farm_nfa_forest
 
 config_devel:
   - log.type.planting
