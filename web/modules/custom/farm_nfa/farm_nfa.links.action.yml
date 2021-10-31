@@ -5,6 +5,8 @@ farm_nfa.plan.add_task:
   class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
   appears_on:
     - entity.plan.management
+  cache_tags:
+    - plan_list
 farm_nfa.plan.add_inventotry:
   route_name: farm_nfa.plan.add_inventory
   title: 'Record an inventory observation'
@@ -12,6 +14,8 @@ farm_nfa.plan.add_inventotry:
   class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
   appears_on:
     - entity.plan.inventory
+  cache_tags:
+    - plan_list
 farm_nfa.plan.add_harvest:
   route_name: farm_nfa.plan.add_harvest
   title: 'Record a harvest'
@@ -19,3 +23,5 @@ farm_nfa.plan.add_harvest:
   class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
   appears_on:
     - entity.plan.harvest
+  cache_tags:
+    - plan_list

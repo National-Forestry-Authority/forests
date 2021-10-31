@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Provides alters and hooks for the farm nfa module.
+ */
+
+use Drupal\asset\Entity\AssetInterface;
+use Drupal\log\Entity\LogInterface;
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function farm_nfa_planting_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['plan']->setLinkTemplate('planting', '/plan/{plan}/planting');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() on behalf of assets (forest).
+ */
+function farm_nfa_planting_asset_presave(AssetInterface $asset) {
+  if (!$asset->isNew()) {
+    return;
+  }
+  // Only for forests.
+  if ($asset->bundle() !== 'forest') {
+    return;
+  }
+
+  // When saving a new forest (by creating a planting log), it adds the forest
+  // type automatically based on the plan type.
+  if ($asset->hasField('forest_type') && $asset->get('forest_type')->isEmpty()) {
+    if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
+      switch ($plan->bundle()) {
+        case 'plantation':
+          $asset->set('forest_type', 'plantation');
+          break;
+        case 'natural':
+          $asset->set('forest_type', 'natural');
+          break;
+        default:
+          // Default to nothing!
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() on behalf of log entities.
+ */
+function farm_nfa_planting_log_predelete(LogInterface $log) {
+  // Only for plantings.
+  if ($log->bundle() !== 'planting') {
+    return;
+  }
+
+  if ($log->hasField('forest') && !$log->get('forest')->isEmpty()) {
+    /** @var \Drupal\asset\Entity\AssetInterface[] $assets */
+    $assets = $log->get('forest')->referencedEntities();
+    // It should be cardinality 1, but let's be defensive.
+    foreach ($assets as $asset) {
+      // Recreating the query every time to avoid issues.
+      $query = \Drupal::entityTypeManager()->getStorage('log')->getQuery();
+      $query->condition('forest', $asset->id());
+      $results = $query->count()->execute();
+      if ($results <= 1) {
+        $asset->delete();
+      }
+      else {
+        \Drupal::messenger()->addStatus(t('Log not deleted. It references forests that are used in other logs, please correct the issue and try again.'));
+      }
+    }
+  }
+}

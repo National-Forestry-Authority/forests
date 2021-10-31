@@ -1,0 +1,10 @@
+uuid: 5ada123a-0b51-4039-97b0-a7464b8b590d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.planting_log
+label: 'Planting log'
+targetEntityType: asset
+cache: true

@@ -1,0 +1,8 @@
+uuid: b85a6870-ef2e-4fab-aa5e-d3bd2918f042
+langcode: en
+status: true
+dependencies: {  }
+name: 'Source / origin'
+vid: source_origin
+description: ''
+weight: 0

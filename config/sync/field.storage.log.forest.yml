@@ -1,15 +1,16 @@
+uuid: 7e545cc6-860e-433a-890a-f9e045b03ccf
 langcode: en
 status: true
 dependencies:
   module:
     - asset
-    - taxonomy
-id: asset.tree_species
-field_name: tree_species
-entity_type: asset
+    - log
+id: log.forest
+field_name: forest
+entity_type: log
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: asset
 module: core
 locked: false
 cardinality: 1

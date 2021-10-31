@@ -4,8 +4,8 @@ dependencies:
   module:
     - asset
     - taxonomy
-id: asset.tree_species
-field_name: tree_species
+id: asset.source_origin
+field_name: source_origin
 entity_type: asset
 type: entity_reference
 settings:

@@ -151,11 +151,13 @@ function farm_nfa_plan_route_log_types(PlanInterface $plan, LogInterface $log) {
     'plantation' => [
       'activity' => 'management',
       'harvest' => 'harvest',
+      'planting' => 'planting',
       'plantation_inventory' => 'inventory',
     ],
     'natural' => [
       'activity' => 'management',
       'harvest' => 'harvest',
+      'planting' => 'planting',
       'natural_inventory' => 'inventory',
     ],
   ];
@@ -265,7 +267,12 @@ function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state
     $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
     $form['#attached']['library'][] = 'farm_nfa/off_canvas';
     $response->setAttachments($form['#attached']);
-    $response->addCommand(new MessageCommand(t('The task has been deleted.')));
+    foreach (\Drupal::messenger()->all() as $type) {
+      foreach ($type as $message) {
+        $response->addCommand(new MessageCommand($message, NULL, ['type' => 'status'], FALSE));
+      }
+    }
+    \Drupal::messenger()->deleteAll();
   }
 
   $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));

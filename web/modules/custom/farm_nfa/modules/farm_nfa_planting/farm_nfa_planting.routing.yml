@@ -1,0 +1,32 @@
+entity.plan.planting:
+  path: '/plan/{plan}/planting'
+  defaults:
+    _title: 'Planting'
+    _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+    log_types:
+      - planting
+  requirements:
+    _entity_bundles: 'plan:plantation|natural'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+      task_route: farm_nfa_planting.plan.add_planting
+farm_nfa_planting.plan.add_planting:
+  path: '/plan/{plan}/add-planting'
+  defaults:
+    _title: 'Add Task'
+    _form: 'Drupal\farm_nfa_planting\Form\ForestPlanPlantingForm'
+  requirements:
+    _entity_bundles: 'plan:plantation|natural'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+      task_route: farm_nfa_planting.plan.add_planting

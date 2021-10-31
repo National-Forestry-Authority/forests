@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_planting
+  module:
+    - farm_nfa
+id: planting
+label: Planting
+description: ''
+name_pattern: 'Planting log [log:id]'
+workflow: farm_nfa_log_default
+new_revision: true

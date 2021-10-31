@@ -26,8 +26,6 @@ process:
   land_type:
     plugin: default_value
     default_value: other
-  archived:
-    plugin: request_time
 destination:
   plugin: 'entity:asset'
 migration_dependencies:

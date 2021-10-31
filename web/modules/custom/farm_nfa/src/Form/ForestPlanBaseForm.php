@@ -2,6 +2,7 @@
 
 namespace Drupal\farm_nfa\Form;
 
+use Drupal\asset\Entity\AssetInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\Core\Ajax\MessageCommand;
@@ -9,6 +10,7 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
@@ -207,7 +209,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
         $form['#attached']['library'][] = 'farm_nfa/off_canvas';
         $response->setAttachments($form['#attached']);
-        $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status']));
+        $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
       }
       else {
         $close_dialog = FALSE;
@@ -218,10 +220,11 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
     catch (\Exception $e) {
       $close_dialog = FALSE;
-      $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning']));
+      $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
       watchdog_exception('forest_nfa', $e);
     }
     finally {
+      $this->messenger()->deleteAll();
       if ($close_dialog) {
         $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
       }
@@ -254,11 +257,13 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // reference array.
     // @see \Drupal\inline_entity_form\WidgetSubmit::doSubmit()
     foreach ($form_state->get('inline_entity_form') as $ief) {
-      $field_name = $ief['instance']->getName();
-      $log_values[$field_name] = [];
-      foreach ($ief['entities'] as $ief_value) {
-        if ($ief_value['entity'] instanceof QuantityInterface) {
-          $log_values[$field_name][] = $ief_value['entity']->id();
+      if ($ief['instance'] instanceof FieldDefinitionInterface) {
+        $field_name = $ief['instance']->getName();
+        $log_values[$field_name] = [];
+        foreach ($ief['entities'] as $ief_value) {
+          if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
+            $log_values[$field_name][] = $ief_value['entity']->id();
+          }
         }
       }
     }

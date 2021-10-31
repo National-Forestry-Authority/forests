@@ -1,0 +1,9 @@
+farm_nfa_planting.plan.add_planting:
+  route_name: farm_nfa_planting.plan.add_planting
+  title: 'Add planting task'
+  weight: -20
+  class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
+  appears_on:
+    - entity.plan.planting
+  cache_tags:
+    - plan_list

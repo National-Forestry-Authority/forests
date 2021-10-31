@@ -1,0 +1,17 @@
+uuid: da2b79bc-9b98-4566-b66f-6944045892d2
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa_planting
+  module:
+    - farm_nfa
+_core:
+  default_config_hash: JQXBMsDJypH0A6eDqYa-KfprSYAGHgIrMikeYv6wUYY
+id: planting
+label: Planting
+description: ''
+name_pattern: 'Planting log [log:id]'
+workflow: farm_nfa_log_default
+new_revision: true

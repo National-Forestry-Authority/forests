@@ -1,11 +1,12 @@
+uuid: 91e11111-3ba4-4373-a6b2-63c7abe5c9c4
 langcode: en
 status: true
 dependencies:
   module:
     - asset
     - taxonomy
-id: asset.tree_species
-field_name: tree_species
+id: asset.source_origin
+field_name: source_origin
 entity_type: asset
 type: entity_reference
 settings:

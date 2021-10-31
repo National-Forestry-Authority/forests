@@ -3,9 +3,7 @@
 namespace Drupal\farm_nfa\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\plan\Entity\PlanInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Returns the plan tabs.
@@ -18,8 +16,7 @@ class PlanTabsController extends ControllerBase {
   public function build(PlanInterface $plan = NULL, $log_types = []) {
     $build = [];
     $assets = array_column($plan->get('asset')->getValue(), 'target_id');
-    $asset = reset($assets);
-    $build['logs'] = views_embed_view('plan_logs', 'embed', $asset, implode('+', $log_types));
+    $build['logs'] = views_embed_view('plan_logs', 'embed', implode('+', $assets), implode('+', $log_types));
     $build['#attached']['library'][] = 'farm_nfa/off_canvas';
     return $build;
   }

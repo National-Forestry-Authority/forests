@@ -1,0 +1,120 @@
+uuid: 37fb9e21-4962-42c4-8dd7-ebee60a51e55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.log.planting.forest
+    - log.type.planting
+  module:
+    - farm_map
+    - farm_nfa
+    - file
+    - text
+id: log.planting.default
+targetEntityType: log
+bundle: planting
+mode: default
+content:
+  file:
+    type: file_generic
+    settings:
+      progress_indicator: throbber
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  forest:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  geometry:
+    type: farm_map_geofield
+    weight: 2
+    settings:
+      populate_file_field: file
+      display_raw_geometry: true
+    region: content
+    third_party_settings: {  }
+  location:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  quantity:
+    type: farm_nfa_inline_entity_form_quantity
+    settings:
+      quantity:
+        -
+          label: 'Total trees planted'
+          measure: count
+          units: '556'
+        -
+          label: 'Number of hectares'
+          measure: area
+          units: '1790'
+        -
+          label: 'Tree spacing'
+          measure: length
+          units: '614'
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timestamp:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  asset: true
+  category: true
+  created: true
+  data: true
+  image: true
+  is_movement: true
+  owner: true

@@ -78,6 +78,9 @@
             },
             "drupal/select_or_other": {
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
+            },
+            "drupal/gin": {
+                "#3214515-4: Status messages added using JS are not dismissable": "https://git.drupalcode.org/project/gin/-/merge_requests/60.diff"
             }
         },
         "merge-plugin": {
