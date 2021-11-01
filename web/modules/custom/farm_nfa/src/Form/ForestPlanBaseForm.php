@@ -176,9 +176,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $log = $form['#log'];
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
     $plan = $form['#plan'];
-    $plan_assets = array_column($plan->get('asset')->getValue(), 'target_id');
-    $log_assets = array_column($log->get('asset')->getValue(), 'target_id');
-    $asset = reset($plan_assets);
+    $assets = array_column($log->get('asset')->getValue(), 'target_id');
+    $asset = reset($assets);
 
     $locations = array_filter(array_column($values['location'], 'target_id'));
     $original_locations =  array_column($log->get('location')->getValue(), 'target_id');
@@ -194,7 +193,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           $log->set($value_name, $value);
         }
       }
-      $assets = array_diff(array_unique(array_merge($plan_assets, $log_assets ,$locations)), $deleted_locations);
+      $assets = array_diff(array_unique(array_merge($assets, $locations)), $deleted_locations);
       $log->set('asset', $assets);
 
       $violations = $log->validate();
