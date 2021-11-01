@@ -144,6 +144,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           ];
         }
       }
+
       $form['location']['widget']['#description'] = $this->t('If the compartment you are looking for does not appear in your search, the compartment has not yet been created in the system. Please ask the system administrator to create the compartment for you or if you have privileges, please create it via <a href="@href" target="_blank" rel="noopener noreferrer">Add Compartment</a>. Once the compartment has been created, you can continue.', ['@href' => '/asset/add/compartment']);
     }
 
@@ -176,12 +177,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $log = $form['#log'];
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
     $plan = $form['#plan'];
-    $assets = array_column($log->get('asset')->getValue(), 'target_id');
+    $assets = array_column($plan->get('asset')->getValue(), 'target_id');
     $asset = reset($assets);
-
-    $locations = array_filter(array_column($values['location'], 'target_id'));
-    $original_locations =  array_column($log->get('location')->getValue(), 'target_id');
-    $deleted_locations =  array_diff($original_locations, $locations);
 
     try {
       if (empty($plan)) {
@@ -193,7 +190,6 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           $log->set($value_name, $value);
         }
       }
-      $assets = array_diff(array_unique(array_merge($assets, $locations)), $deleted_locations);
       $log->set('asset', $assets);
 
       $violations = $log->validate();
