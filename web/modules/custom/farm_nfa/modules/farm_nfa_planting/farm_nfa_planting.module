@@ -73,3 +73,18 @@ function farm_nfa_planting_log_predelete(LogInterface $log) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function farm_nfa_planting_preprocess_menu_local_task(&$variables) {
+  /** @var \Drupal\Core\Url $url */
+  $url = $variables['link']['#url'];
+  if ($url->getRouteName() == 'entity.plan.planting') {
+    if ($plan = \Drupal::routeMatch()->getParameter('plan')) {
+      if ($plan->bundle() == 'natural') {
+        $variables['link']['#title'] = t('Enrichment');
+      }
+    }
+  }
+}
