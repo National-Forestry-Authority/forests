@@ -177,20 +177,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $log = $form['#log'];
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
     $plan = $form['#plan'];
-    $assets = array_column($plan->get('asset')->getValue(), 'target_id');
-    $asset = reset($assets);
 
     try {
       if (empty($plan)) {
         throw new \Exception($this->t('Cannot save a task without a plan.'));
       }
-
       foreach ($values as $value_name => $value) {
         if ($log->hasField($value_name)) {
           $log->set($value_name, $value);
         }
       }
-      $log->set('asset', $assets);
 
       $violations = $log->validate();
       if ($violations->count() == 0) {
@@ -200,7 +196,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
         }
         $route = farm_nfa_plan_route_log_types($plan, $log);
         $log_types = $route->getDefault('log_types');
-        $view = views_embed_view('plan_logs', 'embed', $asset, implode('+', $log_types));
+
+        // Save the log in the plan, if it's not there already.
+        if ($plan->hasField('log')) {
+          $existing_logs = array_column($plan->get('log')->getValue(), 'target_id');
+          if (!in_array($log->id(), $existing_logs)) {
+            $plan->get('log')->appendItem($log);
+            $plan->save();
+          }
+        }
+        $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
         $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
         $form['#attached']['library'][] = 'farm_nfa/off_canvas';
         $response->setAttachments($form['#attached']);

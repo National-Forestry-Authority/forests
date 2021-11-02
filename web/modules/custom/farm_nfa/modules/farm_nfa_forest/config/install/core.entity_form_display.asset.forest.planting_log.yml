@@ -61,9 +61,17 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   source_origin:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -72,7 +80,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   tree_species:
-    weight: 0
+    weight: 1
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -99,7 +107,6 @@ hidden:
   is_location: true
   location: true
   log: true
-  name: true
   notes: true
   parent: true
   planned_harvest_date: true

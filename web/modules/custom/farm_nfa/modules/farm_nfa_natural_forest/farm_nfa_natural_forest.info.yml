@@ -15,3 +15,4 @@ config_devel:
   - field.field.log.natural_inventory.coup_number
   - field.field.log.natural_inventory.working_circle
   - core.entity_form_display.log.natural_inventory.plan
+  - core.entity_form_display.plan.natural.default

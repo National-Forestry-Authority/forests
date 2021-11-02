@@ -6,6 +6,7 @@
  */
 
 use Drupal\asset\Entity\AssetInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\log\Entity\LogInterface;
 
 /**
@@ -55,14 +56,14 @@ function farm_nfa_planting_log_predelete(LogInterface $log) {
     return;
   }
 
-  if ($log->hasField('forest') && !$log->get('forest')->isEmpty()) {
+  if ($log->hasField('asset') && !$log->get('asset')->isEmpty()) {
     /** @var \Drupal\asset\Entity\AssetInterface[] $assets */
-    $assets = $log->get('forest')->referencedEntities();
+    $assets = $log->get('asset')->referencedEntities();
     // It should be cardinality 1, but let's be defensive.
     foreach ($assets as $asset) {
       // Recreating the query every time to avoid issues.
       $query = \Drupal::entityTypeManager()->getStorage('log')->getQuery();
-      $query->condition('forest', $asset->id());
+      $query->condition('asset', $asset->id());
       $results = $query->count()->execute();
       if ($results <= 1) {
         $asset->delete();
@@ -83,6 +84,7 @@ function farm_nfa_planting_preprocess_menu_local_task(&$variables) {
   if ($url->getRouteName() == 'entity.plan.planting') {
     if ($plan = \Drupal::routeMatch()->getParameter('plan')) {
       if ($plan->bundle() == 'natural') {
+        // @TODO can be this done on the yml file with the class property?
         $variables['link']['#title'] = t('Enrichment');
       }
     }

@@ -9,8 +9,6 @@ dependencies:
 
 config_devel:
   - log.type.planting
-  - field.storage.log.forest
-  - field.field.log.planting.forest
   - core.entity_form_display.log.planting.plan
   - core.entity_form_display.log.planting.default
   - core.entity_view_display.log.planting.default

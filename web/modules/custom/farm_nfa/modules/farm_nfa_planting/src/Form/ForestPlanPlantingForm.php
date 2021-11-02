@@ -3,6 +3,7 @@
 namespace Drupal\farm_nfa_planting\Form;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\farm_nfa\Form\ForestPlanBaseForm;
 
 /**
@@ -55,7 +56,30 @@ class ForestPlanPlantingForm extends ForestPlanBaseForm {
       }
     }
 
+    // Only forests available to reference as assets.
+    $form['asset']['widget']['actions']['bundle']['#options'] = ['forest' => $this->t('Forest')];
+    $form['asset']['widget']['actions']['bundle']['#access'] = FALSE;
+
+    $form['asset']['widget']['actions']['ief_add']['#access'] = empty(Element::children($form['asset']['widget']['entities']));
+
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    parent::submitForm($form, $form_state);
+
+    /** @var \Drupal\log\Entity\LogInterface $log */
+    $log = $form['#log'];
+    if ($log->bundle() == 'planting') {
+      // Planting logs always are movements ones.
+      // @see https://github.com/mstenta/farm_nfa/issues/92#issuecomment-956176947
+      $log_values = $form_state->getValue('log');
+      $log_values['is_movement'] = TRUE;
+      $form_state->setValue('log', $log_values);
+    }
   }
 
 }

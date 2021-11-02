@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.log.planting.forest
     - log.type.planting
   module:
     - farm_map
@@ -14,11 +13,20 @@ targetEntityType: log
 bundle: planting
 mode: default
 content:
+  asset:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
   file:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 3
+    weight: 4
     region: content
     third_party_settings: {  }
   flag:
@@ -27,19 +35,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  forest:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   geometry:
     type: farm_map_geofield
-    weight: 2
+    weight: 3
     settings:
       populate_file_field: file
       display_raw_geometry: true
@@ -47,7 +45,7 @@ content:
     third_party_settings: {  }
   location:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 2
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -94,8 +92,13 @@ content:
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
-    weight: 5
+    weight: 6
     region: content
+    third_party_settings: {  }
+  seedlings_per_hectare:
+    weight: 6
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: options_select
@@ -105,12 +108,11 @@ content:
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  asset: true
   category: true
   created: true
   data: true

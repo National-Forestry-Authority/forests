@@ -258,12 +258,10 @@ function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
 function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state) {
   $response = new AjaxResponse();
   if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
-    $assets = $plan->get('asset')->referencedEntities();
-    $asset = reset($assets);
     $log = $form_state->getFormObject()->getEntity();
     $route = farm_nfa_plan_route_log_types($plan, $log);
     $log_types = $route->getDefault('log_types');
-    $view = views_embed_view('plan_logs', 'embed', $asset->id(), implode('+', $log_types));
+    $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
     $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
     $form['#attached']['library'][] = 'farm_nfa/off_canvas';
     $response->setAttachments($form['#attached']);

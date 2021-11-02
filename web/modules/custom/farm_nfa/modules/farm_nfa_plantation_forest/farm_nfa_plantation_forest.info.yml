@@ -11,3 +11,4 @@ dependencies:
 config_devel:
   - plan.type.plantation
   - core.entity_view_display.plan.plantation.default
+  - core.entity_form_display.plan.plantation.default

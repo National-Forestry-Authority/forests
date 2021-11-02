@@ -36,6 +36,16 @@ class Plantation extends FarmPlanType {
     ];
     $fields['asset'] = $this->farmFieldFactory->bundleFieldDefinition($options);
 
+    // Logs in the plan.
+    $options = [
+      'type' => 'entity_reference',
+      'label' => $this->t('Logs'),
+      'target_type' => 'log',
+      'multiple' => TRUE,
+      'hidden' => TRUE,
+    ];
+    $fields['log'] = $this->farmFieldFactory->bundleFieldDefinition($options);
+
     return $fields;
   }
 
