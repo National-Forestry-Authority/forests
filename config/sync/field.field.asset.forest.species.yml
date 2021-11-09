@@ -5,7 +5,6 @@ dependencies:
   config:
     - asset.type.forest
     - field.storage.asset.species
-    - taxonomy.vocabulary.species
   module:
     - entity_reference_validators
 third_party_settings:
@@ -28,8 +27,7 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles:
-      species: species
+    target_bundles: {  }
     sort:
       field: name
       direction: asc
