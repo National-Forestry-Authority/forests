@@ -14,6 +14,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\farm_nfa\Form\FarmNfaContentEntityDeleteForm;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
 use Drupal\plan\Entity\PlanInterface;
@@ -28,6 +29,7 @@ function farm_nfa_entity_type_alter(array &$entity_types) {
   $entity_types['plan']->setLinkTemplate('inventory', '/plan/{plan}/inventory');
   $entity_types['plan']->setLinkTemplate('harvest', '/plan/{plan}/harvest');
   $entity_types['quantity']->setHandlerClass('inline_form', FarmNfaQuantityInlineForm::class);
+  $entity_types['log']->setFormClass('delete', FarmNfaContentEntityDeleteForm::class);
 }
 
 /**
@@ -234,7 +236,6 @@ function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
     if ($current_request->request->get('_drupal_ajax') != 1) {
       return;
     }
-
     $form['actions']['submit']['#ajax'] = [
       'callback' => 'farm_nfa_confirm_form_ajax_helper',
     ];

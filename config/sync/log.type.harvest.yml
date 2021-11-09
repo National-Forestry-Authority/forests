@@ -5,11 +5,13 @@ dependencies:
   enforced:
     module:
       - farm_harvest
+  module:
+    - farm_nfa
 _core:
   default_config_hash: Gd2h4NLJ5jFiX8AMKvP4hSmSFDl6_VtggqXMDqQfzpM
 id: harvest
 label: Harvest
 description: ''
 name_pattern: 'Harvest log [log:id]'
-workflow: log_default
+workflow: farm_nfa_log_default
 new_revision: true

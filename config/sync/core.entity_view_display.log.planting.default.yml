@@ -1,9 +1,8 @@
-uuid: 7cf95480-6d84-44e3-95d3-9399480883f4
+uuid: e503123a-b01b-4990-a8a4-16248fd2b3bc
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.log.planting.forest
     - image.style.large
     - log.type.planting
   module:
@@ -14,6 +13,8 @@ dependencies:
     - image
     - options
     - text
+_core:
+  default_config_hash: Z4V2Rgb72cIPQSmYSN5pQpaL_Q9T79jonidSjTw3Fvg
 id: log.planting.default
 targetEntityType: log
 bundle: planting
@@ -22,7 +23,7 @@ content:
   asset:
     label: inline
     type: entity_reference_label
-    weight: -10
+    weight: 4
     settings:
       link: true
     region: content
@@ -30,7 +31,7 @@ content:
   category:
     label: inline
     type: entity_reference_label
-    weight: 80
+    weight: 7
     settings:
       link: false
     region: content
@@ -40,29 +41,21 @@ content:
     label: visually_hidden
     settings:
       use_description_as_link_text: true
-    weight: 90
+    weight: 9
     region: content
     third_party_settings: {  }
   flag:
     label: inline
     type: list_default
-    weight: -75
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
-  forest:
-    weight: 96
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   geometry:
     label: inline
     type: farm_map_geofield
     settings: {  }
-    weight: 95
+    weight: 11
     region: content
     third_party_settings: {  }
   image:
@@ -71,7 +64,7 @@ content:
     settings:
       image_style: large
       image_link: file
-    weight: 89
+    weight: 8
     region: content
     third_party_settings: {  }
   is_movement:
@@ -83,13 +76,13 @@ content:
       format_custom_true: ''
       hide_if_false: true
       hide_if_true: false
-    weight: 95
+    weight: 12
     region: content
     third_party_settings: {  }
   location:
     label: inline
     type: entity_reference_label
-    weight: 90
+    weight: 10
     settings:
       link: true
     region: content
@@ -97,14 +90,14 @@ content:
   notes:
     label: inline
     type: text_default
-    weight: 0
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   owner:
     label: inline
     type: entity_reference_label
-    weight: -70
+    weight: 3
     settings:
       link: true
     region: content
@@ -115,20 +108,20 @@ content:
     settings:
       view_mode: default
       link: ''
-    weight: 0
+    weight: 6
     region: content
     third_party_settings: {  }
   status:
     label: inline
     type: list_default
-    weight: -80
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     label: inline
     type: timestamp
-    weight: -90
+    weight: 0
     region: content
     settings:
       date_format: medium
@@ -138,4 +131,5 @@ content:
 hidden:
   created: true
   data: true
+  seedlings_per_hectare: true
   uid: true

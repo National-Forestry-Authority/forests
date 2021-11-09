@@ -6,7 +6,6 @@
  */
 
 use Drupal\asset\Entity\AssetInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\log\Entity\LogInterface;
 
 /**
@@ -14,7 +13,9 @@ use Drupal\log\Entity\LogInterface;
  */
 function farm_nfa_planting_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
-  $entity_types['plan']->setLinkTemplate('planting', '/plan/{plan}/planting');
+  if (isset($entity_types['plan'])) {
+    $entity_types['plan']->setLinkTemplate('planting', '/plan/{plan}/planting');
+  }
 }
 
 /**
@@ -48,9 +49,26 @@ function farm_nfa_planting_asset_presave(AssetInterface $asset) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_predelete() on behalf of log entities.
+ * Implements hook_ENTITY_TYPE_presave() on behalf of logs (plantings)
  */
-function farm_nfa_planting_log_predelete(LogInterface $log) {
+function farm_nfa_planting_log_presave(LogInterface $log) {
+  if (!$log->isNew()) {
+    return;
+  }
+  // Only for forests.
+  if ($log->bundle() !== 'planting') {
+    return;
+  }
+
+  // Planting logs always are movements ones.
+  // @see https://github.com/mstenta/farm_nfa/issues/92#issuecomment-956176947
+  $log->set('is_movement', TRUE);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() on behalf of log entities.
+ */
+function farm_nfa_planting_log_delete(LogInterface $log) {
   // Only for plantings.
   if ($log->bundle() !== 'planting') {
     return;
@@ -67,9 +85,7 @@ function farm_nfa_planting_log_predelete(LogInterface $log) {
       $results = $query->count()->execute();
       if ($results <= 1) {
         $asset->delete();
-      }
-      else {
-        \Drupal::messenger()->addStatus(t('Log not deleted. It references forests that are used in other logs, please correct the issue and try again.'));
+        \Drupal::messenger()->addStatus(t('Asset %title with %id deleted as it was associated with the log.', ['%title' => $asset->label(), '%id' => $asset->id()]));
       }
     }
   }

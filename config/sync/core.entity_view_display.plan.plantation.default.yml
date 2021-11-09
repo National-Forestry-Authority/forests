@@ -1,4 +1,4 @@
-uuid: f3b1a782-7508-45ab-980e-be51c67cd70b
+uuid: 72948203-7e1a-4f0e-bcf5-66517654375d
 langcode: en
 status: true
 dependencies:
@@ -21,15 +21,14 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: layout_twocol_section
+        layout_id: layout_onecol
         layout_settings:
           label: ''
-          column_widths: 50-50
           context_mapping: {  }
         components:
           1a73e90a-6d95-4615-bae6-430f7824e0cb:
             uuid: 1a73e90a-6d95-4615-bae6-430f7824e0cb
-            region: second
+            region: content
             configuration:
               id: farm_nfa_plan_map_block
               label: 'Plan map'
@@ -38,6 +37,14 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          context_mapping: {  }
+        components:
           b353e51b-9200-4c43-8823-dd9fbc7fcbe8:
             uuid: b353e51b-9200-4c43-8823-dd9fbc7fcbe8
             region: first
@@ -101,7 +108,7 @@ third_party_settings:
             weight: 1
           62eb922c-e10b-4087-a617-4b139f3f8997:
             uuid: 62eb922c-e10b-4087-a617-4b139f3f8997
-            region: first
+            region: second
             configuration:
               label_display: '0'
               context_mapping:

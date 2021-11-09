@@ -5,11 +5,13 @@ dependencies:
   enforced:
     module:
       - farm_observation
+  module:
+    - farm_nfa
 _core:
   default_config_hash: rfqUeBTLizQmuYVlcmXBZFYx59ITQLJl7s3qcCpNiA0
 id: observation
 label: Observation
 description: ''
 name_pattern: 'Observation log [log:id]'
-workflow: log_default
+workflow: farm_nfa_log_default
 new_revision: true

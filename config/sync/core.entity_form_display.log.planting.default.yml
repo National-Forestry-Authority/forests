@@ -1,20 +1,31 @@
-uuid: 37fb9e21-4962-42c4-8dd7-ebee60a51e55
+uuid: 71e205de-2944-4b76-bb9a-66efa4e56b6b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.log.planting.forest
     - log.type.planting
   module:
     - farm_map
     - farm_nfa
     - file
     - text
+_core:
+  default_config_hash: 4Mv0yjoX-ne9k_wZOaF3B3iRnd36Ra9Cy621XXRPe5Q
 id: log.planting.default
 targetEntityType: log
 bundle: planting
 mode: default
 content:
+  asset:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   file:
     type: file_generic
     settings:
@@ -28,16 +39,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  forest:
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   geometry:
     type: farm_map_geofield
     weight: 2
@@ -87,7 +88,7 @@ content:
         -
           label: 'Tree spacing'
           measure: length
-          units: '614'
+          units: '557'
       form_mode: default
       override_labels: false
       label_singular: ''
@@ -95,7 +96,7 @@ content:
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   status:
@@ -106,12 +107,11 @@ content:
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  asset: true
   category: true
   created: true
   data: true

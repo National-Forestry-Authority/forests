@@ -92,12 +92,12 @@ content:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 14
+    weight: 19
     region: content
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 7
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -124,16 +124,14 @@ content:
     settings:
       preview_image_style: medium
       progress_indicator: throbber
-    weight: 11
+    weight: 18
     region: content
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
-    weight: 8
+    weight: 15
     region: content
-    settings:
-      display_raw_geometry: true
-      populate_file_field: false
+    settings: {  }
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -148,12 +146,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 9
+    weight: 16
     region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -185,16 +183,6 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  source_origin:
-    weight: 12
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   species:
     weight: 7
     settings: {  }
@@ -211,20 +199,10 @@ content:
     region: content
   status:
     type: options_select
-    weight: 6
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
-  tree_species:
-    weight: 13
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   variety:
     weight: 8
     settings: {  }
@@ -240,4 +218,6 @@ hidden:
   is_location: true
   location: true
   log: true
+  source_origin: true
+  tree_species: true
   uid: true

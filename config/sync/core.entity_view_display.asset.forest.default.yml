@@ -188,14 +188,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  source_origin:
-    weight: 21
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   species:
     weight: 7
     label: inline
@@ -219,14 +211,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  tree_species:
-    weight: 20
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   variety:
     weight: 8
     label: inline
@@ -243,4 +227,6 @@ hidden:
   is_location: true
   location: true
   log: true
+  source_origin: true
+  tree_species: true
   uid: true

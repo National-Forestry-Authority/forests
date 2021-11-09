@@ -3,7 +3,7 @@ preset_focus_color: orange
 enable_darkmode: false
 classic_toolbar: vertical
 icon_default: false
-icon_path: profiles/farm/modules/core/ui/theme/logo.png
+icon_path: 'public://nfa-logo.png'
 high_contrast_mode: false
 show_user_theme_settings: false
 third_party_settings:
@@ -14,3 +14,12 @@ _core:
 favicon:
   use_default: false
   path: profiles/farm/modules/core/ui/theme/favicon.ico
+  mimetype: image/vnd.microsoft.icon
+features:
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+accent_color: ''
+focus_color: ''
+icon_upload: ''

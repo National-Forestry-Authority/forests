@@ -1,4 +1,4 @@
-uuid: 7a646312-fda7-4b0c-9524-30411ec7e7b4
+uuid: 1a9b0e72-9478-4aef-a9fe-3b99e61e53be
 langcode: en
 status: true
 dependencies:
@@ -13,8 +13,6 @@ dependencies:
     - rest
     - user
     - views_geojson
-_core:
-  default_config_hash: BYw-WHrsrrskJ2d8DOkDfK-3oz5LG_wOdhmLt-zY7ds
 id: nfa_farm_asset_geojson
 label: 'NFA Farm Asset GeoJSON'
 module: views

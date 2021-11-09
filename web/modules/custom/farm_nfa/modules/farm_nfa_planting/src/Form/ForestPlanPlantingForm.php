@@ -68,17 +68,29 @@ class ForestPlanPlantingForm extends ForestPlanBaseForm {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    parent::submitForm($form, $form_state);
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    parent::validateForm($form, $form_state);
 
-    /** @var \Drupal\log\Entity\LogInterface $log */
-    $log = $form['#log'];
-    if ($log->bundle() == 'planting') {
-      // Planting logs always are movements ones.
-      // @see https://github.com/mstenta/farm_nfa/issues/92#issuecomment-956176947
-      $log_values = $form_state->getValue('log');
-      $log_values['is_movement'] = TRUE;
-      $form_state->setValue('log', $log_values);
+    /** @var \Drupal\plan\Entity\PlanInterface $plan */
+    $plan = $form['#plan'];
+    if ($plan->bundle() == 'plantation') {
+      /** @var \Drupal\log\Entity\LogInterface $log */
+      $log = $form['#log'];
+      $referenced_assets = \Drupal::service('asset.location')->getAssetsByLocation($log->get('location')->referencedEntities());
+      $referenced_assets = array_filter($referenced_assets, fn($asset) => $asset->bundle() === 'forest');
+
+      if ($log->isNew() && !empty($referenced_assets)) {
+        $form_state->setError($form, $this->t('Only one stand can be planted in a compartment at a time. Please choose a different compartment.'));
+      }
+      if (!$log->isNew()) {
+        $current_assets = $log->get('asset')->referencedEntities();
+        $current_assets = array_filter($current_assets, fn($asset) => $asset->bundle() === 'forest');
+        foreach ($current_assets as $current_asset) {
+          if (!in_array($current_asset->id(), array_keys($referenced_assets))) {
+            $form_state->setError($form, $this->t('Only one stand can be planted in a compartment at a time. Please choose a different compartment.'));
+          }
+        }
+      }
     }
   }
 

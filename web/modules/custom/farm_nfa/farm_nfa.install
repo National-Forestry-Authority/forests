@@ -107,3 +107,18 @@ function farm_nfa_update_9005(&$sandbox) {
 function farm_nfa_update_9006(&$sandbox) {
   \Drupal::service('module_installer')->install(['farm_nfa_planting']);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Change the forest third party settings so it is not location or fixed.
+ */
+function farm_nfa_update_9007(&$sandbox) {
+  // We're setting location and fixed to FALSE so we force the forest asset
+  // location to use the log compartment in a way they're related.
+  // In this case, we want forests to be movable assets, like the Ents in LOTR.
+  $forest_type = \Drupal::entityTypeManager()->getStorage('asset_type')->load('forest');
+  $forest_type->setThirdPartySetting('farm_location', 'is_location', FALSE);
+  $forest_type->setThirdPartySetting('farm_location', 'is_fixed', FALSE);
+  $forest_type->save();
+}

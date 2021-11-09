@@ -15,18 +15,19 @@ mode: default
 content:
   asset:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
   file:
     type: file_generic
     settings:
       progress_indicator: throbber
-    weight: 4
+    weight: 3
     region: content
     third_party_settings: {  }
   flag:
@@ -37,7 +38,7 @@ content:
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 3
+    weight: 2
     settings:
       populate_file_field: file
       display_raw_geometry: true
@@ -45,7 +46,7 @@ content:
     third_party_settings: {  }
   location:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 1
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -84,7 +85,7 @@ content:
         -
           label: 'Tree spacing'
           measure: length
-          units: '614'
+          units: '557'
       form_mode: default
       override_labels: false
       label_singular: ''
@@ -94,11 +95,6 @@ content:
       match_operator: CONTAINS
     weight: 6
     region: content
-    third_party_settings: {  }
-  seedlings_per_hectare:
-    weight: 6
-    region: content
-    settings: {  }
     third_party_settings: {  }
   status:
     type: options_select

@@ -1,11 +1,10 @@
-uuid: 5ea7e032-734a-4239-8c69-a09da1624f73
+uuid: 2be7353b-6867-4fed-a272-d07f8add05ea
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.asset.planting_log
     - core.entity_form_mode.log.plan
-    - field.field.log.planting.forest
     - log.type.planting
   module:
     - farm_map
@@ -13,11 +12,30 @@ dependencies:
     - file
     - inline_entity_form
     - text
+_core:
+  default_config_hash: fKTw40N3HJW_N-Dc6qMKmbTOajbuzEhKYGD1kBW1opA
 id: log.planting.plan
 targetEntityType: log
 bundle: planting
 mode: plan
 content:
+  asset:
+    type: inline_entity_form_complex
+    weight: 1
+    region: content
+    settings:
+      form_mode: planting_log
+      override_labels: true
+      label_singular: Forest
+      label_plural: Forests
+      collapsible: true
+      allow_new: true
+      match_operator: CONTAINS
+      revision: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+    third_party_settings: {  }
   file:
     type: file_generic
     settings:
@@ -27,26 +45,9 @@ content:
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
-    third_party_settings: {  }
-  forest:
-    type: inline_entity_form_complex
-    weight: 1
-    region: content
-    settings:
-      form_mode: planting_log
-      label_singular: ''
-      label_plural: ''
-      collapsible: true
-      allow_new: true
-      match_operator: CONTAINS
-      revision: false
-      override_labels: false
-      collapsed: false
-      allow_existing: false
-      allow_duplicate: false
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
@@ -79,7 +80,7 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    weight: 7
+    weight: 8
     region: content
     third_party_settings: {  }
   quantity:
@@ -97,7 +98,7 @@ content:
         -
           label: 'Tree spacing'
           measure: length
-          units: '614'
+          units: '557'
       form_mode: default
       override_labels: false
       label_singular: ''
@@ -108,9 +109,14 @@ content:
     weight: 6
     region: content
     third_party_settings: {  }
+  seedlings_per_hectare:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: options_select
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -121,7 +127,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  asset: true
   category: true
   created: true
   data: true

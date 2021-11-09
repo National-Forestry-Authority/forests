@@ -3,6 +3,8 @@
 namespace Drupal\farm_nfa\Form;
 
 use Drupal\asset\Entity\AssetInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Ajax\AjaxFormHelperTrait;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\Core\Ajax\MessageCommand;
@@ -31,6 +33,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     __sleep as traitSleep;
     __wakeup as traitWakeup;
   }
+  use AjaxFormHelperTrait;
 
   /**
    * Implements the magic __sleep() method to avoid serializing the request.
@@ -163,71 +166,54 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       ],
     ];
 
+    // data-drupal-selector needs to be the same among all ajax requests, so we
+    // bypass the bug below by forcing the id as this form is going to be shown
+    // once in a given page.
+    // @see https://www.drupal.org/node/2897377
+    $form['#id'] = Html::getId($form_state->getBuildInfo()['form_id']);
+
     return $form;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function ajaxSubmit(&$form, FormStateInterface $form_state) : AjaxResponse {
-    $close_dialog = TRUE;
+  public function successfulAjaxSubmit(&$form, FormStateInterface $form_state) : AjaxResponse {
     $response = new AjaxResponse();
-    $values = $form_state->getValue('log');
     /** @var \Drupal\log\Entity\LogInterface $log */
     $log = $form['#log'];
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
     $plan = $form['#plan'];
 
     try {
-      if (empty($plan)) {
-        throw new \Exception($this->t('Cannot save a task without a plan.'));
+      $saved_status = $log->save();
+      if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
+        throw new \Exception($this->t('Task cannot be saved.'));
       }
-      foreach ($values as $value_name => $value) {
-        if ($log->hasField($value_name)) {
-          $log->set($value_name, $value);
-        }
-      }
+      $route = farm_nfa_plan_route_log_types($plan, $log);
+      $log_types = $route->getDefault('log_types');
 
-      $violations = $log->validate();
-      if ($violations->count() == 0) {
-        $saved_status = $log->save();
-        if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
-          throw new \Exception($this->t('Task cannot be saved.'));
-        }
-        $route = farm_nfa_plan_route_log_types($plan, $log);
-        $log_types = $route->getDefault('log_types');
-
-        // Save the log in the plan, if it's not there already.
-        if ($plan->hasField('log')) {
-          $existing_logs = array_column($plan->get('log')->getValue(), 'target_id');
-          if (!in_array($log->id(), $existing_logs)) {
-            $plan->get('log')->appendItem($log);
-            $plan->save();
-          }
-        }
-        $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
-        $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
-        $form['#attached']['library'][] = 'farm_nfa/off_canvas';
-        $response->setAttachments($form['#attached']);
-        $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
-      }
-      else {
-        $close_dialog = FALSE;
-        foreach ($violations as $violation) {
-          $response->addCommand(new MessageCommand($violation->getMessage(), NULL, ['type' => 'error']));
+      // Save the log in the plan, if it's not there already.
+      if ($plan->hasField('log')) {
+        $existing_logs = array_column($plan->get('log')->getValue(), 'target_id');
+        if (!in_array($log->id(), $existing_logs)) {
+          $plan->get('log')->appendItem($log);
+          $plan->save();
         }
       }
+      $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
+      $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
+      $form['#attached']['library'][] = 'farm_nfa/off_canvas';
+      $response->setAttachments($form['#attached']);
+      $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
     }
     catch (\Exception $e) {
-      $close_dialog = FALSE;
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
       watchdog_exception('forest_nfa', $e);
     }
     finally {
       $this->messenger()->deleteAll();
-      if ($close_dialog) {
-        $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
-      }
+      $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
     }
 
     return $response;
@@ -236,39 +222,69 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    // We are using the submitForm method to process the values that do not
-    // "fit" exactly from the log form display to the entity save, at this
-    // point in time is the date fields and the quantity, that uses a complex
-    // IEF widget.
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    /** @var \Drupal\log\Entity\LogInterface $log */
+    $log = $form['#log'];
+    /** @var \Drupal\plan\Entity\PlanInterface $plan */
+    $plan = $form['#plan'];
+
+    if (empty($plan)) {
+      $form_state->setError($form, $this->t('Cannot save a task without a plan.'));
+    }
+
     $form_state->cleanValues();
     $log_values = $form_state->getValues();
-
     // Ensure timestamp is saved correctly.
-    foreach ($log_values as &$value) {
-      if (isset($value[0]['value']) && $value[0]['value'] instanceof DrupalDateTime) {
-        $value[0]['value'] = $value[0]['value']->getTimestamp();
+    foreach ($log_values as $value_name => $value) {
+      if ($log->hasField($value_name)) {
+        // Ensure timestamp is saved correctly.
+        if (isset($value[0]['value']) && $value[0]['value'] instanceof DrupalDateTime) {
+          $value[0]['value'] = $value[0]['value']->getTimestamp();
+        }
+        $log->set($value_name, $value);
       }
     }
 
-    // Build the quantities array from the inline_entity_form "magic" value.
-    // At this point the Quantity entity has been saved already so to avoid
-    // saving it again, we need to get the id and assign it to the quantity
-    // reference array.
+    $violations = $log->validate();
+    foreach ($violations as $violation) {
+      $form_state->setError($form, $violation->getMessage());
+    }
+
+    $form['#log'] = $log;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    /** @var \Drupal\log\Entity\LogInterface $log */
+    $log = $form['#log'];
+    // We are using the submitForm method to process the values that do not
+    // "fit" exactly from the log form display to the entity save that uses
+    // a complex IEF widget.
+    // Build the quantities and assets array from the inline_entity_form "magic"
+    // value. At this point the Quantity entity has been saved already so to
+    // avoid saving it again, we need to get the id and assign it to the
+    // quantity reference array (same goes for assets).
     // @see \Drupal\inline_entity_form\WidgetSubmit::doSubmit()
+    $data = [];
     foreach ($form_state->get('inline_entity_form') as $ief) {
       if ($ief['instance'] instanceof FieldDefinitionInterface) {
         $field_name = $ief['instance']->getName();
-        $log_values[$field_name] = [];
+        $data[$field_name] = [];
         foreach ($ief['entities'] as $ief_value) {
           if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
-            $log_values[$field_name][] = $ief_value['entity']->id();
+            $data[$field_name] [] = $ief_value['entity']->id();
           }
         }
       }
     }
 
-    $form_state->setValue('log', $log_values);
+    foreach ($data as $field_name => $datum) {
+      $log->set($field_name, $datum);
+    }
+
+    $form['#log'] = $log;
   }
 
 }

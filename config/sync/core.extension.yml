@@ -16,6 +16,8 @@ module:
   datetime_range: 0
   dblog: 0
   default_content: 0
+  devel: 0
+  devel_entity_updates: 0
   element_multiple: 0
   entity: 0
   entity_browser: 0
@@ -50,9 +52,11 @@ module:
   farm_nfa_block_compartment: 0
   farm_nfa_cfr: 0
   farm_nfa_forest: 0
+  farm_nfa_migrate: 0
   farm_nfa_natural_forest: 0
   farm_nfa_plantation_forest: 0
   farm_nfa_plantation_inventory: 0
+  farm_nfa_planting: 0
   farm_nfa_zone: 0
   farm_observation: 0
   farm_owner: 0
@@ -60,6 +64,7 @@ module:
   farm_report: 0
   farm_role: 0
   farm_role_roles: 0
+  farm_ui_action: 0
   farm_ui_breadcrumb: 0
   farm_ui_dashboard: 0
   farm_ui_help: 0
