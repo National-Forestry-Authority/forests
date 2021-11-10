@@ -81,6 +81,9 @@
             },
             "drupal/gin": {
                 "#3214515-4: Status messages added using JS are not dismissable": "https://git.drupalcode.org/project/gin/-/merge_requests/60.diff"
+            },
+            "drupal/core": {
+                "#1874838: Allow exposed blocks to use 'Link display' settings": "https://git.drupalcode.org/project/drupal/-/merge_requests/1403.patch"
             }
         },
         "merge-plugin": {
