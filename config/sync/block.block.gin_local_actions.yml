@@ -2,6 +2,9 @@ uuid: 96175344-9e86-4d62-b539-47194e9e7986
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_ui_theme
+    - system
   theme:
     - gin
 _core:
@@ -17,4 +20,8 @@ settings:
   label: 'Primary admin actions'
   provider: farm_ui_theme
   label_display: '0'
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
