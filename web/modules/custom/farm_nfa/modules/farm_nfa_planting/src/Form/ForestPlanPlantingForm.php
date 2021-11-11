@@ -60,6 +60,13 @@ class ForestPlanPlantingForm extends ForestPlanBaseForm {
     $form['asset']['widget']['actions']['bundle']['#options'] = ['forest' => $this->t('Forest')];
     $form['asset']['widget']['actions']['bundle']['#access'] = FALSE;
 
+    /** @var \Drupal\plan\Entity\PlanInterface $plan */
+    $plan = $form['#plan'];
+    $form['asset']['widget']['actions']['ief_add']['#value'] = $this->t('Add new forest');
+    if ($plan->bundle() == 'plantation') {
+      $form['asset']['widget']['actions']['ief_add']['#value'] = $this->t('Add new stand');
+    }
+
     $form['asset']['widget']['actions']['ief_add']['#access'] = empty(Element::children($form['asset']['widget']['entities']));
 
     return $form;
