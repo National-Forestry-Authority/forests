@@ -83,7 +83,8 @@
                 "Issue #3214515-4: Status messages added using JS are not dismissable": "https://www.drupal.org/files/issues/2021-11-11/3214515-8.patch"
             },
             "drupal/core": {
-                "Issue #1874838-26: Allow exposed blocks to use 'Link display' settings": "https://www.drupal.org/files/issues/2021-11-11/1874838-26.patch"
+                "Issue #1874838-26: Allow exposed blocks to use 'Link display' settings": "https://www.drupal.org/files/issues/2021-11-11/1874838-26.patch",
+                "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
             }
         },
         "merge-plugin": {
