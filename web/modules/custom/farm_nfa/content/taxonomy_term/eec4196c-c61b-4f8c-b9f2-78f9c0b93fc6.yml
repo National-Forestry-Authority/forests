@@ -1,8 +1,8 @@
 _meta:
   version: '1.0'
   entity_type: taxonomy_term
-  uuid: d0e2cba5-016b-450a-b823-59dd372413db
-  bundle: working_circle
+  uuid: eec4196c-c61b-4f8c-b9f2-78f9c0b93fc6
+  bundle: activity_type
   default_langcode: en
 default:
   status:
@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: Production
+      value: Patrol
   weight:
     -
       value: 0

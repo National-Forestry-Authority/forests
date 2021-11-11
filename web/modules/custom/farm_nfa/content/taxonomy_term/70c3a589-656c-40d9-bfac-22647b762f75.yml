@@ -1,8 +1,8 @@
 _meta:
   version: '1.0'
   entity_type: taxonomy_term
-  uuid: a9ed4a97-7dcf-4a9b-a0a3-d0f75a332a5f
-  bundle: working_circle
+  uuid: 70c3a589-656c-40d9-bfac-22647b762f75
+  bundle: activity_type
   default_langcode: en
 default:
   status:
@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: 'Partnerships & community livelihoods'
+      value: Weeding
   weight:
     -
       value: 0

@@ -1,8 +1,8 @@
 _meta:
   version: '1.0'
   entity_type: taxonomy_term
-  uuid: a954389d-a65b-42cd-aa76-006533238cc9
-  bundle: working_circle
+  uuid: 35a699c6-39b1-4066-bb47-f3089806443a
+  bundle: activity_type
   default_langcode: en
 default:
   status:
@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: Tourism
+      value: Harvest
   weight:
     -
       value: 0

@@ -1,11 +1,8 @@
-uuid: 7309c28d-fc2c-4c99-a95a-dff79bf610c9
 langcode: en
 status: true
 dependencies:
   module:
     - media
-_core:
-  default_config_hash: eTcqTg8uTUL56ZfihVI-HGFo0APCTndrQbhyDRhzgWY
 name: Default
 format: default
 weight: 0

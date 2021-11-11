@@ -1,8 +1,8 @@
 _meta:
   version: '1.0'
   entity_type: taxonomy_term
-  uuid: 5867019b-df3b-4805-93c2-163b3a1d31b3
-  bundle: working_circle
+  uuid: 6e11d431-204f-4bd1-a72f-2608351e1589
+  bundle: activity_type
   default_langcode: en
 default:
   status:
@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: 'Research and education'
+      value: 'Pitting out'
   weight:
     -
       value: 0

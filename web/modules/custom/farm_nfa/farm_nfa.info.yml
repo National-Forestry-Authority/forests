@@ -5,6 +5,7 @@ package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
   - default_content:default_content
+  - drupal:ckeditor
   - drupal:datetime_range
   - drupal:file
   - drupal:image
@@ -31,9 +32,9 @@ dependencies:
   - views_geojson:views_geojson
 
 config_devel:
-  - core.entity_view_display.asset.land.default
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.asset.land.default
+  - core.entity_form_display.log.activity.default
   - core.entity_form_display.log.activity.plan
   - core.entity_form_display.log.harvest.default
   - core.entity_form_display.log.harvest.plan
@@ -42,6 +43,7 @@ config_devel:
   - core.entity_form_display.user.user.default
   - core.entity_form_mode.log.plan
   - core.entity_view_display.asset.land.default
+  - core.entity_view_display.log.activity.default
   - core.entity_view_display.log.harvest.default
   - core.entity_view_display.log.observation.default
   - core.entity_view_display.user.user.default
@@ -49,6 +51,7 @@ config_devel:
   - core.entity_view_mode.media.dialog
   - core.entity_view_mode.media.link
   - core.entity_view_mode.user.person_in_charge
+  - editor.editor.default
   - farm_land.land_type.beat
   - farm_land.land_type.range
   - farm_land.land_type.sector
@@ -56,6 +59,7 @@ config_devel:
   - farm_map.map_behavior.farm_nfa_plan_locations_layers
   - farm_map.map_type.farm_nfa_plan_locations
   - field.field.asset.land.person_in_charge
+  - field.field.log.activity.activity_type
   - field.field.log.activity.working_circle
   - field.field.log.harvest.coup_number
   - field.field.log.harvest.harvest_type
@@ -66,35 +70,63 @@ config_devel:
   - field.field.log.observation.coup_number
   - field.field.log.observation.working_circle
   - field.field.user.user.contact_phone_number
-  - field.storage.asset.person_in_charge
-  - field.storage.log.average_silviculture_score
-  - field.storage.user.contact_phone_number
   - field.storage.asset.area
+  - field.storage.asset.person_in_charge
+  - field.storage.log.activity_type
+  - field.storage.log.average_silviculture_score
   - field.storage.log.coup_number
   - field.storage.log.harvest_type
   - field.storage.log.supervisor
   - field.storage.log.tender_name
   - field.storage.log.working_circle
+  - field.storage.user.contact_phone_number
+  - filter.format.default
+  - taxonomy.vocabulary.activity_type
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose
   - taxonomy.vocabulary.forest_vegetation
   - taxonomy.vocabulary.harvest_type
   - taxonomy.vocabulary.working_circle
+  - user.role.authenticated
   - views.view.plan_logs
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
 
 default_content:
   taxonomy_term:
-    - b0236bd7-067a-4484-92d6-6b483aa48aef
-    - a9ed4a97-7dcf-4a9b-a0a3-d0f75a332a5f
-    - d0e2cba5-016b-450a-b823-59dd372413db
-    - 5867019b-df3b-4805-93c2-163b3a1d31b3
-    - a954389d-a65b-42cd-aa76-006533238cc9
-    - 0fe6a451-a837-4ff9-b265-c1d4545ea0c0
     - 40143a27-e0d1-4d5a-aefe-9c22c9ca15e4
     - c675a439-3744-46bb-86dd-7bddc2431e76
     - 22892eee-ba86-4e48-b168-3c20ea249c3a
     - ec244942-c5bc-40aa-b146-d5a8a50e7bed
     - 4d57d480-def6-4515-8563-360f95eecfa8
     - 837b5408-e74f-41d4-8b09-a4ddd4e81998
+    - e0e37c1a-d0d4-484e-af83-7732e5409bf5
+    - e07c5949-6cd6-4c36-885e-3f0483298959
+    - 6e11d431-204f-4bd1-a72f-2608351e1589
+    - 70c3a589-656c-40d9-bfac-22647b762f75
+    - 059efd2a-14d4-442f-94c5-85fdc9703f0c
+    - 4e3ffc20-b9e3-452f-887c-f2c75f182e16
+    - 66b3ecdb-9486-462f-8b83-80709519a27b
+    - 240957ff-d8d0-48bc-9b9b-fc56916c3934
+    - 231fe220-7dd3-4863-956a-fe823b2ece81
+    - 238239c9-bd9b-42e8-a903-0629e51012d4
+    - 38634e46-4ba4-420c-bbc7-e6ce53ce3abf
+    - 7a6f1860-56e6-40c5-bd49-7723f55e77c6
+    - baea0b2f-c7e9-4131-a4d8-604221dd3707
+    - fc17d18a-0f04-4c76-9cae-f6fa50c74c7f
+    - 35a699c6-39b1-4066-bb47-f3089806443a
+    - d5ee9c98-ecf8-4191-89be-e3f15047c7fe
+    - db819e48-7e40-4cf6-b3ab-d2db6ffa68c7
+    - d9bd64d8-f82f-480f-a339-b3c66ababe98
+    - f52c78b5-55f6-4d0b-bc8a-46c197806377
+    - 4971aeef-2850-4339-bdd1-18b39c204547
+    - eec4196c-c61b-4f8c-b9f2-78f9c0b93fc6
+    - ee8bdc47-cf31-4c89-8d03-4f2719d4fa40
+    - d4864d7b-a5d8-4b88-8318-4b5dee00f1ce
+    - 5ce32fc2-fd38-4745-9c3e-c2ccb471d264
+    - 0fe6a451-a837-4ff9-b265-c1d4545ea0c0
+    - 1862b21b-fad2-4afd-9fea-9f40aec63c5e
+    - 07f1e5ba-0d61-4821-a6aa-ada2a2552824
+    - ec342163-465e-4419-9f57-2d9d77e23dd1
+    - 2577f5d0-4f1b-4ea2-b5d7-a94783797de4
+    - 1d0d77d7-06a6-4c59-be85-1cfc12933de0

@@ -1,0 +1,22 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1d0d77d7-06a6-4c59-be85-1cfc12933de0
+  bundle: working_circle
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Production
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true

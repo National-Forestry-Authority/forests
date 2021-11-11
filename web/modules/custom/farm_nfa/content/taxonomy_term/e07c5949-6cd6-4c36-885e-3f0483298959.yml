@@ -1,8 +1,8 @@
 _meta:
   version: '1.0'
   entity_type: taxonomy_term
-  uuid: b0236bd7-067a-4484-92d6-6b483aa48aef
-  bundle: working_circle
+  uuid: e07c5949-6cd6-4c36-885e-3f0483298959
+  bundle: activity_type
   default_langcode: en
 default:
   status:
@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: Conservation
+      value: Clearing
   weight:
     -
       value: 0

@@ -1,0 +1,20 @@
+uuid: 57b03f00-af2c-4ccb-a785-11ce86e5cfa5
+langcode: en
+status: true
+dependencies:
+  module:
+    - log
+    - taxonomy
+id: log.activity_type
+field_name: activity_type
+entity_type: log
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
