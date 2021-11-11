@@ -1,0 +1,20 @@
+uuid: 95c7798c-6609-44d8-a49c-0245fcc29766
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - media
+id: asset.boundary_demarcation
+field_name: boundary_demarcation
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

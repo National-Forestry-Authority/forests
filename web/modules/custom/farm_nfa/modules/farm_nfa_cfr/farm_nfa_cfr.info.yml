@@ -11,17 +11,22 @@ dependencies:
 config_devel:
   - asset.type.cfr
   - core.entity_form_display.asset.cfr.default
+  - core.entity_form_display.media.boundary_demarcation.default
   - core.entity_form_display.media.boundary_plan_maps.default
+  - core.entity_form_display.media.predominant_vegetation.default
   - core.entity_view_display.asset.cfr.default
+  - core.entity_view_display.media.boundary_demarcation.default
   - core.entity_view_display.media.boundary_plan_maps.default
   - core.entity_view_display.media.boundary_plan_maps.dialog
   - core.entity_view_display.media.boundary_plan_maps.link
+  - core.entity_view_display.media.predominant_vegetation.default
   - field.field.asset.cfr.area
+  - field.field.asset.cfr.boundary_demarcation
   - field.field.asset.cfr.boundary_plan
-  - field.field.asset.cfr.current_purpose
   - field.field.asset.cfr.description_of_plans_and_sheets
-  - field.field.asset.cfr.detailed_vegetation
   - field.field.asset.cfr.est_year_gazetted
+  - field.field.asset.cfr.general_description
+  - field.field.asset.cfr.historical_context
   - field.field.asset.cfr.issues_concerns
   - field.field.asset.cfr.key_resources
   - field.field.asset.cfr.land_use_and_forest_condition
@@ -30,20 +35,33 @@ config_devel:
   - field.field.asset.cfr.map_sheet_uploads
   - field.field.asset.cfr.opportunities
   - field.field.asset.cfr.original_management_objectives
-  - field.field.asset.cfr.predominant_vegetation
   - field.field.asset.cfr.priority_actions
   - field.field.asset.cfr.proposed_strategies
   - field.field.asset.cfr.serial
   - field.field.asset.cfr.size_location_desc
+  - field.field.asset.cfr.threats_assessment
+  - field.field.asset.cfr.total_boundary_length
+  - field.field.asset.cfr.total_cutline_length
+  - field.field.asset.cfr.total_natural_boundary_length
+  - field.field.asset.cfr.vegetation
   - field.field.asset.cfr.year_of_survey
+  - field.field.asset.cfr.zonation_date
+  - field.field.asset.cfr.zonation_description
+  - field.field.asset.cfr.zonation_map_file_upload
+  - field.field.media.boundary_demarcation.description
+  - field.field.media.boundary_demarcation.field_media_image
+  - field.field.media.boundary_demarcation.year
   - field.field.media.boundary_plan_maps.boundary_plan_number
-  - field.field.media.boundary_plan_maps.date
   - field.field.media.boundary_plan_maps.field_media_image
+  - field.field.media.boundary_plan_maps.year
+  - field.field.media.predominant_vegetation.description
+  - field.field.media.predominant_vegetation.field_media_image
   - field.storage.asset.boundary_plan
-  - field.storage.asset.current_purpose
+  - field.storage.asset.boundary_demarcation
   - field.storage.asset.description_of_plans_and_sheets
-  - field.storage.asset.detailed_vegetation
   - field.storage.asset.est_year_gazetted
+  - field.storage.asset.general_description
+  - field.storage.asset.historical_context
   - field.storage.asset.issues_concerns
   - field.storage.asset.key_resources
   - field.storage.asset.land_use_and_forest_condition
@@ -52,15 +70,24 @@ config_devel:
   - field.storage.asset.map_sheet_uploads
   - field.storage.asset.opportunities
   - field.storage.asset.original_management_objectives
-  - field.storage.asset.predominant_vegetation
   - field.storage.asset.priority_actions
   - field.storage.asset.proposed_strategies
   - field.storage.asset.serial
   - field.storage.asset.size_location_desc
+  - field.storage.asset.threats_assessment
+  - field.storage.asset.total_boundary_length
+  - field.storage.asset.total_cutline_length
+  - field.storage.asset.total_natural_boundary_length
+  - field.storage.asset.vegetation
   - field.storage.asset.year_of_survey
+  - field.storage.asset.zonation_date
+  - field.storage.asset.zonation_description
+  - field.storage.asset.zonation_map_file_upload
   - field.storage.media.boundary_plan_number
-  - field.storage.media.date
+  - field.storage.media.description
   - field.storage.media.field_media_image
+  - field.storage.media.year
+  - media.type.boundary_demarcation
   - media.type.boundary_plan_maps
-  - taxonomy.vocabulary.predominant_vegetation
+  - media.type.predominant_vegetation
   - farm_map.layer_style.asset_cfr

@@ -1,18 +1,16 @@
-uuid: 7219455c-e19a-4f01-acf9-20223587fc87
+uuid: c880d641-5e2a-4fac-8d11-331b80bfc056
 langcode: en
 status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: kkeW05Po8MmhpMOAMhrK9DRmeK-xNJkv00o5Uo93GvQ
+    - text
 id: asset.opportunities
 field_name: opportunities
 entity_type: asset
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: -1
 translatable: true

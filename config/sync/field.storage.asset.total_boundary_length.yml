@@ -1,0 +1,18 @@
+uuid: 64a2d074-44f9-4782-8df6-e4cca66e4e51
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.total_boundary_length
+field_name: total_boundary_length
+entity_type: asset
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 765cfb9f-54b8-4b68-87bc-a51d2eb65c31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.description
+    - media.type.boundary_demarcation
+  module:
+    - text
+id: media.boundary_demarcation.description
+field_name: description
+entity_type: media
+bundle: boundary_demarcation
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

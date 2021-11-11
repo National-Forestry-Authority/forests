@@ -1,12 +1,12 @@
-uuid: 326adc33-bd59-4904-8b9e-c9e396bd99b2
+uuid: 85e3a3fa-7c4a-4e95-98ec-ed8c4db658c0
 langcode: en
 status: true
 dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.opportunities
-_core:
-  default_config_hash: PqKLEXCJNSLxgT8nuhJ23oBAou8SOW-DA1W_IDEZ150
+  module:
+    - text
 id: asset.cfr.opportunities
 field_name: opportunities
 entity_type: asset
@@ -18,4 +18,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string_long
+field_type: text_long

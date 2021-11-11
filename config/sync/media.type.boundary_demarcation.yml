@@ -1,0 +1,14 @@
+uuid: d56b6aec-01bb-4d95-b295-e88eafeedeaa
+langcode: en
+status: true
+dependencies: {  }
+id: boundary_demarcation
+label: 'Boundary demarcation'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

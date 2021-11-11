@@ -1,0 +1,19 @@
+uuid: 5ec668b5-495f-4369-87bb-30d22c66e0b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.threats_assessment
+field_name: threats_assessment
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

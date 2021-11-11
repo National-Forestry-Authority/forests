@@ -1,0 +1,21 @@
+uuid: 1051854f-7ab6-4e1d-a366-0784bb7cb2bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.year
+    - media.type.boundary_plan_maps
+  module:
+    - month_year
+id: media.boundary_plan_maps.year
+field_name: year
+entity_type: media
+bundle: boundary_plan_maps
+label: Year
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

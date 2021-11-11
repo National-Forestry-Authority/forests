@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.zonation_description
+  module:
+    - text
+id: asset.cfr.zonation_description
+field_name: zonation_description
+entity_type: asset
+bundle: cfr
+label: 'Zonation description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

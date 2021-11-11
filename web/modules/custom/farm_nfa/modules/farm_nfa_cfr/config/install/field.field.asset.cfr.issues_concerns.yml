@@ -4,6 +4,8 @@ dependencies:
   config:
     - asset.type.cfr
     - field.storage.asset.issues_concerns
+  module:
+    - text
 id: asset.cfr.issues_concerns
 field_name: issues_concerns
 entity_type: asset
@@ -15,4 +17,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string_long
+field_type: text_long

@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Forest category'
-vid: forest_category
-description: ''
-weight: 0

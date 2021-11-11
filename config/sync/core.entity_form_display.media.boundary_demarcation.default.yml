@@ -1,0 +1,65 @@
+uuid: e0beb28a-867c-4862-969f-bc71e0733f37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.boundary_demarcation.description
+    - field.field.media.boundary_demarcation.field_media_image
+    - field.field.media.boundary_demarcation.year
+    - image.style.thumbnail
+    - media.type.boundary_demarcation
+  module:
+    - image
+    - month_year
+    - text
+id: media.boundary_demarcation.default
+targetEntityType: media
+bundle: boundary_demarcation
+mode: default
+content:
+  description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_media_image:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  year:
+    weight: 1
+    settings:
+      min_year: 2015
+      adjustment: 5
+      disabled_months:
+        - 2
+        - 3
+        - 5
+        - 6
+        - 7
+        - 8
+        - 10
+        - 11
+        - 12
+    third_party_settings: {  }
+    type: month_year_widget
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -5,11 +5,12 @@ dependencies:
   config:
     - asset.type.cfr
     - field.field.asset.cfr.area
+    - field.field.asset.cfr.boundary_demarcation
     - field.field.asset.cfr.boundary_plan
-    - field.field.asset.cfr.current_purpose
     - field.field.asset.cfr.description_of_plans_and_sheets
-    - field.field.asset.cfr.detailed_vegetation
     - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.general_description
+    - field.field.asset.cfr.historical_context
     - field.field.asset.cfr.issues_concerns
     - field.field.asset.cfr.key_resources
     - field.field.asset.cfr.land_use_and_forest_condition
@@ -18,12 +19,19 @@ dependencies:
     - field.field.asset.cfr.map_sheet_uploads
     - field.field.asset.cfr.opportunities
     - field.field.asset.cfr.original_management_objectives
-    - field.field.asset.cfr.predominant_vegetation
     - field.field.asset.cfr.priority_actions
     - field.field.asset.cfr.proposed_strategies
     - field.field.asset.cfr.serial
     - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.threats_assessment
+    - field.field.asset.cfr.total_boundary_length
+    - field.field.asset.cfr.total_cutline_length
+    - field.field.asset.cfr.total_natural_boundary_length
+    - field.field.asset.cfr.vegetation
     - field.field.asset.cfr.year_of_survey
+    - field.field.asset.cfr.zonation_date
+    - field.field.asset.cfr.zonation_description
+    - field.field.asset.cfr.zonation_map_file_upload
     - image.style.large
   module:
     - entity_dialog_formatter
@@ -32,6 +40,7 @@ dependencies:
     - field_group
     - file
     - image
+    - month_year
     - options
     - text
 third_party_settings:
@@ -113,6 +122,15 @@ content:
     third_party_settings: {  }
     type: number_decimal
     region: content
+  boundary_demarcation:
+    type: entity_reference_entity_view
+    weight: 32
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
   boundary_plan:
     weight: 6
     label: inline
@@ -121,22 +139,8 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  current_purpose:
-    weight: 17
-    label: inline
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   description_of_plans_and_sheets:
     weight: 10
-    label: inline
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  detailed_vegetation:
-    weight: 19
     label: inline
     settings: {  }
     third_party_settings: {  }
@@ -166,6 +170,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  general_description:
+    weight: 21
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   geometry:
     label: inline
     type: farm_map_geofield
@@ -173,6 +184,13 @@ content:
     weight: 11
     region: content
     third_party_settings: {  }
+  historical_context:
+    weight: 28
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   id_tag:
     label: inline
     type: id_tag
@@ -190,11 +208,11 @@ content:
     region: content
     third_party_settings: {  }
   issues_concerns:
-    weight: 16
-    label: inline
+    weight: 30
+    label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: text_default
     region: content
   key_resources:
     weight: 15
@@ -258,11 +276,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   opportunities:
-    weight: 17
-    label: inline
+    weight: 31
+    label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: text_default
     region: content
   original_management_objectives:
     weight: 16
@@ -279,14 +297,6 @@ content:
       link: true
     region: content
     third_party_settings: {  }
-  predominant_vegetation:
-    weight: 18
-    label: inline
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   priority_actions:
     weight: 19
     label: inline
@@ -323,6 +333,55 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  threats_assessment:
+    weight: 29
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  total_boundary_length:
+    weight: 22
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  total_cutline_length:
+    weight: 23
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  total_natural_boundary_length:
+    weight: 24
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  vegetation:
+    type: entity_reference_entity_view
+    weight: 33
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
   year_of_survey:
     weight: 5
     label: inline
@@ -331,6 +390,28 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
+  zonation_date:
+    weight: 27
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: month_year_formatter
+    region: content
+  zonation_description:
+    weight: 26
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  zonation_map_file_upload:
+    weight: 25
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
     region: content
 hidden:
   data: true

@@ -1,0 +1,19 @@
+uuid: ee48fa89-f12a-4a16-8ac9-a4122652c874
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.historical_context
+field_name: historical_context
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

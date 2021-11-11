@@ -1,0 +1,19 @@
+uuid: e04af94a-8ed8-4da5-8ffb-59c70893c3d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.zonation_description
+field_name: zonation_description
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

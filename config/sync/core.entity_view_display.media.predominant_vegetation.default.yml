@@ -1,0 +1,38 @@
+uuid: 94c9975f-4d88-448d-90cb-3fc3cc63a0bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.predominant_vegetation.description
+    - field.field.media.predominant_vegetation.field_media_image
+    - image.style.large
+    - media.type.predominant_vegetation
+  module:
+    - image
+    - text
+id: media.predominant_vegetation.default
+targetEntityType: media
+bundle: predominant_vegetation
+mode: default
+content:
+  description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media_image:
+    label: visually_hidden
+    weight: 0
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

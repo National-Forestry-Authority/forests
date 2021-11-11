@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.description
+    - media.type.predominant_vegetation
+  module:
+    - text
+id: media.predominant_vegetation.description
+field_name: description
+entity_type: media
+bundle: predominant_vegetation
+label: 'Detailed vegetation'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

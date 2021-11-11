@@ -1,0 +1,19 @@
+uuid: 01bb810f-4204-4aa2-aa77-c24f0097352d
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - month_year
+id: asset.zonation_date
+field_name: zonation_date
+entity_type: asset
+type: month_year
+settings: {  }
+module: month_year
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

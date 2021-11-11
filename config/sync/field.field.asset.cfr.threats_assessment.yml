@@ -1,0 +1,21 @@
+uuid: cf781284-dfb2-4e34-82b6-e62827aaa7dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.threats_assessment
+  module:
+    - text
+id: asset.cfr.threats_assessment
+field_name: threats_assessment
+entity_type: asset
+bundle: cfr
+label: 'Threats assessment'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

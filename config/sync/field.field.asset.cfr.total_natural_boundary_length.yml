@@ -1,0 +1,23 @@
+uuid: 4cdbe864-c5d3-4f30-89c8-d5fd696d9e94
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.total_natural_boundary_length
+id: asset.cfr.total_natural_boundary_length
+field_name: total_natural_boundary_length
+entity_type: asset
+bundle: cfr
+label: 'Total natural boundary length (km)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

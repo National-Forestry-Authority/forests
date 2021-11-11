@@ -1,0 +1,21 @@
+uuid: 362297e3-cebe-4c49-8441-8e166806ce4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.zonation_date
+  module:
+    - month_year
+id: asset.cfr.zonation_date
+field_name: zonation_date
+entity_type: asset
+bundle: cfr
+label: 'Zonation date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

@@ -1,0 +1,27 @@
+uuid: 3e9dea75-3dd0-496e-b0db-4d456ec88e2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.zonation_map_file_upload
+  module:
+    - file
+id: asset.cfr.zonation_map_file_upload
+field_name: zonation_map_file_upload
+entity_type: asset
+bundle: cfr
+label: 'Zonation map file upload'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

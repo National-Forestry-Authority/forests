@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.historical_context
+  module:
+    - text
+id: asset.cfr.historical_context
+field_name: historical_context
+entity_type: asset
+bundle: cfr
+label: 'Historical context'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

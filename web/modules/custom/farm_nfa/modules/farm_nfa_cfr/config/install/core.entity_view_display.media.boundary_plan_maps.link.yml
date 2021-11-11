@@ -4,8 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.media.link
     - field.field.media.boundary_plan_maps.boundary_plan_number
-    - field.field.media.boundary_plan_maps.date
     - field.field.media.boundary_plan_maps.field_media_image
+    - field.field.media.boundary_plan_maps.year
     - media.type.boundary_plan_maps
 id: media.boundary_plan_maps.link
 targetEntityType: media
@@ -23,8 +23,8 @@ content:
     region: content
 hidden:
   created: true
-  date: true
   field_media_image: true
   name: true
   thumbnail: true
   uid: true
+  year: true

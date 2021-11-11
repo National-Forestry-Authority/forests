@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - month_year
+id: media.year
+field_name: year
+entity_type: media
+type: month_year
+settings: {  }
+module: month_year
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

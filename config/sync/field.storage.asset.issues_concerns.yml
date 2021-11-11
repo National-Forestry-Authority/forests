@@ -1,18 +1,16 @@
-uuid: 31516502-3cc4-46d5-a7b6-127a910e4621
+uuid: b33c808f-0de7-4768-8cf9-832426727321
 langcode: en
 status: true
 dependencies:
   module:
     - asset
-_core:
-  default_config_hash: jTzcMctFKB0Nb-BT9-ybO9m1C2Ixe43ALs1rszO2l24
+    - text
 id: asset.issues_concerns
 field_name: issues_concerns
 entity_type: asset
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: -1
 translatable: true

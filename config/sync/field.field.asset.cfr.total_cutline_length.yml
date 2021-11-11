@@ -1,0 +1,23 @@
+uuid: 7a2fd0f2-7fd8-4eab-b0aa-3ad3affaa390
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.total_cutline_length
+id: asset.cfr.total_cutline_length
+field_name: total_cutline_length
+entity_type: asset
+bundle: cfr
+label: 'Total cutline length (km)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

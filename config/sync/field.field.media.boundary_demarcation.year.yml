@@ -1,0 +1,21 @@
+uuid: ac0608d8-299a-4c36-bf00-ad60e96d4b4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.year
+    - media.type.boundary_demarcation
+  module:
+    - month_year
+id: media.boundary_demarcation.year
+field_name: year
+entity_type: media
+bundle: boundary_demarcation
+label: Year
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: month_year

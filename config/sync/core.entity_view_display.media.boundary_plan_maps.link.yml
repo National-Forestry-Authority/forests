@@ -5,8 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.media.link
     - field.field.media.boundary_plan_maps.boundary_plan_number
-    - field.field.media.boundary_plan_maps.date
     - field.field.media.boundary_plan_maps.field_media_image
+    - field.field.media.boundary_plan_maps.year
     - media.type.boundary_plan_maps
 _core:
   default_config_hash: 4Svk5xqm_LwqR3ZG9Qc1fEfEVzeph-g5OWg0Zee5tP4
@@ -26,8 +26,8 @@ content:
     region: content
 hidden:
   created: true
-  date: true
   field_media_image: true
   name: true
   thumbnail: true
   uid: true
+  year: true
