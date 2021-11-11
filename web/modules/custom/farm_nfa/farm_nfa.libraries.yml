@@ -26,6 +26,7 @@ behavior_farm_nfa_plan_locations_layers:
   dependencies:
     - core/drupalSettings
     - farm_map/farm_map
+    - farm_map/behavior_popup
 
 search_autocomplete:
   js:
