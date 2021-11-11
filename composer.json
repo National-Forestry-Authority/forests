@@ -80,10 +80,10 @@
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
             "drupal/gin": {
-                "#3214515-4: Status messages added using JS are not dismissable": "https://git.drupalcode.org/project/gin/-/merge_requests/60.diff"
+                "Issue #3214515-4: Status messages added using JS are not dismissable": "https://www.drupal.org/files/issues/2021-11-11/3214515-8.patch"
             },
             "drupal/core": {
-                "#1874838: Allow exposed blocks to use 'Link display' settings": "https://git.drupalcode.org/project/drupal/-/merge_requests/1403.patch"
+                "Issue #1874838-26: Allow exposed blocks to use 'Link display' settings": "https://www.drupal.org/files/issues/2021-11-11/1874838-26.patch"
             }
         },
         "merge-plugin": {
