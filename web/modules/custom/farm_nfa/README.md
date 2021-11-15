@@ -18,14 +18,17 @@ drush migrate:import --group=farm_migrate_config,farm_migrate_role,farm_migrate_
 drush migrate:import --group=farm_migrate_area,farm_migrate_asset_parent
 ```
 
-# Get farm_forest
+# Re-export farm_nfa modules config.
 
 ```
-git clone https://github.com/farmOS/farm_forest.git (into www/web/modules)
-git checkout 2.x
-```
-
-# Update from farm_nfa repo
-```
-composer update farmos/farmos:^2 -W
+drush cde farm_nfa
+drush cde farm_nfa_block_compartment
+drush cde farm_nfa_cfr
+drush cde farm_nfa_forest
+drush cde farm_nfa_lb
+drush cde farm_nfa_natural_forest
+drush cde farm_nfa_plantation_forest
+drush cde farm_nfa_plantation_inventory
+drush cde farm_nfa_planting
+drush cde farm_nfa_zone
 ```

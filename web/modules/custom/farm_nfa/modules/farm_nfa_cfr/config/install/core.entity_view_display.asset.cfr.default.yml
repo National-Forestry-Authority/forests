@@ -365,17 +365,9 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: above
-                type: entity_reference_dialog_entity_view
+                type: entity_reference_entity_view
                 settings:
                   view_mode: default
-                  view_mode_destination: dialog
-                  list_theme: entity_dialog_formatter_list
-                  link_class: use-ajax
-                  dialog_type: modal
-                  dialog_width: '800'
-                  dialog_height: ''
-                  dialog_title: ''
-                  display_all_dialog: 0
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity

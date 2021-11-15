@@ -14,12 +14,19 @@ settings:
         -
           name: Formatting
           items:
+            - Styles
             - Bold
             - Italic
             - Underline
             - Superscript
             - Subscript
             - RemoveFormat
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - Format
+            - SpecialChar
         -
           name: Links
           items:

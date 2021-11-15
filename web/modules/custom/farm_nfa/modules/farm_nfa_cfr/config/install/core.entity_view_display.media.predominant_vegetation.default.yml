@@ -42,18 +42,22 @@ third_party_settings:
             uuid: b150d504-9076-4062-ad6b-558a3ee1d575
             region: second
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:media:predominant_vegetation:field_media_image'
+              label: Image
+              provider: layout_builder
+              label_display: '0'
               formatter:
                 label: visually_hidden
+                type: image
                 settings:
                   image_style: large
-                  image_link: ''
+                  image_link: file
                 third_party_settings: {  }
-                type: image
-            additional: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional:
+              layout_builder_styles_style: ''
             weight: 0
         third_party_settings: {  }
 id: media.predominant_vegetation.default

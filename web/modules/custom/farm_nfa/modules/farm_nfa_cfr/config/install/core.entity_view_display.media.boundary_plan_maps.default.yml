@@ -5,7 +5,7 @@ dependencies:
     - field.field.media.boundary_plan_maps.boundary_plan_number
     - field.field.media.boundary_plan_maps.field_media_image
     - field.field.media.boundary_plan_maps.year
-    - image.style.medium
+    - image.style.large
     - media.type.boundary_plan_maps
   module:
     - image
@@ -28,8 +28,8 @@ content:
     label: hidden
     weight: 0
     settings:
-      image_style: medium
-      image_link: ''
+      image_style: large
+      image_link: file
     third_party_settings: {  }
     type: image
     region: content
