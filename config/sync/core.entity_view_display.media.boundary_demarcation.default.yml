@@ -1,4 +1,4 @@
-uuid: ceb49412-92d9-4fb1-b9bc-3609962a3555
+uuid: dff1ca23-4eba-4a98-9560-dfe6b3d6f562
 langcode: en
 status: true
 dependencies:
@@ -10,8 +10,74 @@ dependencies:
     - media.type.boundary_demarcation
   module:
     - image
+    - layout_builder
     - month_year
     - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          layout_builder_styles_style: ''
+          context_mapping: {  }
+        components:
+          dd2fb412-1a4b-4414-8f64-21466eb5c026:
+            uuid: dd2fb412-1a4b-4414-8f64-21466eb5c026
+            region: first
+            configuration:
+              id: 'field_block:media:boundary_demarcation:description'
+              label: Description
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: above
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional:
+              layout_builder_styles_style: ''
+            weight: 0
+          ef69ed72-c897-4195-8479-de7f1003fc65:
+            uuid: ef69ed72-c897-4195-8479-de7f1003fc65
+            region: second
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:boundary_demarcation:field_media_image'
+              formatter:
+                label: visually_hidden
+                settings:
+                  image_style: large
+                  image_link: ''
+                third_party_settings: {  }
+                type: image
+            additional: {  }
+            weight: 0
+          ef44d73a-74b5-4001-a3b0-eec2e3361cd8:
+            uuid: ef44d73a-74b5-4001-a3b0-eec2e3361cd8
+            region: first
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:boundary_demarcation:year'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: month_year_formatter
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
 id: media.boundary_demarcation.default
 targetEntityType: media
 bundle: boundary_demarcation

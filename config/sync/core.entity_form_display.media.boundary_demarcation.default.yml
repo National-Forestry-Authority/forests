@@ -1,4 +1,4 @@
-uuid: e0beb28a-867c-4862-969f-bc71e0733f37
+uuid: fa86db14-b799-4a1d-9105-dcc8afde203a
 langcode: en
 status: true
 dependencies:
@@ -46,16 +46,7 @@ content:
     settings:
       min_year: 2015
       adjustment: 5
-      disabled_months:
-        - 2
-        - 3
-        - 5
-        - 6
-        - 7
-        - 8
-        - 10
-        - 11
-        - 12
+      disabled_months: {  }
     third_party_settings: {  }
     type: month_year_widget
     region: content

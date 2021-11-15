@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - farm_ui_theme
     - system
   theme:
     - gin
@@ -14,14 +13,14 @@ theme: gin
 region: content
 weight: -10
 provider: null
-plugin: farm_local_actions_block
+plugin: local_actions_block
 settings:
-  id: farm_local_actions_block
+  id: local_actions_block
   label: 'Primary admin actions'
-  provider: farm_ui_theme
+  provider: core
   label_display: '0'
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: "<front>\r\n/asset/*"
     negate: true

@@ -1,4 +1,4 @@
-uuid: 94c9975f-4d88-448d-90cb-3fc3cc63a0bd
+uuid: 62ac925d-1371-4a1d-b191-8e25db2461c7
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,58 @@ dependencies:
     - media.type.predominant_vegetation
   module:
     - image
+    - layout_builder
     - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          layout_builder_styles_style: ''
+          context_mapping: {  }
+        components:
+          b73d8a6f-89bb-432b-b1ad-c3a110cd9625:
+            uuid: b73d8a6f-89bb-432b-b1ad-c3a110cd9625
+            region: first
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:predominant_vegetation:description'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
+            additional: {  }
+            weight: 0
+          b150d504-9076-4062-ad6b-558a3ee1d575:
+            uuid: b150d504-9076-4062-ad6b-558a3ee1d575
+            region: second
+            configuration:
+              id: 'field_block:media:predominant_vegetation:field_media_image'
+              label: Image
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: visually_hidden
+                type: image
+                settings:
+                  image_style: large
+                  image_link: file
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional:
+              layout_builder_styles_style: ''
+            weight: 0
+        third_party_settings: {  }
 id: media.predominant_vegetation.default
 targetEntityType: media
 bundle: predominant_vegetation

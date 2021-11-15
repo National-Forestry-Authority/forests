@@ -20,7 +20,7 @@ mode: default
 content:
   boundary_plan_number:
     weight: 2
-    label: hidden
+    label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
@@ -32,13 +32,13 @@ content:
     weight: 0
     settings:
       image_style: large
-      image_link: ''
+      image_link: file
     third_party_settings: {  }
     type: image
     region: content
   year:
     weight: 3
-    label: above
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: month_year_formatter

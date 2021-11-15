@@ -1,4 +1,4 @@
-uuid: 6737acba-ab63-4ccc-99a7-69cb0690e874
+uuid: 16ebe6c7-191b-4d38-92c2-129d2df28b2c
 langcode: en
 status: true
 dependencies:
@@ -15,12 +15,19 @@ settings:
         -
           name: Formatting
           items:
+            - Styles
             - Bold
             - Italic
             - Underline
             - Superscript
             - Subscript
             - RemoveFormat
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - Format
+            - SpecialChar
         -
           name: Links
           items:

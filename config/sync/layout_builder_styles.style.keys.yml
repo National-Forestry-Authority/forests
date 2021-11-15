@@ -1,0 +1,13 @@
+uuid: bb708fa4-054b-43f6-b6ba-8631ec51c2ad
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ORyOMa9IX_y7isqB_HU0_NHPvtuYXMNiXs5wH3779UY
+id: keys
+label: Keys
+classes: "farm_nfa_lb_keys\r\nfarm_nfa_lb_card"
+type: section
+weight: 0
+block_restrictions: {  }
+layout_restrictions: {  }
