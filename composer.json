@@ -46,6 +46,7 @@
         "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.1",
+        "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/migrate_source_csv": "^3.4",
         "drupal/month_year": "^2.0",
         "drupal/select_or_other": "^4.0",

@@ -1,0 +1,32 @@
+.farm_nfa_lb_card {
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: var(--colorGinBorder);
+  padding: 1.5rem;
+  margin: .5rem 0; }
+  .farm_nfa_lb_card .field__label {
+    margin-bottom: 1rem; }
+
+.farm_nfa_lb_keys .layout__region--content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box; }
+  .farm_nfa_lb_keys .layout__region--content .block-layout-builder {
+    border: 2px solid var(--colorGinPrimary);
+    border-radius: 8px;
+    display: inline-flex;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    margin-right: .5rem;
+    flex: 20% 1 1; }
+    .farm_nfa_lb_keys .layout__region--content .block-layout-builder .field__label {
+      margin-bottom: .125rem; }
+
+.farm_nfa_lb_flex_card .field__items {
+  display: flex; }
+  .farm_nfa_lb_flex_card .field__items .field__item {
+    margin-right: 1rem; }
+
+
+/*# sourceMappingURL=styles.css.map*/
