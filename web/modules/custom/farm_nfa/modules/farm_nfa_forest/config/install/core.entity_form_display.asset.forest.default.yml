@@ -11,10 +11,8 @@ dependencies:
     - field.field.asset.forest.planned_prescriptions
     - field.field.asset.forest.purpose
     - field.field.asset.forest.source_origin
-    - field.field.asset.forest.species
     - field.field.asset.forest.stand_number
     - field.field.asset.forest.tree_species
-    - field.field.asset.forest.variety
     - image.style.medium
   module:
     - datetime_range
@@ -183,12 +181,6 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  species:
-    weight: 7
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   stand_number:
     weight: 6
     settings:
@@ -203,12 +195,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  variety:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   data: true

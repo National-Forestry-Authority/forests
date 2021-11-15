@@ -12,10 +12,8 @@ dependencies:
     - field.field.asset.forest.planned_prescriptions
     - field.field.asset.forest.purpose
     - field.field.asset.forest.source_origin
-    - field.field.asset.forest.species
     - field.field.asset.forest.stand_number
     - field.field.asset.forest.tree_species
-    - field.field.asset.forest.variety
   module:
     - field_group
 third_party_settings:
@@ -112,8 +110,6 @@ hidden:
   planned_harvest_date: true
   planned_prescriptions: true
   purpose: true
-  species: true
   stand_number: true
   status: true
   uid: true
-  variety: true
