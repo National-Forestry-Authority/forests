@@ -54,6 +54,7 @@ module:
   farm_nfa_block_compartment: 0
   farm_nfa_cfr: 0
   farm_nfa_forest: 0
+  farm_nfa_lb: 0
   farm_nfa_migrate: 0
   farm_nfa_natural_forest: 0
   farm_nfa_plantation_forest: 0
@@ -96,6 +97,7 @@ module:
   jsonapi_extras: 0
   jsonapi_schema: 0
   layout_builder: 0
+  layout_builder_styles: 0
   layout_discovery: 0
   log: 0
   media: 0

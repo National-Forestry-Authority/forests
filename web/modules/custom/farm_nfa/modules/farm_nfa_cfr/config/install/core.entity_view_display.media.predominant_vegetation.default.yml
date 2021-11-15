@@ -8,7 +8,54 @@ dependencies:
     - media.type.predominant_vegetation
   module:
     - image
+    - layout_builder
     - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 50-50
+          layout_builder_styles_style: ''
+          context_mapping: {  }
+        components:
+          b73d8a6f-89bb-432b-b1ad-c3a110cd9625:
+            uuid: b73d8a6f-89bb-432b-b1ad-c3a110cd9625
+            region: first
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:predominant_vegetation:description'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
+            additional: {  }
+            weight: 0
+          b150d504-9076-4062-ad6b-558a3ee1d575:
+            uuid: b150d504-9076-4062-ad6b-558a3ee1d575
+            region: second
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:predominant_vegetation:field_media_image'
+              formatter:
+                label: visually_hidden
+                settings:
+                  image_style: large
+                  image_link: ''
+                third_party_settings: {  }
+                type: image
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
 id: media.predominant_vegetation.default
 targetEntityType: media
 bundle: predominant_vegetation

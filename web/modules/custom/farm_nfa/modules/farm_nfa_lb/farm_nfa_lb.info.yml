@@ -1,0 +1,15 @@
+name: NFA layout builder
+type: module
+description: 'NFA layout builder layouts'
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - drupal:layout_builder
+  - drupal:layout_builder_styles
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - layout_builder_styles.style.card
+  - layout_builder_styles.style.card_section
+  - layout_builder_styles.style.flex_card
+  - layout_builder_styles.style.keys

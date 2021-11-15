@@ -1,0 +1,11 @@
+uuid: c66e58b6-4985-41b8-9dfc-b438989acc18
+langcode: en
+status: true
+dependencies: {  }
+id: flex_card
+label: Flex
+classes: farm_nfa_lb_flex_card
+type: component
+weight: 0
+block_restrictions: {  }
+layout_restrictions: {  }
