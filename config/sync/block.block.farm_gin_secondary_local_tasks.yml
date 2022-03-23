@@ -1,0 +1,22 @@
+uuid: f13a4796-66cd-4d94-8040-73c4fdf6f324
+langcode: en
+status: true
+dependencies:
+  theme:
+    - farm_gin
+_core:
+  default_config_hash: BCWhood0xXFQYqxFgL1spXdb9KeIuXH1YvTdjIEedDg
+id: farm_gin_secondary_local_tasks
+theme: farm_gin
+region: sidebar_first
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: true
+visibility: {  }

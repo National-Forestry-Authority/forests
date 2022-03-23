@@ -1,0 +1,23 @@
+uuid: d44e8553-8bd6-49c7-8f8c-306ab47a6192
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_ui_theme
+  module:
+    - farm_ui_theme
+  theme:
+    - farm_gin
+id: farm_gin_farm_powered
+theme: farm_gin
+region: content
+weight: 1000
+provider: null
+plugin: farm_powered_by_block
+settings:
+  id: farm_powered_by_block
+  label: 'Powered by farmOS'
+  provider: farm_ui_theme
+  label_display: '0'
+visibility: {  }

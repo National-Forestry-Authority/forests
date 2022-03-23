@@ -9,6 +9,9 @@ web/*
 !web/modules
 web/modules/*
 !web/modules/custom
+!web/themes
+web/themes/*
+!web/themes/custom
 
 .composer
 private

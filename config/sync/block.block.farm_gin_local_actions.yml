@@ -1,0 +1,26 @@
+uuid: dfa2cc03-61c4-44e4-82ef-e36cb0c3a0fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - farm_gin
+_core:
+  default_config_hash: OQ9aJ-4qVwK1x00o9EOYK4eFDjQr_HLpbPiJaPSVZiQ
+id: farm_gin_local_actions
+theme: farm_gin
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/asset/*"
+    negate: true

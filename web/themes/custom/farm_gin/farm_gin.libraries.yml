@@ -1,0 +1,15 @@
+base:
+  version: 0.0.1
+  css:
+    theme:
+      css/styles.css: {}
+  dependencies:
+    - gin/gin
+
+tabs:
+  version: 0.0.1
+  css:
+    theme:
+      css/tabs.css: { }
+  js:
+    js/tabs.js: { }

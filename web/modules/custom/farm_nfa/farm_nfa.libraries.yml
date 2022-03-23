@@ -1,18 +1,3 @@
-off_canvas:
-  version: 1.x
-  css:
-    theme:
-      css/offcanvas-overrides.css: {}
-  dependencies:
-    - core/drupal.dialog.off_canvas
-    - core/drupal.dropbutton
-    - core/drupal
-    - core/jquery
-    - core/jquery.once
-    - core/drupal.ajax
-    - core/views.ajax
-    - farm_map/farmOS-map
-
 behavior_farm_nfa_map_activities:
   js:
     js/farmOS.map.behaviors.farm_nfa_map_activities.js: { }
