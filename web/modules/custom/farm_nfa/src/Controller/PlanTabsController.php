@@ -16,7 +16,6 @@ class PlanTabsController extends ControllerBase {
   public function build(PlanInterface $plan = NULL, $log_types = []) {
     $build = [];
     $build['logs'] = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
-    $build['#attached']['library'][] = 'farm_nfa/off_canvas';
     return $build;
   }
 

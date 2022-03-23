@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - image.style.large
-    - plan.type.plantation
+    - plan.type.natural
     - views.view.priority_logs
   module:
     - file
@@ -22,17 +22,17 @@ third_party_settings:
         layout_id: layout_onecol
         layout_settings:
           label: Maps
-          context_mapping: {  }
           layout_builder_styles_style: ''
+          context_mapping: {  }
         components:
-          62eb922c-e10b-4087-a617-4b139f3f8997:
-            uuid: 62eb922c-e10b-4087-a617-4b139f3f8997
+          244f28fc-9f59-4bc7-b590-c888818a2826:
+            uuid: 244f28fc-9f59-4bc7-b590-c888818a2826
             region: content
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:plan:plantation:image'
+              id: 'field_block:plan:natural:image'
               formatter:
                 type: image
                 label: visually_hidden
@@ -50,14 +50,14 @@ third_party_settings:
           column_widths: 50-50
           context_mapping: {  }
         components:
-          b353e51b-9200-4c43-8823-dd9fbc7fcbe8:
-            uuid: b353e51b-9200-4c43-8823-dd9fbc7fcbe8
+          62d0efda-6c7a-4d85-a9f2-1a722e38ea2c:
+            uuid: 62d0efda-6c7a-4d85-a9f2-1a722e38ea2c
             region: first
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:plan:plantation:status'
+              id: 'field_block:plan:natural:status'
               formatter:
                 label: inline
                 type: list_default
@@ -65,14 +65,14 @@ third_party_settings:
                 third_party_settings: {  }
             additional: {  }
             weight: 4
-          8bffafd7-9ed8-492c-84af-bd2883472b4e:
-            uuid: 8bffafd7-9ed8-492c-84af-bd2883472b4e
+          bb6548bd-3b2d-4ac0-b1a6-f714c86cb1ec:
+            uuid: bb6548bd-3b2d-4ac0-b1a6-f714c86cb1ec
             region: first
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:plan:plantation:flag'
+              id: 'field_block:plan:natural:flag'
               formatter:
                 label: inline
                 type: list_default
@@ -80,14 +80,14 @@ third_party_settings:
                 third_party_settings: {  }
             additional: {  }
             weight: 3
-          f7614190-2215-4c0d-888a-b76425acab35:
-            uuid: f7614190-2215-4c0d-888a-b76425acab35
+          19170a49-3d31-4b64-8e64-3b958b1d536f:
+            uuid: 19170a49-3d31-4b64-8e64-3b958b1d536f
             region: first
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:plan:plantation:notes'
+              id: 'field_block:plan:natural:notes'
               formatter:
                 label: inline
                 type: text_default
@@ -101,14 +101,14 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          0625ce13-d83f-4218-87e8-7cfc5a78e1cb:
-            uuid: 0625ce13-d83f-4218-87e8-7cfc5a78e1cb
+          73ad8821-29fd-4327-b996-5743220a83f2:
+            uuid: 73ad8821-29fd-4327-b996-5743220a83f2
             region: content
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:plan:plantation:file'
+              id: 'field_block:plan:natural:file'
               formatter:
                 type: file_table
                 label: visually_hidden
@@ -117,8 +117,8 @@ third_party_settings:
                 third_party_settings: {  }
             additional: {  }
             weight: 6
-          02df667b-ca42-468c-8e78-52862cd207e8:
-            uuid: 02df667b-ca42-468c-8e78-52862cd207e8
+          f34dad8d-903d-4ea1-b20f-8687bcc532ec:
+            uuid: f34dad8d-903d-4ea1-b20f-8687bcc532ec
             region: content
             configuration:
               id: 'views_block:priority_logs-block_1'
@@ -131,9 +131,9 @@ third_party_settings:
             additional: {  }
             weight: 5
         third_party_settings: {  }
-id: plan.plantation.default
+id: plan.natural.default
 targetEntityType: plan
-bundle: plantation
+bundle: natural
 mode: default
 content:
   asset:

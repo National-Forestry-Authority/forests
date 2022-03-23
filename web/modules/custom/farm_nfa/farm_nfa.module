@@ -46,20 +46,17 @@ function farm_nfa_entity_type_build(array &$entity_types) {
 function farm_nfa_css_alter(&$css) {
   // Workaround to display the css of the offcanvas dialog in a way Gin/Claro
   // don't mess with the styles.
-  $options = \Drupal::routeMatch()->getRouteObject()->getOptions();
-  if (isset($options['parameters']) && !empty($options['parameters']['task_route'])) {
-    unset($css['core/misc/dialog/off-canvas.base.css']);
-    unset($css['core/misc/dialog/off-canvas.button.css']);
-    unset($css['core/misc/dialog/off-canvas.css']);
-    unset($css['core/misc/dialog/off-canvas.details.css']);
-    unset($css['core/misc/dialog/off-canvas.dropbutton.css']);
-    unset($css['core/misc/dialog/off-canvas.form.css']);
-    unset($css['core/misc/dialog/off-canvas.layout.css']);
-    unset($css['core/misc/dialog/off-canvas.motion.css']);
-    unset($css['core/misc/dialog/off-canvas.reset.css']);
-    unset($css['core/misc/dialog/off-canvas.table.css']);
-    unset($css['core/misc/dialog/off-canvas.theme.css']);
-  }
+  unset($css['core/misc/dialog/off-canvas.base.css']);
+  unset($css['core/misc/dialog/off-canvas.button.css']);
+  unset($css['core/misc/dialog/off-canvas.css']);
+  unset($css['core/misc/dialog/off-canvas.details.css']);
+  unset($css['core/misc/dialog/off-canvas.dropbutton.css']);
+  unset($css['core/misc/dialog/off-canvas.form.css']);
+  unset($css['core/misc/dialog/off-canvas.layout.css']);
+  unset($css['core/misc/dialog/off-canvas.motion.css']);
+  unset($css['core/misc/dialog/off-canvas.reset.css']);
+  unset($css['core/misc/dialog/off-canvas.table.css']);
+  unset($css['core/misc/dialog/off-canvas.theme.css']);
 }
 
 /**
@@ -254,7 +251,6 @@ function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state
     $log_types = $route->getDefault('log_types');
     $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
     $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
-    $form['#attached']['library'][] = 'farm_nfa/off_canvas';
     $response->setAttachments($form['#attached']);
     foreach (\Drupal::messenger()->all() as $type) {
       foreach ($type as $message) {

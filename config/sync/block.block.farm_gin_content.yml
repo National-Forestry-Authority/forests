@@ -1,0 +1,22 @@
+uuid: f2e4c8c0-a6ad-4501-9474-45a06d037f47
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - farm_gin
+_core:
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: farm_gin_content
+theme: farm_gin
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

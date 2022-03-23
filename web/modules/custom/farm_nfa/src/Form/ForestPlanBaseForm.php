@@ -203,7 +203,6 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       }
       $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
       $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
-      $form['#attached']['library'][] = 'farm_nfa/off_canvas';
       $response->setAttachments($form['#attached']);
       $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
     }
