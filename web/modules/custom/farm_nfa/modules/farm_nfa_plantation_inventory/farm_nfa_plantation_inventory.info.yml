@@ -9,7 +9,6 @@ dependencies:
 
 config_devel:
   - log.type.plantation_inventory
-  - core.entity_view_display.plan.natural.default
   - field.storage.log.inventory_date
   - field.storage.log.stand_quality
   - field.storage.log.inventory_methodology
