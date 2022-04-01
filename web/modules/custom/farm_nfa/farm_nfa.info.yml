@@ -81,6 +81,8 @@ config_devel:
   - field.storage.log.working_circle
   - field.storage.user.contact_phone_number
   - filter.format.default
+  - system.action.user_remove_role_action.admin
+  - system.action.user_add_role_action.admin
   - taxonomy.vocabulary.activity_type
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose
@@ -88,6 +90,7 @@ config_devel:
   - taxonomy.vocabulary.harvest_type
   - taxonomy.vocabulary.working_circle
   - user.role.authenticated
+  - user.role.admin
   - views.view.plan_logs
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
