@@ -95,6 +95,16 @@ function farm_nfa_menu_local_actions_alter(&$local_actions) {
 }
 
 /**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function farm_nfa_menu_local_tasks_alter(&$data, $route_name) {
+  if ($route_name == ('farm.asset.locations' || 'entity.asset.canonical')) {
+    $data['tabs'][0]['farm.asset.locations']['#link']['title'] = t('Sectors & CFRs');
+    $data['tabs'][0]['entity.asset.canonical']['#link']['title'] = t('Sectors & CFRs');
+  }
+}
+
+/**
  * Implements hook_farm_dashboard_panes().
  */
 function farm_nfa_farm_dashboard_panes() {
