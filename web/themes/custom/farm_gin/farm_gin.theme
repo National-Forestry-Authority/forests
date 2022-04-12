@@ -26,16 +26,6 @@ function farm_gin_preprocess_plan(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for the page title template.
- */
-function farm_gin_preprocess_page_title(&$variables) {
-  $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
-  if ($variables['route_name']=='farm.asset.locations') {
-    $variables['title'] = 'Sectors & CFRs';
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for case 'field__plan__image'.
  */
 function farm_gin_preprocess_field__plan__image(&$variables) {
