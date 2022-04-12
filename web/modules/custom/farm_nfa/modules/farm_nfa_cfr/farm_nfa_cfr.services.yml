@@ -1,0 +1,5 @@
+services:
+  farm_nfa_cfr.route_subscriber:
+    class: Drupal\farm_nfa_cfr\Routing\RouteSubscriber
+    tags:
+      - { name: 'event_subscriber' }
