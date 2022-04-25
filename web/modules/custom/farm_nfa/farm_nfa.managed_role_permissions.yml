@@ -1,3 +1,4 @@
 farm_nfa:
   config_permissions:
     - 'administer media fields'
+    - 'administer media types'
