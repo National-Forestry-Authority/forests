@@ -1,4 +1,11 @@
 farm_nfa:
   config_permissions:
-    - 'administer media fields'
-    - 'administer media types'
+    - 'create predominant_vegetation media'
+    - 'create boundary_demarcation media'
+    - 'create boundary_plan_maps media'
+    - 'edit any boundary_demarcation media'
+    - 'edit any boundary_plan_maps media'
+    - 'edit any predominant_vegetation media'
+    - 'edit own boundary_demarcation media'
+    - 'edit own boundary_plan_maps media'
+    - 'edit own predominant_vegetation media'
