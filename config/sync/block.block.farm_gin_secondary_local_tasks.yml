@@ -1,4 +1,4 @@
-uuid: f13a4796-66cd-4d94-8040-73c4fdf6f324
+uuid: be14b4de-0f98-4fdc-adc3-10faac0e8314
 langcode: en
 status: true
 dependencies:
@@ -8,15 +8,15 @@ _core:
   default_config_hash: BCWhood0xXFQYqxFgL1spXdb9KeIuXH1YvTdjIEedDg
 id: farm_gin_secondary_local_tasks
 theme: farm_gin
-region: sidebar_first
+region: pre_content
 weight: 0
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
   label: 'Secondary tabs'
-  provider: core
   label_display: '0'
+  provider: core
   primary: false
   secondary: true
 visibility: {  }

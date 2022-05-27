@@ -2,11 +2,11 @@ uuid: 03e60a6b-4d99-448a-90bc-47f560a68edb
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_planting
-  module:
-    - farm_nfa
 _core:
   default_config_hash: JQXBMsDJypH0A6eDqYa-KfprSYAGHgIrMikeYv6wUYY
 id: planting

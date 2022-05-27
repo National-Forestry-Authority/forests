@@ -20,19 +20,19 @@ bundle: natural_inventory
 mode: plan
 content:
   average_silviculture_score:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   coup_number:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   flag:
     type: options_select
     weight: 7
@@ -42,35 +42,35 @@ content:
   geometry:
     type: farm_map_geofield
     weight: 4
+    region: content
     settings:
       populate_file_field: file
       display_raw_geometry: true
-    region: content
     third_party_settings: {  }
   notes:
     type: text_textarea
+    weight: 5
+    region: content
     settings:
       rows: 5
       placeholder: ''
-    weight: 5
-    region: content
     third_party_settings: {  }
   quantity:
     type: inline_entity_form_complex
+    weight: 2
+    region: content
     settings:
       form_mode: default
-      revision: true
       override_labels: false
       label_singular: ''
       label_plural: ''
-      collapsible: false
-      collapsed: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
-    weight: 2
-    region: content
+      collapsible: false
+      collapsed: false
+      revision: true
     third_party_settings: {  }
   status:
     type: options_select
@@ -85,11 +85,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   working_circle:
+    type: options_select
     weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   asset: true
   category: true

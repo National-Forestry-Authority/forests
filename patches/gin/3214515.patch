@@ -1,0 +1,123 @@
+From 527f5a76f2dbefcddb99d8fa4e4029f62bb69d1a Mon Sep 17 00:00:00 2001
+From: Dieter Holvoet <dieter.holvoet@gmail.com>
+Date: Thu, 12 May 2022 14:18:26 +0200
+Subject: [PATCH] Make status messages added using JS dismissable
+
+---
+ dist/js/messages.js                      | 11 ++++-
+ js/messages.js                           | 51 +++++++++++++++++++++++-
+ templates/misc/status-messages.html.twig |  2 +-
+ 3 files changed, 59 insertions(+), 5 deletions(-)
+
+diff --git a/dist/js/messages.js b/dist/js/messages.js
+index b565942..ba9d735 100644
+--- a/dist/js/messages.js
++++ b/dist/js/messages.js
+@@ -1,13 +1,20 @@
+ (($, Drupal, drupalSettings) => {
+   Drupal.behaviors.ginMessagesDismiss = {
+     attach: function(context) {
+-      $(".messages .button--dismiss", context).once("messages-dismiss").click((function(event) {
++      $(".js-message-close", context).once("messages-dismiss").click((function(event) {
+         event.preventDefault();
+-        const $elem = $(this).parents(".messages-list__item");
++        const $elem = $(this).parents(".messages-list");
+         $elem.css("opacity", 0), $elem.bind("transitionend", (function() {
+           $(this).addClass("visually-hidden"), $(this).css("opacity", 1);
+         }));
+       }));
+     }
++  }, Drupal.theme.message = (_ref, _ref2) => {
++    let {text} = _ref, {type, id} = _ref2;
++    const messagesTypes = Drupal.Message.getMessageTypeLabels(), messageWrapper = document.createElement("div");
++    return messageWrapper.setAttribute("class", `messages messages--${type}`), messageWrapper.setAttribute("role", "error" === type || "warning" === type ? "alert" : "status"), 
++    messageWrapper.setAttribute("aria-labelledby", `${id}-title`), messageWrapper.setAttribute("data-drupal-message-id", id), 
++    messageWrapper.setAttribute("data-drupal-message-type", type), messageWrapper.innerHTML = `\n      <div class="messages__header">\n        <h2 id="${id}-title" class="messages__title">\n          <button type="button" class="button button--dismiss js-message-close" title="${Drupal.t("Dismiss")}"><span class="icon-close"></span>${Drupal.t("Close")}</button>\n          ${messagesTypes[type]}\n        </h2>\n      </div>\n      <div class="messages__content">\n        ${text}\n      </div>\n    `, 
++    Drupal.behaviors.ginMessagesDismiss.attach(messageWrapper), messageWrapper;
+   };
+ })(jQuery, Drupal, drupalSettings);
+\ No newline at end of file
+diff --git a/js/messages.js b/js/messages.js
+index 29122b4..730e4e4 100644
+--- a/js/messages.js
++++ b/js/messages.js
+@@ -10,9 +10,9 @@
+ (($, Drupal, drupalSettings) => {
+   Drupal.behaviors.ginMessagesDismiss = {
+     attach: function(context) {
+-      $('.messages .button--dismiss', context).once('messages-dismiss').click(function(event) {
++      $('.js-message-close', context).once('messages-dismiss').click(function(event) {
+         event.preventDefault();
+-        const $elem = $(this).parents('.messages-list__item');
++        const $elem = $(this).parents('.messages-list');
+ 
+         $elem.css('opacity', 0);
+         $elem.bind('transitionend', function() {
+@@ -22,4 +22,51 @@
+       });
+     }
+   }
++
++  /**
++   * Overrides message theme function.
++   *
++   * @param {object} message
++   *   The message object.
++   * @param {string} message.text
++   *   The message text.
++   * @param {object} options
++   *   The message context.
++   * @param {string} options.type
++   *   The message type.
++   * @param {string} options.id
++   *   ID of the message, for reference.
++   *
++   * @return {HTMLElement}
++   *   A DOM Node.
++   */
++  Drupal.theme.message = ({ text }, { type, id }) => {
++    const messagesTypes = Drupal.Message.getMessageTypeLabels();
++    const messageWrapper = document.createElement('div');
++
++    messageWrapper.setAttribute('class', `messages messages--${type}`);
++    messageWrapper.setAttribute(
++        'role',
++        type === 'error' || type === 'warning' ? 'alert' : 'status',
++    );
++    messageWrapper.setAttribute('aria-labelledby', `${id}-title`);
++    messageWrapper.setAttribute('data-drupal-message-id', id);
++    messageWrapper.setAttribute('data-drupal-message-type', type);
++
++    messageWrapper.innerHTML = `
++      <div class="messages__header">
++        <h2 id="${id}-title" class="messages__title">
++          <button type="button" class="button button--dismiss js-message-close" title="${Drupal.t('Dismiss')}"><span class="icon-close"></span>${Drupal.t('Close')}</button>
++          ${messagesTypes[type]}
++        </h2>
++      </div>
++      <div class="messages__content">
++        ${text}
++      </div>
++    `;
++
++    Drupal.behaviors.ginMessagesDismiss.attach(messageWrapper);
++
++    return messageWrapper;
++  };
+ })(jQuery, Drupal, drupalSettings);
+diff --git a/templates/misc/status-messages.html.twig b/templates/misc/status-messages.html.twig
+index b58a039..6ee1168 100644
+--- a/templates/misc/status-messages.html.twig
++++ b/templates/misc/status-messages.html.twig
+@@ -53,7 +53,7 @@
+               {% endif %}
+             </div>
+           {% endif %}
+-          <button type="button" class="button button--dismiss" title="{{ 'Dismiss'|t }}"><span class="icon-close"></span>{{ 'Close'|t }}</button>
++          <button type="button" class="button button--dismiss js-message-close" title="{{ 'Dismiss'|t }}"><span class="icon-close"></span>{{ 'Close'|t }}</button>
+           <div class="messages__content">
+             {% if messages|length > 1 %}
+               <ul class="messages__list">
+-- 
+GitLab
+

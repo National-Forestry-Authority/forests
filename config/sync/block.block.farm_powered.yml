@@ -2,13 +2,13 @@ uuid: f4abb3fd-ca3f-4ca4-8ab4-9b936966f6be
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - farm_ui_theme
   module:
     - farm_ui_theme
   theme:
     - gin
+  enforced:
+    module:
+      - farm_ui_theme
 id: farm_powered
 theme: gin
 region: content
@@ -18,6 +18,6 @@ plugin: farm_powered_by_block
 settings:
   id: farm_powered_by_block
   label: 'Powered by farmOS'
-  provider: farm_ui_theme
   label_display: '0'
+  provider: farm_ui_theme
 visibility: {  }

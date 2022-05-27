@@ -1,25 +1,26 @@
-preset_accent_color: green
-preset_focus_color: orange
-enable_darkmode: false
-classic_toolbar: vertical
-icon_default: false
-icon_path: 'public://nfa-logo.png'
-high_contrast_mode: false
-show_user_theme_settings: false
-third_party_settings:
-  shortcut:
-    module_link: true
 _core:
   default_config_hash: QdiqmcH9tjpstXqCQKv4G4rHYE4HjWLFkVzyqooqEWM
 favicon:
-  use_default: false
-  path: profiles/farm/modules/core/ui/theme/favicon.ico
   mimetype: image/vnd.microsoft.icon
+  path: profiles/farm/modules/core/ui/theme/favicon.ico
+  use_default: false
 features:
-  node_user_picture: true
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
+  node_user_picture: true
+logo:
+  path: 'public://nfa-logo.png'
+  use_default: false
+third_party_settings:
+  shortcut:
+    module_link: true
+preset_accent_color: green
+preset_focus_color: orange
+enable_darkmode: ''
+classic_toolbar: vertical
+high_contrast_mode: false
 accent_color: ''
 focus_color: ''
+show_user_theme_settings: false
 icon_upload: ''

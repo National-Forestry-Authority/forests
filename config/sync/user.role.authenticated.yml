@@ -1,7 +1,12 @@
 uuid: 974eb79d-c0c1-4ef3-b067-c80956210098
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.default
+  module:
+    - filter
+    - media
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated

@@ -1,5 +1,8 @@
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+langcode: en
 uuid: 151b7842-8f83-4ffc-b8c0-e374e9f135dc
-name: 'NFA Forests'
+name: 'Drush Site-Install'
 mail: admin@example.com
 slogan: ''
 page:
@@ -8,7 +11,4 @@ page:
   front: /dashboard
 admin_compact_mode: false
 weight_select_max: 100
-langcode: en
 default_langcode: en
-_core:
-  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

@@ -4,17 +4,18 @@ features:
   comment_user_verification: true
   favicon: 1
 favicon:
-  use_default: 0
-  path: profiles/farm/modules/core/ui/theme/favicon.ico
-  mimetype: image/vnd.microsoft.icon
-enable_darkmode: 0
+  use_default: 1
+enable_darkmode: '0'
 preset_accent_color: green
 accent_color: ''
-preset_focus_color: orange
+preset_focus_color: gin
 focus_color: ''
 high_contrast_mode: 0
 show_user_theme_settings: 0
 classic_toolbar: vertical
-icon_default: 0
+icon_default: 1
 icon_upload: ''
-icon_path: 'public://nfa-logo.png'
+logo:
+  use_default: 1
+secondary_toolbar_frontend: 0
+show_description_toggle: 0

@@ -2,11 +2,11 @@ uuid: a8cf3a80-c988-4d24-a914-d17d26c58085
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_location
   enforced:
     module:
       - farm_land
-  module:
-    - farm_location
 third_party_settings:
   farm_location:
     is_location: true

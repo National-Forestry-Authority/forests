@@ -2,11 +2,11 @@ uuid: ecfaf2e0-3102-4458-86f7-6fc594bfb2e8
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_plantation_inventory
-  module:
-    - farm_nfa
 _core:
   default_config_hash: RQ_WhIqBnHTu2_7cSDivHp5aM1i3vZqSsnbX4Kw5adM
 id: plantation_inventory

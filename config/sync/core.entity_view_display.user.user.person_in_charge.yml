@@ -17,11 +17,11 @@ mode: person_in_charge
 content:
   contact_phone_number:
     type: telephone_link
-    weight: 0
-    region: content
     label: inline
     settings:
       title: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   member_for: true

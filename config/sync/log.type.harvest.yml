@@ -2,11 +2,11 @@ uuid: 70b4a627-cc39-4a62-a81b-ab2ea2c14b70
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_harvest
-  module:
-    - farm_nfa
 _core:
   default_config_hash: Gd2h4NLJ5jFiX8AMKvP4hSmSFDl6_VtggqXMDqQfzpM
 id: harvest

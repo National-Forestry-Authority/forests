@@ -24,101 +24,101 @@ bundle: zone
 mode: default
 content:
   criteria_reasons:
-    weight: 4
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 4
     region: content
   description_of_purpose:
-    weight: 0
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 0
     region: content
   file:
     type: file_table
     label: visually_hidden
     settings:
       use_description_as_link_text: true
+    third_party_settings: {  }
     weight: 10
     region: content
-    third_party_settings: {  }
   flag:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 6
     region: content
+  geometry:
+    type: farm_map_geofield
+    label: inline
     settings: {  }
     third_party_settings: {  }
-  geometry:
-    label: inline
-    type: farm_map_geofield
-    settings: {  }
     weight: 12
     region: content
-    third_party_settings: {  }
   id_tag:
-    label: inline
     type: id_tag
-    weight: 8
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 8
+    region: content
   image:
     type: image
     label: visually_hidden
     settings:
-      image_style: large
       image_link: file
+      image_style: large
+    third_party_settings: {  }
     weight: 9
     region: content
-    third_party_settings: {  }
   location:
-    label: inline
     type: entity_reference_label
-    weight: 11
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 11
+    region: content
   notes:
-    label: above
     type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
     weight: 2
     region: content
-    settings: {  }
-    third_party_settings: {  }
   parent:
-    label: inline
     type: entity_reference_label
-    weight: 7
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 7
+    region: content
   permitted_activities:
-    weight: 1
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   status:
-    label: inline
     type: list_default
-    weight: 5
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 5
+    region: content
   zonation_type:
-    weight: 3
+    type: entity_reference_label
     label: above
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 3
     region: content
 hidden:
   data: true

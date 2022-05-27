@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - views.view.farm_asset
+  module:
+    - views
   enforced:
     module:
       - farm_ui_views
-  module:
-    - views
 _core:
   default_config_hash: 8l9x5NWKbezjXL2dWN323WT7DOguxw3z3w6PLQqMQoI
 name: farm_asset
@@ -25,12 +25,12 @@ widget_selector: single
 widget_selector_configuration: {  }
 widgets:
   ceea0626-02bb-4cea-92f4-adca2561835d:
+    id: view
+    uuid: ceea0626-02bb-4cea-92f4-adca2561835d
+    label: View
+    weight: 1
     settings:
-      view: farm_asset
-      view_display: entity_browser
       submit_text: 'Select assets'
       auto_select: false
-    uuid: ceea0626-02bb-4cea-92f4-adca2561835d
-    weight: 1
-    label: View
-    id: view
+      view: farm_asset
+      view_display: entity_browser

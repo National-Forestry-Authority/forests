@@ -2,11 +2,11 @@ uuid: fc5422c2-0dab-46b6-84a9-9ae3808b2301
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_role
   enforced:
     module:
       - farm_role_roles
-  module:
-    - farm_role
 third_party_settings:
   farm_role:
     access:

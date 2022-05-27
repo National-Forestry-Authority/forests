@@ -2,11 +2,11 @@ uuid: e0d86a3e-2738-4a0b-bdf2-9225d49149a1
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_observation
-  module:
-    - farm_nfa
 _core:
   default_config_hash: rfqUeBTLizQmuYVlcmXBZFYx59ITQLJl7s3qcCpNiA0
 id: observation

@@ -1,4 +1,4 @@
-uuid: dfa2cc03-61c4-44e4-82ef-e36cb0c3a0fd
+uuid: 69e63956-149f-4929-8eaf-2205e0155b48
 langcode: en
 status: true
 dependencies:
@@ -17,10 +17,10 @@ plugin: local_actions_block
 settings:
   id: local_actions_block
   label: 'Primary admin actions'
-  provider: core
   label_display: '0'
+  provider: core
 visibility:
   request_path:
     id: request_path
-    pages: "<front>\r\n/asset/*"
     negate: true
+    pages: "<front>\r\n/asset/*"

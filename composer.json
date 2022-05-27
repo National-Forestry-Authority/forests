@@ -50,7 +50,7 @@
         "drupal/migrate_source_csv": "^3.4",
         "drupal/month_year": "^2.0",
         "drupal/select_or_other": "^4.0",
-        "farmos/farmos": "2.0.0-alpha5",
+        "farmos/farmos": "^2.0",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
@@ -58,7 +58,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "drupal/core-composer-scaffold": true,
+            "cweagans/composer-patches": true,
+            "composer/installers": true,
+            "wikimedia/composer-merge-plugin": true,
+            "oomphinc/composer-installers-extender": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
@@ -81,10 +89,9 @@
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
             "drupal/gin": {
-                "Issue #3214515-4: Status messages added using JS are not dismissable": "https://www.drupal.org/files/issues/2021-11-11/3214515-8.patch"
+                "Issue #3214515-4: Status messages added using JS are not dismissable": "patches/gin/3214515.patch"
             },
             "drupal/core": {
-                "Issue #1874838-26: Allow exposed blocks to use 'Link display' settings": "https://www.drupal.org/files/issues/2021-11-11/1874838-26.patch",
                 "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
             }
         },

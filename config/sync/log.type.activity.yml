@@ -2,11 +2,11 @@ uuid: 64e41918-c8ba-42d5-9fec-4f0bf4cdb10c
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_activity
-  module:
-    - farm_nfa
 _core:
   default_config_hash: NxMgj1EgVCkW4HXTEWOqHhhp4PTUVzSPkQSXu3l2y44
 id: activity

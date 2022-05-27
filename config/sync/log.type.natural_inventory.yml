@@ -2,11 +2,11 @@ uuid: c09813fa-f269-4bdc-9fc6-df6451d0a1d4
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_natural_forest
-  module:
-    - farm_nfa
 _core:
   default_config_hash: ok_a0pumfhxxJKPTC8xt04t_ellV1UIp6Kz3moLOjNw
 id: natural_inventory

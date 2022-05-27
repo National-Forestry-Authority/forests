@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: 8gwG5hTvIhM_TZyyG2_Vdl7g63M1Rp8-t4jtTcE2vdk
 enabled_entity_type_ids:
   asset: asset
   data_stream: data_stream
@@ -6,5 +8,3 @@ enabled_entity_type_ids:
   quantity: quantity
   taxonomy_term: taxonomy_term
   user: user
-_core:
-  default_config_hash: 8gwG5hTvIhM_TZyyG2_Vdl7g63M1Rp8-t4jtTcE2vdk

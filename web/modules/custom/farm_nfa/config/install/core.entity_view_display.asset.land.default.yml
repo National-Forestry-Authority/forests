@@ -22,85 +22,85 @@ content:
     label: visually_hidden
     settings:
       use_description_as_link_text: true
+    third_party_settings: {  }
     weight: 8
     region: content
-    third_party_settings: {  }
   flag:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 4
     region: content
+  geometry:
+    type: farm_map_geofield
+    label: inline
     settings: {  }
     third_party_settings: {  }
-  geometry:
-    label: inline
-    type: farm_map_geofield
-    settings: {  }
     weight: 10
     region: content
-    third_party_settings: {  }
   id_tag:
-    label: inline
     type: id_tag
-    weight: 6
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 6
+    region: content
   image:
     type: image
     label: visually_hidden
     settings:
-      image_style: large
       image_link: file
+      image_style: large
+    third_party_settings: {  }
     weight: 7
     region: content
-    third_party_settings: {  }
   land_type:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 1
     region: content
-    settings: {  }
-    third_party_settings: {  }
   location:
-    label: inline
     type: entity_reference_label
-    weight: 9
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 9
+    region: content
   notes:
-    label: inline
     type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 3
     region: content
-    settings: {  }
-    third_party_settings: {  }
   parent:
-    label: inline
     type: entity_reference_label
-    weight: 5
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 5
+    region: content
   person_in_charge:
-    weight: 2
+    type: entity_reference_entity_view
     label: inline
     settings:
       view_mode: person_in_charge
       link: false
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    weight: 2
     region: content
   status:
-    label: inline
     type: list_default
-    weight: 0
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   data: true
   intrinsic_geometry: true

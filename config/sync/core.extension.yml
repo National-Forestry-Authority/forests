@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
@@ -44,6 +46,7 @@ module:
   farm_land: 0
   farm_location: 0
   farm_log: 0
+  farm_log_asset: 0
   farm_log_category: 0
   farm_log_quantity: 0
   farm_login: 0
@@ -132,5 +135,3 @@ theme:
   gin: 0
   farm_gin: 0
 profile: farm
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

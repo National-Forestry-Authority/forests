@@ -122,3 +122,12 @@ function farm_nfa_update_9007(&$sandbox) {
   $forest_type->setThirdPartySetting('farm_location', 'is_fixed', FALSE);
   $forest_type->save();
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Enable log asset module.
+ */
+function farm_nfa_update_9008(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_log_asset']);
+}
