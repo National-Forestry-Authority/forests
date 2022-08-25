@@ -1,0 +1,21 @@
+.layout--twocol .layout__region {
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+
+.layout--twocol .layout__region--first {
+  padding-right: 2.5em;
+}
+
+.layout--twocol .layout__region--first .block,
+.layout--twocol .layout__region--second .block {
+  color: var(--colorGinTextLight);
+  padding: 1rem;
+  background: transparent;
+  border-radius: var(--ginBorderDefault);
+  box-shadow: none;
+  border: 1px solid var(--colorGinBorder);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+}

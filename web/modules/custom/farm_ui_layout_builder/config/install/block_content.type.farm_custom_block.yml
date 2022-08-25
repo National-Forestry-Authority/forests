@@ -1,0 +1,8 @@
+uuid: a455e5e7-678c-4904-afb9-ed7098fd3a8b
+langcode: en
+status: true
+dependencies: {  }
+id: farm_custom_block
+label: 'Farm custom block'
+revision: 0
+description: ''

@@ -46,7 +46,9 @@
         "drupal/entity_dialog_formatter": "^1.0@beta",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.1",
+        "drupal/gin_lb": "^1.0@beta",
         "drupal/layout_builder_styles": "^1.0@beta",
+        "drupal/lb_routing": "^1.0",
         "drupal/migrate_source_csv": "^3.4",
         "drupal/month_year": "^2.0",
         "drupal/select_or_other": "^4.0",
@@ -82,9 +84,6 @@
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
-            "drupal/entity_reference_revisions": {
-                "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "https://www.drupal.org/files/issues/2020-04-14/allow_scalar_values-2667748-D8-41.patch"
-            },
             "drupal/select_or_other": {
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
@@ -93,6 +92,9 @@
             },
             "drupal/core": {
                 "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
+            },
+            "farmos/farmos": {
+                "Issue #3305724-3: Allow to configure the map type on the map block": "https://www.drupal.org/files/issues/2022-08-24/3305724-3.patch"
             }
         },
         "merge-plugin": {

@@ -1,0 +1,22 @@
+uuid: 774d4669-48f6-4b75-a0d0-88c210573660
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.farm_custom_block
+    - field.field.block_content.farm_custom_block.body
+  module:
+    - text
+id: block_content.farm_custom_block.default
+targetEntityType: block_content
+bundle: farm_custom_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

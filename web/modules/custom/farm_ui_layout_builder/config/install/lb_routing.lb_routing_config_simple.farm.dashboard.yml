@@ -1,0 +1,117 @@
+sections:
+  -
+    layout_id: layout_twocol
+    layout_settings:
+      label: ''
+    components:
+      62e2ea81-96f6-4a93-a3c6-2e977cfe5861:
+        uuid: 62e2ea81-96f6-4a93-a3c6-2e977cfe5861
+        region: first
+        configuration:
+          id: 'views_block:farm_log-block_upcoming'
+          label: 'Upcoming tasks'
+          label_display: visible
+          provider: views
+          views_label: 'Upcoming tasks'
+          items_per_page: none
+          context_mapping: {  }
+        weight: 1
+        additional:
+          layout_builder_styles_style: ''
+      623511d1-8879-446f-82a2-d9727916c8e6:
+        uuid: 623511d1-8879-446f-82a2-d9727916c8e6
+        region: first
+        configuration:
+          id: farm_nfa_dashboard_search_form_block
+          label: Assets
+          label_display: visible
+          provider: farm_nfa
+          route: entity.asset.collection
+          entity_type: asset
+          context_mapping: {  }
+        weight: 0
+        additional:
+          layout_builder_styles_style: ''
+      f0549071-5581-4857-b7a1-ed1c46c705fa:
+        uuid: f0549071-5581-4857-b7a1-ed1c46c705fa
+        region: second
+        configuration:
+          id: farm_nfa_dashboard_search_form_block
+          label: Plans
+          label_display: visible
+          provider: farm_nfa
+          route: entity.plan.collection
+          entity_type: plan
+          context_mapping: {  }
+        weight: 1
+        additional:
+          layout_builder_styles_style: ''
+      499ca44a-d87d-4f3c-ad92-90ba1d65a60a:
+        uuid: 499ca44a-d87d-4f3c-ad92-90ba1d65a60a
+        region: second
+        configuration:
+          id: farm_metrics_block
+          label: Metrics
+          label_display: visible
+          provider: farm_ui_metrics
+          context_mapping: {  }
+        weight: 2
+        additional:
+          layout_builder_styles_style: ''
+      4f055994-eda3-4325-85e9-06d45b012073:
+        uuid: 4f055994-eda3-4325-85e9-06d45b012073
+        region: first
+        configuration:
+          id: 'views_block:farm_log-block_late'
+          label: 'Late tasks'
+          label_display: visible
+          provider: views
+          views_label: 'Late tasks'
+          items_per_page: none
+          context_mapping: {  }
+        weight: 2
+        additional:
+          layout_builder_styles_style: ''
+      51afe215-ea9d-4d76-8112-0800a7a9bd47:
+        uuid: 51afe215-ea9d-4d76-8112-0800a7a9bd47
+        region: second
+        configuration:
+          id: 'views_block:farm_plan-block_active'
+          label: 'Active plans'
+          label_display: visible
+          provider: views
+          views_label: 'Active plans'
+          items_per_page: none
+          context_mapping: {  }
+        weight: 3
+        additional:
+          layout_builder_styles_style: ''
+      8de0b173-bc44-41fc-8e4b-adc357f4fbfc:
+        uuid: 8de0b173-bc44-41fc-8e4b-adc357f4fbfc
+        region: top
+        configuration:
+          id: map_block
+          label: null
+          label_display: null
+          provider: null
+          map_type: default
+          context_mapping: {  }
+        weight: 2
+        additional:
+          layout_builder_styles_style: ''
+      b8428d71-ad1b-43de-9f04-b94227fd12f4:
+        uuid: b8428d71-ad1b-43de-9f04-b94227fd12f4
+        region: top
+        configuration:
+          id: 'inline_block:farm_custom_block'
+          label: 'Page title'
+          label_display: 0
+          provider: layout_builder
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:40:\"Drupal\\block_content\\Entity\\BlockContent\":30:{s:8:\"\0*\0theme\";N;s:9:\"\0*\0values\";a:16:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:0:{}}s:2:\"id\";a:1:{s:9:\"x-default\";a:0:{}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"976dd90a-b371-4cf6-9a0f-550c3f9dd43e\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:17:\"farm_custom_block\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1661349539;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:10:\"Page title\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1661349539;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:4:\"body\";a:1:{s:9:\"x-default\";a:1:{i:0;a:3:{s:7:\"summary\";s:0:\"\";s:5:\"value\";s:18:\"<p>Dashboard</p>\r\n\";s:6:\"format\";s:7:\"default\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:17:\"farm_custom_block\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:19:\"\0*\0accessDependency\";N;}"
+          context_mapping: {  }
+        weight: 1
+        additional:
+          layout_builder_styles_style: ''
+    third_party_settings: {  }
