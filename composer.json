@@ -1,5 +1,5 @@
 {
-    "name": "mstenta/farm_nfa",
+    "name": "cambrico/farm_nfa",
     "description": "farmOS Deployment for National Forestry Authority of Uganda",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -94,7 +94,7 @@
                 "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
             },
             "farmos/farmos": {
-                "Issue #3305724-3: Allow to configure the map type on the map block": "https://www.drupal.org/files/issues/2022-08-24/3305724-3.patch"
+                "Issue #3305724-11: Allow to configure the map type on the map block": "patches/farm/3305724.patch"
             }
         },
         "merge-plugin": {
@@ -104,6 +104,10 @@
             ],
             "merge-extra": true,
             "merge-extra-deep": true
+        },
+        "patchLevel": {
+            "drupal/core": "-p2",
+            "farmos/farmos": "-p1"
         }
     }
 }
