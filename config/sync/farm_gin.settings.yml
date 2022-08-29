@@ -18,4 +18,5 @@ icon_upload: ''
 logo:
   use_default: 1
 secondary_toolbar_frontend: 0
+layout_density: ''
 show_description_toggle: 0

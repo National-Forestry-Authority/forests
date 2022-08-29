@@ -1,0 +1,10 @@
+uuid: a455e5e7-678c-4904-afb9-ed7098fd3a8b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5l3X8BysnhU4RV1FmJEJDt25FDWrHB6ijNXOv_y88Tk
+id: farm_custom_block
+label: 'Farm custom block'
+revision: 0
+description: ''

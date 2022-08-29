@@ -1,0 +1,12 @@
+uuid: 26d52bde-170b-48d9-8310-c3a9bc0cb721
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_map
+id: input
+label: Input
+description: 'Syncs editable map layer data into a form input.'
+library: farm_map/behavior_input
+settings: {  }

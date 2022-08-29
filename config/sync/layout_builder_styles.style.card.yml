@@ -8,6 +8,7 @@ id: card
 label: Card
 classes: farm_nfa_lb_card
 type: component
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
 weight: 0

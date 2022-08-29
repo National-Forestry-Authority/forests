@@ -106,6 +106,7 @@ module:
   layout_builder: 0
   layout_builder_styles: 0
   layout_discovery: 0
+  lb_routing: 0
   log: 0
   media: 0
   migrate: 0
@@ -133,7 +134,6 @@ module:
   views_geojson: 0
   views_ui: 0
   views: 10
-  lb_routing: 11
   farm: 1000
 theme:
   claro: 0

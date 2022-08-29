@@ -8,6 +8,7 @@ id: card_section
 label: Card
 classes: farm_nfa_lb_card
 type: section
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
 weight: 0

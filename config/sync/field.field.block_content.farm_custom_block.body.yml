@@ -1,0 +1,25 @@
+uuid: e5d908f4-5fcd-4aff-9aa0-8ee9c041adc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.farm_custom_block
+    - field.storage.block_content.body
+  module:
+    - text
+_core:
+  default_config_hash: XkMCCph4uSUFPpeTPuHWNpUZA_8zpuzlx8TYUH6MgBU
+id: block_content.farm_custom_block.body
+field_name: body
+entity_type: block_content
+bundle: farm_custom_block
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

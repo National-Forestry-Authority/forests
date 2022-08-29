@@ -8,6 +8,7 @@ id: flex_card
 label: Flex
 classes: farm_nfa_lb_flex_card
 type: component
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
 weight: 0
