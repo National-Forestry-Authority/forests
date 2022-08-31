@@ -1,7 +1,0 @@
-sections:
-  -
-    layout_id: layout_twocol
-    layout_settings:
-      label: ''
-    components: {  }
-    third_party_settings: {  }

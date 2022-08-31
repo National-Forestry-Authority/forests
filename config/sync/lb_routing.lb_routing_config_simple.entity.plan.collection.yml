@@ -1,9 +1,0 @@
-_core:
-  default_config_hash: XZTKCN4rVIiAg2hasOWwdv5NRaRJo2maWdlHhfW7qnY
-sections:
-  -
-    layout_id: layout_twocol
-    layout_settings:
-      label: ''
-    components: {  }
-    third_party_settings: {  }

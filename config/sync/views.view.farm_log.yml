@@ -2358,6 +2358,27 @@ display:
         - user
         - user.permissions
       tags: {  }
+  logs_list_block:
+    id: logs_list_block
+    display_title: 'Block (logs list)'
+    display_plugin: block
+    position: 8
+    display_options:
+      defaults:
+        use_ajax: false
+      use_ajax: true
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }
   page:
     id: page
     display_title: 'All logs (page)'
