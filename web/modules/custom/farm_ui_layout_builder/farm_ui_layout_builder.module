@@ -29,3 +29,14 @@ function farm_ui_layout_builder_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'farm_ui_layout_builder/layout';
   }
 }
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * Remove gin toolbar menu alter so the farmOS one is the one winning.
+ */
+function farm_ui_layout_builder_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'toolbar_alter') {
+    unset($implementations['gin_toolbar']);
+  }
+}
