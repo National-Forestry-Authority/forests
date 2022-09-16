@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\field\Entity\FieldConfig;
 use Drupal\log\Entity\LogType;
 
 /**
@@ -130,4 +131,34 @@ function farm_nfa_update_9007(&$sandbox) {
  */
 function farm_nfa_update_9008(&$sandbox) {
   \Drupal::service('module_installer')->install(['farm_log_asset']);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Remove misconfigured fields
+ */
+function farm_nfa_update_9010(&$sandbox) {
+  $fields_by_entity = [
+    'asset' => [
+      'variety',
+      'species',
+      'detailed_vegetation',
+      'predominant_vegetation',
+      'current_purpose',
+      'field_boundary_opening_history',
+      'field_boundary_plan_details',
+    ],
+    'media' => [
+      'date',
+    ],
+  ];
+  $bundle_field_maps = Drupal::keyValue('entity.definitions.bundle_field_map');
+  foreach ($fields_by_entity as $entity_type_id => $field_names) {
+    $data = $bundle_field_maps->get($entity_type_id);
+    foreach($field_names as $field_name) {
+      unset($data[$field_name]);
+    }
+    $bundle_field_maps->set($entity_type_id, $data);
+  }
 }

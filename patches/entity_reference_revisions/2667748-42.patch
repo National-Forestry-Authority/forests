@@ -1,0 +1,44 @@
+diff --git a/src/Plugin/DataType/EntityReferenceRevisions.php b/src/Plugin/DataType/EntityReferenceRevisions.php
+index 8b7fe45..3e8f8db 100644
+--- a/src/Plugin/DataType/EntityReferenceRevisions.php
++++ b/src/Plugin/DataType/EntityReferenceRevisions.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\entity_reference_revisions\Plugin\DataType;
+ 
++use Drupal\Core\TypedData\TypedDataInterface;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Entity\Plugin\DataType\EntityReference;
+ use Drupal\Core\Entity\RevisionableInterface;
+@@ -48,6 +49,18 @@ class EntityReferenceRevisions extends EntityReference {
+    */
+   protected $id;
+ 
++  /**
++   * The entity storage service for this field's target entity type.
++   *
++   * @var \Drupal\Core\Entity\EntityStorageInterface
++   */
++  protected $entityStorage;
++
++  public function __construct($definition, $name, TypedDataInterface $parent) {
++    parent::__construct($definition, $name, $parent);
++    $this->entityStorage = \Drupal::entityTypeManager()->getStorage($this->getTargetDefinition()->getEntityTypeId());
++  }
++
+   /**
+    * Returns the definition of the referenced entity.
+    *
+@@ -115,6 +128,12 @@ class EntityReferenceRevisions extends EntityReference {
+     elseif (is_object($value) && $value instanceof EntityInterface) {
+       $this->target = $value->getTypedData();
+     }
++    elseif (is_scalar($value)) {
++      if ($entity = $this->entityStorage->load($value)) {
++        $this->id = $entity->id();
++        $this->revision_id = $entity->getRevisionId();
++      }
++    }
+     elseif (!is_scalar($value['target_id']) || !is_scalar($value['target_revision_id']) || $this->getTargetDefinition()->getEntityTypeId() === NULL) {
+       throw new \InvalidArgumentException('Value is not a valid entity.');
+     }
