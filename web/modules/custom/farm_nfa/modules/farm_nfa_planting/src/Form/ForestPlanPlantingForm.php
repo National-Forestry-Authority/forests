@@ -47,7 +47,7 @@ class ForestPlanPlantingForm extends ForestPlanBaseForm {
           $hectares = $quantity->get('value')->value;
         }
       }
-      if ($total_trees && $hectares) {
+      if (!empty($total_trees) && !empty($hectares)) {
         $form['seedlings_per_hectare'] = [
           '#type' => 'markup',
           '#markup' => $this->t('Number of seedlings per hectares: %value', ['%value' => round($total_trees / $hectares, 2)]),
