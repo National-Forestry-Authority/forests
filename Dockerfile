@@ -67,6 +67,14 @@ RUN { \
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
+# Add git as current composer.lock needs it
+RUN apt-get update -qq \
+ && DEBIAN_FRONTEND=noninteractive \
+    apt-get install -yqq -o=Dpkg::Use-Pty=0 --no-install-recommends \
+      git \
+ && rm -rf /var/lib/apt/lists/* \
+ && apt-get clean -yqq
+
 COPY . /var/www
 
 WORKDIR /var/www
