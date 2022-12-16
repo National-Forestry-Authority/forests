@@ -14,6 +14,7 @@ services:
     labels:
       - traefik.enable=false
       - com.centurylinklabs.watchtower.enable=true
+      - docker-volume-backup.stop-during-backup=${BACKUP_STOP_CONTAINER_LABEL:-forests}
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
@@ -59,6 +60,31 @@ services:
     networks:
       - internal
       - traefik
+
+  backup:
+    image: offen/docker-volume-backup:v2
+    restart: always
+    environment:
+      BACKUP_STOP_CONTAINER_LABEL: ${BACKUP_STOP_CONTAINER_LABEL:-forests}
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      NOTIFICATION_LEVEL:
+      NOTIFICATION_URLS:
+      BACKUP_CRON_EXPRESSION:
+      AWS_ENDPOINT:
+      BACKUP_FILENAME:
+      BACKUP_PRUNING_PREFIX:
+      BACKUP_RETENTION_DAYS:
+      AWS_S3_BUCKET_NAME:
+      AWS_S3_PATH:
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /opt/docker/dropin/docker-volume-backup/notifications.tpl:/etc/dockervolumebackup/notifications.d/template.tpl:ro
+      - db-data:/backup/db-data:ro
+      - drupal-files:/backup/drupal-files:ro
+      - drupal-private:/backup/drupal-private:ro
 
 volumes:
   db-data:
