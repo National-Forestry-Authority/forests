@@ -129,7 +129,7 @@ ENV DB_HOST='mysql' \
     PROJECT_BASE_URL='drupal' \
     TRUSTED_HOSTS='' \
     DEPLOY='1' \
-    DEPLOY_CMD='sleep 10; drush deploy'
+    DEPLOY_CMD='sleep 10; drush cr'
 
 ENTRYPOINT ["custom-entrypoint"]
 CMD ["apache2-foreground"]
