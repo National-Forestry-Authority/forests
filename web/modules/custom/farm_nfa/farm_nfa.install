@@ -162,3 +162,13 @@ function farm_nfa_update_9010(&$sandbox) {
     $bundle_field_maps->set($entity_type_id, $data);
   }
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Uninstall Devel Entity Updates and Devel
+ */
+function farm_nfa_update_9011(&$sandbox) {
+  \Drupal::service('module_installer')->uninstall(['devel_entity_updates']);
+  \Drupal::service('module_installer')->uninstall(['devel']);
+}
