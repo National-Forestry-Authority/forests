@@ -39,6 +39,7 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
+        "drupal/backup_migrate": "^5.0",
         "drupal/config_devel": "^1.8",
         "drupal/default_content": "^2.0@alpha",
         "drupal/devel_entity_updates": "^3.0",
