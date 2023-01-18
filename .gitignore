@@ -12,6 +12,7 @@ web/modules/*
 !web/themes
 web/themes/*
 !web/themes/custom
+
 .composer
 private
 config/sync/.htaccess
