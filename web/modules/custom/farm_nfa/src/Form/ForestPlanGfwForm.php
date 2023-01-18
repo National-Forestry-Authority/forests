@@ -28,8 +28,12 @@ class ForestPlanGfwForm extends FormBase {
     $form['#title'] = $this->t('GFW');
 
     $form['placeholder'] = [
-      '#type' => 'markup',
-      '#markup' => '(GFW form placeholder)',
+      '#type' => 'farm_map',
+      '#map_type' => 'farm_nfa_plan_locations',
+      '#map_settings' => [
+        'plan' => \Drupal::routeMatch()->getRawParameter('plan')
+        
+      ],
     ];
 
     return $form;

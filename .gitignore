@@ -12,7 +12,7 @@ web/modules/*
 !web/themes
 web/themes/*
 !web/themes/custom
-
+forests.sql
 .composer
 private
 config/sync/.htaccess
