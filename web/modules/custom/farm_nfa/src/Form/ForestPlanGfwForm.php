@@ -27,7 +27,7 @@ class ForestPlanGfwForm extends FormBase {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
 
-    $form['placeholder'] = [
+    $form['gfw_map_placeholder'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
