@@ -11,6 +11,10 @@ use Drupal\Core\Form\FormStateInterface;
  * @ingroup farm_nfa
  */
 class ForestPlanGfwForm extends FormBase {
+  
+  public function getPlan() {
+    return \Drupal::routeMatch()->getRawParameter('plan');
+  }
 
   /**
    * {@inheritdoc}
@@ -27,12 +31,11 @@ class ForestPlanGfwForm extends FormBase {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
 
-    $form['gfw_map_placeholder'] = [
+    $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
-        'plan' => \Drupal::routeMatch()->getRawParameter('plan')
-        
+        'plan' => $this->getPlan(),
       ],
     ];
 
