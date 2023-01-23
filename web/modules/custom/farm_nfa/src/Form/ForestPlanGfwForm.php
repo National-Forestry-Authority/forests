@@ -39,6 +39,7 @@ class ForestPlanGfwForm extends FormBase {
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan')
       ],
+      '#attributes' => ['id' => 'gfw-map-component'],
     ];
 
     return $form;

@@ -33,9 +33,8 @@
       })
 
       // Add layers for fire and deforestation alerts in the GFW plan tab
-      let gfwRegex = /\/plan\/\d+\/gfw/;
-      let windowUrl = window.location.href;
-      if (windowUrl.match(gfwRegex)) {
+      let isGfwMap = document.querySelector('#gfw-map-component') !== null;
+      if (isGfwMap) {
         farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/latest/query');
         farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/umd_tree_cover_loss/latest/query');
       }
