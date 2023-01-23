@@ -39,7 +39,11 @@ class ForestPlanGfwForm extends FormBase {
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan')
       ],
-      '#attributes' => ['id' => 'gfw-map-component'],
+      '#attached' => [
+        'library' => [
+          'farm_nfa/behavior_farm_nfa_gfw_layers',
+        ],
+      ],
     ];
 
     return $form;
