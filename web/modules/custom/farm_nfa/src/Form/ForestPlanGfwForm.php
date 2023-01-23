@@ -12,8 +12,10 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class ForestPlanGfwForm extends FormBase {
   
-  public function getPlan() {
-    return \Drupal::routeMatch()->getRawParameter('plan');
+  protected $routeMatch;
+
+  public function __construct() {
+    $this->routeMatch = \Drupal::routeMatch();
   }
 
   /**
@@ -35,7 +37,7 @@ class ForestPlanGfwForm extends FormBase {
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
-        'plan' => $this->getPlan(),
+        'plan' => $this->routeMatch->getRawParameter('plan')
       ],
     ];
 
