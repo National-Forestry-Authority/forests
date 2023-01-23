@@ -64,7 +64,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
       geojson : geoJson,
       color: `${mapType == "fire" ? "red": "green"}`
     });
-    if(mapType !== "fire") {
+    if (mapType !== "fire") {
       let allLayersControllers = document.querySelectorAll(".layer-switcher input");
       allLayersControllers.forEach((layerController) => {
         if (layerController.nextSibling.innerText !== "Fire Alerts") {
