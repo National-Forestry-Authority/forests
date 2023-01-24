@@ -4,6 +4,8 @@ namespace Drupal\farm_nfa\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Forest plan gfw form.
@@ -12,10 +14,33 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class ForestPlanGfwForm extends FormBase {
   
+  /**
+   * The current route match.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
   protected $routeMatch;
 
-  public function __construct() {
-    $this->routeMatch = \Drupal::routeMatch();
+  /**
+   * Constructs a new ForestPlanGfwForm.
+   *
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The current route match.
+   */
+  public function __construct(RouteMatchInterface $routeMatch) {
+    $this->routeMatch = $routeMatch;
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    // Instantiates this form class.
+    return new static(
+      // Load the service required to construct this class.
+      $container->get('current_route_match')
+      // 
+    );
   }
 
   /**
