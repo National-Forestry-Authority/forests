@@ -35,11 +35,8 @@ class ForestPlanGfwForm extends FormBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    // Instantiates this form class.
     return new static(
-      // Load the service required to construct this class.
       $container->get('current_route_match')
-      // 
     );
   }
 

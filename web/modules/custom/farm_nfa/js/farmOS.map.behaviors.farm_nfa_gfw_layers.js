@@ -9,7 +9,7 @@
 }())
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
-  let planId = window.location.href.split('/')[4];
+  let planId = instance.farmMapSettings.plan;
   let cfrPlanUrl = `${window.origin}/nfa-assets/geojson/${planId}`;
   try {
     let cfr = await (await fetch(cfrPlanUrl)).json();
