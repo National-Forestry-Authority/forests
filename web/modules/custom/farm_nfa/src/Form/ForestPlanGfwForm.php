@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Forest plan gfw form.
@@ -20,15 +21,25 @@ class ForestPlanGfwForm extends FormBase {
    * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   protected $routeMatch;
+  
+  /**
+   * The current request.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
 
   /**
    * Constructs a new ForestPlanGfwForm.
    *
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
    */
-  public function __construct(RouteMatchInterface $routeMatch) {
+  public function __construct(RouteMatchInterface $routeMatch, Request $request) {
     $this->routeMatch = $routeMatch;
+    $this->request = $request;
   }
   
   /**
@@ -36,7 +47,8 @@ class ForestPlanGfwForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('request_stack')->getCurrentRequest()
     );
   }
 
@@ -59,7 +71,9 @@ class ForestPlanGfwForm extends FormBase {
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
-        'plan' => $this->routeMatch->getRawParameter('plan')
+        'plan' => $this->routeMatch->getRawParameter('plan'),
+        'host' => $this->request->getHost(),
+        'scheme' => $this->request->getScheme(),
       ],
       '#attached' => [
         'library' => [
