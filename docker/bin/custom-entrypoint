@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "${DEPLOY}" = "1" ]; then
+  su www-data --shell /bin/sh --command "${DEPLOY_CMD}"
+fi
+
+set -e
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- docker-php-entrypoint "$@"
+fi
+
+exec "$@"
