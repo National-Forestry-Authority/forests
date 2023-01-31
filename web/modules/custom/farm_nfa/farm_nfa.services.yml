@@ -14,4 +14,8 @@ services:
       [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
   farm_nfa.referer_plan_loader:
     class: Drupal\farm_nfa\FarmNfaRefererPlanLoader
-
+  farm_nfa.farm_config_overrider:
+    class: Drupal\farm_nfa\Config\FarmConfigOverrides
+    tags:
+      - {name: config.factory.override, priority: 5}
+    arguments: ['@config.factory']
