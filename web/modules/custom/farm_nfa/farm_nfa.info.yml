@@ -91,7 +91,7 @@ config_devel:
   - taxonomy.vocabulary.working_circle
   - user.role.authenticated
   - user.role.admin
-  - views.view.nfa_farm_asset
+  - views.view.farm_asset
   - views.view.plan_logs
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
