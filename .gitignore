@@ -15,4 +15,3 @@ web/themes/*
 
 .composer
 private
-config/sync/.htaccess
