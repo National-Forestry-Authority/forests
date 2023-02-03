@@ -73,7 +73,6 @@ class ForestPlanGfwForm extends FormBase {
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
         'host' => $this->request->getHost(),
-        'scheme' => $this->request->getScheme(),
       ],
       '#attached' => [
         'library' => [
