@@ -2,15 +2,15 @@
     farmOS.map.behaviors.farm_nfa_gfw_layers = {
       attach: async function (instance) {
         // Add layers for fire and deforestation alerts in the GFW plan tab
-        farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/latest/query');
-        farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/umd_tree_cover_loss/latest/query');
+        farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json');
+        farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/umd_tree_cover_loss/v1.9/query/json');
       }
     }
 }())
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
   let planId = instance.farmMapSettings.plan;
-  const pageOrigin = instance.farmMapSettings.scheme + '://' + instance.farmMapSettings.host;
+  const pageOrigin = 'https://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
     let cfr = await (await fetch(cfrPlanUrl)).json();
