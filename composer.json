@@ -39,6 +39,7 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
+        "drupal/backup_migrate": "^5.0",
         "drupal/config_devel": "^1.8",
         "drupal/default_content": "^2.0@alpha",
         "drupal/devel_entity_updates": "^3.0",
@@ -93,6 +94,9 @@
             },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
+            },
+            "drupal/backup_migrate": {
+                "Issue #2930369: New backup source: PostgresQL (D8)": "https://www.drupal.org/files/issues/2022-11-20/backup_migrate-n2930369-28.patch"
             }
         },
         "merge-plugin": {
