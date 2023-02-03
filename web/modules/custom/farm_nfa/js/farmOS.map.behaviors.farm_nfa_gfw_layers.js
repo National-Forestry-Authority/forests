@@ -10,7 +10,7 @@
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
   let planId = instance.farmMapSettings.plan;
-  const pageOrigin = instance.farmMapSettings.scheme + '://' + instance.farmMapSettings.host;
+  const pageOrigin = 'https://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
     let cfr = await (await fetch(cfrPlanUrl)).json();
