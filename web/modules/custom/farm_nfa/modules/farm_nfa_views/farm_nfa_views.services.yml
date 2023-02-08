@@ -1,0 +1,6 @@
+services:
+  farm_nfa_views.route_subscriber:
+    class: Drupal\farm_nfa_views\Routing\RouteSubscriber
+    arguments: [ '@config.factory' ]
+    tags:
+      - { name: 'event_subscriber' }

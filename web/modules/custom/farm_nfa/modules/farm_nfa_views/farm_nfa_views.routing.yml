@@ -1,0 +1,7 @@
+farm_nfa_views.settings_form:
+  path: '/admin/config/farm-nfa/settings'
+  defaults:
+    _form: '\Drupal\farm_nfa_views\Form\SettingsForm'
+    _title: 'Farm NFA views overrides'
+  requirements:
+    _permission: 'administer site configuration'

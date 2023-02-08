@@ -1,0 +1,11 @@
+name: NFA Views
+description: NFA overrides of farmOS views.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - drupal:views
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - views.view.nfa_farm_asset

@@ -1,0 +1,11 @@
+farm_nfa.admin_config_farm_nfa:
+  title: 'Farm NFA'
+  route_name: farm_nfa.admin_config_farm_nfa
+  parent: system.admin_config
+  description: 'Configure Farm NFA settings.'
+farm_nfa_views.settings_form:
+  title: 'Farm NFA views overrides'
+  route_name: farm_nfa_views.settings_form
+  parent: farm_nfa.admin_config_farm_nfa
+  description: 'Manage overrides of FarmOS views.'
+  weight: 10

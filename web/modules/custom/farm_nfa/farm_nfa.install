@@ -172,3 +172,10 @@ function farm_nfa_update_9011(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(['devel_entity_updates']);
   \Drupal::service('module_installer')->uninstall(['devel']);
 }
+
+/**
+ * Install Farm NFA Views module.
+ */
+function farm_nfa_update_9012(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_views']);
+}
