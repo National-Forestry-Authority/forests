@@ -2,15 +2,15 @@
     farmOS.map.behaviors.farm_nfa_gfw_layers = {
       attach: async function (instance) {
         // Add layers for fire and deforestation alerts in the GFW plan tab
-        farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/latest/query');
-        farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/umd_tree_cover_loss/latest/query');
+        farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json');
+        farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json');
       }
     }
 }())
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
   let planId = instance.farmMapSettings.plan;
-  const pageOrigin = instance.farmMapSettings.scheme + '://' + instance.farmMapSettings.host;
+  const pageOrigin = 'https://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
     let cfr = await (await fetch(cfrPlanUrl)).json();
@@ -26,7 +26,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
           "type": "Polygon",
           "coordinates": []
         },
-        "sql": `SELECT latitude,longitude FROM results WHERE ${mapType == "fire" ? "iso='UGA' AND alert__date >='2023-01-18'" : "umd_glad_landsat_alerts__date >='2014-12-31'"}`
+        "sql": `SELECT latitude,longitude FROM results WHERE ${mapType == "fire" ? "iso='UGA' AND alert__date >='2023-02-14'" : "gfw_integrated_alerts__date>='2023-01-15'"}`
       };
       if (cfrGeometry && cfrGeometry.coordinates) {
         gfwApiBody.geometry.coordinates.push(cfrGeometry.coordinates[0]);
