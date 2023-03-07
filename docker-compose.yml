@@ -1,0 +1,50 @@
+---
+version: "3.7"
+
+services:
+  db:
+    image: ${DB_IMAGE?err}:${DB_IMAGE_TAG?err}
+    restart: unless-stopped
+    stop_grace_period: 30s
+    environment:
+      POSTGRES_DB: "${DB_NAME?err}"
+      POSTGRES_USER: "${DB_USER?err}"
+      POSTGRES_PASSWORD: "${DB_PASS?err}"
+    volumes:
+      - db-data:${DB_DATADIR:-/var/lib/postgresql/data}
+  redis:
+    image: ${REDIS_IMAGE?err}:${REDIS_IMAGE_TAG?err}
+    restart: always
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASS?err}
+      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
+    #volumes:
+    #  - "redis_data:/bitnami/redis/data"
+  drupal:
+    image: ${DRUPAL_IMAGE?err}:${DRUPAL_IMAGE_TAG?err}
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    environment:
+      # Overrides Dockerfile defaults
+      DB_USER: ${DB_USER?err}
+      DB_PASS: ${DB_PASS?err}
+      DB_NAME: ${DB_NAME?err}
+      DB_HOST: ${DB_HOST:-db}
+      DB_DRIVER: ${DB_DRIVER:-pgsql}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_PREFIX: ${DB_PREFIX:-}
+      APP_DOMAIN: ${APP_DOMAIN:-${COMPOSE_PROJECT_NAME?err}}
+      TRUSTED_HOSTS: ${TRUSTED_HOSTS:-}
+      DEPLOY: ${DEPLOY:-1}
+      DEPLOY_CMD: ${DEPLOY_CMD:-sleep 10; drush cr}
+    volumes:
+      #DISCUSS ENV VARS
+      - drupal-files:/var/www/web/sites/default/files
+      - drupal-private:/var/www/web/private
+
+volumes:
+  db-data:
+  drupal-files:
+  drupal-private:

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * DB
@@ -25,8 +25,8 @@ if (!isset($settings['hash_salt']) || $settings['hash_salt'] == '') {
  * Trusted hosts
  */
 $settings['trusted_host_patterns'] = [
-  sprintf('^%s$', str_replace('.', '\.', $_SERVER['PROJECT_BASE_URL'])),
-  sprintf('^.+\.%s$', str_replace('.', '\.', $_SERVER['PROJECT_BASE_URL'])),
+  sprintf('^%s$', str_replace('.', '\.', $_SERVER['APP_DOMAIN'])),
+  sprintf('^.+\.%s$', str_replace('.', '\.', $_SERVER['APP_DOMAIN'])),
 ];
 
 $trusted_hosts = $_SERVER['TRUSTED_HOSTS'] ?? '';
@@ -35,7 +35,6 @@ $trusted_hosts = array_filter($trusted_hosts);
 foreach ($trusted_hosts as $host) {
   $settings['trusted_host_patterns'][] = sprintf('^%s$', str_replace('.', '\.', $host));
 }
-
 
 /**
  * Paths
