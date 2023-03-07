@@ -1,3 +1,9 @@
+# Sbit.io
+!.env
+!.github
+!docker/drupal/*
+# END Sbit.io
+
 keys
 vendor
 /.editorconfig

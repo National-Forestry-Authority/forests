@@ -2,70 +2,36 @@
 version: "3.7"
 
 services:
-
   db:
-    image: postgres:12
-    restart: unless-stopped
-    stop_grace_period: 30s
-    environment:
-      POSTGRES_USER: "${POSTGRES_USER:-drupal}"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-drupal}"
-      POSTGRES_DB: "${POSTGRES_DB:-drupal}"
     labels:
       - traefik.enable=false
       - com.centurylinklabs.watchtower.enable=true
-      - docker-volume-backup.stop-during-backup=${BACKUP_STOP_CONTAINER_LABEL:-forests}
-    volumes:
-      - db-data:/var/lib/postgresql/data
+      - docker-volume-backup.stop-during-backup=${COMPOSE_PROJECT_NAME?err}
     networks:
       - internal
-
   redis:
-    image: "docker.io/bitnami/redis:6.0-debian-10"
-    restart: always
-    environment:
-      REDIS_PASSWORD: "${REDIS_PASSWORD:-drupal}"
-      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     labels:
       - traefik.enable=false
       - com.centurylinklabs.watchtower.enable=true
-    #volumes:
-    #  - "redis_data:/bitnami/redis/data"
     networks:
       - internal
-
   drupal:
-    image: ${DOCKER_REGISTRY:-docker.tr.utils.nfa.go.ug}/national-forestry-authority/forests:${DRUPAL_IMAGE_TAG:-main}
-    #build:
-    #  context: .
-    depends_on:
-      - db
-    environment:
-      # Overrides Dockerfile defaults
-      DB_HOST: db
-      DB_DRIVER: pgsql
-      DB_PORT: 5432
-      PROJECT_BASE_URL: ${HOST_NAME:-}
-    restart: unless-stopped
-    #ports:
-    #  - "${HOST_PORT:-80}:80"
     labels:
       - traefik.enable=true
-      - traefik.docker.network=traefik
-      - traefik.http.routers.${TRAEFIK_ROUTER_NAME:-forests}.rule=Host("${HOST_NAME}")
+      - traefik.docker.network=${EXTERNAL_NETWORK?err}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME?err}.rule=Host("${APP_DOMAIN:-${COMPOSE_PROJECT_NAME?err}}")
       - com.centurylinklabs.watchtower.monitor-only=true
-    volumes:
-      - drupal-files:/var/www/web/sites/default/files
-      - drupal-private:/var/www/web/private
     networks:
       - internal
-      - traefik
+      - external
 
   backup:
+    profiles:
+      - prod
     image: offen/docker-volume-backup:v2
     restart: always
     environment:
-      BACKUP_STOP_CONTAINER_LABEL: ${BACKUP_STOP_CONTAINER_LABEL:-forests}
+      BACKUP_STOP_CONTAINER_LABEL: ${COMPOSE_PROJECT_NAME?err}
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
       NOTIFICATION_LEVEL:
@@ -93,7 +59,8 @@ volumes:
   #redis-data:
 
 networks:
-  traefik:
+  external:
+    name: ${EXTERNAL_NETWORK?err}
     external: true
   internal:
     external: false
