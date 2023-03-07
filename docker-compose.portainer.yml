@@ -62,6 +62,8 @@ services:
       - traefik
 
   backup:
+    profiles:
+      - prod
     image: offen/docker-volume-backup:v2
     restart: always
     environment:
