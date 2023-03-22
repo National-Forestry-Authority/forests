@@ -283,7 +283,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
         if (empty($entity_id) || $entity->access('update')) {
           $row['actions']['ief_entity_edit'] = [
             '#type' => 'submit',
-            '#value' => (empty($entity_id) || strlen($entity->get('value')->value) === 0) ? $this->t('Add') : $this->t('Edit'),
+            '#value' => empty($entity_id) ? $this->t('Add') : $this->t('Edit'),
             '#name' => 'ief-' . $this->getIefId() . '-entity-edit-' . $key,
             '#limit_validation_errors' => [],
             '#ajax' => [
