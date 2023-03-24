@@ -437,6 +437,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
   protected function mergeQuantityEntities(array $entities, EntityInterface $parent_entity) {
     $create_bundles = $this->getCreateBundles();
     $bundle = reset($create_bundles);
+    $default_entities = [];
     foreach ($this->getSetting('quantity') as $delta => $quantity) {
       $qty_entity = Quantity::create(['type' => $bundle] + $quantity);
       $default_entities[] = [

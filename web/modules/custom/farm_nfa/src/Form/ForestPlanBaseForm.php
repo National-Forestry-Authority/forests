@@ -66,7 +66,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   protected $request;
 
   /**
-   * Form settings,
+   * Form settings.
    *
    * @var array
    */

@@ -14,14 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
  * @ingroup farm_nfa
  */
 class ForestPlanGfwForm extends FormBase {
-  
+
   /**
    * The current route match.
    *
    * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   protected $routeMatch;
-  
+
   /**
    * The current request.
    *
@@ -41,7 +41,7 @@ class ForestPlanGfwForm extends FormBase {
     $this->routeMatch = $routeMatch;
     $this->request = $request;
   }
-  
+
   /**
    * {@inheritdoc}
    */

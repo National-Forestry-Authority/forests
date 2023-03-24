@@ -2,7 +2,7 @@ services:
   farm_nfa.map_activities_event_subscriber:
     class: Drupal\farm_nfa\EventSubscriber\FarmNfaMapActivitiesEventSubscriber
     arguments:
-      [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
+      [ '@current_route_match', '@asset.location', '@farm_nfa.referer_plan_loader' ]
     tags:
       - { name: 'event_subscriber' }
   farm_nfa.map_render_event_subscriber_decorator:
@@ -11,7 +11,8 @@ services:
     decorates: farm_ui_map.map_render_event_subscriber
     decoration_priority: 1
     arguments:
-      [ '@entity_type.manager', '@farm_map.layer_style_loader' ]
+      [ '@entity_type.manager', '@farm_map.layer_style_loader', '@current_route_match' ]
   farm_nfa.referer_plan_loader:
     class: Drupal\farm_nfa\FarmNfaRefererPlanLoader
+    arguments: ['@request_stack']
 
