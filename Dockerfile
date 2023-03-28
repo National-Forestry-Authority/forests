@@ -1,6 +1,6 @@
 # Based on https://github.com/docker-library/drupal/blob/0bc2672/9.4/php8.1/apache-bullseye/Dockerfile
 # from https://www.drupal.org/docs/system-requirements/php-requirements
-FROM php:7.4-apache-bullseye
+FROM php:8.1-apache-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # install the PHP extensions we need

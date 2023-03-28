@@ -82,6 +82,7 @@ function farm_nfa_planting_log_delete(LogInterface $log) {
       // Recreating the query every time to avoid issues.
       $query = \Drupal::entityTypeManager()->getStorage('log')->getQuery();
       $query->condition('asset', $asset->id());
+      $query->accessCheck(TRUE);
       $results = $query->count()->execute();
       if ($results <= 1) {
         $asset->delete();

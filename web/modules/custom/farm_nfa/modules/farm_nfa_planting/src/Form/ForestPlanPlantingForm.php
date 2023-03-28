@@ -4,7 +4,10 @@ namespace Drupal\farm_nfa_planting\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\farm_location\AssetLocationInterface;
 use Drupal\farm_nfa\Form\ForestPlanBaseForm;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Forest plan planting form.
@@ -12,6 +15,36 @@ use Drupal\farm_nfa\Form\ForestPlanBaseForm;
  * @ingroup farm_nfa_planting
  */
 class ForestPlanPlantingForm extends ForestPlanBaseForm {
+
+  /**
+   * The asset location service.
+   *
+   * @var \Drupal\farm_location\AssetLocationInterface
+   */
+  protected $assetLocation;
+
+  /**
+   * Constructs a new ForestPlanPlantingForm.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The HTTP request.
+   * @param \Drupal\farm_location\AssetLocationInterface $asset_location
+   *   The asset location service.
+   */
+  public function __construct(Request $request, AssetLocationInterface $asset_location) {
+    parent::__construct($request);
+    $this->assetLocation = $asset_location;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('request_stack')->getCurrentRequest(),
+      $container->get('asset.location'),
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -83,7 +116,7 @@ class ForestPlanPlantingForm extends ForestPlanBaseForm {
     if ($plan->bundle() == 'plantation') {
       /** @var \Drupal\log\Entity\LogInterface $log */
       $log = $form['#log'];
-      $referenced_assets = \Drupal::service('asset.location')->getAssetsByLocation($log->get('location')->referencedEntities());
+      $referenced_assets = $this->assetLocation->getAssetsByLocation($log->get('location')->referencedEntities());
       $referenced_assets = array_filter($referenced_assets, fn($asset) => $asset->bundle() === 'forest');
 
       if ($log->isNew() && !empty($referenced_assets)) {
