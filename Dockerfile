@@ -69,7 +69,7 @@ RUN apt-get update && apt-get install -y libgeos-dev \
     && make install \
   ) \
   && rm -r php-geos \
-  && docker-php-ext-enable geos \
+  && docker-php-ext-enable geos
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
