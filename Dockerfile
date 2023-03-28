@@ -47,6 +47,9 @@ RUN set -eux; \
         | sort -u \
         | xargs -rt apt-mark manual; \
     \
+    apt-get install -y --no-install-recommends \
+        git \
+    ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
