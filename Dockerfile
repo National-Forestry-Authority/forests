@@ -53,7 +53,23 @@ RUN set -eux; \
 # Add needed extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
-RUN install-php-extensions bcmath geos
+RUN install-php-extensions bcmath
+
+# Build and install the GEOS PHP extension.
+# See https://git.osgeo.org/gitea/geos/php-geos
+RUN apt-get update && apt-get install -y libgeos-dev \
+  && git clone https://git.osgeo.org/gitea/geos/php-geos.git \
+  && ( \
+    cd php-geos \
+    # Checkout latest commit with PHP 8 support.
+    && git checkout e77d5a16abbf89a59d947d1fe49381a944762c9d \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install \
+  ) \
+  && rm -r php-geos \
+  && docker-php-ext-enable geos \
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
