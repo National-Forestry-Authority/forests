@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * DB
@@ -25,8 +25,8 @@ if (!isset($settings['hash_salt']) || $settings['hash_salt'] == '') {
  * Trusted hosts
  */
 $settings['trusted_host_patterns'] = [
-  sprintf('^%s$', str_replace('.', '\.', $_SERVER['PROJECT_BASE_URL'])),
-  sprintf('^.+\.%s$', str_replace('.', '\.', $_SERVER['PROJECT_BASE_URL'])),
+  sprintf('^%s$', str_replace('.', '\.', $_SERVER['APP_DOMAIN'])),
+  sprintf('^.+\.%s$', str_replace('.', '\.', $_SERVER['APP_DOMAIN'])),
 ];
 
 $trusted_hosts = $_SERVER['TRUSTED_HOSTS'] ?? '';
@@ -35,7 +35,6 @@ $trusted_hosts = array_filter($trusted_hosts);
 foreach ($trusted_hosts as $host) {
   $settings['trusted_host_patterns'][] = sprintf('^%s$', str_replace('.', '\.', $host));
 }
-
 
 /**
  * Paths
@@ -47,3 +46,5 @@ $docroot_base = realpath(DRUPAL_ROOT . '/..');
 $settings['file_public_path'] = "sites/default/files";
 $settings['file_private_path'] = $docroot_base . '/private';
 $settings['file_temp_path'] = $docroot_base . '/tmp';
+
+$config['farm_map_mapbox.settings']['api_key'] = 'pk.eyJ1IjoibmF0LWZvci1hdXRoLXVnIiwiYSI6ImNsZGlvd255YjAydDUzbmxndDB4MzU5YnEifQ.u8Tb2PvtKSsxE0AsYJM-Qg';

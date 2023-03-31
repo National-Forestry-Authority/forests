@@ -39,20 +39,20 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
-        "drupal/config_devel": "^1.8",
-        "drupal/default_content": "^2.0@alpha",
-        "drupal/devel_entity_updates": "^3.0",
+        "drupal/config_devel": "^1",
+        "drupal/default_content": "^2",
+        "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
-        "drupal/entity_dialog_formatter": "^1.0@beta",
+        "drupal/entity_dialog_formatter": "^1",
         "drupal/farm_forest": "2.x",
-        "drupal/field_group": "^3.1",
-        "drupal/gin_lb": "^1.0@beta",
-        "drupal/layout_builder_styles": "^1.0@beta",
-        "drupal/lb_routing": "^1.0",
-        "drupal/migrate_source_csv": "^3.4",
-        "drupal/month_year": "^2.0",
-        "drupal/select_or_other": "^4.0",
-        "farmos/farmos": "^2.0",
+        "drupal/field_group": "^3",
+        "drupal/gin_lb": "^1",
+        "drupal/layout_builder_styles": "^1",
+        "drupal/lb_routing": "^1",
+        "drupal/migrate_source_csv": "^3",
+        "drupal/month_year": "^2",
+        "drupal/select_or_other": "^4",
+        "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
@@ -67,7 +67,8 @@
             "composer/installers": true,
             "wikimedia/composer-merge-plugin": true,
             "oomphinc/composer-installers-extender": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     },
     "extra": {
@@ -87,17 +88,14 @@
             "drupal/select_or_other": {
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
-            "drupal/gin": {
-                "Issue #3214515-4: Status messages added using JS are not dismissable": "patches/gin/3214515.patch"
-            },
             "drupal/core": {
                 "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
             },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
             },
-            "farmos/farmos": {
-                "Issue #3305724-11: Allow to configure the map type on the map block": "patches/farm/3305724.patch"
+            "drupal/backup_migrate": {
+                "Issue #2930369: New backup source: PostgresQL (D8)": "https://www.drupal.org/files/issues/2022-11-20/backup_migrate-n2930369-28.patch"
             }
         },
         "merge-plugin": {
@@ -112,5 +110,15 @@
             "drupal/core": "-p2",
             "farmos/farmos": "-p1"
         }
+    },
+    "require-dev": {
+        "mglaman/drupal-check": "^1",
+        "mglaman/phpstan-drupal": "^1",
+        "palantirnet/drupal-rector": "^0.15.0",
+        "phpcompatibility/php-compatibility": "^9",
+        "phpcompatibility/phpcompatibility-all": "^1",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/extension-installer": "^1",
+        "phpstan/phpstan-deprecation-rules": "^1"
     }
 }

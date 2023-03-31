@@ -66,7 +66,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   protected $request;
 
   /**
-   * Form settings,
+   * Form settings.
    *
    * @var array
    */
@@ -178,7 +178,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   /**
    * {@inheritdoc}
    */
-  public function successfulAjaxSubmit(&$form, FormStateInterface $form_state) : AjaxResponse {
+  public function successfulAjaxSubmit($form, FormStateInterface $form_state) : AjaxResponse {
     $response = new AjaxResponse();
     /** @var \Drupal\log\Entity\LogInterface $log */
     $log = $form['#log'];

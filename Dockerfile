@@ -1,6 +1,6 @@
 # Based on https://github.com/docker-library/drupal/blob/0bc2672/9.4/php8.1/apache-bullseye/Dockerfile
 # from https://www.drupal.org/docs/system-requirements/php-requirements
-FROM php:7.4-apache-bullseye
+FROM php:8.1-apache-bullseye
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # install the PHP extensions we need
@@ -47,13 +47,32 @@ RUN set -eux; \
         | sort -u \
         | xargs -rt apt-mark manual; \
     \
+    apt-get install -y --no-install-recommends \
+        git \
+    ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
 # Add needed extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
-RUN install-php-extensions bcmath geos
+RUN install-php-extensions bcmath
+
+# Build and install the GEOS PHP extension.
+# See https://git.osgeo.org/gitea/geos/php-geos
+RUN apt-get update && apt-get install -y libgeos-dev \
+  && git clone https://git.osgeo.org/gitea/geos/php-geos.git \
+  && ( \
+    cd php-geos \
+    # Checkout latest commit with PHP 8 support.
+    && git checkout e77d5a16abbf89a59d947d1fe49381a944762c9d \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install \
+  ) \
+  && rm -r php-geos \
+  && docker-php-ext-enable geos
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
@@ -126,10 +145,10 @@ ENV DB_HOST='mysql' \
     DB_PASS='drupal' \
     DB_PREFIX='' \
     DB_DRIVER='mysql' \
-    PROJECT_BASE_URL='drupal' \
+    APP_DOMAIN='drupal' \
     TRUSTED_HOSTS='' \
     DEPLOY='1' \
-    DEPLOY_CMD='sleep 10; drush deploy'
+    DEPLOY_CMD='sleep 10; drush cr'
 
 ENTRYPOINT ["custom-entrypoint"]
 CMD ["apache2-foreground"]

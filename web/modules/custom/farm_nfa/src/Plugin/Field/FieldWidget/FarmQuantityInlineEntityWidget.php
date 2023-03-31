@@ -283,7 +283,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
         if (empty($entity_id) || $entity->access('update')) {
           $row['actions']['ief_entity_edit'] = [
             '#type' => 'submit',
-            '#value' => (empty($entity_id) || strlen($entity->get('value')->value) === 0) ? $this->t('Add') : $this->t('Edit'),
+            '#value' => empty($entity_id) ? $this->t('Add') : $this->t('Edit'),
             '#name' => 'ief-' . $this->getIefId() . '-entity-edit-' . $key,
             '#limit_validation_errors' => [],
             '#ajax' => [
@@ -437,6 +437,7 @@ class FarmQuantityInlineEntityWidget extends InlineEntityFormComplex {
   protected function mergeQuantityEntities(array $entities, EntityInterface $parent_entity) {
     $create_bundles = $this->getCreateBundles();
     $bundle = reset($create_bundles);
+    $default_entities = [];
     foreach ($this->getSetting('quantity') as $delta => $quantity) {
       $qty_entity = Quantity::create(['type' => $bundle] + $quantity);
       $default_entities[] = [
