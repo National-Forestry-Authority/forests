@@ -1,9 +1,6 @@
 <?php
 /**
  * @file
- * #ddev-generated: Automatically generated Drupal settings file.
- * ddev manages this file and may delete or overwrite the file unless this
- * comment is removed.  It is recommended that you leave this file alone.
  */
 $host = "db";
 $port = 5432;
@@ -23,15 +20,15 @@ $databases['default']['default'] = array(
   'port' => $port,
   'prefix' => "",
 );
-$settings['hash_salt'] = 'msUAwgLjxscsBPAPTIgNWxodVOahLISoCeTuQCcSjluDmxlUUBZwTRrtbeAoVSlT';
-// This will prevent Drupal from setting read-only permissions on sites/default.
-$settings['skip_permissions_hardening'] = TRUE;
+
 // This will ensure the site can only be accessed through the intended host
 // names. Additional host patterns can be added for custom configurations.
 $settings['trusted_host_patterns'] = ['.*'];
+
 // Don't use Symfony's APCLoader. ddev includes APCu; Composer's APCu loader has
 // better performance.
 $settings['class_loader_auto_detect'] = FALSE;
+
 // Set $settings['config_sync_directory'] if not set in settings.php.
 if (empty($settings['config_sync_directory'])) {
   $settings['config_sync_directory'] = 'sites/default/files/sync';
