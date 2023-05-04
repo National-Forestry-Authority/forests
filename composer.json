@@ -110,5 +110,15 @@
             "drupal/core": "-p2",
             "farmos/farmos": "-p1"
         }
+    },
+    "require-dev": {
+        "mglaman/drupal-check": "^1",
+        "mglaman/phpstan-drupal": "^1",
+        "palantirnet/drupal-rector": "^0.15.0",
+        "phpcompatibility/php-compatibility": "^9",
+        "phpcompatibility/phpcompatibility-all": "^1",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/extension-installer": "^1",
+        "phpstan/phpstan-deprecation-rules": "^1"
     }
 }
