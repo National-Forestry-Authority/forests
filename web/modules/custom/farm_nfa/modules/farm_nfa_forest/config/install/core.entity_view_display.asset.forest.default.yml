@@ -28,17 +28,17 @@ third_party_settings:
     group_natural_forest_stand:
       children:
         - forest_vegetation_type
+      label: 'Natural forest stand'
       parent_name: ''
+      region: content
       weight: 3
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: 'Natural forest stand'
     group_plantation_stand:
       children:
         - stand_number
@@ -48,24 +48,24 @@ third_party_settings:
         - area
         - planned_harvest_date
         - planned_prescriptions
+      label: 'Plantation stand'
       parent_name: ''
+      region: content
       weight: 4
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: 'Plantation stand'
 id: asset.forest.default
 targetEntityType: asset
 bundle: forest
 mode: default
 content:
   area:
-    weight: 10
+    type: number_decimal
     label: inline
     settings:
       thousand_separator: ''
@@ -73,131 +73,141 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_decimal
+    weight: 10
     region: content
   asset:
-    label: inline
     type: entity_reference_label
-    weight: 2
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 2
+    region: content
   date_planted:
-    weight: 9
+    type: daterange_default
     label: inline
     settings:
-      separator: '-'
-      format_type: medium
       timezone_override: ''
+      format_type: medium
+      separator: '-'
     third_party_settings: {  }
-    type: daterange_default
+    weight: 9
     region: content
   file:
     type: file_table
     label: visually_hidden
     settings:
       use_description_as_link_text: true
+    third_party_settings: {  }
     weight: 19
     region: content
-    third_party_settings: {  }
   flag:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 14
     region: content
-    settings: {  }
-    third_party_settings: {  }
   forest_status:
-    weight: 1
+    type: list_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 1
     region: content
   forest_type:
-    label: inline
     type: list_default
-    weight: 0
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   forest_vegetation_type:
-    weight: 5
+    type: entity_reference_label
     label: inline
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 5
     region: content
   geometry:
-    label: visually_hidden
     type: farm_map_geofield
+    label: visually_hidden
     settings: {  }
+    third_party_settings: {  }
     weight: 15
     region: content
-    third_party_settings: {  }
   image:
     type: image
     label: visually_hidden
     settings:
-      image_style: large
       image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
     weight: 18
     region: content
-    third_party_settings: {  }
   notes:
-    label: above
     type: text_default
-    weight: 16
-    region: content
+    label: above
     settings: {  }
     third_party_settings: {  }
-  parent:
+    weight: 16
+    region: content
+  owner:
     label: inline
     type: entity_reference_label
-    weight: 17
+    weight: -70
     settings:
       link: true
     region: content
     third_party_settings: {  }
+  parent:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
   planned_harvest_date:
-    weight: 11
+    type: month_year_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: month_year_formatter
+    weight: 11
     region: content
   planned_prescriptions:
-    weight: 12
+    type: month_year_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: month_year_formatter
+    weight: 12
     region: content
   purpose:
-    weight: 2
+    type: entity_reference_label
     label: inline
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 2
     region: content
   stand_number:
-    weight: 6
+    type: string
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: content
   status:
-    label: inline
     type: list_default
-    weight: 13
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 13
+    region: content
 hidden:
   data: true
   id_tag: true

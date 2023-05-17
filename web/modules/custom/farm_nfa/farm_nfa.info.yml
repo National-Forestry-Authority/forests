@@ -32,6 +32,7 @@ dependencies:
   - views_geojson:views_geojson
 
 config_devel:
+  - claro.settings  
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.log.activity.default
@@ -48,8 +49,14 @@ config_devel:
   - core.entity_view_display.log.observation.default
   - core.entity_view_display.user.user.default
   - core.entity_view_display.user.user.person_in_charge
+  - core.entity_view_mode.asset.token
+  - core.entity_view_mode.block.token
+  - core.entity_view_mode.file.token
   - core.entity_view_mode.media.dialog
   - core.entity_view_mode.media.link
+  - core.entity_view_mode.path_alias.token
+  - core.entity_view_mode.taxonomy_term.token
+  - core.entity_view_mode.user.token
   - core.entity_view_mode.user.person_in_charge
   - editor.editor.default
   - farm_land.land_type.beat
@@ -81,8 +88,16 @@ config_devel:
   - field.storage.log.working_circle
   - field.storage.user.contact_phone_number
   - filter.format.default
-  - system.action.user_remove_role_action.admin
+  - layout_builder_styles.group.default
+  - migrate_plus.migration_group.default
   - system.action.user_add_role_action.admin
+  - system.action.user_add_role_action.farm_manager
+  - system.action.user_add_role_action.farm_viewer
+  - system.action.user_add_role_action.farm_worker
+  - system.action.user_remove_role_action.farm_manager
+  - system.action.user_remove_role_action.farm_viewer
+  - system.action.user_remove_role_action.farm_worker
+  - system.action.user_remove_role_action.admin
   - taxonomy.vocabulary.activity_type
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose

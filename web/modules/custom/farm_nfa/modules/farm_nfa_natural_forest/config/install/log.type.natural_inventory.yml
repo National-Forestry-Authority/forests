@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_natural_forest
-  module:
-    - farm_nfa
 id: natural_inventory
 label: 'Natural inventory'
 description: ''

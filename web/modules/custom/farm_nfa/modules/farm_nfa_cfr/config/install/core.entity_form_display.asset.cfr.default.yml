@@ -56,17 +56,17 @@ third_party_settings:
         - map_sheet_uploads
         - description_of_plans_and_sheets
         - boundary_demarcation
+      label: 'Legal details'
+      region: content
       parent_name: ''
       weight: 3
       format_type: details
-      region: content
       format_settings:
-        description: ''
-        open: true
-        required_fields: true
-        id: ''
         classes: ''
-      label: 'Legal details'
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
     group_description:
       children:
         - size_location_desc
@@ -77,17 +77,17 @@ third_party_settings:
         - group_zonation
         - vegetation
         - land_use_and_forest_condition
+      label: Description
+      region: content
       parent_name: ''
       weight: 5
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: Description
     group_management_issues:
       children:
         - key_resources
@@ -96,92 +96,92 @@ third_party_settings:
         - proposed_strategies
         - priority_actions
         - threats_assessment
+      label: 'Management issues'
+      region: content
       parent_name: ''
       weight: 6
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Management issues'
     group_zonation:
       children:
         - zonation_map_file_upload
         - zonation_description
         - zonation_date
+      label: Zonation
+      region: content
       parent_name: group_description
       weight: 20
       format_type: details
-      region: content
       format_settings:
+        classes: ''
         show_empty_fields: false
         id: ''
-        classes: ''
-        description: ''
         open: true
+        description: ''
         required_fields: true
-      label: Zonation
 id: asset.cfr.default
 targetEntityType: asset
 bundle: cfr
 mode: default
 content:
   area:
+    type: number
     weight: 12
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   boundary_demarcation:
+    type: inline_entity_form_complex
     weight: 23
+    region: content
     settings:
       form_mode: default
       override_labels: true
       label_singular: 'Boundary demarcation'
       label_plural: 'Boundary demarcations'
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   boundary_plan:
+    type: string_textfield
     weight: 18
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   description_of_plans_and_sheets:
+    type: text_textarea
     weight: 22
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   est_year_gazetted:
+    type: number
     weight: 16
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   file:
     type: file_generic
-    settings:
-      progress_indicator: throbber
     weight: 10
     region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   flag:
     type: options_buttons
@@ -190,28 +190,28 @@ content:
     settings: {  }
     third_party_settings: {  }
   general_description:
+    type: text_textarea
     weight: 18
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   historical_context:
+    type: text_textarea
     weight: 19
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   image:
     type: image_image
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
     weight: 9
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
@@ -222,62 +222,62 @@ content:
       populate_file_field: file
     third_party_settings: {  }
   issues_concerns:
+    type: text_textarea
     weight: 14
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   key_resources:
+    type: text_textarea
     weight: 13
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   land_use_and_forest_condition:
+    type: text_textarea
     weight: 23
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   legal_category:
+    type: text_textarea
     weight: 16
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   map_ref_sheets:
+    type: string_textfield
     weight: 20
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   map_sheet_uploads:
+    type: inline_entity_form_complex
     weight: 21
+    region: content
     settings:
       form_mode: default
       override_labels: true
       label_singular: 'Map sheet upload'
       label_plural: 'Map sheet uploads'
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   name:
     type: string_textfield
     weight: 0
@@ -288,70 +288,70 @@ content:
     third_party_settings: {  }
   notes:
     type: text_textarea
-    settings:
-      rows: 5
-      placeholder: ''
     weight: 2
     region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   opportunities:
+    type: text_textarea
     weight: 15
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   original_management_objectives:
+    type: text_textarea
     weight: 17
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   parent:
     type: entity_reference_autocomplete
     weight: 7
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   priority_actions:
+    type: text_textarea
     weight: 18
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   proposed_strategies:
+    type: text_textarea
     weight: 16
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   serial:
+    type: string_textfield
     weight: 19
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   size_location_desc:
+    type: text_textarea
     weight: 15
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   status:
     type: options_select
     weight: 1
@@ -359,82 +359,82 @@ content:
     settings: {  }
     third_party_settings: {  }
   threats_assessment:
+    type: text_textarea
     weight: 19
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   total_boundary_length:
+    type: number
     weight: 13
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   total_cutline_length:
+    type: number
     weight: 14
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   total_natural_boundary_length:
+    type: number
     weight: 15
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   vegetation:
+    type: inline_entity_form_complex
     weight: 21
+    region: content
     settings:
       form_mode: default
       override_labels: true
       label_singular: Vegetation
       label_plural: Vegetations
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   year_of_survey:
+    type: number
     weight: 17
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   zonation_date:
+    type: month_year_widget
     weight: 18
+    region: content
     settings:
       min_year: 1900
       adjustment: 5
       disabled_months: {  }
     third_party_settings: {  }
-    type: month_year_widget
-    region: content
   zonation_description:
+    type: text_textarea
     weight: 16
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   zonation_map_file_upload:
+    type: file_generic
     weight: 15
+    region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-    type: file_generic
-    region: content
 hidden:
   created: true
   data: true

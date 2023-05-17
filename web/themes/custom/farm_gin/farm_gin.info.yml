@@ -21,3 +21,15 @@ regions:
   sidebar_first: 'First sidebar'
 regions_hidden:
   - sidebar_first
+
+config_devel:
+  - block.block.farm_gin_breadcrumbs
+  - block.block.farm_gin_content
+  - block.block.farm_gin_farm_powered
+  - block.block.farm_gin_help
+  - block.block.farm_gin_local_actions
+  - block.block.farm_gin_messages
+  - block.block.farm_gin_page_title
+  - block.block.farm_gin_primary_local_tasks
+  - block.block.farm_gin_secondary_local_tasks
+  - farm_gin.settings

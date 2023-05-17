@@ -1,4 +1,3 @@
-uuid: 474e545e-b951-4260-958e-b567c9107ff1
 langcode: en
 status: true
 dependencies: {  }
@@ -6,6 +5,7 @@ id: card_section
 label: Card
 classes: farm_nfa_lb_card
 type: section
-weight: 0
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
+weight: 0

@@ -21,29 +21,29 @@ bundle: block
 mode: default
 content:
   block_number:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   cfr_name:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   compartment_number:
+    type: string_textfield
     weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   created:
     type: datetime_timestamp
     weight: 4
@@ -52,10 +52,10 @@ content:
     third_party_settings: {  }
   file:
     type: file_generic
-    settings:
-      progress_indicator: throbber
     weight: 13
     region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   flag:
     type: options_buttons
@@ -71,20 +71,20 @@ content:
     third_party_settings: {  }
   image:
     type: image_image
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
     weight: 12
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
     third_party_settings: {  }
   intended_purpose:
+    type: text_textarea
     weight: 7
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   intrinsic_geometry:
     type: farm_map_geofield
     weight: 14
@@ -94,15 +94,15 @@ content:
       populate_file_field: file
     third_party_settings: {  }
   kml_created_by:
+    type: entity_reference_autocomplete
     weight: 6
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   name:
     type: string_textfield
     weight: 0
@@ -113,21 +113,21 @@ content:
     third_party_settings: {  }
   notes:
     type: text_textarea
+    weight: 9
+    region: content
     settings:
       rows: 5
       placeholder: ''
-    weight: 9
-    region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
     weight: 10
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   status:
     type: options_select

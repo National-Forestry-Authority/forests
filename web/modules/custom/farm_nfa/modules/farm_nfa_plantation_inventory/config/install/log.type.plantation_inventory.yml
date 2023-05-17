@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_plantation_inventory
-  module:
-    - farm_nfa
 id: plantation_inventory
 label: 'Plantation inventory'
 description: ''
