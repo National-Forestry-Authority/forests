@@ -67,18 +67,35 @@ class ForestPlanGfwForm extends FormBase {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
 
-    $form['gfw_map'] = [
-      '#type' => 'farm_map',
-      '#map_type' => 'farm_nfa_plan_locations',
-      '#map_settings' => [
-        'plan' => $this->routeMatch->getRawParameter('plan'),
-        'host' => $this->request->getHost(),
-      ],
-      '#attached' => [
-        'library' => [
-          'farm_nfa/behavior_farm_nfa_gfw_layers',
-        ],
-      ],
+    // $form['gfw_map'] = [
+    //   '#type' => 'farm_map',
+    //   '#map_type' => 'farm_nfa_plan_locations',
+    //   '#map_settings' => [
+    //     'plan' => $this->routeMatch->getRawParameter('plan'),
+    //     'host' => $this->request->getHost(),
+    //   ],
+    //   '#attached' => [
+    //     'library' => [
+    //       'farm_nfa/behavior_farm_nfa_gfw_layers',
+    //     ],
+    //   ],
+    // ];
+    // echo '<pre>';
+    $form['range'] = [
+      '#type' => 'daterangepicker',
+      '#DateRangePicker_options' => array(
+        'initial_text' => t('Select date range...'),
+        'apply_button_text' => t('Apply'),
+        'clear_button_text' => t('Clear'),
+        'cancel_button_text' => t('Cancel'),
+        'range_splitter' => ' - ',
+        'date_format' => 'd M, yy',
+        // This needs to be a format recognised by javascript Date.parse method.
+        'alt_format' => 'yy-mm-dd',
+        'date_picker_options' => array(
+          'numberOfMonths' => 2,
+        ),
+      ),
     ];
 
     return $form;

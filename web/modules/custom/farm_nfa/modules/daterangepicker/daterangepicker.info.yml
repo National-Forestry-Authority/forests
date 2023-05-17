@@ -1,0 +1,5 @@
+name: NFA Date range picker
+type: module
+description: 'Provides a date range picker element.'
+package: Libraries
+core_version_requirement: ^9
