@@ -1,0 +1,12 @@
+name: NFA Configuration Update Reports
+type: module
+description: 'Adds an NFA overrides section to the configuration updates report'
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - config_update_ui:config_update_ui
+  - config_update:config_update
+  - drupal:config
+
+config_devel:
+  - farm_nfa_config_update.settings

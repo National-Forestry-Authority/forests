@@ -1,0 +1,5 @@
+farm_nfa.admin_index:
+  title: 'Farm NFA'
+  route_name: farm_nfa.admin_index
+  parent: system.admin_config
+  description: 'Configure Farm NFA settings.'

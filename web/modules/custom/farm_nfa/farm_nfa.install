@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Config\FileStorage;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\log\Entity\LogType;
 
@@ -171,4 +172,60 @@ function farm_nfa_update_9010(&$sandbox) {
 function farm_nfa_update_9011(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(['devel_entity_updates']);
   \Drupal::service('module_installer')->uninstall(['devel']);
+}
+
+/**
+ * Disable farmOS Migrate modules.
+ */
+function farm_nfa_update_9012(&$sandbox) {
+  \Drupal::service('module_installer')->uninstall(['farm_migrate']);
+  \Drupal::service('module_installer')->uninstall(['farm_nfa_migrate']);
+}
+
+/**
+ * Enable Farm NFA Config Update module.
+ */
+function farm_nfa_update_9013(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_config_update']);
+}
+
+/**
+ * Import overrides of farmOS views.
+ */
+function farm_nfa_update_9014(&$sandbox) {
+  // Import overridden farmOS views.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9014";
+  $source = new FileStorage($config_path);
+  foreach ($source->listAll() as $config_item) {
+    \Drupal::service('config.storage')->write($config_item, $source->read($config_item));
+  }
+}
+
+/**
+ * Revert to farmOS default configuration.
+ */
+function farm_nfa_update_9015(&$sandbox) {
+  // Config items to be reverted.
+  $items = [
+    ['type' => 'flag', 'name' => 'monitor'],
+    ['type' => 'flag', 'name' => 'priority'],
+    ['type' => 'flag', 'name' => 'review'],
+    ['type' => 'system.simple', 'name' => 'gin_lb.settings'],
+    ['type' => 'quantity_type', 'name' => 'standard'],
+    ['type' => 'system.simple', 'name' => 'update.settings'],
+    ['type' => 'view', 'name' => 'asset_admin'],
+    ['type' => 'view', 'name' => 'farm_asset_reference'],
+    ['type' => 'view', 'name' => 'farm_inventory'],
+    ['type' => 'view', 'name' => 'farm_location_reference'],
+    ['type' => 'view', 'name' => 'farm_log'],
+    ['type' => 'view', 'name' => 'farm_people'],
+    ['type' => 'view', 'name' => 'plan_admin'],
+    ['type' => 'view', 'name' => 'farm_quantity'],
+    ['type' => 'system.simple', 'name' => 'system.date'],
+  ];
+
+  $config_update = \Drupal::service('config_update.config_update');
+  foreach ($items as $item) {
+    $config_update->revert($item['type'], $item['name']);
+  }
 }

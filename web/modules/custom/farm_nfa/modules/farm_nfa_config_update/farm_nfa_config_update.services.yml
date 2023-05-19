@@ -1,0 +1,6 @@
+services:
+  farm_nfa_config_update.report_subscriber:
+    class: Drupal\farm_nfa_config_update\EventSubscriber\ConfigUpdateReportSubscriber
+    arguments: ['@config.factory']
+    tags:
+      - { name: 'event_subscriber' }
