@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: H6rHArlo1kxydCNnGkWF81NmJGv9qOEPyQtohUoB5CM
 id: log_assign_action
-label: 'Assign log'
+label: 'Assign owners'
 type: log
 plugin: log_assign_action
 configuration: {  }

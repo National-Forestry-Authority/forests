@@ -15,8 +15,6 @@ dependencies:
   enforced:
     module:
       - farm_ui_views
-_core:
-  default_config_hash: 78Dk5cFC0A2J-xyRD7BrNLh1tfl_6p-I7UIg54jDeG0
 id: farm_plan
 label: 'Farm Plans'
 module: views
@@ -491,10 +489,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -536,10 +530,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -581,10 +571,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -598,7 +584,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
         status:
           id: status
           table: plan_field_data
@@ -610,7 +596,8 @@ display:
           entity_field: status
           plugin_id: state_machine_state
           operator: in
-          value: {  }
+          value:
+            active: active
           group: 1
           exposed: true
           expose:
@@ -627,10 +614,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -656,7 +639,6 @@ display:
           default_row_class: true
           columns:
             plan_bulk_form: plan_bulk_form
-            image_target_id: image_target_id
             id: id
             name: name
             type: type
@@ -665,11 +647,6 @@ display:
           default: name
           info:
             plan_bulk_form:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            image_target_id:
               align: ''
               separator: ''
               empty_column: false
@@ -1053,10 +1030,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1229,7 +1202,9 @@ display:
     position: 1
     display_options:
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        collapsible_filter:
+          collapsible: true
       path: plans
       menu:
         type: normal
@@ -1297,14 +1272,16 @@ display:
             multiple: 0
           glossary: false
           limit: 0
-          case: ucfirst
+          case: none
           path_case: none
           transform_dash: false
           break_phrase: false
       defaults:
         arguments: false
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        collapsible_filter:
+          collapsible: true
       path: plans/%
     cache_metadata:
       max-age: 0

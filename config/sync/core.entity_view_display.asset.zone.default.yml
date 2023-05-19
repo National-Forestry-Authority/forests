@@ -72,6 +72,8 @@ content:
     settings:
       image_link: file
       image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 9
     region: content
@@ -90,6 +92,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  owner:
+    label: inline
+    type: entity_reference_label
+    weight: -70
+    settings:
+      link: true
+    region: content
+    third_party_settings: {  }
   parent:
     type: entity_reference_label
     label: inline

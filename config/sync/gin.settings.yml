@@ -22,5 +22,5 @@ classic_toolbar: vertical
 high_contrast_mode: false
 accent_color: ''
 focus_color: ''
-show_user_theme_settings: false
+show_user_theme_settings: true
 icon_upload: ''
