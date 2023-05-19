@@ -32,7 +32,10 @@ dependencies:
   - views_geojson:views_geojson
 
 config_devel:
-  - claro.settings  
+  - asset.type.forest
+  - asset.type.land
+  - block.block.gin_local_actions
+  - claro.settings
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.log.activity.default
@@ -59,6 +62,7 @@ config_devel:
   - core.entity_view_mode.user.token
   - core.entity_view_mode.user.person_in_charge
   - editor.editor.default
+  - entity_reference_integrity_enforce.settings
   - farm_land.land_type.beat
   - farm_land.land_type.range
   - farm_land.land_type.sector
@@ -88,8 +92,19 @@ config_devel:
   - field.storage.log.working_circle
   - field.storage.user.contact_phone_number
   - filter.format.default
+  - gin.settings
+  - inspire_tree.settings
+  - jsonapi_extras.settings
+  - jsonapi.settings
   - layout_builder_styles.group.default
+  - log.type.activity
+  - log.type.harvest
+  - log.type.observation
   - migrate_plus.migration_group.default
+  - migrate_plus.migration_group.farm_migrate_log
+  - simple_oauth.settings
+  - system.action.asset_assign_action
+  - system.action.asset_parent_action
   - system.action.user_add_role_action.admin
   - system.action.user_add_role_action.farm_manager
   - system.action.user_add_role_action.farm_viewer
@@ -98,19 +113,28 @@ config_devel:
   - system.action.user_remove_role_action.farm_viewer
   - system.action.user_remove_role_action.farm_worker
   - system.action.user_remove_role_action.admin
+  - system.file
+  - system.performance
+  - system.site
+  - system.theme
   - taxonomy.vocabulary.activity_type
   - taxonomy.vocabulary.average_silviculture_score
   - taxonomy.vocabulary.forest_purpose
   - taxonomy.vocabulary.forest_vegetation
   - taxonomy.vocabulary.harvest_type
+  - taxonomy.vocabulary.log_category
+  - taxonomy.vocabulary.unit
   - taxonomy.vocabulary.working_circle
+  - user.role.anonymous
   - user.role.authenticated
   - user.role.admin
+  - user.settings
+  - views.settings
   - views.view.farm_asset
+  - views.view.farm_plan
   - views.view.plan_logs
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
-
 default_content:
   taxonomy_term:
     - 40143a27-e0d1-4d5a-aefe-9c22c9ca15e4

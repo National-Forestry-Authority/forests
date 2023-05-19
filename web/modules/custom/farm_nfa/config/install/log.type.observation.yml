@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - farm_nfa
+  enforced:
+    module:
+      - farm_observation
+id: observation
+label: Observation
+description: ''
+name_pattern: 'Observation log [log:id]'
+workflow: farm_nfa_log_default
+new_revision: true
