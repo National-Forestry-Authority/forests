@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.farm_worker
+  module:
+    - user
+id: user_remove_role_action.farm_worker
+label: 'Remove the Worker role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: farm_worker

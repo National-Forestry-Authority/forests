@@ -1,0 +1,12 @@
+langcode: en
+uuid: 151b7842-8f83-4ffc-b8c0-e374e9f135dc
+name: 'Drush Site-Install'
+mail: admin@example.com
+slogan: ''
+page:
+  403: /403
+  404: ''
+  front: /dashboard
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

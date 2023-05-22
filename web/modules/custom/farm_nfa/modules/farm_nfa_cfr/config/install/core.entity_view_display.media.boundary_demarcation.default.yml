@@ -14,16 +14,16 @@ dependencies:
     - text
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: layout_twocol_section
         layout_settings:
           label: ''
           column_widths: 50-50
-          layout_builder_styles_style: ''
           context_mapping: {  }
+          layout_builder_styles_style: ''
         components:
           dd2fb412-1a4b-4414-8f64-21466eb5c026:
             uuid: dd2fb412-1a4b-4414-8f64-21466eb5c026
@@ -31,51 +31,70 @@ third_party_settings:
             configuration:
               id: 'field_block:media:boundary_demarcation:description'
               label: Description
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: ''
-            weight: 0
           ef69ed72-c897-4195-8479-de7f1003fc65:
             uuid: ef69ed72-c897-4195-8479-de7f1003fc65
             region: second
+            configuration:
+              id: 'field_block:media:boundary_demarcation:field_media_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          ef44d73a-74b5-4001-a3b0-eec2e3361cd8:
+            uuid: ef44d73a-74b5-4001-a3b0-eec2e3361cd8
+            region: first
+            configuration:
+              id: 'field_block:media:boundary_demarcation:year'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: month_year_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          b4dc0e17-165d-48b1-a6f7-1a773a41589b:
+            uuid: b4dc0e17-165d-48b1-a6f7-1a773a41589b
+            region: content
             configuration:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               id: 'field_block:media:boundary_demarcation:field_media_image'
               formatter:
+                type: image
                 label: visually_hidden
                 settings:
-                  image_style: large
                   image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
                 third_party_settings: {  }
-                type: image
-            additional: {  }
             weight: 0
-          ef44d73a-74b5-4001-a3b0-eec2e3361cd8:
-            uuid: ef44d73a-74b5-4001-a3b0-eec2e3361cd8
-            region: first
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:media:boundary_demarcation:year'
-              formatter:
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-                type: month_year_formatter
             additional: {  }
-            weight: 1
         third_party_settings: {  }
 id: media.boundary_demarcation.default
 targetEntityType: media
@@ -83,27 +102,29 @@ bundle: boundary_demarcation
 mode: default
 content:
   description:
-    weight: 2
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
   field_media_image:
-    label: visually_hidden
-    weight: 0
-    settings:
-      image_style: large
-      image_link: ''
-    third_party_settings: {  }
     type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
     region: content
   year:
-    weight: 1
+    type: month_year_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: month_year_formatter
+    weight: 1
     region: content
 hidden:
   created: true

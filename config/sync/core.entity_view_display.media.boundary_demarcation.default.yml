@@ -22,8 +22,8 @@ third_party_settings:
         layout_id: layout_twocol_section
         layout_settings:
           label: ''
-          context_mapping: {  }
           column_widths: 50-50
+          context_mapping: {  }
           layout_builder_styles_style: ''
         components:
           dd2fb412-1a4b-4414-8f64-21466eb5c026:
@@ -77,6 +77,25 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
+          b4dc0e17-165d-48b1-a6f7-1a773a41589b:
+            uuid: b4dc0e17-165d-48b1-a6f7-1a773a41589b
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:media:boundary_demarcation:field_media_image'
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
 id: media.boundary_demarcation.default
 targetEntityType: media
@@ -96,6 +115,8 @@ content:
     settings:
       image_link: ''
       image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content

@@ -12,6 +12,10 @@ dependencies:
     - state_machine
     - taxonomy
     - user
+  enforced:
+    module:
+      - farm_inventory
+      - farm_ui_views
 _core:
   default_config_hash: 0kw_kxKomMT7xOqW6URq6dEq9TKxHky93PZN5t7n5qo
 id: farm_inventory
@@ -984,10 +988,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -1029,10 +1029,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1075,10 +1071,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -1122,10 +1114,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -1169,10 +1157,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1220,10 +1204,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1266,10 +1246,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1315,10 +1291,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -1366,10 +1338,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -1413,10 +1381,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1458,10 +1422,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              farm_manager: '0'
-              farm_viewer: '0'
-              farm_worker: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1649,7 +1609,9 @@ display:
     position: 1
     display_options:
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        collapsible_filter:
+          collapsible: true
       path: asset/%asset/inventory
       menu:
         type: tab

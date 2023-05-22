@@ -43,13 +43,32 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          91fb1149-353c-47b0-9474-658bf75e9227:
+            uuid: 91fb1149-353c-47b0-9474-658bf75e9227
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:plan:plantation:image'
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: file
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_twocol_section
         layout_settings:
           label: ''
-          context_mapping: {  }
           column_widths: 50-50
+          context_mapping: {  }
         components:
           b353e51b-9200-4c43-8823-dd9fbc7fcbe8:
             uuid: b353e51b-9200-4c43-8823-dd9fbc7fcbe8
@@ -166,6 +185,8 @@ content:
     settings:
       image_link: file
       image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 89
     region: content

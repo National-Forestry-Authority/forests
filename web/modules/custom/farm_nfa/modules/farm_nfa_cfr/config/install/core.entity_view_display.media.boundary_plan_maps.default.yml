@@ -16,29 +16,31 @@ bundle: boundary_plan_maps
 mode: default
 content:
   boundary_plan_number:
-    weight: 2
+    type: number_integer
     label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 2
     region: content
   field_media_image:
-    label: hidden
-    weight: 0
-    settings:
-      image_style: large
-      image_link: file
-    third_party_settings: {  }
     type: image
+    label: hidden
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
     region: content
   year:
-    weight: 3
+    type: month_year_formatter
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: month_year_formatter
+    weight: 3
     region: content
 hidden:
   created: true
