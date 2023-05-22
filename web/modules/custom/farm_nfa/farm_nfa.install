@@ -1,10 +1,7 @@
 <?php
 
-use Drupal\config\StorageReplaceDataWrapper;
-use Drupal\Core\Config\FileStorage;
-use Drupal\Core\Config\StorageComparer;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\log\Entity\LogType;
+use Drush\Drush;
 
 /**
  * @file
@@ -195,24 +192,11 @@ function farm_nfa_update_9013(&$sandbox) {
  * Import overrides of farmOS views.
  */
 function farm_nfa_update_9014(&$sandbox) {
-  $active_storage = \Drupal::service('config.storage');
-
   // Load the config items to be imported. Config yamls are placed in a folder
   // named after the update hook.
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9014";
-  $source_storage = new FileStorage($config_path);
-
-  $replacement_storage = new StorageReplaceDataWrapper($active_storage);
-  foreach ($source_storage->listAll() as $name) {
-    $data = $source_storage->read($name);
-    $replacement_storage->replaceData($name, $data);
-  }
-
-  $storage_comparer = new StorageComparer($replacement_storage, $active_storage);
-  if ($storage_comparer->createChangelist()->hasChanges()) {
-    $drush_import = \Drupal::service('config.import.commands');
-    $drush_import->doImport($storage_comparer);
-  }
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }
 
 /**
