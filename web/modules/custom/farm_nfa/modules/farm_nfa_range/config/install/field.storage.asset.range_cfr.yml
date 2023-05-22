@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - asset
-id: asset.sector_cfr
-field_name: sector_cfr
+id: asset.range_cfr
+field_name: range_cfr
 entity_type: asset
 type: entity_reference
 settings:

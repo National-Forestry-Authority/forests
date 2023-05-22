@@ -1,9 +1,10 @@
+uuid: eac7e98b-ec27-454c-8f0f-b2c24f4530da
 langcode: en
 status: true
 dependencies:
   config:
-    - asset.type.sector
-    - field.field.asset.sector.sector_cfr
+    - asset.type.range
+    - field.field.asset.range.range_cfr
     - image.style.medium
   module:
     - farm_id_tag
@@ -11,9 +12,11 @@ dependencies:
     - file
     - image
     - text
-id: asset.sector.default
+_core:
+  default_config_hash: v1o30BinvTBUUO3gNRhstmFmh2XxOPNhHwaMN8YNPZU
+id: asset.range.default
 targetEntityType: asset
-bundle: sector
+bundle: range
 mode: default
 content:
   file:
@@ -97,7 +100,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  sector_cfr:
+  range_cfr:
     type: entity_reference_autocomplete
     weight: 97
     region: content

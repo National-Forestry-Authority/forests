@@ -1,10 +1,13 @@
+uuid: d874780c-ca5c-4e7d-94e7-c1fae26baf0a
 langcode: en
 status: true
 dependencies:
   module:
     - asset
-id: asset.sector_cfr
-field_name: sector_cfr
+_core:
+  default_config_hash: aPrnK17wqtrpIzQOqjN-9AHbmwQn8ULusOa-fMhASaU
+id: asset.range_cfr
+field_name: range_cfr
 entity_type: asset
 type: entity_reference
 settings:

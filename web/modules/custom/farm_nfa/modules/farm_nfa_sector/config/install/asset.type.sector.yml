@@ -1,4 +1,3 @@
-uuid: 69904d12-f096-44d7-8761-6cc58080e759
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ third_party_settings:
   farm_location:
     is_location: true
     is_fixed: true
-_core:
-  default_config_hash: 1OBiY_Ynn-M9GN2LueqkL99Ft-CJtD4dNzCE1imeN90
 id: sector
 label: Sector
 description: ''

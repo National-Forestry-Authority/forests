@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - asset
+_core:
+  default_config_hash: X_ZzYv4G0QOx2eH51vW42B0NUSo3BTeHzRMPtk1Iu7s
 id: asset.sector_cfr
 field_name: sector_cfr
 entity_type: asset

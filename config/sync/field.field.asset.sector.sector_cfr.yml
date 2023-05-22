@@ -13,6 +13,8 @@ third_party_settings:
     circular_reference: false
     circular_reference_deep: false
     duplicate_reference: false
+_core:
+  default_config_hash: KFIs9Wg4ETl4L3wlZQECFblLGx8dDEDCyGG1Z9T-iuY
 id: asset.sector.sector_cfr
 field_name: sector_cfr
 entity_type: asset

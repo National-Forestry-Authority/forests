@@ -1,4 +1,4 @@
-uuid: 69904d12-f096-44d7-8761-6cc58080e759
+uuid: 2aa38c7b-8775-4e1d-8c52-a6c11d60a335
 langcode: en
 status: true
 dependencies:
@@ -9,9 +9,9 @@ third_party_settings:
     is_location: true
     is_fixed: true
 _core:
-  default_config_hash: UfQfIw3X5wMpxoAK_GnQR0OO_NDXgKlPh3yfGGFuW4E
-id: sector
-label: Sector
+  default_config_hash: QygPyZr0NO-k30h2oS0J3GbZGmluDh3hu-EVoFg81E0
+id: range
+label: Range
 description: ''
 workflow: asset_default
 new_revision: true

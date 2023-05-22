@@ -13,7 +13,7 @@ dependencies:
     - image
     - text
 _core:
-  default_config_hash: TatWaZa31ZerkeBckp2tCli4NITRzfbxYOZueIzCfsA
+  default_config_hash: ufcOCCgqgPHGsd_bZ6SoDU1AcHcRukvkR_plVBkDr5g
 id: asset.sector.default
 targetEntityType: asset
 bundle: sector
