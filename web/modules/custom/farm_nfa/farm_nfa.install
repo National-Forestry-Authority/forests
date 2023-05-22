@@ -227,3 +227,11 @@ function farm_nfa_update_9015(&$sandbox) {
     $config_update->revert($item['type'], $item['name']);
   }
 }
+
+/**
+ * Enable NFA Range and Sector modules.
+ */
+function farm_nfa_update_9016(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_range']);
+  \Drupal::service('module_installer')->install(['farm_nfa_sector']);
+}

@@ -1,11 +1,11 @@
-uuid: ca6bde89-4cc3-4e0a-be8d-219c477c5d8c
+uuid: e00641ee-bd2a-45b7-a123-616a58724a43
 langcode: en
 status: true
 dependencies:
   module:
     - asset
 _core:
-  default_config_hash: X_ZzYv4G0QOx2eH51vW42B0NUSo3BTeHzRMPtk1Iu7s
+  default_config_hash: uGOHZCmUSQFLGcfGenYHNLIQQDVlG2y3sbHME28oMEo
 id: asset.sector_cfr
 field_name: sector_cfr
 entity_type: asset

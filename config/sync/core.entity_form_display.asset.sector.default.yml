@@ -1,4 +1,4 @@
-uuid: 8791b62d-e91f-4257-9ae7-9361e7017ac8
+uuid: d34bb049-9fa3-4c6a-9bbc-a4b8250262a0
 langcode: en
 status: true
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
     - image
     - text
 _core:
-  default_config_hash: ufcOCCgqgPHGsd_bZ6SoDU1AcHcRukvkR_plVBkDr5g
+  default_config_hash: tN1PIzHI_An9vISYZ2ZfnGKr7LKh2ZHHQefLnLegld0
 id: asset.sector.default
 targetEntityType: asset
 bundle: sector

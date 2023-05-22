@@ -1,11 +1,11 @@
-uuid: d874780c-ca5c-4e7d-94e7-c1fae26baf0a
+uuid: 26852a7e-6711-42da-8b75-cfe006174ad7
 langcode: en
 status: true
 dependencies:
   module:
     - asset
 _core:
-  default_config_hash: aPrnK17wqtrpIzQOqjN-9AHbmwQn8ULusOa-fMhASaU
+  default_config_hash: FasIOiK54lCanJBKJBQeJSR9HxOdtNL35AWwk38_tl4
 id: asset.range_cfr
 field_name: range_cfr
 entity_type: asset
