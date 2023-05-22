@@ -1,0 +1,140 @@
+uuid: 73e1a7d1-7047-48d8-9e92-6db2c4c7e6be
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.range
+    - field.field.asset.range.range_cfr
+    - image.style.large
+  module:
+    - farm_field
+    - farm_id_tag
+    - farm_location
+    - farm_map
+    - file
+    - image
+    - options
+    - text
+_core:
+  default_config_hash: GZMjEctTFDELtvk6jUVJ5YSBNOM-pjqVvrd4xV1mhJE
+id: asset.range.default
+targetEntityType: asset
+bundle: range
+mode: default
+content:
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 90
+    region: content
+  flag:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: -75
+    region: content
+  geometry:
+    type: farm_map_geofield
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 95
+    region: content
+  id_tag:
+    type: id_tag
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 89
+    region: content
+  is_fixed:
+    type: hideable_boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    third_party_settings: {  }
+    weight: 96
+    region: content
+  is_location:
+    type: hideable_boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    third_party_settings: {  }
+    weight: 95
+    region: content
+  location:
+    type: asset_current_location
+    label: inline
+    settings:
+      link: true
+      render_without_location: true
+      move_asset_button: true
+    third_party_settings: {  }
+    weight: 95
+    region: content
+  notes:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  owner:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -70
+    region: content
+  parent:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  range_cfr:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 97
+    region: content
+  status:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: -80
+    region: content
+hidden:
+  data: true
+  intrinsic_geometry: true
+  uid: true

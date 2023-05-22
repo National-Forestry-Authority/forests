@@ -1,0 +1,38 @@
+uuid: aeb54da5-f023-4f63-83e1-8f3236d14ea5
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - asset.type.sector
+    - field.storage.asset.sector_cfr
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+_core:
+  default_config_hash: kL548Hy1dw4KHsxxlbC42pNTe2bR6glALw7mT9krU44
+id: asset.sector.sector_cfr
+field_name: sector_cfr
+entity_type: asset
+bundle: sector
+label: CFR
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:asset'
+  handler_settings:
+    target_bundles:
+      cfr: cfr
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

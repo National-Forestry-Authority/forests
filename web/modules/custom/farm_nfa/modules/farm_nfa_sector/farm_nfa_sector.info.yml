@@ -1,0 +1,14 @@
+name: NFA Sector
+description: Sector NFA submodule.
+type: module
+package: farmOS NFA
+core_version_requirement: ^9
+dependencies:
+  - farm_nfa:farm_nfa
+
+config_devel:
+  - asset.type.sector
+  - core.entity_form_display.asset.sector.default
+  - core.entity_view_display.asset.sector.default
+  - field.field.asset.sector.sector_cfr
+  - field.storage.asset.sector_cfr

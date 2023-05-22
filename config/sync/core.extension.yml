@@ -61,6 +61,8 @@ module:
   farm_nfa_plantation_forest: 0
   farm_nfa_plantation_inventory: 0
   farm_nfa_planting: 0
+  farm_nfa_range: 0
+  farm_nfa_sector: 0
   farm_nfa_zone: 0
   farm_observation: 0
   farm_owner: 0
