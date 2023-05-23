@@ -88,6 +88,9 @@
             "drupal/select_or_other": {
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
+            "drupal/core": {
+                "Issue #3358402: [regression] route defaults are now automatically route parameters":"https://git.drupalcode.org/project/drupal/-/merge_requests/3953.diff"
+            },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
             },
