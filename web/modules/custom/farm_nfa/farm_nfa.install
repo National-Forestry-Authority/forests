@@ -235,3 +235,14 @@ function farm_nfa_update_9016(&$sandbox) {
   \Drupal::service('module_installer')->install(['farm_nfa_range']);
   \Drupal::service('module_installer')->install(['farm_nfa_sector']);
 }
+
+/**
+ * Update overridden Farm Assets view with changes from farmOS 2.1.0.
+ */
+function farm_nfa_update_9017(&$sandbox) {
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9017";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
