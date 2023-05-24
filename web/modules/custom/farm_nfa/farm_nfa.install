@@ -246,3 +246,16 @@ function farm_nfa_update_9017(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Enable NFA Gin Forests theme and disable old theme.
+ */
+function farm_nfa_update_9018(&$sandbox) {
+  $new_theme = 'nfa_gin_forests';
+  \Drupal::service('theme_installer')->install([$new_theme]);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', $new_theme)
+    ->save();
+  \Drupal::service('theme_installer')->uninstall(['farm_gin']);
+}
