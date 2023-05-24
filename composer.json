@@ -19,6 +19,10 @@
             "url": "https://github.com/farmOS/farm_forest.git"
         },
         {
+          "type": "git",
+          "url": "https://github.com/National-Forestry-Authority/nfa_gin"
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
@@ -54,6 +58,7 @@
         "drupal/select_or_other": "^4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
+        "national-forestry-authority/nfa_gin": "^1.0",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },

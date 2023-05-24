@@ -139,5 +139,6 @@ module:
 theme:
   claro: 0
   gin: 0
-  farm_gin: 0
+  nfa_gin: 0
+  nfa_gin_forests: 0
 profile: farm
