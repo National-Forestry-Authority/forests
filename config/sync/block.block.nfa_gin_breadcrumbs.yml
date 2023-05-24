@@ -1,0 +1,22 @@
+uuid: 1c7a443a-c868-481e-9558-e030ff1d0d9e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nfa_gin
+_core:
+  default_config_hash: crrkiWs5wDeV9_dlWbeinEoyvl0emBNM46ZnItEaXwo
+id: nfa_gin_breadcrumbs
+theme: nfa_gin
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

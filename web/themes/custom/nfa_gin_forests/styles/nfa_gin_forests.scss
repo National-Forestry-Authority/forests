@@ -1,0 +1,40 @@
+// Tabs.
+.js-tabs {
+  max-width: 100%;
+}
+
+.js-tabs__header {
+  display: block;
+  margin: 2rem 0 1rem 0;
+  overflow: hidden;
+
+  li {
+    display: inline-block;
+    float: left;
+  }
+}
+
+.js-tabs__title {
+  border-bottom: 3px solid transparent;
+  display: block;
+  padding: 0.75rem 1.5rem 1rem;
+  color: var(--colorGinText);
+  font-weight: 600;
+  font-size: .875rem;
+
+  &:hover {
+    text-decoration: none;
+    background-color: var(--colorGinItemHover);
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.js-tabs__title-active {
+  border-bottom-color: var(--colorGinPrimary);
+  color: var(--colorGinPrimary);
+  font-weight: 700;
+}
