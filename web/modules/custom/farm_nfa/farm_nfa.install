@@ -259,3 +259,17 @@ function farm_nfa_update_9018(&$sandbox) {
     ->save();
   \Drupal::service('theme_installer')->uninstall(['farm_gin']);
 }
+
+/**
+ * Enable Environment Indicator modules.
+ */
+function farm_nfa_update_9019(&$sandbox) {
+  \Drupal::service('module_installer')->install(['environment_indicator']);
+  \Drupal::service('module_installer')->install(['environment_indicator_ui']);
+
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
