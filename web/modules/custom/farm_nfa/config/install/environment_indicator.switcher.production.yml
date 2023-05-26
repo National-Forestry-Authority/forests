@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+machine: production
+description: null
+name: Prod
+weight: '2'
+url: 'https://forests.nfa.go.ug'
+fg_color: '#ffffff'
+bg_color: '#ef5621'

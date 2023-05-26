@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+machine: staging
+description: null
+name: Stage
+weight: '1'
+url: 'https://forests.stg.envs.utils.nfa.go.ug'
+fg_color: '#ffffff'
+bg_color: '#f8a519'
