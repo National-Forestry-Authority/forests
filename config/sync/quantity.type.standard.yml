@@ -10,5 +10,4 @@ _core:
 id: standard
 label: Standard
 description: 'Standard quantity type.'
-default_measure: ''
 new_revision: true

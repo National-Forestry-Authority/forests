@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.farm_worker
+  module:
+    - user
+id: user_add_role_action.farm_worker
+label: 'Add the Worker role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: farm_worker

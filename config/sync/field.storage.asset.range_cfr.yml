@@ -1,0 +1,21 @@
+uuid: c6eff754-37eb-4093-9260-d83dc530ca63
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+_core:
+  default_config_hash: FasIOiK54lCanJBKJBQeJSR9HxOdtNL35AWwk38_tl4
+id: asset.range_cfr
+field_name: range_cfr
+entity_type: asset
+type: entity_reference
+settings:
+  target_type: asset
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

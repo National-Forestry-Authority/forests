@@ -1,0 +1,22 @@
+uuid: a53768c8-a6e6-4e27-af7a-fd43480f499f
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - nfa_gin_forests
+_core:
+  default_config_hash: 8nOAry2oKqJOr0zbrlJ3sZHDFJLIO6j-0vT0K_TYca4
+id: nfa_gin_forests_help
+theme: nfa_gin_forests
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,12 @@
+uuid: c8523598-f063-458f-9b4a-9c31f0c9e4b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_owner
+id: asset_assign_action
+label: 'Assign owners'
+type: asset
+plugin: asset_assign_action
+configuration: {  }

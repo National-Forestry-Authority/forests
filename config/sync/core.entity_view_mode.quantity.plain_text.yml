@@ -1,0 +1,13 @@
+uuid: 461328db-3648-47a7-81dd-fc5f73b0ba0e
+langcode: en
+status: true
+dependencies:
+  module:
+    - quantity
+  enforced:
+    module:
+      - quantity
+id: quantity.plain_text
+label: 'Plain text'
+targetEntityType: quantity
+cache: false

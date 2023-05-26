@@ -13,7 +13,6 @@ dependencies:
     - file
     - image
     - options
-    - state_machine
     - text
 id: log.activity.default
 targetEntityType: log
@@ -72,6 +71,8 @@ content:
     settings:
       image_link: file
       image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 89
     region: content
@@ -120,11 +121,9 @@ content:
     weight: 0
     region: content
   status:
-    type: state_transition_form
+    type: list_default
     label: inline
-    settings:
-      require_confirmation: false
-      use_modal: false
+    settings: {  }
     third_party_settings: {  }
     weight: -80
     region: content

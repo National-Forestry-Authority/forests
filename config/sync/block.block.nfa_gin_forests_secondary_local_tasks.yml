@@ -1,0 +1,22 @@
+uuid: 8a664a09-0e93-4090-80a9-42b58a07f916
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nfa_gin_forests
+_core:
+  default_config_hash: BCWhood0xXFQYqxFgL1spXdb9KeIuXH1YvTdjIEedDg
+id: nfa_gin_forests_secondary_local_tasks
+theme: nfa_gin_forests
+region: pre_content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

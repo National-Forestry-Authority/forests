@@ -1,0 +1,7 @@
+farm_nfa_config_update.settings:
+  path: '/admin/config/farm-nfa/settings'
+  defaults:
+    _form: '\Drupal\farm_nfa_config_update\Form\SettingsForm'
+    _title: 'Manage configuration overrides and exclusions from the Configuration Update report.'
+  requirements:
+    _permission: 'administer site configuration'

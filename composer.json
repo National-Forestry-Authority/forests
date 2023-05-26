@@ -19,6 +19,10 @@
             "url": "https://github.com/farmOS/farm_forest.git"
         },
         {
+          "type": "git",
+          "url": "https://github.com/National-Forestry-Authority/nfa_gin"
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
@@ -54,6 +58,7 @@
         "drupal/select_or_other": "^4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
+        "national-forestry-authority/nfa_gin": "^1.0",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
@@ -89,7 +94,7 @@
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
             "drupal/core": {
-                "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
+                "Issue #3358402: [regression] route defaults are now automatically route parameters":"https://git.drupalcode.org/project/drupal/-/merge_requests/3953.diff"
             },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"

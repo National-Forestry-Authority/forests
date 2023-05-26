@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - asset
     - log
     - options
     - plan
@@ -327,7 +326,7 @@ display:
           id: id
           table: plan_field_data
           field: id
-          relationship: reverse__plan__asset
+          relationship: reverse__plan__log
           group_type: group
           admin_label: ''
           entity_type: plan
@@ -479,27 +478,16 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        asset_target_id:
-          id: asset_target_id
-          table: log__asset
-          field: asset_target_id
+        reverse__plan__log:
+          id: reverse__plan__log
+          table: log_field_data
+          field: reverse__plan__log
           relationship: none
           group_type: group
-          admin_label: Asset
-          entity_type: log
-          entity_field: asset
-          plugin_id: standard
-          required: true
-        reverse__plan__asset:
-          id: reverse__plan__asset
-          table: asset_field_data
-          field: reverse__plan__asset
-          relationship: asset_target_id
-          group_type: group
           admin_label: Plan
-          entity_type: asset
+          entity_type: log
           plugin_id: entity_reverse
-          required: true
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }

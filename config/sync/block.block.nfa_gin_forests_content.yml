@@ -1,0 +1,22 @@
+uuid: 58f3e426-460c-4579-8776-15c405715fbd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nfa_gin_forests
+_core:
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: nfa_gin_forests_content
+theme: nfa_gin_forests
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }
