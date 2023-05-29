@@ -63,6 +63,9 @@ config_devel:
   - core.entity_view_mode.user.person_in_charge
   - editor.editor.default
   - entity_reference_integrity_enforce.settings
+  - environment_indicator.switcher.development
+  - environment_indicator.switcher.production
+  - environment_indicator.switcher.staging
   - farm_land.land_type.beat
   - farm_land.land_type.range
   - farm_land.land_type.sector
