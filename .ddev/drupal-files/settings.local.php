@@ -134,6 +134,14 @@ $config['smtp.settings']['smtp_host'] = '';
 // In case we have mailsystem, prevent that too sending the emails with php.
 $config['mailsystem.settings']['defaults']['sender'] = 'php_mail';
 $config['mailsystem.settings']['defaults']['formatter'] = 'php_mail';
+
+/**
+ * Environment indicator.
+ */
+$config['environment_indicator.indicator']['bg_color'] = '#3995D8';
+$config['environment_indicator.indicator']['fg_color'] = '#FFFFFF';
+$config['environment_indicator.indicator']['name'] = 'Development';
+
 // Automatically generated include for settings managed by ddev.
 if (file_exists($app_root . '/' . $site_path . '/settings.ddev.php')) {
   include $app_root . '/' . $site_path . '/settings.ddev.php';

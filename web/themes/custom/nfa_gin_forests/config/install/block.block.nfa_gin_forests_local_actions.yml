@@ -1,15 +1,12 @@
-uuid: 69e63956-149f-4929-8eaf-2205e0155b48
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - farm_gin
-_core:
-  default_config_hash: OQ9aJ-4qVwK1x00o9EOYK4eFDjQr_HLpbPiJaPSVZiQ
-id: farm_gin_local_actions
-theme: farm_gin
+    - nfa_gin_forests
+id: nfa_gin_forests_local_actions
+theme: nfa_gin_forests
 region: content
 weight: -10
 provider: null

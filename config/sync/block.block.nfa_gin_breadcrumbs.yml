@@ -1,15 +1,15 @@
-uuid: ed4eb449-515d-4296-b316-d27ebeb68837
+uuid: 1c7a443a-c868-481e-9558-e030ff1d0d9e
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - farm_gin
+    - nfa_gin
 _core:
-  default_config_hash: y9X3xgCsO59pQyzNLzY1D3SDJJxCHILLWkpPnmuTJ2E
-id: farm_gin_breadcrumbs
-theme: farm_gin
+  default_config_hash: crrkiWs5wDeV9_dlWbeinEoyvl0emBNM46ZnItEaXwo
+id: nfa_gin_breadcrumbs
+theme: nfa_gin
 region: breadcrumb
 weight: 0
 provider: null

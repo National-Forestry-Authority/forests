@@ -1,0 +1,22 @@
+uuid: 07471a40-6dde-4eff-840b-c472263f803b
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - nfa_gin
+_core:
+  default_config_hash: 4rhKEhNNs10k4roBFjirOB_k4uzUAsZvGFcPuQpsXok
+id: nfa_gin_help
+theme: nfa_gin
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

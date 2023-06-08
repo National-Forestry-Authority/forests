@@ -1,16 +1,15 @@
-uuid: f4abb3fd-ca3f-4ca4-8ab4-9b936966f6be
 langcode: en
 status: true
 dependencies:
   module:
     - farm_ui_theme
   theme:
-    - gin
+    - nfa_gin_forests
   enforced:
     module:
       - farm_ui_theme
-id: farm_powered
-theme: gin
+id: nfa_gin_forests_farm_powered
+theme: nfa_gin_forests
 region: content
 weight: 1000
 provider: null

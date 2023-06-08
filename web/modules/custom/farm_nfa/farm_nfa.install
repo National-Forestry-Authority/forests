@@ -235,3 +235,41 @@ function farm_nfa_update_9016(&$sandbox) {
   \Drupal::service('module_installer')->install(['farm_nfa_range']);
   \Drupal::service('module_installer')->install(['farm_nfa_sector']);
 }
+
+/**
+ * Update overridden Farm Assets view with changes from farmOS 2.1.0.
+ */
+function farm_nfa_update_9017(&$sandbox) {
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9017";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable NFA Gin Forests theme and disable old theme.
+ */
+function farm_nfa_update_9018(&$sandbox) {
+  $new_theme = 'nfa_gin_forests';
+  \Drupal::service('theme_installer')->install([$new_theme]);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', $new_theme)
+    ->save();
+  \Drupal::service('theme_installer')->uninstall(['farm_gin']);
+}
+
+/**
+ * Enable Environment Indicator modules.
+ */
+function farm_nfa_update_9019(&$sandbox) {
+  \Drupal::service('module_installer')->install(['environment_indicator']);
+  \Drupal::service('module_installer')->install(['environment_indicator_ui']);
+
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
