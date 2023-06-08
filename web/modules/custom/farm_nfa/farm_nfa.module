@@ -292,4 +292,7 @@ function farm_nfa_entity_base_field_info_alter(&$fields, EntityTypeInterface $en
   if ($entity_type->id() == 'log') {
     $fields['location']->addConstraint('DuplicateReference');
   }
+  if($entity_type->id() == 'forest_type') {
+    $fields['location']->addConstraint('DuplicateReference');
+  }
 }

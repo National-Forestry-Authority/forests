@@ -1,0 +1,8 @@
+uuid: 46552e3a-2dd7-47ca-a87b-535f3c71b28a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Forest Type'
+vid: forest_type
+description: ''
+weight: 0

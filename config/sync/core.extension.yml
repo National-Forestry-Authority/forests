@@ -20,6 +20,7 @@ module:
   datetime_range: 0
   dblog: 0
   default_content: 0
+  dependent_fields: 0
   editor: 0
   element_multiple: 0
   entity: 0
