@@ -276,7 +276,7 @@ function farm_nfa_update_9019(&$sandbox) {
 }
 
 /**
- * save the taxonomy terms for forest_vegetation and forest_type taxonomy types.
+ * Save the taxonomy terms for forest_vegetation taxonomy type.
  */
 function farm_nfa_update_9020(&$sandbox) {
   $vocab_terms = [
@@ -285,27 +285,22 @@ function farm_nfa_update_9020(&$sandbox) {
       'Woodland',
       'Bush',
     ],
-    'forest_type' => [
-      'natural',
-      'plantation',
-    ],
   ];
   foreach ($vocab_terms as $vocab => $terms) {
     $current_vocab = $vocab;
     // Term names to be added.
     foreach ($terms as $term) {
-      $term = Term::create(array(
-        'parent' => array(),
+      $term = Term::create([
         'name' => $term,
         'vid' => $current_vocab,
-      ));
+      ]);
       $term->save();
     }
   }
 }
 
 /**
- * save the taxonomy terms for forest purpose taxonomy type
+ * Save the taxonomy terms for forest purpose taxonomy type.
  */
 function farm_nfa_update_9021(&$sandbox) {
   $vocab = 'forest_purpose';
@@ -331,12 +326,11 @@ function farm_nfa_update_9021(&$sandbox) {
   ];
   foreach ($forest_purpose_terms as $term => $term_info) {
     // Term names to be added.
-    $current_term = Term::create(array(
-      'parent' => array(),
+    $current_term = Term::create([
       'name' => $term,
       'vid' => $vocab,
       'forest_type' => $term_info['forest_type'],
-    ));
+    ]);
     $current_term->save();
   }
 }
