@@ -2,6 +2,7 @@
 
 use Drupal\log\Entity\LogType;
 use Drush\Drush;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * @file
@@ -272,4 +273,70 @@ function farm_nfa_update_9019(&$sandbox) {
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
+}
+
+/**
+ * save the taxonomy terms for forest_vegetation and forest_type taxonomy types.
+ */
+function farm_nfa_update_9020(&$sandbox) {
+  $vocab_terms = [
+    'forest_vegetation' => [
+      'Tropical High Forest',
+      'Woodland',
+      'Bush',
+    ],
+    'forest_type' => [
+      'natural',
+      'plantation',
+    ],
+  ];
+  foreach ($vocab_terms as $vocab => $terms) {
+    $current_vocab = $vocab;
+    // Term names to be added.
+    foreach ($terms as $term) {
+      $term = Term::create(array(
+        'parent' => array(),
+        'name' => $term,
+        'vid' => $current_vocab,
+      ));
+      $term->save();
+    }
+  }
+}
+
+/**
+ * save the taxonomy terms for forest purpose taxonomy type
+ */
+function farm_nfa_update_9021(&$sandbox) {
+  $vocab = 'forest_purpose';
+  $forest_purpose_terms = [
+    'Timber' => [
+      'forest_type' => 'plantation',
+    ],
+    'Poles' => [
+      'forest_type' => 'plantation',
+    ],
+    'Fuel' => [
+      'forest_type' => 'plantation',
+    ],
+    'Processing' => [
+      'forest_type' => 'plantation',
+    ],
+    'Conservation' => [
+      'forest_type' => 'natural',
+    ],
+    'Restoration' => [
+      'forest_type' => 'natural',
+    ]
+  ];
+  foreach ($forest_purpose_terms as $term => $term_info) {
+    // Term names to be added.
+    $current_term = Term::create(array(
+      'parent' => array(),
+      'name' => $term,
+      'vid' => $vocab,
+      'forest_type' => $term_info['forest_type'],
+    ));
+    $current_term->save();
+  }
 }
