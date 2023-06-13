@@ -1,0 +1,12 @@
+nfa_gin_forests:
+  css:
+    theme:
+      dist/css/base/nfa_gin_forests.css: { minified: false }
+
+tabs:
+  version: 0.0.1
+  css:
+    theme:
+      dist/css/tabs.css: { }
+  js:
+    js/tabs.js: { }

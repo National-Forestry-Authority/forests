@@ -1,4 +1,3 @@
-uuid: bb708fa4-054b-43f6-b6ba-8631ec51c2ad
 langcode: en
 status: true
 dependencies: {  }
@@ -6,6 +5,7 @@ id: keys
 label: Keys
 classes: "farm_nfa_lb_keys\r\nfarm_nfa_lb_card"
 type: section
-weight: 0
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
+weight: 0

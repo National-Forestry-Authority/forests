@@ -122,8 +122,22 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Invoke portainer webhook
-      uses: distributhor/workflow-webhook@v3
-      env:
-        webhook_url: ${{ secrets.PORTAINER_WEBHOOK }}
-        verbose: true
+      - name: Select webhook
+        uses: kanga333/variable-mapper@v0.3.0
+        id: export
+        with:
+          key: "${{ github.ref_name }}"
+          map: |
+            {
+              "main": {
+                "webhook_url": "${{ secrets.PORTAINER_WEBHOOK_URL_PROD }}"
+              },
+              "staging": {
+                "webhook_url": "${{ secrets.PORTAINER_WEBHOOK_URL_STAGING }}"
+              }
+            }
+          export_to: env,log,output
+          mode: first_match
+
+      - name: Invoke portainer webhook
+        run: curl --fail -X POST ${{ env.webhook_url }}

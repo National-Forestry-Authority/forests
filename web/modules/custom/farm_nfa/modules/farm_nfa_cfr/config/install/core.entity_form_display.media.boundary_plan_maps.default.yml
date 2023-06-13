@@ -16,20 +16,20 @@ bundle: boundary_plan_maps
 mode: default
 content:
   boundary_plan_number:
+    type: number
     weight: 2
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_media_image:
+    type: image_image
     weight: 3
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
   name:
     type: string_textfield
     weight: 0
@@ -39,14 +39,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   year:
+    type: month_year_widget
     weight: 1
+    region: content
     settings:
       min_year: 1900
       adjustment: 5
       disabled_months: {  }
     third_party_settings: {  }
-    type: month_year_widget
-    region: content
 hidden:
   created: true
   status: true

@@ -1,0 +1,20 @@
+uuid: b849e1a4-cd92-49ae-a57a-972415fdbf42
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nfa_gin
+_core:
+  default_config_hash: _rzBetdS7BdG7C4_5n-aX3lOnOgQXGIx_KbuEbu-Jfg
+id: nfa_gin_local_actions
+theme: nfa_gin
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

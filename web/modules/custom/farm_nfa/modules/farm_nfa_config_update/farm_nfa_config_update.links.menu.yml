@@ -1,0 +1,6 @@
+farm_nfa_config_update.settings:
+  title: 'Farm NFA configuration update report'
+  route_name: farm_nfa_config_update.settings
+  parent: farm_nfa.admin_index
+  description: 'Manage configuration overrides and exclusions from the Configuration Update report.'
+  weight: 10

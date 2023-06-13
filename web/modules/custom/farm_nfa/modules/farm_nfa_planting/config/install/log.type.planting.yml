@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - farm_nfa
   enforced:
     module:
       - farm_nfa_planting
-  module:
-    - farm_nfa
 id: planting
 label: Planting
 description: ''

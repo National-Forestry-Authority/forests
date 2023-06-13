@@ -27,17 +27,17 @@ third_party_settings:
     group_natural_forest_stand:
       children:
         - forest_vegetation_type
+      label: 'Natural forest stand'
+      region: content
       parent_name: ''
       weight: 4
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Natural forest stand'
     group_plantation_stand:
       children:
         - stand_number
@@ -47,51 +47,51 @@ third_party_settings:
         - area
         - planned_harvest_date
         - planned_prescriptions
+      label: 'Plantation stand'
+      region: content
       parent_name: ''
       weight: 5
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Plantation stand'
 id: asset.forest.default
 targetEntityType: asset
 bundle: forest
 mode: default
 content:
   area:
+    type: number
     weight: 10
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   asset:
     type: entity_reference_autocomplete
     weight: 3
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   date_planted:
+    type: daterange_default
     weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: daterange_default
-    region: content
   file:
     type: file_generic
-    settings:
-      progress_indicator: throbber
     weight: 19
     region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   flag:
     type: options_buttons
@@ -100,11 +100,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   forest_status:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   forest_type:
     type: options_buttons
     weight: 1
@@ -112,18 +112,18 @@ content:
     settings: {  }
     third_party_settings: {  }
   forest_vegetation_type:
+    type: options_select
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   image:
     type: image_image
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
     weight: 18
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
     third_party_settings: {  }
   intrinsic_geometry:
     type: farm_map_geofield
@@ -141,54 +141,54 @@ content:
     third_party_settings: {  }
   notes:
     type: text_textarea
+    weight: 16
+    region: content
     settings:
       rows: 5
       placeholder: ''
-    weight: 16
-    region: content
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete
     weight: 17
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   planned_harvest_date:
+    type: month_year_widget
     weight: 11
+    region: content
     settings:
       min_year: 2021
       adjustment: 25
       disabled_months: {  }
     third_party_settings: {  }
-    type: month_year_widget
-    region: content
   planned_prescriptions:
+    type: month_year_widget
     weight: 12
+    region: content
     settings:
       min_year: 2021
       adjustment: 25
       disabled_months: {  }
     third_party_settings: {  }
-    type: month_year_widget
-    region: content
   purpose:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   stand_number:
+    type: string_textfield
     weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   status:
     type: options_select
     weight: 13

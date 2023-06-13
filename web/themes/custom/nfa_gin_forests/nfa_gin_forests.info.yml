@@ -1,0 +1,37 @@
+name: NFA Gin Forests
+type: theme
+base theme: nfa_gin
+description: 'Subtheme of NFA Gin for the Forests websites'
+core_version_requirement: ^9 || ^10
+
+libraries:
+  - nfa_gin_forests/nfa_gin_forests
+
+# Regions
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+regions_hidden:
+  - sidebar_first
+
+dependencies:
+  - nfa_gin:nfa_gin
+
+config_devel:
+  - block.block.nfa_gin_forests_breadcrumbs
+  - block.block.nfa_gin_forests_content
+  - block.block.nfa_gin_forests_farm_powered
+  - block.block.nfa_gin_forests_help
+  - block.block.nfa_gin_forests_local_actions
+  - block.block.nfa_gin_forests_messages
+  - block.block.nfa_gin_forests_page_title
+  - block.block.nfa_gin_forests_primary_local_tasks
+  - block.block.nfa_gin_forests_secondary_local_tasks
+  - nfa_gin_forests.settings

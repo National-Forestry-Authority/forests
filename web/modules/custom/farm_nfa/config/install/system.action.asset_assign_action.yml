@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_owner
+id: asset_assign_action
+label: 'Assign owners'
+type: asset
+plugin: asset_assign_action
+configuration: {  }

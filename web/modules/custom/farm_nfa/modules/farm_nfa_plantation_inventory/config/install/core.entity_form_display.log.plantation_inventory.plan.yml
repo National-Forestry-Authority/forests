@@ -34,10 +34,10 @@ content:
     third_party_settings: {  }
   file:
     type: file_generic
-    settings:
-      progress_indicator: throbber
     weight: 12
     region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   flag:
     type: options_buttons
@@ -55,38 +55,38 @@ content:
     third_party_settings: {  }
   image:
     type: image_image
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
     weight: 13
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
     third_party_settings: {  }
   inventory_date:
+    type: month_year_widget
     weight: 1
+    region: content
     settings:
       min_year: 2015
       adjustment: 5
       disabled_months: {  }
     third_party_settings: {  }
-    type: month_year_widget
-    region: content
   inventory_methodology:
+    type: text_textarea
     weight: 3
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   location:
     type: entity_reference_autocomplete
     weight: 10
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   mean_diameter:
     type: number
@@ -105,11 +105,11 @@ content:
     third_party_settings: {  }
   notes:
     type: text_textarea
+    weight: 14
+    region: content
     settings:
       rows: 5
       placeholder: ''
-    weight: 14
-    region: content
     third_party_settings: {  }
   owner:
     type: entity_reference_autocomplete
@@ -126,6 +126,13 @@ content:
     weight: 15
     region: content
     settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
       quantity:
         -
           label: 'Computed stand volume'
@@ -139,13 +146,6 @@ content:
           label: CAI
           measure: volume
           units: '1791'
-      form_mode: default
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: false
-      match_operator: CONTAINS
     third_party_settings: {  }
   silvicilutural_score:
     type: number
@@ -163,13 +163,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   stand_quality:
+    type: text_textarea
     weight: 4
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   status:
     type: options_select
     weight: 18

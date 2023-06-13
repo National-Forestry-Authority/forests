@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run theme compile, watch for changes.
+## Usage: theme:watch
+## Example: "ddev theme:watch"
+
+cd ./web/themes/custom/nfa_gin_forests && npm install && npm run dev

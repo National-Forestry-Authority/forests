@@ -56,34 +56,34 @@ third_party_settings:
         - map_ref_sheets
         - map_sheet_uploads
         - description_of_plans_and_sheets
+      label: 'Legal details'
       parent_name: ''
+      region: content
       weight: 2
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: 'Legal details'
     group_description:
       children:
         - size_location_desc
         - legal_category
         - original_management_objectives
         - land_use_and_forest_condition
+      label: Description
       parent_name: ''
+      region: content
       weight: 3
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: Description
     group_management_issues:
       children:
         - key_resources
@@ -91,29 +91,29 @@ third_party_settings:
         - priority_actions
         - issues_concerns
         - opportunities
+      label: 'Management issues'
       parent_name: ''
+      region: content
       weight: 4
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: 'Management issues'
   layout_builder:
-    allow_custom: false
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: layout_onecol
         layout_settings:
           label: Geometry
+          context_mapping: {  }
           heading: ''
           heading_element: h2
           layout_builder_styles_style: ''
-          context_mapping: {  }
         components:
           5c651e4c-447a-4e92-b940-d0e5d65781af:
             uuid: 5c651e4c-447a-4e92-b940-d0e5d65781af
@@ -121,38 +121,74 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:geometry'
               label: 'Current geometry'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: farm_map_geofield
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: farm_map_geofield
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: ''
-            weight: 0
+          8e17b479-7326-44db-abd2-0bb9361671ed:
+            uuid: 8e17b479-7326-44db-abd2-0bb9361671ed
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:asset:cfr:owner'
+              formatter:
+                label: inline
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          59535e22-6493-43d3-b583-1b0c6f47c898:
+            uuid: 59535e22-6493-43d3-b583-1b0c6f47c898
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:asset:cfr:image'
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: file
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: 'Legal details'
+          context_mapping: {  }
           heading: 'Legal details'
           heading_element: h2
           layout_builder_styles_style: keys
-          context_mapping: {  }
         components:
           1e2db6c0-6117-4692-a06e-b1059a11d90c:
             uuid: 1e2db6c0-6117-4692-a06e-b1059a11d90c
             region: content
             configuration:
+              id: 'field_block:asset:cfr:total_cutline_length'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:total_cutline_length'
               formatter:
+                type: number_decimal
                 label: above
                 settings:
                   thousand_separator: ''
@@ -160,18 +196,18 @@ third_party_settings:
                   scale: 2
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_decimal
-            additional: {  }
             weight: 10
+            additional: {  }
           64a97aa4-0f04-440f-bce6-4904f20a0c4e:
             uuid: 64a97aa4-0f04-440f-bce6-4904f20a0c4e
             region: content
             configuration:
+              id: 'field_block:asset:cfr:area'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:area'
               formatter:
+                type: number_decimal
                 label: inline
                 settings:
                   thousand_separator: ''
@@ -179,18 +215,18 @@ third_party_settings:
                   scale: 2
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_decimal
-            additional: {  }
             weight: 8
+            additional: {  }
           c528b55c-e822-4f70-87a7-a07e6e10956f:
             uuid: c528b55c-e822-4f70-87a7-a07e6e10956f
             region: content
             configuration:
+              id: 'field_block:asset:cfr:total_boundary_length'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:total_boundary_length'
               formatter:
+                type: number_decimal
                 label: above
                 settings:
                   thousand_separator: ''
@@ -198,35 +234,35 @@ third_party_settings:
                   scale: 2
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_decimal
-            additional: {  }
             weight: 9
+            additional: {  }
           10920580-5789-413b-8f17-ae8bdfa8fdc6:
             uuid: 10920580-5789-413b-8f17-ae8bdfa8fdc6
             region: content
             configuration:
+              id: 'field_block:asset:cfr:est_year_gazetted'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:est_year_gazetted'
               formatter:
+                type: number_integer
                 label: inline
                 settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_integer
-            additional: {  }
             weight: 12
+            additional: {  }
           f0d14b4c-683d-4d27-99b1-4dd0ad596bd4:
             uuid: f0d14b4c-683d-4d27-99b1-4dd0ad596bd4
             region: content
             configuration:
+              id: 'field_block:asset:cfr:total_natural_boundary_length'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:total_natural_boundary_length'
               formatter:
+                type: number_decimal
                 label: above
                 settings:
                   thousand_separator: ''
@@ -234,67 +270,66 @@ third_party_settings:
                   scale: 2
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_decimal
-            additional: {  }
             weight: 11
+            additional: {  }
           28edd9f0-c3ab-471d-ab15-cf773be179ac:
             uuid: 28edd9f0-c3ab-471d-ab15-cf773be179ac
             region: content
             configuration:
+              id: 'field_block:asset:cfr:year_of_survey'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:year_of_survey'
               formatter:
+                type: number_integer
                 label: inline
                 settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-                type: number_integer
-            additional: {  }
             weight: 13
+            additional: {  }
           22867389-26dc-4e3e-ab4f-27eb15ede7f3:
             uuid: 22867389-26dc-4e3e-ab4f-27eb15ede7f3
             region: content
             configuration:
+              id: 'field_block:asset:cfr:boundary_plan'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:boundary_plan'
               formatter:
+                type: string
                 label: inline
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-                type: string
-            additional: {  }
             weight: 14
+            additional: {  }
           b66b6e86-8eb2-4ee3-a1a9-6ebb91bdd8f1:
             uuid: b66b6e86-8eb2-4ee3-a1a9-6ebb91bdd8f1
             region: content
             configuration:
+              id: 'field_block:asset:cfr:serial'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:serial'
               formatter:
+                type: string
                 label: inline
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-                type: string
-            additional: {  }
             weight: 16
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: 'Plans and sheets'
+          context_mapping: {  }
           heading: 'Plans and sheets'
           heading_element: h2
           layout_builder_styles_style: card_section
-          context_mapping: {  }
         components:
           28e16e2f-5c0f-4ac3-b0e9-272c89788545:
             uuid: 28e16e2f-5c0f-4ac3-b0e9-272c89788545
@@ -302,88 +337,88 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:boundary_demarcation'
               label: 'Boundary demarcation'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 3
             additional:
               layout_builder_styles_style: card
-            weight: 3
           97086803-f3e1-400a-9637-3fa7ebfc0167:
             uuid: 97086803-f3e1-400a-9637-3fa7ebfc0167
             region: content
             configuration:
               id: 'field_block:asset:cfr:map_ref_sheets'
               label: 'Map Ref. Sheets'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: string
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
             additional:
               layout_builder_styles_style: flex_card
-            weight: 1
           cb99d093-b835-4a95-ba3e-1172449e5135:
             uuid: cb99d093-b835-4a95-ba3e-1172449e5135
             region: content
             configuration:
               id: 'field_block:asset:cfr:description_of_plans_and_sheets'
               label: 'Description of plans and sheets'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
             additional:
               layout_builder_styles_style: card
-            weight: 2
           73b7ff78-39cb-4d6f-828e-58c834154364:
             uuid: 73b7ff78-39cb-4d6f-828e-58c834154364
             region: content
             configuration:
               id: 'field_block:asset:cfr:map_sheet_uploads'
               label: 'Map sheet uploads'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: flex_card
-            weight: 0
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: Description
+          context_mapping: {  }
           heading: Description
           heading_element: h2
           layout_builder_styles_style: ''
-          context_mapping: {  }
         components:
           d803f6d0-b6e0-417c-9d00-9f9d5b342743:
             uuid: d803f6d0-b6e0-417c-9d00-9f9d5b342743
@@ -391,104 +426,104 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:original_management_objectives'
               label: 'Original management objectives'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
             additional:
               layout_builder_styles_style: card
-            weight: 5
           5e420937-82b3-46fc-8a24-d0cb79796356:
             uuid: 5e420937-82b3-46fc-8a24-d0cb79796356
             region: content
             configuration:
               id: 'field_block:asset:cfr:size_location_desc'
               label: 'Size, location and brief description'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
             additional:
               layout_builder_styles_style: card
-            weight: 3
           5628a866-add2-4e53-a263-bf4e2052d985:
             uuid: 5628a866-add2-4e53-a263-bf4e2052d985
             region: content
             configuration:
               id: 'field_block:asset:cfr:legal_category'
               label: 'Legal category'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
             additional:
               layout_builder_styles_style: card
-            weight: 4
           8f6d7eb5-7a73-4dc3-9596-15ff0f46e0dc:
             uuid: 8f6d7eb5-7a73-4dc3-9596-15ff0f46e0dc
             region: content
             configuration:
               id: 'field_block:asset:cfr:general_description'
               label: 'General description'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
             additional:
               layout_builder_styles_style: card
-            weight: 6
           f557b097-f858-44c8-acf0-7dffb371932d:
             uuid: f557b097-f858-44c8-acf0-7dffb371932d
             region: content
             configuration:
               id: 'field_block:asset:cfr:historical_context'
               label: 'Historical context'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 7
             additional:
               layout_builder_styles_style: card
-            weight: 7
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: 'Management issues'
+          context_mapping: {  }
           heading: 'Management issues'
           heading_element: h2
           layout_builder_styles_style: ''
-          context_mapping: {  }
         components:
           2c104241-1ffc-4c2c-a228-6af31244349c:
             uuid: 2c104241-1ffc-4c2c-a228-6af31244349c
@@ -496,114 +531,114 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:issues_concerns'
               label: 'Issues / concerns'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: inline
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: inline
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
             additional:
               layout_builder_styles_style: card
-            weight: 6
           cc5642d7-5239-43b0-9513-26fe58cc7b35:
             uuid: cc5642d7-5239-43b0-9513-26fe58cc7b35
             region: content
             configuration:
               id: 'field_block:asset:cfr:key_resources'
               label: 'Key resources used / extracted'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
             additional:
               layout_builder_styles_style: card
-            weight: 5
           feba0e39-adcd-49cb-bf34-9a8abcdc00fc:
             uuid: feba0e39-adcd-49cb-bf34-9a8abcdc00fc
             region: content
             configuration:
               id: 'field_block:asset:cfr:proposed_strategies'
               label: 'Proposed strategies for improved management'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
             additional:
               layout_builder_styles_style: card
-            weight: 8
           d5f1b852-72e2-459b-9e07-cd37bf8508e2:
             uuid: d5f1b852-72e2-459b-9e07-cd37bf8508e2
             region: content
             configuration:
               id: 'field_block:asset:cfr:priority_actions'
               label: 'Priority actions'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 9
             additional:
               layout_builder_styles_style: card
-            weight: 9
           0a31951e-e550-49c2-be9a-1fcb46abb315:
             uuid: 0a31951e-e550-49c2-be9a-1fcb46abb315
             region: content
             configuration:
               id: 'field_block:asset:cfr:opportunities'
               label: Opportunities
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 7
             additional:
               layout_builder_styles_style: card
-            weight: 7
           5a8fd148-1c8e-4c18-b130-a141ad28b673:
             uuid: 5a8fd148-1c8e-4c18-b130-a141ad28b673
             region: content
             configuration:
               id: 'field_block:asset:cfr:threats_assessment'
               label: 'Threats assessment'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 10
             additional:
               layout_builder_styles_style: card
-            weight: 10
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -618,65 +653,65 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:notes'
               label: Notes
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 11
             additional:
               layout_builder_styles_style: card
-            weight: 11
           1a313619-1a26-48ef-949f-3af170f72b96:
             uuid: 1a313619-1a26-48ef-949f-3af170f72b96
             region: content
             configuration:
               id: 'field_block:asset:cfr:location'
               label: 'Current location'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_label
-                settings:
-                  link: true
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 14
             additional:
               layout_builder_styles_style: ''
-            weight: 14
           ba115c17-f861-4a7b-bf67-0743b35efbc7:
             uuid: ba115c17-f861-4a7b-bf67-0743b35efbc7
             region: content
             configuration:
               id: 'field_block:asset:cfr:land_use_and_forest_condition'
               label: 'Land Use and forest condition'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
             additional:
               layout_builder_styles_style: card
-            weight: 8
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: Vegetation
-          layout_builder_styles_style: card_section
           context_mapping: {  }
+          layout_builder_styles_style: card_section
         components:
           5ce342ee-d678-4158-947a-4b974564d780:
             uuid: 5ce342ee-d678-4158-947a-4b974564d780
@@ -684,29 +719,29 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:vegetation'
               label: Vegetation
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: card
-            weight: 0
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: Zonation
+          context_mapping: {  }
           heading: Zonation
           heading_element: h2
           layout_builder_styles_style: card_section
-          context_mapping: {  }
         components: {  }
         third_party_settings: {  }
       -
@@ -714,10 +749,10 @@ third_party_settings:
         layout_settings:
           label: Zonation
           column_widths: 50-50
+          context_mapping: {  }
           heading: Zonation
           heading_element: h2
           layout_builder_styles_style: card_section
-          context_mapping: {  }
         components:
           2504b2f0-2c19-4035-a025-859d2ba6b448:
             uuid: 2504b2f0-2c19-4035-a025-859d2ba6b448
@@ -725,98 +760,98 @@ third_party_settings:
             configuration:
               id: 'field_block:asset:cfr:zonation_description'
               label: 'Zonation description'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: above
-                type: text_default
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: ''
-            weight: 0
           d0d01ece-7624-4d9b-81e0-ca699d728c96:
             uuid: d0d01ece-7624-4d9b-81e0-ca699d728c96
             region: second
             configuration:
               id: 'field_block:asset:cfr:zonation_map_file_upload'
               label: 'Zonation map file upload'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: file_url_plain
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: file_url_plain
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
             additional:
               layout_builder_styles_style: ''
-            weight: 1
           f29ab425-d815-468e-9967-fcabf2c5c9da:
             uuid: f29ab425-d815-468e-9967-fcabf2c5c9da
             region: second
             configuration:
               id: 'field_block:asset:cfr:zonation_date'
               label: 'Zonation date'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: month_year_formatter
-                settings: {  }
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+              formatter:
+                type: month_year_formatter
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
             additional:
               layout_builder_styles_style: ''
-            weight: 0
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: ''
-          layout_builder_styles_style: ''
           context_mapping: {  }
+          layout_builder_styles_style: ''
         components:
           34c30ee2-9589-458a-ac0f-36a44a24934a:
             uuid: 34c30ee2-9589-458a-ac0f-36a44a24934a
             region: content
             configuration:
+              id: 'field_block:asset:cfr:file'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:file'
               formatter:
                 type: file_table
                 label: visually_hidden
                 settings:
                   use_description_as_link_text: true
                 third_party_settings: {  }
-            additional: {  }
             weight: 1
+            additional: {  }
           4f99f107-a7f3-4d8b-8ac6-01433805044f:
             uuid: 4f99f107-a7f3-4d8b-8ac6-01433805044f
             region: content
             configuration:
+              id: 'field_block:asset:cfr:image'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:asset:cfr:image'
               formatter:
                 type: image
                 label: visually_hidden
                 settings:
-                  image_style: large
                   image_link: file
+                  image_style: large
                 third_party_settings: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
         third_party_settings: {  }
 id: asset.cfr.default
 targetEntityType: asset
@@ -824,7 +859,7 @@ bundle: cfr
 mode: default
 content:
   area:
-    weight: 3
+    type: number_decimal
     label: inline
     settings:
       thousand_separator: ''
@@ -832,140 +867,141 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_decimal
+    weight: 3
     region: content
   boundary_demarcation:
     type: entity_reference_entity_view
-    weight: 32
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 32
     region: content
   boundary_plan:
-    weight: 6
+    type: string
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: content
   description_of_plans_and_sheets:
-    weight: 10
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 10
     region: content
   est_year_gazetted:
-    weight: 4
+    type: number_integer
     label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 4
     region: content
   file:
     type: file_table
     label: visually_hidden
     settings:
       use_description_as_link_text: true
+    third_party_settings: {  }
     weight: 9
     region: content
-    third_party_settings: {  }
   flag:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 5
     region: content
-    settings: {  }
-    third_party_settings: {  }
   general_description:
-    weight: 21
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 21
     region: content
   geometry:
-    label: inline
     type: farm_map_geofield
+    label: inline
     settings: {  }
+    third_party_settings: {  }
     weight: 11
     region: content
-    third_party_settings: {  }
   historical_context:
-    weight: 28
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 28
     region: content
   id_tag:
-    label: inline
     type: id_tag
-    weight: 7
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 7
+    region: content
   image:
     type: image
     label: visually_hidden
     settings:
-      image_style: large
       image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
     weight: 8
     region: content
-    third_party_settings: {  }
   issues_concerns:
-    weight: 30
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 30
     region: content
   key_resources:
-    weight: 15
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 15
     region: content
   land_use_and_forest_condition:
-    weight: 20
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 20
     region: content
   legal_category:
-    weight: 15
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 15
     region: content
   location:
-    label: inline
     type: entity_reference_label
-    weight: 10
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: 10
+    region: content
   map_ref_sheets:
-    weight: 8
+    type: string
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 8
     region: content
   map_sheet_uploads:
     type: entity_reference_dialog_entity_view
-    weight: 9
     label: inline
     settings:
       view_mode: link
@@ -979,81 +1015,90 @@ content:
       display_all_dialog: '1'
       link: false
     third_party_settings: {  }
+    weight: 9
     region: content
   notes:
-    label: inline
     type: text_default
-    weight: 1
-    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   opportunities:
-    weight: 31
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 31
     region: content
   original_management_objectives:
-    weight: 16
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 16
     region: content
-  parent:
+  owner:
     label: inline
     type: entity_reference_label
-    weight: 6
+    weight: -70
     settings:
       link: true
     region: content
     third_party_settings: {  }
+  parent:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   priority_actions:
-    weight: 19
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 19
     region: content
   proposed_strategies:
-    weight: 18
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 18
     region: content
   serial:
-    weight: 7
+    type: string
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 7
     region: content
   size_location_desc:
-    weight: 14
+    type: text_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 14
     region: content
   status:
-    label: inline
     type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
     weight: 0
     region: content
-    settings: {  }
-    third_party_settings: {  }
   threats_assessment:
-    weight: 29
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 29
     region: content
   total_boundary_length:
-    weight: 22
+    type: number_decimal
     label: above
     settings:
       thousand_separator: ''
@@ -1061,10 +1106,10 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_decimal
+    weight: 22
     region: content
   total_cutline_length:
-    weight: 23
+    type: number_decimal
     label: above
     settings:
       thousand_separator: ''
@@ -1072,10 +1117,10 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_decimal
+    weight: 23
     region: content
   total_natural_boundary_length:
-    weight: 24
+    type: number_decimal
     label: above
     settings:
       thousand_separator: ''
@@ -1083,47 +1128,47 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_decimal
+    weight: 24
     region: content
   vegetation:
     type: entity_reference_entity_view
-    weight: 33
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 33
     region: content
   year_of_survey:
-    weight: 5
+    type: number_integer
     label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 5
     region: content
   zonation_date:
-    weight: 27
+    type: month_year_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: month_year_formatter
+    weight: 27
     region: content
   zonation_description:
-    weight: 26
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 26
     region: content
   zonation_map_file_upload:
-    weight: 25
+    type: file_default
     label: above
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    type: file_default
+    weight: 25
     region: content
 hidden:
   data: true

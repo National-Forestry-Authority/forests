@@ -1,4 +1,3 @@
-uuid: b7a2d8bf-136d-4d64-87e1-8b6d438c90fd
 langcode: en
 status: true
 dependencies: {  }
@@ -6,6 +5,7 @@ id: card
 label: Card
 classes: farm_nfa_lb_card
 type: component
-weight: 0
+group: default
 block_restrictions: {  }
 layout_restrictions: {  }
+weight: 0

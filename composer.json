@@ -19,6 +19,10 @@
             "url": "https://github.com/farmOS/farm_forest.git"
         },
         {
+          "type": "git",
+          "url": "https://github.com/National-Forestry-Authority/nfa_gin"
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
@@ -73,6 +77,7 @@
         "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1",
+        "drupal/environment_indicator": "^4",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3",
         "drupal/gin_lb": "^1",
@@ -83,6 +88,7 @@
         "drupal/select_or_other": "^4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
+        "national-forestry-authority/nfa_gin": "^1.0",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
@@ -118,13 +124,14 @@
                 "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
             "drupal/core": {
-                "Issue #2985882-85: Workaround for Call to a member function in layout builder":"https://www.drupal.org/files/issues/2020-04-08/2985882-field-85.patch"
+                "Issue #3358402: [regression] route defaults are now automatically route parameters":"https://git.drupalcode.org/project/drupal/-/merge_requests/3953.diff"
             },
             "drupal/entity_reference_revisions": {
                 "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
             },
-            "drupal/backup_migrate": {
-                "Issue #2930369: New backup source: PostgresQL (D8)": "https://www.drupal.org/files/issues/2022-11-20/backup_migrate-n2930369-28.patch"
+            "drupal/environment_indicator": {
+              "3362940: Improve visibility when using Gin vertical and modern horizontal toolbars": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/22.diff",
+              "3342457: Configure link is displayed even if user does not have the appropriate permission": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/23.diff"
             }
         },
         "merge-plugin": {

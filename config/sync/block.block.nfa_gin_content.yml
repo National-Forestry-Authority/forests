@@ -1,0 +1,22 @@
+uuid: e6700d61-6436-451d-af45-259da8da314b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nfa_gin
+_core:
+  default_config_hash: 1ePLPF7aS6qBqczBDxA2pCcjUa4ODcgctquSub73tvc
+id: nfa_gin_content
+theme: nfa_gin
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

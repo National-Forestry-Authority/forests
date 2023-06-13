@@ -1,0 +1,17 @@
+uuid: ea15f38a-e37c-4dbb-a2e1-48556d89872a
+langcode: en
+status: true
+dependencies:
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
+_core:
+  default_config_hash: 1OBiY_Ynn-M9GN2LueqkL99Ft-CJtD4dNzCE1imeN90
+id: sector
+label: Sector
+description: ''
+workflow: asset_default
+new_revision: true

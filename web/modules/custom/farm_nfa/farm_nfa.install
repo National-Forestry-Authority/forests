@@ -1,7 +1,7 @@
 <?php
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\log\Entity\LogType;
+use Drush\Drush;
 
 /**
  * @file
@@ -171,4 +171,105 @@ function farm_nfa_update_9010(&$sandbox) {
 function farm_nfa_update_9011(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(['devel_entity_updates']);
   \Drupal::service('module_installer')->uninstall(['devel']);
+}
+
+/**
+ * Disable farmOS Migrate modules.
+ */
+function farm_nfa_update_9012(&$sandbox) {
+  \Drupal::service('module_installer')->uninstall(['farm_migrate']);
+  \Drupal::service('module_installer')->uninstall(['farm_nfa_migrate']);
+}
+
+/**
+ * Enable Farm NFA Config Update module.
+ */
+function farm_nfa_update_9013(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_config_update']);
+}
+
+/**
+ * Import overrides of farmOS views.
+ */
+function farm_nfa_update_9014(&$sandbox) {
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9014";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Revert to farmOS default configuration.
+ */
+function farm_nfa_update_9015(&$sandbox) {
+  // Config items to be reverted.
+  $items = [
+    ['type' => 'flag', 'name' => 'monitor'],
+    ['type' => 'flag', 'name' => 'priority'],
+    ['type' => 'flag', 'name' => 'review'],
+    ['type' => 'system.simple', 'name' => 'gin_lb.settings'],
+    ['type' => 'quantity_type', 'name' => 'standard'],
+    ['type' => 'system.simple', 'name' => 'update.settings'],
+    ['type' => 'view', 'name' => 'asset_admin'],
+    ['type' => 'view', 'name' => 'farm_asset_reference'],
+    ['type' => 'view', 'name' => 'farm_inventory'],
+    ['type' => 'view', 'name' => 'farm_location_reference'],
+    ['type' => 'view', 'name' => 'farm_log'],
+    ['type' => 'view', 'name' => 'farm_people'],
+    ['type' => 'view', 'name' => 'plan_admin'],
+    ['type' => 'view', 'name' => 'farm_quantity'],
+    ['type' => 'system.simple', 'name' => 'system.date'],
+  ];
+
+  $config_update = \Drupal::service('config_update.config_update');
+  foreach ($items as $item) {
+    $config_update->revert($item['type'], $item['name']);
+  }
+}
+
+/**
+ * Enable NFA Range and Sector modules.
+ */
+function farm_nfa_update_9016(&$sandbox) {
+  \Drupal::service('module_installer')->install(['farm_nfa_range']);
+  \Drupal::service('module_installer')->install(['farm_nfa_sector']);
+}
+
+/**
+ * Update overridden Farm Assets view with changes from farmOS 2.1.0.
+ */
+function farm_nfa_update_9017(&$sandbox) {
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9017";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable NFA Gin Forests theme and disable old theme.
+ */
+function farm_nfa_update_9018(&$sandbox) {
+  $new_theme = 'nfa_gin_forests';
+  \Drupal::service('theme_installer')->install([$new_theme]);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', $new_theme)
+    ->save();
+  \Drupal::service('theme_installer')->uninstall(['farm_gin']);
+}
+
+/**
+ * Enable Environment Indicator modules.
+ */
+function farm_nfa_update_9019(&$sandbox) {
+  \Drupal::service('module_installer')->install(['environment_indicator']);
+  \Drupal::service('module_installer')->install(['environment_indicator_ui']);
+
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }

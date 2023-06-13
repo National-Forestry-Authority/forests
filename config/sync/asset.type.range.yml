@@ -1,0 +1,17 @@
+uuid: 5c91a332-9f0d-4b0c-bf54-0d5f2532c4f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - farm_location
+third_party_settings:
+  farm_location:
+    is_location: true
+    is_fixed: true
+_core:
+  default_config_hash: QygPyZr0NO-k30h2oS0J3GbZGmluDh3hu-EVoFg81E0
+id: range
+label: Range
+description: ''
+workflow: asset_default
+new_revision: true

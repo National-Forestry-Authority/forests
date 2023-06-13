@@ -93,6 +93,8 @@ content:
     settings:
       image_link: file
       image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 89
     region: content

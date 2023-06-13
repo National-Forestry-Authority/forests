@@ -20,30 +20,30 @@ third_party_settings:
   field_group:
     group_natural_forest_stand:
       children: {  }
+      label: 'Natural forest stand'
+      region: hidden
       parent_name: ''
       weight: 29
       format_type: details
-      region: hidden
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Natural forest stand'
     group_plantation_stand:
       children: {  }
+      label: 'Plantation stand'
+      region: hidden
       parent_name: ''
       weight: 30
       format_type: details
-      region: hidden
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: true
-      label: 'Plantation stand'
 id: asset.forest.planting_log
 targetEntityType: asset
 bundle: forest
@@ -52,12 +52,12 @@ content:
   asset:
     type: entity_reference_autocomplete
     weight: 3
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    region: content
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -78,15 +78,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
   tree_species:
+    type: entity_reference_autocomplete
     weight: 1
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
 hidden:
   area: true
   created: true

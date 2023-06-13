@@ -132,3 +132,10 @@ farm_nfa.search_autocomplete:
     _format: json
   requirements:
     _permission: 'access content'
+farm_nfa.admin_index:
+  path: '/admin/config/farm-nfa'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Farm NFA'
+  requirements:
+    _permission: 'administer site configuration'

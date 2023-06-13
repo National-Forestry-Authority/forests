@@ -1,0 +1,16 @@
+_core:
+  default_config_hash: RshLWnCvr3JJO-qr6Eglbi9WK2F9GzR6wP-MNcpExpQ
+preset_accent_color: green
+preset_focus_color: nfa_gin
+enable_darkmode: '0'
+classic_toolbar: vertical
+secondary_toolbar_frontend: true
+logo:
+  use_default: true
+high_contrast_mode: false
+layout_density: default
+show_description_toggle: false
+show_user_theme_settings: false
+third_party_settings:
+  shortcut:
+    module_link: true
