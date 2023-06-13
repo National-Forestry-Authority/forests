@@ -11,7 +11,7 @@ third_party_settings:
     is_location: false
     is_fixed: false
 id: forest
-label: Forest
+label: Stand
 description: ''
 workflow: asset_default
 new_revision: true

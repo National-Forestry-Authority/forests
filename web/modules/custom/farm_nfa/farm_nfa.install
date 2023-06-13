@@ -334,3 +334,13 @@ function farm_nfa_update_9021(&$sandbox) {
     $current_term->save();
   }
 }
+
+
+/*
+* Import overrides for forest taxonomy terms and forest asset type forms.
+*/
+function farm_nfa_update_9020(&$sandbox) {
+ $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9020";
+ $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+ $process->run();
+}

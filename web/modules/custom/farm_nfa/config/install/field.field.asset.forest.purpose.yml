@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.forest
+    - field.storage.asset.purpose
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: asset.forest.purpose
+field_name: purpose
+entity_type: asset
+bundle: forest
+label: Purpose
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: dependent_fields_selection
+  handler_settings:
+    dependent_fields_view:
+      view_name: forest_purpose_taxonomy
+      display_name: entity_reference_1
+      parent_field: forest_type
+      reference_parent_by_uuid: false
+      arguments: {  }
+field_type: entity_reference
