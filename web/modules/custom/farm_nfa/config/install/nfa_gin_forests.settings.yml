@@ -1,0 +1,23 @@
+preset_accent_color: custom
+preset_focus_color: gin
+enable_darkmode: '0'
+classic_toolbar: vertical
+secondary_toolbar_frontend: 1
+logo:
+  use_default: 1
+high_contrast_mode: 0
+layout_density: default
+show_description_toggle: 0
+show_user_theme_settings: 0
+third_party_settings:
+  shortcut:
+    module_link: true
+features:
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+favicon:
+  use_default: 1
+accent_color: '#006547'
+focus_color: ''

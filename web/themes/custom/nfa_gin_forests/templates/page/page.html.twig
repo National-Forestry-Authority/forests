@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * NFA Gin's theme implementation to display a page to anonymouse users.
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.pre_content: Items for the pre-content region.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ * - page.highlighted: Items for the highlighted region.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+
+{% extends "@nfa_gin/page/page.html.twig" %}
+
+{% block page_title %}
+  <h1>{{ page.header.nfa_gin_forests_page_title }}</h1>
+{% endblock %}
