@@ -276,6 +276,20 @@ function farm_nfa_update_9019(&$sandbox) {
 }
 
 /**
+ * Enable NFA Landing page module.
+ */
+function farm_nfa_update_9020(&$sandbox) {
+  \Drupal::service('module_installer')->install(['nfa_landing']);
+  \Drupal::service('module_installer')->install(['r4032login']);
+
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9020";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
  * Save the taxonomy terms for forest_vegetation taxonomy type.
  */
 function farm_nfa_update_9020(&$sandbox) {

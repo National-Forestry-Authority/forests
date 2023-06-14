@@ -110,6 +110,9 @@ config_devel:
   - log.type.harvest
   - log.type.observation
   - migrate_plus.migration_group.default
+  - nfa_gin_forests.settings
+  - nfa_landing.settings
+  - r4032login.settings
   - simple_oauth.settings
   - system.action.asset_assign_action
   - system.action.asset_parent_action
