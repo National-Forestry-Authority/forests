@@ -292,7 +292,7 @@ function farm_nfa_update_9020(&$sandbox) {
 /**
  * Save the taxonomy terms for forest_vegetation taxonomy type.
  */
-function farm_nfa_update_9020(&$sandbox) {
+function farm_nfa_update_9021(&$sandbox) {
   $vocab_terms = [
     'forest_vegetation' => [
       'Tropical High Forest',
@@ -316,7 +316,7 @@ function farm_nfa_update_9020(&$sandbox) {
 /**
  * Save the taxonomy terms for forest purpose taxonomy type.
  */
-function farm_nfa_update_9021(&$sandbox) {
+function farm_nfa_update_9022(&$sandbox) {
   $vocab = 'forest_purpose';
   $forest_purpose_terms = [
     'Timber' => [
@@ -352,8 +352,8 @@ function farm_nfa_update_9021(&$sandbox) {
 /**
  * Import overrides for forest taxonomy terms and forest asset type forms.
  */
-function farm_nfa_update_9022(&$sandbox) {
- $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9022";
+function farm_nfa_update_9023(&$sandbox) {
+ $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9023";
  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
  $process->run();
 }
