@@ -45,7 +45,6 @@ config_devel:
   - core.entity_form_display.log.observation.default
   - core.entity_form_display.log.observation.plan
   - core.entity_form_display.user.user.default
-  - core.entity_form_display.asset.forest.default
   - core.entity_form_mode.log.plan
   - core.entity_view_display.asset.land.default
   - core.entity_view_display.log.activity.default
@@ -82,7 +81,6 @@ config_devel:
   - field.field.log.harvest.harvest_type
   - field.field.log.harvest.supervisor
   - field.field.log.harvest.tender_name
-  - field.field.asset.forest.purpose
   - field.field.log.harvest.working_circle
   - field.field.log.observation.average_silviculture_score
   - field.field.taxonomy_term.forest_purpose.forest_type
