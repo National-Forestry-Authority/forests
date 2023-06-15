@@ -49,6 +49,7 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/config_devel": "^1",
         "drupal/default_content": "^2",
+        "drupal/dependent_fields": "^1.0",
         "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1",
