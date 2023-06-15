@@ -1,6 +1,11 @@
 <?php
 /**
- * Implements hook_form_FORM_ID_alter() on behalf of 'user_form'.
+ * @file
+ * Provides alters and hooks for the farm nfa forest module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'asset_forest_add_form'.
  */
 function farm_nfa_forest_form_asset_forest_add_form_alter(array &$form) {
   $form['forest_type']['widget']['#multiple'] = FALSE;

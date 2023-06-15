@@ -268,6 +268,10 @@ function farm_nfa_update_9019(&$sandbox) {
   \Drupal::service('module_installer')->install(['environment_indicator']);
   \Drupal::service('module_installer')->install(['environment_indicator_ui']);
 
+  // Refresh config cache to avoid dependency errors when importing config that
+  // depends on environment_indicator and environment_indicator_ui.
+  \Drupal::cache('config')->deleteAll();
+
   // Load the config items to be imported. Config yamls are placed in a folder
   // named after the update hook.
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
@@ -281,6 +285,10 @@ function farm_nfa_update_9019(&$sandbox) {
 function farm_nfa_update_9020(&$sandbox) {
   \Drupal::service('module_installer')->install(['nfa_landing']);
   \Drupal::service('module_installer')->install(['r4032login']);
+
+  // Refresh config cache to avoid dependency errors when importing config that
+  // depends on environment_indicator and environment_indicator_ui.
+  \Drupal::cache('config')->deleteAll();
 
   // Load the config items to be imported. Config yamls are placed in a folder
   // named after the update hook.
@@ -336,7 +344,7 @@ function farm_nfa_update_9022(&$sandbox) {
     ],
     'Restoration' => [
       'forest_type' => 'natural',
-    ]
+    ],
   ];
   foreach ($forest_purpose_terms as $term => $term_info) {
     // Term names to be added.
@@ -353,7 +361,7 @@ function farm_nfa_update_9022(&$sandbox) {
  * Import overrides for forest taxonomy terms and forest asset type forms.
  */
 function farm_nfa_update_9023(&$sandbox) {
- $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9023";
- $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
- $process->run();
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9023";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }
