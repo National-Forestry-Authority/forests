@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db2f20f285b1664d9c6725351125d0a8",
+    "content-hash": "96cba12eab6d12831aa5d6092def4c9d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7097,18 +7097,18 @@
         },
         {
             "name": "national-forestry-authority/nfa_gin",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/National-Forestry-Authority/nfa_gin",
-                "reference": "23cf27992f3c830939581e04612762c85ce023bd"
+                "reference": "75d298100f746e86b853c00566721dddf53231ac"
             },
             "type": "drupal-theme",
             "license": [
                 "GPL-2.0-or-later"
             ],
             "description": "Gin sub-theme for NFA websites",
-            "time": "2023-06-14T08:14:19+00:00"
+            "time": "2023-06-14T09:33:16+00:00"
         },
         {
             "name": "national-forestry-authority/nfa_landing",
