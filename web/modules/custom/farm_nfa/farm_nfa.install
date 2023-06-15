@@ -298,10 +298,17 @@ function farm_nfa_update_9020(&$sandbox) {
 }
 
 /**
- * Import overrides for forest taxonomy terms and forest asset type forms.
+ * Enable dependent fields module.
  */
 function farm_nfa_update_9021(&$sandbox) {
-  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9021";
+  \Drupal::service('module_installer')->install(['dependent_fields']);
+}
+
+/**
+ * Import overrides for forest taxonomy terms and forest asset type forms.
+ */
+function farm_nfa_update_9022(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9022";
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
@@ -309,7 +316,7 @@ function farm_nfa_update_9021(&$sandbox) {
 /**
  * Save the taxonomy terms for forest_vegetation taxonomy type.
  */
-function farm_nfa_update_9022(&$sandbox) {
+function farm_nfa_update_9023(&$sandbox) {
   $vocab_terms = [
     'forest_vegetation' => [
       'Tropical High Forest',
@@ -333,7 +340,7 @@ function farm_nfa_update_9022(&$sandbox) {
 /**
  * Save the taxonomy terms for forest purpose taxonomy type.
  */
-function farm_nfa_update_9023(&$sandbox) {
+function farm_nfa_update_9024(&$sandbox) {
   $vocab = 'forest_purpose';
   $forest_purpose_terms = [
     'Timber' => [
