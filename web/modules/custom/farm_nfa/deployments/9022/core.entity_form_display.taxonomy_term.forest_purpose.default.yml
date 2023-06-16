@@ -20,12 +20,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   forest_type:
-    type: string_textfield
+    type: options_select
     weight: 101
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   name:
     type: string_textfield

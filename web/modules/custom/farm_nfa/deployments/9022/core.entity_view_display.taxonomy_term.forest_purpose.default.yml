@@ -5,6 +5,7 @@ dependencies:
     - field.field.taxonomy_term.forest_purpose.forest_type
     - taxonomy.vocabulary.forest_purpose
   module:
+    - options
     - text
 id: taxonomy_term.forest_purpose.default
 targetEntityType: taxonomy_term
@@ -19,10 +20,9 @@ content:
     weight: 0
     region: content
   forest_type:
-    type: string
+    type: list_default
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
     weight: 1
     region: content
