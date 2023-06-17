@@ -96,7 +96,7 @@ $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/development.servi
 // https://www.drupal.org/node/2598914 -> 'Find cache bins'.
 $cache_bins = [
   'bootstrap',
-  'config',
+  //'config',
   'data',
   'default',
   'discovery',

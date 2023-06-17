@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.forest_type
+    - taxonomy.vocabulary.forest_purpose
+  module:
+    - options
+id: taxonomy_term.forest_purpose.forest_type
+field_name: forest_type
+entity_type: taxonomy_term
+bundle: forest_purpose
+label: 'Forest Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

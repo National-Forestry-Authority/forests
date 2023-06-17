@@ -23,6 +23,10 @@
           "url": "https://github.com/National-Forestry-Authority/nfa_gin"
         },
         {
+          "type": "git",
+          "url": "https://github.com/National-Forestry-Authority/nfa_landing"
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
@@ -74,6 +78,7 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/config_devel": "^1",
         "drupal/default_content": "^2",
+        "drupal/dependent_fields": "^1.0",
         "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1",
@@ -85,10 +90,12 @@
         "drupal/lb_routing": "^1",
         "drupal/migrate_source_csv": "^3",
         "drupal/month_year": "^2",
+        "drupal/r4032login": "^2",
         "drupal/select_or_other": "^4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
-        "national-forestry-authority/nfa_gin": "^1.0",
+        "national-forestry-authority/nfa_gin": "^1",
+        "national-forestry-authority/nfa_landing": "^1",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
