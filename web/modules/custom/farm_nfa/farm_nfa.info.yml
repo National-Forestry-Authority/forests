@@ -53,6 +53,8 @@ config_devel:
   - core.entity_view_display.user.user.default
   - core.entity_view_display.user.user.person_in_charge
   - core.entity_view_mode.asset.token
+  - core.entity_form_display.taxonomy_term.forest_purpose.default
+  - core.entity_view_display.taxonomy_term.forest_purpose.default
   - core.entity_view_mode.block.token
   - core.entity_view_mode.file.token
   - core.entity_view_mode.media.dialog
@@ -81,11 +83,13 @@ config_devel:
   - field.field.log.harvest.tender_name
   - field.field.log.harvest.working_circle
   - field.field.log.observation.average_silviculture_score
+  - field.field.taxonomy_term.forest_purpose.forest_type
   - field.field.log.observation.coup_number
   - field.field.log.observation.working_circle
   - field.field.user.user.contact_phone_number
   - field.storage.asset.area
   - field.storage.asset.person_in_charge
+  - field.storage.taxonomy_term.forest_type
   - field.storage.log.activity_type
   - field.storage.log.average_silviculture_score
   - field.storage.log.coup_number
@@ -104,6 +108,9 @@ config_devel:
   - log.type.harvest
   - log.type.observation
   - migrate_plus.migration_group.default
+  - nfa_gin_forests.settings
+  - nfa_landing.settings
+  - r4032login.settings
   - simple_oauth.settings
   - system.action.asset_assign_action
   - system.action.asset_parent_action
@@ -135,6 +142,7 @@ config_devel:
   - views.view.farm_asset
   - views.view.farm_plan
   - views.view.plan_logs
+  - views.view.forest_purpose_taxonomy
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
 default_content:

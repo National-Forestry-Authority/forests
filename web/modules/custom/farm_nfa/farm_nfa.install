@@ -2,6 +2,7 @@
 
 use Drupal\log\Entity\LogType;
 use Drush\Drush;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * @file
@@ -267,9 +268,47 @@ function farm_nfa_update_9019(&$sandbox) {
   \Drupal::service('module_installer')->install(['environment_indicator']);
   \Drupal::service('module_installer')->install(['environment_indicator_ui']);
 
+  // Refresh config cache to avoid dependency errors when importing config that
+  // depends on environment_indicator and environment_indicator_ui.
+  \Drupal::cache('config')->deleteAll();
+
   // Load the config items to be imported. Config yamls are placed in a folder
   // named after the update hook.
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9019";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable NFA Landing page module.
+ */
+function farm_nfa_update_9020(&$sandbox) {
+  \Drupal::service('module_installer')->install(['nfa_landing']);
+  \Drupal::service('module_installer')->install(['r4032login']);
+
+  // Refresh config cache to avoid dependency errors when importing config that
+  // depends on environment_indicator and environment_indicator_ui.
+  \Drupal::cache('config')->deleteAll();
+
+  // Load the config items to be imported. Config yamls are placed in a folder
+  // named after the update hook.
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9020";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable dependent fields module.
+ */
+function farm_nfa_update_9021(&$sandbox) {
+  \Drupal::service('module_installer')->install(['dependent_fields']);
+}
+
+/**
+ * Import overrides for forest taxonomy terms and forest asset type forms.
+ */
+function farm_nfa_update_9022(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9022";
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
