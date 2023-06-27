@@ -63,7 +63,6 @@ class ForestPlanGfwForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    // $element = parent::settingsForm($form, $form_state);
     // Set the form title.
     $form['#title'] = $this->t('GFW');
 
@@ -97,7 +96,6 @@ class ForestPlanGfwForm extends FormBase {
         ],
       ],
     ];
-    // echo '<pre>';
 
     return $form;
   }

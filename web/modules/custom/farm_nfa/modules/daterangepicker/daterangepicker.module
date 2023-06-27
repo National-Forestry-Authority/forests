@@ -5,8 +5,7 @@
  */
 
 function daterangepicker_theme($existing, $type, $theme, $path) {
-  // echo '<pre>';
-  // attaching libraries'
+
   return [
     'daterangepicker' => [
       'variables' => [
