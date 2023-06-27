@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the farm_nfa_sector module.
+ */
+
+/**
+ * Uninstall NFA Sector module.
+ */
+function farm_nfa_sector_uninstall() {
+  // Remove the module config here because dependencies were not correctly set
+  // in the config yml files.
+  \Drupal::configFactory()->getEditable('asset.type.sector')->delete();
+  \Drupal::configFactory()->getEditable('core.entity_form_display.asset.sector.default')->delete();
+  \Drupal::configFactory()->getEditable('core.entity_view_display.asset.sector.default')->delete();
+  \Drupal::configFactory()->getEditable('field.field.asset.sector.sector_cfr')->delete();
+  \Drupal::configFactory()->getEditable('field.storage.asset.sector_cfr')->delete();
+}
