@@ -312,3 +312,11 @@ function farm_nfa_update_9022(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Uninstall NFA Range and Sector modules.
+ */
+function farm_nfa_update_9023(&$sandbox) {
+  \Drupal::service('module_installer')->uninstall(['farm_nfa_range']);
+  \Drupal::service('module_installer')->uninstall(['farm_nfa_sector']);
+}

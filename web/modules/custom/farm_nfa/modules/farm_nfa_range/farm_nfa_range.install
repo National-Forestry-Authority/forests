@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the farm_nfa_range module.
+ */
+
+/**
+ * Uninstall NFA Range module.
+ */
+function farm_nfa_range_uninstall() {
+  // Remove the module config here because dependencies were not correctly set
+  // in the config yml files.
+  \Drupal::configFactory()->getEditable('asset.type.range')->delete();
+  \Drupal::configFactory()->getEditable('core.entity_form_display.asset.range.default')->delete();
+  \Drupal::configFactory()->getEditable('core.entity_view_display.asset.range.default')->delete();
+  \Drupal::configFactory()->getEditable('field.field.asset.sector.range_cfr')->delete();
+  \Drupal::configFactory()->getEditable('field.storage.asset.range_cfr')->delete();
+}
