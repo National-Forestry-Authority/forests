@@ -6,7 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element\RenderElement;
 
 /**
- * Provides a farm_map render element.
+ * Provides a daterangepicker render element.
  *
  * @RenderElement("daterangepicker")
  */
@@ -26,7 +26,7 @@ class DateRangePicker extends RenderElement {
     ];
   }
    /**
-   * Pre-render callback for the map render array.
+   * Pre-render callback for the daterangepicker render array.
    *
    * @param array $element
    *   A renderable array containing a #DateRangePicker_options property.
