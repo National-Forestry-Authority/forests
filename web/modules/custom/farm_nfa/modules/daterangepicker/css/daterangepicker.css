@@ -117,3 +117,9 @@
     background-image: none;
     opacity: 0.35;
 }
+
+.comiseo-daterangepicker-triggerbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

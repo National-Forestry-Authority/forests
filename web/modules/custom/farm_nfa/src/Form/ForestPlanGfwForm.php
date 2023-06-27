@@ -63,27 +63,13 @@ class ForestPlanGfwForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
+    // $element = parent::settingsForm($form, $form_state);
     // Set the form title.
     $form['#title'] = $this->t('GFW');
 
-    // $form['gfw_map'] = [
-    //   '#type' => 'farm_map',
-    //   '#map_type' => 'farm_nfa_plan_locations',
-    //   '#map_settings' => [
-    //     'plan' => $this->routeMatch->getRawParameter('plan'),
-    //     'host' => $this->request->getHost(),
-    //   ],
-    //   '#attached' => [
-    //     'library' => [
-    //       'farm_nfa/behavior_farm_nfa_gfw_layers',
-    //     ],
-    //   ],
-    // ];
-    // echo '<pre>';
     $form['range'] = [
       '#type' => 'daterangepicker',
-      '#DateRangePicker_options' => array(
+      '#DateRangePicker_options' => [
         'initial_text' => t('Select date range...'),
         'apply_button_text' => t('Apply'),
         'clear_button_text' => t('Clear'),
@@ -92,11 +78,26 @@ class ForestPlanGfwForm extends FormBase {
         'date_format' => 'd M, yy',
         // This needs to be a format recognised by javascript Date.parse method.
         'alt_format' => 'yy-mm-dd',
-        'date_picker_options' => array(
-          'numberOfMonths' => 2,
-        ),
-      ),
+        'date_picker_options' => [
+          'number_of_months' => 2,
+        ],
+      ],
     ];
+
+    $form['gfw_map'] = [
+      '#type' => 'farm_map',
+      '#map_type' => 'farm_nfa_plan_locations',
+      '#map_settings' => [
+        'plan' => $this->routeMatch->getRawParameter('plan'),
+        'host' => $this->request->getHost(),
+      ],
+      '#attached' => [
+        'library' => [
+          'farm_nfa/behavior_farm_nfa_gfw_layers',
+        ],
+      ],
+    ];
+    // echo '<pre>';
 
     return $form;
   }

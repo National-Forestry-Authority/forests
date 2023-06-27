@@ -1,3 +1,26 @@
+jquery:
+  js:
+    /libraries/jquery/dist/jquery.js: { minified: true }
+  dependencies:
+    - core/drupalSettings
+
+moment:
+  js:
+    /libraries/moment/min/moment.min.js: { minified: true }
+  dependencies:
+    - core/drupalSettings
+    - daterangepicker/jquery
+
+jquery_ui:
+  js:
+    /libraries/jquery-ui/dist/jquery-ui.js: { minified: true }
+  css:
+    theme:
+      /libraries/jquery-ui/dist/themes/base/jquery-ui.css: { }
+  dependencies:
+    - core/drupalSettings
+    - daterangepicker/jquery
+
 jquery_ui_daterange_picker:
   js:
     /libraries/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.js: { minified: true }
@@ -6,6 +29,9 @@ jquery_ui_daterange_picker:
       /libraries/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.css: { }
   dependencies:
     - core/drupalSettings
+    - daterangepicker/jquery
+    - daterangepicker/jquery_ui
+    - daterangepicker/moment
 
 daterange_picker:
   css:
@@ -14,12 +40,5 @@ daterange_picker:
   js:
     js/daterangepicker.js: { }
   dependencies:
+    - core/drupalSettings
     - daterangepicker/jquery_ui_daterange_picker
-# daterange_picker:
-#   css:
-#     theme:
-#       css/daterange_picker.css: { }
-#   js:
-#     js/daterange_picker.js: { }
-#   dependencies:
-#     - geolayer_map/nfa-map

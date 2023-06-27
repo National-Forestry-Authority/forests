@@ -7019,6 +7019,54 @@
             "time": "2023-04-26T21:27:14+00:00"
         },
         {
+            "name": "tamble/jquery-ui-daterangepicker",
+            "version": "0.5.0",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://github.com/tamble/jquery-ui-daterangepicker/archive/refs/tags/0.5.0.zip",
+                "type": "zip"
+            },
+            "extra": {
+                "installer-name": "jquery-ui-daterangepicker"
+            }
+        },
+        {
+            "name": "jquery/jquery",
+            "version": "3.7.0",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://github.com/jquery/jquery/archive/refs/tags/3.7.0.zip",
+                "type": "zip"
+            },
+            "extra": {
+                "installer-name": "jquery"
+            }
+        },
+        {
+            "name": "jquery-ui/jquery-ui",
+            "version": "1.13.2",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://github.com/jquery/jquery-ui/archive/refs/tags/1.13.2.zip",
+                "type": "zip"
+            },
+            "extra": {
+                "installer-name": "jquery-ui"
+            }
+        },
+        {
+            "name": "moment/moment",
+            "version": "2.29.4",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://github.com/moment/moment/archive/refs/tags/2.29.4.zip",
+                "type": "zip"
+            },
+            "extra": {
+                "installer-name": "moment"
+            }
+        },
+        {
             "name": "lucianocosta/jquery.mtz.monthpicker",
             "version": "master",
             "source": {
