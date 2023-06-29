@@ -320,3 +320,12 @@ function farm_nfa_update_9023(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(['farm_nfa_range']);
   \Drupal::service('module_installer')->uninstall(['farm_nfa_sector']);
 }
+
+/**
+ * Update Farm Assets view after reorganising menus.
+ */
+function farm_nfa_update_9024(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9024";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
