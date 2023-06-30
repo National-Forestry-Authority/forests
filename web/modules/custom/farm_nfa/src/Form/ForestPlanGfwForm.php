@@ -68,7 +68,7 @@ class ForestPlanGfwForm extends FormBase {
 
     $form['range'] = [
       '#type' => 'daterangepicker',
-      '#DateRangePicker_options' => [
+      '#DateRangePickerOptions' => [
         'initial_text' => t('Select date range...'),
         'apply_button_text' => t('Apply'),
         'clear_button_text' => t('Clear'),
