@@ -1,35 +1,25 @@
-jquery:
-  js:
-    /libraries/jquery/dist/jquery.js: { minified: true }
-  dependencies:
-    - core/drupalSettings
-
 moment:
   js:
-    /libraries/moment/min/moment.min.js: { minified: true }
+    https://momentjs.com/downloads/moment.min.js: { minified: true }
   dependencies:
     - core/drupalSettings
-    - daterangepicker/jquery
+    - core/jquery
 
-jquery_ui:
-  js:
-    /libraries/jquery-ui/dist/jquery-ui.js: { minified: true }
-  css:
-    theme:
-      /libraries/jquery-ui/dist/themes/base/jquery-ui.css: { }
-  dependencies:
-    - core/drupalSettings
-    - daterangepicker/jquery
 
 jquery_ui_daterange_picker:
   js:
-    /libraries/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.js: { minified: true }
+    https://cdn.jsdelivr.net/gh/tamble/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.min.js: { minified: true }
   css:
     theme:
-      /libraries/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.css: { }
+      https://cdn.jsdelivr.net/gh/tamble/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.min.css: { }
   dependencies:
     - core/drupalSettings
-    - daterangepicker/jquery
+    - core/jquery
+    - jquery_ui_datepicker/datepicker
+    - jquery_ui/core
+    - jquery_ui/widget
+    - jquery_ui_button/button
+    - jquery_ui_menu/menu
     - daterangepicker/jquery_ui
     - daterangepicker/moment
 

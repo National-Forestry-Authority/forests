@@ -2,7 +2,6 @@
 
 namespace Drupal\daterangepicker\Element;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element\RenderElement;
 
 /**
@@ -19,33 +18,36 @@ class DateRangePicker extends RenderElement {
     $class = get_class($this);
 
     return [
+      '#theme' => 'daterangepicker',
       '#pre_render' => [
         [$class, 'preRenderDatePicker'],
       ],
-      '#theme' => 'daterangepicker',
+      '#title' => NULL,
+      '#src_type' => NULL,
+      '#src' => NULL,
+      '#attributes' => NULL,
+      '#attached' => [
+        'library' => [
+          'daterangepicker/moment',
+          'daterangepicker/jquery_ui_daterange_picker',
+          'daterangepicker/daterange_picker',
+        ],
+      ],
     ];
   }
-   /**
-   * Pre-render callback for the daterangepicker render array.
-   *
-   * @param array $element
-   *   A renderable array containing a #DateRangePicker_options property.
-   *
-   * @return array
-   *   A renderable array representing the date range picker.
-   */
+
+/**
+ * Pre-render callback for the daterangepicker render array.
+ *
+ * @param array $element
+ *   A renderable array containing a #DateRangePickerOptions property.
+ *
+ * @return array
+ *   A renderable array representing the date range picker.
+ */
   public static function preRenderDatePicker(array $element) {
-    $element['#attached'] = [
-      'library' => [
-        'daterangepicker/jquery',
-        'daterangepicker/moment',
-        'daterangepicker/jquery_ui',
-        'daterangepicker/jquery_ui_daterange_picker',
-        'daterangepicker/daterange_picker',
-      ],
-        'drupalSettings' => [
-            'daterangepicker' => $element['#DateRangePicker_options']
-        ],
+    $element['#attached']['drupalSettings'] = [
+      'daterangepicker' => $element['#DateRangePickerOptions']
     ];
     return $element;
   }

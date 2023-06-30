@@ -1,7 +1,7 @@
 (function($) {
   Drupal.behaviors.daterangepicker = {
-    attach: function(context, settings) {
-      $('input.daterangepicker').each(function(index, element) {
+    attach: function (context, settings) {
+      $('input.daterangepicker').each(function (index, element) {
         // Enable date range for all inputs with the given class.
         $(this).daterangepicker({
           initialText: settings.daterangepicker.initial_text,

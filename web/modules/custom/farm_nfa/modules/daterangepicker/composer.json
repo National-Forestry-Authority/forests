@@ -1,0 +1,65 @@
+{
+    "name": "drupal/daterangepicker",
+    "description": "A simple daterangepicker module.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/daterangepicker",
+    "authors": [
+        {
+            "name": "Pedro Cambra",
+            "homepage": "https://drupal.org/u/pcambra",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Yash Goel",
+            "homepage": "https://www.drupal.org/u/yashn_99",
+            "role": "Maintainer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery-ui/jquery-ui",
+                "version": "1.13.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/jquery/jquery-ui/archive/refs/tags/1.13.2.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "installer-name": "jquery-ui"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "tamble/jquery-ui-daterangepicker",
+                "version": "0.5.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/tamble/jquery-ui-daterangepicker/archive/refs/tags/0.5.0.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "installer-name": "jquery-ui-daterangepicker"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "moment/moment",
+                "version": "2.29.4",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/moment/moment/archive/refs/tags/2.29.4.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "installer-name": "moment"
+                }
+            }
+        }
+    ]
+}
