@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96cba12eab6d12831aa5d6092def4c9d",
+    "content-hash": "c5a00bb6d07f27478f9c3294bbaf24e6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2475,6 +2475,72 @@
             }
         },
         {
+            "name": "drupal/daterangepicker",
+            "version": "1.0.0-alpha0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/daterangepicker.git",
+                "reference": "1.0.0-alpha0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/daterangepicker-1.0.0-alpha0.zip",
+                "reference": "1.0.0-alpha0",
+                "shasum": "fa24b4ee53b9ec12bd542f416460215f2f75441a"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10",
+                "drupal/jquery_ui": "^1.6",
+                "drupal/jquery_ui_button": "^2.0",
+                "drupal/jquery_ui_datepicker": "^1.4",
+                "drupal/jquery_ui_menu": "^2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha0",
+                    "datestamp": "1688403992",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Pedro Cambra",
+                    "homepage": "https://drupal.org/u/pcambra",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Yash Goel",
+                    "homepage": "https://www.drupal.org/u/yashn_99",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "pcambra",
+                    "homepage": "https://www.drupal.org/user/122101"
+                },
+                {
+                    "name": "Peacog",
+                    "homepage": "https://www.drupal.org/user/390819"
+                },
+                {
+                    "name": "yashn_99",
+                    "homepage": "https://www.drupal.org/user/3708825"
+                }
+            ],
+            "description": "A simple daterangepicker module.",
+            "homepage": "https://www.drupal.org/project/daterangepicker",
+            "support": {
+                "source": "https://git.drupalcode.org/project/daterangepicker"
+            }
+        },
+        {
             "name": "drupal/default_content",
             "version": "2.0.0-alpha2",
             "source": {
@@ -3912,6 +3978,167 @@
             }
         },
         {
+            "name": "drupal/jquery_ui_button",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jquery_ui_button.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jquery_ui_button-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "97b870cf66ec47d0d1f52e1e632ea92f409e5256"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/jquery_ui": "^1.6",
+                "drupal/jquery_ui_checkboxradio": "^2",
+                "drupal/jquery_ui_controlgroup": "^2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1670871463",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Provides jQuery UI Button library.",
+            "homepage": "https://www.drupal.org/project/jquery_ui_button",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jquery_ui_button"
+            }
+        },
+        {
+            "name": "drupal/jquery_ui_checkboxradio",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jquery_ui_checkboxradio.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jquery_ui_checkboxradio-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "81d474fbae63b0099c58be95de71e7f010568aa9"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/jquery_ui": "^1.6"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1670871489",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Provides jQuery UI Checkboxradio library.",
+            "homepage": "https://www.drupal.org/project/jquery_ui_checkboxradio",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jquery_ui_checkboxradio"
+            }
+        },
+        {
+            "name": "drupal/jquery_ui_controlgroup",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jquery_ui_controlgroup.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jquery_ui_controlgroup-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "23eb16fd358823612659246e3a2522d6a691466c"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/jquery_ui": "^1.6"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1670871490",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Provides jQuery UI Controlgroup library.",
+            "homepage": "https://www.drupal.org/project/jquery_ui_controlgroup",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jquery_ui_controlgroup"
+            }
+        },
+        {
             "name": "drupal/jquery_ui_datepicker",
             "version": "1.4.0",
             "source": {
@@ -3980,6 +4207,71 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/jquery_ui_datepicker",
                 "issues": "https://www.drupal.org/project/issues/jquery_ui_datepicker"
+            }
+        },
+        {
+            "name": "drupal/jquery_ui_menu",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jquery_ui_menu.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jquery_ui_menu-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "5e1b56bf457669c7779a81784f49da63e3956854"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/jquery_ui": "^1.6"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1670871546",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                },
+                {
+                    "name": "nod_",
+                    "homepage": "https://www.drupal.org/user/598310"
+                },
+                {
+                    "name": "phenaproxima",
+                    "homepage": "https://www.drupal.org/user/205645"
+                },
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                },
+                {
+                    "name": "zrpnr",
+                    "homepage": "https://www.drupal.org/user/1448368"
+                }
+            ],
+            "description": "Provides jQuery UI Menu library.",
+            "homepage": "https://www.drupal.org/project/jquery_ui_menu",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jquery_ui_menu"
             }
         },
         {
@@ -7017,54 +7309,6 @@
                 "source": "https://github.com/laminas/laminas-diactoros"
             },
             "time": "2023-04-26T21:27:14+00:00"
-        },
-        {
-            "name": "tamble/jquery-ui-daterangepicker",
-            "version": "0.5.0",
-            "type": "drupal-library",
-            "dist": {
-                "url": "https://github.com/tamble/jquery-ui-daterangepicker/archive/refs/tags/0.5.0.zip",
-                "type": "zip"
-            },
-            "extra": {
-                "installer-name": "jquery-ui-daterangepicker"
-            }
-        },
-        {
-            "name": "jquery/jquery",
-            "version": "3.7.0",
-            "type": "drupal-library",
-            "dist": {
-                "url": "https://github.com/jquery/jquery/archive/refs/tags/3.7.0.zip",
-                "type": "zip"
-            },
-            "extra": {
-                "installer-name": "jquery"
-            }
-        },
-        {
-            "name": "jquery-ui/jquery-ui",
-            "version": "1.13.2",
-            "type": "drupal-library",
-            "dist": {
-                "url": "https://github.com/jquery/jquery-ui/archive/refs/tags/1.13.2.zip",
-                "type": "zip"
-            },
-            "extra": {
-                "installer-name": "jquery-ui"
-            }
-        },
-        {
-            "name": "moment/moment",
-            "version": "2.29.4",
-            "type": "drupal-library",
-            "dist": {
-                "url": "https://github.com/moment/moment/archive/refs/tags/2.29.4.zip",
-                "type": "zip"
-            },
-            "extra": {
-                "installer-name": "moment"
-            }
         },
         {
             "name": "lucianocosta/jquery.mtz.monthpicker",
@@ -15345,6 +15589,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/daterangepicker": 15,
         "drupal/element_multiple": 20
     },
     "prefer-stable": true,
