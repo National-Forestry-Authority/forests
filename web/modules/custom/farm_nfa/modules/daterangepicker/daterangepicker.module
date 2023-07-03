@@ -49,7 +49,7 @@ function daterangepicker_library_info_alter(&$libraries, $module) {
       'jquery_ui_daterange_picker' => 'jquery.comiseo.daterangepicker.css',
       'jquery_ui' => 'jquery-ui.min.css',
     ];
-    foreach ($current_libraries as $current_library_id => $current_library_file) {
+    foreach ($libraries_styles as $current_library_id => $current_library_file) {
       if (isset($libraries[$current_library_id])) {
         $path = $library_file_finder->find($current_library_file);
         if ($path) {

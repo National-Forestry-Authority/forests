@@ -5,7 +5,6 @@ moment:
     - core/drupalSettings
     - core/jquery
 
-
 jquery_ui_daterange_picker:
   js:
     https://cdn.jsdelivr.net/gh/tamble/jquery-ui-daterangepicker/jquery.comiseo.daterangepicker.min.js: { minified: true }
@@ -20,7 +19,6 @@ jquery_ui_daterange_picker:
     - jquery_ui/widget
     - jquery_ui_button/button
     - jquery_ui_menu/menu
-    - daterangepicker/jquery_ui
     - daterangepicker/moment
 
 daterange_picker:

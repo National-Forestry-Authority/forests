@@ -47,7 +47,7 @@ class DateRangePicker extends RenderElement {
  */
   public static function preRenderDatePicker(array $element) {
     $element['#attached']['drupalSettings'] = [
-      'daterangepicker' => $element['#DateRangePickerOptions']
+      'daterangepicker' => $element['#DateRangePickerOptions'],
     ];
     return $element;
   }
