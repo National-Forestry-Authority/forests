@@ -326,3 +326,10 @@ function farm_nfa_update_9023(&$sandbox) {
 function farm_nfa_update_9024(&$sandbox) {
   \Drupal::service('module_installer')->install(['jquery_ui_button']);
 }
+
+/**
+ * Enable jquery ui menu module.
+ */
+function farm_nfa_update_9025(&$sandbox) {
+  \Drupal::service('module_installer')->install(['jquery_ui_menu']);
+}

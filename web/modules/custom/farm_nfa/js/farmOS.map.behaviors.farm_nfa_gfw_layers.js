@@ -2,13 +2,83 @@
     farmOS.map.behaviors.farm_nfa_gfw_layers = {
       attach: async function (instance) {
         // Add layers for fire and deforestation alerts in the GFW plan tab
-        farmNfaPlotGfwApiMap(instance,'fire', 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json');
-        farmNfaPlotGfwApiMap(instance,'deforestation', 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json');
+        const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
+        const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
+        farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl);
+        farmNfaPlotGfwApiMap(instance,'deforestation', deforestationAlertsUrl);
+        const dateApplyButton = document.querySelector('.comiseo-daterangepicker-buttonpanel button');
+        const dateUpdateButtons = document.querySelectorAll('[role="menuitem"]');
+        dateUpdateButtons.forEach((dateUpdateButton) => {
+          dateUpdateButton.addEventListener('click', () => {
+            updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
+          });
+        });
+        dateApplyButton.addEventListener('click', () => {
+          updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
+        });
       }
     }
 }())
 
-async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
+async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) {
+  const dateRange = await getStartEndDate();
+  const map = instance.map;
+  const layers = map.getLayers().getArray();
+  const noOfLayers = layers.length;
+  for (let i = 2; i < noOfLayers; i++) {
+    await map.removeLayer(layers[layers.length - 1]);    
+  }
+  farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange);
+  farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange);
+}
+
+function getStartEndDate() {
+  return new Promise((resolve, reject) => { 
+    setTimeout(() => {
+      const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
+      const dateRangeArray = dateRange?.split(' - ');
+      let startDate = dateRangeArray[0]?.trim();
+      let endDate = dateRangeArray[1]?.trim();
+      startDate = startDate && new Date(startDate);
+      endDate = endDate && new Date(endDate);
+      startDate = startDate && startDate.toISOString().split('T')[0];
+      endDate = endDate && endDate.toISOString().split('T')[0];
+      resolve({startDate, endDate});
+    }, 100);
+  });
+}
+
+// make a function to get the date of last 6 months
+function getLastThreeMonthsDate() {
+  const currentDate = new Date(); // Get current date
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const day = currentDate.getDate();
+  // Subtract 3 months from the current date
+  const lastSixMonthsDate = new Date(year, month - 3, day);
+  // Format the date as "YYYY-MM-DD"
+  const formattedDate = lastSixMonthsDate.toISOString().slice(0, 10);
+  return formattedDate;
+}
+
+async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
+  let startDate = dateRange?.startDate;
+  let endDate = dateRange?.endDate;
+  const hasBothdateRange = startDate && endDate;
+  const hasSingleDateRange = startDate && !endDate;
+  let forestsFireQuery = `SELECT latitude,longitude FROM results`;
+  let deforestationQuery = `SELECT latitude,longitude FROM results`;
+  if (hasBothdateRange) {
+    forestsFireQuery += ` WHERE iso='UGA' AND alert__date >='${startDate}' AND alert__date <='${endDate}'`;
+    deforestationQuery += ` WHERE gfw_integrated_alerts__date >='${startDate}' AND gfw_integrated_alerts__date <='${endDate}'`;
+  } else if (hasSingleDateRange) { 
+    forestsFireQuery += ` WHERE iso='UGA' AND alert__date ='${startDate}'`;
+    deforestationQuery += ` WHERE gfw_integrated_alerts__date ='${startDate}'`;
+  } else {
+    forestsFireQuery += ` WHERE iso='UGA' AND alert__date >='${getLastThreeMonthsDate()}'`;
+    deforestationQuery += ` WHERE gfw_integrated_alerts__date >='${getLastThreeMonthsDate()}'`;
+  }
+
   let planId = instance.farmMapSettings.plan;
   const pageOrigin = 'https://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
@@ -26,7 +96,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl) {
           "type": "Polygon",
           "coordinates": []
         },
-        "sql": `SELECT latitude,longitude FROM results WHERE ${mapType == "fire" ? "iso='UGA' AND alert__date >='2023-02-14'" : "gfw_integrated_alerts__date >='2023-01-15'"}`
+        "sql": `${mapType == "fire" ? forestsFireQuery : deforestationQuery}`
       };
       if (cfrGeometry && cfrGeometry.coordinates) {
         gfwApiBody.geometry.coordinates.push(cfrGeometry.coordinates[0]);
