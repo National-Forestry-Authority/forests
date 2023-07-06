@@ -69,10 +69,10 @@ class ForestPlanGfwForm extends FormBase {
     $form['range'] = [
       '#type' => 'daterangepicker',
       '#DateRangePickerOptions' => [
-        'initial_text' => t('Select date range...'),
-        'apply_button_text' => t('Apply'),
-        'clear_button_text' => t('Clear'),
-        'cancel_button_text' => t('Cancel'),
+        'initial_text' => $this -> t('Select date range...'),
+        'apply_button_text' =>  $this -> t('Apply'),
+        'clear_button_text' =>  $this -> t('Clear'),
+        'cancel_button_text' =>  $this -> t('Cancel'),
         'range_splitter' => ' - ',
         'date_format' => 'd M, yy',
         // This needs to be a format recognised by javascript Date.parse method.

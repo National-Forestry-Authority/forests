@@ -331,22 +331,10 @@ function farm_nfa_update_9024(&$sandbox) {
 }
 
 /**
- * Enable daterangepicker module.
+ * Enable daterangepicker, jquery ui button and jquery ui menu module.
  */
 function farm_nfa_update_9025(&$sandbox) {
   \Drupal::service('module_installer')->install(['daterangepicker']);
-}
-
-/**
- * Enable jquery ui button module.
- */
-function farm_nfa_update_9026(&$sandbox) {
   \Drupal::service('module_installer')->install(['jquery_ui_button']);
-}
-
-/**
- * Enable jquery ui menu module.
- */
-function farm_nfa_update_9027(&$sandbox) {
   \Drupal::service('module_installer')->install(['jquery_ui_menu']);
 }
