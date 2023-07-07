@@ -24,16 +24,22 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) 
   const dateRange = await getStartEndDate();
   const map = instance.map;
   const layers = map.getLayers().getArray();
-  const noOfLayers = layers.length;
-  for (let i = 2; i < noOfLayers; i++) {
-    await map.removeLayer(layers[layers.length - 1]);    
+  let noOfLayers = layers.length;
+  for (let i = 0; i < noOfLayers;) {
+    const layerTitle = layers[i]?.values_?.title;
+    if (layerTitle == 'Fire Alerts' || layerTitle == 'Deforestation Alerts') { 
+      await map.removeLayer(layers[i]);
+      noOfLayers--;
+    } else {
+      i++;
+    }
   }
   farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange);
   farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange);
 }
 
 function getStartEndDate() {
-  return new Promise((resolve, reject) => { 
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
       const dateRangeArray = dateRange?.split(' - ');
@@ -48,16 +54,16 @@ function getStartEndDate() {
   });
 }
 
-// make a function to get the date of last 6 months
+// make a function to get the date of last 3 months
 function getLastThreeMonthsDate() {
   const currentDate = new Date(); // Get current date
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
   const day = currentDate.getDate();
-  // Subtract 3 months from the current date
-  const lastSixMonthsDate = new Date(year, month - 3, day);
+  // getting last 3 months date as default, to avoid filling the map with too many data points
+  const lastThreeMonthsDate = new Date(year, month - 3, day);
   // Format the date as "YYYY-MM-DD"
-  const formattedDate = lastSixMonthsDate.toISOString().slice(0, 10);
+  const formattedDate = lastThreeMonthsDate.toISOString().slice(0, 10);
   return formattedDate;
 }
 
@@ -80,7 +86,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   }
 
   let planId = instance.farmMapSettings.plan;
-  const pageOrigin = 'https://' + instance.farmMapSettings.host;
+  const pageOrigin = 'http://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
     let cfr = await (await fetch(cfrPlanUrl)).json();
