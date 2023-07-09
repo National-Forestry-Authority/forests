@@ -1,4 +1,4 @@
-(function () {
+(function ($, Drupal) {
     farmOS.map.behaviors.farm_nfa_gfw_layers = {
       attach: async function (instance) {
         // Add layers for fire and deforestation alerts in the GFW plan tab
@@ -6,22 +6,18 @@
         const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
         farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl);
         farmNfaPlotGfwApiMap(instance,'deforestation', deforestationAlertsUrl);
-        const dateApplyButton = document.querySelector('.comiseo-daterangepicker-buttonpanel button');
-        const dateUpdateButtons = document.querySelectorAll('[role="menuitem"]');
-        dateUpdateButtons.forEach((dateUpdateButton) => {
-          dateUpdateButton.addEventListener('click', () => {
+        // updating the map layers on date range change
+        $(".daterangepicker").daterangepicker({
+          change: function () {
             updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
-          });
-        });
-        dateApplyButton.addEventListener('click', () => {
-          updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
+          },
         });
       }
     }
-}())
+}(jQuery, Drupal))
 
 async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) {
-  const dateRange = await getStartEndDate();
+  const dateRange = getStartEndDate();
   const map = instance.map;
   const layers = map.getLayers().getArray();
   let noOfLayers = layers.length;
@@ -38,20 +34,17 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) 
   farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange);
 }
 
+// extracting the start and end date from the date range picker to update the map layers
 function getStartEndDate() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
-      const dateRangeArray = dateRange?.split(' - ');
-      let startDate = dateRangeArray[0]?.trim();
-      let endDate = dateRangeArray[1]?.trim();
-      startDate = startDate && new Date(startDate);
-      endDate = endDate && new Date(endDate);
-      startDate = startDate && startDate.toISOString().split('T')[0];
-      endDate = endDate && endDate.toISOString().split('T')[0];
-      resolve({startDate, endDate});
-    }, 100);
-  });
+  const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
+  const dateRangeArray = dateRange?.split(' - ');
+  let startDate = dateRangeArray[0]?.trim();
+  let endDate = dateRangeArray[1]?.trim();
+  startDate = startDate && new Date(startDate);
+  endDate = endDate && new Date(endDate);
+  startDate = startDate && startDate.toISOString().split('T')[0];
+  endDate = endDate && endDate.toISOString().split('T')[0];
+  return {startDate, endDate};
 }
 
 // make a function to get the date of last 3 months
