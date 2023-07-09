@@ -75,6 +75,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   // setting the cfr plan url for the geojson data
 
   let planId = instance.farmMapSettings.plan;
+  if(!planId) return;
   const pageOrigin = 'http://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
