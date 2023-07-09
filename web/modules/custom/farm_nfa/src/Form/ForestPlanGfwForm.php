@@ -89,6 +89,7 @@ class ForestPlanGfwForm extends FormBase {
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
         'host' => $this->request->getHost(),
+        'base_query' => 'SELECT latitude,longitude FROM results',
       ],
       '#attached' => [
         'library' => [

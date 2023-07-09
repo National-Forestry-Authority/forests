@@ -65,18 +65,14 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   let endDate = dateRange?.endDate;
   const hasBothdateRange = startDate && endDate;
   const hasSingleDateRange = startDate && !endDate;
-  let forestsFireQuery = `SELECT latitude,longitude FROM results`;
-  let deforestationQuery = `SELECT latitude,longitude FROM results`;
-  if (hasBothdateRange) {
-    forestsFireQuery += ` WHERE iso='UGA' AND alert__date >='${startDate}' AND alert__date <='${endDate}'`;
-    deforestationQuery += ` WHERE gfw_integrated_alerts__date >='${startDate}' AND gfw_integrated_alerts__date <='${endDate}'`;
-  } else if (hasSingleDateRange) { 
-    forestsFireQuery += ` WHERE iso='UGA' AND alert__date ='${startDate}'`;
-    deforestationQuery += ` WHERE gfw_integrated_alerts__date ='${startDate}'`;
-  } else {
-    forestsFireQuery += ` WHERE iso='UGA' AND alert__date >='${getLastThreeMonthsDate()}'`;
-    deforestationQuery += ` WHERE gfw_integrated_alerts__date >='${getLastThreeMonthsDate()}'`;
-  }
+  const baseQuery = instance.farmMapSettings.base_query;
+  // configuring the query to get the data from GFW API
+  let query = `${baseQuery} WHERE ${mapType == "fire" ? `iso='UGA' AND ` : ''}`;
+  const dateParameter = mapType == "fire" ? "alert__date" : "gfw_integrated_alerts__date";
+  if (hasBothdateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
+  else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
+  else query += `${dateParameter} >= '${getLastThreeMonthsDate()}'`;
+  // setting the cfr plan url for the geojson data
 
   let planId = instance.farmMapSettings.plan;
   const pageOrigin = 'http://' + instance.farmMapSettings.host;
@@ -95,7 +91,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
           "type": "Polygon",
           "coordinates": []
         },
-        "sql": `${mapType == "fire" ? forestsFireQuery : deforestationQuery}`
+        "sql": `${query}`
       };
       if (cfrGeometry && cfrGeometry.coordinates) {
         gfwApiBody.geometry.coordinates.push(cfrGeometry.coordinates[0]);
