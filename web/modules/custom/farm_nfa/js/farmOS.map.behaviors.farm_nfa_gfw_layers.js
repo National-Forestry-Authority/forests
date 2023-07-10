@@ -1,34 +1,29 @@
 (function ($, Drupal) {
-    farmOS.map.behaviors.farm_nfa_gfw_layers = {
-      attach: async function (instance) {
-        // Add layers for fire and deforestation alerts in the GFW plan tab
-        const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
-        const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
-        farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl);
-        farmNfaPlotGfwApiMap(instance,'deforestation', deforestationAlertsUrl);
-        // updating the map layers on date range change
-        $(".daterangepicker").daterangepicker({
-          change: function () {
-            updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
-          },
-        });
-      }
+  farmOS.map.behaviors.farm_nfa_gfw_layers = {
+    attach: async function (instance) {
+      // Add layers for fire and deforestation alerts in the GFW plan tab
+      const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
+      const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
+      const { startDate, endDate } = getDefaultDates("date");
+      $(".daterangepicker").daterangepicker({
+        change: function () {
+          updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
+        },
+      });
+      $(".daterangepicker").daterangepicker("setRange", {start: startDate, end: endDate});
     }
+  }
 }(jQuery, Drupal))
 
+// function to update the map layers when the date range is changed
 async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) {
   const dateRange = getStartEndDate();
   const map = instance.map;
   const layers = map.getLayers().getArray();
-  let noOfLayers = layers.length;
-  for (let i = 0; i < noOfLayers;) {
+  for (let i = 0; i < layers.length;) {
     const layerTitle = layers[i]?.values_?.title;
-    if (layerTitle == 'Fire Alerts' || layerTitle == 'Deforestation Alerts') { 
-      await map.removeLayer(layers[i]);
-      noOfLayers--;
-    } else {
-      i++;
-    }
+    if (layerTitle == 'Fire Alerts' || layerTitle == 'Deforestation Alerts') await map.removeLayer(layers[i]);
+    else i++;
   }
   farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange);
   farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange);
@@ -47,22 +42,30 @@ function getStartEndDate() {
   return {startDate, endDate};
 }
 
-// make a function to get the date of last 3 months
-function getLastThreeMonthsDate() {
-  const currentDate = new Date(); // Get current date
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
+// function to get the default date range for the map layers
+function getDefaultDates(format) {
+  let endDate = new Date(); // Get current date
+  const year = endDate.getFullYear();
+  const month = endDate.getMonth();
+  const day = endDate.getDate();
   // getting last 3 months date as default, to avoid filling the map with too many data points
-  const lastThreeMonthsDate = new Date(year, month - 3, day);
+  let startDate = new Date(year, month - 3, day);
+  if(format == "date") return {startDate, endDate};
   // Format the date as "YYYY-MM-DD"
-  const formattedDate = lastThreeMonthsDate.toISOString().slice(0, 10);
-  return formattedDate;
+  startDate = startDate.toISOString().slice(0, 10);
+  endDate = endDate.toISOString().slice(0, 10);
+  return {startDate, endDate};
 }
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   let startDate = dateRange?.startDate;
   let endDate = dateRange?.endDate;
+  const nullDateRange = !startDate && !endDate;
+  if (nullDateRange) {
+    let dateRange = getDefaultDates();
+    startDate = dateRange.startDate;
+    endDate = dateRange.endDate;
+  }
   const hasBothdateRange = startDate && endDate;
   const hasSingleDateRange = startDate && !endDate;
   const baseQuery = instance.farmMapSettings.base_query;
@@ -71,7 +74,6 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   const dateParameter = mapType == "fire" ? "alert__date" : "gfw_integrated_alerts__date";
   if (hasBothdateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
   else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
-  else query += `${dateParameter} >= '${getLastThreeMonthsDate()}'`;
   // setting the cfr plan url for the geojson data
 
   let planId = instance.farmMapSettings.plan;
@@ -79,6 +81,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
   const pageOrigin = 'https://' + instance.farmMapSettings.host;
   let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
   try {
+    const map = instance.map;
+    map.getTargetElement().classList.add('spinner');
     let cfr = await (await fetch(cfrPlanUrl)).json();
     let geoJson = {
       "type": "FeatureCollection",
@@ -139,5 +143,6 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
         }
       });
     }
+    map.getTargetElement().classList.remove('spinner');
   } catch(err) {}
 }
