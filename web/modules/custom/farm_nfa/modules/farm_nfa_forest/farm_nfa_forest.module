@@ -4,25 +4,29 @@
  * Provides alters and hooks for the farm nfa forest module.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_form_FORM_ID_alter() for 'asset_forest_add_form'.
  */
-function farm_nfa_forest_form_asset_forest_add_form_alter(array &$form) {
-  $form['forest_type']['widget']['#multiple'] = FALSE;
-  $form['forest_type']['widget']['#options'] = [
-    'natural' => t('Natural stand'),
-    'plantation' => t('Plantation'),
-    'none' => t('- None -'),
-  ];
-  $form['forest_type']['widget']['#default_value'] = 'none';
-  $form['group_natural_forest_stand']['#states'] = [
-    'visible' => [
-      [':input[name="forest_type"]' => ['value' => 'natural']],
-    ],
-  ];
-  $form['group_plantation_stand']['#states'] = [
-    'visible' => [
-      [':input[name="forest_type"]' => ['value' => 'plantation']],
-    ],
-  ];
+function farm_nfa_forest_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'asset_forest_add_form' || $form_id == 'asset_forest_edit_form') {
+    $form['forest_type']['widget']['#multiple'] = FALSE;
+    $form['forest_type']['widget']['#options'] = [
+      'natural' => t('Natural stand'),
+      'plantation' => t('Plantation'),
+      'none' => t('- None -'),
+    ];
+    $form['forest_type']['widget']['#default_value'] = 'none';
+    $form['group_natural_forest_stand']['#states'] = [
+      'visible' => [
+        [':input[name="forest_type"]' => ['value' => 'natural']],
+      ],
+    ];
+    $form['group_plantation_stand']['#states'] = [
+      'visible' => [
+        [':input[name="forest_type"]' => ['value' => 'plantation']],
+      ],
+    ];
+  }
 }
