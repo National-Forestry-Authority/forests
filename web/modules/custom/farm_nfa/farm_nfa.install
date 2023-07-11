@@ -329,3 +329,12 @@ function farm_nfa_update_9024(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Enable daterangepicker, jquery ui button and jquery ui menu module.
+ */
+function farm_nfa_update_9025(&$sandbox) {
+  \Drupal::service('module_installer')->install(['daterangepicker']);
+  \Drupal::service('module_installer')->install(['jquery_ui_button']);
+  \Drupal::service('module_installer')->install(['jquery_ui_menu']);
+}

@@ -16,6 +16,9 @@ behavior_farm_nfa_plan_locations_layers:
 behavior_farm_nfa_gfw_layers:
   js:
     js/farmOS.map.behaviors.farm_nfa_gfw_layers.js: { }
+  css:
+    theme:
+      css/gfw_map.css: { }
   dependencies:
     - core/drupalSettings
     - farm_map/farm_map
