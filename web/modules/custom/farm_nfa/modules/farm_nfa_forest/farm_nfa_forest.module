@@ -13,6 +13,7 @@ function farm_nfa_forest_form_alter(array &$form, FormStateInterface $form_state
   $is_new_form = $form_id == 'asset_forest_add_form';
   $is_edit_form = $form_id == 'asset_forest_edit_form';
   if ($is_new_form || $is_edit_form) {
+    $form['purpose']['widget']['#ajax']['#limit_validation_errors'] = [];
     $form['forest_type']['widget']['#multiple'] = FALSE;
     $form['forest_type']['widget']['#options'] = [
       'natural' => t('Natural stand'),
