@@ -10,7 +10,6 @@ dependencies:
     - farm_map
     - file
     - image
-    - select_or_other
     - text
 id: asset.land.default
 targetEntityType: asset
@@ -49,17 +48,14 @@ content:
     weight: 9
     region: content
     settings:
-      display_raw_geometry: '1'
+      display_raw_geometry: true
       populate_file_field: file
     third_party_settings: {  }
   land_type:
-    type: select_or_other_list
+    type: options_select
     weight: 1
     region: content
-    settings:
-      select_element_type: select_or_other_select
-      sort_options: ''
-      add_other_value_to_allowed_values: false
+    settings: {  }
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -76,6 +72,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  owner:
+    type: options_select
+    weight: -70
+    region: content
+    settings: {  }
     third_party_settings: {  }
   parent:
     type: entity_reference_autocomplete

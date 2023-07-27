@@ -232,10 +232,10 @@ function farm_nfa_update_9015(&$sandbox) {
 /**
  * Enable NFA Range and Sector modules.
  */
-function farm_nfa_update_9016(&$sandbox) {
-  \Drupal::service('module_installer')->install(['farm_nfa_range']);
-  \Drupal::service('module_installer')->install(['farm_nfa_sector']);
-}
+/*function farm_nfa_update_9016(&$sandbox) {
+\Drupal::service('module_installer')->install(['farm_nfa_range']);
+\Drupal::service('module_installer')->install(['farm_nfa_sector']);
+}*/
 
 /**
  * Update overridden Farm Assets view with changes from farmOS 2.1.0.
@@ -258,7 +258,7 @@ function farm_nfa_update_9018(&$sandbox) {
     ->getEditable('system.theme')
     ->set('default', $new_theme)
     ->save();
-  \Drupal::service('theme_installer')->uninstall(['farm_gin']);
+  //\Drupal::service('theme_installer')->uninstall(['farm_gin']);
 }
 
 /**
@@ -316,7 +316,34 @@ function farm_nfa_update_9022(&$sandbox) {
 /**
  * Uninstall NFA Range and Sector modules.
  */
-function farm_nfa_update_9023(&$sandbox) {
-  \Drupal::service('module_installer')->uninstall(['farm_nfa_range']);
-  \Drupal::service('module_installer')->uninstall(['farm_nfa_sector']);
+/*function farm_nfa_update_9023(&$sandbox) {
+\Drupal::service('module_installer')->uninstall(['farm_nfa_range']);
+\Drupal::service('module_installer')->uninstall(['farm_nfa_sector']);
+}*/
+
+/**
+ * Update Farm Assets view after reorganising menus.
+ */
+function farm_nfa_update_9024(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9024";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable daterangepicker, jquery ui button and jquery ui menu module.
+ */
+function farm_nfa_update_9025(&$sandbox) {
+  \Drupal::service('module_installer')->install(['daterangepicker']);
+  \Drupal::service('module_installer')->install(['jquery_ui_button']);
+  \Drupal::service('module_installer')->install(['jquery_ui_menu']);
+}
+
+/**
+ * Update Farm Assets view range and sector displays.
+ */
+function farm_nfa_update_9026(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9026";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }

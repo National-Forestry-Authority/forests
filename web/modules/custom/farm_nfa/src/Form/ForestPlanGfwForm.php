@@ -63,9 +63,25 @@ class ForestPlanGfwForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
     // Set the form title.
     $form['#title'] = $this->t('GFW');
+
+    $form['range'] = [
+      '#type' => 'daterangepicker',
+      '#DateRangePickerOptions' => [
+        'initial_text' => $this -> t('Select date range...'),
+        'apply_button_text' =>  $this -> t('Apply'),
+        'clear_button_text' =>  $this -> t('Clear'),
+        'cancel_button_text' =>  $this -> t('Cancel'),
+        'range_splitter' => ' - ',
+        'date_format' => 'd M, yy',
+        // This needs to be a format recognised by javascript Date.parse method.
+        'alt_format' => 'yy-mm-dd',
+        'date_picker_options' => [
+          'number_of_months' => 2,
+        ],
+      ],
+    ];
 
     $form['gfw_map'] = [
       '#type' => 'farm_map',
@@ -73,6 +89,7 @@ class ForestPlanGfwForm extends FormBase {
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
         'host' => $this->request->getHost(),
+        'base_query' => 'SELECT latitude,longitude FROM results',
       ],
       '#attached' => [
         'library' => [

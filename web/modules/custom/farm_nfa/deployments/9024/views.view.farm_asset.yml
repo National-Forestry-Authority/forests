@@ -3991,8 +3991,8 @@ display:
         - url.query_args
         - user.permissions
       tags: {  }
-  range:
-    id: range
+  ranges:
+    id: ranges
     display_title: 'All ranges'
     display_plugin: page
     position: 1
@@ -4835,7 +4835,7 @@ display:
       display_extenders:
         collapsible_filter:
           collapsible: true
-      path: assets/range
+      path: assets/ranges
       menu:
         type: normal
         title: Ranges
@@ -4854,8 +4854,8 @@ display:
         - url.query_args
         - user.permissions
       tags: {  }
-  sector:
-    id: sector
+  sectors:
+    id: sectors
     display_title: 'All sectors'
     display_plugin: page
     position: 1
@@ -5698,7 +5698,7 @@ display:
       display_extenders:
         collapsible_filter:
           collapsible: true
-      path: assets/sector
+      path: assets/sectors
       menu:
         type: normal
         title: Sectors

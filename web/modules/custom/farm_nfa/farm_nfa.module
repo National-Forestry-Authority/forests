@@ -5,6 +5,7 @@
  * Provides alters and hooks for the farm nfa module.
  */
 
+use Drupal\asset\Entity\AssetType;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
@@ -18,12 +19,13 @@ use Drupal\farm_nfa\Form\FarmNfaContentEntityDeleteForm;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
 use Drupal\plan\Entity\PlanInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_type_alter().
  */
 function farm_nfa_entity_type_alter(array &$entity_types) {
-  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
   $entity_types['plan']->setLinkTemplate('management', '/plan/{plan}/management');
   $entity_types['plan']->setLinkTemplate('budget', '/plan/{plan}/budget');
   $entity_types['plan']->setLinkTemplate('inventory', '/plan/{plan}/inventory');
@@ -70,17 +72,42 @@ function farm_nfa_preprocess_menu__toolbar__gin(&$variables) {
     }
     if (array_key_exists('farm.records', $variables['items']) && !empty($variables['items']['farm.records']['below'])) {
       $records_below = $variables['items']['farm.records']['below'];
-      // Unset block and land menu items inside of assets menu.
       if (array_key_exists('views_view:views.farm_asset.page', $records_below) && !empty($records_below['views_view:views.farm_asset.page']['below'])) {
+        // Unset block and land menu items inside of assets menu.
         unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.block']);
         unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.land']);
+
+        // Make assets names plural.
+        // https://github.com/National-Forestry-Authority/forests/issues/260
+        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.cfr']['title'] = t('CFRs');
+        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment']['title'] = t('Compartments');
+        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.zone']['title'] = t('Zones');
+        // Switch order of Zones and Compartments.
+        $compartments = $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment'];
+        unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment']);
+        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment'] = $compartments;
       }
+
+      $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['title'] = t('Locations');
 
       // Unset quantity menu item.
       if (array_key_exists('views_view:views.farm_quantity.page', $records_below)) {
         unset($variables['items']['farm.records']['below']['views_view:views.farm_quantity.page']);
       }
+
     }
+  }
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function farm_nfa_menu_links_discovered_alter(&$links) {
+  // Move the farm.asset.forests menu link to the farm.records parent.
+  // https://github.com/National-Forestry-Authority/forests/issues/260.
+  if (!empty($links['farm.asset.type:farm.asset.forest'])) {
+    $links['farm.asset.type:farm.asset.forest']['parent'] = 'farm.records';
+    $links['farm.asset.type:farm.asset.forest']['title'] = t('Assets');
   }
 }
 
@@ -115,7 +142,7 @@ function farm_nfa_farm_dashboard_panes() {
       'region'  => 'first',
       'args'  => [
         'route' => 'entity.asset.collection',
-        'entity_type' => 'asset'
+        'entity_type' => 'asset',
       ],
     ],
     'dashboard_plans_search' => [
@@ -124,7 +151,7 @@ function farm_nfa_farm_dashboard_panes() {
       'region'  => 'second',
       'args'  => [
         'route' => 'entity.plan.collection',
-        'entity_type' => 'plan'
+        'entity_type' => 'plan',
       ],
     ],
   ];
@@ -134,17 +161,17 @@ function farm_nfa_farm_dashboard_panes() {
  * Centralised way to know what route corresponds to a plan/log.
  *
  * @param \Drupal\plan\Entity\PlanInterface $plan
- *  The plan entity.
+ *   The plan entity.
  * @param \Drupal\log\Entity\LogInterface $log
- *  The log entity.
+ *   The log entity.
  *
  * @return \Symfony\Component\Routing\Route
- *  The plan route object.
-*/
+ *   The plan route object.
+ */
 function farm_nfa_plan_route_log_types(PlanInterface $plan, LogInterface $log) {
   // This is a centralised way to know what tab goes where, otherwise we're
   // spreading this logic all over the place.
-  // @TODO Instead of a random function, this might be better off being saved on
+  // @todo Instead of a random function, this might be better off being saved on
   // the entity types as third party so it is not hardcoded.
   $log_types_plan_routes = [
     'plantation' => [
@@ -196,7 +223,7 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
             'width' => '50%',
           ]),
         ],
-        'query' => ['log' => $entity->id()]
+        'query' => ['log' => $entity->id()],
       ]
     ),
   ];
@@ -224,7 +251,7 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
 /**
  * Implements hook_form_alter().
  */
-function farm_nfa_form_alter(&$form,FormStateInterface $form_state) {
+function farm_nfa_form_alter(&$form, FormStateInterface $form_state) {
   $build_info = $form_state->getBuildInfo();
   if (isset($build_info['base_form_id']) && $build_info['base_form_id'] == 'log_confirm_form') {
     // Do not ajaxify outside the off canvas.
@@ -292,7 +319,71 @@ function farm_nfa_entity_base_field_info_alter(&$fields, EntityTypeInterface $en
   if ($entity_type->id() == 'log') {
     $fields['location']->addConstraint('DuplicateReference');
   }
-  if($entity_type->id() == 'forest_type') {
+  if ($entity_type->id() == 'forest_type') {
     $fields['location']->addConstraint('DuplicateReference');
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * @see farm_ui_map_module_implements_alter()
+ */
+function farm_nfa_views_pre_render(ViewExecutable $view) {
+  $land_types = ['sector' => t('Sector'), 'range' => t('Range')];
+
+  // Render a map attachment above views of assets.
+  if ($view->id() == 'farm_asset' && isset($land_types[$view->current_display])) {
+
+    $land_type = $view->current_display;
+    // Get exposed filters.
+    $exposed_filters = $view->getExposedInput();
+
+    // Start array of asset layers to add.
+    $asset_layers = [
+      'full' => [],
+    ];
+
+    $filters = [
+      'type' => ['land'],
+      'land_type_value' => [$land_type],
+      'status' => isset($exposed_filters['status']) ? $exposed_filters['status'] : 'active',
+      'items_per_page' => isset($exposed_filters['items_per_page']) ? $exposed_filters['items_per_page'] : 50,
+    ];
+
+    // Add a cluster layer for summarizing asset counts.
+    $asset_layers['cluster']['all'] = [
+      'label' => t('Asset counts'),
+      'cluster' => TRUE,
+      'filters' => $filters,
+    ];
+
+    // Load the map layer style.
+    /** @var \Drupal\farm_map\Entity\LayerStyleInterface $layer_style */
+    $layer_style = \Drupal::service('farm_map.layer_style_loader')->load(['asset_type' => 'land']);
+    if (!is_null($layer_style)) {
+      $color = $layer_style->get('color');
+    }
+
+    // Add layer for the asset type.
+    $asset_layers['full']['full_land'] = [
+      'group' => t('Location assets'),
+      'label' => $land_types[$land_type],
+      'asset_type' => 'land',
+      'filters' => $filters,
+      'color' => $color ?? 'orange',
+      'zoom' => TRUE,
+    ];
+
+    // Build the map render array.
+    $map = [
+      '#type' => 'farm_map',
+      '#map_type' => 'asset_list',
+    ];
+    $all_layers = array_merge($asset_layers['cluster'], $asset_layers['full']);
+    $map['#map_settings']['asset_type_layers'] = $all_layers;
+
+    // Render the map.
+    $view->attachment_before['asset_map'] = $map;
   }
 }
