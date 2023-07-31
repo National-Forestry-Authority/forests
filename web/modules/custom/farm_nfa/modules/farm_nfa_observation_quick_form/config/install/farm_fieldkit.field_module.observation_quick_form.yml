@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - observation_quick_form
+id: observation_quick_form
+label: observation log quick form field module
+description: Adds a quick form for logging observations.

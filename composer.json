@@ -42,7 +42,23 @@
                     "reference":"master"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "field-kit/field-kit",
+                "version": "2.0.0-beta.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/farmOS/field-kit/archive/refs/tags/field-module-tasks@2.0.0-beta.2.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "installer-name": "field-kit"
+                }
+            }
         }
+
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
@@ -62,6 +78,8 @@
         "drupal/migrate_source_csv": "^3",
         "drupal/month_year": "^2",
         "drupal/r4032login": "^2",
+        "drupal/rest_api_authentication": "^2.0",
+        "drupal/restui": "^1.21",
         "drupal/select_or_other": "^4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",

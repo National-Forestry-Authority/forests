@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - observation_quick_form
+id: observation_quick_form
+label: 'Observation Log Quick Form'
+type: asset
+plugin: observation_quick_form
+configuration: {  }

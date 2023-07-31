@@ -1,0 +1,4 @@
+observation_quick_form:
+  js:
+    js/observation_quick_form.js: {}
+      preprocess: false

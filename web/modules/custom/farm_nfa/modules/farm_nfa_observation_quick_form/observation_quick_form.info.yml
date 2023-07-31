@@ -1,0 +1,6 @@
+name: NFA Quick Form observation log
+description: Adds a quick form for logging observations.
+type: module
+core_version_requirement: ^9
+dependencies:
+  - farm:farm_fieldkit
