@@ -1,1 +1,1 @@
-console.log('testing observation_quick_form.js');
+console.log('testing observation_quick');
