@@ -47,6 +47,7 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
     $farm_nfa_routes = [
       'farm_nfa.plan.add_task',
     ];
+    $event->addBehavior('farm_nfa_layerswitcher_sidebar');
 
     if (in_array($this->routeMatch->getRouteName(), $farm_nfa_routes)) {
       $settings[$event->getMapTargetId()]['asset_type_layers']['all_locations'] = [

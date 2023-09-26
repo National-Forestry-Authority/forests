@@ -29,3 +29,11 @@ search_autocomplete:
     js/farm_nfa_search_autocomplete.js: { }
   dependencies:
     - core/drupal.autocomplete
+
+farm_nfa_layerswitcher_sidebar:
+  js:
+    js/farmOS.map.behaviors.farm_nfa_layerswitcher_sidebar.js : {}
+  dependencies:
+    - core/drupalSettings
+    - farm_map/farm_map
+

@@ -73,6 +73,7 @@ config_devel:
   - farm_land.land_type.sector
   - farm_map.map_behavior.farm_nfa_map_activities
   - farm_map.map_behavior.farm_nfa_plan_locations_layers
+  - farm_map.map_behavior.farm_nfa_layerswitcher_sidebar
   - farm_map.map_type.farm_nfa_plan_locations
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.activity_type
