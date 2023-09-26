@@ -276,13 +276,6 @@ function farm_nfa_form_alter(&$form, FormStateInterface $form_state) {
 }
 
 /**
- * Implements hook_page_attachments_alter().
- */
-function farm_nfa_page_attachments_alter(array &$attachments) {
-  $attachments['#attached']['library'][] = 'farm_nfa/farm_nfa_layerswitcher_sidebar';
-}
-
-/**
  * Reload the log listing after deleting.
  *
  * @return \Drupal\Core\Ajax\AjaxResponse
