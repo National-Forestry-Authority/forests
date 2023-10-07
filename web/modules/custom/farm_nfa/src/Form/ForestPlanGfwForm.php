@@ -88,6 +88,7 @@ class ForestPlanGfwForm extends FormBase {
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
+        'asset' => $this->routeMatch->getRawParameter('asset'),
         'host' => $this->request->getHost(),
         'base_query' => 'SELECT latitude,longitude FROM results',
       ],

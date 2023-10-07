@@ -80,6 +80,22 @@ entity.plan.gfw:
     parameters:
       plan:
         type: entity:plan
+entity.asset.gfw_tab:
+  path: '/asset/{asset}/gfw'
+  defaults:
+    _title: 'GFW'
+    _form: 'Drupal\farm_nfa\Form\ForestPlanGfwForm'
+    log_types:
+      - activity
+  requirements:
+    _entity_bundles: 'asset:zone|cfr|land|compartment'
+    _entity_access: 'asset.update'
+    _module_dependencies: 'asset'
+    asset: \d+
+  options:
+    parameters:
+      asset:
+        type: entity:asset
 farm_nfa.plan.add_task:
   path: '/plan/{plan}/add-task'
   defaults:

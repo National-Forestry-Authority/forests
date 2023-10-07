@@ -146,6 +146,7 @@ config_devel:
   - views.view.forest_purpose_taxonomy
   - views.view.priority_logs
   - views.view.nfa_farm_asset_geojson
+  - views.view.asset_geojson
 default_content:
   taxonomy_term:
     - 40143a27-e0d1-4d5a-aefe-9c22c9ca15e4
