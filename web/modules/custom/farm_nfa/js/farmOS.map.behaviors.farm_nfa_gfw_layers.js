@@ -147,7 +147,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
       if (mapType !== "fire") {
         let allLayersControllers = document.querySelectorAll(".layer-switcher input");
         allLayersControllers.forEach((layerController) => {
-          if (layerController.nextSibling.innerText !== "Fire Alerts") {
+          const shouldDisableLayer = layerController.nextSibling.innerText !== "Fire Alerts" && layerController.nextSibling.innerText !== "Locations";
+          if (shouldDisableLayer) {
             layerController.click();
           }
         });
