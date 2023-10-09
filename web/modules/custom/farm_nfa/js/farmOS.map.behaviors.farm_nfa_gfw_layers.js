@@ -83,10 +83,14 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
     else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
     // setting the cfr plan url for the geojson data
   
-    let planId = instance.farmMapSettings.plan;
-    if(!planId) resolve('No plan id found');
+    let geometryUrl = ''
+    const planId = instance.farmMapSettings.plan
+    const assetId = instance.farmMapSettings.asset
+    if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`
+    if (assetId) geometryUrl = `/asset/geojson/${assetId}`
+    if(!geometryUrl) resolve('No plan or asset id found');
     const pageOrigin = 'https://' + instance.farmMapSettings.host;
-    let cfrPlanUrl = `${pageOrigin}/nfa-assets/geojson/${planId}`;
+    let cfrPlanUrl = `${pageOrigin}${geometryUrl}`;
     try {
       let cfr = await (await fetch(cfrPlanUrl)).json();
       let geoJson = {
@@ -143,7 +147,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
       if (mapType !== "fire") {
         let allLayersControllers = document.querySelectorAll(".layer-switcher input");
         allLayersControllers.forEach((layerController) => {
-          if (layerController.nextSibling.innerText !== "Fire Alerts") {
+          const shouldDisableLayer = layerController.nextSibling.innerText !== "Fire Alerts" && layerController.nextSibling.innerText !== "Locations";
+          if (shouldDisableLayer) {
             layerController.click();
           }
         });

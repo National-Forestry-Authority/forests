@@ -1,7 +1,12 @@
 (function () {
   farmOS.map.behaviors.farm_nfa_plan_locations_layers = {
     attach: function (instance) {
-      var url = new URL('/nfa-assets/geojson/' + instance.farmMapSettings.plan, window.location.origin + drupalSettings.path.baseUrl)
+      let geometryUrl = ''
+      const planId = instance.farmMapSettings.plan
+      const assetId = instance.farmMapSettings.asset
+      if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`
+      if (assetId) geometryUrl = `/asset/geojson/${assetId}`
+      var url = new URL(geometryUrl, window.location.origin + drupalSettings.path.baseUrl)
       var newLayer = instance.addLayer('geojson', {
         title: Drupal.t('Locations'),
         url,

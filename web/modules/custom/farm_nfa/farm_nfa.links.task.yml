@@ -33,3 +33,8 @@ farm_nfa.gfw:
   route_name: entity.plan.gfw
   parent_id: entity.plan.canonical
   weight: 6
+farm_nfa.gfw_tab:
+  title: 'GFW'
+  route_name: entity.asset.gfw_tab
+  base_route: entity.asset.canonical
+  weight: 6
