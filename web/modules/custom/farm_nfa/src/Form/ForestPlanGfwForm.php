@@ -65,9 +65,15 @@ class ForestPlanGfwForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
-
+    $node = $this->routeMatch->getParameter('asset');
+    $assetType = '';
+    if($node) {
+      $assetType = $node->bundle();
+    }
     $form['range'] = [
       '#type' => 'daterangepicker',
+      '#prefix' => $assetType != 'land' ? '<div>' :'<div class="gfw-hidden">',
+      '#suffix' => '</div>',
       '#DateRangePickerOptions' => [
         'initial_text' => $this -> t('Select date range...'),
         'apply_button_text' =>  $this -> t('Apply'),
@@ -83,12 +89,21 @@ class ForestPlanGfwForm extends FormBase {
       ],
     ];
 
+    $dates = $this->getCurrentAndLastMonthDates();
+    $form['date_range_message'] = [
+      '#type' => 'markup',
+      '#prefix' =>  $assetType != 'land' ? '<div class="gfw-hidden">' :'<div class="date-range-text">',
+      '#suffix' => '</div>',
+      '#markup' => $this->t("Showing alerts from <span class='date'>'". $dates['startDate'] ."'</span> to <span class='date'>'" .$dates['currentDate']. "'</span> To see data for more dates please choose a lower level asset (for example CFR)"),
+    ];
+
     $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
         'asset' => $this->routeMatch->getRawParameter('asset'),
+        'asset_type' => $assetType,
         'host' => $this->request->getHost(),
         'base_query' => 'SELECT latitude,longitude FROM results',
       ],
@@ -107,6 +122,20 @@ class ForestPlanGfwForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCurrentAndLastMonthDates() {
+    $currentDate = new \DateTime();
+    $oneMonthAgo = new \DateTime();
+    $oneMonthAgo->modify('-1 month');
+
+    return [
+      'currentDate' => $currentDate->format('Y-m-d'),
+      'startDate' => $oneMonthAgo->format('Y-m-d')
+    ];
   }
 
 }
