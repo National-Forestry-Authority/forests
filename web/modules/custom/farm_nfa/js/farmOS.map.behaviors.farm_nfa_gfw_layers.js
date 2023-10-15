@@ -2,9 +2,12 @@
   farmOS.map.behaviors.farm_nfa_gfw_layers = {
     attach: async function (instance) {
       // Add layers for fire and deforestation alerts in the GFW plan tab
+      const assetType = instance.farmMapSettings.asset_type;
       const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
       const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
-      const { startDate, endDate } = getDefaultDates("date");
+      let defaultMonthDuration = 3;
+      if(assetType == 'land') defaultMonthDuration = 1;
+      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration);
       $(".daterangepicker").daterangepicker({
         change: function () {
           updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
@@ -17,7 +20,7 @@
 
 // function to update the map layers when the date range is changed
 async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) {
-  const dateRange = getStartEndDate();
+  const dateRange = getStartEndDateFromDOM();
   const map = instance.map;
   const layers = map.getLayers().getArray();
   for (let i = 0; i < layers.length;) {
@@ -36,7 +39,7 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) 
 }
 
 // extracting the start and end date from the date range picker to update the map layers
-function getStartEndDate() {
+function getStartEndDateFromDOM() {
   const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
   const dateRangeArray = dateRange?.split(' - ');
   let startDate = dateRangeArray[0]?.trim();
@@ -49,13 +52,13 @@ function getStartEndDate() {
 }
 
 // function to get the default date range for the map layers
-function getDefaultDates(format) {
+function getDefaultDates(format, monthDuration) {
   let endDate = new Date(); // Get current date
   const year = endDate.getFullYear();
   const month = endDate.getMonth();
   const day = endDate.getDate();
   // getting last 3 months date as default, to avoid filling the map with too many data points
-  let startDate = new Date(year, month - 3, day);
+  let startDate = new Date(year, month - monthDuration, day);
   if(format == "date") return {startDate, endDate};
   // Format the date as "YYYY-MM-DD"
   startDate = startDate.toISOString().slice(0, 10);
