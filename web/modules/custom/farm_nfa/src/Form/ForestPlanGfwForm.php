@@ -67,19 +67,19 @@ class ForestPlanGfwForm extends FormBase {
     $form['#title'] = $this->t('GFW');
     $node = $this->routeMatch->getParameter('asset');
     $assetType = '';
-    if($node) {
+    if ($node) {
       $assetType = $node->bundle();
     }
 
     $form['range'] = [
       '#type' => 'daterangepicker',
-      '#prefix' => $assetType != 'land' ? '<div>' :'<div class="gfw-hidden">',
+      '#prefix' => $assetType != 'land' ? '<div>' : '<div class="gfw-hidden">',
       '#suffix' => '</div>',
       '#DateRangePickerOptions' => [
-        'initial_text' => $this -> t('Select date range...'),
-        'apply_button_text' =>  $this -> t('Apply'),
-        'clear_button_text' =>  $this -> t('Clear'),
-        'cancel_button_text' =>  $this -> t('Cancel'),
+        'initial_text' => $this->t('Select date range...'),
+        'apply_button_text' => $this->t('Apply'),
+        'clear_button_text' => $this->t('Clear'),
+        'cancel_button_text' => $this->t('Cancel'),
         'range_splitter' => ' - ',
         'date_format' => 'd M, yy',
         // This needs to be a format recognised by javascript Date.parse method.
@@ -93,9 +93,13 @@ class ForestPlanGfwForm extends FormBase {
     $dates = $this->getCurrentAndLastMonthDates();
     $form['date_range_message'] = [
       '#type' => 'markup',
-      '#prefix' =>  $assetType != 'land' ? '<div class="gfw-hidden">' :'<div class="date-range-text">',
+      '#prefix' => $assetType != 'land' ? '<div class="gfw-hidden">' : '<div class="date-range-text">',
       '#suffix' => '</div>',
-      '#markup' => $this->t("Showing alerts from <span class='date'>'". $dates['startDate'] ."'</span> to <span class='date'>'" .$dates['currentDate']. "'</span> To see data for more dates please choose a lower level asset (for example CFR)"),
+      '#markup' => $this->t('Showing alerts from <span class="date">@startdate</span> to <span class="date">@endd ate</span><br>To see data for more dates please choose a lower level asset (for example CFR)',
+        [
+          '@startdate' => $dates['startDate'],
+          '@enddate' => $dates['currentDate'],
+        ]),
     ];
 
     $form['gfw_map'] = [
@@ -125,9 +129,9 @@ class ForestPlanGfwForm extends FormBase {
 
   }
 
-   /**
-  * {@inheritdoc}
-  */
+  /**
+   * {@inheritdoc}
+   */
   public function getCurrentAndLastMonthDates() {
     $currentDate = new \DateTime();
     $oneMonthAgo = new \DateTime();
@@ -135,7 +139,8 @@ class ForestPlanGfwForm extends FormBase {
 
     return [
       'currentDate' => $currentDate->format('Y-m-d'),
-      'startDate' => $oneMonthAgo->format('Y-m-d')
+      'startDate' => $oneMonthAgo->format('Y-m-d'),
     ];
   }
+
 }

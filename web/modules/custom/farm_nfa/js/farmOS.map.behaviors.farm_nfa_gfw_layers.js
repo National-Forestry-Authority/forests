@@ -6,7 +6,7 @@
       const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
       const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
       let defaultMonthDuration = 3;
-      if(assetType == 'land') defaultMonthDuration = 1;
+      if (assetType == 'land') defaultMonthDuration = 1;
       const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration);
       $(".daterangepicker").daterangepicker({
         change: function () {
