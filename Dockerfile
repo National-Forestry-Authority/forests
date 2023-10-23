@@ -35,6 +35,12 @@ RUN set -eux; \
         pdo_pgsql \
         zip \
     ; \
+    pecl install \
+        apcu \
+    ; \
+    docker-php-ext-enable \
+        apcu \
+    ; \
     \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
