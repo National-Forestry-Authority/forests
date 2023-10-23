@@ -95,10 +95,11 @@ class ForestPlanGfwForm extends FormBase {
       '#type' => 'markup',
       '#prefix' => $assetType != 'land' ? '<div class="gfw-hidden">' : '<div class="date-range-text">',
       '#suffix' => '</div>',
-      '#markup' => $this->t('Showing alerts from <span class="date">@startdate</span> to <span class="date">@endd ate</span><br>To see data for more dates please choose a lower level asset (for example CFR)',
+      '#markup' => $this->t('Showing alerts from <span class="date">@startdate</span> to <span class="date">@enddate</span><br>To see data for more dates please choose a lower level asset (for example <a class= "link" href="@cfr_link">CFR</a>)',
         [
           '@startdate' => $dates['startDate'],
           '@enddate' => $dates['currentDate'],
+          '@cfr_link' => '/assets/cfr',
         ]),
     ];
 
