@@ -349,7 +349,7 @@ function farm_nfa_update_9026(&$sandbox) {
 }
 
 /**
- * add layer switcher sidebar auto open behavior.
+ * Add layer switcher sidebar auto open behavior.
  */
 function farm_nfa_update_9027(&$sandbox) {
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9027";
@@ -358,10 +358,26 @@ function farm_nfa_update_9027(&$sandbox) {
 }
 
 /**
- * add asset entity geojson view
+ * Add asset entity geojson view.
  */
 function farm_nfa_update_9028(&$sandbox) {
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9028";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
+
+/**
+ * Enable Symfony mailer module.
+ */
+function farm_nfa_update_9029(&$sandbox) {
+  \Drupal::service('module_installer')->install(['symfony_mailer']);
+}
+
+/**
+ * Update Symfony mailer configuration.
+ */
+function farm_nfa_update_9030(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9030";
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
