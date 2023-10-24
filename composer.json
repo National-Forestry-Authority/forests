@@ -63,6 +63,7 @@
         "drupal/month_year": "^2",
         "drupal/r4032login": "^2",
         "drupal/select_or_other": "^4",
+        "drupal/symfony_mailer": "^1.4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "national-forestry-authority/nfa_gin": "^1",
