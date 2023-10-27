@@ -107,6 +107,9 @@
             },
             "drupal/environment_indicator": {
               "3362940: Improve visibility when using Gin vertical and modern horizontal toolbars": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/22.diff"
+            },
+            "drupal/gin": {
+              "3281984: The breadcrumb shows 'Edit <label>' on all entity routes, even canonical/delete routes": "https://www.drupal.org/files/issues/2023-10-18/gin_3281984_mr177_75912597.patch"
             }
         },
         "merge-plugin": {
