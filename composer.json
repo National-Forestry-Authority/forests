@@ -63,6 +63,7 @@
         "drupal/month_year": "^2",
         "drupal/r4032login": "^2",
         "drupal/select_or_other": "^4",
+        "drupal/symfony_mailer": "^1.4",
         "farmos/farmos": "^2",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "national-forestry-authority/nfa_gin": "^1",
@@ -106,6 +107,9 @@
             },
             "drupal/environment_indicator": {
               "3362940: Improve visibility when using Gin vertical and modern horizontal toolbars": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/22.diff"
+            },
+            "drupal/gin": {
+              "3281984: The breadcrumb shows 'Edit <label>' on all entity routes, even canonical/delete routes": "https://www.drupal.org/files/issues/2023-10-18/gin_3281984_mr177_75912597.patch"
             }
         },
         "merge-plugin": {

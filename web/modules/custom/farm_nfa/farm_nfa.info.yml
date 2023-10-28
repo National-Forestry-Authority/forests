@@ -113,6 +113,8 @@ config_devel:
   - nfa_landing.settings
   - r4032login.settings
   - simple_oauth.settings
+  - symfony_mailer.mailer_transport.native
+  - symfony_mailer.settings
   - system.action.asset_assign_action
   - system.action.asset_parent_action
   - system.action.user_add_role_action.admin

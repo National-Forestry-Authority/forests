@@ -3,6 +3,11 @@ entity.plan.canonical:
   route_name: entity.plan.canonical
   base_route: entity.plan.canonical
   weight: 0
+entity.plan.edit_form:
+  title: 'Edit plan'
+  route_name: entity.plan.edit_form
+  parent_id: entity.plan.canonical
+  weight: 10
 farm_nfa.summary:
   title: 'Summary'
   route_name: entity.plan.canonical

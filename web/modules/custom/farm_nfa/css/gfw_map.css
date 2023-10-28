@@ -29,3 +29,8 @@
   font-weight: 600;
   color: var(--colorGinTextLight);
 }
+
+.link {
+  color: var(--colorGinTextLight);
+  text-decoration: none !important;
+}
