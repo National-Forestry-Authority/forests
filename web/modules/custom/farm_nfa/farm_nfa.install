@@ -381,3 +381,20 @@ function farm_nfa_update_9030(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Enable field group abd ctools modules.
+ */
+function farm_nfa_update_9031(&$sandbox) {
+  \Drupal::service('module_installer')->install(['field_group']);
+  \Drupal::service('module_installer')->install(['ctools']);
+}
+
+/**
+ * Update CFR view and form display configuration.
+ */
+function farm_nfa_update_9032(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9032";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}

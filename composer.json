@@ -47,6 +47,7 @@
     "require": {
         "cweagans/composer-patches": "^1.7",
         "drupal/config_devel": "^1",
+        "drupal/ctools": "^4.0",
         "drupal/daterangepicker": "^1.0@alpha",
         "drupal/default_content": "^2",
         "drupal/dependent_fields": "^1.0",
@@ -55,7 +56,7 @@
         "drupal/entity_dialog_formatter": "^1",
         "drupal/environment_indicator": "^4",
         "drupal/farm_forest": "2.x",
-        "drupal/field_group": "^3",
+        "drupal/field_group": "^3.4",
         "drupal/gin_lb": "^1",
         "drupal/layout_builder_styles": "^1",
         "drupal/lb_routing": "^1",
