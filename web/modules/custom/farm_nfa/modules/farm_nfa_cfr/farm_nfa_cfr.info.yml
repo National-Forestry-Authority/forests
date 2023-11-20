@@ -15,11 +15,13 @@ config_devel:
   - core.entity_form_display.media.boundary_plan_maps.default
   - core.entity_form_display.media.predominant_vegetation.default
   - core.entity_view_display.asset.cfr.default
+  - core.entity_view_display.asset.cfr.field_groups
   - core.entity_view_display.media.boundary_demarcation.default
   - core.entity_view_display.media.boundary_plan_maps.default
   - core.entity_view_display.media.boundary_plan_maps.dialog
   - core.entity_view_display.media.boundary_plan_maps.link
   - core.entity_view_display.media.predominant_vegetation.default
+  - core.entity_view_mode.asset.field_groups
   - field.field.asset.cfr.area
   - field.field.asset.cfr.boundary_demarcation
   - field.field.asset.cfr.boundary_plan

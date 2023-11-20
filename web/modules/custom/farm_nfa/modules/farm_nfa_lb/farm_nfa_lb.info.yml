@@ -1,6 +1,6 @@
-name: NFA layout builder
+name: Farm NFA layout builder
 type: module
-description: 'NFA layout builder layouts'
+description: 'Farm NFA layout builder layouts'
 package: farmOS NFA
 core_version_requirement: ^9
 dependencies:
