@@ -48,6 +48,12 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
       'farm_nfa.plan.add_task',
     ];
     $event->addBehavior('farm_nfa_layerswitcher_sidebar');
+    $map_id = $event->getMapTargetId();
+    if ($map_id == 'farm-map-dashboard') {
+      $event->addBehavior('farm_nfa_gfw_map');
+      $settings[$event->getMapTargetId()]['host'] = \Drupal::request()->getHost();
+      $event->addSettings($settings);
+    }
 
     if (in_array($this->routeMatch->getRouteName(), $farm_nfa_routes)) {
       $settings[$event->getMapTargetId()]['asset_type_layers']['all_locations'] = [
