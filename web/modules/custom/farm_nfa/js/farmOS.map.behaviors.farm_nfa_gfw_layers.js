@@ -10,7 +10,7 @@ const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/g
       const targetId = instance.target.id;
       if (!mapTargets.includes(targetId)) return;
       const isGfwDashboard = targetId == 'farm-map-dashboard';
-      const pageOrigin = 'http://' + instance.farmMapSettings.host;
+      const pageOrigin = 'https://' + instance.farmMapSettings.host;
       const planId = instance.farmMapSettings.plan
       const assetId = instance.farmMapSettings.asset
       const assetType = instance.farmMapSettings.asset_type;
