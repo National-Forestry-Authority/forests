@@ -188,7 +188,7 @@ const gfwMap = {
     try {
       if(geometry.length == 0) return [];
       let gfwLocationData = [];
-      const iterableGeometries = 50
+      const iterableGeometries = geometry.length;
       for (let i = 0; i < iterableGeometries; i++) {
         if (!geometry[i]) continue;
         let locationGeometry = [
