@@ -137,7 +137,7 @@ const gfwMap = {
     const db = isGfwDashboard ? await idxDB.open('NfaDatabase', 7, 'gfwDashboardGeometryStore', 'id', true) : null;
     if (isGfwDashboard) {
       if (isDateRangeSame) {
-        const gfwGeometryData = geometryHelper.extractGeometryDataFromIdxDb(db, 'gfwDashboardGeometryStore', key);
+        const gfwGeometryData = await geometryHelper.extractGeometryDataFromIdxDb(db, 'gfwDashboardGeometryStore', key);
         if (gfwGeometryData) return gfwGeometryData;
       } else {
         localStorage.setItem('gfwDashboardDateRange', JSON.stringify({ ...dateRange }));
@@ -174,11 +174,24 @@ const gfwMap = {
         }
       });
       if (isGfwDashboard) {
-        const objectStore = idxDB.getObjectStore(db, 'gfwDashboardGeometryStore', 'readwrite');
-        await idxDB.clear(objectStore, key);
-        await idxDB.add(objectStore, {
+        let idxDBData = {
           [key]: JSON.stringify(geoJson)
-        }, key);
+        }
+        const objectStore = idxDB.getObjectStore(db, 'gfwDashboardGeometryStore', 'readwrite');
+        const isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        let idxDBKey = isFireFox ? null : key;
+        if (isFireFox) {
+          const allKeys = await idxDB.getAllKeys(objectStore);
+          for (let i = 0; i < allKeys.length; i++) { 
+            const data = await idxDB.get(objectStore, allKeys[i]);
+            if (Object.keys(data).includes(key)) {
+              idxDBKey = allKeys[i];
+              break;
+            }
+          }
+        }
+        await idxDB.clear(objectStore, idxDBKey);
+        await idxDB.add(objectStore, idxDBData, key);
       }
     } catch (err) {
     }
@@ -283,15 +296,16 @@ const idxDB = {
   },
   add: function(objectStore, data, key) {
     return new Promise((resolve, reject) => {
-      const request = objectStore.add(data, key);
+      const isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      const request = isFireFox ? objectStore.add(data) : objectStore.add(data, key);
       request.onsuccess = (event) => resolve(event.target.result);
       request.onerror = (event) => reject(event.target.error);
     }
     );
   },
-  update: function(objectStore, data) { 
+  update: function(objectStore, data, key) { 
     return new Promise((resolve, reject) => {
-      const request = objectStore.put(data);
+      const request = key ? objectStore.put(data, key) : objectStore.put(data);
       request.onsuccess = (event) => resolve(event.target.result);
       request.onerror = (event) => reject(event.target.error);
     }
@@ -314,7 +328,22 @@ const idxDB = {
   },
   getObjectStore: function(db, objectStoreName, mode) {
     return db.transaction(objectStoreName, mode).objectStore(objectStoreName);
-  }  
+  },
+  get: function (objectStore, key) {
+    return new Promise((resolve, reject) => {
+      if(!key) reject('Key is required');
+      const request = objectStore.get(key);
+      request.onsuccess = (event) => resolve(event.target.result);
+      request.onerror = (event) => reject(event.target.error);
+    });
+  },
+  getAllKeys: function (objectStore) { 
+    return new Promise((resolve, reject) => {
+      const request = objectStore.getAllKeys();
+      request.onsuccess = (event) => resolve(event.target.result);
+      request.onerror = (event) => reject(event.target.error);
+    });
+  }
 }
 
 // geometry helpers to extract the geometry data
