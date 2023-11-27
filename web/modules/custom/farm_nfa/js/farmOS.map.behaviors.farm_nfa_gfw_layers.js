@@ -147,6 +147,7 @@ const gfwMap = {
     try {
       const featureCalls = Math.ceil(geometry.features.length/50);
       let locationData = [];
+      // making bacth requests to GFW API to get the data
       for (let j = 0; j < featureCalls; j++) {
         let featureStartIndex = j * 50;
         let featureEndIndex = featureStartIndex + 50;
