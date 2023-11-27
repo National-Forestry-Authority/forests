@@ -185,14 +185,12 @@ const gfwMap = {
   },
   getGfwLocationDataPromises: async function(geometry, gfwApiUrl, query) {
     let locationData = [];
-    let test = null;
     try {
       if(geometry.length == 0) return [];
       let gfwLocationData = [];
       const iterableGeometries = 50
       for (let i = 0; i < iterableGeometries; i++) {
         if (!geometry[i]) continue;
-        test = geometry[i]
         let locationGeometry = [
           ...(geometry[i]?.geometry?.coordinates || []),
         ];
