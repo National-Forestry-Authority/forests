@@ -10,7 +10,7 @@ const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/g
       const targetId = instance.target.id;
       if (!mapTargets.includes(targetId)) return;
       const isGfwDashboard = targetId == 'farm-map-dashboard';
-      const pageOrigin = 'https://' + instance.farmMapSettings.host;
+      const pageOrigin = `${window.location.protocol}//${instance.farmMapSettings.host}`;
       const planId = instance.farmMapSettings.plan
       const assetId = instance.farmMapSettings.asset
       const assetType = instance.farmMapSettings.asset_type;
@@ -145,37 +145,16 @@ const gfwMap = {
     }
    
     try {
-      let gfwLocationData = [];
-      for (let i = 0; i < geometry.features.length; i++) {
-        let locationGeometry = geometry.features[i].geometry;
-        let gfwApiBody = {
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": []
-          },
-          "sql": `${query}`
-        };
-        if (locationGeometry && locationGeometry.coordinates) {
-          gfwApiBody.geometry.coordinates.push(locationGeometry.coordinates[0]);
-          gfwLocationData.push(
-            fetch(gfwApiUrl, {
-              method: 'POST',
-              body: JSON.stringify(gfwApiBody),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            }).then((response) => response.json())
-              .catch((err) => { })
-          );
-        }
-      }
+      const featureCalls = Math.ceil(geometry.features.length/50);
       let locationData = [];
-      gfwLocationData = await Promise.allSettled(gfwLocationData)
-      .then(results => {
-        results.forEach((result, index) => {
-          if (result.status === 'fulfilled') locationData[index] = result.value;
-        });
-      });
+      for (let j = 0; j < featureCalls; j++) {
+        let featureStartIndex = j * 50;
+        let featureEndIndex = featureStartIndex + 50;
+        let featureSlice = geometry.features.slice(featureStartIndex, featureEndIndex);
+        const gfwLocationData = await this.getGfwLocationDataPromises(featureSlice, gfwApiUrl, query);
+        if(!gfwLocationData) continue;
+        locationData.push(...gfwLocationData);
+      }
       locationData.forEach((location) => {
         let locations = location && location.data;
         if (locations) {
@@ -203,9 +182,60 @@ const gfwMap = {
     } catch (err) {
     }
     return geoJson;
+  },
+  getGfwLocationDataPromises: async function(geometry, gfwApiUrl, query) {
+    let locationData = [];
+    let test = null;
+    try {
+      if(geometry.length == 0) return [];
+      let gfwLocationData = [];
+      const iterableGeometries = 50
+      for (let i = 0; i < iterableGeometries; i++) {
+        if (!geometry[i]) continue;
+        test = geometry[i]
+        let locationGeometry = [
+          ...(geometry[i]?.geometry?.coordinates || []),
+        ];
+        if (locationGeometry.length == 0 && geometry[i]?.geometry?.geometries) {
+          geometry[i]?.geometry?.geometries?.forEach((geometry) => { 
+            locationGeometry.push(...geometry?.coordinates);
+          });
+        }
+        locationGeometry = locationGeometry.filter((coordinate) => coordinate);
+        if(locationGeometry.length == 0) continue;
+        let gfwApiBody = {
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": []
+          },
+          "sql": `${query}`
+        };
+        gfwApiBody.geometry.coordinates = [...locationGeometry];
+        gfwLocationData.push(
+          fetch(gfwApiUrl, {
+            method: 'POST',
+            body: JSON.stringify(gfwApiBody),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then((response) => response.json())
+            .catch((err) => {
+              return null;
+            })
+        );
+      }
+      gfwLocationData = await Promise.allSettled(gfwLocationData)
+        .then(results => {
+          results?.forEach((result, index) => {
+            if (result.status === 'fulfilled') locationData[index] = result?.value;
+          });
+        }).catch((err) => {
+          return null;
+        });
+    } catch (err) {}
+    return locationData;
   }  
 }
-
 
 // dates module
 const date = {
