@@ -190,7 +190,9 @@ const gfwMap = {
             }
           }
         }
-        await idxDB.add(objectStore, idxDBData, idxDBKey);
+        if(idxDBKey) await idxDB.clear(objectStore, idxDBKey);
+        const insertDBKey = isBrave ? idxDBKey : null;
+        await idxDB.add(objectStore, idxDBData, insertDBKey);
       }
     } catch (err) {
     }
