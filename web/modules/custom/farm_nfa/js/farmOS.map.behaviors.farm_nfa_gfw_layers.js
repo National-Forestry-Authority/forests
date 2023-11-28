@@ -178,9 +178,9 @@ const gfwMap = {
           [key]: JSON.stringify(geoJson)
         }
         const objectStore = idxDB.getObjectStore(db, 'gfwDashboardGeometryStore', 'readwrite');
-        const isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-        let idxDBKey = isFireFox ? null : key;
-        if (isFireFox) {
+        const isBrave = await window?.navigator?.brave?.isBrave();
+        let idxDBKey = isBrave ? key : null;
+        if (!isBrave) {
           const allKeys = await idxDB.getAllKeys(objectStore);
           for (let i = 0; i < allKeys.length; i++) { 
             const data = await idxDB.get(objectStore, allKeys[i]);
@@ -190,8 +190,7 @@ const gfwMap = {
             }
           }
         }
-        await idxDB.clear(objectStore, idxDBKey);
-        await idxDB.add(objectStore, idxDBData, key);
+        await idxDB.add(objectStore, idxDBData, idxDBKey);
       }
     } catch (err) {
     }
@@ -296,8 +295,7 @@ const idxDB = {
   },
   add: function(objectStore, data, key) {
     return new Promise((resolve, reject) => {
-      const isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      const request = isFireFox ? objectStore.add(data) : objectStore.add(data, key);
+      const request = !key ? objectStore.add(data) : objectStore.add(data, key);
       request.onsuccess = (event) => resolve(event.target.result);
       request.onerror = (event) => reject(event.target.error);
     }
@@ -327,7 +325,7 @@ const idxDB = {
     });
   },
   getObjectStore: function(db, objectStoreName, mode) {
-    return db.transaction(objectStoreName, mode).objectStore(objectStoreName);
+    return db.transaction([objectStoreName], mode).objectStore(objectStoreName);
   },
   get: function (objectStore, key) {
     return new Promise((resolve, reject) => {
@@ -337,7 +335,7 @@ const idxDB = {
       request.onerror = (event) => reject(event.target.error);
     });
   },
-  getAllKeys: function (objectStore) { 
+  getAllKeys: function (objectStore) {
     return new Promise((resolve, reject) => {
       const request = objectStore.getAllKeys();
       request.onsuccess = (event) => resolve(event.target.result);
