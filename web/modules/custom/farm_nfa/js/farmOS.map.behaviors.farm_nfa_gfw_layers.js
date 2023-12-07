@@ -156,6 +156,21 @@ const gfwMap = {
         if(!gfwLocationData) continue;
         locationData.push(...gfwLocationData);
       }
+      //   locationData.push(this.getGfwLocationDataPromises(featureSlice, gfwApiUrl, query));
+      // }
+      // const geometryLocationData = []
+      // locationData = await Promise.allSettled(locationData)
+      //   .then(results => {
+      //     console.log(results)
+      //     results?.forEach((result, index) => {
+      //       console.log(result)
+      //       console.log(result.status === 'fulfilled')
+      //       console.log([result?.value])
+      //       if (result.status === 'fulfilled') geometryLocationData.push(...result?.value);
+      //     });
+      //   });
+      // locationData = geometryLocationData;
+      // return null;
       locationData.forEach((location) => {
         let locations = location && location.data;
         if (locations) {
@@ -198,7 +213,7 @@ const gfwMap = {
     }
     return geoJson;
   },
-  getGfwLocationDataPromises: async function(geometry, gfwApiUrl, query) {
+  getGfwLocationDataPromises: async function (geometry, gfwApiUrl, query) {
     let locationData = [];
     try {
       if(geometry.length == 0) return [];
@@ -224,6 +239,7 @@ const gfwMap = {
           "sql": `${query}`
         };
         gfwApiBody.geometry.coordinates = [...locationGeometry];
+        // console.log(gfwApiBody)
         gfwLocationData.push(
           fetch(gfwApiUrl, {
             method: 'POST',
@@ -367,3 +383,57 @@ const geometryHelper = {
     return null;
   }
 }
+
+// getGfwLocationDataPromises: async function (geometry, gfwApiUrl, query) {
+//   return new Promise(async (resolve, reject) => { 
+//     let locationData = [];
+//     try {
+//       if(geometry.length == 0) return [];
+//       let gfwLocationData = [];
+//       const iterableGeometries = geometry.length;
+//       for (let i = 0; i < iterableGeometries; i++) {
+//         if (!geometry[i]) continue;
+//         let locationGeometry = [
+//           ...(geometry[i]?.geometry?.coordinates || []),
+//         ];
+//         if (locationGeometry.length == 0 && geometry[i]?.geometry?.geometries) {
+//           geometry[i]?.geometry?.geometries?.forEach((geometry) => { 
+//             locationGeometry.push(...geometry?.coordinates);
+//           });
+//         }
+//         locationGeometry = locationGeometry.filter((coordinate) => coordinate);
+//         if(locationGeometry.length == 0) continue;
+//         let gfwApiBody = {
+//           "geometry": {
+//             "type": "Polygon",
+//             "coordinates": []
+//           },
+//           "sql": `${query}`
+//         };
+//         gfwApiBody.geometry.coordinates = [...locationGeometry];
+//         console.log(gfwApiBody)
+//         gfwLocationData.push(
+//           fetch(gfwApiUrl, {
+//             method: 'POST',
+//             body: JSON.stringify(gfwApiBody),
+//             headers: {
+//               'Content-Type': 'application/json'
+//             }
+//           }).then((response) => response.json())
+//             .catch((err) => {
+//               return null;
+//             })
+//         );
+//       }
+//       gfwLocationData = await Promise.allSettled(gfwLocationData)
+//         .then(results => {
+//           results?.forEach((result, index) => {
+//             if (result.status === 'fulfilled') locationData[index] = result?.value;
+//           });
+//         }).catch((err) => {
+//           return null;
+//         });
+//     } catch (err) {}
+//     resolve(locationData);
+//   });
+// } 
