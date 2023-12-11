@@ -6,9 +6,8 @@
       const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
       const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
       let defaultMonthDuration = 3;
-      if (assetType == 'land') defaultMonthDuration = 1;
-      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration);
-      // setting the geometry ur
+      let defaultDaysDuration = 0;
+      // setting the geometry url
       const pageOrigin = `${window.location.protocol}//${instance.farmMapSettings.host}`;
       const planId = instance.farmMapSettings.plan
       const assetId = instance.farmMapSettings.asset
@@ -27,6 +26,8 @@
       
       };
       if (assetType == 'land') {
+        defaultMonthDuration = 0;
+        defaultDaysDuration = new Date().getDate() - 1;
         dateRangePickerOptions.presetRanges = [
           {
             text: 'Month to Date',
@@ -47,6 +48,7 @@
           previousDateRangeElement && previousDateRangeElement.remove();
         }
       }
+      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration, defaultDaysDuration);
       $(".daterangepicker").daterangepicker(dateRangePickerOptions);
       $(".daterangepicker").daterangepicker("setRange", {start: startDate, end: endDate});
     }
@@ -87,13 +89,13 @@ function getStartEndDateFromDOM() {
 }
 
 // function to get the default date range for the map layers
-function getDefaultDates(format, monthDuration) {
+function getDefaultDates(format, monthDuration, days) {
   let endDate = new Date(); // Get current date
   const year = endDate.getFullYear();
   const month = endDate.getMonth();
   const day = endDate.getDate();
   // getting last 3 months date as default, to avoid filling the map with too many data points
-  let startDate = new Date(year, month - monthDuration, day);
+  let startDate = new Date(year, month - (monthDuration || 0), day - (days || 0));
   if(format == "date") return {startDate, endDate};
   // Format the date as "YYYY-MM-DD"
   startDate = startDate.toISOString().slice(0, 10);
