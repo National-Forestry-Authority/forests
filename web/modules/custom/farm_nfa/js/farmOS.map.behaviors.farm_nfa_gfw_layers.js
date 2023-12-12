@@ -6,20 +6,57 @@
       const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
       const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
       let defaultMonthDuration = 3;
-      if (assetType == 'land') defaultMonthDuration = 1;
-      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration);
-      $(".daterangepicker").daterangepicker({
+      let defaultDaysDuration = 0;
+      // setting the geometry url
+      const pageOrigin = `${window.location.protocol}//${instance.farmMapSettings.host}`;
+      const planId = instance.farmMapSettings.plan
+      const assetId = instance.farmMapSettings.asset
+      let geometryUrl = '';
+      if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`;
+      if (assetId) geometryUrl = `/asset/geojson/${assetId}`;
+      if (!geometryUrl) return; 
+      geometryUrl = `${pageOrigin}${geometryUrl}`;
+      const geometry = await geometryHelper.getGeometry(geometryUrl);
+      if (!geometry) return;
+      // adding the date range picker
+      const dateRangePickerOptions = {
         change: function () {
-          updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl);
+          updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry);
         },
-      });
+      
+      };
+      if (assetType == 'land') {
+        defaultMonthDuration = 0;
+        defaultDaysDuration = new Date().getDate() - 1;
+        dateRangePickerOptions.presetRanges = [
+          {
+            text: 'Month to Date',
+            dateStart: function() { return moment().startOf('month') },
+            dateEnd: function() { return moment() }
+          },
+          {
+            text: 'Last Week (Mo-Su)',
+            dateStart: function () { return moment().subtract(1, 'weeks').startOf('isoWeek') },
+            dateEnd: function () { return moment().subtract(1, 'weeks').endOf('isoWeek') }
+          }
+        ],
+        dateRangePickerOptions.datepickerOptions = {
+          numberOfMonths : 1
+        }
+        dateRangePickerOptions.open = function () {
+          const previousDateRangeElement = document.querySelector('.ui-datepicker-prev');
+          previousDateRangeElement && previousDateRangeElement.remove();
+        }
+      }
+      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration, defaultDaysDuration);
+      $(".daterangepicker").daterangepicker(dateRangePickerOptions);
       $(".daterangepicker").daterangepicker("setRange", {start: startDate, end: endDate});
     }
   }
 }(jQuery, Drupal))
 
 // function to update the map layers when the date range is changed
-async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) {
+async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry) {
   const dateRange = getStartEndDateFromDOM();
   const map = instance.map;
   const layers = map.getLayers().getArray();
@@ -29,8 +66,8 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl) 
     else i++;
   }
   map.getTargetElement().classList.add('spinner');
-  const mapLayers = [farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange),
-    farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange)
+  const mapLayers = [farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange, geometry),
+    farmNfaPlotGfwApiMap(instance, 'deforestation', deforestationAlertsUrl, dateRange, geometry)
   ];
   try {
     await Promise.all(mapLayers);
@@ -52,13 +89,13 @@ function getStartEndDateFromDOM() {
 }
 
 // function to get the default date range for the map layers
-function getDefaultDates(format, monthDuration) {
+function getDefaultDates(format, monthDuration, days) {
   let endDate = new Date(); // Get current date
   const year = endDate.getFullYear();
   const month = endDate.getMonth();
   const day = endDate.getDate();
   // getting last 3 months date as default, to avoid filling the map with too many data points
-  let startDate = new Date(year, month - monthDuration, day);
+  let startDate = new Date(year, month - (monthDuration || 0), day - (days || 0));
   if(format == "date") return {startDate, endDate};
   // Format the date as "YYYY-MM-DD"
   startDate = startDate.toISOString().slice(0, 10);
@@ -66,8 +103,9 @@ function getDefaultDates(format, monthDuration) {
   return {startDate, endDate};
 }
 
-async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
+async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geometry) {
   return new Promise(async (resolve, reject) => {
+    if(!geometry) resolve('geometry not found');
     let startDate = dateRange?.startDate;
     let endDate = dateRange?.endDate;
     const nullDateRange = !startDate && !endDate;
@@ -84,25 +122,15 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
     const dateParameter = mapType == "fire" ? "alert__date" : "gfw_integrated_alerts__date";
     if (hasBothdateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
     else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
-    // setting the cfr plan url for the geojson data
-  
-    let geometryUrl = ''
-    const planId = instance.farmMapSettings.plan
-    const assetId = instance.farmMapSettings.asset
-    if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`
-    if (assetId) geometryUrl = `/asset/geojson/${assetId}`
-    if(!geometryUrl) resolve('No plan or asset id found');
-    const pageOrigin = 'https://' + instance.farmMapSettings.host;
-    let cfrPlanUrl = `${pageOrigin}${geometryUrl}`;
+    
     try {
-      let cfr = await (await fetch(cfrPlanUrl)).json();
       let geoJson = {
         "type": "FeatureCollection",
         "features": []
       };
       let gfwLocationData = [];
-      for (let i = 0; i < cfr.features.length; i++) {
-        let cfrGeometry = cfr.features[i].geometry;
+      for (let i = 0; i < geometry.features.length; i++) {
+        let locationGeometry = geometry.features[i].geometry;
         let gfwApiBody = {
           "geometry": {
             "type": "Polygon",
@@ -110,8 +138,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
           },
           "sql": `${query}`
         };
-        if (cfrGeometry && cfrGeometry.coordinates) {
-          gfwApiBody.geometry.coordinates.push(cfrGeometry.coordinates[0]);
+        if (locationGeometry && locationGeometry.coordinates) {
+          gfwApiBody.geometry.coordinates.push(locationGeometry.coordinates[0]);
           gfwLocationData.push(
             fetch(gfwApiUrl,{
               method: 'POST',
@@ -161,4 +189,13 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange) {
       reject(err);
     }
   });
+}
+
+const geometryHelper = {
+  getGeometry: async function(geometryUrl) {
+    try {
+      const geometry = await (await fetch(geometryUrl)).json();
+      return geometry;
+    } catch (err) { }
+  },
 }
