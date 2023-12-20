@@ -14,26 +14,59 @@ const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/g
       const planId = instance.farmMapSettings.plan
       const assetId = instance.farmMapSettings.asset
       const assetType = instance.farmMapSettings.asset_type;
-      let defaultMonthDuration = (assetType == 'land' || targetId == 'farm-map-dashboard') ? 1 : 3;
-      const dateType = isGfwDashboard ? '' : 'date';
-      const { startDate, endDate } = date.getDefaultDates(dateType, defaultMonthDuration);
+      const isLandAsset = assetType == 'land';
+      let defaultMonthDuration = 3;
+      let defaultDaysDuration = 0;
+      let dateType = 'date';
+      if (isGfwDashboard || isLandAsset) {
+        defaultMonthDuration = 0;
+        defaultDaysDuration = new Date().getDate() - 1;
+        dateType = '';
+      }
+      let { startDate, endDate } = date.getDefaultDates(dateType, defaultMonthDuration, defaultDaysDuration);
       if (isGfwDashboard) {
         const dashboardGeometryUrl = `${pageOrigin}/assets/geojson/full/cfr?is_location=1`;
         const geometry = await geometryHelper.getGeometry(dashboardGeometryUrl);
         await gfwMap.updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, {startDate, endDate}, geometry);
       } else {
+        const updatedDefaultDates = date.getDefaultDates('date', defaultMonthDuration, defaultDaysDuration);
+        startDate = updatedDefaultDates.startDate;
+        endDate = updatedDefaultDates.endDate;
         let geometryUrl = '';
         if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`;
         if (assetId) geometryUrl = `/asset/geojson/${assetId}`;
         if (!geometryUrl) return; 
         geometryUrl = `${pageOrigin}${geometryUrl}`;
         const geometry = await geometryHelper.getGeometry(geometryUrl);
-        // Add layers for fire and deforestation alerts in the GFW plan tab
-        $(".daterangepicker").daterangepicker({
+        if (!geometry) return;
+        const dateRangePickerOptions = {
           change: function () {
-            gfwMap.updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, '', geometry);
+            gfwMap.updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, null, geometry);
           },
-        });
+        };
+        if (isLandAsset) {
+          dateRangePickerOptions.presetRanges = [
+            {
+              text: 'Month to Date',
+              dateStart: function() { return moment().startOf('month') },
+              dateEnd: function() { return moment() }
+            },
+            {
+              text: 'Last Week (Mo-Su)',
+              dateStart: function () { return moment().subtract(1, 'weeks').startOf('isoWeek') },
+              dateEnd: function () { return moment().subtract(1, 'weeks').endOf('isoWeek') }
+            }
+          ],
+          dateRangePickerOptions.datepickerOptions = {
+            numberOfMonths : 1
+          }
+          dateRangePickerOptions.open = function () {
+            const previousDateRangeElement = document.querySelector('.ui-datepicker-prev');
+            previousDateRangeElement && previousDateRangeElement.remove();
+          }
+        }
+        // Add layers for fire and deforestation alerts in the GFW plan tab
+        $(".daterangepicker").daterangepicker(dateRangePickerOptions);
         $(".daterangepicker").daterangepicker("setRange", {start: startDate, end: endDate});
       }
     }
@@ -281,13 +314,13 @@ const date = {
     return {startDate, endDate};
   },
   // function to get the default date range for the map layers
-  getDefaultDates: function(format, monthDuration) {
+  getDefaultDates: function(format, monthDuration, days) {
     let endDate = new Date(); // Get current date
     const year = endDate.getFullYear();
     const month = endDate.getMonth();
     const day = endDate.getDate();
     // getting last 3 months date as default, to avoid filling the map with too many data points
-    let startDate = new Date(year, month - monthDuration, day);
+    let startDate = new Date(year, month - (monthDuration || 0), day - (days || 0));
     if(format == "date") return {startDate, endDate};
     // Format the date as "YYYY-MM-DD"
     startDate = startDate.toISOString().slice(0, 10);
