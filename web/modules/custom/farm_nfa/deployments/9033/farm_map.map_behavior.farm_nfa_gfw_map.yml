@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: farm_nfa_gfw_map
+label: 'Map behavior for GFW layers'
+description: 'plots GFW map for sectors, ranges, CFRs etc.'
+library: farm_nfa/behavior_farm_nfa_gfw_layers
+settings: {  }

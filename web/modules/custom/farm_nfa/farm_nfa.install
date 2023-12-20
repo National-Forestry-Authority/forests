@@ -398,3 +398,12 @@ function farm_nfa_update_9032(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Add new gfw dashboard map behavior.
+ */
+function farm_nfa_update_9033(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9033";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}
