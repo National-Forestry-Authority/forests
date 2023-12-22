@@ -50,7 +50,11 @@
       }
       const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration, defaultDaysDuration);
       $(".daterangepicker").daterangepicker(dateRangePickerOptions);
-      $(".daterangepicker").daterangepicker("setRange", {start: startDate, end: endDate});
+      $(".daterangepicker").daterangepicker("setRange", { start: startDate, end: endDate });
+      // opening date range picker by default
+      const dateRangePickerElement = document.querySelector('.daterangepicker-container button');
+      console.log(dateRangePickerElement);
+      dateRangePickerElement && dateRangePickerElement.click();
     }
   }
 }(jQuery, Drupal))
@@ -175,15 +179,15 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
         geojson : geoJson,
         color: `${mapType == "fire" ? "red": "green"}`
       });
-      if (mapType !== "fire") {
-        let allLayersControllers = document.querySelectorAll(".layer-switcher input");
-        allLayersControllers.forEach((layerController) => {
-          const shouldDisableLayer = layerController.nextSibling.innerText !== "Fire Alerts" && layerController.nextSibling.innerText !== "Locations";
-          if (shouldDisableLayer) {
-            layerController.click();
-          }
-        });
-      }
+      // if (mapType !== "fire") {
+      //   let allLayersControllers = document.querySelectorAll(".layer-switcher input");
+      //   allLayersControllers.forEach((layerController) => {
+      //     const shouldDisableLayer = layerController.nextSibling.innerText !== "Fire Alerts" && layerController.nextSibling.innerText !== "Locations";
+      //     if (shouldDisableLayer) {
+      //       layerController.click();
+      //     }
+      //   });
+      // }
       resolve('success');
     } catch (err) {
       reject(err);
