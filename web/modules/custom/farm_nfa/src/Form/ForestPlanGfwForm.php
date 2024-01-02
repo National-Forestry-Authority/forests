@@ -71,25 +71,6 @@ class ForestPlanGfwForm extends FormBase {
       $assetType = $node->bundle();
     }
 
-    $form['range'] = [
-      '#type' => 'daterangepicker',
-      '#prefix' => '<div>',
-      '#suffix' => '</div>',
-      '#DateRangePickerOptions' => [
-        'initial_text' => $this->t('Select date range...'),
-        'apply_button_text' => $this->t('Apply'),
-        'clear_button_text' => $this->t('Clear'),
-        'cancel_button_text' => $this->t('Cancel'),
-        'range_splitter' => ' - ',
-        'date_format' => 'd M, yy',
-        // This needs to be a format recognised by javascript Date.parse method.
-        'alt_format' => 'yy-mm-dd',
-        'date_picker_options' => [
-          'number_of_months' => 2,
-        ],
-      ],
-    ];
-
     $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
@@ -103,6 +84,25 @@ class ForestPlanGfwForm extends FormBase {
       '#attached' => [
         'library' => [
           'farm_nfa/behavior_farm_nfa_gfw_layers',
+        ],
+      ],
+    ];
+
+    $form['range'] = [
+      '#type' => 'daterangepicker',
+      '#prefix' => '<div class="daterange-picker">',
+      '#suffix' => '</div>',
+      '#DateRangePickerOptions' => [
+        'initial_text' => $this->t('Select date range...'),
+        'apply_button_text' => $this->t('Apply'),
+        'clear_button_text' => $this->t('Clear'),
+        'cancel_button_text' => $this->t('Cancel'),
+        'range_splitter' => ' - ',
+        'date_format' => 'd M, yy',
+        // This needs to be a format recognised by javascript Date.parse method.
+        'alt_format' => 'yy-mm-dd',
+        'date_picker_options' => [
+          'number_of_months' => 2,
         ],
       ],
     ];
