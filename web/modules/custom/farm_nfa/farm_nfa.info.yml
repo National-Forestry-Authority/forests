@@ -74,6 +74,7 @@ config_devel:
   - farm_map.map_behavior.farm_nfa_map_activities
   - farm_map.map_behavior.farm_nfa_plan_locations_layers
   - farm_map.map_behavior.farm_nfa_layerswitcher_sidebar
+  - farm_map.map_behavior.farm_nfa_ranges_cfr_layer
   - farm_map.map_type.farm_nfa_plan_locations
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.activity_type
@@ -144,6 +145,7 @@ config_devel:
   - views.settings
   - views.view.farm_asset
   - views.view.farm_plan
+  - views.view.asset_children
   - views.view.plan_logs
   - views.view.forest_purpose_taxonomy
   - views.view.priority_logs
