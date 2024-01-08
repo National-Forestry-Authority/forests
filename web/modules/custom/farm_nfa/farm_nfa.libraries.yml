@@ -37,3 +37,9 @@ farm_nfa_layerswitcher_sidebar:
     - core/drupalSettings
     - farm_map/farm_map
 
+farm_nfa_ranges_cfr_layer:
+  js:
+    js/farmOS.map.behaviors.farm_nfa_ranges_cfr_layer.js : {}
+  dependencies:
+    - core/drupalSettings
+    - farm_map/farm_map
