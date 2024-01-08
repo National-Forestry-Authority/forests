@@ -23,7 +23,13 @@
           const url = `${baseUrl}/asset/${sectorId}/geojson/children`
           let geometry = await (await fetch(url)).json();
           geometry?.features.forEach((feature) => {
-            geoJson.features.push(feature)
+            let encodedStr = feature.properties.geometry
+            encodedStr = encodedStr.replace(/&quot;/g, '"')
+            const geometry = JSON.parse(encodedStr)
+            geoJson.features.push({
+              "type": "Feature",
+              "geometry": geometry
+            })
           })
         }
         instance.addLayer('geojson', {

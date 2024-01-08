@@ -562,7 +562,7 @@ display:
             value: geofield
             latitude: name
             longitude: name
-            geofield: geometry
+            geofield: type
             geolocation: name
             wkt: name
             name_field: name
