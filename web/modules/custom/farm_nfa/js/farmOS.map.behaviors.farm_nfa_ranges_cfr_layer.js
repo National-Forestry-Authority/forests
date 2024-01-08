@@ -11,7 +11,8 @@
         assetId = window.location.href.split('/').slice(-2)[0];
       }
       try {
-        const geometryUrl = `http://forests.ddev.site/asset/${assetId}/geojson/children`
+        const baseUrl = window.location.origin;
+        const geometryUrl = `${baseUrl}/asset/${assetId}/geojson/children`
         let geometryData = await (await fetch(geometryUrl)).json();
         let geoJson = {
           "type": "FeatureCollection",
@@ -19,7 +20,7 @@
         };
         for (const feature of geometryData?.features) {
           const sectorId = feature.properties.id
-          const url = `http://forests.ddev.site/asset/${sectorId}/geojson/children`
+          const url = `${baseUrl}/asset/${sectorId}/geojson/children`
           let geometry = await (await fetch(url)).json();
           geometry?.features.forEach((feature) => {
             geoJson.features.push(feature)
