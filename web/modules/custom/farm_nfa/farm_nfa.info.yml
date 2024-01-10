@@ -2,7 +2,7 @@ name: NFA
 description: Uganda National Forestry Authority farmOS module.
 type: module
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - default_content:default_content
   - drupal:ckeditor

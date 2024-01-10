@@ -2,7 +2,7 @@ name: NFA Configuration Update Reports
 type: module
 description: 'Adds an NFA overrides section to the configuration updates report'
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - config_update_ui:config_update_ui
   - config_update:config_update

@@ -2,7 +2,7 @@ name: NFA CFR
 description: Central Forest Reserves NFA submodule.
 type: module
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - entity_dialog_formatter:entity_dialog_formatter
   - farm_nfa:farm_nfa

@@ -22,7 +22,7 @@ function nfa_gin_forests_preprocess_field__plan__image(&$variables) {
   $config = [];
   $plugin_block = $block_manager->createInstance('farm_nfa_plan_map_block', $config);
   $render = $plugin_block->build();
-  $variables['map_block'] = render($render);
+  $variables['map_block'] = \Drupal::service('renderer')->render($render);
 
   if ($variables['element']['#object']) {
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
