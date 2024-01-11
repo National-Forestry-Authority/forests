@@ -28,7 +28,12 @@
             const geometry = JSON.parse(encodedStr)
             geoJson.features.push({
               "type": "Feature",
-              "geometry": geometry
+              "geometry": geometry,
+              "properties": {
+                "name": feature?.properties?.name,
+                "description": feature?.properties?.description,
+                "id": feature?.properties?.id,
+              }
             })
           })
         }
