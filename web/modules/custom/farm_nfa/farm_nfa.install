@@ -419,3 +419,14 @@ function farm_nfa_update_9034(&$sandbox) {
   $process->run();
   \Drupal::service('module_installer')->uninstall(['ckeditor']);
 }
+
+/**
+ * Fix mismatched entity error for Consumer client id field.
+ */
+function farm_nfa_update_9035(&$sandbox) {
+  $manager = \Drupal::entityDefinitionUpdateManager();
+
+  if ($field = $manager->getFieldStorageDefinition('client_id', 'consumer')) {
+    $manager->updateFieldStorageDefinition($field);
+  }
+}
