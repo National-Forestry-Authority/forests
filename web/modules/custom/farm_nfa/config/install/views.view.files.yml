@@ -1,72 +1,45 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - system.menu.admin
   module:
-    - csv_serialization
-    - options
-    - plan
-    - rest
-    - serialization
-    - state_machine
+    - file
     - user
-  enforced:
-    module:
-      - farm_ui_views
-id: farm_plan
-label: 'Farm Plans'
-module: views
-description: ''
-tag: ''
-base_table: plan_field_data
-base_field: id
+id: files
+label: Files
+module: file
+description: 'Find and manage files.'
+tag: default
+base_table: file_managed
+base_field: fid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: Plans
+      title: Files
       fields:
-        plan_bulk_form:
-          id: plan_bulk_form
-          table: plan
-          field: plan_bulk_form
+        fid:
+          id: fid
+          table: file_managed
+          field: fid
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          plugin_id: bulk_form
-          label: 'Bulk update'
-          exclude: false
+          entity_type: file
+          entity_field: fid
+          plugin_id: field
+          label: Fid
+          exclude: true
           alter:
             alter_text: false
-            text: ''
             make_link: false
-            path: ''
             absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
+            word_boundary: false
+            ellipsis: false
             strip_tags: false
             trim: false
-            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -80,20 +53,17 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
-          include_exclude: exclude
-          selected_actions: {  }
-        id:
-          id: id
-          table: plan_field_data
-          field: id
+        filename:
+          id: filename
+          table: file_managed
+          field: filename
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          entity_field: id
+          entity_type: file
+          entity_field: filename
           plugin_id: field
-          label: ID
+          label: Name
           exclude: false
           alter:
             alter_text: false
@@ -113,8 +83,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: true
-            ellipsis: true
+            word_boundary: false
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -135,10 +105,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
+          type: file_link
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -149,17 +116,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        name:
-          id: name
-          table: plan_field_data
-          field: name
+        filemime:
+          id: filemime
+          table: file_managed
+          field: filemime
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: null
-          entity_field: name
+          entity_type: file
+          entity_field: filemime
           plugin_id: field
-          label: 'Plan name'
+          label: 'MIME type'
           exclude: false
           alter:
             alter_text: false
@@ -200,31 +167,18 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        type:
-          id: type
-          table: plan_field_data
-          field: type
+          type: file_filemime
+        filesize:
+          id: filesize
+          table: file_managed
+          field: filesize
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          entity_field: type
+          entity_type: file
+          entity_field: filesize
           plugin_id: field
-          label: 'Plan type'
+          label: Size
           exclude: false
           alter:
             alter_text: false
@@ -265,92 +219,15 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        flag_value:
-          id: flag_value
-          table: plan__flag
-          field: flag_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          entity_field: flag
-          plugin_id: field
-          label: Flags
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: list_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: true
+          type: file_size
         status:
           id: status
-          table: plan_field_data
+          table: file_managed
           field: status
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
+          entity_type: file
           entity_field: status
           plugin_id: field
           label: Status
@@ -394,45 +271,221 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: list_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Temporary
+            format_custom_true: Permanent
+        created:
+          id: created
+          table: file_managed
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: created
+          plugin_id: field
+          label: 'Upload date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
+        changed:
+          id: changed
+          table: file_managed
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: changed
+          plugin_id: field
+          label: 'Changed date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
+        count:
+          id: count
+          table: file_usage
+          field: count
+          relationship: fid
+          group_type: sum
+          admin_label: ''
+          plugin_id: numeric
+          label: 'Used in'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: 'admin/content/files/usage/{{ fid }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          set_precision: false
+          precision: 0
+          decimal: .
+          separator: ','
+          format_plural: true
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
+          prefix: ''
+          suffix: ''
       pager:
-        type: full
+        type: mini
         options:
           offset: 0
           items_per_page: 50
-          total_pages: null
+          total_pages: 0
           id: 0
           tags:
-            next: ››
-            previous: ‹‹
-            first: '« First'
-            last: 'Last »'
+            next: 'Next ›'
+            previous: '‹ Previous'
           expose:
-            items_per_page: true
+            items_per_page: false
             items_per_page_label: 'Items per page'
-            items_per_page_options: '25, 50, 100, 250, 500'
-            items_per_page_options_all: true
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
-          reset_button: true
+          submit_button: Filter
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -441,7 +494,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'view any plan'
+          perm: 'access files overview'
       cache:
         type: tag
         options: {  }
@@ -450,45 +503,42 @@ display:
           id: area_text_custom
           table: views
           field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No plans found.'
-          tokenize: false
+          content: 'No files available.'
       sorts: {  }
       arguments: {  }
       filters:
-        name:
-          id: name
-          table: plan_field_data
-          field: name
+        filename:
+          id: filename
+          table: file_managed
+          field: filename
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          entity_field: name
+          entity_type: file
+          entity_field: filename
           plugin_id: string
-          operator: contains
+          operator: word
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: name_op
-            label: Name
+            operator_id: filemime_op
+            label: Filename
             description: ''
             use_operator: false
-            operator: name_op
+            operator: filename_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: name
+            identifier: filename
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: ''
+              anonymous: '0'
+              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -501,35 +551,36 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        type:
-          id: type
-          table: plan_field_data
-          field: type
+        filemime:
+          id: filemime
+          table: file_managed
+          field: filemime
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value: {  }
+          entity_type: file
+          entity_field: filemime
+          plugin_id: string
+          operator: word
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: type_op
-            label: 'Plan type'
+            operator_id: filemime_op
+            label: 'MIME type'
             description: ''
             use_operator: false
-            operator: type_op
+            operator: filemime_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: type
+            identifier: filemime
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
-            reduce: false
+              anonymous: '0'
+              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -542,61 +593,18 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        flag_value:
-          id: flag_value
-          table: plan__flag
-          field: flag_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          entity_field: flag
-          plugin_id: list_field
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: flag_value_op
-            label: Flags
-            description: ''
-            use_operator: false
-            operator: flag_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: flag_value
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: true
         status:
           id: status
-          table: plan_field_data
+          table: file_managed
           field: status
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
+          entity_type: file
           entity_field: status
-          plugin_id: state_machine_state
+          plugin_id: file_status
           operator: in
-          value:
-            active: active
+          value: {  }
           group: 1
           exposed: true
           expose:
@@ -610,9 +618,11 @@ display:
             identifier: status
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -626,10 +636,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       style:
         type: table
         options:
@@ -637,52 +643,72 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            plan_bulk_form: plan_bulk_form
-            id: id
-            name: name
-            type: type
-            flag_value: flag_value
+            fid: fid
+            filename: filename
+            filemime: filemime
+            filesize: filesize
             status: status
-          default: name
+            created: created
+            changed: changed
+            count: count
+          default: changed
           info:
-            plan_bulk_form:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            id:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            name:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            type:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            flag_value:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            status:
+            fid:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
+            filename:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            filemime:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-medium
+            filesize:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-low
+            status:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-low
+            created:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            changed:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            count:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-medium
           override: true
           sticky: false
           summary: ''
@@ -691,11 +717,6 @@ display:
           description: ''
       row:
         type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
       query:
         type: views_query
         options:
@@ -704,518 +725,59 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        fid:
+          id: fid
+          table: file_managed
+          field: fid
+          relationship: none
+          group_type: group
+          admin_label: 'File usage'
+          required: true
+      group_by: true
+      show_admin_links: true
       header: {  }
-      footer:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: result
-          empty: false
-          content: 'Displaying @start - @end of @total'
-        display_link:
-          id: display_link
-          table: views
-          field: display_link
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: display_link
-          label: 'Export CSV'
-          empty: false
-          display_id: csv
-      display_extenders: {  }
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user.permissions
-      tags: {  }
-  block_active:
-    id: block_active
-    display_title: 'Active (block)'
-    display_plugin: block
-    position: 3
-    display_options:
-      title: 'Active plans'
-      fields:
-        plan_bulk_form:
-          id: plan_bulk_form
-          table: plan
-          field: plan_bulk_form
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          plugin_id: bulk_form
-          label: 'Bulk update'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          action_title: Action
-          include_exclude: exclude
-          selected_actions: {  }
-        id:
-          id: id
-          table: plan_field_data
-          field: id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          entity_field: id
-          plugin_id: field
-          label: ID
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        name:
-          id: name
-          table: plan_field_data
-          field: name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: null
-          entity_field: name
-          plugin_id: field
-          label: 'Plan name'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        type:
-          id: type
-          table: plan_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          entity_field: type
-          plugin_id: field
-          label: 'Plan type'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-      pager:
-        type: none
-        options:
-          offset: 0
-      filters:
-        status:
-          id: status
-          table: plan_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: plan
-          entity_field: status
-          plugin_id: state_machine_state
-          operator: in
-          value:
-            active: active
-          group: 1
-          exposed: false
-          expose:
-            operator_id: status_op
-            label: Status
-            description: ''
-            use_operator: false
-            operator: status_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: status
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
-      style:
-        type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          columns:
-            plan_bulk_form: plan_bulk_form
-            image_target_id: image_target_id
-            id: id
-            name: name
-            type: type
-            flag_value: flag_value
-            status: status
-          default: name
-          info:
-            plan_bulk_form:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            image_target_id:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            id:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            name:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            type:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            flag_value:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            status:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          override: true
-          sticky: false
-          summary: ''
-          empty_table: true
-          caption: ''
-          description: ''
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
-      defaults:
-        title: false
-        pager: false
-        style: false
-        row: false
-        fields: false
-        filters: false
-        filter_groups: false
-        footer: false
-      display_description: ''
       footer: {  }
       display_extenders: {  }
-      block_description: 'Active plans'
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - user.permissions
       tags: {  }
-  csv:
-    id: csv
-    display_title: 'CSV export (rest)'
-    display_plugin: rest_export
-    position: 4
-    display_options:
-      pager:
-        type: none
-        options:
-          offset: 0
-      style:
-        type: serializer
-        options:
-          uses_fields: false
-          formats:
-            csv: csv
-      row:
-        type: data_field
-        options:
-          field_options:
-            plan_bulk_form:
-              alias: ''
-              raw_output: false
-            image_target_id:
-              alias: ''
-              raw_output: false
-            id:
-              alias: ''
-              raw_output: false
-            name:
-              alias: ''
-              raw_output: false
-            type:
-              alias: ''
-              raw_output: false
-            flag_value:
-              alias: ''
-              raw_output: false
-            status:
-              alias: ''
-              raw_output: false
-      display_description: ''
-      display_extenders: {  }
-      path: plans.csv
-      auth:
-        - cookie
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
-      tags: {  }
-  page:
-    id: page
-    display_title: 'All plans (page)'
+  page_1:
+    id: page_1
+    display_title: 'Files overview'
     display_plugin: page
     position: 1
     display_options:
+      defaults:
+        pager: true
+        relationships: false
+      relationships:
+        fid:
+          id: fid
+          table: file_managed
+          field: fid
+          relationship: none
+          group_type: group
+          admin_label: 'File usage'
+          required: false
       display_description: ''
-      display_extenders:
-        collapsible_filter:
-          collapsible: true
-      path: plans
+      display_extenders: {  }
+      path: admin/content/files
       menu:
-        type: normal
-        title: Plans
+        type: tab
+        title: Files
         description: ''
         weight: 0
-        expanded: true
         menu_name: admin
-        parent: farm.base
-        context: '0'
+        context: ''
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1223,30 +785,256 @@ display:
         - url.query_args
         - user.permissions
       tags: {  }
-  page_type:
-    id: page_type
-    display_title: 'By type (page)'
+  page_2:
+    id: page_2
+    display_title: 'File usage'
     display_plugin: page
     position: 2
     display_options:
-      arguments:
+      title: 'File usage'
+      fields:
+        entity_label:
+          id: entity_label
+          table: file_usage
+          field: entity_label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entity_label
+          label: Entity
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          link_to_entity: true
         type:
           id: type
-          table: plan_field_data
+          table: file_usage
           field: type
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: plan
-          entity_field: type
-          plugin_id: string
+          plugin_id: standard
+          label: 'Entity type'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        module:
+          id: module
+          table: file_usage
+          field: module
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          label: 'Registering module'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        count:
+          id: count
+          table: file_usage
+          field: count
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          label: 'Use count'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          set_precision: false
+          precision: 0
+          decimal: .
+          separator: ','
+          format_plural: false
+          format_plural_string: !!binary MQNAY291bnQ=
+          prefix: ''
+          suffix: ''
+      pager:
+        type: mini
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: 0
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      empty: {  }
+      arguments:
+        fid:
+          id: fid
+          table: file_managed
+          field: fid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: fid
+          plugin_id: file_fid
           default_action: 'not found'
           exception:
             value: all
             title_enable: false
             title: All
-          title_enable: false
-          title: ''
+          title_enable: true
+          title: 'File usage information for {{ arguments.fid }}'
           default_argument_type: fixed
           default_argument_options:
             argument: ''
@@ -1259,52 +1047,95 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: true
+          specify_validation: false
           validate:
-            type: 'entity:plan_type'
+            type: none
             fail: 'not found'
-          validate_options:
-            bundles: {  }
-            access: false
-            operation: view
-            multiple: 0
-          glossary: false
-          limit: 0
-          case: none
-          path_case: none
-          transform_dash: false
+          validate_options: {  }
           break_phrase: false
+          not: false
+      filters: {  }
+      filter_groups:
+        operator: AND
+        groups: {  }
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            entity_label: entity_label
+            type: type
+            module: module
+            count: count
+          default: entity_label
+          info:
+            entity_label:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            type:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-medium
+            module:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-low
+            count:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: true
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options: {  }
       defaults:
+        empty: false
+        title: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
         arguments: false
-      display_description: ''
-      display_extenders:
-        collapsible_filter:
-          collapsible: true
-      path: plans/%
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user.permissions
-      tags: {  }
-  plans_list_block:
-    id: plans_list_block
-    display_title: 'Block (plans list)'
-    display_plugin: block
-    position: 5
-    display_options:
-      defaults:
-        use_ajax: false
-      use_ajax: true
+        filters: false
+        filter_groups: false
+      relationships:
+        fid:
+          id: fid
+          table: file_managed
+          field: fid
+          relationship: none
+          group_type: group
+          admin_label: 'File usage'
+          required: true
+      group_by: false
       display_description: ''
       display_extenders: {  }
+      path: admin/content/files/usage/%
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args

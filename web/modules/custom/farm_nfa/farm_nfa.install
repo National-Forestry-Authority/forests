@@ -383,7 +383,7 @@ function farm_nfa_update_9030(&$sandbox) {
 }
 
 /**
- * Enable field group abd ctools modules.
+ * Enable field group add ctools modules.
  */
 function farm_nfa_update_9031(&$sandbox) {
   \Drupal::service('module_installer')->install(['field_group']);
@@ -400,10 +400,22 @@ function farm_nfa_update_9032(&$sandbox) {
 }
 
 /**
- * add CFR plotting to ranges map for main and gfw tab
+ * Add CFR plotting to ranges map for main and gfw tab.
  */
 function farm_nfa_update_9033(&$sandbox) {
   $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9033";
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
+}
+
+/**
+ * Prepare core modules for farmOS 3.
+ */
+function farm_nfa_update_9034(&$sandbox) {
+  \Drupal::service('module_installer')->install(['ckeditor5']);
+  \Drupal::service('module_installer')->uninstall(['hal']);
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9034";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+  \Drupal::service('module_installer')->uninstall(['ckeditor']);
 }
