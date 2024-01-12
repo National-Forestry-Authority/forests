@@ -46,26 +46,28 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
+        "drupal/ckeditor": "^1.0",
         "drupal/config_devel": "^1",
         "drupal/ctools": "^4.0",
         "drupal/daterangepicker": "^1.0@alpha",
         "drupal/default_content": "^2",
         "drupal/dependent_fields": "^1.0",
-        "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1",
         "drupal/environment_indicator": "^4",
         "drupal/farm_forest": "2.x",
         "drupal/field_group": "^3.4",
         "drupal/gin_lb": "^1",
-        "drupal/layout_builder_styles": "^1",
-        "drupal/lb_routing": "^1",
+        "drupal/hal": "^2.0",
+        "drupal/layout_builder_styles": "^2",
+        "drupal/lb_routing": "^1.0",
         "drupal/migrate_source_csv": "^3",
-        "drupal/month_year": "^2",
+        "drupal/month_year": "2.0.x-dev",
         "drupal/r4032login": "^2",
         "drupal/select_or_other": "^4",
         "drupal/symfony_mailer": "^1.4",
-        "farmos/farmos": "^2",
+        "drupal/upgrade_status": "^4.0",
+        "farmos/farmos": "^3",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "national-forestry-authority/nfa_gin": "^1",
         "national-forestry-authority/nfa_landing": "^1",
@@ -111,6 +113,9 @@
             },
             "drupal/gin": {
               "3281984: The breadcrumb shows 'Edit <label>' on all entity routes, even canonical/delete routes": "https://www.drupal.org/files/issues/2023-10-18/gin_3281984_mr177_75912597.patch"
+            },
+            "drupal/month_year": {
+              "3350516: Update jQuery.once for Drupal 10 support.": "https://www.drupal.org/files/issues/2023-07-03/update-jquery-once-for-drupal-10-support-3350516-2.patch"
             }
         },
         "merge-plugin": {

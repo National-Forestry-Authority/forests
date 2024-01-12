@@ -2,7 +2,7 @@ name: Plantation inventory log
 description: Adds an Plantation inventory log type.
 type: module
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - farm_nfa:farm_nfa
   - farm_nfa:farm_nfa_block_compartment

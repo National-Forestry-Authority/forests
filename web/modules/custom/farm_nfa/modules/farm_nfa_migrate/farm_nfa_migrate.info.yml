@@ -2,7 +2,7 @@ name: NFA Migrate
 description: Custom migrations for NFA.
 type: module
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - farm_nfa:farm_nfa
   - farm_migrate:farm_migrate
