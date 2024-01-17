@@ -26,13 +26,16 @@
             let encodedStr = feature.properties.geometry
             encodedStr = encodedStr.replace(/&quot;/g, '"')
             const geometry = JSON.parse(encodedStr)
+            const assetId = feature.properties.id
+            const assetName = feature.properties.name
+            const assetDescription = feature.properties.description
             geoJson.features.push({
               "type": "Feature",
               "geometry": geometry,
               "properties": {
-                "name": feature?.properties?.name,
-                "description": feature?.properties?.description,
-                "id": feature?.properties?.id,
+                "name": `<a href='/asset/${assetId}'>${assetName}</a>`,
+                "description": assetDescription,
+                "id": assetId,
               }
             })
           })
