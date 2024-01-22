@@ -77,6 +77,7 @@ config_devel:
   - farm_map.map_type.farm_nfa_plan_locations
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.activity_type
+  - field.field.log.activity.cfr
   - field.field.log.activity.working_circle
   - field.field.log.harvest.coup_number
   - field.field.log.harvest.harvest_type
@@ -93,6 +94,7 @@ config_devel:
   - field.storage.taxonomy_term.forest_type
   - field.storage.log.activity_type
   - field.storage.log.average_silviculture_score
+  - field.storage.log.cfr
   - field.storage.log.coup_number
   - field.storage.log.harvest_type
   - field.storage.log.supervisor

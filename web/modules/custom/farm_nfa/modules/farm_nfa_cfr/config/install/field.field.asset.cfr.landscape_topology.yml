@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.landscape_topology
+  module:
+    - text
+id: asset.cfr.landscape_topology
+field_name: landscape_topology
+entity_type: asset
+bundle: cfr
+label: 'Landscape topology'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

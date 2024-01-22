@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.livelihoods_in_the_fma_zone
+  module:
+    - farm_nfa
+id: asset.cfr.livelihoods_in_the_fma_zone
+field_name: livelihoods_in_the_fma_zone
+entity_type: asset
+bundle: cfr
+label: 'Livelihoods in the FMA zone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

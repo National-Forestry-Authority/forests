@@ -32,3 +32,15 @@ field.widget.settings.farm_nfa_inline_entity_form_quantity:
           sequence:
             type: string
             label: 'Quantity elements'
+
+# Default value.
+field.value.farm_nfa_program:
+  type: mapping
+  label: Default value
+  mapping:
+    summary:
+      type: string
+      label: Summary
+    description:
+      type: text
+      label: Description

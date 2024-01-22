@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.geology_soils
+  module:
+    - text
+id: asset.cfr.geology_soils
+field_name: geology_soils
+entity_type: asset
+bundle: cfr
+label: 'Geology & soils'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

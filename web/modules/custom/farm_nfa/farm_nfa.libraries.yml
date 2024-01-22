@@ -43,3 +43,13 @@ farm_nfa_ranges_cfr_layer:
   dependencies:
     - core/drupalSettings
     - farm_map/farm_map
+
+farm_nfa_program_tabs:
+  css:
+    theme:
+      css/farm_nfa_program_widget.css: { }
+  js:
+    js/farm_nfa_program_tabs.js : { }
+  dependencies:
+    - core/once
+    - core/drupal

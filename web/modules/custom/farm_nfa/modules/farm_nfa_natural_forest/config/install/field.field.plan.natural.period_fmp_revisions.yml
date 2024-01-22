@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.plan.period_fmp_revisions
+    - plan.type.natural
+id: plan.natural.period_fmp_revisions
+field_name: period_fmp_revisions
+entity_type: plan
+bundle: natural
+label: 'Period of the FMP & revisions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.staff_disposition
+  module:
+    - farm_nfa
+id: asset.cfr.staff_disposition
+field_name: staff_disposition
+entity_type: asset
+bundle: cfr
+label: 'Staff disposition'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

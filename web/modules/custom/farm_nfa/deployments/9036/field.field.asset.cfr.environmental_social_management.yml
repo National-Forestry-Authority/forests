@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.environmental_social_management
+  module:
+    - farm_nfa
+id: asset.cfr.environmental_social_management
+field_name: environmental_social_management
+entity_type: asset
+bundle: cfr
+label: 'Environmental & social management plan'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

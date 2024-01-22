@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.total_economic_valuation_fma
+  module:
+    - farm_nfa
+id: asset.cfr.total_economic_valuation_fma
+field_name: total_economic_valuation_fma
+entity_type: asset
+bundle: cfr
+label: 'Total Economic valuation of the FMA'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

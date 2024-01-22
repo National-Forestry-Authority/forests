@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - text
+id: asset.previous_management_track_record
+field_name: previous_management_track_record
+entity_type: asset
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

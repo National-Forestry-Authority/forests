@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.water_bodies_riparian_zones
+  module:
+    - farm_nfa
+id: asset.cfr.water_bodies_riparian_zones
+field_name: water_bodies_riparian_zones
+entity_type: asset
+bundle: cfr
+label: 'Water bodies & riparian zones'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

@@ -1,0 +1,125 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.plan.natural.field_groups
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - plan.type.natural
+  module:
+    - field_group
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_vert:
+      children:
+        - group_natural_resources
+      parent_name: ''
+      weight: '0'
+      format_type: tabs
+      region: content
+      format_settings:
+        show_empty_fields: 0
+        id: ''
+        classes: ''
+        direction: vertical
+        width_breakpoint: '640'
+      label: 'Vertical tabs'
+    group_natural_resources:
+      children:
+        - natural_resources
+        - environmental_values_ecosystem
+        - hcvs
+        - major_social_environmental_risks
+        - opportunities_challenges
+        - period_fmp_revisions
+      parent_name: group_vert
+      weight: '20'
+      format_type: tab
+      region: content
+      format_settings:
+        show_empty_fields: 0
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+      label: 'Natural resources'
+    group_programs_activities:
+      children: {  }
+      parent_name: ''
+      weight: 20
+      format_type: tab
+      region: hidden
+      format_settings:
+        show_empty_fields: 0
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+      label: 'Programs & activities'
+id: plan.natural.natural.field_groups
+targetEntityType: plan
+bundle: natural
+mode: natural.field_groups
+content:
+  environmental_values_ecosystem:
+    type: text_default
+    weight: '8'
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  hcvs:
+    type: text_default
+    weight: '9'
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  major_social_environmental_risks:
+    type: text_default
+    weight: '10'
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  natural_resources:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: '7'
+    region: content
+  opportunities_challenges:
+    type: text_default
+    weight: '11'
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  period_fmp_revisions:
+    type: string
+    weight: '12'
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  asset: true
+  data: true
+  file: true
+  flag: true
+  image: true
+  log: true
+  notes: true
+  status: true
+  uid: true

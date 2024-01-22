@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.health_safety
+  module:
+    - farm_nfa
+id: asset.cfr.health_safety
+field_name: health_safety
+entity_type: asset
+bundle: cfr
+label: 'Health & safety'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+id: plan.natural.field_groups
+label: 'Field groups'
+description: ''
+targetEntityType: plan
+cache: true

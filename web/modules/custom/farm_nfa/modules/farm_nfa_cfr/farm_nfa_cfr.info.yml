@@ -22,30 +22,91 @@ config_devel:
   - core.entity_view_display.media.boundary_plan_maps.link
   - core.entity_view_display.media.predominant_vegetation.default
   - core.entity_view_mode.asset.field_groups
+  - field.field.asset.cfr.accountability_grievance_redress
+  - field.field.asset.cfr.action_plans_rare_species
+  - field.field.asset.cfr.applied_research_by_fma_staff
   - field.field.asset.cfr.area
+  - field.field.asset.cfr.authorisation_of_research
+  - field.field.asset.cfr.biodiversity_inventories
+  - field.field.asset.cfr.blocks_units_compartments
   - field.field.asset.cfr.boundary_demarcation
   - field.field.asset.cfr.boundary_plan
+  - field.field.asset.cfr.boundary_surveys_maintenance
+  - field.field.asset.cfr.chemical_application_in_forestry
+  - field.field.asset.cfr.climate_change_mitigation
+  - field.field.asset.cfr.climate_weather_variation
+  - field.field.asset.cfr.collaboration_with_naforri
+  - field.field.asset.cfr.community_benefits
+  - field.field.asset.cfr.community_forest_mgmt_roles
+  - field.field.asset.cfr.community_infrastructure
+  - field.field.asset.cfr.community_organisation
+  - field.field.asset.cfr.community_participation
+  - field.field.asset.cfr.demo_forest_ecosystem_services
   - field.field.asset.cfr.description_of_plans_and_sheets
+  - field.field.asset.cfr.drainage
+  - field.field.asset.cfr.environmental_social_management
+  - field.field.asset.cfr.environmental_values
   - field.field.asset.cfr.est_year_gazetted
+  - field.field.asset.cfr.feedback_research_findings
+  - field.field.asset.cfr.fire_protection
+  - field.field.asset.cfr.forest_infrastructure
+  - field.field.asset.cfr.forest_landscape_restoration
+  - field.field.asset.cfr.forest_products_growth_yield
+  - field.field.asset.cfr.forest_products_inventories
+  - field.field.asset.cfr.forest_roads
+  - field.field.asset.cfr.forest_stations_and_buildings
+  - field.field.asset.cfr.funding_arrangements
+  - field.field.asset.cfr.gender_mainstreaming
   - field.field.asset.cfr.general_description
+  - field.field.asset.cfr.geology_soils
+  - field.field.asset.cfr.harvesting_activities
+  - field.field.asset.cfr.health_safety
+  - field.field.asset.cfr.high_conservation_values
   - field.field.asset.cfr.historical_context
+  - field.field.asset.cfr.human_wildlife_conflict
+  - field.field.asset.cfr.impacts_forest_mgmt_operations
+  - field.field.asset.cfr.indigenous_peoples_community
   - field.field.asset.cfr.issues_concerns
   - field.field.asset.cfr.key_resources
   - field.field.asset.cfr.land_use_and_forest_condition
+  - field.field.asset.cfr.landscape_connectivity
+  - field.field.asset.cfr.landscape_topology
   - field.field.asset.cfr.legal_category
+  - field.field.asset.cfr.legal_customary_rights
+  - field.field.asset.cfr.livelihoods_in_the_fma_zone
+  - field.field.asset.cfr.management_goals_objectives
   - field.field.asset.cfr.map_ref_sheets
   - field.field.asset.cfr.map_sheet_uploads
+  - field.field.asset.cfr.monitoring_evaluations
+  - field.field.asset.cfr.monitoring_forest_governance
   - field.field.asset.cfr.opportunities
   - field.field.asset.cfr.original_management_objectives
+  - field.field.asset.cfr.participatory_development
+  - field.field.asset.cfr.partnerships
+  - field.field.asset.cfr.previous_management_track_record
   - field.field.asset.cfr.priority_actions
+  - field.field.asset.cfr.progress_mgmt_environment
+  - field.field.asset.cfr.progress_mgmt_hcvs
   - field.field.asset.cfr.proposed_strategies
+  - field.field.asset.cfr.protection_against_illegal_acts
+  - field.field.asset.cfr.representative_sample_areas
+  - field.field.asset.cfr.research_by_professionals
   - field.field.asset.cfr.serial
+  - field.field.asset.cfr.silvicultural_field_operations
   - field.field.asset.cfr.size_location_desc
+  - field.field.asset.cfr.social_economic_cultural
+  - field.field.asset.cfr.staff_disposition
+  - field.field.asset.cfr.staff_training
+  - field.field.asset.cfr.stakeholder_engagement_plan
   - field.field.asset.cfr.threats_assessment
   - field.field.asset.cfr.total_boundary_length
   - field.field.asset.cfr.total_cutline_length
+  - field.field.asset.cfr.total_economic_valuation_fma
   - field.field.asset.cfr.total_natural_boundary_length
+  - field.field.asset.cfr.tourism_development
   - field.field.asset.cfr.vegetation
+  - field.field.asset.cfr.vegetation_biodiversity
+  - field.field.asset.cfr.water_bodies_riparian_zones
   - field.field.asset.cfr.year_of_survey
   - field.field.asset.cfr.zonation_date
   - field.field.asset.cfr.zonation_description
@@ -58,29 +119,90 @@ config_devel:
   - field.field.media.boundary_plan_maps.year
   - field.field.media.predominant_vegetation.description
   - field.field.media.predominant_vegetation.field_media_image
-  - field.storage.asset.boundary_plan
+  - field.storage.asset.accountability_grievance_redress
+  - field.storage.asset.action_plans_rare_species
+  - field.storage.asset.applied_research_by_fma_staff
+  - field.storage.asset.authorisation_of_research
+  - field.storage.asset.biodiversity_inventories
+  - field.storage.asset.blocks_units_compartments
   - field.storage.asset.boundary_demarcation
+  - field.storage.asset.boundary_plan
+  - field.storage.asset.boundary_surveys_maintenance
+  - field.storage.asset.chemical_application_in_forestry
+  - field.storage.asset.climate_change_mitigation
+  - field.storage.asset.collaboration_with_naforri
+  - field.storage.asset.climate_weather_variation
+  - field.storage.asset.community_benefits
+  - field.storage.asset.community_forest_mgmt_roles
+  - field.storage.asset.community_infrastructure
+  - field.storage.asset.community_organisation
+  - field.storage.asset.community_participation
+  - field.storage.asset.demo_forest_ecosystem_services
   - field.storage.asset.description_of_plans_and_sheets
+  - field.storage.asset.drainage
+  - field.storage.asset.environmental_social_management
+  - field.storage.asset.environmental_values
   - field.storage.asset.est_year_gazetted
+  - field.storage.asset.feedback_research_findings
+  - field.storage.asset.fire_protection
+  - field.storage.asset.forest_infrastructure
+  - field.storage.asset.forest_landscape_restoration
+  - field.storage.asset.forest_products_growth_yield
+  - field.storage.asset.forest_products_inventories
+  - field.storage.asset.forest_roads
+  - field.storage.asset.forest_stations_and_buildings
+  - field.storage.asset.funding_arrangements
+  - field.storage.asset.gender_mainstreaming
   - field.storage.asset.general_description
+  - field.storage.asset.geology_soils
+  - field.storage.asset.harvesting_activities
+  - field.storage.asset.health_safety
+  - field.storage.asset.high_conservation_values
   - field.storage.asset.historical_context
+  - field.storage.asset.human_wildlife_conflict
+  - field.storage.asset.impacts_forest_mgmt_operations
+  - field.storage.asset.indigenous_peoples_community
   - field.storage.asset.issues_concerns
   - field.storage.asset.key_resources
+  - field.storage.asset.landscape_connectivity
+  - field.storage.asset.landscape_topology
   - field.storage.asset.land_use_and_forest_condition
   - field.storage.asset.legal_category
+  - field.storage.asset.legal_customary_rights
+  - field.storage.asset.livelihoods_in_the_fma_zone
+  - field.storage.asset.management_goals_objectives
   - field.storage.asset.map_ref_sheets
   - field.storage.asset.map_sheet_uploads
+  - field.storage.asset.monitoring_evaluations
+  - field.storage.asset.monitoring_forest_governance
   - field.storage.asset.opportunities
   - field.storage.asset.original_management_objectives
+  - field.storage.asset.participatory_development
+  - field.storage.asset.partnerships
+  - field.storage.asset.previous_management_track_record
+  - field.storage.asset.progress_mgmt_environment
+  - field.storage.asset.progress_mgmt_hcvs
   - field.storage.asset.priority_actions
   - field.storage.asset.proposed_strategies
+  - field.storage.asset.protection_against_illegal_acts
+  - field.storage.asset.representative_sample_areas
+  - field.storage.asset.research_by_professionals
   - field.storage.asset.serial
+  - field.storage.asset.silvicultural_field_operations
   - field.storage.asset.size_location_desc
+  - field.storage.asset.social_economic_cultural
+  - field.storage.asset.staff_disposition
+  - field.storage.asset.staff_training
+  - field.storage.asset.stakeholder_engagement_plan
   - field.storage.asset.threats_assessment
   - field.storage.asset.total_boundary_length
   - field.storage.asset.total_cutline_length
+  - field.storage.asset.total_economic_valuation_fma
   - field.storage.asset.total_natural_boundary_length
+  - field.storage.asset.tourism_development
   - field.storage.asset.vegetation
+  - field.storage.asset.vegetation_biodiversity
+  - field.storage.asset.water_bodies_riparian_zones
   - field.storage.asset.year_of_survey
   - field.storage.asset.zonation_date
   - field.storage.asset.zonation_description
