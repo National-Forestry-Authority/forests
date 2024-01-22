@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.vegetation_biodiversity
+  module:
+    - text
+id: asset.cfr.vegetation_biodiversity
+field_name: vegetation_biodiversity
+entity_type: asset
+bundle: cfr
+label: 'Vegetation & biodiversity'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

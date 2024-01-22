@@ -409,6 +409,7 @@ function farm_nfa_update_9033(&$sandbox) {
 }
 
 /**
+<<<<<<< HEAD
  * Prepare core modules for farmOS 3.
  */
 function farm_nfa_update_9034(&$sandbox) {
@@ -429,4 +430,13 @@ function farm_nfa_update_9035(&$sandbox) {
   if ($field = $manager->getFieldStorageDefinition('client_id', 'consumer')) {
     $manager->updateFieldStorageDefinition($field);
   }
+}
+
+/**
+ * Add new FMA plan fields.
+ */
+function farm_nfa_update_9036(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9036";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }

@@ -15,5 +15,19 @@ config_devel:
   - field.field.log.natural_inventory.coup_number
   - field.field.log.natural_inventory.working_circle
   - core.entity_form_display.log.natural_inventory.plan
+  - core.entity_view_display.plan.natural.natural.field_groups
+  - field.field.plan.natural.environmental_values_ecosystem
+  - field.field.plan.natural.hcvs
+  - field.field.plan.natural.major_social_environmental_risks
+  - field.field.plan.natural.natural_resources
+  - field.field.plan.natural.opportunities_challenges
+  - field.field.plan.natural.period_fmp_revisions
+  - field.storage.plan.environmental_values_ecosystem
+  - field.storage.plan.hcvs
+  - field.storage.plan.major_social_environmental_risks
+  - field.storage.plan.natural_resources
+  - field.storage.plan.opportunities_challenges
+  - field.storage.plan.period_fmp_revisions
   - core.entity_form_display.plan.natural.default
   - core.entity_view_display.plan.natural.default
+  - core.entity_view_mode.plan.natural.field_groups

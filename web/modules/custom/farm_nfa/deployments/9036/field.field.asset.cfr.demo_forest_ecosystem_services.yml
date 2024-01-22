@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.demo_forest_ecosystem_services
+  module:
+    - farm_nfa
+id: asset.cfr.demo_forest_ecosystem_services
+field_name: demo_forest_ecosystem_services
+entity_type: asset
+bundle: cfr
+label: 'Demonstration of forest ecosystem services'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

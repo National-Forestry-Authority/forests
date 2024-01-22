@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.representative_sample_areas
+  module:
+    - farm_nfa
+id: asset.cfr.representative_sample_areas
+field_name: representative_sample_areas
+entity_type: asset
+bundle: cfr
+label: 'Representative sample areas'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

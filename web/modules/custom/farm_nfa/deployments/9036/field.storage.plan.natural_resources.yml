@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+    - text
+id: plan.natural_resources
+field_name: natural_resources
+entity_type: plan
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.community_infrastructure
+  module:
+    - farm_nfa
+id: asset.cfr.community_infrastructure
+field_name: community_infrastructure
+entity_type: asset
+bundle: cfr
+label: 'Community infrastructure'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

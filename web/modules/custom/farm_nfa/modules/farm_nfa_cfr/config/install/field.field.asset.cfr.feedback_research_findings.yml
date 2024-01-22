@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.feedback_research_findings
+  module:
+    - farm_nfa
+id: asset.cfr.feedback_research_findings
+field_name: feedback_research_findings
+entity_type: asset
+bundle: cfr
+label: 'Feedback of research findings into forest management activities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

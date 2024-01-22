@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.accountability_grievance_redress
+  module:
+    - farm_nfa
+id: asset.cfr.accountability_grievance_redress
+field_name: accountability_grievance_redress
+entity_type: asset
+bundle: cfr
+label: 'Accountability & grievance redress'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

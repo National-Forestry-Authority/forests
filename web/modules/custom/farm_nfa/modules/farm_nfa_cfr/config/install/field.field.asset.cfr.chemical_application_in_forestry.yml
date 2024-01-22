@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.chemical_application_in_forestry
+  module:
+    - farm_nfa
+id: asset.cfr.chemical_application_in_forestry
+field_name: chemical_application_in_forestry
+entity_type: asset
+bundle: cfr
+label: 'Chemical application in forestry applications'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program
