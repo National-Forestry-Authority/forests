@@ -37,12 +37,4 @@ class ProgramTabs extends Tabs {
     return $settings;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function process(&$element, $processed_object) {
-    parent::process($element, $processed_object);
-    $element['#display_title'] = TRUE;
-  }
-
 }
