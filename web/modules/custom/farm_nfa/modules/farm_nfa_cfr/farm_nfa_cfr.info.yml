@@ -22,7 +22,6 @@ config_devel:
   - core.entity_view_display.media.boundary_plan_maps.link
   - core.entity_view_display.media.predominant_vegetation.default
   - core.entity_view_mode.asset.field_groups
-  - field.field.asset.cfr.accountability_grievance_redress
   - field.field.asset.cfr.action_plans_rare_species
   - field.field.asset.cfr.applied_research_by_fma_staff
   - field.field.asset.cfr.area
@@ -44,7 +43,6 @@ config_devel:
   - field.field.asset.cfr.demo_forest_ecosystem_services
   - field.field.asset.cfr.description_of_plans_and_sheets
   - field.field.asset.cfr.drainage
-  - field.field.asset.cfr.environmental_social_management
   - field.field.asset.cfr.environmental_values
   - field.field.asset.cfr.est_year_gazetted
   - field.field.asset.cfr.feedback_research_findings
@@ -56,11 +54,9 @@ config_devel:
   - field.field.asset.cfr.forest_roads
   - field.field.asset.cfr.forest_stations_and_buildings
   - field.field.asset.cfr.funding_arrangements
-  - field.field.asset.cfr.gender_mainstreaming
   - field.field.asset.cfr.general_description
   - field.field.asset.cfr.geology_soils
   - field.field.asset.cfr.harvesting_activities
-  - field.field.asset.cfr.health_safety
   - field.field.asset.cfr.high_conservation_values
   - field.field.asset.cfr.historical_context
   - field.field.asset.cfr.human_wildlife_conflict
@@ -95,9 +91,6 @@ config_devel:
   - field.field.asset.cfr.silvicultural_field_operations
   - field.field.asset.cfr.size_location_desc
   - field.field.asset.cfr.social_economic_cultural
-  - field.field.asset.cfr.staff_disposition
-  - field.field.asset.cfr.staff_training
-  - field.field.asset.cfr.stakeholder_engagement_plan
   - field.field.asset.cfr.threats_assessment
   - field.field.asset.cfr.total_boundary_length
   - field.field.asset.cfr.total_cutline_length
@@ -119,7 +112,6 @@ config_devel:
   - field.field.media.boundary_plan_maps.year
   - field.field.media.predominant_vegetation.description
   - field.field.media.predominant_vegetation.field_media_image
-  - field.storage.asset.accountability_grievance_redress
   - field.storage.asset.action_plans_rare_species
   - field.storage.asset.applied_research_by_fma_staff
   - field.storage.asset.authorisation_of_research
@@ -140,7 +132,6 @@ config_devel:
   - field.storage.asset.demo_forest_ecosystem_services
   - field.storage.asset.description_of_plans_and_sheets
   - field.storage.asset.drainage
-  - field.storage.asset.environmental_social_management
   - field.storage.asset.environmental_values
   - field.storage.asset.est_year_gazetted
   - field.storage.asset.feedback_research_findings
@@ -152,11 +143,9 @@ config_devel:
   - field.storage.asset.forest_roads
   - field.storage.asset.forest_stations_and_buildings
   - field.storage.asset.funding_arrangements
-  - field.storage.asset.gender_mainstreaming
   - field.storage.asset.general_description
   - field.storage.asset.geology_soils
   - field.storage.asset.harvesting_activities
-  - field.storage.asset.health_safety
   - field.storage.asset.high_conservation_values
   - field.storage.asset.historical_context
   - field.storage.asset.human_wildlife_conflict
@@ -191,9 +180,6 @@ config_devel:
   - field.storage.asset.silvicultural_field_operations
   - field.storage.asset.size_location_desc
   - field.storage.asset.social_economic_cultural
-  - field.storage.asset.staff_disposition
-  - field.storage.asset.staff_training
-  - field.storage.asset.stakeholder_engagement_plan
   - field.storage.asset.threats_assessment
   - field.storage.asset.total_boundary_length
   - field.storage.asset.total_cutline_length
