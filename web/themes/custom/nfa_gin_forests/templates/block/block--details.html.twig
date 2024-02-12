@@ -26,16 +26,17 @@
  * @see template_preprocess_block()
  */
 #}
-
-<details class="claro-details">
+<div{{ attributes }}>
   {{ title_prefix }}
-  {%- if label -%}
-    <summary class="claro-details__summary">{{ label }}</summary>
-  {%- endif -%}
   {{ title_suffix }}
-  <div class="details-wrapper">
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
-</details>
+  <details class="claro-details">
+    {%- if label -%}
+      <summary class="claro-details__summary">{{ label }}</summary>
+    {%- endif -%}
+    <div class="claro-details__wrapper details-wrapper">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </details>
+</div>

@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - plan
-id: plan.natural.field_groups
-label: 'Field groups'
+id: plan.situational_assessment
+label: 'Situational assessment'
 description: ''
 targetEntityType: plan
 cache: true

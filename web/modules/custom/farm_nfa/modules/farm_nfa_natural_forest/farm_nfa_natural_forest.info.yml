@@ -15,7 +15,14 @@ config_devel:
   - field.field.log.natural_inventory.coup_number
   - field.field.log.natural_inventory.working_circle
   - core.entity_form_display.log.natural_inventory.plan
-  - core.entity_view_display.plan.natural.natural.field_groups
+  - core.entity_view_display.plan.natural.implementation_arrangements
+  - core.entity_view_display.plan.natural.operational_basis
+  - core.entity_view_display.plan.natural.safeguards
+  - core.entity_view_display.plan.natural.situational_assessment
+  - core.entity_view_mode.plan.implementation_arrangements
+  - core.entity_view_mode.plan.operational_basis
+  - core.entity_view_mode.plan.safeguards
+  - core.entity_view_mode.plan.situational_assessment
   - field.field.plan.natural.accountability_grievance_redress
   - field.field.plan.natural.environmental_social_management
   - field.field.plan.natural.environmental_values_ecosystem

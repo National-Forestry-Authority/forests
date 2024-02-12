@@ -14,6 +14,7 @@ config_devel:
   - core.entity_form_display.media.boundary_demarcation.default
   - core.entity_form_display.media.boundary_plan_maps.default
   - core.entity_form_display.media.predominant_vegetation.default
+  - core.entity_view_display.asset.cfr.basic_information
   - core.entity_view_display.asset.cfr.default
   - core.entity_view_display.asset.cfr.field_groups
   - core.entity_view_display.media.boundary_demarcation.default
@@ -21,6 +22,7 @@ config_devel:
   - core.entity_view_display.media.boundary_plan_maps.dialog
   - core.entity_view_display.media.boundary_plan_maps.link
   - core.entity_view_display.media.predominant_vegetation.default
+  - core.entity_view_mode.asset.basic_information
   - core.entity_view_mode.asset.field_groups
   - field.field.asset.cfr.action_plans_rare_species
   - field.field.asset.cfr.applied_research_by_fma_staff
@@ -201,3 +203,4 @@ config_devel:
   - media.type.boundary_plan_maps
   - media.type.predominant_vegetation
   - farm_map.layer_style.asset_cfr
+  - views.view.cfr_blocks

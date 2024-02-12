@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.basic_information
+label: 'Basic information'
+description: ''
+targetEntityType: asset
+cache: true

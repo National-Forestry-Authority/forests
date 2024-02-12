@@ -386,4 +386,21 @@ function farm_nfa_views_pre_render(ViewExecutable $view) {
     // Render the map.
     $view->attachment_before['asset_map'] = $map;
   }
+
+  // Hide CFR blocks on plan if fields are empty.
+  if ($view->id() == 'plan_blocks' && $view->current_display == 'physical_features') {
+    $fields = [];
+    $storage = \Drupal::service('entity_type.manager')->getStorage('asset');
+    foreach ($view->result as $key => $row) {
+      /** @var \Drupal\asset\Entity\AssetInterface $asset */
+      $asset = $storage->load($row->asset_field_data_plan__asset_id);
+      if (empty($asset->climate_weather_variation->getValue()) &&
+        empty($asset->drainage->getValue()) &&
+        empty($asset->geology_soils->getValue()) &&
+        empty($asset->landscape_topology->getValue()) &&
+        empty($asset->vegetation_biodiversity->getValue())) {
+        unset($view->result[$key]);
+      }
+    }
+  }
 }
