@@ -111,10 +111,6 @@
             "drupal/environment_indicator": {
               "3362940: Improve visibility when using Gin vertical and modern horizontal toolbars": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/22.diff"
             },
-            "drupal/gin": {
-              "3281984: The breadcrumb shows 'Edit <label>' on all entity routes, even canonical/delete routes": "https://www.drupal.org/files/issues/2023-10-18/gin_3281984_mr177_75912597.patch",
-              "3409899: Primary local tasks not rendering on entity routes due to striptags filter": "https://git.drupalcode.org/project/gin/-/merge_requests/348.diff"
-            },
             "drupal/month_year": {
               "3350516: Update jQuery.once for Drupal 10 support.": "https://www.drupal.org/files/issues/2023-07-03/update-jquery-once-for-drupal-10-support-3350516-2.patch"
             }
