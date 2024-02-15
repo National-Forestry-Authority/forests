@@ -321,8 +321,6 @@ third_party_settings:
         description: ''
     group_implementation_execution:
       children:
-        - group_staff_disposition
-        - group_staff_training
         - group_partnerships
       label: 'Implementation & execution arrangements'
       parent_name: group_implementation_wrapper

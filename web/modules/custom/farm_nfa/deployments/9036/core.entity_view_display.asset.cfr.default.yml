@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - asset.type.cfr
-    - field.field.asset.cfr.accountability_grievance_redress
     - field.field.asset.cfr.action_plans_rare_species
     - field.field.asset.cfr.applied_research_by_fma_staff
     - field.field.asset.cfr.area
@@ -25,7 +24,6 @@ dependencies:
     - field.field.asset.cfr.demo_forest_ecosystem_services
     - field.field.asset.cfr.description_of_plans_and_sheets
     - field.field.asset.cfr.drainage
-    - field.field.asset.cfr.environmental_social_management
     - field.field.asset.cfr.environmental_values
     - field.field.asset.cfr.est_year_gazetted
     - field.field.asset.cfr.feedback_research_findings
@@ -37,11 +35,9 @@ dependencies:
     - field.field.asset.cfr.forest_roads
     - field.field.asset.cfr.forest_stations_and_buildings
     - field.field.asset.cfr.funding_arrangements
-    - field.field.asset.cfr.gender_mainstreaming
     - field.field.asset.cfr.general_description
     - field.field.asset.cfr.geology_soils
     - field.field.asset.cfr.harvesting_activities
-    - field.field.asset.cfr.health_safety
     - field.field.asset.cfr.high_conservation_values
     - field.field.asset.cfr.historical_context
     - field.field.asset.cfr.human_wildlife_conflict
@@ -76,9 +72,6 @@ dependencies:
     - field.field.asset.cfr.silvicultural_field_operations
     - field.field.asset.cfr.size_location_desc
     - field.field.asset.cfr.social_economic_cultural
-    - field.field.asset.cfr.staff_disposition
-    - field.field.asset.cfr.staff_training
-    - field.field.asset.cfr.stakeholder_engagement_plan
     - field.field.asset.cfr.threats_assessment
     - field.field.asset.cfr.total_boundary_length
     - field.field.asset.cfr.total_cutline_length
@@ -262,13 +255,6 @@ targetEntityType: asset
 bundle: cfr
 mode: default
 content:
-  accountability_grievance_redress:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 103
-    region: content
   action_plans_rare_species:
     type: farm_nfa_program_default
     label: above
@@ -423,13 +409,6 @@ content:
     third_party_settings: {  }
     weight: 36
     region: content
-  environmental_social_management:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 87
-    region: content
   environmental_values:
     type: farm_nfa_program_default
     label: above
@@ -524,13 +503,6 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
-  gender_mainstreaming:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 90
-    region: content
   general_description:
     type: text_default
     label: above
@@ -558,13 +530,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 63
-    region: content
-  health_safety:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 89
     region: content
   high_conservation_values:
     type: farm_nfa_program_default
@@ -864,27 +829,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 40
-    region: content
-  staff_disposition:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 92
-    region: content
-  staff_training:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 93
-    region: content
-  stakeholder_engagement_plan:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 88
     region: content
   status:
     type: list_default

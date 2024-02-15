@@ -1,0 +1,11 @@
+layout_details:
+  label: 'One column details element'
+  path: layouts
+  template: layout--onecol-details
+  category: 'Columns: 1'
+  default_region: content
+  icon_map:
+    - [content]
+  regions:
+    content:
+      label: Content

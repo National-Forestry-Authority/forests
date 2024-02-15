@@ -4,7 +4,6 @@ dependencies:
   config:
     - asset.type.cfr
     - core.entity_view_mode.asset.field_groups
-    - field.field.asset.cfr.accountability_grievance_redress
     - field.field.asset.cfr.action_plans_rare_species
     - field.field.asset.cfr.applied_research_by_fma_staff
     - field.field.asset.cfr.area
@@ -26,7 +25,6 @@ dependencies:
     - field.field.asset.cfr.demo_forest_ecosystem_services
     - field.field.asset.cfr.description_of_plans_and_sheets
     - field.field.asset.cfr.drainage
-    - field.field.asset.cfr.environmental_social_management
     - field.field.asset.cfr.environmental_values
     - field.field.asset.cfr.est_year_gazetted
     - field.field.asset.cfr.feedback_research_findings
@@ -38,11 +36,9 @@ dependencies:
     - field.field.asset.cfr.forest_roads
     - field.field.asset.cfr.forest_stations_and_buildings
     - field.field.asset.cfr.funding_arrangements
-    - field.field.asset.cfr.gender_mainstreaming
     - field.field.asset.cfr.general_description
     - field.field.asset.cfr.geology_soils
     - field.field.asset.cfr.harvesting_activities
-    - field.field.asset.cfr.health_safety
     - field.field.asset.cfr.high_conservation_values
     - field.field.asset.cfr.historical_context
     - field.field.asset.cfr.human_wildlife_conflict
@@ -77,9 +73,6 @@ dependencies:
     - field.field.asset.cfr.silvicultural_field_operations
     - field.field.asset.cfr.size_location_desc
     - field.field.asset.cfr.social_economic_cultural
-    - field.field.asset.cfr.staff_disposition
-    - field.field.asset.cfr.staff_training
-    - field.field.asset.cfr.stakeholder_engagement_plan
     - field.field.asset.cfr.threats_assessment
     - field.field.asset.cfr.total_boundary_length
     - field.field.asset.cfr.total_cutline_length
@@ -335,8 +328,6 @@ third_party_settings:
         description: ''
     group_implementation_execution:
       children:
-        - group_staff_disposition
-        - group_staff_training
         - group_partnerships
       label: 'Implementation & execution arrangements'
       parent_name: group_implementation_wrapper
@@ -652,8 +643,6 @@ third_party_settings:
       children:
         - group_environmental_social_manag
         - group_stakeholder_engagement
-        - group_health_safety
-        - group_gender_mainstreaming
         - group_accountability_grievance
       label: 'Social & environmental safeguards'
       parent_name: group_social_env_wrapper
@@ -666,104 +655,6 @@ third_party_settings:
         id: ''
         direction: vertical
         width_breakpoint: 640
-    group_environmental_social_manag:
-      children:
-        - environmental_social_management
-      label: 'Environmental & social management plan'
-      parent_name: group_social_env_safeguards
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_stakeholder_engagement:
-      children:
-        - stakeholder_engagement_plan
-      label: 'Stakeholder engagement plan'
-      parent_name: group_social_env_safeguards
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_health_safety:
-      children:
-        - health_safety
-      label: 'Health & safety'
-      parent_name: group_social_env_safeguards
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_gender_mainstreaming:
-      children:
-        - gender_mainstreaming
-      label: 'Gender mainstreaming'
-      parent_name: group_social_env_safeguards
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_accountability_grievance:
-      children:
-        - accountability_grievance_redress
-      label: 'Accountability & grievance redress'
-      parent_name: group_social_env_safeguards
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_staff_disposition:
-      children:
-        - staff_disposition
-      label: 'Staff disposition'
-      parent_name: group_implementation_execution
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_staff_training:
-      children:
-        - staff_training
-      label: 'Staff training'
-      parent_name: group_implementation_execution
-      region: content
-      weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
     group_partnerships:
       children:
         - partnerships
@@ -945,13 +836,6 @@ targetEntityType: asset
 bundle: cfr
 mode: field_groups
 content:
-  accountability_grievance_redress:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
   action_plans_rare_species:
     type: farm_nfa_program_default
     label: above
@@ -1106,13 +990,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  environmental_social_management:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
   environmental_values:
     type: farm_nfa_program_default
     label: above
@@ -1194,13 +1071,6 @@ content:
     weight: 1
     region: content
   funding_arrangements:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  gender_mainstreaming:
     type: farm_nfa_program_default
     label: above
     settings: {  }
@@ -1519,27 +1389,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 7
-    region: content
-  staff_disposition:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  staff_training:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  stakeholder_engagement_plan:
-    type: farm_nfa_program_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
     region: content
   threats_assessment:
     type: text_default

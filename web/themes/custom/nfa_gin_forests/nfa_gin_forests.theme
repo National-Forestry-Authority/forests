@@ -16,6 +16,7 @@ function nfa_gin_forests_preprocess_plan(&$variables) {
   $view_modes = [
     'implementation_arrangements',
     'operational_basis',
+    'physical_features',
     'safeguards',
     'situational_assessment',
   ];

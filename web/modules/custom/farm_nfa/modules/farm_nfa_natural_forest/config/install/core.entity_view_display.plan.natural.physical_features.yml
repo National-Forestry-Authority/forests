@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.plan.safeguards
+    - core.entity_view_mode.plan.physical_features
     - field.field.plan.natural.accountability_grievance_redress
     - field.field.plan.natural.climate_weather_variation
     - field.field.plan.natural.drainage
@@ -25,22 +25,22 @@ dependencies:
     - field.field.plan.natural.vegetation_biodiversity
     - plan.type.natural
   module:
-    - farm_nfa
     - field_group
     - layout_builder
+    - text
 third_party_settings:
   layout_builder:
     enabled: false
     allow_custom: false
   field_group:
-    group_social_env_safeguards_tabs:
+    group_physical_features_tabs:
       children:
-        - group_environmental_social_mgmt
-        - group_stakeholder_engagement
-        - group_health_safety
-        - group_gender_mainstreaming
-        - group_accountability_grievance
-      label: 'Social & environmental safeguards tabs'
+        - group_geology_soils
+        - group_landscape_topology
+        - group_drainage
+        - group_climate_weather_variation
+        - group_vegetation_biodiversity
+      label: 'Physical features tabs'
       parent_name: ''
       region: content
       weight: 20
@@ -51,11 +51,11 @@ third_party_settings:
         id: ''
         direction: vertical
         width_breakpoint: 640
-    group_environmental_social_mgmt:
+    group_geology_soils:
       children:
-        - environmental_social_management
-      label: 'Environmental & social management plan'
-      parent_name: group_social_env_safeguards_tabs
+        - geology_soils
+      label: 'Geology & soils'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
@@ -65,11 +65,11 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_stakeholder_engagement:
+    group_landscape_topology:
       children:
-        - stakeholder_engagement_plan
-      label: 'Stakeholder engagement plan'
-      parent_name: group_social_env_safeguards_tabs
+        - landscape_topology
+      label: 'Landscape topology'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
@@ -79,11 +79,11 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_health_safety:
+    group_drainage:
       children:
-        - health_safety
-      label: 'Health & safety'
-      parent_name: group_social_env_safeguards_tabs
+        - drainage
+      label: Drainage
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
@@ -93,11 +93,11 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_gender_mainstreaming:
+    group_climate_weather_variation:
       children:
-        - gender_mainstreaming
-      label: 'Gender mainstreaming'
-      parent_name: group_social_env_safeguards_tabs
+        - climate_weather_variation
+      label: 'Climate & weather variation'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
@@ -107,11 +107,11 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_accountability_grievance:
+    group_vegetation_biodiversity:
       children:
-        - accountability_grievance_redress
-      label: 'Accountability & grievance redress'
-      parent_name: group_social_env_safeguards_tabs
+        - vegetation_biodiversity
+      label: 'Vegetation & biodiversity'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
@@ -121,58 +121,58 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-id: plan.natural.safeguards
+id: plan.natural.physical_features
 targetEntityType: plan
 bundle: natural
-mode: safeguards
+mode: physical_features
 content:
-  accountability_grievance_redress:
-    type: farm_nfa_program_default
-    label: above
+  climate_weather_variation:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 107
     region: content
-  environmental_social_management:
-    type: farm_nfa_program_default
-    label: above
+  drainage:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 97
+    weight: 106
     region: content
-  gender_mainstreaming:
-    type: farm_nfa_program_default
-    label: above
+  geology_soils:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 104
     region: content
-  health_safety:
-    type: farm_nfa_program_default
-    label: above
+  landscape_topology:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 99
+    weight: 105
     region: content
-  stakeholder_engagement_plan:
-    type: farm_nfa_program_default
-    label: above
+  vegetation_biodiversity:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 98
+    weight: 108
     region: content
 hidden:
+  accountability_grievance_redress: true
   asset: true
-  climate_weather_variation: true
   data: true
-  drainage: true
+  environmental_social_management: true
   environmental_values_ecosystem: true
   file: true
   flag: true
-  geology_soils: true
+  gender_mainstreaming: true
   hcvs: true
+  health_safety: true
   image: true
-  landscape_topology: true
   log: true
   major_social_environmental_risks: true
   management_goals_objectives: true
@@ -183,6 +183,6 @@ hidden:
   social_economic_cultural_resourc: true
   staff_disposition: true
   staff_training: true
+  stakeholder_engagement_plan: true
   status: true
   uid: true
-  vegetation_biodiversity: true

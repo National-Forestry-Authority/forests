@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.plan.landscape_topology
+    - filter.format.default
+    - filter.format.plain_text
+    - plan.type.natural
+  module:
+    - text
+id: plan.natural.landscape_topology
+field_name: landscape_topology
+entity_type: plan
+bundle: natural
+label: 'Landscape topology'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - default
+    - plain_text
+field_type: text_long

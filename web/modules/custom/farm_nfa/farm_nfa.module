@@ -5,7 +5,6 @@
  * Provides alters and hooks for the farm nfa module.
  */
 
-use Drupal\asset\Entity\AssetType;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
@@ -388,19 +387,48 @@ function farm_nfa_views_pre_render(ViewExecutable $view) {
   }
 
   // Hide CFR blocks on plan if fields are empty.
-  if ($view->id() == 'plan_blocks' && $view->current_display == 'physical_features') {
-    $fields = [];
+  if ($view->id() == 'plan_blocks') {
     $storage = \Drupal::service('entity_type.manager')->getStorage('asset');
-    foreach ($view->result as $key => $row) {
-      /** @var \Drupal\asset\Entity\AssetInterface $asset */
-      $asset = $storage->load($row->asset_field_data_plan__asset_id);
-      if (empty($asset->climate_weather_variation->getValue()) &&
-        empty($asset->drainage->getValue()) &&
-        empty($asset->geology_soils->getValue()) &&
-        empty($asset->landscape_topology->getValue()) &&
-        empty($asset->vegetation_biodiversity->getValue())) {
-        unset($view->result[$key]);
+    if ($view->current_display == 'physical_features') {
+      foreach ($view->result as $key => $row) {
+        /** @var \Drupal\asset\Entity\AssetInterface $asset */
+        $asset = $storage->load($row->asset_field_data_plan__asset_id);
+        if (empty($asset->climate_weather_variation->getValue()) &&
+          empty($asset->drainage->getValue()) &&
+          empty($asset->geology_soils->getValue()) &&
+          empty($asset->landscape_topology->getValue()) &&
+          empty($asset->vegetation_biodiversity->getValue())) {
+          unset($view->result[$key]);
+        }
       }
     }
+    if ($view->current_display == 'situational_assessment') {
+      foreach ($view->result as $key => $row) {
+        /** @var \Drupal\asset\Entity\AssetInterface $asset */
+        $asset = $storage->load($row->asset_field_data_plan__asset_id);
+        if (empty($asset->social_economic_cultural->getValue())) {
+          unset($view->result[$key]);
+        }
+      }
+    }
+    if ($view->current_display == 'programs_activities') {
+      foreach ($view->result as $key => $row) {
+        /** @var \Drupal\asset\Entity\AssetInterface $asset */
+        $asset = $storage->load($row->asset_field_data_plan__asset_id);
+        if (empty($asset->management_goals_objectives->getValue())) {
+          unset($view->result[$key]);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function farm_nfa_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  // Don't allow a CFR to exist in more than one plan.
+  if ($entity_type->id() === 'plan' && !empty($fields['asset'])) {
+    $fields['asset']->addConstraint('UniqueField', []);
   }
 }
