@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - asset.type.cfr
-    - core.entity_view_mode.asset.basic_information
+    - core.entity_view_mode.asset.physical_features
     - field.field.asset.cfr.action_plans_rare_species
     - field.field.asset.cfr.applied_research_by_fma_staff
     - field.field.asset.cfr.area
@@ -92,17 +92,17 @@ dependencies:
     - text
 third_party_settings:
   field_group:
-    group_basic_information_tabs:
+    group_physical_features_tabs:
       children:
-        - group_size_location_brief_desc
-        - group_legal_category
-        - group_historical_context
-        - group_original_management_object
-        - group_history
-      label: 'Basic information tabs'
+        - group_geology_soils
+        - group_landscape_topology
+        - group_drainage
+        - group_climate_weather_variation
+        - group_vegetation_biodiversity
+      label: 'Physical features tabs'
       parent_name: ''
       region: content
-      weight: 0
+      weight: 20
       format_type: tabs
       format_settings:
         classes: ''
@@ -110,25 +110,25 @@ third_party_settings:
         id: ''
         direction: vertical
         width_breakpoint: 640
-    group_size_location_brief_desc:
+    group_geology_soils:
       children:
-        - size_location_desc
-      label: 'Size, location & brief description'
-      parent_name: group_basic_information_tabs
+        - geology_soils
+      label: 'Geology & soils'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 20
       format_type: tab
       format_settings:
         classes: ''
-        show_empty_fields: false
+        show_empty_fields: true
         id: ''
         formatter: closed
         description: ''
-    group_legal_category:
+    group_landscape_topology:
       children:
-        - legal_category
-      label: 'Legal category'
-      parent_name: group_basic_information_tabs
+        - landscape_topology
+      label: 'Landscape topology'
+      parent_name: group_physical_features_tabs
       region: content
       weight: 21
       format_type: tab
@@ -138,25 +138,11 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_original_management_object:
+    group_drainage:
       children:
-        - original_management_objectives
-      label: 'Original management objectives'
-      parent_name: group_basic_information_tabs
-      region: content
-      weight: 23
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_historical_context:
-      children:
-        - historical_context
-      label: 'Historical context'
-      parent_name: group_basic_information_tabs
+        - drainage
+      label: Drainage
+      parent_name: group_physical_features_tabs
       region: content
       weight: 22
       format_type: tab
@@ -166,13 +152,13 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
-    group_history:
+    group_climate_weather_variation:
       children:
-        - previous_management_track_record
-      label: History
-      parent_name: group_basic_information_tabs
+        - climate_weather_variation
+      label: 'Climate & weather variation'
+      parent_name: group_physical_features_tabs
       region: content
-      weight: 24
+      weight: 23
       format_type: tab
       format_settings:
         classes: ''
@@ -180,48 +166,62 @@ third_party_settings:
         id: ''
         formatter: closed
         description: ''
+    group_vegetation_biodiversity:
+      children:
+        - vegetation_biodiversity
+      label: 'Vegetation & biodiversity'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
   layout_builder:
     enabled: false
     allow_custom: false
-id: asset.cfr.basic_information
+id: asset.cfr.physical_features
 targetEntityType: asset
 bundle: cfr
-mode: basic_information
+mode: physical_features
 content:
-  historical_context:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 21
-    region: content
-  legal_category:
+  climate_weather_variation:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 37
     region: content
-  original_management_objectives:
+  drainage:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 16
+    weight: 36
     region: content
-  previous_management_track_record:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  size_location_desc:
+  geology_soils:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 34
+    region: content
+  landscape_topology:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 35
+    region: content
+  vegetation_biodiversity:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 38
     region: content
 hidden:
   action_plans_rare_species: true
@@ -235,7 +235,6 @@ hidden:
   boundary_surveys_maintenance: true
   chemical_application_in_forestry: true
   climate_change_mitigation: true
-  climate_weather_variation: true
   collaboration_with_naforri: true
   community_benefits: true
   community_forest_mgmt_roles: true
@@ -245,7 +244,6 @@ hidden:
   data: true
   demo_forest_ecosystem_services: true
   description_of_plans_and_sheets: true
-  drainage: true
   environmental_values: true
   est_year_gazetted: true
   feedback_research_findings: true
@@ -260,10 +258,10 @@ hidden:
   forest_stations_and_buildings: true
   funding_arrangements: true
   general_description: true
-  geology_soils: true
   geometry: true
   harvesting_activities: true
   high_conservation_values: true
+  historical_context: true
   human_wildlife_conflict: true
   id_tag: true
   image: true
@@ -276,7 +274,7 @@ hidden:
   key_resources: true
   land_use_and_forest_condition: true
   landscape_connectivity: true
-  landscape_topology: true
+  legal_category: true
   legal_customary_rights: true
   livelihoods_in_the_fma_zone: true
   location: true
@@ -287,10 +285,12 @@ hidden:
   monitoring_forest_governance: true
   notes: true
   opportunities: true
+  original_management_objectives: true
   owner: true
   parent: true
   participatory_development: true
   partnerships: true
+  previous_management_track_record: true
   priority_actions: true
   progress_mgmt_environment: true
   progress_mgmt_hcvs: true
@@ -300,6 +300,7 @@ hidden:
   research_by_professionals: true
   serial: true
   silvicultural_field_operations: true
+  size_location_desc: true
   social_economic_cultural: true
   status: true
   threats_assessment: true
@@ -310,7 +311,6 @@ hidden:
   tourism_development: true
   uid: true
   vegetation: true
-  vegetation_biodiversity: true
   water_bodies_riparian_zones: true
   year_of_survey: true
   zonation_date: true

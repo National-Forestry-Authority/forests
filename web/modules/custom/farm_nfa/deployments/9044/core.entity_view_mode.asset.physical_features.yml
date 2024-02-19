@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+id: asset.physical_features
+label: 'Physical features'
+description: ''
+targetEntityType: asset
+cache: true

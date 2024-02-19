@@ -33,6 +33,8 @@ function nfa_gin_forests_preprocess_asset(&$variables) {
   $view_modes = [
     'basic_information',
     'field_groups',
+    'physical_features',
+    'situational_assessment',
   ];
   if (in_array($variables['elements']['#view_mode'], $view_modes)) {
     unset($variables['content']['name']);

@@ -8,9 +8,7 @@
 /**
  * Implements hook_preprocess_HOOK() for case 'asset__cfr__full'.
  */
-function farm_nfa_lb_preprocess_asset__cfr__full(&$variables) {
-  // Don't show the asset type.
-  unset($variables['content']['type']);
+function farm_nfa_lb_preprocess_asset__cfr(&$variables) {
   $variables['#attached']['library'][] = 'farm_nfa_lb/styles';
 }
 

@@ -146,3 +146,5 @@ $config['environment_indicator.indicator']['name'] = 'Development';
 if (file_exists($app_root . '/' . $site_path . '/settings.ddev.php')) {
   include $app_root . '/' . $site_path . '/settings.ddev.php';
 }
+
+$config['farm_map_mapbox.settings']['api_key'] = 'pk.eyJ1IjoibmF0LWZvci1hdXRoLXVnIiwiYSI6ImNsZGlvd255YjAydDUzbmxndDB4MzU5YnEifQ.u8Tb2PvtKSsxE0AsYJM-Qg';

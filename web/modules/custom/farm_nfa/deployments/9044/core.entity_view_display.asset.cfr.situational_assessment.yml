@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - asset.type.cfr
-    - core.entity_view_mode.asset.basic_information
+    - core.entity_view_mode.asset.situational_assessment
     - field.field.asset.cfr.action_plans_rare_species
     - field.field.asset.cfr.applied_research_by_fma_staff
     - field.field.asset.cfr.area
@@ -92,17 +92,69 @@ dependencies:
     - text
 third_party_settings:
   field_group:
-    group_basic_information_tabs:
+    group_legal_details:
       children:
-        - group_size_location_brief_desc
-        - group_legal_category
-        - group_historical_context
-        - group_original_management_object
-        - group_history
-      label: 'Basic information tabs'
+        - area
+        - boundary_plan
+        - description_of_plans_and_sheets
+        - est_year_gazetted
+        - map_ref_sheets
+        - map_sheet_uploads
+        - serial
+        - year_of_survey
+      label: 'Legal details'
+      parent_name: ''
+      region: hidden
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_description:
+      children:
+        - land_use_and_forest_condition
+        - legal_category
+        - original_management_objectives
+        - size_location_desc
+      label: Description
+      parent_name: ''
+      region: hidden
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_management_issues:
+      children:
+        - issues_concerns
+        - key_resources
+        - opportunities
+        - priority_actions
+        - proposed_strategies
+      label: 'Management issues'
+      parent_name: ''
+      region: hidden
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_situational_assessment_tab:
+      children:
+        - group_social_economic_cultural_r
+      label: 'Situational assessment tabs'
       parent_name: ''
       region: content
-      weight: 0
+      weight: 20
       format_type: tabs
       format_settings:
         classes: ''
@@ -110,69 +162,13 @@ third_party_settings:
         id: ''
         direction: vertical
         width_breakpoint: 640
-    group_size_location_brief_desc:
+    group_social_economic_cultural_r:
       children:
-        - size_location_desc
-      label: 'Size, location & brief description'
-      parent_name: group_basic_information_tabs
+        - social_economic_cultural
+      label: 'Social, economic & cultural resources'
+      parent_name: group_situational_assessment_tab
       region: content
       weight: 20
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        formatter: closed
-        description: ''
-    group_legal_category:
-      children:
-        - legal_category
-      label: 'Legal category'
-      parent_name: group_basic_information_tabs
-      region: content
-      weight: 21
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_original_management_object:
-      children:
-        - original_management_objectives
-      label: 'Original management objectives'
-      parent_name: group_basic_information_tabs
-      region: content
-      weight: 23
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_historical_context:
-      children:
-        - historical_context
-      label: 'Historical context'
-      parent_name: group_basic_information_tabs
-      region: content
-      weight: 22
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: true
-        id: ''
-        formatter: closed
-        description: ''
-    group_history:
-      children:
-        - previous_management_track_record
-      label: History
-      parent_name: group_basic_information_tabs
-      region: content
-      weight: 24
       format_type: tab
       format_settings:
         classes: ''
@@ -183,45 +179,17 @@ third_party_settings:
   layout_builder:
     enabled: false
     allow_custom: false
-id: asset.cfr.basic_information
+id: asset.cfr.situational_assessment
 targetEntityType: asset
 bundle: cfr
-mode: basic_information
+mode: situational_assessment
 content:
-  historical_context:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 21
-    region: content
-  legal_category:
+  social_economic_cultural:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
-    region: content
-  original_management_objectives:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 16
-    region: content
-  previous_management_track_record:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  size_location_desc:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 14
+    weight: 40
     region: content
 hidden:
   action_plans_rare_species: true
@@ -264,6 +232,7 @@ hidden:
   geometry: true
   harvesting_activities: true
   high_conservation_values: true
+  historical_context: true
   human_wildlife_conflict: true
   id_tag: true
   image: true
@@ -277,6 +246,7 @@ hidden:
   land_use_and_forest_condition: true
   landscape_connectivity: true
   landscape_topology: true
+  legal_category: true
   legal_customary_rights: true
   livelihoods_in_the_fma_zone: true
   location: true
@@ -287,10 +257,12 @@ hidden:
   monitoring_forest_governance: true
   notes: true
   opportunities: true
+  original_management_objectives: true
   owner: true
   parent: true
   participatory_development: true
   partnerships: true
+  previous_management_track_record: true
   priority_actions: true
   progress_mgmt_environment: true
   progress_mgmt_hcvs: true
@@ -300,7 +272,7 @@ hidden:
   research_by_professionals: true
   serial: true
   silvicultural_field_operations: true
-  social_economic_cultural: true
+  size_location_desc: true
   status: true
   threats_assessment: true
   total_boundary_length: true
