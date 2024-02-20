@@ -119,7 +119,7 @@ RUN set -eux; \
     ln -s web html; \
     #chown -R www-data:www-data web/sites web/modules web/themes; \
     rm -rf "$COMPOSER_HOME"; \
-    # Ensure drupal's autolad.php is present
+    # Ensure drupal's autoload.php is present
     ls -lah web/autoload.php;
 
 ENV PATH=${PATH}:/var/www/vendor/bin

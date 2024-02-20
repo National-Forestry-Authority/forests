@@ -511,3 +511,12 @@ function farm_nfa_update_9044(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * More view mode adjustments.
+ */
+function farm_nfa_update_9045(&$sandbox) {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9045";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
+}

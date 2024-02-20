@@ -420,6 +420,33 @@ function farm_nfa_views_pre_render(ViewExecutable $view) {
         }
       }
     }
+    if ($view->current_display == 'operational_basis') {
+      foreach ($view->result as $key => $row) {
+        /** @var \Drupal\asset\Entity\AssetInterface $asset */
+        $asset = $storage->load($row->asset_field_data_plan__asset_id);
+        if (empty($asset->social_economic_cultural->getValue())) {
+          unset($view->result[$key]);
+        }
+      }
+    }
+  }
+
+  // Hide Plan blocks on CFR if fields are empty.
+  if ($view->id() == 'cfr_blocks') {
+    $storage = \Drupal::service('entity_type.manager')->getStorage('plan');
+    if ($view->current_display == 'physical_features') {
+      foreach ($view->result as $key => $row) {
+        /** @var \Drupal\plan\Entity\PlanInterface $plan */
+        $plan = $storage->load($row->asset_asset_field_data_id);
+        if (empty($plan->climate_weather_variation->getValue()) &&
+          empty($plan->drainage->getValue()) &&
+          empty($plan->geology_soils->getValue()) &&
+          empty($plan->landscape_topology->getValue()) &&
+          empty($plan->vegetation_biodiversity->getValue())) {
+          unset($view->result[$key]);
+        }
+      }
+    }
   }
 }
 

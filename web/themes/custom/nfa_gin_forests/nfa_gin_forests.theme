@@ -29,17 +29,9 @@ function nfa_gin_forests_preprocess_plan(&$variables) {
  * Implements hook_preprocess_HOOK() for entity type asset.
  */
 function nfa_gin_forests_preprocess_asset(&$variables) {
-  // Don't show the asset name and type on some view modes.
-  $view_modes = [
-    'basic_information',
-    'field_groups',
-    'physical_features',
-    'situational_assessment',
-  ];
-  if (in_array($variables['elements']['#view_mode'], $view_modes)) {
-    unset($variables['content']['name']);
-    unset($variables['content']['type']);
-  }
+  // Don't show the asset name and type on view modes.
+  unset($variables['content']['name']);
+  unset($variables['content']['type']);
 }
 
 /**
