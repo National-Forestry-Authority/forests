@@ -51,3 +51,11 @@ function nfa_gin_forests_preprocess_field__plan__image(&$variables) {
     $variables['cfrs'] = $plan->asset->view();
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for case 'form'.
+ */
+function nfa_gin_forests_preprocess_form(&$variables) {
+  // Attach form styles.
+  $variables['#attached']['library'][] = 'nfa_gin_forests/forms';
+}

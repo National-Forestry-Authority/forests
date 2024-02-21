@@ -1,0 +1,11 @@
+.field--type-daterange {
+  .fieldset__wrapper {
+    display: flex;
+    .form-datetime-wrapper {
+      margin: 0;
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

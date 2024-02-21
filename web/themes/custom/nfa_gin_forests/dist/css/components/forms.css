@@ -1,0 +1,16 @@
+.field--type-daterange .fieldset__wrapper {
+  display: flex;
+}
+
+.field--type-daterange .fieldset__wrapper .form-datetime-wrapper {
+  margin: 0;
+}
+
+[dir="ltr"] .field--type-daterange .fieldset__wrapper .form-datetime-wrapper:first-child {
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .field--type-daterange .fieldset__wrapper .form-datetime-wrapper:first-child {
+  margin-left: 1rem;
+}
+

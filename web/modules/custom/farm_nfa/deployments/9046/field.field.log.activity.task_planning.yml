@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.task_planning
+    - log.type.activity
+  module:
+    - datetime_range
+id: log.activity.task_planning
+field_name: task_planning
+entity_type: log
+bundle: activity
+label: 'Task planning'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

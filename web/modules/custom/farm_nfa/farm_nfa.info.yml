@@ -35,6 +35,7 @@ config_devel:
   - asset.type.forest
   - asset.type.land
   - block.block.gin_local_actions
+  - block.block.nfa_gin_forests_local_actions
   - claro.settings
   - core.entity_form_display.asset.land.default
   - core.entity_form_display.asset.land.default
@@ -78,6 +79,12 @@ config_devel:
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.activity_type
   - field.field.log.activity.cfr
+  - field.field.log.activity.task_description
+  - field.field.log.activity.task_implementation
+  - field.field.log.activity.task_inspection_audit
+  - field.field.log.activity.task_planning
+  - field.field.log.activity.task_reporting
+  - field.field.log.activity.task_summary
   - field.field.log.activity.working_circle
   - field.field.log.harvest.coup_number
   - field.field.log.harvest.harvest_type
@@ -98,6 +105,12 @@ config_devel:
   - field.storage.log.coup_number
   - field.storage.log.harvest_type
   - field.storage.log.supervisor
+  - field.storage.log.task_description
+  - field.storage.log.task_implementation
+  - field.storage.log.task_inspection_audit
+  - field.storage.log.task_planning
+  - field.storage.log.task_reporting
+  - field.storage.log.task_summary
   - field.storage.log.tender_name
   - field.storage.log.working_circle
   - field.storage.user.contact_phone_number
