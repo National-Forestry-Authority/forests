@@ -29,3 +29,27 @@ search_autocomplete:
     js/farm_nfa_search_autocomplete.js: { }
   dependencies:
     - core/drupal.autocomplete
+
+farm_nfa_layerswitcher_sidebar:
+  js:
+    js/farmOS.map.behaviors.farm_nfa_layerswitcher_sidebar.js : {}
+  dependencies:
+    - core/drupalSettings
+    - farm_map/farm_map
+
+farm_nfa_ranges_cfr_layer:
+  js:
+    js/farmOS.map.behaviors.farm_nfa_ranges_cfr_layer.js : {}
+  dependencies:
+    - core/drupalSettings
+    - farm_map/farm_map
+
+farm_nfa_program_tabs:
+  css:
+    theme:
+      css/farm_nfa_program_widget.css: { }
+  js:
+    js/farm_nfa_program_tabs.js : { }
+  dependencies:
+    - core/once
+    - core/drupal

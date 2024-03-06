@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.forest_roads
+  module:
+    - farm_nfa
+id: asset.cfr.forest_roads
+field_name: forest_roads
+entity_type: asset
+bundle: cfr
+label: 'Forest roads'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

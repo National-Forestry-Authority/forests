@@ -1,0 +1,188 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.plan.situational_assessment
+    - field.field.plan.natural.accountability_grievance_redress
+    - field.field.plan.natural.climate_weather_variation
+    - field.field.plan.natural.drainage
+    - field.field.plan.natural.environmental_social_management
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.gender_mainstreaming
+    - field.field.plan.natural.geology_soils
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.health_safety
+    - field.field.plan.natural.landscape_topology
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.management_goals_objectives
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - field.field.plan.natural.social_economic_cultural_resourc
+    - field.field.plan.natural.staff_disposition
+    - field.field.plan.natural.staff_training
+    - field.field.plan.natural.stakeholder_engagement_plan
+    - field.field.plan.natural.vegetation_biodiversity
+    - plan.type.natural
+  module:
+    - field_group
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_natural_resources_tab:
+      children:
+        - natural_resources
+      label: 'Natural resources'
+      parent_name: group_situational_assessment_tab
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_environmental_values_ecosy:
+      children:
+        - environmental_values_ecosystem
+      label: 'Environmental values & ecosystem services'
+      parent_name: group_situational_assessment_tab
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_high_conservation_values:
+      children:
+        - hcvs
+      label: 'High conservation values (HCVs)'
+      parent_name: group_situational_assessment_tab
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_major_social_environmental:
+      children:
+        - major_social_environmental_risks
+      label: 'Major social & environmental risks'
+      parent_name: group_situational_assessment_tab
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_opportunities_challenges:
+      children:
+        - opportunities_challenges
+      label: 'Opportunities & challenges'
+      parent_name: group_situational_assessment_tab
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_situational_assessment_tab:
+      children:
+        - group_natural_resources_tab
+        - group_environmental_values_ecosy
+        - group_high_conservation_values
+        - group_major_social_environmental
+        - group_opportunities_challenges
+      label: 'Situational assessment tabs'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+id: plan.natural.situational_assessment
+targetEntityType: plan
+bundle: natural
+mode: situational_assessment
+content:
+  environmental_values_ecosystem:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 92
+    region: content
+  hcvs:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 93
+    region: content
+  major_social_environmental_risks:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 94
+    region: content
+  natural_resources:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 91
+    region: content
+  opportunities_challenges:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 95
+    region: content
+hidden:
+  accountability_grievance_redress: true
+  asset: true
+  climate_weather_variation: true
+  data: true
+  drainage: true
+  environmental_social_management: true
+  file: true
+  flag: true
+  gender_mainstreaming: true
+  geology_soils: true
+  health_safety: true
+  image: true
+  landscape_topology: true
+  log: true
+  management_goals_objectives: true
+  notes: true
+  period_fmp_revisions: true
+  social_economic_cultural_resourc: true
+  staff_disposition: true
+  staff_training: true
+  stakeholder_engagement_plan: true
+  status: true
+  uid: true
+  vegetation_biodiversity: true

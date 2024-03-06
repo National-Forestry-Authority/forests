@@ -65,35 +65,49 @@ class ForestPlanGfwForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
-
-    $form['range'] = [
-      '#type' => 'daterangepicker',
-      '#DateRangePickerOptions' => [
-        'initial_text' => $this -> t('Select date range...'),
-        'apply_button_text' =>  $this -> t('Apply'),
-        'clear_button_text' =>  $this -> t('Clear'),
-        'cancel_button_text' =>  $this -> t('Cancel'),
-        'range_splitter' => ' - ',
-        'date_format' => 'd M, yy',
-        // This needs to be a format recognised by javascript Date.parse method.
-        'alt_format' => 'yy-mm-dd',
-        'date_picker_options' => [
-          'number_of_months' => 2,
-        ],
-      ],
-    ];
+    $node = $this->routeMatch->getParameter('asset');
+    $assetType = '';
+    $landType = '';
+    if ($node) {
+      $assetType = $node->bundle();
+    }
+    if ($node && $node->hasField('land_type') && !$node->get('land_type')->isEmpty()) {
+      $landType = $node->get('land_type')->value;
+    }
 
     $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
       '#map_settings' => [
         'plan' => $this->routeMatch->getRawParameter('plan'),
+        'asset' => $this->routeMatch->getRawParameter('asset'),
         'host' => $this->request->getHost(),
+        'asset_type' => $assetType,
         'base_query' => 'SELECT latitude,longitude FROM results',
+        'land_type' => $landType,
       ],
       '#attached' => [
         'library' => [
           'farm_nfa/behavior_farm_nfa_gfw_layers',
+        ],
+      ],
+    ];
+
+    $form['range'] = [
+      '#type' => 'daterangepicker',
+      '#prefix' => '<div class="daterange-picker">',
+      '#suffix' => '</div>',
+      '#DateRangePickerOptions' => [
+        'initial_text' => $this->t('Select date range...'),
+        'apply_button_text' => $this->t('Apply'),
+        'clear_button_text' => $this->t('Clear'),
+        'cancel_button_text' => $this->t('Cancel'),
+        'range_splitter' => ' - ',
+        'date_format' => 'd M, yy',
+        // This needs to be a format recognised by javascript Date.parse method.
+        'alt_format' => 'yy-mm-dd',
+        'date_picker_options' => [
+          'number_of_months' => 2,
         ],
       ],
     ];

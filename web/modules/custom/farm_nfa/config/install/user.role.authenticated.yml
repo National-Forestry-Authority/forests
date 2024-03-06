@@ -5,6 +5,7 @@ dependencies:
     - filter.format.default
   module:
     - environment_indicator
+    - file
     - filter
     - media
     - toolbar
@@ -15,5 +16,6 @@ is_admin: false
 permissions:
   - 'access environment indicator'
   - 'access toolbar'
+  - 'delete own files'
   - 'use text format default'
   - 'view media'

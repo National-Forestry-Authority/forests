@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.log.cfr
+    - log.type.activity
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: log.activity.cfr
+field_name: cfr
+entity_type: log
+bundle: activity
+label: CFR
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:asset'
+  handler_settings:
+    target_bundles:
+      cfr: cfr
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

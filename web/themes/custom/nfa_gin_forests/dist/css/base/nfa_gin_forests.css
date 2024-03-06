@@ -1,47 +1,4 @@
-.js-tabs {
-  max-width: 100%;
-}
-
-.js-tabs__header {
-  display: block;
-  margin: 2rem 0 1rem 0;
-  overflow: hidden;
-}
-
-.js-tabs__header li {
-  display: inline-block;
-}
-
-[dir="ltr"] .js-tabs__header li {
-  float: left;
-}
-
-[dir="rtl"] .js-tabs__header li {
-  float: right;
-}
-
-.js-tabs__title {
-  border-bottom: 3px solid transparent;
-  display: block;
-  padding: .75rem 1.5rem 1rem;
-  color: var(--colorGinText);
-  font-weight: 600;
-  font-size: .875rem;
-}
-
-.js-tabs__title:hover {
-  text-decoration: none;
-  background-color: var(--colorGinItemHover);
-  border-radius: 8px 8px 0 0;
-}
-
-.js-tabs__title:focus {
-  box-shadow: none !important;
-}
-
-.js-tabs__title-active {
-  border-bottom-color: var(--colorGinPrimary);
-  color: var(--colorGinPrimary);
-  font-weight: 700;
+.view table.views-table td.views-field-operations {
+  overflow-y: visible;
 }
 

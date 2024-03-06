@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_nfa
+id: asset.livelihoods_in_the_fma_zone
+field_name: livelihoods_in_the_fma_zone
+entity_type: asset
+type: farm_nfa_program
+settings: {  }
+module: farm_nfa
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

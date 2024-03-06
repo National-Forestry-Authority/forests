@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.blocks_units_compartments
+  module:
+    - text
+id: asset.cfr.blocks_units_compartments
+field_name: blocks_units_compartments
+entity_type: asset
+bundle: cfr
+label: 'Blocks/Units & compartments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

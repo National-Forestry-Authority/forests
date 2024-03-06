@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.indigenous_peoples_community
+  module:
+    - farm_nfa
+id: asset.cfr.indigenous_peoples_community
+field_name: indigenous_peoples_community
+entity_type: asset
+bundle: cfr
+label: 'Indigenous peoples, community relations, local development'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

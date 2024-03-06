@@ -1,0 +1,1509 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - core.entity_view_mode.asset.field_groups
+    - field.field.asset.cfr.action_plans_rare_species
+    - field.field.asset.cfr.applied_research_by_fma_staff
+    - field.field.asset.cfr.area
+    - field.field.asset.cfr.authorisation_of_research
+    - field.field.asset.cfr.biodiversity_inventories
+    - field.field.asset.cfr.blocks_units_compartments
+    - field.field.asset.cfr.boundary_demarcation
+    - field.field.asset.cfr.boundary_plan
+    - field.field.asset.cfr.boundary_surveys_maintenance
+    - field.field.asset.cfr.chemical_application_in_forestry
+    - field.field.asset.cfr.climate_change_mitigation
+    - field.field.asset.cfr.climate_weather_variation
+    - field.field.asset.cfr.collaboration_with_naforri
+    - field.field.asset.cfr.community_benefits
+    - field.field.asset.cfr.community_forest_mgmt_roles
+    - field.field.asset.cfr.community_infrastructure
+    - field.field.asset.cfr.community_organisation
+    - field.field.asset.cfr.community_participation
+    - field.field.asset.cfr.demo_forest_ecosystem_services
+    - field.field.asset.cfr.description_of_plans_and_sheets
+    - field.field.asset.cfr.drainage
+    - field.field.asset.cfr.environmental_values
+    - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.feedback_research_findings
+    - field.field.asset.cfr.fire_protection
+    - field.field.asset.cfr.forest_infrastructure
+    - field.field.asset.cfr.forest_landscape_restoration
+    - field.field.asset.cfr.forest_products_growth_yield
+    - field.field.asset.cfr.forest_products_inventories
+    - field.field.asset.cfr.forest_roads
+    - field.field.asset.cfr.forest_stations_and_buildings
+    - field.field.asset.cfr.funding_arrangements
+    - field.field.asset.cfr.general_description
+    - field.field.asset.cfr.geology_soils
+    - field.field.asset.cfr.harvesting_activities
+    - field.field.asset.cfr.high_conservation_values
+    - field.field.asset.cfr.historical_context
+    - field.field.asset.cfr.human_wildlife_conflict
+    - field.field.asset.cfr.impacts_forest_mgmt_operations
+    - field.field.asset.cfr.indigenous_peoples_community
+    - field.field.asset.cfr.issues_concerns
+    - field.field.asset.cfr.key_resources
+    - field.field.asset.cfr.land_use_and_forest_condition
+    - field.field.asset.cfr.landscape_connectivity
+    - field.field.asset.cfr.landscape_topology
+    - field.field.asset.cfr.legal_category
+    - field.field.asset.cfr.legal_customary_rights
+    - field.field.asset.cfr.livelihoods_in_the_fma_zone
+    - field.field.asset.cfr.management_goals_objectives
+    - field.field.asset.cfr.map_ref_sheets
+    - field.field.asset.cfr.map_sheet_uploads
+    - field.field.asset.cfr.monitoring_evaluations
+    - field.field.asset.cfr.monitoring_forest_governance
+    - field.field.asset.cfr.opportunities
+    - field.field.asset.cfr.original_management_objectives
+    - field.field.asset.cfr.participatory_development
+    - field.field.asset.cfr.partnerships
+    - field.field.asset.cfr.previous_management_track_record
+    - field.field.asset.cfr.priority_actions
+    - field.field.asset.cfr.progress_mgmt_environment
+    - field.field.asset.cfr.progress_mgmt_hcvs
+    - field.field.asset.cfr.proposed_strategies
+    - field.field.asset.cfr.protection_against_illegal_acts
+    - field.field.asset.cfr.representative_sample_areas
+    - field.field.asset.cfr.research_by_professionals
+    - field.field.asset.cfr.serial
+    - field.field.asset.cfr.silvicultural_field_operations
+    - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.social_economic_cultural
+    - field.field.asset.cfr.threats_assessment
+    - field.field.asset.cfr.total_boundary_length
+    - field.field.asset.cfr.total_cutline_length
+    - field.field.asset.cfr.total_economic_valuation_fma
+    - field.field.asset.cfr.total_natural_boundary_length
+    - field.field.asset.cfr.tourism_development
+    - field.field.asset.cfr.vegetation
+    - field.field.asset.cfr.vegetation_biodiversity
+    - field.field.asset.cfr.water_bodies_riparian_zones
+    - field.field.asset.cfr.year_of_survey
+    - field.field.asset.cfr.zonation_date
+    - field.field.asset.cfr.zonation_description
+    - field.field.asset.cfr.zonation_map_file_upload
+    - image.style.large
+  module:
+    - entity_dialog_formatter
+    - farm_nfa
+    - field_group
+    - file
+    - image
+    - layout_builder
+    - month_year
+    - text
+third_party_settings:
+  field_group:
+    group_legal_details:
+      children:
+        - area
+        - total_boundary_length
+        - total_cutline_length
+        - total_natural_boundary_length
+        - est_year_gazetted
+        - year_of_survey
+        - boundary_plan
+        - serial
+      label: 'Legal details'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: false
+        open: true
+    group_description:
+      children:
+        - land_use_and_forest_condition
+        - notes
+        - location
+      label: Description
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 15
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: false
+        open: true
+    group_management_issues:
+      children:
+        - key_resources
+        - issues_concerns
+        - opportunities
+        - proposed_strategies
+        - priority_actions
+        - threats_assessment
+      label: 'Management issues'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 12
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        open: 0
+    group_vertical_tabs:
+      children:
+        - group_phy
+        - group_history
+        - group_sit
+        - group_ope
+        - group_plans_and_sheets
+        - group_size_location_desc
+        - group_legal_details
+        - group_management_issues
+        - group_vegetation
+        - group_zonation
+        - group_description
+        - group_images_and_files
+      label: 'Vertical tabs'
+      parent_name: ''
+      region: content
+      weight: -2
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_plans_and_sheets:
+      children:
+        - map_sheet_uploads
+        - map_ref_sheets
+        - description_of_plans_and_sheets
+        - boundary_demarcation
+      label: 'Plans and sheets'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_size_location_desc:
+      children:
+        - size_location_desc
+        - legal_category
+        - original_management_objectives
+        - general_description
+        - historical_context
+      label: 'Size, location and brief description'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_vegetation:
+      children:
+        - vegetation
+      label: Vegetation
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 13
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_zonation:
+      children:
+        - zonation_description
+        - zonation_date
+        - zonation_map_file_upload
+      label: Zonation
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 14
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_images_and_files:
+      children:
+        - image
+        - file
+      label: 'Images and files'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 16
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_phy:
+      children:
+        - climate_weather_variation
+        - drainage
+        - geology_soils
+        - landscape_topology
+        - vegetation_biodiversity
+      label: 'Physical features'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+    group_history:
+      children:
+        - previous_management_track_record
+      label: History
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_sit:
+      children:
+        - social_economic_cultural
+      label: 'Situational assessment'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_ope:
+      children:
+        - blocks_units_compartments
+      label: 'Operational basis'
+      parent_name: group_vertical_tabs
+      region: content
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_implementation_execution:
+      children:
+        - group_partnerships
+      label: 'Implementation & execution arrangements'
+      parent_name: group_implementation_wrapper
+      region: content
+      weight: 1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_monitoring_evaluation_plan:
+      children:
+        - group_monitoring_evaluations
+        - group_impacts_forest_management
+        - group_forest_products_growth
+        - group_progress_mgmt_env
+        - group_progress_mgmt_hcvs
+      label: 'Monitoring & evaluation plan'
+      parent_name: group_monitoring_wrapper
+      region: content
+      weight: 2
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_activity_scheduling_budget:
+      children:
+        - group_funding_arrangements
+      label: 'Activity scheduling & budget allocation'
+      parent_name: group_activity_wrapper
+      region: content
+      weight: 3
+      format_type: program_tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        direction: vertical
+    group_biodiversity_conservation:
+      children:
+        - biodiversity_inventories
+        - action_plans_rare_species
+        - environmental_values
+        - climate_change_mitigation
+        - high_conservation_values
+        - water_bodies_riparian_zones
+        - landscape_connectivity
+        - representative_sample_areas
+        - forest_landscape_restoration
+      label: ' Biodiversity conservation & forest restoration'
+      parent_name: group_programs
+      region: content
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_management_goals_objective:
+      children:
+        - management_goals_objectives
+      label: 'Management goals & objectives'
+      parent_name: group_programs
+      region: content
+      weight: 0
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_law_enforcement_verifiable:
+      children:
+        - legal_customary_rights
+        - protection_against_illegal_acts
+        - monitoring_forest_governance
+      label: 'Law enforcement & verifiable goverance'
+      parent_name: group_programs
+      region: content
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_boundary_surveys_maintenan:
+      children:
+        - boundary_surveys_maintenance
+      label: 'Boundary surveys & maintenance'
+      parent_name: group_programs
+      region: content
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_indigenous_peoples_communi:
+      children:
+        - indigenous_peoples_community
+      label: 'Indigenous peoples, community relations, local development'
+      parent_name: group_programs
+      region: content
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_total_economic_valuation:
+      children:
+        - total_economic_valuation_fma
+      label: 'Total Economic valuation of the FMA'
+      parent_name: group_programs
+      region: content
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_production_primary_product:
+      children:
+        - forest_products_inventories
+        - silvicultural_field_operations
+        - harvesting_activities
+      label: 'Production of primary forest products'
+      parent_name: group_programs
+      region: content
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_fire_protection:
+      children:
+        - fire_protection
+      label: 'Fire protection'
+      parent_name: group_programs
+      region: content
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_tourism_development:
+      children:
+        - tourism_development
+      label: 'Tourism development'
+      parent_name: group_programs
+      region: content
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_forest_infrastructure:
+      children:
+        - forest_infrastructure
+      label: 'Forest infrastructure'
+      parent_name: group_programs
+      region: content
+      weight: 8
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_chemical_application:
+      children:
+        - chemical_application_in_forestry
+      label: 'Chemical application in forestry applications'
+      parent_name: group_programs
+      region: content
+      weight: 9
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_demo_forest_ecosystem:
+      children:
+        - demo_forest_ecosystem_services
+      label: 'Demonstration of forest ecosystem services'
+      parent_name: group_programs
+      region: content
+      weight: 10
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_community_participation:
+      children:
+        - community_participation
+        - community_organisation
+        - community_forest_mgmt_roles
+        - community_benefits
+        - livelihoods_in_the_fma_zone
+        - human_wildlife_conflict
+      label: 'Community participation'
+      parent_name: group_programs
+      region: content
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_research_at_fma_level:
+      children:
+        - collaboration_with_naforri
+        - participatory_development
+        - authorisation_of_research
+        - applied_research_by_fma_staff
+        - research_by_professionals
+        - feedback_research_findings
+      label: 'Research at FMA level'
+      parent_name: group_programs
+      region: content
+      weight: 12
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_infrastructure_development:
+      children:
+        - forest_roads
+        - forest_stations_and_buildings
+        - community_infrastructure
+      label: 'Infrastructure development'
+      parent_name: group_programs
+      region: content
+      weight: 13
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_programs:
+      children:
+        - group_management_goals_objective
+        - group_law_enforcement_verifiable
+        - group_boundary_surveys_maintenan
+        - group_indigenous_peoples_communi
+        - group_total_economic_valuation
+        - group_production_primary_product
+        - group_biodiversity_conservation
+        - group_fire_protection
+        - group_tourism_development
+        - group_forest_infrastructure
+        - group_chemical_application
+        - group_demo_forest_ecosystem
+        - group_community_participation
+        - group_research_at_fma_level
+        - group_infrastructure_development
+      label: Programs
+      parent_name: group_programs_wrapper
+      region: content
+      weight: -1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_social_env_safeguards:
+      children:
+        - group_environmental_social_manag
+        - group_stakeholder_engagement
+        - group_accountability_grievance
+      label: 'Social & environmental safeguards'
+      parent_name: group_social_env_wrapper
+      region: content
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_partnerships:
+      children:
+        - partnerships
+      label: Partnerships
+      parent_name: group_implementation_execution
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_monitoring_evaluations:
+      children:
+        - monitoring_evaluations
+      label: 'Monitoring & evaluations'
+      parent_name: group_monitoring_evaluation_plan
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_impacts_forest_management:
+      children:
+        - impacts_forest_mgmt_operations
+      label: 'Impacts of forest management operations'
+      parent_name: group_monitoring_evaluation_plan
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_forest_products_growth:
+      children:
+        - forest_products_growth_yield
+      label: 'Forest products growth & yield regulation'
+      parent_name: group_monitoring_evaluation_plan
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_progress_mgmt_hcvs:
+      children:
+        - progress_mgmt_hcvs
+      label: 'Progress in the management of HCVs'
+      parent_name: group_monitoring_evaluation_plan
+      region: content
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_progress_mgmt_env:
+      children:
+        - progress_mgmt_environment
+      label: 'Progress in management of environmental values'
+      parent_name: group_monitoring_evaluation_plan
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_funding_arrangements:
+      children:
+        - funding_arrangements
+      label: 'Funding arrangements'
+      parent_name: group_activity_scheduling_budget
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_programs_wrapper:
+      children:
+        - group_programs
+      label: Programs
+      parent_name: ''
+      region: content
+      weight: -1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_social_env_wrapper:
+      children:
+        - group_social_env_safeguards
+      label: 'Social & environmental safeguards'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_implementation_wrapper:
+      children:
+        - group_implementation_execution
+      label: 'Implementation & execution arrangements'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_monitoring_wrapper:
+      children:
+        - group_monitoring_evaluation_plan
+      label: 'Monitoring & evaluation plan'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_activity_wrapper:
+      children:
+        - group_activity_scheduling_budget
+      label: 'Activity scheduling & budget allocation'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: asset.cfr.field_groups
+targetEntityType: asset
+bundle: cfr
+mode: field_groups
+content:
+  action_plans_rare_species:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  applied_research_by_fma_staff:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  area:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  authorisation_of_research:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  biodiversity_inventories:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  blocks_units_compartments:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  boundary_demarcation:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  boundary_plan:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  boundary_surveys_maintenance:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  chemical_application_in_forestry:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  climate_change_mitigation:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  climate_weather_variation:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  collaboration_with_naforri:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  community_benefits:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  community_forest_mgmt_roles:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  community_infrastructure:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  community_organisation:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  community_participation:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  demo_forest_ecosystem_services:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  description_of_plans_and_sheets:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  drainage:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  environmental_values:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  est_year_gazetted:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  feedback_research_findings:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  file:
+    type: file_table
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  fire_protection:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  forest_infrastructure:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  forest_landscape_restoration:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  forest_products_growth_yield:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  forest_products_inventories:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  forest_roads:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  forest_stations_and_buildings:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  funding_arrangements:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  general_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  geology_soils:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  harvesting_activities:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  health_safety:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  high_conservation_values:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  historical_context:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  human_wildlife_conflict:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  image:
+    type: image
+    label: above
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  impacts_forest_mgmt_operations:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  indigenous_peoples_community:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  issues_concerns:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  key_resources:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  land_use_and_forest_condition:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  landscape_connectivity:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  landscape_topology:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  legal_category:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  legal_customary_rights:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  livelihoods_in_the_fma_zone:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  management_goals_objectives:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  map_ref_sheets:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  map_sheet_uploads:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  monitoring_evaluations:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  monitoring_forest_governance:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  opportunities:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  original_management_objectives:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  owner:
+    type: entity_reference_dialog_entity_view
+    label: above
+    settings:
+      view_mode_destination: default
+      list_theme: entity_dialog_formatter_list
+      link_class: use-ajax
+      dialog_width: '800'
+      dialog_height: ''
+      dialog_type: modal
+      dialog_title: ''
+      display_all_dialog: true
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  participatory_development:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partnerships:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  previous_management_track_record:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  priority_actions:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  progress_mgmt_environment:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  progress_mgmt_hcvs:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  proposed_strategies:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  protection_against_illegal_acts:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  representative_sample_areas:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  research_by_professionals:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  serial:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  silvicultural_field_operations:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  size_location_desc:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  social_economic_cultural:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  threats_assessment:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  total_boundary_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  total_cutline_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  total_economic_valuation_fma:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  total_natural_boundary_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  tourism_development:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  vegetation:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  vegetation_biodiversity:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  water_bodies_riparian_zones:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  year_of_survey:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  zonation_date:
+    type: month_year_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  zonation_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  zonation_map_file_upload:
+    type: file_rss_enclosure
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden:
+  data: true
+  flag: true
+  geometry: true
+  id_tag: true
+  intrinsic_geometry: true
+  is_fixed: true
+  is_location: true
+  parent: true
+  status: true
+  uid: true

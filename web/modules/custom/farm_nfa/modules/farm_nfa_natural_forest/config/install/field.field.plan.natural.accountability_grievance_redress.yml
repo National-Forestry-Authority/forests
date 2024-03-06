@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.plan.accountability_grievance_redress
+    - plan.type.natural
+  module:
+    - farm_nfa
+id: plan.natural.accountability_grievance_redress
+field_name: accountability_grievance_redress
+entity_type: plan
+bundle: natural
+label: 'Accountability & grievance redress'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

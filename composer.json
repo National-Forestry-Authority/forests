@@ -46,24 +46,28 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7",
+        "drupal/ckeditor": "^1.0",
         "drupal/config_devel": "^1",
+        "drupal/ctools": "^4.0",
         "drupal/daterangepicker": "^1.0@alpha",
         "drupal/default_content": "^2",
         "drupal/dependent_fields": "^1.0",
-        "drupal/devel_entity_updates": "^3",
         "drupal/element_multiple": "1.x-dev",
         "drupal/entity_dialog_formatter": "^1",
         "drupal/environment_indicator": "^4",
         "drupal/farm_forest": "2.x",
-        "drupal/field_group": "^3",
+        "drupal/field_group": "^3.4",
         "drupal/gin_lb": "^1",
-        "drupal/layout_builder_styles": "^1",
-        "drupal/lb_routing": "^1",
+        "drupal/hal": "^2.0",
+        "drupal/layout_builder_styles": "^2",
+        "drupal/lb_routing": "^1.0",
         "drupal/migrate_source_csv": "^3",
-        "drupal/month_year": "^2",
+        "drupal/month_year": "2.0.x-dev",
         "drupal/r4032login": "^2",
         "drupal/select_or_other": "^4",
-        "farmos/farmos": "^2",
+        "drupal/symfony_mailer": "^1.4",
+        "drupal/upgrade_status": "^4.0",
+        "farmos/farmos": "^3",
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "national-forestry-authority/nfa_gin": "^1",
         "national-forestry-authority/nfa_landing": "^1",
@@ -99,13 +103,19 @@
         },
         "patches": {
             "drupal/select_or_other": {
-                "Issue #3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
+                "3227558: AllowedValuesConstraintValidator::getValidChoices only checks for config fields and not base fields": "https://www.drupal.org/files/issues/2021-08-10/3227558-2.patch"
             },
             "drupal/entity_reference_revisions": {
-                "Issue #2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
+                "2667748: Allow single scalar value in EntityReferenceRevisions data type plugin": "patches/entity_reference_revisions/2667748-42.patch"
             },
             "drupal/environment_indicator": {
               "3362940: Improve visibility when using Gin vertical and modern horizontal toolbars": "https://git.drupalcode.org/project/environment_indicator/-/merge_requests/22.diff"
+            },
+            "drupal/month_year": {
+              "3350516: Update jQuery.once for Drupal 10 support.": "https://www.drupal.org/files/issues/2023-07-03/update-jquery-once-for-drupal-10-support-3350516-2.patch"
+            },
+            "drupal/gin": {
+              "3419180: Resolve Missing Dependency 'core/once' in Gin_accent Library": "https://git.drupalcode.org/project/gin/-/merge_requests/380.diff"
             }
         },
         "merge-plugin": {

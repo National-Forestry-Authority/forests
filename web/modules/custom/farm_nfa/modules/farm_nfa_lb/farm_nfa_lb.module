@@ -6,17 +6,15 @@
  */
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK() for case 'asset__cfr__full'.
  */
-function farm_nfa_lb_preprocess_asset__cfr__full(&$variables) {
-  // Assets have a default 2 column layout that is set in
-  // farm_ui_theme_preprocess_asset__full(). This more specific hook prevents
-  // calling the general asset preprocess hook and allows us to configure the
-  // CFR layout with Layout Builder.
-
-  // Don't show the asset type.
-  unset($variables['content']['type']);
-
+function farm_nfa_lb_preprocess_asset__cfr(&$variables) {
   $variables['#attached']['library'][] = 'farm_nfa_lb/styles';
+}
 
+/**
+ * Implements hook_preprocess_HOOK() for case 'plan__natural__full'.
+ */
+function farm_nfa_lb_preprocess_plan__natural__full(&$variables) {
+  $variables['#attached']['library'][] = 'farm_nfa_lb/styles';
 }

@@ -1,0 +1,520 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.field.asset.cfr.area
+    - field.field.asset.cfr.boundary_demarcation
+    - field.field.asset.cfr.boundary_plan
+    - field.field.asset.cfr.description_of_plans_and_sheets
+    - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.general_description
+    - field.field.asset.cfr.historical_context
+    - field.field.asset.cfr.issues_concerns
+    - field.field.asset.cfr.key_resources
+    - field.field.asset.cfr.land_use_and_forest_condition
+    - field.field.asset.cfr.legal_category
+    - field.field.asset.cfr.map_ref_sheets
+    - field.field.asset.cfr.map_sheet_uploads
+    - field.field.asset.cfr.opportunities
+    - field.field.asset.cfr.original_management_objectives
+    - field.field.asset.cfr.priority_actions
+    - field.field.asset.cfr.proposed_strategies
+    - field.field.asset.cfr.serial
+    - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.threats_assessment
+    - field.field.asset.cfr.total_boundary_length
+    - field.field.asset.cfr.total_cutline_length
+    - field.field.asset.cfr.total_natural_boundary_length
+    - field.field.asset.cfr.vegetation
+    - field.field.asset.cfr.year_of_survey
+    - field.field.asset.cfr.zonation_date
+    - field.field.asset.cfr.zonation_description
+    - field.field.asset.cfr.zonation_map_file_upload
+    - image.style.large
+  module:
+    - ctools
+    - entity_dialog_formatter
+    - farm_id_tag
+    - farm_map
+    - field_group
+    - file
+    - image
+    - layout_builder
+    - layout_discovery
+    - month_year
+    - options
+    - text
+third_party_settings:
+  field_group:
+    group_legal_details:
+      children:
+        - area
+        - est_year_gazetted
+        - year_of_survey
+        - boundary_plan
+        - serial
+        - map_ref_sheets
+        - map_sheet_uploads
+        - description_of_plans_and_sheets
+      label: 'Legal details'
+      parent_name: ''
+      region: content
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_description:
+      children:
+        - size_location_desc
+        - legal_category
+        - original_management_objectives
+        - land_use_and_forest_condition
+      label: Description
+      parent_name: ''
+      region: content
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_management_issues:
+      children:
+        - key_resources
+        - proposed_strategies
+        - priority_actions
+        - issues_concerns
+        - opportunities
+      label: 'Management issues'
+      parent_name: ''
+      region: content
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Geometry
+          context_mapping: {  }
+          heading: ''
+          heading_element: h2
+          layout_builder_styles_style: ''
+        components:
+          5c651e4c-447a-4e92-b940-d0e5d65781af:
+            uuid: 5c651e4c-447a-4e92-b940-d0e5d65781af
+            region: content
+            configuration:
+              id: 'field_block:asset:cfr:geometry'
+              label: 'Current geometry'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: farm_map_geofield
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style: ''
+          8e17b479-7326-44db-abd2-0bb9361671ed:
+            uuid: 8e17b479-7326-44db-abd2-0bb9361671ed
+            region: content
+            configuration:
+              id: 'field_block:asset:cfr:owner'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: inline
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          59535e22-6493-43d3-b583-1b0c6f47c898:
+            uuid: 59535e22-6493-43d3-b583-1b0c6f47c898
+            region: content
+            configuration:
+              id: 'field_block:asset:cfr:image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: file
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Vertical tabs'
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+        components:
+          e8008a08-cc59-41a0-8136-681c92279713:
+            uuid: e8008a08-cc59-41a0-8136-681c92279713
+            region: content
+            configuration:
+              id: 'entity_view:asset'
+              label: 'Entity view (Asset)'
+              label_display: '0'
+              provider: ctools
+              view_mode: field_groups
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - ''
+        third_party_settings: {  }
+id: asset.cfr.default
+targetEntityType: asset
+bundle: cfr
+mode: default
+content:
+  area:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  boundary_demarcation:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 32
+    region: content
+  boundary_plan:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  description_of_plans_and_sheets:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  est_year_gazetted:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  flag:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  general_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  geometry:
+    type: farm_map_geofield
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  historical_context:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  id_tag:
+    type: id_tag
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  issues_concerns:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  key_resources:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  land_use_and_forest_condition:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  legal_category:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  location:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  map_ref_sheets:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  map_sheet_uploads:
+    type: entity_reference_dialog_entity_view
+    label: inline
+    settings:
+      view_mode: link
+      view_mode_destination: dialog
+      list_theme: entity_dialog_formatter_list
+      link_class: use-ajax
+      dialog_type: modal
+      dialog_width: '800'
+      dialog_height: ''
+      dialog_title: ''
+      display_all_dialog: '1'
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  notes:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  opportunities:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  original_management_objectives:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  owner:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -70
+    region: content
+  parent:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  priority_actions:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  proposed_strategies:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  serial:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  size_location_desc:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  status:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  threats_assessment:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  total_boundary_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  total_cutline_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  total_natural_boundary_length:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  vegetation:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 33
+    region: content
+  year_of_survey:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  zonation_date:
+    type: month_year_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  zonation_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  zonation_map_file_upload:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 25
+    region: content
+hidden:
+  data: true
+  intrinsic_geometry: true
+  is_fixed: true
+  is_location: true
+  uid: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.collaboration_with_naforri
+  module:
+    - farm_nfa
+id: asset.cfr.collaboration_with_naforri
+field_name: collaboration_with_naforri
+entity_type: asset
+bundle: cfr
+label: 'Collaboration with NaFORRI, higher institutions of learning'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

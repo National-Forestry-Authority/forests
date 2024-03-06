@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.human_wildlife_conflict
+  module:
+    - farm_nfa
+id: asset.cfr.human_wildlife_conflict
+field_name: human_wildlife_conflict
+entity_type: asset
+bundle: cfr
+label: 'Human wildlife conflict'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

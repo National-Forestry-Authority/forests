@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.action_plans_rare_species
+  module:
+    - farm_nfa
+id: asset.cfr.action_plans_rare_species
+field_name: action_plans_rare_species
+entity_type: asset
+bundle: cfr
+label: 'Action plans for identified rare, threatened and endangered species and their habitats'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

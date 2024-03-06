@@ -1,0 +1,391 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.plan.natural.accountability_grievance_redress
+    - field.field.plan.natural.environmental_social_management
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.gender_mainstreaming
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.health_safety
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - field.field.plan.natural.staff_disposition
+    - field.field.plan.natural.staff_training
+    - field.field.plan.natural.stakeholder_engagement_plan
+    - image.style.medium
+    - plan.type.natural
+  module:
+    - farm_nfa
+    - field_group
+    - file
+    - image
+    - text
+third_party_settings:
+  field_group:
+    group_situa:
+      children:
+        - natural_resources
+        - environmental_values_ecosystem
+        - hcvs
+        - major_social_environmental_risks
+        - opportunities_challenges
+        - period_fmp_revisions
+      label: 'Situational assessment'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_vertical_tabs:
+      children:
+        - group_situa
+        - group_social_safeguards
+        - group_implementation_execution
+      label: 'Vertical tabs'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_social_safeguards:
+      children:
+        - group_social_safeguards_tabs
+      label: ' Social & environmental safeguards'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_social_safeguards_tabs:
+      children:
+        - group_environmental_social_mgmt
+        - group_stakeholder_engagement
+        - group_health_safety
+        - group_gender_mainstreaming
+        - group_accountability_grievance_r
+      label: ' Social safeguards tabs'
+      region: content
+      parent_name: group_social_safeguards
+      weight: 20
+      format_type: program_tabs
+      format_settings:
+        show_empty_fields: '1'
+        direction: vertical
+        id: ''
+        classes: ''
+    group_environmental_social_mgmt:
+      children:
+        - environmental_social_management
+      label: ' Environmental & social management plan'
+      region: content
+      parent_name: group_social_safeguards_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_stakeholder_engagement:
+      children:
+        - stakeholder_engagement_plan
+      label: 'Stakeholder engagement plan'
+      region: content
+      parent_name: group_social_safeguards_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_health_safety:
+      children:
+        - health_safety
+      label: 'Health & safety'
+      region: content
+      parent_name: group_social_safeguards_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_gender_mainstreaming:
+      children:
+        - gender_mainstreaming
+      label: 'Gender mainstreaming'
+      region: content
+      parent_name: group_social_safeguards_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_accountability_grievance_r:
+      children:
+        - accountability_grievance_redress
+      label: 'Accountability & grievance redress'
+      region: content
+      parent_name: group_social_safeguards_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_staff_disposition:
+      children:
+        - staff_disposition
+      label: 'Staff disposition'
+      region: content
+      parent_name: group_implementation_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_staff_training:
+      children:
+        - staff_training
+      label: 'Staff training'
+      region: content
+      parent_name: group_implementation_tabs
+      weight: 20
+      format_type: program_tab
+      format_settings:
+        description: ''
+        formatter: closed
+        show_empty_fields: '1'
+        required_fields: '1'
+        id: ''
+        classes: ''
+    group_implementation_execution:
+      children:
+        - group_implementation_tabs
+      label: 'Implementation & execution arrangements'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_implementation_tabs:
+      children:
+        - group_staff_disposition
+        - group_staff_training
+      label: ' Implementation tabs'
+      region: content
+      parent_name: group_implementation_execution
+      weight: 20
+      format_type: program_tabs
+      format_settings:
+        show_empty_fields: '1'
+        direction: vertical
+        id: ''
+        classes: ''
+id: plan.natural.default
+targetEntityType: plan
+bundle: natural
+mode: default
+content:
+  accountability_grievance_redress:
+    type: farm_nfa_program
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  asset:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  environmental_social_management:
+    type: farm_nfa_program
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  environmental_values_ecosystem:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  file:
+    type: file_generic
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  gender_mainstreaming:
+    type: farm_nfa_program
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  hcvs:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  health_safety:
+    type: farm_nfa_program
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  image:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
+    third_party_settings: {  }
+  log:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  major_social_environmental_risks:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  natural_resources:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  opportunities_challenges:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  period_fmp_revisions:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  staff_disposition:
+    type: farm_nfa_program
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  staff_training:
+    type: farm_nfa_program
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  stakeholder_engagement_plan:
+    type: farm_nfa_program
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  data: true
+  uid: true

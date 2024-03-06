@@ -1,0 +1,174 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.plan.safeguards
+    - field.field.plan.natural.accountability_grievance_redress
+    - field.field.plan.natural.environmental_social_management
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.gender_mainstreaming
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.health_safety
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - field.field.plan.natural.staff_disposition
+    - field.field.plan.natural.staff_training
+    - field.field.plan.natural.stakeholder_engagement_plan
+    - plan.type.natural
+  module:
+    - farm_nfa
+    - field_group
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_social_env_safeguards_tabs:
+      children:
+        - group_environmental_social_mgmt
+        - group_stakeholder_engagement
+        - group_health_safety
+        - group_gender_mainstreaming
+        - group_accountability_grievance
+      label: 'Social & environmental safeguards tabs'
+      parent_name: ''
+      region: content
+      weight: 20
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_environmental_social_mgmt:
+      children:
+        - environmental_social_management
+      label: 'Environmental & social management plan'
+      parent_name: group_social_env_safeguards_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_stakeholder_engagement:
+      children:
+        - stakeholder_engagement_plan
+      label: 'Stakeholder engagement plan'
+      parent_name: group_social_env_safeguards_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_health_safety:
+      children:
+        - health_safety
+      label: 'Health & safety'
+      parent_name: group_social_env_safeguards_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_gender_mainstreaming:
+      children:
+        - gender_mainstreaming
+      label: 'Gender mainstreaming'
+      parent_name: group_social_env_safeguards_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_accountability_grievance:
+      children:
+        - accountability_grievance_redress
+      label: 'Accountability & grievance redress'
+      parent_name: group_social_env_safeguards_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+id: plan.natural.safeguards
+targetEntityType: plan
+bundle: natural
+mode: safeguards
+content:
+  accountability_grievance_redress:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  environmental_social_management:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 97
+    region: content
+  gender_mainstreaming:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  health_safety:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 99
+    region: content
+  stakeholder_engagement_plan:
+    type: farm_nfa_program_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 98
+    region: content
+hidden:
+  asset: true
+  data: true
+  environmental_values_ecosystem: true
+  file: true
+  flag: true
+  hcvs: true
+  image: true
+  log: true
+  major_social_environmental_risks: true
+  natural_resources: true
+  notes: true
+  opportunities_challenges: true
+  period_fmp_revisions: true
+  staff_disposition: true
+  staff_training: true
+  status: true
+  uid: true

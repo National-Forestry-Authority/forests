@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - farm_nfa
+id: farm_nfa_ranges_cfr_layer
+label: 'Map behavior for plotting CFRs on ranges map'
+description: 'automatically plot the CFRs when the map is loaded.'
+library: farm_nfa/farm_nfa_ranges_cfr_layer
+settings: {  }

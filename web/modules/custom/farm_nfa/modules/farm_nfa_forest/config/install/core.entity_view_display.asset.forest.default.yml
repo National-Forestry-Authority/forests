@@ -156,13 +156,13 @@ content:
     weight: 16
     region: content
   owner:
-    label: inline
     type: entity_reference_label
-    weight: -70
+    label: inline
     settings:
       link: true
-    region: content
     third_party_settings: {  }
+    weight: -70
+    region: content
   parent:
     type: entity_reference_label
     label: inline

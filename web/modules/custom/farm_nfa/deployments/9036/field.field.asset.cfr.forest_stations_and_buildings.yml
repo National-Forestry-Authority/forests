@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.forest_stations_and_buildings
+  module:
+    - farm_nfa
+id: asset.cfr.forest_stations_and_buildings
+field_name: forest_stations_and_buildings
+entity_type: asset
+bundle: cfr
+label: 'Forest stations and buildings'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

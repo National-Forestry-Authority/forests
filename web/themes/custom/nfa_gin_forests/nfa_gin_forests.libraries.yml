@@ -4,9 +4,13 @@ nfa_gin_forests:
       dist/css/base/nfa_gin_forests.css: { minified: false }
 
 tabs:
-  version: 0.0.1
   css:
     theme:
-      dist/css/tabs.css: { }
+      dist/css/components/tabs.css: { }
   js:
     js/tabs.js: { }
+
+forms:
+  css:
+    theme:
+      dist/css/components/forms.css: { minified: false }

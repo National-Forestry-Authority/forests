@@ -16,6 +16,7 @@ module.exports = {
     'base/nfa_gin_forests': ['./styles/nfa_gin_forests.scss'],
     // Components
     'components/tabs': ['./styles/components/tabs.scss'],
+    'components/forms': ['./styles/components/forms.scss'],
   },
   output: {
     filename: 'js/[name].js',

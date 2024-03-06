@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.landscape_connectivity
+  module:
+    - farm_nfa
+id: asset.cfr.landscape_connectivity
+field_name: landscape_connectivity
+entity_type: asset
+bundle: cfr
+label: 'Landscape connectivity (including wildlife corridors)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

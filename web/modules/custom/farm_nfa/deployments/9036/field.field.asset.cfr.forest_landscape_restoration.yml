@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.forest_landscape_restoration
+  module:
+    - farm_nfa
+id: asset.cfr.forest_landscape_restoration
+field_name: forest_landscape_restoration
+entity_type: asset
+bundle: cfr
+label: 'Forest landscape restoration'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: farm_nfa_program

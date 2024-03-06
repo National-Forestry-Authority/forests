@@ -6,10 +6,31 @@
  */
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK() for entity type plan.
  */
 function nfa_gin_forests_preprocess_plan(&$variables) {
   // Don't show the plan type.
+  unset($variables['content']['type']);
+
+  // Don't show the plan name on field group view modes.
+  $view_modes = [
+    'implementation_arrangements',
+    'operational_basis',
+    'physical_features',
+    'safeguards',
+    'situational_assessment',
+  ];
+  if (in_array($variables['elements']['#view_mode'], $view_modes)) {
+    unset($variables['content']['name']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for entity type asset.
+ */
+function nfa_gin_forests_preprocess_asset(&$variables) {
+  // Don't show the asset name and type on view modes.
+  unset($variables['content']['name']);
   unset($variables['content']['type']);
 }
 
@@ -22,11 +43,19 @@ function nfa_gin_forests_preprocess_field__plan__image(&$variables) {
   $config = [];
   $plugin_block = $block_manager->createInstance('farm_nfa_plan_map_block', $config);
   $render = $plugin_block->build();
-  $variables['map_block'] = render($render);
+  $variables['map_block'] = \Drupal::service('renderer')->render($render);
 
   if ($variables['element']['#object']) {
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
     $plan = $variables['element']['#object'];
     $variables['cfrs'] = $plan->asset->view();
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for case 'form'.
+ */
+function nfa_gin_forests_preprocess_form(&$variables) {
+  // Attach form styles.
+  $variables['#attached']['library'][] = 'nfa_gin_forests/forms';
 }

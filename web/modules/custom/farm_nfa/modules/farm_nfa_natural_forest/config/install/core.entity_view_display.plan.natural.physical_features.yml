@@ -1,0 +1,188 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.plan.physical_features
+    - field.field.plan.natural.accountability_grievance_redress
+    - field.field.plan.natural.climate_weather_variation
+    - field.field.plan.natural.drainage
+    - field.field.plan.natural.environmental_social_management
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.gender_mainstreaming
+    - field.field.plan.natural.geology_soils
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.health_safety
+    - field.field.plan.natural.landscape_topology
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.management_goals_objectives
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - field.field.plan.natural.social_economic_cultural_resourc
+    - field.field.plan.natural.staff_disposition
+    - field.field.plan.natural.staff_training
+    - field.field.plan.natural.stakeholder_engagement_plan
+    - field.field.plan.natural.vegetation_biodiversity
+    - plan.type.natural
+  module:
+    - field_group
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_physical_features_tabs:
+      children:
+        - group_geology_soils
+        - group_landscape_topology
+        - group_drainage
+        - group_climate_weather_variation
+        - group_vegetation_biodiversity
+      label: 'Physical features tabs'
+      parent_name: ''
+      region: content
+      weight: 20
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_geology_soils:
+      children:
+        - geology_soils
+      label: 'Geology & soils'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_landscape_topology:
+      children:
+        - landscape_topology
+      label: 'Landscape topology'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_drainage:
+      children:
+        - drainage
+      label: Drainage
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_climate_weather_variation:
+      children:
+        - climate_weather_variation
+      label: 'Climate & weather variation'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_vegetation_biodiversity:
+      children:
+        - vegetation_biodiversity
+      label: 'Vegetation & biodiversity'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+id: plan.natural.physical_features
+targetEntityType: plan
+bundle: natural
+mode: physical_features
+content:
+  climate_weather_variation:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  drainage:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  geology_soils:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  landscape_topology:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  vegetation_biodiversity:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+hidden:
+  accountability_grievance_redress: true
+  asset: true
+  data: true
+  environmental_social_management: true
+  environmental_values_ecosystem: true
+  file: true
+  flag: true
+  gender_mainstreaming: true
+  hcvs: true
+  health_safety: true
+  image: true
+  log: true
+  major_social_environmental_risks: true
+  management_goals_objectives: true
+  natural_resources: true
+  notes: true
+  opportunities_challenges: true
+  period_fmp_revisions: true
+  social_economic_cultural_resourc: true
+  staff_disposition: true
+  staff_training: true
+  stakeholder_engagement_plan: true
+  status: true
+  uid: true

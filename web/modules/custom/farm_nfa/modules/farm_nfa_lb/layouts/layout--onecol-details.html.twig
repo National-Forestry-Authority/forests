@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a one-column layout.
+ *
+ * Available variables:
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'layout',
+    'layout--onecol',
+  ]
+%}
+{% if content %}
+  <div{{ attributes.addClass(classes) }}>
+    <div {{ region_attributes.content.addClass('layout__region', 'layout__region--content') }}>
+      {% if not in_preview %}
+      <details class="claro-details">
+        {%- if settings.label -%}
+          <summary class="claro-details__summary">{{ settings.label }}</summary>
+        {%- endif -%}
+        <div class="claro-details__wrapper details-wrapper">
+          {{ content.content }}
+        </div>
+      </details>
+      {% else %}
+        {{ content.content }}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

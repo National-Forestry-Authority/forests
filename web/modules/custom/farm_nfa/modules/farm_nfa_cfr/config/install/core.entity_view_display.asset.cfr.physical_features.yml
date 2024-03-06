@@ -1,0 +1,318 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - core.entity_view_mode.asset.physical_features
+    - field.field.asset.cfr.action_plans_rare_species
+    - field.field.asset.cfr.applied_research_by_fma_staff
+    - field.field.asset.cfr.area
+    - field.field.asset.cfr.authorisation_of_research
+    - field.field.asset.cfr.biodiversity_inventories
+    - field.field.asset.cfr.blocks_units_compartments
+    - field.field.asset.cfr.boundary_demarcation
+    - field.field.asset.cfr.boundary_plan
+    - field.field.asset.cfr.boundary_surveys_maintenance
+    - field.field.asset.cfr.chemical_application_in_forestry
+    - field.field.asset.cfr.climate_change_mitigation
+    - field.field.asset.cfr.climate_weather_variation
+    - field.field.asset.cfr.collaboration_with_naforri
+    - field.field.asset.cfr.community_benefits
+    - field.field.asset.cfr.community_forest_mgmt_roles
+    - field.field.asset.cfr.community_infrastructure
+    - field.field.asset.cfr.community_organisation
+    - field.field.asset.cfr.community_participation
+    - field.field.asset.cfr.demo_forest_ecosystem_services
+    - field.field.asset.cfr.description_of_plans_and_sheets
+    - field.field.asset.cfr.drainage
+    - field.field.asset.cfr.environmental_values
+    - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.feedback_research_findings
+    - field.field.asset.cfr.fire_protection
+    - field.field.asset.cfr.forest_infrastructure
+    - field.field.asset.cfr.forest_landscape_restoration
+    - field.field.asset.cfr.forest_products_growth_yield
+    - field.field.asset.cfr.forest_products_inventories
+    - field.field.asset.cfr.forest_roads
+    - field.field.asset.cfr.forest_stations_and_buildings
+    - field.field.asset.cfr.funding_arrangements
+    - field.field.asset.cfr.general_description
+    - field.field.asset.cfr.geology_soils
+    - field.field.asset.cfr.harvesting_activities
+    - field.field.asset.cfr.high_conservation_values
+    - field.field.asset.cfr.historical_context
+    - field.field.asset.cfr.human_wildlife_conflict
+    - field.field.asset.cfr.impacts_forest_mgmt_operations
+    - field.field.asset.cfr.indigenous_peoples_community
+    - field.field.asset.cfr.issues_concerns
+    - field.field.asset.cfr.key_resources
+    - field.field.asset.cfr.land_use_and_forest_condition
+    - field.field.asset.cfr.landscape_connectivity
+    - field.field.asset.cfr.landscape_topology
+    - field.field.asset.cfr.legal_category
+    - field.field.asset.cfr.legal_customary_rights
+    - field.field.asset.cfr.livelihoods_in_the_fma_zone
+    - field.field.asset.cfr.management_goals_objectives
+    - field.field.asset.cfr.map_ref_sheets
+    - field.field.asset.cfr.map_sheet_uploads
+    - field.field.asset.cfr.monitoring_evaluations
+    - field.field.asset.cfr.monitoring_forest_governance
+    - field.field.asset.cfr.opportunities
+    - field.field.asset.cfr.original_management_objectives
+    - field.field.asset.cfr.participatory_development
+    - field.field.asset.cfr.partnerships
+    - field.field.asset.cfr.previous_management_track_record
+    - field.field.asset.cfr.priority_actions
+    - field.field.asset.cfr.progress_mgmt_environment
+    - field.field.asset.cfr.progress_mgmt_hcvs
+    - field.field.asset.cfr.proposed_strategies
+    - field.field.asset.cfr.protection_against_illegal_acts
+    - field.field.asset.cfr.representative_sample_areas
+    - field.field.asset.cfr.research_by_professionals
+    - field.field.asset.cfr.serial
+    - field.field.asset.cfr.silvicultural_field_operations
+    - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.social_economic_cultural
+    - field.field.asset.cfr.threats_assessment
+    - field.field.asset.cfr.total_boundary_length
+    - field.field.asset.cfr.total_cutline_length
+    - field.field.asset.cfr.total_economic_valuation_fma
+    - field.field.asset.cfr.total_natural_boundary_length
+    - field.field.asset.cfr.tourism_development
+    - field.field.asset.cfr.vegetation
+    - field.field.asset.cfr.vegetation_biodiversity
+    - field.field.asset.cfr.water_bodies_riparian_zones
+    - field.field.asset.cfr.year_of_survey
+    - field.field.asset.cfr.zonation_date
+    - field.field.asset.cfr.zonation_description
+    - field.field.asset.cfr.zonation_map_file_upload
+  module:
+    - field_group
+    - layout_builder
+    - text
+third_party_settings:
+  field_group:
+    group_physical_features_tabs:
+      children:
+        - group_geology_soils
+        - group_landscape_topology
+        - group_drainage
+        - group_climate_weather_variation
+        - group_vegetation_biodiversity
+      label: 'Physical features tabs'
+      parent_name: ''
+      region: content
+      weight: 20
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_geology_soils:
+      children:
+        - geology_soils
+      label: 'Geology & soils'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_landscape_topology:
+      children:
+        - landscape_topology
+      label: 'Landscape topology'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_drainage:
+      children:
+        - drainage
+      label: Drainage
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_climate_weather_variation:
+      children:
+        - climate_weather_variation
+      label: 'Climate & weather variation'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_vegetation_biodiversity:
+      children:
+        - vegetation_biodiversity
+      label: 'Vegetation & biodiversity'
+      parent_name: group_physical_features_tabs
+      region: content
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: asset.cfr.physical_features
+targetEntityType: asset
+bundle: cfr
+mode: physical_features
+content:
+  climate_weather_variation:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 37
+    region: content
+  drainage:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 36
+    region: content
+  geology_soils:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  landscape_topology:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 35
+    region: content
+  vegetation_biodiversity:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 38
+    region: content
+hidden:
+  action_plans_rare_species: true
+  applied_research_by_fma_staff: true
+  area: true
+  authorisation_of_research: true
+  biodiversity_inventories: true
+  blocks_units_compartments: true
+  boundary_demarcation: true
+  boundary_plan: true
+  boundary_surveys_maintenance: true
+  chemical_application_in_forestry: true
+  climate_change_mitigation: true
+  collaboration_with_naforri: true
+  community_benefits: true
+  community_forest_mgmt_roles: true
+  community_infrastructure: true
+  community_organisation: true
+  community_participation: true
+  data: true
+  demo_forest_ecosystem_services: true
+  description_of_plans_and_sheets: true
+  environmental_values: true
+  est_year_gazetted: true
+  feedback_research_findings: true
+  file: true
+  fire_protection: true
+  flag: true
+  forest_infrastructure: true
+  forest_landscape_restoration: true
+  forest_products_growth_yield: true
+  forest_products_inventories: true
+  forest_roads: true
+  forest_stations_and_buildings: true
+  funding_arrangements: true
+  general_description: true
+  geometry: true
+  harvesting_activities: true
+  high_conservation_values: true
+  historical_context: true
+  human_wildlife_conflict: true
+  id_tag: true
+  image: true
+  impacts_forest_mgmt_operations: true
+  indigenous_peoples_community: true
+  intrinsic_geometry: true
+  is_fixed: true
+  is_location: true
+  issues_concerns: true
+  key_resources: true
+  land_use_and_forest_condition: true
+  landscape_connectivity: true
+  legal_category: true
+  legal_customary_rights: true
+  livelihoods_in_the_fma_zone: true
+  location: true
+  management_goals_objectives: true
+  map_ref_sheets: true
+  map_sheet_uploads: true
+  monitoring_evaluations: true
+  monitoring_forest_governance: true
+  notes: true
+  opportunities: true
+  original_management_objectives: true
+  owner: true
+  parent: true
+  participatory_development: true
+  partnerships: true
+  previous_management_track_record: true
+  priority_actions: true
+  progress_mgmt_environment: true
+  progress_mgmt_hcvs: true
+  proposed_strategies: true
+  protection_against_illegal_acts: true
+  representative_sample_areas: true
+  research_by_professionals: true
+  serial: true
+  silvicultural_field_operations: true
+  size_location_desc: true
+  social_economic_cultural: true
+  status: true
+  threats_assessment: true
+  total_boundary_length: true
+  total_cutline_length: true
+  total_economic_valuation_fma: true
+  total_natural_boundary_length: true
+  tourism_development: true
+  uid: true
+  vegetation: true
+  water_bodies_riparian_zones: true
+  year_of_survey: true
+  zonation_date: true
+  zonation_description: true
+  zonation_map_file_upload: true

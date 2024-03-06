@@ -1,0 +1,575 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.field.asset.cfr.area
+    - field.field.asset.cfr.boundary_demarcation
+    - field.field.asset.cfr.boundary_plan
+    - field.field.asset.cfr.description_of_plans_and_sheets
+    - field.field.asset.cfr.est_year_gazetted
+    - field.field.asset.cfr.general_description
+    - field.field.asset.cfr.historical_context
+    - field.field.asset.cfr.issues_concerns
+    - field.field.asset.cfr.key_resources
+    - field.field.asset.cfr.land_use_and_forest_condition
+    - field.field.asset.cfr.legal_category
+    - field.field.asset.cfr.map_ref_sheets
+    - field.field.asset.cfr.map_sheet_uploads
+    - field.field.asset.cfr.opportunities
+    - field.field.asset.cfr.original_management_objectives
+    - field.field.asset.cfr.priority_actions
+    - field.field.asset.cfr.proposed_strategies
+    - field.field.asset.cfr.serial
+    - field.field.asset.cfr.size_location_desc
+    - field.field.asset.cfr.threats_assessment
+    - field.field.asset.cfr.total_boundary_length
+    - field.field.asset.cfr.total_cutline_length
+    - field.field.asset.cfr.total_natural_boundary_length
+    - field.field.asset.cfr.vegetation
+    - field.field.asset.cfr.year_of_survey
+    - field.field.asset.cfr.zonation_date
+    - field.field.asset.cfr.zonation_description
+    - field.field.asset.cfr.zonation_map_file_upload
+    - image.style.medium
+  module:
+    - farm_map
+    - field_group
+    - file
+    - image
+    - inline_entity_form
+    - month_year
+    - text
+third_party_settings:
+  field_group:
+    group_legal_details:
+      children:
+        - area
+        - total_boundary_length
+        - total_cutline_length
+        - total_natural_boundary_length
+        - est_year_gazetted
+        - year_of_survey
+        - boundary_plan
+        - serial
+      label: 'Legal details'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+        open: true
+    group_description:
+      children:
+        - size_location_desc
+        - legal_category
+        - original_management_objectives
+        - general_description
+        - historical_context
+        - land_use_and_forest_condition
+        - notes
+      label: Description
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 10
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+        open: true
+    group_management_issues:
+      children:
+        - key_resources
+        - issues_concerns
+        - opportunities
+        - proposed_strategies
+        - priority_actions
+        - threats_assessment
+      label: 'Management issues'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+        open: true
+    group_zonation:
+      children:
+        - zonation_map_file_upload
+        - zonation_description
+        - zonation_date
+      label: Zonation
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+    group_vertical_tabs:
+      children:
+        - group_legal_details
+        - group_plans_and_sheets
+        - group_management_issues
+        - group_vegetation
+        - group_zonation
+        - group_description
+        - group_geometry
+        - group_images_and_files
+        - group_parent_assets
+        - group_status
+      label: 'Vertical tabs'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_plans_and_sheets:
+      children:
+        - map_sheet_uploads
+        - map_ref_sheets
+        - description_of_plans_and_sheets
+        - boundary_demarcation
+      label: 'Plans and sheets'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_vegetation:
+      children:
+        - vegetation
+      label: Vegetation
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 8
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_images_and_files:
+      children:
+        - image
+        - file
+      label: 'Images and files'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_geometry:
+      children:
+        - intrinsic_geometry
+      label: Geometry
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_parent_assets:
+      children:
+        - parent
+      label: 'Parent assets'
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_status:
+      children:
+        - status
+        - flag
+        - owner
+      label: Status
+      region: content
+      parent_name: group_vertical_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: asset.cfr.default
+targetEntityType: asset
+bundle: cfr
+mode: default
+content:
+  area:
+    type: number
+    weight: 19
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  boundary_demarcation:
+    type: inline_entity_form_complex
+    weight: 24
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'Boundary demarcation'
+      label_plural: 'Boundary demarcations'
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  boundary_plan:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  description_of_plans_and_sheets:
+    type: text_textarea
+    weight: 23
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  est_year_gazetted:
+    type: number
+    weight: 23
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  file:
+    type: file_generic
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  flag:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  general_description:
+    type: text_textarea
+    weight: 19
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  historical_context:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  image:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
+    third_party_settings: {  }
+  intrinsic_geometry:
+    type: farm_map_geofield
+    weight: 3
+    region: content
+    settings:
+      display_raw_geometry: true
+      populate_file_field: file
+    third_party_settings: {  }
+  issues_concerns:
+    type: text_textarea
+    weight: 40
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  key_resources:
+    type: text_textarea
+    weight: 39
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  land_use_and_forest_condition:
+    type: text_textarea
+    weight: 21
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  legal_category:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  map_ref_sheets:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  map_sheet_uploads:
+    type: inline_entity_form_complex
+    weight: 20
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'Map sheet upload'
+      label_plural: 'Map sheet uploads'
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  notes:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  opportunities:
+    type: text_textarea
+    weight: 41
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  original_management_objectives:
+    type: text_textarea
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  owner:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  parent:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  priority_actions:
+    type: text_textarea
+    weight: 43
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  proposed_strategies:
+    type: text_textarea
+    weight: 42
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  serial:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  size_location_desc:
+    type: text_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  threats_assessment:
+    type: text_textarea
+    weight: 44
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  total_boundary_length:
+    type: number
+    weight: 20
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  total_cutline_length:
+    type: number
+    weight: 21
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  total_natural_boundary_length:
+    type: number
+    weight: 22
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  vegetation:
+    type: inline_entity_form_complex
+    weight: 22
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Vegetation
+      label_plural: Vegetations
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  year_of_survey:
+    type: number
+    weight: 24
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  zonation_date:
+    type: month_year_widget
+    weight: 12
+    region: content
+    settings:
+      min_year: 1900
+      adjustment: 5
+      disabled_months: {  }
+    third_party_settings: {  }
+  zonation_description:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  zonation_map_file_upload:
+    type: file_generic
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+hidden:
+  created: true
+  data: true
+  geometry: true
+  id_tag: true
+  is_fixed: true
+  is_location: true
+  location: true
+  uid: true

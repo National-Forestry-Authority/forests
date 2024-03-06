@@ -1,0 +1,162 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.log.activity.activity_type
+    - field.field.log.activity.cfr
+    - field.field.log.activity.working_circle
+    - image.style.large
+    - log.type.activity
+  module:
+    - entity_reference_revisions
+    - farm_field
+    - farm_map
+    - file
+    - image
+    - options
+    - text
+id: log.activity.default
+targetEntityType: log
+bundle: activity
+mode: default
+content:
+  activity_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 96
+    region: content
+  asset:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -10
+    region: content
+  category:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 80
+    region: content
+  cfr:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 98
+    region: content
+  file:
+    type: file_table
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 90
+    region: content
+  flag:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: -75
+    region: content
+  geometry:
+    type: farm_map_geofield
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 95
+    region: content
+  image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 89
+    region: content
+  is_movement:
+    type: hideable_boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+      hide_if_false: true
+      hide_if_true: false
+    third_party_settings: {  }
+    weight: 95
+    region: content
+  location:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 90
+    region: content
+  notes:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  owner:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -70
+    region: content
+  quantity:
+    type: entity_reference_revisions_entity_view
+    label: inline
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  status:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: -80
+    region: content
+  timestamp:
+    type: timestamp
+    label: inline
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: ''
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: -90
+    region: content
+hidden:
+  created: true
+  data: true
+  uid: true
+  working_circle: true

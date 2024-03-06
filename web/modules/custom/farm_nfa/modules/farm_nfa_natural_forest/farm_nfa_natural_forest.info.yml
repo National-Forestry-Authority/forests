@@ -2,7 +2,7 @@ name: NFA Natural Forest
 description: Natural forest NFA submodule.
 type: module
 package: farmOS NFA
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - farm_forest:farm_forest
   - farm_nfa:farm_nfa
@@ -17,3 +17,54 @@ config_devel:
   - core.entity_form_display.log.natural_inventory.plan
   - core.entity_form_display.plan.natural.default
   - core.entity_view_display.plan.natural.default
+  - core.entity_view_display.plan.natural.implementation_arrangements
+  - core.entity_view_display.plan.natural.operational_basis
+  - core.entity_view_display.plan.natural.physical_features
+  - core.entity_view_display.plan.natural.safeguards
+  - core.entity_view_display.plan.natural.situational_assessment
+  - core.entity_view_mode.plan.implementation_arrangements
+  - core.entity_view_mode.plan.natural.field_groups
+  - core.entity_view_mode.plan.operational_basis
+  - core.entity_view_mode.plan.physical_features
+  - core.entity_view_mode.plan.safeguards
+  - core.entity_view_mode.plan.situational_assessment
+  - field.field.plan.natural.accountability_grievance_redress
+  - field.field.plan.natural.climate_weather_variation
+  - field.field.plan.natural.drainage
+  - field.field.plan.natural.environmental_social_management
+  - field.field.plan.natural.environmental_values_ecosystem
+  - field.field.plan.natural.gender_mainstreaming
+  - field.field.plan.natural.geology_soils
+  - field.field.plan.natural.hcvs
+  - field.field.plan.natural.health_safety
+  - field.field.plan.natural.landscape_topology
+  - field.field.plan.natural.management_goals_objectives
+  - field.field.plan.natural.major_social_environmental_risks
+  - field.field.plan.natural.natural_resources
+  - field.field.plan.natural.opportunities_challenges
+  - field.field.plan.natural.period_fmp_revisions
+  - field.field.plan.natural.social_economic_cultural_resourc
+  - field.field.plan.natural.staff_disposition
+  - field.field.plan.natural.staff_training
+  - field.field.plan.natural.stakeholder_engagement_plan
+  - field.field.plan.natural.vegetation_biodiversity
+  - field.storage.plan.accountability_grievance_redress
+  - field.storage.plan.climate_weather_variation
+  - field.storage.plan.drainage
+  - field.storage.plan.environmental_social_management
+  - field.storage.plan.environmental_values_ecosystem
+  - field.storage.plan.gender_mainstreaming
+  - field.storage.plan.geology_soils
+  - field.storage.plan.hcvs
+  - field.storage.plan.health_safety
+  - field.storage.plan.landscape_topology
+  - field.storage.plan.management_goals_objectives
+  - field.storage.plan.major_social_environmental_risks
+  - field.storage.plan.natural_resources
+  - field.storage.plan.opportunities_challenges
+  - field.storage.plan.period_fmp_revisions
+  - field.storage.plan.social_economic_cultural_resourc
+  - field.storage.plan.staff_disposition
+  - field.storage.plan.staff_training
+  - field.storage.plan.stakeholder_engagement_plan
+  - field.storage.plan.vegetation_biodiversity

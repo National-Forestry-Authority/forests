@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_nfa
+id: asset.fire_protection
+field_name: fire_protection
+entity_type: asset
+type: farm_nfa_program
+settings: {  }
+module: farm_nfa
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
