@@ -13,10 +13,13 @@ database:
   version: "12"
 nfs_mount_enabled: false
 hooks:
+  post-start:
+    - exec: mkdir -p /var/www/html/${DDEV_DOCROOT}/sites/default/files/private
+    - exec: mkdir -p /var/www/html/${DDEV_DOCROOT}/sites/default/files/tmp
   pre-start:
-  - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/settings.local.php ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/settings.local.php
-  - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/settings.ddev.php ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/settings.ddev.php
-  - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/development.services.yml ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/development.services.yml
+    - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/settings.local.php ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/settings.local.php
+    - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/settings.ddev.php ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/settings.ddev.php
+    - exec-host: cp -f ${DDEV_APPROOT}/.ddev/drupal-files/development.services.yml ${DDEV_APPROOT}/${DDEV_DOCROOT}/sites/default/development.services.yml
 mutagen_enabled: false
 use_dns_when_possible: true
 composer_version: ""

@@ -1,4 +1,43 @@
 parameters:
-    ignoreErrors:
-        - '#^Unsafe usage of new static#'
-
+   level: 5
+   excludePaths:
+      - *Test.php
+      - *TestBase.php
+   customRulesetUsed: true
+   reportUnmatchedIgnoredErrors: false
+   checkGenericClassInNonGenericObjectType: false
+   # Ignore phpstan-drupal extension's rules.
+   ignoreErrors:
+      - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
+      - '#Plugin definitions cannot be altered.#'
+      - '#Missing cache backend declaration for performance.#'
+      - '#Plugin manager has cache backend specified but does not declare cache tags.#'
+      - '#^Unsafe usage of new static#'
+      - '#^return type has no value type specified.#'
+      - '#^has no return type specified.#'
+      - '#^has parameter .* with no value type specified.#'
+      - '#^has parameter .* with no type specified.#'
+   drupal:
+      drupal_root: %currentWorkingDirectory%/web
+      entityMapping:
+        node:
+          class: Drupal\node\Entity\Node
+          storage: Drupal\node\NodeStorage
+        taxonomy_term:
+          class: Drupal\taxonomy\Entity\Term
+          storage: Drupal\taxonomy\TermStorage
+        user:
+          class: Drupal\user\Entity\User
+          storage: Drupal\user\UserStorage
+        block:
+          class: Drupal\block\Entity\Block
+        search_api_index:
+          class: Drupal\search_api\Entity\Index.php
+          storage: Drupal\search_api\Entity\SearchApiConfigEntityStorage
+        search_api_server:
+          class: Drupal\search_api\Entity\Server.php
+          storage: Drupal\search_api\Entity\SearchApiConfigEntityStorage
+        paragraph:
+          class: Drupal\paragraphs\Entity\Paragraph
+        paragraphs_type:
+          class: Drupal\paragraphs\Entity\ParagraphsType
