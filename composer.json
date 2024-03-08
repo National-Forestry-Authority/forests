@@ -85,7 +85,8 @@
             "wikimedia/composer-merge-plugin": true,
             "oomphinc/composer-installers-extender": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
@@ -132,13 +133,15 @@
         }
     },
     "require-dev": {
+        "balbuf/composer-git-merge-driver": "^1.1",
+        "drupal/core-dev": "^10",
         "mglaman/drupal-check": "^1",
-        "mglaman/phpstan-drupal": "^1",
-        "palantirnet/drupal-rector": "^0.15.0",
-        "phpcompatibility/php-compatibility": "^9",
-        "phpcompatibility/phpcompatibility-all": "^1",
+        "mglaman/phpstan-drupal": "^1.0",
+        "palantirnet/drupal-rector": "^0.15",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpcompatibility/phpcompatibility-all": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/extension-installer": "^1",
-        "phpstan/phpstan-deprecation-rules": "^1"
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0"
     }
 }
