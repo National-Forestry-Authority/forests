@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains natural plan type hooks and alters.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\farm_nfa\FieldStorageDefinition;
+use Drupal\farm_nfa_natural_forest\Sector;
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function farm_nfa_natural_forest_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() == 'plan' && $bundle == 'natural') {
+    $fields['sector'] = FieldStorageDefinition::create('entity_reference')
+      ->setName('sector')
+      ->setLabel(t('Computed: Sector'))
+      ->setComputed(TRUE)
+      ->setTargetEntityTypeId('asset')
+      ->setTargetBundle('sector')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setReadOnly(TRUE)
+      ->setClass(Sector::class)
+      ->setCardinality(1)
+      ->setDisplayConfigurable('view', TRUE);
+  }
+}

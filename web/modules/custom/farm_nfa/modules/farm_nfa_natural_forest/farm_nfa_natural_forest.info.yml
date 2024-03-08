@@ -23,7 +23,6 @@ config_devel:
   - core.entity_view_display.plan.natural.safeguards
   - core.entity_view_display.plan.natural.situational_assessment
   - core.entity_view_mode.plan.implementation_arrangements
-  - core.entity_view_mode.plan.natural.field_groups
   - core.entity_view_mode.plan.operational_basis
   - core.entity_view_mode.plan.physical_features
   - core.entity_view_mode.plan.safeguards
@@ -68,3 +67,5 @@ config_devel:
   - field.storage.plan.staff_training
   - field.storage.plan.stakeholder_engagement_plan
   - field.storage.plan.vegetation_biodiversity
+  - views.view.entity_reference_cfr_by_sector
+  - views.view.entity_reference_sectors
