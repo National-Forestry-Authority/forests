@@ -133,6 +133,11 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $form_display = EntityFormDisplay::collectRenderDisplay($log, 'plan');
     $form_display->buildForm($log, $form, $form_state);
 
+    if (!$log->isNew()) {
+      // Disable the CFR widget if we're editing an existing log.
+      $form['cfr']['widget']['#disabled'] = TRUE;
+    }
+
     $form['#title'] = $this->settings['form_title'];
     $form['revision_log_message']['#access'] = FALSE;
 
@@ -142,8 +147,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           $form['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
           $form['location']['widget'][$delta]['target_id']['#selection_settings'] = [
             'target_bundles' => [
-              'compartment' => 'compartment'
-            ]
+              'compartment' => 'compartment',
+            ],
           ];
         }
       }
@@ -208,7 +213,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
     catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
-      watchdog_exception('forest_nfa', $e);
+      $this->logger('forest_nfa', $e);
     }
     finally {
       $this->messenger()->deleteAll();

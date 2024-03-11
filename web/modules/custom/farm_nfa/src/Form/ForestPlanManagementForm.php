@@ -2,6 +2,8 @@
 
 namespace Drupal\farm_nfa\Form;
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Forest plan management form.
  *
@@ -21,9 +23,9 @@ class ForestPlanManagementForm extends ForestPlanBaseForm {
    */
   public static function defaultSettings() : array {
     return [
-        'log_type' => 'activity',
-        'form_title' => t('Management'),
-      ] + parent::defaultSettings();
+      'log_type' => 'activity',
+      'form_title' => t('Management'),
+    ] + parent::defaultSettings();
   }
 
 }
