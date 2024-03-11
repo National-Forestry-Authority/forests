@@ -80,6 +80,8 @@ config_devel:
   - field.field.asset.land.person_in_charge
   - field.field.log.activity.activity_type
   - field.field.log.activity.cfr
+  - field.field.log.activity.plan_level
+  - field.field.log.activity.sub_activity
   - field.field.log.activity.task_description
   - field.field.log.activity.task_implementation
   - field.field.log.activity.task_inspection_audit
@@ -105,6 +107,8 @@ config_devel:
   - field.storage.log.cfr
   - field.storage.log.coup_number
   - field.storage.log.harvest_type
+  - field.storage.log.plan_level
+  - field.storage.log.sub_activity
   - field.storage.log.supervisor
   - field.storage.log.task_description
   - field.storage.log.task_implementation

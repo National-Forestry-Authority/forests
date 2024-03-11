@@ -5,11 +5,9 @@
  * Provides alters and hooks for the farm nfa module.
  */
 
+use Drupal\asset\Entity\AssetInterface;
 use Drupal\Component\Serialization\Json;
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\CloseDialogCommand;
-use Drupal\Core\Ajax\MessageCommand;
-use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -119,6 +117,13 @@ function farm_nfa_menu_local_actions_alter(&$local_actions) {
   unset($local_actions['entity.log.add_page']);
   unset($local_actions['entity.plan.add_page']);
   unset($local_actions['farm.actions:farm.add.log.bundle']);
+  unset($local_actions['farm.actions:farm.asset.add.log.harvest']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.natural_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.plantation_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.observation']);
+  unset($local_actions['farm.actions:farm.asset.add.log.activity']);
 }
 
 /**
@@ -160,31 +165,23 @@ function farm_nfa_farm_dashboard_panes() {
 /**
  * Get route name for a log type.
  *
- * @param \Drupal\plan\Entity\PlanInterface $plan
- *   The plan entity.
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The plan or asset entity.
  * @param \Drupal\log\Entity\LogInterface $log
  *   The log entity.
  *
  * @return string
  *   The plan route name.
  */
-function farm_nfa_entity_route_name_by_log_type(PlanInterface $plan, LogInterface $log) {
-  $log_types_plan_routes = [
-    'plantation' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'plantation_inventory' => 'inventory',
-    ],
-    'natural' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'natural_inventory' => 'inventory',
-    ],
-  ];
-
-  $route_name = 'entity.plan.' . $log_types_plan_routes[$plan->bundle()][$log->bundle()];
+function farm_nfa_entity_route_name_by_log_type(ContentEntityInterface $entity, LogInterface $log) {
+  // This is a centralised way to know what tab goes where, otherwise we're
+  // spreading this logic all over the place.
+  $storageType = $entity instanceof PlanInterface ? 'plan_type' : ($entity instanceof AssetInterface ? 'asset_type' : NULL);
+  if (!$storageType) {
+    return NULL;
+  }
+  $bundle = \Drupal::service('entity_type.manager')->getStorage($storageType)->load($entity->bundle());
+  $route_name = $bundle->getThirdPartySetting('farm_nfa', $log->bundle() . '_log_route');
   return $route_name;
 }
 
@@ -198,19 +195,21 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   if (!$entity->access('update')) {
     return;
   }
-  /** @var \Drupal\plan\Entity\PlanInterface $plan */
+
+  // The operations link routes depend on whether we are on the CFR or the plan.
+  $asset = \Drupal::routeMatch()->getParameter('asset');
   $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
-  if (!$plan) {
-    return;
-  }
-  $route_name = farm_nfa_entity_route_name_by_log_type($plan, $entity);
+  $entity_type = !empty($asset) && $asset->bundle() == 'cfr' ? $asset : $plan;
+  $route_name = farm_nfa_entity_route_name_by_log_type($entity_type, $entity);
   $route = \Drupal::service('router.route_provider')->getRouteByName($route_name);
+
+  $route_param = [$entity_type instanceof PlanInterface ? 'plan' : 'asset' => $entity_type->id()];
 
   // Replace the edit operation.
   $operations['edit'] = [
     'title' => t('Edit'),
     'url' => Url::fromRoute($route->getOption('parameters')['task_route'],
-      ['plan' => $plan->id()],
+      $route_param,
       [
         'attributes' => [
           'class' => ['use-ajax'],
@@ -229,7 +228,7 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   // We don't want to return to the add-task path so we replace the redirect
   // destination with the entity route path.
   if ($operations['delete']) {
-    $destination_url = Url::fromRoute($route_name, ['plan' => $plan->id()]);
+    $destination_url = Url::fromRoute($route_name, [$entity_type->getEntityTypeId() => $entity_type->id()]);
     $operations['delete']['url']->setOption('query', ['destination' => $destination_url->toString()]);
   }
 }

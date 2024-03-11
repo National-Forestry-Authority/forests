@@ -1,0 +1,34 @@
+entity.cfr.management:
+  path: '/asset/{asset}/management'
+  defaults:
+    _title: 'Management'
+    _controller: '\Drupal\farm_nfa_cfr\Controller\CfrTabsController::build'
+    log_types:
+      - activity
+  requirements:
+    _entity_access: 'asset.update'
+    _module_dependencies: 'asset'
+    asset: \d+
+  options:
+    parameters:
+      asset:
+        type: entity:asset
+        bundle:
+          - cfr
+      task_route: farm_nfa.cfr.add_task
+farm_nfa.cfr.add_task:
+  path: '/asset/{asset}/add-task'
+  defaults:
+    _title: 'Add Task'
+    _form: 'Drupal\farm_nfa_cfr\Form\ForestCfrManagementForm'
+  requirements:
+    _entity_access: 'asset.update'
+    _module_dependencies: 'asset'
+    asset: \d+
+  options:
+    parameters:
+      asset:
+        type: entity:asset
+      bundle:
+        - cfr
+      task_route: farm_nfa.cfr.add_task
