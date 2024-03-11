@@ -3,3 +3,6 @@ services:
     class: Drupal\farm_nfa_cfr\Routing\RouteSubscriber
     tags:
       - { name: 'event_subscriber' }
+  farm_nfa_cfr.utilities:
+    class: Drupal\farm_nfa_cfr\CfrUtilities
+    arguments: ['@current_route_match', '@entity_type.manager']
