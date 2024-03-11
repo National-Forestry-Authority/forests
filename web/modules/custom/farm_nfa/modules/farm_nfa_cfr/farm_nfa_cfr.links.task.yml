@@ -1,0 +1,5 @@
+farm_nfa.cfr.management:
+  title: 'Management'
+  route_name: entity.cfr.management
+  base_route: entity.asset.canonical
+  weight: 6

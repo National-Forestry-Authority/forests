@@ -119,6 +119,13 @@ function farm_nfa_menu_local_actions_alter(&$local_actions) {
   unset($local_actions['entity.log.add_page']);
   unset($local_actions['entity.plan.add_page']);
   unset($local_actions['farm.actions:farm.add.log.bundle']);
+  unset($local_actions['farm.actions:farm.asset.add.log.harvest']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.natural_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.plantation_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.observation']);
+  unset($local_actions['farm.actions:farm.asset.add.log.activity']);
 }
 
 /**
@@ -169,23 +176,12 @@ function farm_nfa_farm_dashboard_panes() {
  *   The plan route name.
  */
 function farm_nfa_entity_route_name_by_log_type(PlanInterface $plan, LogInterface $log) {
-  $log_types_plan_routes = [
-    'plantation' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'plantation_inventory' => 'inventory',
-    ],
-    'natural' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'natural_inventory' => 'inventory',
-    ],
-  ];
+  // This is a centralised way to know what tab goes where, otherwise we're
+  // spreading this logic all over the place.
+  $bundle = \Drupal::service('entity_type.manager')->getStorage('plan_type')->load($plan->bundle());
+  $route_name = $bundle->getThirdPartySetting('farm_nfa', $log->bundle() . '_log_route');
 
-  $route_name = 'entity.plan.' . $log_types_plan_routes[$plan->bundle()][$log->bundle()];
-  return $route_name;
+  return \Drupal::service('router.route_provider')->getRouteByName($route_name);
 }
 
 /**
@@ -198,8 +194,18 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   if (!$entity->access('update')) {
     return;
   }
+
   /** @var \Drupal\plan\Entity\PlanInterface $plan */
-  $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
+  // If we are on the CFR page load the plan from the CFR.
+  $asset = \Drupal::routeMatch()->getParameter('asset');
+  if (!empty($asset) && $asset->bundle() == 'cfr') {
+    $plan = \Drupal::service('farm_nfa_cfr.utilities')->getPlan();
+  }
+  else {
+    $plan = \Drupal::routeMatch()
+      ->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')
+      ->load();
+  }
   if (!$plan) {
     return;
   }
