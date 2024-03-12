@@ -8,6 +8,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsButtonsWidget;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
 
@@ -23,7 +24,7 @@ use Drupal\views\Views;
  *  multiple_values = TRUE,
  * )
  */
-class PlanSectorCFR extends OptionsButtonsWidget {
+class PlanSectorCFR extends OptionsButtonsWidget implements TrustedCallbackInterface {
 
   /**
    * {@inheritdoc}
@@ -44,8 +45,8 @@ class PlanSectorCFR extends OptionsButtonsWidget {
       $args = [$parent_id];
     }
 
-    // @TODO the views should be selectable in the widget settings.
-    $widget = [
+    // @todo the views should be selectable in the widget settings.
+    $widget['sector'] = [
       'parent' => [
         '#title' => $this->t('Sector'),
         '#type' => 'entity_autocomplete',
@@ -70,10 +71,21 @@ class PlanSectorCFR extends OptionsButtonsWidget {
       ],
     ];
     $widget['asset'] = parent::formElement($items, $delta, $element, $form, $form_state);
+
+    // When adding ajax with pre_render, the #title and #description are not
+    // rendered on ajax refresh even if they're present on the render array.
+    // This is a workaround that moves the #title and #description to #prefix.
     $widget['asset']['#prefix'] = '<div id="fmap-asset-wrapper">';
+    $widget['asset']['#prefix'] .= '<legend class="fieldset__legend fieldset__legend--composite fieldset__legend--visible">
+      <span class="fieldset__label fieldset__label--group js-form-required form-required">' . $widget['asset']['#title'] . '</span>
+    </legend>';
+    $widget['asset']['#prefix'] .= '<p class="fieldset__description">' . $widget['asset']['#description'] . '</p>';
+    unset($widget['asset']['#title']);
+    unset($widget['asset']['#description']);
     $widget['asset']['#suffix'] = '</div>';
 
     $options = [];
+    // @todo the views should be selectable in the widget settings.
     $view = Views::getView('entity_reference_cfr_by_sector');
     if ($view instanceof ViewExecutable) {
       $view->setDisplay('entity_reference');
@@ -85,7 +97,36 @@ class PlanSectorCFR extends OptionsButtonsWidget {
       }
     }
     $widget['asset']['#options'] = $options;
+    if (!empty($options)) {
+      $class = get_class($this);
+      $widget['asset']['#pre_render'][] = [$class, 'preRenderOptions'];
+      $widget['asset']['#nfa_disabled_options'] = $this->getAssetsInUse($args);
+    }
+
     return $widget;
+  }
+
+  /**
+   * Get the assets in use.
+   *
+   * @param array $args
+   *   The arguments.
+   *
+   * @return array
+   *   The assets in use.
+   */
+  protected function getAssetsInUse(array $args): array {
+    // @todo the views should be selectable in the widget settings.
+    $view = Views::getView('assets_in_use');
+    if ($view instanceof ViewExecutable) {
+      $view->setDisplay('default');
+      $view->setArguments($args);
+      $view->preExecute();
+      $view->execute();
+      return array_column($view->result, 'asset_field_data_id');
+    }
+
+    return [];
   }
 
   /**
@@ -115,6 +156,29 @@ class PlanSectorCFR extends OptionsButtonsWidget {
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
     return $field_definition->getSetting('target_type') == 'asset';
+  }
+
+  /**
+   * Pre-render callback for the form element.
+   *
+   * @param array $element
+   *   The form element.
+   */
+  public static function preRenderOptions(array $element): array {
+    foreach ($element['#nfa_disabled_options'] as $id) {
+      if (!$element[$id]['#default_value']) {
+        $element[$id]['#attributes']['disabled'] = 'disabled';
+      }
+    }
+
+    return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['preRenderOptions'];
   }
 
 }
