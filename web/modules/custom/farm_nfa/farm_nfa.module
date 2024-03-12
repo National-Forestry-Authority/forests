@@ -19,6 +19,7 @@ use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
 use Drupal\plan\Entity\PlanInterface;
 use Drupal\views\ViewExecutable;
+use Drush\Drush;
 
 /**
  * Implements hook_entity_type_alter().
@@ -454,8 +455,22 @@ function farm_nfa_views_pre_render(ViewExecutable $view) {
  * Implements hook_entity_bundle_field_info_alter().
  */
 function farm_nfa_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
-  // Don't allow a CFR to exist in more than one plan.
+  // Don't allow a CFR to exist in more than one plan that is not archived.
   if ($entity_type->id() === 'plan' && !empty($fields['asset'])) {
-    $fields['asset']->addConstraint('UniqueField', []);
+    $fields['asset']->addConstraint('NfaAssetPlan', []);
   }
+}
+
+/**
+ * Helper function to update the configuration.
+ *
+ * @param int $version
+ *   Version number to use.
+ * @param string $module
+ *   The module where the deployments folder is.
+ */
+function farm_nfa_update_helper(int $version, string $module = 'farm_nfa'): void {
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', $module) . "/deployments/$version";
+  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
+  $process->run();
 }
