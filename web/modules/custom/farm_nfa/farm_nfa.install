@@ -529,3 +529,10 @@ function farm_nfa_update_9046(&$sandbox) {
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
+/**
+ * Refresh the natural forest plan type field configuration.
+ */
+function farm_nfa_update_9047(&$sandbox) {
+  farm_nfa_update_helper(9047);
+}

@@ -67,5 +67,3 @@ config_devel:
   - field.storage.plan.staff_training
   - field.storage.plan.stakeholder_engagement_plan
   - field.storage.plan.vegetation_biodiversity
-  - views.view.entity_reference_cfr_by_sector
-  - views.view.entity_reference_sectors
