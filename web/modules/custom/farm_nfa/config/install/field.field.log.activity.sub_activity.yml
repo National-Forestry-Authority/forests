@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.sub_activity
+    - log.type.activity
+id: log.activity.sub_activity
+field_name: sub_activity
+entity_type: log
+bundle: activity
+label: Sub-activity
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

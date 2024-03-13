@@ -11,7 +11,6 @@ use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\farm_nfa\Form\ForestPlanBaseForm;
-use Drupal\farm_nfa_cfr\CfrUtilities;
 use Drupal\log\Entity\Log;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,29 +27,19 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
    *
    * @var int
    */
-  protected $assetId;
-
-  /**
-   * The CFR utilities service object.
-   *
-   * @var \Drupal\farm_nfa_cfr\CfrUtilities
-   */
-  protected $utilities;
+  protected $asset;
 
   /**
    * ForestPlanBaseForm constructor.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The HTTP request.
-   * @param \Drupal\farm_nfa_cfr\CfrUtilities $utilities
-   *   The CFR utilities service object.
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
    */
-  public function __construct(Request $request, CfrUtilities $utilities, RouteMatchInterface $route_match) {
+  public function __construct(Request $request, RouteMatchInterface $route_match) {
     $this->request = $request;
-    $this->utilities = $utilities;
-    $this->assetId = $route_match->getRawParameter('asset');
+    $this->asset = $route_match->getParameter('asset');
     $this->settings = static::defaultSettings();
   }
 
@@ -60,7 +49,6 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('request_stack')->getCurrentRequest(),
-      $container->get('farm_nfa_cfr.utilities'),
       $container->get('current_route_match'),
     );
   }
@@ -71,7 +59,7 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Get the plan that the CFR asset is in.
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
-    $plan = $this->utilities->getPlan();
+    $plan = $this->asset->getPlan();
     if (!empty($plan)) {
       $form['#plan'] = $plan;
     }
@@ -150,7 +138,7 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
           $plan->save();
         }
       }
-      $view = views_embed_view('cfr_logs', 'embed', $plan->id(), implode('+', $log_types), $this->assetId);
+      $view = views_embed_view('cfr_logs', 'embed', $plan->id(), implode('+', $log_types), $this->asset->id());
       $response->addCommand(new ReplaceCommand('.view-cfr-logs', $view));
       $response->setAttachments($form['#attached']);
       $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
