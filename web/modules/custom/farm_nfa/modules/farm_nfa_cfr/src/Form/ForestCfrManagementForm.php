@@ -34,7 +34,7 @@ class ForestCfrManagementForm extends ForestCfrBaseForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
 
-    // @todo Add the program/activity dropdowns.
+    // @todo Replace this with a the program/activity custom field widget.
     $form['cfr']['#ajax'] = [
       'wrapper' => 'activity-select-wrapper',
       'callback' => '::activityOptions',
@@ -46,15 +46,6 @@ class ForestCfrManagementForm extends ForestCfrBaseForm {
       '#weight' => 1,
       '#prefix' => '<div id="activity-select-wrapper">',
       '#suffix' => '</div>',
-//      '#states' => [
-//        'enabled' => [
-//          [':input[name="cfr[0][target_id]"]' => ['filled' => TRUE]],
-//        ],
-//      ],
-//      '#ajax' => [
-//        'wrapper' => 'subactivity-select-wrapper',
-//        'callback' => '::subactivityOptions',
-//      ],
     ];
 
     $form['subactivity'] = [
@@ -63,11 +54,6 @@ class ForestCfrManagementForm extends ForestCfrBaseForm {
       '#weight' => 1,
       '#prefix' => '<div id="subactivity-select-wrapper">',
       '#suffix' => '</div>',
-//      '#states' => [
-//        'disabled' => [
-//          ['select[name="activity"]' => ['value' => 0]],
-//        ],
-//      ],
     ];
     return $form;
   }

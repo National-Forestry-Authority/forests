@@ -215,3 +215,4 @@ config_devel:
   - media.type.predominant_vegetation
   - farm_map.layer_style.asset_cfr
   - views.view.cfr_blocks
+  - views.view.cfr_logs

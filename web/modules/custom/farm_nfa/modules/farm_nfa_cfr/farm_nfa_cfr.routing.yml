@@ -2,7 +2,7 @@ entity.cfr.management:
   path: '/asset/{asset}/management'
   defaults:
     _title: 'Management'
-    _controller: '\Drupal\farm_nfa_cfr\Controller\ReserveTabsController::build'
+    _controller: '\Drupal\farm_nfa_cfr\Controller\CfrTabsController::build'
     log_types:
       - activity
   requirements:
