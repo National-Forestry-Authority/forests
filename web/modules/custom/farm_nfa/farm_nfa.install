@@ -536,3 +536,11 @@ function farm_nfa_update_9046(&$sandbox) {
 function farm_nfa_update_9047(&$sandbox) {
   farm_nfa_update_helper(9047);
 }
+
+/**
+ * Change cardinality of CFR parent field.
+ */
+function farm_nfa_update_9048(&$sandbox) {
+  \Drupal::service('module_installer')->install(['limited_field_widgets']);
+  farm_nfa_update_helper(9048);
+}

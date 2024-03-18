@@ -322,7 +322,9 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '1'
   priority_actions:
     type: text_textarea
     weight: 18

@@ -61,6 +61,7 @@
         "drupal/hal": "^2.0",
         "drupal/layout_builder_styles": "^2",
         "drupal/lb_routing": "^1.0",
+        "drupal/limited_field_widgets": "^2.1@beta",
         "drupal/migrate_source_csv": "^3",
         "drupal/month_year": "2.0.x-dev",
         "drupal/r4032login": "^2",
