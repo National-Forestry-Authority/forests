@@ -314,7 +314,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   parent:
-    type: entity_reference_autocomplete
+    type: entity_reference_autocomplete_tags
     weight: 7
     region: content
     settings:
