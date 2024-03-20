@@ -149,6 +149,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  sub_activity:
+    type: options_select
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
     weight: 2
@@ -165,7 +171,6 @@ hidden:
   category: true
   created: true
   data: true
-  sub_activity: true
   task_description: true
   task_implementation: true
   task_inspection_audit: true
