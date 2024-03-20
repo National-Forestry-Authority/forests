@@ -1672,10 +1672,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   parent:
-    type: entity_reference_autocomplete_tags
+    type: entity_reference_autocomplete
     weight: 2
     region: content
     settings:
+      cardinality: 1
       match_operator: CONTAINS
       match_limit: 10
       size: 60

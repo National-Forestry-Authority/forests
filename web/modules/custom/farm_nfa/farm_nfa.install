@@ -541,7 +541,15 @@ function farm_nfa_update_9047(&$sandbox) {
  * Change cardinality of CFR parent field.
  */
 function farm_nfa_update_9048(&$sandbox) {
-  $config_path = \Drupal::service('extension.path.resolver')->getPath('module', 'farm_nfa') . "/deployments/9048";
-  $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
-  $process->run();
+  farm_nfa_update_helper(9048);
+}
+
+/**
+ * Update cardinality of CFR parent field.
+ */
+function farm_nfa_update_9049(&$sandbox) {
+  $manager = \Drupal::entityDefinitionUpdateManager();
+  $field_definition = $manager->getFieldStorageDefinition('parent', 'asset');
+  $field_definition->setCardinality(1);
+  $manager->installFieldStorageDefinition('parent', 'asset', 'farm_nfa_cfr', $field_definition);
 }
