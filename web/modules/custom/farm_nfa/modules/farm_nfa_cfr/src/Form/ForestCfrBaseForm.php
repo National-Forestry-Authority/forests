@@ -23,9 +23,9 @@ use Symfony\Component\HttpFoundation\Request;
 abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
 
   /**
-   * The CFR asset id.
+   * The CFR asset.
    *
-   * @var int
+   * @var \Drupal\asset\Entity\AssetInterface
    */
   protected $asset;
 
@@ -145,7 +145,7 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
     }
     catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
-      $this->logger('forest_nfa', $e);
+      $this->logger('forest_nfa')->error($e->getMessage());
     }
     finally {
       $this->messenger()->deleteAll();
