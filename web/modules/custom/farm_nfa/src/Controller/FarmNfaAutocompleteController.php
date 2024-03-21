@@ -59,6 +59,7 @@ class FarmNfaAutocompleteController extends ControllerBase {
     }
     $input = Xss::filter($input);
     $query = $storage->getQuery()
+      ->accessCheck()
       ->condition('name', $input, 'CONTAINS')
       ->groupBy('nid')
       ->sort('created', 'DESC')
