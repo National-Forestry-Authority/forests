@@ -18,6 +18,7 @@ dependencies:
   module:
     - entity_browser
     - farm_map
+    - farm_nfa
     - file
     - image
     - inline_entity_form
@@ -29,13 +30,13 @@ mode: default
 content:
   activity_type:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   asset:
     type: entity_browser_entity_reference
-    weight: 10
+    weight: 11
     region: content
     settings:
       entity_browser: farm_asset
@@ -59,20 +60,20 @@ content:
     third_party_settings: {  }
   file:
     type: file_generic
-    weight: 12
+    weight: 13
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   flag:
     type: options_buttons
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   geometry:
     type: farm_map_geofield
-    weight: 14
+    weight: 15
     region: content
     settings:
       display_raw_geometry: true
@@ -80,7 +81,7 @@ content:
     third_party_settings: {  }
   image:
     type: image_image
-    weight: 11
+    weight: 12
     region: content
     settings:
       progress_indicator: throbber
@@ -88,14 +89,14 @@ content:
     third_party_settings: {  }
   is_movement:
     type: boolean_checkbox
-    weight: 15
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   location:
     type: entity_reference_autocomplete
-    weight: 13
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -113,7 +114,7 @@ content:
     third_party_settings: {  }
   notes:
     type: text_textarea
-    weight: 6
+    weight: 7
     region: content
     settings:
       rows: 5
@@ -121,13 +122,13 @@ content:
     third_party_settings: {  }
   owner:
     type: options_select
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   quantity:
     type: inline_entity_form_complex
-    weight: 9
+    weight: 10
     region: content
     settings:
       form_mode: default
@@ -145,25 +146,25 @@ content:
     third_party_settings: {  }
   status:
     type: options_select
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   sub_activity:
-    type: options_select
-    weight: 26
+    type: farm_nfa_subactivity
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   working_circle:
     type: options_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -213,7 +213,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
     catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
-      $this->logger('forest_nfa', $e);
+      $this->logger('forest_nfa')->error($e->getMessage());
     }
     finally {
       $this->messenger()->deleteAll();
@@ -272,13 +272,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // quantity reference array (same goes for assets).
     // @see \Drupal\inline_entity_form\WidgetSubmit::doSubmit()
     $data = [];
-    foreach ($form_state->get('inline_entity_form') as $ief) {
-      if ($ief['instance'] instanceof FieldDefinitionInterface) {
-        $field_name = $ief['instance']->getName();
-        $data[$field_name] = [];
-        foreach ($ief['entities'] as $ief_value) {
-          if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
-            $data[$field_name] [] = $ief_value['entity']->id();
+    $ief_form = $form_state->get('inline_entity_form');
+    if ($ief_form) {
+      foreach ($form_state->get('inline_entity_form') as $ief) {
+        if ($ief['instance'] instanceof FieldDefinitionInterface) {
+          $field_name = $ief['instance']->getName();
+          $data[$field_name] = [];
+          foreach ($ief['entities'] as $ief_value) {
+            if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
+              $data[$field_name][] = $ief_value['entity']->id();
+            }
           }
         }
       }
@@ -289,6 +292,13 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
 
     $form['#log'] = $log;
+  }
+
+  /**
+   * Returns the entity being used by this form.
+   */
+  public function getEntity() {
+    return $this->asset;
   }
 
 }

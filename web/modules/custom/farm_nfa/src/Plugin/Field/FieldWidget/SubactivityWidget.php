@@ -2,12 +2,15 @@
 
 namespace Drupal\farm_nfa\Plugin\Field\FieldWidget;
 
+use Drupal\asset\Entity\AssetInterface;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsSelectWidget;
+use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsWidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,16 +19,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @FieldWidget(
  *   id = "farm_nfa_subactivity",
  *   label = @Translation("NFA: Program/Activity"),
- *   field_types = {"list_string"},
+ *   field_types = {
+ *     "string"
+ *   }
  * )
  */
-class SubactivityWidget extends OptionsSelectWidget implements TrustedCallbackInterface {
+class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInterface {
+
   /**
    * The entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityTypeManager;
+  protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * Constructs a SubactivityWidget object.
@@ -66,47 +72,51 @@ class SubactivityWidget extends OptionsSelectWidget implements TrustedCallbackIn
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $selected_subactivity = NULL;
+    $selected_activity = NULL;
 
     // Get the selected sub-activity from the triggering element.
     $user_input = $form_state->getUserInput();
     $triggering_element_name = $user_input['_triggering_element_name'] ?? NULL;
-    if ($triggering_element_name) {
+    if ($triggering_element_name === 'sub_activity[0][activity]') {
       $parts = explode('[', str_replace(']', '', $triggering_element_name));
-      $selected_subactivity = NestedArray::getValue($user_input, $parts);
+      $selected_activity = NestedArray::getValue($user_input, $parts);
     }
 
-    $wrapper_id = "subactivity-wrapper";
+    $wrapper_id = 'subactivity-wrapper';
     $widget['activity'] = [
       '#type' => 'select',
       '#title' => $this->t('Activity'),
-      '#options' => self::getActivityOptions(),
+      '#options' => $this->getActivityOptions(),
       '#empty_option' => $this->t('- None -'),
-      '#default_value' => $items[$delta]->activity ?? NULL,
+      //@todo: if this is a virtual field, we don't have the activity stored.
+//      '#default_value' => $items[$delta]->activity ?? NULL,
       '#ajax' => [
-        'callback' => [$this, 'updateSubActivityOptions'],
+        'callback' => [static::class, 'updateSubActivityOptions'],
         'wrapper' => $wrapper_id,
       ],
     ];
-
-    // The sub-activity options are loaded from the selected CFR program fields.
-    $asset_id = !empty($form_state->getValue('cfr')) ? reset($form_state->getValue('cfr'))['target_id'] : NULL;
-
     $widget['sub_activity'] = parent::formElement($items, $delta, $element, $form, $form_state);
-    $widget['sub_activity']['#options'] = self::getSubActivityOptions($selected_subactivity, $asset_id);
+    $widget['sub_activity']['#type'] = 'select';
     $widget['sub_activity']['#empty_option'] = $this->t('- None -');
-    $widget['sub_activity']['#default_value'] = $selected_subactivity;
+    $widget['sub_activity']['#limit_validation_errors'] = [];
     $widget['sub_activity']['#prefix'] = '<div id="' . $wrapper_id . '">';
     $widget['sub_activity']['#suffix'] = '</div>';
 
-    return $widget;
-  }
+    $options = [];
+    $asset = $form_state->getFormObject()->getEntity();
+    if (!$asset instanceof AssetInterface) {
+      $asset_id = !empty($form_state->getValue('cfr')) ? reset($form_state->getValue('cfr'))['target_id'] : NULL;
+      if (!empty($asset_id)) {
+        $asset = $this->entityTypeManager->getStorage('asset')->load($asset_id);
+      }
+    }
+    if ($asset instanceof AssetInterface && !empty($selected_activity)) {
+      $options = $this->getSubActivityOptions($selected_activity, $asset);
+      $widget['sub_activity']['#default_value'] = $selected_activity;
+    }
+    $widget['sub_activity']['#options'] = $options;
 
-  /**
-   * {@inheritdoc}
-   */
-  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
-    return $values['sub_activity'] ?? [];
+    return $widget;
   }
 
   /**
@@ -119,6 +129,7 @@ class SubactivityWidget extends OptionsSelectWidget implements TrustedCallbackIn
     $options = [];
 
     foreach ($field_groups as $field_group) {
+      //@TODO this should be configurable on the widget.
       if ($field_group['format_type'] == 'program_tab') {
         $programs = [];
         foreach ($field_group['children'] as $program) {
@@ -133,33 +144,89 @@ class SubactivityWidget extends OptionsSelectWidget implements TrustedCallbackIn
   }
 
   /**
-   * Ajax callback to update sub-activity options.
+   * Helper function to get sub-activity options.
+   *
+   * @param string $activity
+   *   The selected activity.
+   * @param \Drupal\asset\Entity\AssetInterface $asset
+   *   The asset entity.
+   *
+   * @return array
+   *   The sub-activity options.
    */
-  public function updateSubActivityOptions(array $form, FormStateInterface $form_state) {
-    return $form['sub_activity']['widget'][0]['sub_activity'];
+  public function getSubActivityOptions(string $activity, AssetInterface $asset): array {
+    // Load the sub-activities based on the selected activity and CFR.
+    $sub_activities = [];
+
+    if (!$asset->hasField($activity) || $asset->get($activity)->isEmpty()) {
+      return [];
+    }
+
+    $summaries = $asset->get($activity)->getValue();
+    foreach ($summaries as $delta => $summary) {
+      // The option key has to uniquely identify the CFR, the sub-activity
+      // and the sub-activity delta.
+      $key = $asset->id() . ":$activity:$delta";
+      $sub_activities[$key] = $summary['summary'];
+    }
+
+    return $sub_activities;
   }
 
   /**
-   * Helper function to get sub-activity options.
+   * Ajax callback to update sub-activity options.
    */
-  public function getSubActivityOptions($activity, $asset_id) {
-    // Load the sub-activities based on the selected activity and CFR.
-    $subActivities = [];
+  public static function updateSubActivityOptions(array &$form, FormStateInterface $form_state) {
+    $parents = $form_state->getTriggeringElement()['#array_parents'];
+    array_pop($parents);
+    $parents[] = 'sub_activity';
+    return NestedArray::getValue($form, $parents);
+  }
 
-    if (!empty($activity) && !empty($asset_id)) {
-      // Load the activity summaries from the CFR.
-      $cfr = $this->entityTypeManager->getStorage('asset')->load($asset_id);
-      $summaries = $cfr->get($activity)->getValue();
-      if (!empty($summaries)) {
-        foreach ($summaries as $delta => $summary) {
-          // The option key has to uniquely identify the CFR, the sub-activity
-          // and the sub-activity delta.
-          $key = "$asset_id:$activity:$delta";
-          $subActivities[$key] = $summary['summary'];
-        }
+  /**
+   * {@inheritdoc}
+   */
+  public static function validateElement(array $element, FormStateInterface $form_state) {
+    if ($element['#required'] && $element['#value'] == '_none') {
+      if (isset($element['#required_error'])) {
+        $form_state->setError($element, $element['#required_error']);
+      }
+      else {
+        $form_state->setError($element, new TranslatableMarkup('@name field is required.', ['@name' => $element['#title']]));
       }
     }
-    return $subActivities;
+
+    // Massage submitted form values.
+    // Drupal\Core\Field\WidgetBase::submit() expects values as
+    // an array of values keyed by delta first, then by column, while our
+    // widgets return the opposite.
+
+    if (is_array($element['#value'])) {
+      $values = array_values($element['#value']);
+    }
+    else {
+      $values = [$element['#value']];
+    }
+
+    // Filter out the 'none' option. Use a strict comparison, because
+    // 0 == 'any string'.
+    $index = array_search('_none', $values, TRUE);
+    if ($index !== FALSE) {
+      unset($values[$index]);
+    }
+
+    // Transpose selections from field => delta to delta => field.
+    $items = [];
+    foreach ($values as $value) {
+      $items[] = [$element['#key_column'] => $value];
+    }
+    $form_state->setValueForElement($element, $items);
+
+    // Massage form values doesn't get called on this type of widget, so we
+    // implement it manually.
+    // Get the field name out of the #name of the element.
+    $field_name = explode('[', $element['#name'])[0];
+    $form_state->setValue($field_name, $items);
   }
 
   /**
@@ -167,6 +234,14 @@ class SubactivityWidget extends OptionsSelectWidget implements TrustedCallbackIn
    */
   public static function trustedCallbacks() {
     return ['preRenderOptions'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function isApplicable(FieldDefinitionInterface $field_definition) {
+    //@todo only applicable to the asset entity type and the sub_activity field.
+    return TRUE;
   }
 
 }

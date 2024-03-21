@@ -4,8 +4,6 @@ dependencies:
   config:
     - field.storage.log.sub_activity
     - log.type.activity
-  module:
-    - options
 id: log.activity.sub_activity
 field_name: sub_activity
 entity_type: log
@@ -17,4 +15,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: list_string
+field_type: string

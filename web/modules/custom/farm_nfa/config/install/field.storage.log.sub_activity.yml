@@ -3,18 +3,15 @@ status: true
 dependencies:
   module:
     - log
-    - options
 id: log.sub_activity
 field_name: sub_activity
 entity_type: log
-type: list_string
+type: string
 settings:
-  allowed_values:
-    -
-      value: placeholder
-      label: Placeholder
-  allowed_values_function: ''
-module: options
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
 locked: false
 cardinality: 1
 translatable: true
