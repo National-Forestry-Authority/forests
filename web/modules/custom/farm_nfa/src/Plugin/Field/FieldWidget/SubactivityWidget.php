@@ -103,6 +103,8 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     $widget['sub_activity']['#suffix'] = '</div>';
 
     $options = [];
+    // @todo if we're on the plan page the cfr asset is not stored in the base
+    // form so this will fail.
     $asset = $form_state->getFormObject()->getEntity();
     if (!$asset instanceof AssetInterface) {
       $asset_id = !empty($form_state->getValue('cfr')) ? reset($form_state->getValue('cfr'))['target_id'] : NULL;
@@ -200,7 +202,6 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     // Drupal\Core\Field\WidgetBase::submit() expects values as
     // an array of values keyed by delta first, then by column, while our
     // widgets return the opposite.
-
     if (is_array($element['#value'])) {
       $values = array_values($element['#value']);
     }

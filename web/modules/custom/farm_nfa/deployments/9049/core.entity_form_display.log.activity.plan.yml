@@ -17,6 +17,7 @@ dependencies:
   module:
     - datetime_range
     - farm_map
+    - farm_nfa
     - text
 id: log.activity.plan
 targetEntityType: log
@@ -62,12 +63,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   sub_activity:
-    type: string_textfield
+    type: farm_nfa_subactivity
     weight: 2
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   task_description:
     type: text_textarea
