@@ -127,7 +127,7 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
       if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
         throw new \Exception($this->t('Task cannot be saved.'));
       }
-      $route = farm_nfa_plan_route_log_types($plan, $log);
+      $route = farm_nfa_entity_route_log_types($plan, $log);
       $log_types = $route->getDefault('log_types');
 
       // Save the log in the plan, if it's not there already.
@@ -153,6 +153,13 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
     }
 
     return $response;
+  }
+
+  /**
+   * Returns the entity being used by this form.
+   */
+  public function getEntity() {
+    return $this->asset;
   }
 
 }
