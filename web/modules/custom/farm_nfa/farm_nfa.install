@@ -546,7 +546,7 @@ function farm_nfa_update_9048(&$sandbox) {
 }
 
 /**
- * Fix asset children geojson view.
+ * Update CFR management tasks config.
  */
 function farm_nfa_update_9049(&$sandbox) {
   farm_nfa_update_helper(9049);
