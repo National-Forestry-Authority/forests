@@ -133,6 +133,11 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $form_display = EntityFormDisplay::collectRenderDisplay($log, 'plan');
     $form_display->buildForm($log, $form, $form_state);
 
+    if (!$log->isNew()) {
+      // Disable the CFR widget if we're editing an existing log.
+      $form['cfr']['widget']['#disabled'] = TRUE;
+    }
+
     $form['#title'] = $this->settings['form_title'];
     $form['revision_log_message']['#access'] = FALSE;
 
@@ -142,8 +147,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           $form['location']['widget'][$delta]['target_id']['#selection_handler'] = 'farm_nfa_asset_by_plan';
           $form['location']['widget'][$delta]['target_id']['#selection_settings'] = [
             'target_bundles' => [
-              'compartment' => 'compartment'
-            ]
+              'compartment' => 'compartment',
+            ],
           ];
         }
       }
@@ -190,7 +195,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
         throw new \Exception($this->t('Task cannot be saved.'));
       }
-      $route = farm_nfa_plan_route_log_types($plan, $log);
+      $route = farm_nfa_entity_route_log_types($plan, $log);
       $log_types = $route->getDefault('log_types');
 
       // Save the log in the plan, if it's not there already.
@@ -208,7 +213,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
     catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
-      watchdog_exception('forest_nfa', $e);
+      $this->logger('forest_nfa')->error($e->getMessage());
     }
     finally {
       $this->messenger()->deleteAll();
@@ -267,13 +272,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // quantity reference array (same goes for assets).
     // @see \Drupal\inline_entity_form\WidgetSubmit::doSubmit()
     $data = [];
-    foreach ($form_state->get('inline_entity_form') as $ief) {
-      if ($ief['instance'] instanceof FieldDefinitionInterface) {
-        $field_name = $ief['instance']->getName();
-        $data[$field_name] = [];
-        foreach ($ief['entities'] as $ief_value) {
-          if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
-            $data[$field_name] [] = $ief_value['entity']->id();
+    $ief_form = $form_state->get('inline_entity_form');
+    if ($ief_form) {
+      foreach ($form_state->get('inline_entity_form') as $ief) {
+        if ($ief['instance'] instanceof FieldDefinitionInterface) {
+          $field_name = $ief['instance']->getName();
+          $data[$field_name] = [];
+          foreach ($ief['entities'] as $ief_value) {
+            if ($ief_value['entity'] instanceof QuantityInterface || $ief_value['entity'] instanceof AssetInterface) {
+              $data[$field_name][] = $ief_value['entity']->id();
+            }
           }
         }
       }
@@ -284,6 +292,13 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
 
     $form['#log'] = $log;
+  }
+
+  /**
+   * Returns the entity being used by this form.
+   */
+  public function getEntity() {
+    return $this->asset;
   }
 
 }

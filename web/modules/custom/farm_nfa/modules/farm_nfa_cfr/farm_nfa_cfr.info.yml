@@ -11,6 +11,12 @@ dependencies:
 config_devel:
   - asset.type.cfr
   - core.entity_form_display.asset.cfr.default
+  - core.entity_form_display.log.activity.cfr
+  - core.entity_form_display.log.harvest.cfr
+  - core.entity_form_display.log.natural_inventory.cfr
+  - core.entity_form_display.log.observation.cfr
+  - core.entity_form_display.log.plantation_inventory.cfr
+  - core.entity_form_display.log.planting.cfr
   - core.entity_form_display.media.boundary_demarcation.default
   - core.entity_form_display.media.boundary_plan_maps.default
   - core.entity_form_display.media.predominant_vegetation.default
@@ -28,6 +34,7 @@ config_devel:
   - core.entity_view_mode.asset.field_groups
   - core.entity_view_mode.asset.physical_features
   - core.entity_view_mode.asset.situational_assessment
+  - core.entity_form_mode.log.cfr
   - field.field.asset.cfr.action_plans_rare_species
   - field.field.asset.cfr.applied_research_by_fma_staff
   - field.field.asset.cfr.area
@@ -208,3 +215,4 @@ config_devel:
   - media.type.predominant_vegetation
   - farm_map.layer_style.asset_cfr
   - views.view.cfr_blocks
+  - views.view.cfr_logs

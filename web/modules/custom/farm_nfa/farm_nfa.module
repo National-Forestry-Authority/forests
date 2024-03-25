@@ -5,11 +5,13 @@
  * Provides alters and hooks for the farm nfa module.
  */
 
+use Drupal\asset\Entity\AssetInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -40,6 +42,7 @@ function farm_nfa_entity_type_alter(array &$entity_types) {
 function farm_nfa_entity_type_build(array &$entity_types) {
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
   $entity_types['plan']->setHandlerClass('local_task_provider', ['default' => 'Drupal\farm_nfa\Menu\NfaEntityLocalTaskProvider']);
+  $entity_types['asset']->setClass('Drupal\farm_nfa\Entity\NfaAsset');
 }
 
 /**
@@ -119,6 +122,13 @@ function farm_nfa_menu_local_actions_alter(&$local_actions) {
   unset($local_actions['entity.log.add_page']);
   unset($local_actions['entity.plan.add_page']);
   unset($local_actions['farm.actions:farm.add.log.bundle']);
+  unset($local_actions['farm.actions:farm.asset.add.log.harvest']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.planting']);
+  unset($local_actions['farm.actions:farm.asset.add.log.natural_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.plantation_inventory']);
+  unset($local_actions['farm.actions:farm.asset.add.log.observation']);
+  unset($local_actions['farm.actions:farm.asset.add.log.activity']);
 }
 
 /**
@@ -160,35 +170,23 @@ function farm_nfa_farm_dashboard_panes() {
 /**
  * Centralised way to know what route corresponds to a plan/log.
  *
- * @param \Drupal\plan\Entity\PlanInterface $plan
- *   The plan entity.
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The plan or asset entity.
  * @param \Drupal\log\Entity\LogInterface $log
  *   The log entity.
  *
- * @return \Symfony\Component\Routing\Route
+ * @return \Symfony\Component\Routing\Route|null
  *   The plan route object.
  */
-function farm_nfa_plan_route_log_types(PlanInterface $plan, LogInterface $log) {
+function farm_nfa_entity_route_log_types(ContentEntityInterface $entity, LogInterface $log) {
   // This is a centralised way to know what tab goes where, otherwise we're
   // spreading this logic all over the place.
-  // @todo Instead of a random function, this might be better off being saved on
-  // the entity types as third party so it is not hardcoded.
-  $log_types_plan_routes = [
-    'plantation' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'plantation_inventory' => 'inventory',
-    ],
-    'natural' => [
-      'activity' => 'management',
-      'harvest' => 'harvest',
-      'planting' => 'planting',
-      'natural_inventory' => 'inventory',
-    ],
-  ];
-
-  $route_name = 'entity.plan.' . $log_types_plan_routes[$plan->bundle()][$log->bundle()];
+  $storageType = $entity instanceof PlanInterface ? 'plan_type' : ($entity instanceof AssetInterface ? 'asset_type' : NULL);
+  if (!$storageType) {
+    return NULL;
+  }
+  $bundle = \Drupal::service('entity_type.manager')->getStorage($storageType)->load($entity->bundle());
+  $route_name = $bundle->getThirdPartySetting('farm_nfa', $log->bundle() . '_log_route');
   return \Drupal::service('router.route_provider')->getRouteByName($route_name);
 }
 
@@ -202,18 +200,19 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   if (!$entity->access('update')) {
     return;
   }
-  /** @var \Drupal\plan\Entity\PlanInterface $plan */
+
+  // The operations link routes depend on whether we are on the CFR or the plan.
+  $asset = \Drupal::routeMatch()->getParameter('asset');
   $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
-  if (!$plan) {
-    return;
-  }
-  $route = farm_nfa_plan_route_log_types($plan, $entity);
+  $entity_type = !empty($asset) && $asset->bundle() == 'cfr' ? $asset : $plan;
+  $route = farm_nfa_entity_route_log_types($entity_type, $entity);
+  $route_param = [$entity_type instanceof PlanInterface ? 'plan' : 'asset' => $entity_type->id()];
 
   // Replace the edit operation.
   $operations['edit'] = [
     'title' => t('Edit'),
     'url' => Url::fromRoute($route->getOption('parameters')['task_route'],
-      ['plan' => $plan->id()],
+      $route_param,
       [
         'attributes' => [
           'class' => ['use-ajax'],
@@ -260,6 +259,7 @@ function farm_nfa_form_alter(&$form, FormStateInterface $form_state) {
     if ($current_request->request->get('_drupal_ajax') != 1) {
       return;
     }
+    // @todo: This causes a bug when using xdebug. Added logs disappear.
     $form['actions']['submit']['#ajax'] = [
       'callback' => 'farm_nfa_confirm_form_ajax_helper',
     ];
@@ -284,7 +284,7 @@ function farm_nfa_confirm_form_ajax_helper($form, FormStateInterface $form_state
   $response = new AjaxResponse();
   if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
     $log = $form_state->getFormObject()->getEntity();
-    $route = farm_nfa_plan_route_log_types($plan, $log);
+    $route = farm_nfa_entity_route_log_types($plan, $log);
     $log_types = $route->getDefault('log_types');
     $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
     $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));

@@ -1,0 +1,9 @@
+farm_nfa.cfr.add_management_task:
+  route_name: farm_nfa.cfr.add_task
+  title: 'Add management task'
+  weight: -20
+  class: '\Drupal\farm_nfa\Plugin\Menu\LocalAction\AddTask'
+  appears_on:
+    - entity.cfr.management
+  cache_tags:
+    - asset_list

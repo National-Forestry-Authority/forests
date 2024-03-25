@@ -1,21 +1,19 @@
 <?php
 
-namespace Drupal\farm_nfa\Form;
-
-use Drupal\Core\Form\FormStateInterface;
+namespace Drupal\farm_nfa_cfr\Form;
 
 /**
- * Forest plan management form.
+ * Forest CFR management form.
  *
  * @ingroup farm_nfa
  */
-class ForestPlanManagementForm extends ForestPlanBaseForm {
+class ForestCfrManagementForm extends ForestCfrBaseForm {
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'farm_nfa_forest_management_plan_form';
+    return 'farm_nfa_forest_management_cfr_form';
   }
 
   /**

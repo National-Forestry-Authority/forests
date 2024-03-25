@@ -23,7 +23,7 @@ class FarmNfaContentEntityDeleteForm extends ContentEntityDeleteForm {
       parent::submitForm($form, $form_state);
     }
     catch (\Exception $e) {
-      watchdog_exception('farm_nfa', $e);
+      $this->logger('farm_nfa', $e);
       $this->messenger()->addError($e->getMessage());
     }
   }
