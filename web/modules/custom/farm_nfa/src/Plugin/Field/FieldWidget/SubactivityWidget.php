@@ -72,14 +72,22 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $selected_activity = NULL;
-
     // Get the selected sub-activity from the triggering element.
     $user_input = $form_state->getUserInput();
     $triggering_element_name = $user_input['_triggering_element_name'] ?? NULL;
     if ($triggering_element_name === 'sub_activity[0][activity]') {
       $parts = explode('[', str_replace(']', '', $triggering_element_name));
       $selected_activity = NestedArray::getValue($user_input, $parts);
+    }
+    else {
+      // Get the stored sub-activity and calculate the select activity and
+      // sub-activity.
+      $log = $items->getEntity();
+      if ($log->hasField('sub_activity')) {
+        $subactivity = $log->sub_activity->value;
+        $parts = explode(':', $subactivity);
+        $selected_activity = $parts[1];
+      }
     }
 
     $wrapper_id = 'subactivity-wrapper';
@@ -88,8 +96,7 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
       '#title' => $this->t('Activity'),
       '#options' => $this->getActivityOptions(),
       '#empty_option' => $this->t('- None -'),
-      //@todo: if this is a virtual field, we don't have the activity stored.
-//      '#default_value' => $items[$delta]->activity ?? NULL,
+      '#default_value' => $selected_activity ?? NULL,
       '#ajax' => [
         'callback' => [static::class, 'updateSubActivityOptions'],
         'wrapper' => $wrapper_id,
@@ -114,7 +121,7 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     }
     if ($asset instanceof AssetInterface && !empty($selected_activity)) {
       $options = $this->getSubActivityOptions($selected_activity, $asset);
-      $widget['sub_activity']['#default_value'] = $selected_activity;
+      $widget['sub_activity']['#default_value'] = $subactivity ?? NULL;
     }
     $widget['sub_activity']['#options'] = $options;
 
@@ -131,7 +138,7 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     $options = [];
 
     foreach ($field_groups as $field_group) {
-      //@TODO this should be configurable on the widget.
+      // @todo this should be configurable on the widget.
       if ($field_group['format_type'] == 'program_tab') {
         $programs = [];
         foreach ($field_group['children'] as $program) {
@@ -157,6 +164,8 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    *   The sub-activity options.
    */
   public function getSubActivityOptions(string $activity, AssetInterface $asset): array {
+    // @todo there are programs on the Plan entity too. We need to load the
+    // sub-activities from both the plan and the cfr asset.
     // Load the sub-activities based on the selected activity and CFR.
     $sub_activities = [];
 
@@ -170,6 +179,9 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
       // and the sub-activity delta.
       $key = $asset->id() . ":$activity:$delta";
       $sub_activities[$key] = $summary['summary'];
+      // @todo If we allow editors to re-order the sub-activities the delta would
+      // refer to the wrong value. We have to disable re-ordering on the program
+      // widget.
     }
 
     return $sub_activities;
@@ -241,8 +253,8 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    * {@inheritdoc}
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
-    //@todo only applicable to the asset entity type and the sub_activity field.
-    return TRUE;
+    // @todo only applicable to the asset entity type and the sub_activity field.
+    return $field_definition->getName() == 'sub_activity';
   }
 
 }
