@@ -551,3 +551,27 @@ function farm_nfa_update_9048(&$sandbox) {
 function farm_nfa_update_9049(&$sandbox) {
   farm_nfa_update_helper(9049);
 }
+
+/**
+ * Delete the forest plantation plan type.
+ */
+function farm_nfa_update_9050(&$sandbox) {
+  $planIds = \Drupal::entityQuery('plan')
+    ->condition('type', 'plantation')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  $controller = \Drupal::entityTypeManager()->getStorage('plan');
+  $plans = $controller->loadMultiple($planIds);
+  $controller->delete($plans);
+  $config_names = ['plan.type.plantation', 'core.entity_form_display.plan.plantation.default', 'core.entity_view_display.plan.plantation.default'];
+  foreach ($config_names as $config_name) {
+    $config = \Drupal::configFactory()->getEditable($config_name);
+    if ($config) {
+      $config->delete();
+    }
+  }
+  \Drupal::service('module_installer')->uninstall(
+    ['farm_nfa_plantation_forest']
+  );
+}
