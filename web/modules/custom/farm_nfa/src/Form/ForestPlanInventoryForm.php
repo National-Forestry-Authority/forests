@@ -25,7 +25,6 @@ class ForestPlanInventoryForm extends ForestPlanBaseForm {
     return [
         'log_type' => [
           'natural' => 'natural_inventory',
-          'plantation' => 'plantation_inventory',
         ],
         'form_title' => t('Inventory'),
       ] + parent::defaultSettings();

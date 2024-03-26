@@ -17,16 +17,10 @@ function farm_nfa_forest_form_alter(array &$form, FormStateInterface $form_state
     $form['forest_type']['widget']['#multiple'] = FALSE;
     $form['forest_type']['widget']['#options'] = [
       'natural' => t('Natural stand'),
-      'plantation' => t('Plantation'),
     ];
     $form['group_natural_forest_stand']['#states'] = [
       'visible' => [
         [':input[name="forest_type"]' => ['value' => 'natural']],
-      ],
-    ];
-    $form['group_plantation_stand']['#states'] = [
-      'visible' => [
-        [':input[name="forest_type"]' => ['value' => 'plantation']],
       ],
     ];
   }
