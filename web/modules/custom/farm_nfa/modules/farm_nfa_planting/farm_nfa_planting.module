@@ -35,9 +35,6 @@ function farm_nfa_planting_asset_presave(AssetInterface $asset) {
   if ($asset->hasField('forest_type') && $asset->get('forest_type')->isEmpty()) {
     if ($plan = \Drupal::service('farm_nfa.referer_plan_loader')->load()) {
       switch ($plan->bundle()) {
-        case 'plantation':
-          $asset->set('forest_type', 'plantation');
-          break;
         case 'natural':
           $asset->set('forest_type', 'natural');
           break;
