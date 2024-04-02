@@ -1,72 +1,59 @@
+// This file contains the code to add the fire and deforestation alerts layers
+// to the map in the GFW tab.
+// The code uses the Global Forest Watch API to get the fire and deforestation
+// alerts data and displays it in a layer on the map.
 (function ($, Drupal) {
   farmOS.map.behaviors.farm_nfa_gfw_layers = {
     attach: async function (instance) {
-      // Add layers for fire and deforestation alerts in the GFW plan tab
-      const assetType = instance.farmMapSettings.asset_type;
-      const fireAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/v20220726/query/json';
-      const deforestationAlertsUrl = 'https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/v20230215/query/json';
-      let defaultMonthDuration = 3;
-      let defaultDaysDuration = 0;
-      // setting the geometry url
-      const pageOrigin = `${window.location.protocol}//${instance.farmMapSettings.host}`;
-      const planId = instance.farmMapSettings.plan
-      const assetId = instance.farmMapSettings.asset
+      let defaultNoOfMonths = 3;
+      let defaultNoOfDays = 0;
+
+      // Get the latest versions of the fire and deforestation alerts apis.
+      const fireAlertsUrl = await getLatestVersion('https://data-api.globalforestwatch.org/dataset/nasa_viirs_fire_alerts/');
+      const deforestationAlertsUrl = await getLatestVersion('https://data-api.globalforestwatch.org/dataset/gfw_integrated_alerts/');
+      if (!fireAlertsUrl || !deforestationAlertsUrl) { return; }
+
+      // Get the geometry of the plan or asset.
+      const planId = instance.farmMapSettings.plan;
+      const assetId = instance.farmMapSettings.asset;
       let geometryUrl = '';
-      if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`;
-      if (assetId) geometryUrl = `/asset/geojson/${assetId}`;
-      if (!geometryUrl) return; 
+      if (planId) { geometryUrl = '/nfa-assets/geojson/' + planId; }
+      if (assetId) { geometryUrl = '/asset/geojson/' + assetId; }
+      if (!geometryUrl) { return; }
+      const pageOrigin = `${window.location.protocol}//${instance.farmMapSettings.host}`;
       geometryUrl = `${pageOrigin}${geometryUrl}`;
-      const geometry = await geometryHelper.getGeometry(geometryUrl);
-      if (!geometry) return;
-      // adding the date range picker
+
+      const geometry = await getGeometry(geometryUrl);
+      if (!geometry) { return; }
+
+      // Add the date range picker.
       const dateRangePickerOptions = {
         change: function () {
           updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry);
         },
-      
+
       };
-      if (assetType == 'land') {
-        defaultMonthDuration = 0;
-        defaultDaysDuration = new Date().getDate() - 1;
-        dateRangePickerOptions.presetRanges = [
-          {
-            text: 'Month to Date',
-            dateStart: function() { return moment().startOf('month') },
-            dateEnd: function() { return moment() }
-          },
-          {
-            text: 'Last Week (Mo-Su)',
-            dateStart: function () { return moment().subtract(1, 'weeks').startOf('isoWeek') },
-            dateEnd: function () { return moment().subtract(1, 'weeks').endOf('isoWeek') }
-          }
-        ],
-        dateRangePickerOptions.datepickerOptions = {
-          numberOfMonths : 1
-        }
-        dateRangePickerOptions.open = function () {
-          const previousDateRangeElement = document.querySelector('.ui-datepicker-prev');
-          previousDateRangeElement && previousDateRangeElement.remove();
-        }
-      }
-      const { startDate, endDate } = getDefaultDates("date", defaultMonthDuration, defaultDaysDuration);
+
+      const { startDate, endDate } = getDefaultDates("date", defaultNoOfMonths, defaultNoOfDays);
       $(".daterangepicker").daterangepicker(dateRangePickerOptions);
       $(".daterangepicker").daterangepicker("setRange", { start: startDate, end: endDate });
-      // opening date range picker by default
+
+      // Open the date range picker by default.
       const dateRangePickerElement = document.querySelector('.daterangepicker-container button');
       dateRangePickerElement && dateRangePickerElement.click();
     }
   }
 }(jQuery, Drupal))
 
-// function to update the map layers when the date range is changed
+// Function to update the map layers when the date range is changed.
 async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry) {
   const dateRange = getStartEndDateFromDOM();
   const map = instance.map;
   const layers = map.getLayers().getArray();
   for (let i = 0; i < layers.length;) {
-    const layerTitle = layers[i]?.values_?.title;
-    if (layerTitle == 'Fire Alerts' || layerTitle == 'Deforestation Alerts') await map.removeLayer(layers[i]);
-    else i++;
+    const layerTitle = layers[i] ?.values_ ?.title;
+    if (layerTitle === 'Fire Alerts' || layerTitle === 'Deforestation Alerts') { await map.removeLayer(layers[i]); }
+    else { i++; }
   }
   map.getTargetElement().classList.add('spinner');
   const mapLayers = [farmNfaPlotGfwApiMap(instance, 'fire', fireAlertsUrl, dateRange, geometry),
@@ -74,13 +61,13 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, 
   ];
   try {
     await Promise.all(mapLayers);
-  }catch(err) {}
+  } catch (err) {}
   map.getTargetElement().classList.remove('spinner');
 }
 
-// extracting the start and end date from the date range picker to update the map layers
+// Extract the start and end date from the date range picker.
 function getStartEndDateFromDOM() {
-  const dateRange = document.querySelector('.daterangepicker-container')?.innerText;
+  const dateRange = document.querySelector('.daterangepicker-container') ?.innerText;
   const dateRangeArray = dateRange?.split(' - ');
   let startDate = dateRangeArray[0]?.trim();
   let endDate = dateRangeArray[1]?.trim();
@@ -91,15 +78,15 @@ function getStartEndDateFromDOM() {
   return {startDate, endDate};
 }
 
-// function to get the default date range for the map layers
-function getDefaultDates(format, monthDuration, days) {
+// Get the default date range for the map layers.
+function getDefaultDates(format, noOfMonths, noOfDays) {
   let endDate = new Date(); // Get current date
   const year = endDate.getFullYear();
   const month = endDate.getMonth();
   const day = endDate.getDate();
-  // getting last 3 months date as default, to avoid filling the map with too many data points
-  let startDate = new Date(year, month - (monthDuration || 0), day - (days || 0));
-  if(format == "date") return {startDate, endDate};
+  // Subtract the number of months and days from the current date to get the start date.
+  let startDate = new Date(year, month - (noOfMonths || 0), day - (noOfDays || 0));
+  if(format === "date") return {startDate, endDate};
   // Format the date as "YYYY-MM-DD"
   startDate = startDate.toISOString().slice(0, 10);
   endDate = endDate.toISOString().slice(0, 10);
@@ -108,7 +95,7 @@ function getDefaultDates(format, monthDuration, days) {
 
 async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geometry) {
   return new Promise(async (resolve, reject) => {
-    if(!geometry) resolve('geometry not found');
+    if (!geometry) { resolve('geometry not found'); }
     let startDate = dateRange?.startDate;
     let endDate = dateRange?.endDate;
     const nullDateRange = !startDate && !endDate;
@@ -117,15 +104,15 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
       startDate = dateRange.startDate;
       endDate = dateRange.endDate;
     }
-    const hasBothdateRange = startDate && endDate;
+    const hasBothDateRange = startDate && endDate;
     const hasSingleDateRange = startDate && !endDate;
     const baseQuery = instance.farmMapSettings.base_query;
-    // configuring the query to get the data from GFW API
-    let query = `${baseQuery} WHERE ${mapType == "fire" ? `iso='UGA' AND ` : ''}`;
-    const dateParameter = mapType == "fire" ? "alert__date" : "gfw_integrated_alerts__date";
-    if (hasBothdateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
+    // Configure the query to get the data from GFW API.
+    let query = `${baseQuery} WHERE ${mapType === "fire" ? `iso = 'UGA' AND ` : ''}`;
+    const dateParameter = mapType === "fire" ? "alert__date" : "gfw_integrated_alerts__date";
+    if (hasBothDateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
     else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
-    
+
     try {
       let geoJson = {
         "type": "FeatureCollection",
@@ -173,10 +160,15 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
           })
         }
       });
+      const alertDetails = {
+        "fire": { title: "Fire Alerts", color: "red" },
+        "deforestation": { title: "Deforestation Alerts", color: "green" }
+      };
+
       instance.addLayer('geojson', {
-        title: `${mapType == "fire" ? "Fire": "Deforestation"} Alerts`,
-        geojson : geoJson,
-        color: `${mapType == "fire" ? "red": "green"}`
+        title: alertDetails[mapType].title,
+        geojson: geoJson,
+        color: alertDetails[mapType].color
       });
       resolve('success');
     } catch (err) {
@@ -185,11 +177,22 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
   });
 }
 
-const geometryHelper = {
-  getGeometry: async function(geometryUrl) {
-    try {
-      const geometry = await (await fetch(geometryUrl)).json();
-      return geometry;
-    } catch (err) { }
-  },
+async function getGeometry(geometryUrl) {
+  try {
+    const response = await fetch(geometryUrl);
+    return await response.json();
+  } catch (err) { }
+}
+
+async function getLatestVersion(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const versions = data.data.versions;
+
+    const latest_version = versions[versions.length - 1]
+    return url + latest_version + '/query/json';
+  } catch (error) {
+    console.error('Error getting GFW API url:', error);
+  }
 }
