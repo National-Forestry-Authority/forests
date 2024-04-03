@@ -544,3 +544,10 @@ function farm_nfa_update_9048(&$sandbox) {
   \Drupal::service('module_installer')->install(['limited_field_widgets']);
   farm_nfa_update_helper(9048);
 }
+
+/**
+ * Fix asset children geojson view.
+ */
+function farm_nfa_update_9049(&$sandbox) {
+  farm_nfa_update_helper(9049);
+}
