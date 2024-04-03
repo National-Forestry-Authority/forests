@@ -64,6 +64,7 @@ config_devel:
   - core.entity_view_mode.taxonomy_term.token
   - core.entity_view_mode.user.token
   - core.entity_view_mode.user.person_in_charge
+  - editor.editor.default
   - entity_reference_integrity_enforce.settings
   - environment_indicator.switcher.development
   - environment_indicator.switcher.production
