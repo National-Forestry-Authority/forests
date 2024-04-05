@@ -16,6 +16,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Routing\RouteProviderInterface;
 use Drupal\log\Entity\Log;
 use Drupal\plan\Entity\Plan;
 use Drupal\quantity\Entity\QuantityInterface;
@@ -28,6 +29,13 @@ use Symfony\Component\HttpFoundation\Request;
  * @ingroup farm_nfa
  */
 abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseFormInterface {
+
+  /**
+   * The route provider.
+   *
+   * @var \Drupal\Core\Routing\RouteProviderInterface
+   */
+  protected $routeProvider;
 
   use DependencySerializationTrait {
     __sleep as traitSleep;
@@ -78,9 +86,10 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The HTTP request.
    */
-  public function __construct(Request $request) {
+  public function __construct(Request $request, RouteProviderInterface $route_provider) {
     $this->request = $request;
     $this->settings = static::defaultSettings();
+    $this->routeProvider = $route_provider;
   }
 
   /**
@@ -89,6 +98,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('request_stack')->getCurrentRequest(),
+      $container->get('router.route_provider'),
     );
   }
 
@@ -190,7 +200,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
         throw new \Exception($this->t('Task cannot be saved.'));
       }
-      $route = farm_nfa_plan_route_log_types($plan, $log);
+      $route = $this->routeProvider->getRouteByName(farm_nfa_entity_route_name_by_log_type($plan, $log));
       $log_types = $route->getDefault('log_types');
 
       // Save the log in the plan, if it's not there already.
@@ -208,8 +218,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     }
     catch (\Exception $e) {
       $response->addCommand(new MessageCommand($this->t('There was an error saving the task.'), NULL, ['type' => 'warning'], TRUE));
-      watchdog_exception('forest_nfa', $e);
-    }
+      $this->logger('forest_nfa')->error($e->getMessage());    }
     finally {
       $this->messenger()->deleteAll();
       $response->addCommand(new CloseDialogCommand('#drupal-off-canvas'));
