@@ -384,6 +384,26 @@ function farm_nfa_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $
 }
 
 /**
+ * Implements hook_field_widget_complete_form_alter().
+ *
+ * @see \Drupal\Core\Field\WidgetBaseInterface::form()
+ */
+function farm_nfa_field_widget_complete_form_alter(array &$field_widget_complete_form, FormStateInterface $form_state, array $context) {
+  // Show widget as disabled for the status and cfr field widgets on the plan
+  // entity edit form if the user doesn't have enough permissions.
+  $entity = $context['items']->getEntity();
+  if (!$entity instanceof PlanInterface) {
+    return;
+  }
+  $fields_to_disable = ['status', 'asset'];
+  $field_name = $context['items']->getName();
+  if (!in_array($field_name, $fields_to_disable)) {
+    return;
+  }
+  $field_widget_complete_form['widget']['#disabled'] = !\Drupal::currentUser()->hasPermission('administer plans');
+}
+
+/**
  * Helper function to update the configuration.
  *
  * @param int $version
@@ -396,3 +416,4 @@ function farm_nfa_update_helper(int $version, string $module = 'farm_nfa'): void
   $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', ['--partial'], ['source' => $config_path]);
   $process->run();
 }
+
