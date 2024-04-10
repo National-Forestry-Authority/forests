@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.log.plan_level
+    - log.type.activity
+id: log.activity.plan_level
+field_name: plan_level
+entity_type: log
+bundle: activity
+label: 'Plan level'
+description: 'By default the management task activities available for selection are loaded from the CFR. If <strong>Plan level</strong> is set the management task activities are loaded from the Plan. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

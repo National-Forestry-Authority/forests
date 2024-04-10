@@ -99,7 +99,6 @@ dependencies:
     - image
     - layout_builder
     - layout_discovery
-    - limited_field_widgets
     - month_year
     - options
     - text

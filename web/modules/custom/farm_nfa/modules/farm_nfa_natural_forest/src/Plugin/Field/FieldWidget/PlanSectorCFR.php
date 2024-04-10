@@ -38,7 +38,7 @@ class PlanSectorCFR extends OptionsButtonsWidget implements TrustedCallbackInter
     }
     $user_input = $form_state->getUserInput();
     $triggering_element_name = $user_input['_triggering_element_name'] ?? NULL;
-    if ($triggering_element_name) {
+    if ($triggering_element_name == 'asset[sector][parent]') {
       $parts = explode('[', str_replace(']', '', $triggering_element_name));
       $parent_value = NestedArray::getValue($user_input, $parts);
       $parent_id = EntityAutocomplete::extractEntityIdFromAutocompleteInput($parent_value);

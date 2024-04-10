@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.log.activity.activity_type
     - field.field.log.activity.cfr
+    - field.field.log.activity.plan_level
     - field.field.log.activity.sub_activity
     - field.field.log.activity.task_description
     - field.field.log.activity.task_implementation
@@ -127,6 +128,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: -70
+    region: content
+  plan_level:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 106
     region: content
   quantity:
     type: entity_reference_revisions_entity_view

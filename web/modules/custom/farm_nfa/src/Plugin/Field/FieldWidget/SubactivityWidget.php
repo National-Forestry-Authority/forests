@@ -4,6 +4,7 @@ namespace Drupal\farm_nfa\Plugin\Field\FieldWidget;
 
 use Drupal\asset\Entity\AssetInterface;
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -11,6 +12,8 @@ use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsWidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\migrate\Plugin\migrate\destination\Entity;
+use Drupal\plan\Entity\PlanInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -85,16 +88,22 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
       $log = $items->getEntity();
       if ($log->hasField('sub_activity')) {
         $subactivity = $log->sub_activity->value;
-        $parts = explode(':', $subactivity);
-        $selected_activity = $parts[1];
+        if (!empty($subactivity)) {
+          $parts = explode(':', $subactivity);
+          $selected_activity = $parts[1];
+        }
       }
     }
+
+    // Load the activities from either the asset or the plan entity, depending
+    // on which tab we are on.
+    $entity = $form_state->getFormObject()->getEntity();
 
     $wrapper_id = 'subactivity-wrapper';
     $widget['activity'] = [
       '#type' => 'select',
       '#title' => $this->t('Activity'),
-      '#options' => $this->getActivityOptions(),
+      '#options' => $this->getActivityOptions($entity),
       '#empty_option' => $this->t('- None -'),
       '#default_value' => $selected_activity ?? NULL,
       '#ajax' => [
@@ -109,18 +118,10 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     $widget['sub_activity']['#prefix'] = '<div id="' . $wrapper_id . '">';
     $widget['sub_activity']['#suffix'] = '</div>';
 
+
     $options = [];
-    // @todo if we're on the plan page the cfr asset is not stored in the base
-    // form so this will fail.
-    $asset = $form_state->getFormObject()->getEntity();
-    if (!$asset instanceof AssetInterface) {
-      $asset_id = !empty($form_state->getValue('cfr')) ? reset($form_state->getValue('cfr'))['target_id'] : NULL;
-      if (!empty($asset_id)) {
-        $asset = $this->entityTypeManager->getStorage('asset')->load($asset_id);
-      }
-    }
-    if ($asset instanceof AssetInterface && !empty($selected_activity)) {
-      $options = $this->getSubActivityOptions($selected_activity, $asset);
+    if (!empty($selected_activity)) {
+      $options = $this->getSubActivityOptions($selected_activity, $entity);
       $widget['sub_activity']['#default_value'] = $subactivity ?? NULL;
     }
     $widget['sub_activity']['#options'] = $options;
@@ -131,18 +132,19 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
   /**
    * Helper function to get activity options.
    */
-  public function getActivityOptions() {
-    // Load the CFR form display config entity and get the list of program tabs.
-    $form_display = $this->entityTypeManager->getStorage('entity_form_display')->load('asset.cfr.default');
+  public function getActivityOptions(EntityInterface $entity) {
+    $form_display_stub = $entity instanceof AssetInterface ? 'asset.cfr.' : 'plan.natural.';
+    $form_display_id = $form_display_stub . 'default';
+    $form_display = $this->entityTypeManager->getStorage('entity_form_display')->load($form_display_id);
     $field_groups = $form_display->getThirdPartySettings('field_group');
-    $options = [];
 
+    $options = [];
     foreach ($field_groups as $field_group) {
       // @todo this should be configurable on the widget.
       if ($field_group['format_type'] == 'program_tab') {
         $programs = [];
         foreach ($field_group['children'] as $program) {
-          $program_field = $this->entityTypeManager->getStorage('field_config')->load('asset.cfr.' . $program);
+          $program_field = $this->entityTypeManager->getStorage('field_config')->load($form_display_stub . $program);
           $programs[$program] = $program_field->label();
         }
         $options[$field_group['label']] = $programs;
@@ -163,21 +165,21 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    * @return array
    *   The sub-activity options.
    */
-  public function getSubActivityOptions(string $activity, AssetInterface $asset): array {
+  public function getSubActivityOptions(string $activity, EntityInterface $entity): array {
     // @todo there are programs on the Plan entity too. We need to load the
     // sub-activities from both the plan and the cfr asset.
     // Load the sub-activities based on the selected activity and CFR.
     $sub_activities = [];
 
-    if (!$asset->hasField($activity) || $asset->get($activity)->isEmpty()) {
+    if (!$entity->hasField($activity) || $entity->get($activity)->isEmpty()) {
       return [];
     }
 
-    $summaries = $asset->get($activity)->getValue();
+    $summaries = $entity->get($activity)->getValue();
     foreach ($summaries as $delta => $summary) {
       // The option key has to uniquely identify the CFR, the sub-activity
       // and the sub-activity delta.
-      $key = $asset->id() . ":$activity:$delta";
+      $key = $entity->id() . ":$activity:$delta";
       $sub_activities[$key] = $summary['summary'];
       // @todo If we allow editors to re-order the sub-activities the delta would
       // refer to the wrong value. We have to disable re-ordering on the program

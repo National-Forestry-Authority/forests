@@ -5,6 +5,7 @@ dependencies:
     - entity_browser.browser.farm_asset
     - field.field.log.activity.activity_type
     - field.field.log.activity.cfr
+    - field.field.log.activity.plan_level
     - field.field.log.activity.sub_activity
     - field.field.log.activity.task_description
     - field.field.log.activity.task_implementation
@@ -18,7 +19,6 @@ dependencies:
   module:
     - entity_browser
     - farm_map
-    - farm_nfa
     - file
     - image
     - inline_entity_form
@@ -126,6 +126,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  plan_level:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   quantity:
     type: inline_entity_form_complex
     weight: 10
@@ -150,12 +157,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  sub_activity:
-    type: farm_nfa_subactivity
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   timestamp:
     type: datetime_timestamp
     weight: 3
@@ -172,6 +173,7 @@ hidden:
   category: true
   created: true
   data: true
+  sub_activity: true
   task_description: true
   task_implementation: true
   task_inspection_audit: true

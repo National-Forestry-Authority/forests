@@ -2,16 +2,20 @@
 
 namespace Drupal\farm_nfa_cfr\Form;
 
+use Drupal\asset\Entity\AssetInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Routing\RouteProviderInterface;
 use Drupal\farm_nfa\Form\ForestPlanBaseForm;
 use Drupal\log\Entity\Log;
+use Drupal\quantity\Entity\QuantityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -37,20 +41,9 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
    */
-  public function __construct(Request $request, RouteMatchInterface $route_match) {
-    $this->request = $request;
+  public function __construct(Request $request, RouteProviderInterface $route_provider, RouteMatchInterface $route_match) {
+    parent::__construct($request, $route_provider, $route_match);
     $this->asset = $route_match->getParameter('asset');
-    $this->settings = static::defaultSettings();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('request_stack')->getCurrentRequest(),
-      $container->get('current_route_match'),
-    );
   }
 
   /**
@@ -127,7 +120,7 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
       if (!in_array($saved_status, [SAVED_NEW, SAVED_UPDATED])) {
         throw new \Exception($this->t('Task cannot be saved.'));
       }
-      $route = farm_nfa_entity_route_log_types($plan, $log);
+      $route = $this->routeProvider->getRouteByName(farm_nfa_entity_route_name_by_log_type($plan, $log));
       $log_types = $route->getDefault('log_types');
 
       // Save the log in the plan, if it's not there already.
@@ -162,4 +155,15 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
     return $this->asset;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    Parent::submitForm($form, $form_state);
+
+    // The activities are loaded from the CFR, not thew plan.
+    // @todo consider showing the widget to admin users so they can change a
+    // task from plan level to CFR level.
+    $form['#log']->set('plan_level', FALSE);
+  }
 }
