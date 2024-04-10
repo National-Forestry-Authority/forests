@@ -16,6 +16,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Routing\RouteProviderInterface;
 use Drupal\log\Entity\Log;
 use Drupal\plan\Entity\Plan;
@@ -30,6 +31,12 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseFormInterface {
 
+  use DependencySerializationTrait {
+    __sleep as traitSleep;
+    __wakeup as traitWakeup;
+  }
+  use AjaxFormHelperTrait;
+
   /**
    * The route provider.
    *
@@ -37,11 +44,26 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
    */
   protected $routeProvider;
 
-  use DependencySerializationTrait {
-    __sleep as traitSleep;
-    __wakeup as traitWakeup;
-  }
-  use AjaxFormHelperTrait;
+  /**
+   * The plan entity.
+   *
+   * @var \Drupal\plan\Entity\PlanInterface
+   */
+  protected $plan;
+
+  /**
+   * Current request.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
+
+  /**
+   * Form settings.
+   *
+   * @var array
+   */
+  protected $settings;
 
   /**
    * Implements the magic __sleep() method to avoid serializing the request.
@@ -67,29 +89,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
   }
 
   /**
-   * Current request.
-   *
-   * @var \Symfony\Component\HttpFoundation\Request
-   */
-  protected $request;
-
-  /**
-   * Form settings.
-   *
-   * @var array
-   */
-  protected $settings;
-
-  /**
    * ForestPlanBaseForm constructor.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The HTTP request.
    */
-  public function __construct(Request $request, RouteProviderInterface $route_provider) {
+  public function __construct(Request $request, RouteProviderInterface $route_provider, RouteMatchInterface $route_match) {
     $this->request = $request;
     $this->settings = static::defaultSettings();
     $this->routeProvider = $route_provider;
+    $this->plan = $route_match->getParameter('plan');
   }
 
   /**
@@ -99,6 +108,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     return new static(
       $container->get('request_stack')->getCurrentRequest(),
       $container->get('router.route_provider'),
+      $container->get('current_route_match'),
     );
   }
 
@@ -143,11 +153,16 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     $form_display = EntityFormDisplay::collectRenderDisplay($log, 'plan');
     $form_display->buildForm($log, $form, $form_state);
 
-    if (!$log->isNew()) {
-      // Disable the CFR widget if we're editing an existing log.
-      $form['cfr']['widget']['#disabled'] = TRUE;
+    if (!$log->isNew() && $log->hasField('cfr') && !$log->get('cfr')->isEmpty()) {
+      // Disable the CFR widget if we're editing an existing log that has a CFR.
+      $form['cfr']['widget']['#disabled'] = FALSE;
     }
 
+    if ($form['#plan'] && !$form['#plan']->access('update')) {
+      foreach (Element::children($form) as $key) {
+        $form[$key]['#disabled'] = TRUE;
+      }
+    }
     $form['#title'] = $this->settings['form_title'];
     $form['revision_log_message']['#access'] = FALSE;
 
@@ -301,6 +316,11 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
       $log->set($field_name, $datum);
     }
 
+    // The activities are loaded from the plan rather than the CFR.
+    // @todo consider showing the widget to admin users so they can change a
+    // task from plan level to CFR level.
+    $log->set('plan_level', TRUE);
+
     $form['#log'] = $log;
   }
 
@@ -308,7 +328,7 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
    * Returns the entity being used by this form.
    */
   public function getEntity() {
-    return $this->asset;
+    return $this->plan;
   }
 
 }

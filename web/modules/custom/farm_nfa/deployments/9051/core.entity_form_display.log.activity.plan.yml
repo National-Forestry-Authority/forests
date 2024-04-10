@@ -5,6 +5,7 @@ dependencies:
     - core.entity_form_mode.log.plan
     - field.field.log.activity.activity_type
     - field.field.log.activity.cfr
+    - field.field.log.activity.plan_level
     - field.field.log.activity.sub_activity
     - field.field.log.activity.task_description
     - field.field.log.activity.task_implementation
@@ -128,5 +129,6 @@ hidden:
   location: true
   notes: true
   owner: true
+  plan_level: true
   quantity: true
   timestamp: true

@@ -546,7 +546,7 @@ function farm_nfa_update_9048(&$sandbox) {
 }
 
 /**
- * Update CFR management tasks config.
+ * Fix asset children geojson view.
  */
 function farm_nfa_update_9049(&$sandbox) {
   farm_nfa_update_helper(9049);
@@ -574,4 +574,11 @@ function farm_nfa_update_9050(&$sandbox) {
   \Drupal::service('module_installer')->uninstall(
     ['farm_nfa_plantation_forest']
   );
+}
+
+/**
+ * Update management tasks config.
+ */
+function farm_nfa_update_9051(&$sandbox) {
+  farm_nfa_update_helper(9051);
 }
