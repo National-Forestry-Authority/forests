@@ -12,8 +12,6 @@ use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsWidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\migrate\Plugin\migrate\destination\Entity;
-use Drupal\plan\Entity\PlanInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -203,6 +201,17 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    * {@inheritdoc}
    */
   public static function validateElement(array $element, FormStateInterface $form_state) {
+    // When changing the activity, the existing sub-activity is no longer valid.
+    // We have to clear the error so the form can be submitted.
+    if ($form_state->hasAnyErrors()) {
+      foreach ($form_state->getErrors() as $error) {
+        if (preg_match('/The submitted value .* element is not allowed./', $error->__toString())) {
+          $form_state->clearErrors();
+          break;
+        }
+      }
+    }
+
     if ($element['#required'] && $element['#value'] == '_none') {
       if (isset($element['#required_error'])) {
         $form_state->setError($element, $element['#required_error']);
