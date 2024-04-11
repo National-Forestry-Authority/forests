@@ -164,9 +164,6 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    *   The sub-activity options.
    */
   public function getSubActivityOptions(string $activity, EntityInterface $entity): array {
-    // @todo there are programs on the Plan entity too. We need to load the
-    // sub-activities from both the plan and the cfr asset.
-    // Load the sub-activities based on the selected activity and CFR.
     $sub_activities = [];
 
     if (!$entity->hasField($activity) || $entity->get($activity)->isEmpty()) {
@@ -264,7 +261,6 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
    * {@inheritdoc}
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
-    // @todo only applicable to the asset entity type and the sub_activity field.
     return $field_definition->getName() == 'sub_activity';
   }
 
