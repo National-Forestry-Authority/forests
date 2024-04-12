@@ -33,9 +33,13 @@ class PlanSectorCFR extends OptionsButtonsWidget implements TrustedCallbackInter
     $entity = $items->getEntity();
     $args = [];
     if ($entity->hasField('sector') && !$entity->get('sector')->isEmpty()) {
-      $sector = $entity->get('sector')->entity;
+      // Load the sector entity. Can't use $entity->sector->entity because it
+      // is not always available with ajax callbacks.
+      // @todo inject the entity type manager.
+      $sector = \Drupal::entityTypeManager()->getStorage('asset')->load($entity->get('sector')->target_id);
       $args = [$sector->id()];
     }
+
     $user_input = $form_state->getUserInput();
     $triggering_element_name = $user_input['_triggering_element_name'] ?? NULL;
     if ($triggering_element_name == 'asset[sector][parent]') {
