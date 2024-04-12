@@ -38,7 +38,6 @@ function farm_nfa_entity_type_alter(array &$entity_types) {
 function farm_nfa_entity_type_build(array &$entity_types) {
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
   $entity_types['plan']->setHandlerClass('local_task_provider', ['default' => 'Drupal\farm_nfa\Menu\NfaEntityLocalTaskProvider']);
-  $entity_types['asset']->setClass('Drupal\farm_nfa\Entity\NfaAsset');
 }
 
 /**

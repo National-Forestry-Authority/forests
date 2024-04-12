@@ -51,8 +51,9 @@ abstract class ForestCfrBaseForm extends ForestPlanBaseForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Get the plan that the CFR asset is in.
+    $cfr = typed_entity_repository_manager()->wrap($this->asset);
     /** @var \Drupal\plan\Entity\PlanInterface $plan */
-    $plan = $this->asset->getPlan();
+    $plan = $cfr->getPlan();
     if (!empty($plan)) {
       $form['#plan'] = $plan;
     }

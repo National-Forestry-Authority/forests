@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60c3f1e52e9c6b2be3ad51bc23c47ac8",
+    "content-hash": "83cf3f85cfc4c8c12bfc8c34fc09a611",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4942,6 +4942,63 @@
             "homepage": "https://www.drupal.org/project/token",
             "support": {
                 "source": "https://git.drupalcode.org/project/token"
+            }
+        },
+        {
+            "name": "drupal/typed_entity",
+            "version": "4.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/typed_entity.git",
+                "reference": "4.0.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/typed_entity-4.0.12.zip",
+                "reference": "4.0.12",
+                "shasum": "2913ca26ad0bdd7e5443c12021af627c4c3469b6"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+                "drupal/coder": "dev-8.x-3.x",
+                "enlightn/security-checker": "^1.7",
+                "jakub-onderka/php-parallel-lint": "dev-master",
+                "localheinz/composer-normalize": "^2.13",
+                "nikic/php-parser": "^4.9@dev",
+                "phpmd/phpmd": "dev-master",
+                "phpmetrics/phpmetrics": "dev-master",
+                "phpro/grumphp-shim": "^1.13.0",
+                "squizlabs/php_codesniffer": "^3.0@dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.12",
+                    "datestamp": "1698732137",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "homepage": "https://www.drupal.org/user/550110",
+                    "email": "mateu@mateuaguilo.com"
+                }
+            ],
+            "description": "Provides classes based on the existing entities.",
+            "homepage": "https://www.drupal.org/project/typed_entity",
+            "support": {
+                "source": "https://git.drupalcode.org/project/typed_entity"
             }
         },
         {
@@ -17324,5 +17381,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

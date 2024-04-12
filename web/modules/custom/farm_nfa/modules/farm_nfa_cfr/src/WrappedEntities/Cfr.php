@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\farm_nfa\entity;
+namespace Drupal\farm_nfa_cfr\WrappedEntities;
 
-use Drupal\asset\Entity\Asset;
 use Drupal\plan\Entity\PlanInterface;
+use Drupal\typed_entity\WrappedEntities\WrappedEntityBase;
 
 /**
- * Override the FarmOS Asset entity for NFA.
+ * The wrapped entity for the CFR asset type.
  */
-class NfaAsset extends Asset {
+class Cfr extends WrappedEntityBase {
 
   /**
    * Return the plan that the CFR belongs to.
@@ -17,7 +17,7 @@ class NfaAsset extends Asset {
     $storage = \Drupal::service('entity_type.manager')->getStorage('plan');
     $plan_results = $storage->getQuery()
       ->condition('type', 'natural')
-      ->condition('asset.entity.id', $this->id())
+      ->condition('asset.entity.id', $this->entity->id())
       ->accessCheck()
       ->execute();
     if ($plan_results) {

@@ -15,7 +15,8 @@ class CfrTabsController extends ControllerBase {
    */
   public function build(AssetInterface $asset = NULL, $log_types = []) {
     $build = [];
-    $plan = $asset->getPlan();
+    $cfr = typed_entity_repository_manager()->wrap($asset);
+    $plan = $cfr->getPlan();
     if ($plan) {
       $build['logs'] = views_embed_view('cfr_logs', 'embed', $plan->id(), implode('+', $log_types), $asset->id());
     }
