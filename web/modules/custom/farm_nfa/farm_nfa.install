@@ -589,3 +589,10 @@ function farm_nfa_update_9051(&$sandbox) {
 function farm_nfa_update_9052(&$sandbox) {
   \Drupal::service('module_installer')->install(['typed_entity']);
 }
+
+/**
+ * Import FarmOS update config changes.
+ */
+function farm_nfa_update_9053(&$sandbox) {
+  farm_nfa_update_helper(9053);
+}

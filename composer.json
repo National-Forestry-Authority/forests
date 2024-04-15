@@ -116,9 +116,6 @@
             },
             "drupal/month_year": {
               "3350516: Update jQuery.once for Drupal 10 support.": "https://www.drupal.org/files/issues/2023-07-03/update-jquery-once-for-drupal-10-support-3350516-2.patch"
-            },
-            "drupal/gin": {
-              "3419180: Resolve Missing Dependency 'core/once' in Gin_accent Library": "https://git.drupalcode.org/project/gin/-/merge_requests/380.diff"
             }
         },
         "merge-plugin": {
