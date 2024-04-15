@@ -1,0 +1,4 @@
+grant edit on plans to other users:
+  title: 'Grant edit on plans to other users'
+  description: 'Allow users to grant edit access to other users on plan entities.'
+  restrict access: true

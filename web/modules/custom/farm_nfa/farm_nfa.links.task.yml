@@ -38,6 +38,11 @@ farm_nfa.gfw:
   route_name: entity.plan.gfw
   parent_id: entity.plan.canonical
   weight: 6
+farm_nfa.permissions:
+  title: 'Permissions'
+  route_name: entity.plan.edit_permissions
+  parent_id: entity.plan.canonical
+  weight: 7
 farm_nfa.gfw_tab:
   title: 'GFW'
   route_name: entity.asset.gfw_tab

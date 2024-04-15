@@ -30,6 +30,35 @@ entity.plan.inventory:
       plan:
         type: entity:plan
       task_route: farm_nfa.plan.add_inventory
+entity.plan.edit_permissions:
+  path: '/plan/{plan}/edit-permissions'
+  defaults:
+    _title: 'Edit (Permissions Form mode)'
+    _entity_form: 'plan.permissions'
+  requirements:
+    _entity_bundles: 'plan:natural'
+    _entity_user_reference_access: 'TRUE'
+    _custom_access: 'farm_nfa.plan_permissions_route_checker::access'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
+entity.plan.edit_form:
+  path: '/plan/{plan}/edit'
+  defaults:
+    _title: 'Edit'
+    _entity_form: 'plan.default'
+  requirements:
+    _entity_bundles: 'plan:natural'
+    _custom_access: 'farm_nfa.plan_edit_route_checker::access'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
 entity.plan.harvest:
   path: '/plan/{plan}/harvest'
   defaults:
