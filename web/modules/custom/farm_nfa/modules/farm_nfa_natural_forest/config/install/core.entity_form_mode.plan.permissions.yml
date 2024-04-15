@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - plan
+id: plan.permissions
+label: Permissions
+description: ''
+targetEntityType: plan
+cache: true

@@ -1,0 +1,74 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.plan.permissions
+    - field.field.plan.natural.accountability_grievance_redress
+    - field.field.plan.natural.climate_weather_variation
+    - field.field.plan.natural.drainage
+    - field.field.plan.natural.environmental_social_management
+    - field.field.plan.natural.environmental_values_ecosystem
+    - field.field.plan.natural.gender_mainstreaming
+    - field.field.plan.natural.geology_soils
+    - field.field.plan.natural.hcvs
+    - field.field.plan.natural.health_safety
+    - field.field.plan.natural.landscape_topology
+    - field.field.plan.natural.major_social_environmental_risks
+    - field.field.plan.natural.management_goals_objectives
+    - field.field.plan.natural.natural_resources
+    - field.field.plan.natural.opportunities_challenges
+    - field.field.plan.natural.period_fmp_revisions
+    - field.field.plan.natural.social_economic_cultural_resourc
+    - field.field.plan.natural.staff_disposition
+    - field.field.plan.natural.staff_training
+    - field.field.plan.natural.stakeholder_engagement_plan
+    - field.field.plan.natural.user
+    - field.field.plan.natural.vegetation_biodiversity
+    - plan.type.natural
+id: plan.natural.permissions
+targetEntityType: plan
+bundle: natural
+mode: permissions
+content:
+  user:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  accountability_grievance_redress: true
+  asset: true
+  climate_weather_variation: true
+  created: true
+  data: true
+  drainage: true
+  environmental_social_management: true
+  environmental_values_ecosystem: true
+  file: true
+  flag: true
+  gender_mainstreaming: true
+  geology_soils: true
+  hcvs: true
+  health_safety: true
+  image: true
+  landscape_topology: true
+  log: true
+  major_social_environmental_risks: true
+  management_goals_objectives: true
+  name: true
+  natural_resources: true
+  notes: true
+  opportunities_challenges: true
+  period_fmp_revisions: true
+  social_economic_cultural_resourc: true
+  staff_disposition: true
+  staff_training: true
+  stakeholder_engagement_plan: true
+  status: true
+  uid: true
+  vegetation_biodiversity: true

@@ -15,4 +15,11 @@ services:
   farm_nfa.referer_plan_loader:
     class: Drupal\farm_nfa\FarmNfaRefererPlanLoader
     arguments: ['@request_stack']
-
+  farm_nfa.plan_permissions_route_checker:
+    class: Drupal\farm_nfa\PlanPermissionsRouteChecker
+    tags:
+      - { name: access_check, applies_to: _permissions_access_check }
+  farm_nfa.plan_edit_route_checker:
+    class: Drupal\farm_nfa\PlanEditRouteChecker
+    tags:
+      - { name: access_check, applies_to: _edit_access_check }

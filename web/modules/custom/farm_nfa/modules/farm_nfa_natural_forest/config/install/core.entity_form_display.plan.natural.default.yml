@@ -21,6 +21,7 @@ dependencies:
     - field.field.plan.natural.staff_disposition
     - field.field.plan.natural.staff_training
     - field.field.plan.natural.stakeholder_engagement_plan
+    - field.field.plan.natural.user
     - field.field.plan.natural.vegetation_biodiversity
     - image.style.medium
     - plan.type.natural
@@ -743,3 +744,4 @@ hidden:
   data: true
   log: true
   uid: true
+  user: true
