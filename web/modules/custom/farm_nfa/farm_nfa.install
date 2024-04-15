@@ -617,3 +617,11 @@ function farm_nfa_update_9055(&$sandbox) {
 function farm_nfa_update_9056(&$sandbox) {
   farm_nfa_update_helper(9056);
 }
+
+
+/**
+ * Adds permissions form mode and users reference fields to the NFA Plan entity.
+ */
+function farm_nfa_update_9057(&$sandbox) {
+  farm_nfa_update_helper(9057);
+}
