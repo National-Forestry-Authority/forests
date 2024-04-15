@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_export_csv
+  enforced:
+    module:
+      - farm_export_csv
+id: asset_csv_action
+label: 'Export CSV'
+type: asset
+plugin: entity:csv_action:asset
+configuration: {  }
