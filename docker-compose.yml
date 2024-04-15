@@ -38,7 +38,7 @@ services:
       APP_DOMAIN: ${APP_DOMAIN:-${COMPOSE_PROJECT_NAME?err}}
       TRUSTED_HOSTS: ${TRUSTED_HOSTS:-}
       DEPLOY: ${DEPLOY:-1}
-      DEPLOY_CMD: ${DEPLOY_CMD:-sleep 10; drush cr}
+      DEPLOY_CMD: ${DEPLOY_CMD:-sleep 10; drush cr; drush updb}
     volumes:
       #DISCUSS ENV VARS
       - drupal-files:/var/www/web/sites/default/files
