@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInterface {
+class SubactivityWidget extends OptionsWidgetBase {
 
   /**
    * The entity type manager.
@@ -88,7 +88,7 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
         $subactivity = $log->sub_activity->value;
         if (!empty($subactivity)) {
           $parts = explode(':', $subactivity);
-          $selected_activity = $parts[1];
+          $selected_activity = $parts[2];
         }
       }
     }
@@ -174,7 +174,7 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     foreach ($summaries as $delta => $summary) {
       // The option key has to uniquely identify the CFR, the sub-activity
       // and the sub-activity delta.
-      $key = $entity->id() . ":$activity:$delta";
+      $key = $entity->getEntityTypeId() . ":" . $entity->id() . ":$activity:$delta";
       $sub_activities[$key] = $summary['summary'];
       // @todo If we allow editors to re-order the sub-activities the delta would
       // refer to the wrong value. We have to disable re-ordering on the program
@@ -248,13 +248,6 @@ class SubactivityWidget extends OptionsWidgetBase implements TrustedCallbackInte
     // Get the field name out of the #name of the element.
     $field_name = explode('[', $element['#name'])[0];
     $form_state->setValue($field_name, $items);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function trustedCallbacks() {
-    return ['preRenderOptions'];
   }
 
   /**
