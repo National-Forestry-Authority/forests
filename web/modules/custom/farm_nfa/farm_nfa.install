@@ -596,3 +596,10 @@ function farm_nfa_update_9052(&$sandbox) {
 function farm_nfa_update_9053(&$sandbox) {
   farm_nfa_update_helper(9053);
 }
+
+/**
+ * Add Subactivity field formatter.
+ */
+function farm_nfa_update_9054(&$sandbox) {
+  farm_nfa_update_helper(9054);
+}
