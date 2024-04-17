@@ -161,8 +161,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
         }
       });
       const alertDetails = {
-        "fire": { title: "Fire Alerts", color: "red" },
-        "deforestation": { title: "Deforestation Alerts", color: "green" }
+        "fire": { title: "Fire Alerts", color: "orange" },
+        "deforestation": { title: "Deforestation Alerts", color: "red" }
       };
 
       instance.addLayer('geojson', {
