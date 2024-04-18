@@ -603,3 +603,10 @@ function farm_nfa_update_9053(&$sandbox) {
 function farm_nfa_update_9054(&$sandbox) {
   farm_nfa_update_helper(9054);
 }
+
+/**
+ * Fix plan logs view.
+ */
+function farm_nfa_update_9055(&$sandbox) {
+  farm_nfa_update_helper(9055);
+}
