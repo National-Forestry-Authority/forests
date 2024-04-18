@@ -319,7 +319,9 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
     // The activities are loaded from the plan rather than the CFR.
     // @todo consider showing the widget to admin users so they can change a
     // task from plan level to CFR level.
-    $log->set('plan_level', TRUE);
+    if ($log->hasField('plan_level')) {
+      $log->set('plan_level', TRUE);
+    }
 
     $form['#log'] = $log;
   }

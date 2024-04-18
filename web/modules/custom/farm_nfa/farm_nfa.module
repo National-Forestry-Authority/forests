@@ -201,6 +201,11 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   $asset = \Drupal::routeMatch()->getParameter('asset');
   $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
   $entity_type = !empty($asset) && $asset->bundle() == 'cfr' ? $asset : $plan;
+
+  if(!$entity_type) {
+    return;
+  }
+
   $route_name = farm_nfa_entity_route_name_by_log_type($entity_type, $entity);
   $route = \Drupal::service('router.route_provider')->getRouteByName($route_name);
 

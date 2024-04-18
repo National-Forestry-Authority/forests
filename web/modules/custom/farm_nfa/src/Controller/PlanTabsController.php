@@ -15,7 +15,13 @@ class PlanTabsController extends ControllerBase {
    */
   public function build(PlanInterface $plan = NULL, $log_types = []) {
     $build = [];
-    $build['logs'] = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
+    if (in_array('activity', $log_types)) {
+      $display = 'embed_plan_level';
+    }
+    else {
+      $display = 'embed';
+    }
+    $build['logs'] = views_embed_view('plan_logs', $display, $plan->id(), implode('+', $log_types));
     return $build;
   }
 
