@@ -421,6 +421,11 @@ function farm_nfa_update_helper(int $version, string $module = 'farm_nfa'): void
  * Implements hook_theme().
  */
 function farm_nfa_theme($existing, $type, $theme, $path) {
+  // We have created a custom template for multiple value field so that we
+  // can remove the default draggable/reorder functionality. We have taken the
+  // login from this core issue: https://www.drupal.org/project/drupal/issues/2264739.
+  // @todo when/if that issue is accepted into core we can remove this template
+  // and its preprocess function.
   return [
     'field_multiple_value_without_order_form' => [
       'render element' => 'element',
