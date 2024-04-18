@@ -18,6 +18,15 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  */
 class ProgramWidget extends WidgetBase {
 
+  protected function formMultipleElements(FieldItemListInterface $items, array &$form, FormStateInterface $form_state) {
+    $elements = parent::formMultipleElements($items, $form, $form_state);
+
+    if ($elements) {
+      $elements['#theme'] = 'field_multiple_value_without_order_form';
+    }
+
+    return $elements;
+  }
   /**
    * {@inheritdoc}
    */
