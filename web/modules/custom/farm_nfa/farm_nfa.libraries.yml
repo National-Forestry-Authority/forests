@@ -44,7 +44,7 @@ farm_nfa_ranges_cfr_layer:
     - core/drupalSettings
     - farm_map/farm_map
 
-farm_nfa_program_tabs:
+farm_nfa_programs:
   css:
     theme:
       css/farm_nfa_program_widget.css: { }

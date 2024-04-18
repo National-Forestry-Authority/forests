@@ -11,6 +11,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\farm_nfa\Form\FarmNfaContentEntityDeleteForm;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
@@ -416,3 +417,74 @@ function farm_nfa_update_helper(int $version, string $module = 'farm_nfa'): void
   $process->run();
 }
 
+/**
+ * Implements hook_theme().
+ */
+function farm_nfa_theme($existing, $type, $theme, $path) {
+  return [
+    'field_multiple_value_without_order_form' => [
+      'render element' => 'element',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for individual form element templates.
+ *
+ * Default template: field-multiple-value-without-order-form.html.twig.
+ *
+ * Combines multiple values.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - element: A render element representing the form element.
+ */
+function farm_nfa_preprocess_field_multiple_value_without_order_form(&$variables) {
+  $element = $variables['element'];
+  $variables['multiple'] = $element['#cardinality_multiple'];
+
+  if ($variables['multiple']) {
+    $items = [];
+    $variables['button'] = [];
+    foreach (Element::children($element) as $key) {
+      if ($key === 'add_more') {
+        $variables['button'] = &$element[$key];
+      }
+      else {
+        $items[$key] = &$element[$key];
+        if (isset($items[$key]['_weight'])) {
+          $items[$key]['_weight']['#access'] = FALSE;
+        }
+      }
+    }
+    usort($items, '_field_multiple_value_form_sort_helper');
+
+    $variables['title'] = [];
+    if (!empty($element['#title'])) {
+      $variables['title'] = [
+        '#type' => 'label',
+        '#title' => $element['#title'],
+        '#required' => !empty($element['#required']) ? $element['#required'] : FALSE,
+        '#title_display' => 'before',
+      ];
+    }
+    $variables['items'] = $items;
+
+    if (!empty($element['#description'])) {
+      $variables['description_display'] = $element['#description_display'];
+      $description_id = $element['#attributes']['aria-describedby'];
+      $description_attributes['id'] = $description_id;
+      $variables['description']['attributes'] = new Attribute($description_attributes);
+      $variables['description']['content'] = $element['#description'];
+
+      // Add the description's id to the items aria attributes.
+      $variables['items']['#attributes']['aria-describedby'] = $element['#attributes']['aria-describedby'];
+    }
+  }
+  else {
+    $variables['elements'] = [];
+    foreach (Element::children($element) as $key) {
+      $variables['elements'][] = $element[$key];
+    }
+  }
+}

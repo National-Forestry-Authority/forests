@@ -1,3 +1,24 @@
-tr.odd .farm-nfa-program-elements .form-item {
-  margin-bottom: 8px;
+.field--type-farm-nfa-program h4 {
+  background: var(--gin-color-primary-light-hover);
+  padding: 16px 24px;
+  border-radius: .5rem;
+}
+
+.field--type-farm-nfa-program h4 > .form-item__label {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.farm-nfa-program-elements {
+  padding: 8px 16px 0;
+  border-bottom: 1px solid var(--gin-border-color-table);
+  border-radius: .5rem;
+}
+
+.farm-nfa-program-elements > .form-type--textfield {
+  margin-top: 0;
+}
+
+.farm-nfa-program-elements:hover {
+  background: var(--gin-bg-item-hover);
 }
