@@ -610,3 +610,10 @@ function farm_nfa_update_9054(&$sandbox) {
 function farm_nfa_update_9055(&$sandbox) {
   farm_nfa_update_helper(9055);
 }
+
+/**
+ * Limit management task CFRs to the current plan.
+ */
+function farm_nfa_update_9056(&$sandbox) {
+  farm_nfa_update_helper(9056);
+}
