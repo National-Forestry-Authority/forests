@@ -81,10 +81,19 @@ function farm_nfa_preprocess_menu__toolbar__gin(&$variables) {
         $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.cfr']['title'] = t('CFRs');
         $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment']['title'] = t('Compartments');
         $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.zone']['title'] = t('Zones');
-        // Switch order of Zones and Compartments.
-        $compartments = $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment'];
-        unset($variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment']);
-        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']['farm.asset.type:farm.asset.compartment'] = $compartments;
+        // Reorder menus according to descending spatial size.
+        $new_order = [
+          'views_view:views.farm_asset.range',
+          'views_view:views.farm_asset.sector',
+          'farm.asset.type:farm.asset.cfr',
+          'farm.asset.type:farm.asset.zone',
+          'farm.asset.type:farm.asset.compartment',
+        ];
+        $new_menu = [];
+        foreach ($new_order as $key) {
+          $new_menu[$key] = $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below'][$key];
+        }
+        $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below'] = $new_menu;
       }
 
       $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['title'] = t('Locations');
