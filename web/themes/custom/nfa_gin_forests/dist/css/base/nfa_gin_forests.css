@@ -2,3 +2,8 @@
   overflow-y: visible;
 }
 
+.farm-map .ol-popup iframe {
+  height: 20px;
+  min-height: 20px;
+}
+
