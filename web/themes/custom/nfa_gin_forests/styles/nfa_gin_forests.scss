@@ -3,3 +3,9 @@
 .view table.views-table td.views-field-operations {
   overflow-y: visible;
 }
+
+// Popups have no content currently so we can make the iframe smaller.
+.farm-map .ol-popup iframe {
+  height: 20px;
+  min-height: 20px;
+}
