@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - asset
-id: asset.field_groups
-label: 'Field groups'
-targetEntityType: asset
-cache: true
