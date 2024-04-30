@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: native
-label: Native
-plugin: native
-configuration: {  }
