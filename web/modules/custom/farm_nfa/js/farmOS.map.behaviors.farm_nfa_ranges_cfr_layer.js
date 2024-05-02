@@ -41,7 +41,7 @@
           })
         }
         instance.addLayer('geojson', {
-          title: 'CFR',
+          title: 'CFRs',
           geojson: geoJson,
           color: 'green',
         })

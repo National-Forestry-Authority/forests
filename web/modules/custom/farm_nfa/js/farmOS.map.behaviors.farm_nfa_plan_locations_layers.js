@@ -4,11 +4,17 @@
       let geometryUrl = ''
       const planId = instance.farmMapSettings.plan
       const assetId = instance.farmMapSettings.asset
-      if (planId) geometryUrl = `/nfa-assets/geojson/${planId}`
-      if (assetId) geometryUrl = `/asset/geojson/${assetId}`
+      if (planId) {
+        geometryUrl = `/nfa-assets/geojson/${planId}`;
+        layerTitle = Drupal.t('Locations')
+      }
+      if (assetId) {
+        geometryUrl = `/asset/geojson/${assetId}`;
+        layerTitle = Drupal.t('Geometry')
+      }
       var url = new URL(geometryUrl, window.location.origin + drupalSettings.path.baseUrl)
       var newLayer = instance.addLayer('geojson', {
-        title: Drupal.t('Locations'),
+        title: layerTitle ?? Drupal.t('Locations'),
         url,
         color: 'orange',
       })

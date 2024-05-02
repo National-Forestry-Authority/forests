@@ -46,6 +46,7 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
 
     $farm_nfa_routes = [
       'farm_nfa.plan.add_task',
+      'entity.asset.gfw_tab',
     ];
     $event->addBehavior('farm_nfa_layerswitcher_sidebar');
     $event->addBehavior('farm_nfa_ranges_cfr_layer');
@@ -60,6 +61,7 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
         'zoom' => FALSE,
       ];
       $event->addSettings($settings);
+      $event->addBehavior('asset_type_layers');
     }
   }
 
