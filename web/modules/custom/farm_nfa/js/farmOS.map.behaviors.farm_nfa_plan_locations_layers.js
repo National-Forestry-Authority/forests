@@ -6,7 +6,7 @@
       const assetId = instance.farmMapSettings.asset
       if (planId) {
         geometryUrl = `/nfa-assets/geojson/${planId}`;
-        layerTitle = Drupal.t('Locations')
+        layerTitle = Drupal.t('CFRs')
       }
       if (assetId) {
         geometryUrl = `/asset/geojson/${assetId}`;
