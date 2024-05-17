@@ -22,8 +22,8 @@ farm_nfa.cfr.add_task:
     _title: 'Add Task'
     _form: 'Drupal\farm_nfa_cfr\Form\ForestCfrManagementForm'
   requirements:
-    _entity_access: 'asset.update'
     _module_dependencies: 'asset'
+    _cfr_plan_access_check: 'TRUE'
     asset: \d+
   options:
     parameters:
@@ -31,4 +31,3 @@ farm_nfa.cfr.add_task:
         type: entity:asset
       bundle:
         - cfr
-      task_route: farm_nfa.cfr.add_task
