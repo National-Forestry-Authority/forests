@@ -3,3 +3,7 @@ services:
     class: Drupal\farm_nfa_cfr\Routing\RouteSubscriber
     tags:
       - { name: 'event_subscriber' }
+  farm_nfa_cfr.cfr_plan_access_check:
+    class: Drupal\farm_nfa_cfr\CfrTaskAccessCheck
+    tags:
+      - { name: access_check, applies_to: _cfr_plan_access_check }
