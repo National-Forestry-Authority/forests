@@ -2,10 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - asset.type.cfr
-    - asset.type.compartment
-    - asset.type.land
-    - asset.type.zone
     - image.style.thumbnail
     - system.menu.admin
   module:

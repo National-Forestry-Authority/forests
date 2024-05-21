@@ -95,6 +95,10 @@ function farm_nfa_preprocess_menu__toolbar__gin(&$variables) {
         ];
         $new_menu = [];
         foreach ($new_order as $key) {
+          $key_exists = array_key_exists($key, $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below']);
+          if (!$key_exists) {
+            continue;
+          }
           $new_menu[$key] = $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below'][$key];
         }
         $variables['items']['farm.records']['below']['views_view:views.farm_asset.page']['below'] = $new_menu;

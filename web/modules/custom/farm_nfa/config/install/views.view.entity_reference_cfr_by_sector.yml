@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - asset.type.cfr
   module:
     - asset
 id: entity_reference_cfr_by_sector

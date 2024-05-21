@@ -1,15 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - field.storage.asset.blocks_units_compartments
-    - field.storage.asset.climate_weather_variation
-    - field.storage.asset.drainage
-    - field.storage.asset.geology_soils
-    - field.storage.asset.landscape_topology
-    - field.storage.asset.management_goals_objectives
-    - field.storage.asset.social_economic_cultural
-    - field.storage.asset.vegetation_biodiversity
   module:
     - asset
     - plan

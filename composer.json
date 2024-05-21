@@ -74,6 +74,8 @@
         "national-forestry-authority/nfa_gin": "^1",
         "national-forestry-authority/nfa_landing": "^1",
         "oomphinc/composer-installers-extender": "^2",
+        "phpunit/phpunit": "^9.6",
+        "weitzman/drupal-test-traits": "^2.2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "minimum-stability": "dev",

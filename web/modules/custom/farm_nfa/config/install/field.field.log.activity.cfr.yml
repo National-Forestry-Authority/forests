@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - asset.type.cfr
     - field.storage.log.cfr
     - log.type.activity
   module:

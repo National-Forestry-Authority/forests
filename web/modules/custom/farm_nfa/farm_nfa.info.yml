@@ -14,11 +14,16 @@ dependencies:
   - drupal:text
   - drupal:telephone
   - drupal:user
+  - drupal:environment_indicator
+  - drupal:symfony_mailer
   - drupal:views
+  - drupal:migrate_plus
+  - drupal:layout_builder_styles
   - element_multiple:element_multiple
   - config_devel:config_devel
   - field_group:field_group
   - farm:asset
+  - farm:farm_inventory
   - farm:farm_entity
   - farm:farm_report
   - farm:farm_land
@@ -29,7 +34,10 @@ dependencies:
   - month_year:month_year
   - select_or_other:select_or_other
   - state_machine:state_machine
+  - block_content:block_content
   - views_geojson:views_geojson
+  - farm_nfa_lb:farm_nfa_lb
+  - ctools:ctools
 
 config_devel:
   - asset.type.forest
