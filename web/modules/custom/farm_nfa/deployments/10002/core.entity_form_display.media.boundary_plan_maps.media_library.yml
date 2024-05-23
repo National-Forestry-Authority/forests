@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.boundary_plan_maps.boundary_plan_number
+    - field.field.media.boundary_plan_maps.field_media_image
+    - field.field.media.boundary_plan_maps.year
+    - image.style.thumbnail
+    - media.type.boundary_plan_maps
+  module:
+    - image
+id: media.boundary_plan_maps.media_library
+targetEntityType: media
+bundle: boundary_plan_maps
+mode: media_library
+content:
+  field_media_image:
+    type: image_image
+    weight: -50
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  boundary_plan_number: true
+  created: true
+  name: true
+  status: true
+  uid: true
+  year: true

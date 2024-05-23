@@ -7,3 +7,40 @@
   min-height: 20px;
 }
 
+@media (min-width: 40em) {
+  .layout--twocol-section--50-50 > .layout__region--first {
+    flex: 0 1 calc(50% - 1em) !important;
+  }
+
+  [dir="ltr"] .layout--twocol-section--50-50 > .layout__region--first {
+    margin-right: 1em;
+  }
+
+  [dir="rtl"] .layout--twocol-section--50-50 > .layout__region--first {
+    margin-left: 1em;
+  }
+
+  .layout--twocol-section--50-50 > .layout__region--second {
+    flex: 0 1 calc(50% - 1em) !important;
+  }
+
+  [dir="ltr"] .layout--twocol-section--50-50 > .layout__region--second {
+    margin-left: 1em;
+  }
+
+  [dir="rtl"] .layout--twocol-section--50-50 > .layout__region--second {
+    margin-right: 1em;
+  }
+}
+
+.plan-gallery img {
+  max-height: 58vh;
+  width: auto;
+}
+
+.plan-gallery .field--name-name {
+  font-weight: var(--gin-font-weight-bold);
+  font-size: var(--gin-font-size-l);
+  margin-bottom: var(--gin-spacing-xs);
+}
+

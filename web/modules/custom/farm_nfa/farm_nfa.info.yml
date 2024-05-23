@@ -45,12 +45,22 @@ config_devel:
   - core.entity_form_display.log.harvest.plan
   - core.entity_form_display.log.observation.default
   - core.entity_form_display.log.observation.plan
+  - core.entity_form_display.media.boundary_demarcation.media_library
+  - core.entity_form_display.media.boundary_plan_maps.media_library
+  - core.entity_form_display.media.predominant_vegetation.media_library
+  - core.entity_form_display.media.sector_plan_map.default
+  - core.entity_form_display.media.sector_plan_map.media_library
   - core.entity_form_display.user.user.default
   - core.entity_form_mode.log.plan
   - core.entity_view_display.asset.land.default
   - core.entity_view_display.log.activity.default
   - core.entity_view_display.log.harvest.default
   - core.entity_view_display.log.observation.default
+  - core.entity_view_display.media.boundary_demarcation.media_library
+  - core.entity_view_display.media.boundary_plan_maps.media_library
+  - core.entity_view_display.media.predominant_vegetation.media_library
+  - core.entity_view_display.media.sector_plan_map.default
+  - core.entity_view_display.media.sector_plan_map.media_library
   - core.entity_view_display.user.user.default
   - core.entity_view_display.user.user.person_in_charge
   - core.entity_view_mode.asset.token
@@ -98,6 +108,9 @@ config_devel:
   - field.field.taxonomy_term.forest_purpose.forest_type
   - field.field.log.observation.coup_number
   - field.field.log.observation.working_circle
+  - field.field.media.sector_plan_map.description
+  - field.field.media.sector_plan_map.field_media_image
+  - field.field.plan.natural.media_image
   - field.field.user.user.contact_phone_number
   - field.storage.asset.area
   - field.storage.asset.person_in_charge
@@ -118,6 +131,7 @@ config_devel:
   - field.storage.log.task_summary
   - field.storage.log.tender_name
   - field.storage.log.working_circle
+  - field.storage.plan.media_image
   - field.storage.user.contact_phone_number
   - filter.format.default
   - gin.settings
@@ -129,6 +143,7 @@ config_devel:
   - log.type.activity
   - log.type.harvest
   - log.type.observation
+  - media.type.sector_plan_map
   - migrate_plus.migration_group.default
   - nfa_gin_forests.settings
   - nfa_landing.settings

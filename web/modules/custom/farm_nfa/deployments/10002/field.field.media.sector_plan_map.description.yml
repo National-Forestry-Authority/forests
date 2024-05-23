@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.description
+    - media.type.sector_plan_map
+  module:
+    - text
+id: media.sector_plan_map.description
+field_name: description
+entity_type: media
+bundle: sector_plan_map
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

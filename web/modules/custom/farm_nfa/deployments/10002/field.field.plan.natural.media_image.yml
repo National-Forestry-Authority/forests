@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.plan.media_image
+    - media.type.sector_plan_map
+    - plan.type.natural
+  module:
+    - entity_reference_validators
+third_party_settings:
+  entity_reference_validators:
+    circular_reference: false
+    circular_reference_deep: false
+    duplicate_reference: false
+id: plan.natural.media_image
+field_name: media_image
+entity_type: plan
+bundle: natural
+label: Maps
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      sector_plan_map: sector_plan_map
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

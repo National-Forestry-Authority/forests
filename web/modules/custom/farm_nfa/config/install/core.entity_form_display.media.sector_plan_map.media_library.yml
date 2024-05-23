@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.sector_plan_map.description
+    - field.field.media.sector_plan_map.field_media_image
+    - image.style.thumbnail
+    - media.type.sector_plan_map
+  module:
+    - image
+    - text
+id: media.sector_plan_map.media_library
+targetEntityType: media
+bundle: sector_plan_map
+mode: media_library
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_image:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

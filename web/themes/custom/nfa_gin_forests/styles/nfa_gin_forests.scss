@@ -9,3 +9,30 @@
   height: 20px;
   min-height: 20px;
 }
+
+// Layout builder layouts.
+@media (min-width: 40em) {
+  .layout--twocol-section--50-50 {
+    > .layout__region--first {
+      flex: 0 1 calc(50% - 1em) !important;
+      margin-right: 1em
+    }
+    > .layout__region--second {
+      flex: 0 1 calc(50% - 1em) !important;
+      margin-left: 1em
+    }
+  }
+}
+
+// Plan maps gallery.
+.plan-gallery {
+  img {
+    max-height: 58vh;
+    width: auto;
+  }
+  .field--name-name {
+    font-weight: var(--gin-font-weight-bold);
+    font-size: var(--gin-font-size-l);
+    margin-bottom: var(--gin-spacing-xs);
+  }
+}

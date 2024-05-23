@@ -14,3 +14,10 @@ function farm_nfa_removed_post_updates() {
     'farm_nfa_post_update_002_add_forest_purpose_terms' => '10.0.0',
   ];
 }
+
+/**
+ * Change layout of plan page and add image gallery
+ */
+function farm_nfa_post_update_10002(&$sandbox) {
+  farm_nfa_update_helper(10002);
+}

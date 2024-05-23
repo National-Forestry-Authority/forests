@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{{ attach_library('nfa_gin_forests/plan_gallery') }}
+
+<div class="plan-gallery swiper">
+  <div class="swiper-wrapper">
+    {% for row in rows %}
+      {%
+        set row_classes = [
+        'swiper-slide',
+      ]
+      %}
+      <div{{ row.attributes.addClass(row_classes) }}>
+        {{- row.content -}}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev bg-black"></div>
+  <div class="swiper-button-next bg-black"></div>
+</div>
