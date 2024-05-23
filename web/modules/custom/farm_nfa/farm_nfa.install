@@ -56,8 +56,25 @@ function farm_nfa_update_last_removed() {
 }
 
 /**
- * Adds permissions form mode and users reference fields to the NFA Plan entity.
+ * Add permissions form mode and users reference fields to the NFA Plan entity.
  */
 function farm_nfa_update_10001(&$sandbox) {
   farm_nfa_update_helper(10001);
+}
+
+/**
+ * Enable media library and media library edit modules.
+ */
+function farm_nfa_update_10002(&$sandbox) {
+  \Drupal::service('module_installer')->install(['media_library']);
+  \Drupal::service('module_installer')->install(['media_library_edit']);
+  // See accompanying farm_nfa_post_update_10002. We do the config import in a
+  // post update because it depends on the media library module.
+}
+
+/**
+ * Change media file system from private to public.
+ */
+function farm_nfa_update_10003(&$sandbox) {
+  farm_nfa_update_helper(10003);
 }

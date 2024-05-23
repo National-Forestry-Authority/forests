@@ -1,44 +1,49 @@
 entity.plan.canonical:
-  title: 'View'
+  title: 'Natural forest'
   route_name: entity.plan.canonical
   base_route: entity.plan.canonical
   weight: 0
 entity.plan.edit_form:
-  title: 'Edit plan'
+  title: 'Edit'
   route_name: entity.plan.edit_form
-  parent_id: entity.plan.canonical
+  base_route: entity.plan.canonical
   weight: 10
 farm_nfa.summary:
   title: 'Summary'
   route_name: entity.plan.canonical
   parent_id: entity.plan.canonical
   weight: 0
-farm_nfa.management:
-  title: 'Management'
-  route_name: entity.plan.management
+entity.plan.maps:
+  title: 'Maps'
+  route_name: entity.plan.maps
   parent_id: entity.plan.canonical
-  weight: 2
-farm_nfa.budget:
-  title: 'Budget'
-  route_name: entity.plan.budget
-  parent_id: entity.plan.canonical
-  weight: 3
-farm_nfa.inventory:
-  title: 'Inventory'
-  route_name: entity.plan.inventory
-  parent_id: entity.plan.canonical
-  weight: 4
-farm_nfa.gfw:
+  weight: 1
+entity.plan.gfw:
   title: 'GFW'
   route_name: entity.plan.gfw
   parent_id: entity.plan.canonical
-  weight: 6
-farm_nfa.permissions:
+  weight: 2
+entity.plan.management:
+  title: 'Management'
+  route_name: entity.plan.management
+  parent_id: entity.plan.canonical
+  weight: 3
+entity.plan.budget:
+  title: 'Budget'
+  route_name: entity.plan.budget
+  parent_id: entity.plan.canonical
+  weight: 4
+entity.plan.inventory:
+  title: 'Inventory'
+  route_name: entity.plan.inventory
+  parent_id: entity.plan.canonical
+  weight: 5
+entity.plan.permissions:
   title: 'Permissions'
   route_name: entity.plan.edit_permissions
   parent_id: entity.plan.canonical
-  weight: 7
-farm_nfa.gfw_tab:
+  weight: 6
+entity.asset.gfw:
   title: 'GFW'
   route_name: entity.asset.gfw_tab
   base_route: entity.asset.canonical

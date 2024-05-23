@@ -31,6 +31,10 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+          "type": "composer",
+          "url": "https://asset-packagist.org"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "lucianocosta/jquery.mtz.monthpicker",
@@ -62,6 +66,7 @@
         "drupal/layout_builder_styles": "^2",
         "drupal/lb_routing": "^1.0",
         "drupal/limited_field_widgets": "^2.1@beta",
+        "drupal/media_library_edit": "^3.0",
         "drupal/migrate_source_csv": "^3",
         "drupal/month_year": "2.0.x-dev",
         "drupal/r4032login": "^2",
@@ -73,6 +78,7 @@
         "lucianocosta/jquery.mtz.monthpicker": "master",
         "national-forestry-authority/nfa_gin": "^1",
         "national-forestry-authority/nfa_landing": "^1",
+        "npm-asset/swiper": "^11.1",
         "oomphinc/composer-installers-extender": "^2",
         "wikimedia/composer-merge-plugin": "^2.0"
     },

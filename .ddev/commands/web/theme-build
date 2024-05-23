@@ -4,4 +4,4 @@
 ## Usage: theme:build
 ## Example: "ddev theme:build"
 
-cd ./web/themes/custom/nfa_gin_forests && npm install && npm run build
+cd ./web/themes/custom/nfa_gin_forests && npm run build
