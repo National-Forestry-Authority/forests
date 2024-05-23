@@ -2,15 +2,24 @@ nfa_gin_forests:
   css:
     theme:
       dist/css/base/nfa_gin_forests.css: { minified: false }
-
 tabs:
   css:
     theme:
       dist/css/components/tabs.css: { }
   js:
     js/tabs.js: { }
-
 forms:
   css:
     theme:
       dist/css/components/forms.css: { minified: false }
+swiper:
+  js:
+    /libraries/swiper/swiper-bundle.min.js: { minified: true }
+  css:
+    component:
+      /libraries/swiper/swiper-bundle.min.css: { minified: true }
+plan_gallery:
+  js:
+    js/plan_gallery.js: { }
+  dependencies:
+    - nfa_gin_forests/swiper

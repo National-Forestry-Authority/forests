@@ -109,6 +109,20 @@ entity.plan.gfw:
     parameters:
       plan:
         type: entity:plan
+entity.plan.maps:
+  path: '/plan/{plan}/maps'
+  defaults:
+    _title: 'Maps'
+    _controller: '\Drupal\farm_nfa\Controller\PlanTabsController::build'
+  requirements:
+    _entity_bundles: 'plan:plantation|natural'
+    _entity_access: 'plan.update'
+    _module_dependencies: 'plan'
+    plan: \d+
+  options:
+    parameters:
+      plan:
+        type: entity:plan
 entity.asset.gfw_tab:
   path: '/asset/{asset}/gfw'
   defaults:

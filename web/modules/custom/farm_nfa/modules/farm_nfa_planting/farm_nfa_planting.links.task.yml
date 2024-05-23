@@ -2,4 +2,4 @@ farm_nfa_planting.planting:
   title: 'Planting'
   route_name: entity.plan.planting
   parent_id: entity.plan.canonical
-  weight: 1
+  weight: 7
