@@ -38,6 +38,10 @@
   width: auto;
 }
 
+.plan-gallery .field--name-field-media-image {
+  text-align: center;
+}
+
 .plan-gallery .field--name-name {
   font-weight: var(--gin-font-weight-bold);
   font-size: var(--gin-font-size-l);
