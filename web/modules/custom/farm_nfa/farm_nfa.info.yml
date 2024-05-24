@@ -131,6 +131,8 @@ config_devel:
   - field.storage.log.task_summary
   - field.storage.log.tender_name
   - field.storage.log.working_circle
+  - field.storage.media.description
+  - field.storage.media.field_media_image
   - field.storage.plan.media_image
   - field.storage.user.contact_phone_number
   - filter.format.default

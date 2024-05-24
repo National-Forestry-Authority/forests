@@ -207,8 +207,6 @@ config_devel:
   - field.storage.asset.zonation_description
   - field.storage.asset.zonation_map_file_upload
   - field.storage.media.boundary_plan_number
-  - field.storage.media.description
-  - field.storage.media.field_media_image
   - field.storage.media.year
   - media.type.boundary_demarcation
   - media.type.boundary_plan_maps

@@ -71,3 +71,10 @@ function farm_nfa_update_10002(&$sandbox) {
   // See accompanying farm_nfa_post_update_10002. We do the config import in a
   // post update because it depends on the media library module.
 }
+
+/**
+ * Change media file system from private to public.
+ */
+function farm_nfa_update_10003(&$sandbox) {
+  farm_nfa_update_helper(10003);
+}
