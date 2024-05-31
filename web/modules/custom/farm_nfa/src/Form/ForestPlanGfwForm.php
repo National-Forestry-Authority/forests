@@ -65,14 +65,14 @@ class ForestPlanGfwForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Set the form title.
     $form['#title'] = $this->t('GFW');
-    $node = $this->routeMatch->getParameter('asset');
+    $asset = $this->routeMatch->getParameter('asset');
     $assetType = '';
     $landType = '';
-    if ($node) {
-      $assetType = $node->bundle();
+    if ($asset) {
+      $assetType = $asset->bundle();
     }
-    if ($node && $node->hasField('land_type') && !$node->get('land_type')->isEmpty()) {
-      $landType = $node->get('land_type')->value;
+    if ($asset && $asset->hasField('land_type') && !$asset->get('land_type')->isEmpty()) {
+      $landType = $asset->get('land_type')->value;
     }
 
     $form['gfw_map'] = [
@@ -83,7 +83,6 @@ class ForestPlanGfwForm extends FormBase {
         'asset' => $this->routeMatch->getRawParameter('asset'),
         'host' => $this->request->getHost(),
         'asset_type' => $assetType,
-        'base_query' => 'SELECT latitude,longitude FROM results',
         'land_type' => $landType,
       ],
       '#attached' => [
