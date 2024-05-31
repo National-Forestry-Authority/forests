@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{# @todo remove this when https://www.drupal.org/project/gin_lb/issues/3426687 is resolved #}
+<div id="gin_sidebar" class="layout-region">
+  <div class="glb-sidebar__content">
+  <div class="glb-sidebar__titlebar">
+    <div class="glb-sidebar__title">{{ "Layout builder setting"|t }}</div>
+  </div>
+  <form{{ attributes }}>
+    {{ children }}
+  </form>
+  </div>
+</div>
