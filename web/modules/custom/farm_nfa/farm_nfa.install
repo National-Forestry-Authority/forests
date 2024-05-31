@@ -78,3 +78,10 @@ function farm_nfa_update_10002(&$sandbox) {
 function farm_nfa_update_10003(&$sandbox) {
   farm_nfa_update_helper(10003);
 }
+
+/**
+ * Fix sector and range layouts.
+ */
+function farm_nfa_update_10004(&$sandbox) {
+  farm_nfa_update_helper(10004);
+}

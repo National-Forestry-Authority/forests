@@ -48,3 +48,14 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
+.asset > .layout > .layout__region > .block {
+  margin-bottom: 2rem;
+}
+
+.map-with-datepicker .daterange-picker-help {
+  font-weight: bold;
+  font-size: .8rem;
+}
+
+
+/*# sourceMappingURL=nfa_gin_forests.css.map*/
