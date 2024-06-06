@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+    - field.storage.asset.cfr_global_id
+id: asset.cfr.cfr_global_id
+field_name: cfr_global_id
+entity_type: asset
+bundle: cfr
+label: 'CFR global ID'
+description: 'Global CFR identifier for NFA websites'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

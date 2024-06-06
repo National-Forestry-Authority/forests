@@ -27,7 +27,7 @@ class MapWithDatepickerFormatter extends GeofieldFormatter {
 
     $element['datepicker'] = [
       '#type' => 'daterangepicker',
-      '#prefix' => '<div class="daterange-picker">',
+      '#prefix' => '<div class="daterange-picker"><div class="field__label">' . $this->t('GFW alerts date range') . '</div>',
       '#suffix' => '</div>',
       '#DateRangePickerOptions' => [
         'initial_text' => $this->t('Select date range...'),

@@ -44,6 +44,7 @@ config_devel:
   - field.field.asset.cfr.boundary_demarcation
   - field.field.asset.cfr.boundary_plan
   - field.field.asset.cfr.boundary_surveys_maintenance
+  - field.field.asset.cfr.cfr_global_id
   - field.field.asset.cfr.chemical_application_in_forestry
   - field.field.asset.cfr.climate_change_mitigation
   - field.field.asset.cfr.climate_weather_variation
@@ -133,6 +134,7 @@ config_devel:
   - field.storage.asset.boundary_demarcation
   - field.storage.asset.boundary_plan
   - field.storage.asset.boundary_surveys_maintenance
+  - field.storage.asset.cfr_global_id
   - field.storage.asset.chemical_application_in_forestry
   - field.storage.asset.climate_change_mitigation
   - field.storage.asset.collaboration_with_naforri
