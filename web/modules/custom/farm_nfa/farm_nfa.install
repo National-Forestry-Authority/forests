@@ -85,3 +85,11 @@ function farm_nfa_update_10003(&$sandbox) {
 function farm_nfa_update_10004(&$sandbox) {
   farm_nfa_update_helper(10004);
 }
+
+
+/**
+ * Add CFR global id field.
+ */
+function farm_nfa_update_10005(&$sandbox) {
+  farm_nfa_update_helper(10005);
+}
