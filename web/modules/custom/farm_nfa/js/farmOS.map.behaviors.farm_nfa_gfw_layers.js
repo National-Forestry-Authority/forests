@@ -2,6 +2,13 @@
 // to the map in the GFW tab.
 // The code uses the Global Forest Watch API to get the fire and deforestation
 // alerts data and displays it in a layer on the map.
+let gfwGeoDataValues = [];
+const gfwGeoListOptions = {
+  pagination: true,
+  page: 10,
+  valueNames: [ 'latitude', 'longitude', 'alertType', 'timeStamp' ],
+  item: '<tr><td class="latitude"></td><td class="longitude"></td><td class="alertType"></td><td class="timeStamp"></td></tr>'
+};
 (function ($, Drupal) {
   farmOS.map.behaviors.farm_nfa_gfw_layers = {
     attach: async function (instance) {
@@ -30,6 +37,7 @@
         // Add the date range picker.
         const dateRangePickerOptions = {
           change: function () {
+            gfwGeoDataValues = [];
             updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry);
           },
 
@@ -44,8 +52,18 @@
         dateRangePickerHelp && (dateRangePickerHelp.innerText = 'Select the date range for the fire and deforestation alerts.');
 
         // Open the date range picker by default.
-        //const dateRangePickerElement = document.querySelector('.daterangepicker-container button');
-        //dateRangePickerElement && dateRangePickerElement.click();
+        // const dateRangePickerElement = document.querySelector('.daterangepicker-container button');
+        // dateRangePickerElement && dateRangePickerElement.click();
+        instance.popup.on('farmOS-map.popup', function (event) {
+          event.preventDefault();
+          var link = event.target.element.querySelector('.ol-popup-name a');
+          if (link) {
+            const description = event.target.element.querySelector('.ol-popup-description iframe');
+            if (!description) return console.log('description not found');
+            description.style.display = 'none';
+          }
+        });
+
       }
     }
   }
@@ -69,6 +87,34 @@ async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, 
     await Promise.all(mapLayers);
   } catch (err) {}
   map.getTargetElement().classList.remove('spinner');
+  const gfwList = document.getElementById('gfw-list');
+  if (gfwList) gfwList.remove();
+  const gfwListBoilerPlate = `
+    <div id="gfw-list">
+      <table>
+        <thead>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th class="sort" data-sort="alertType">Alert Type ↑</th>
+          <th class="sort" data-sort="timeStamp">Timestamp ↑</th>
+        </thead>
+        <tbody class="list">
+        </tbody>
+      </table>
+    <div class="pagination"></div>
+  `
+  const gfwListElement = document.createElement('div');
+  gfwListElement.innerHTML = gfwListBoilerPlate;
+  const gfwParentContainer = document.querySelector('#block-nfa-gin-forests-content');
+  gfwParentContainer?.appendChild(gfwListElement);
+  const sortButtons = document.querySelectorAll('.sort');
+  sortButtons?.forEach((button) => {
+    button?.addEventListener('click', function (e) {
+      const text = e.target.innerText;
+      button.innerText = text.includes('↑') ? text.replace('↑', '↓') : text.replace('↓', '↑');
+    });
+  });
+  new List('gfw-list', gfwGeoListOptions, gfwGeoDataValues);
 }
 
 // Extract the start and end date from the date range picker.
@@ -112,10 +158,9 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
     }
     const hasBothDateRange = startDate && endDate;
     const hasSingleDateRange = startDate && !endDate;
-    const baseQuery = instance.farmMapSettings.base_query;
-    // Configure the query to get the data from GFW API.
-    let query = `SELECT latitude,longitude FROM results WHERE ${mapType === "fire" ? `iso = 'UGA' AND ` : ''}`;
     const dateParameter = mapType === "fire" ? "alert__date" : "gfw_integrated_alerts__date";
+    // Configure the query to get the data from GFW API.
+    let query = `SELECT latitude, longitude, ${dateParameter} FROM results WHERE ${mapType === "fire" ? `iso = 'UGA' AND ` : ''}`;
     if (hasBothDateRange) query += `${dateParameter} >= '${startDate}' AND ${dateParameter} <= '${endDate}'`;
     else if (hasSingleDateRange) query += `${dateParameter} = '${startDate}'`;
 
@@ -154,15 +199,21 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
         if (locations) {
           locations.forEach((location) => {
             let latLongArray = [location.longitude, location.latitude];
+            let popupDescription = mapType === "fire" ? `Fire Alert` : `Deforestation Alert`;
+            popupDescription += `<br> ${location[dateParameter]}`;
             let geoJsonFeature = {
               "type": "Feature",
-              "properties": {},
+              "properties": {
+                "name": `<a>${location.longitude}, ${location.latitude}</a>`,
+                "description": popupDescription
+              },
               "geometry": {
                 "coordinates": latLongArray,
                 "type": "Point"
               }
             };
             geoJson.features.push(geoJsonFeature);
+            gfwGeoDataValues.push({ latitude: location.latitude, longitude: location.longitude, alertType: mapType, timeStamp: location[dateParameter] });
           })
         }
       });
