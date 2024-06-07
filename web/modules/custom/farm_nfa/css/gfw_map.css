@@ -24,3 +24,27 @@
 .daterangepicker-container {
   margin-bottom: 0px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li {
+  display:inline-block;
+  padding:5px;
+}
+
+.sort {
+  cursor: pointer;
+}
+
+.sort:hover {
+  border-bottom: 2px solid#004d3f;
+}
+
+.sort-buttons {
+  padding: 15px;
+  display: flex;
+}
