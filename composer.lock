@@ -5614,6 +5614,18 @@
             }
         },
         {
+            "name": "javve/list.js",
+            "version": "2.3.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/javve/list.js/archive/refs/tags/v2.3.1.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "list.js"
+            }
+        },
+        {
             "name": "galbar/jsonpath",
             "version": "1.3.1",
             "source": {
