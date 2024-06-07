@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f3f1b39e5874a4fd5085fceec688ebe",
+    "content-hash": "7ead3e852761dd72415a94350586d3a7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5507,6 +5507,18 @@
             "type": "drupal-library",
             "extra": {
                 "installer-name": "farmOS-map"
+            }
+        },
+        {
+            "name": "javve/list.js",
+            "version": "2.3.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/javve/list.js/archive/refs/tags/v2.3.1.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "list.js"
             }
         },
         {
@@ -17383,5 +17395,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

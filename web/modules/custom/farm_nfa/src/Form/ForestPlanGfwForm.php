@@ -83,7 +83,6 @@ class ForestPlanGfwForm extends FormBase {
         'asset' => $this->routeMatch->getRawParameter('asset'),
         'host' => $this->request->getHost(),
         'asset_type' => $assetType,
-        'base_query' => 'SELECT latitude,longitude FROM results',
         'land_type' => $landType,
       ],
       '#attached' => [
