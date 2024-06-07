@@ -23,6 +23,7 @@ behavior_farm_nfa_gfw_layers:
     - core/drupalSettings
     - farm_map/farm_map
     - farm_map/behavior_popup
+    - farm_nfa/jquery_ui_gfw_list
 
 search_autocomplete:
   js:
@@ -36,6 +37,13 @@ farm_nfa_layerswitcher_sidebar:
   dependencies:
     - core/drupalSettings
     - farm_map/farm_map
+
+jquery_ui_gfw_list:
+  js:
+    /libraries/list.js/dist/list.min.js: { }
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
 
 farm_nfa_land_cfr_layer:
   js:

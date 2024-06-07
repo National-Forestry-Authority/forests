@@ -46,6 +46,19 @@
                     "reference":"master"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "javve/list.js",
+                "version": "2.3.1",
+                "type": "drupal-library",
+                "source": {
+                    "type": "zip",
+                    "url": "https://github.com/javve/list.js/archive/refs/tags/v2.3.1.zip",
+                    "reference":"master"
+                }
+            }
         }
     ],
     "require": {
