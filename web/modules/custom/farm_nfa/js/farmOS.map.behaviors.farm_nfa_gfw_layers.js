@@ -200,7 +200,7 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
           locations.forEach((location) => {
             let latLongArray = [location.longitude, location.latitude];
             let popupDescription = mapType === "fire" ? `Fire Alert` : `Deforestation Alert`;
-            popupDescription += `<br> ${location[dateParameter]}`;
+            popupDescription += `<br> ${location[dateParameter]} <br>`;
             let geoJsonFeature = {
               "type": "Feature",
               "properties": {
