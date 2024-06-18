@@ -49,7 +49,7 @@ const gfwGeoListOptions = {
 
         // Find .daterange-picker-help and change the text to the desired text.
         const dateRangePickerHelp = document.querySelector('.daterange-picker-help');
-        dateRangePickerHelp && (dateRangePickerHelp.innerText = 'Select the date range for the fire and deforestation alerts.');
+        dateRangePickerHelp && (dateRangePickerHelp.innerText = 'Click to select the date range for the fire and deforestation alerts.');
 
         // Open the date range picker by default.
         // const dateRangePickerElement = document.querySelector('.daterangepicker-container button');
