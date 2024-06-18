@@ -94,7 +94,7 @@ class ForestPlanGfwForm extends FormBase {
 
     $form['range'] = [
       '#type' => 'daterangepicker',
-      '#prefix' => '<div class="daterange-picker">',
+      '#prefix' => '<div class="daterange-picker"><div class="field__label">' . $this->t('GFW alerts date range') . '</div>',
       '#suffix' => '</div>',
       '#DateRangePickerOptions' => [
         'initial_text' => $this->t('Select date range...'),
@@ -109,6 +109,13 @@ class ForestPlanGfwForm extends FormBase {
           'number_of_months' => 2,
         ],
       ],
+    ];
+
+    $form['datepicker_help'] = [
+      '#type' => 'markup',
+      '#markup' => t('Click to select the date range'),
+      '#prefix' => '<div class="daterange-picker-help">',
+      '#suffix' => '</div>',
     ];
 
     return $form;
