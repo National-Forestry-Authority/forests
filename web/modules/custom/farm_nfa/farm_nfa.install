@@ -93,3 +93,10 @@ function farm_nfa_update_10004(&$sandbox) {
 function farm_nfa_update_10005(&$sandbox) {
   farm_nfa_update_helper(10005);
 }
+
+/**
+ * Configure JSON:API for CFRs only.
+ */
+function farm_nfa_update_10006(&$sandbox) {
+  farm_nfa_update_helper(10006);
+}

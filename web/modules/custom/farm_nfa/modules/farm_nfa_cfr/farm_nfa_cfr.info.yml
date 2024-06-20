@@ -210,6 +210,7 @@ config_devel:
   - field.storage.asset.zonation_map_file_upload
   - field.storage.media.boundary_plan_number
   - field.storage.media.year
+  - jsonapi_extras.jsonapi_resource_config.asset--cfr
   - media.type.boundary_demarcation
   - media.type.boundary_plan_maps
   - media.type.predominant_vegetation

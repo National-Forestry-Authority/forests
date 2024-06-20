@@ -1,0 +1,688 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - asset.type.cfr
+id: asset--cfr
+disabled: false
+path: asset/cfr
+resourceType: asset--cfr
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: true
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  revision_id:
+    disabled: true
+    fieldName: revision_id
+    publicName: revision_id
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_created:
+    disabled: true
+    fieldName: revision_created
+    publicName: revision_created
+    enhancer:
+      id: ''
+  revision_user:
+    disabled: true
+    fieldName: revision_user
+    publicName: revision_user
+    enhancer:
+      id: ''
+  revision_log_message:
+    disabled: true
+    fieldName: revision_log_message
+    publicName: revision_log_message
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  name:
+    disabled: true
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  status:
+    disabled: true
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  archived:
+    disabled: true
+    fieldName: archived
+    publicName: archived
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: true
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: true
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  data:
+    disabled: true
+    fieldName: data
+    publicName: data
+    enhancer:
+      id: ''
+  file:
+    disabled: true
+    fieldName: file
+    publicName: file
+    enhancer:
+      id: ''
+  image:
+    disabled: true
+    fieldName: image
+    publicName: image
+    enhancer:
+      id: ''
+  notes:
+    disabled: true
+    fieldName: notes
+    publicName: notes
+    enhancer:
+      id: ''
+  flag:
+    disabled: true
+    fieldName: flag
+    publicName: flag
+    enhancer:
+      id: ''
+  id_tag:
+    disabled: true
+    fieldName: id_tag
+    publicName: id_tag
+    enhancer:
+      id: ''
+  location:
+    disabled: true
+    fieldName: location
+    publicName: location
+    enhancer:
+      id: ''
+  geometry:
+    disabled: true
+    fieldName: geometry
+    publicName: geometry
+    enhancer:
+      id: ''
+  intrinsic_geometry:
+    disabled: false
+    fieldName: intrinsic_geometry
+    publicName: intrinsic_geometry
+    enhancer:
+      id: ''
+  is_location:
+    disabled: true
+    fieldName: is_location
+    publicName: is_location
+    enhancer:
+      id: ''
+  is_fixed:
+    disabled: true
+    fieldName: is_fixed
+    publicName: is_fixed
+    enhancer:
+      id: ''
+  owner:
+    disabled: true
+    fieldName: owner
+    publicName: owner
+    enhancer:
+      id: ''
+  parent:
+    disabled: true
+    fieldName: parent
+    publicName: parent
+    enhancer:
+      id: ''
+  action_plans_rare_species:
+    disabled: true
+    fieldName: action_plans_rare_species
+    publicName: action_plans_rare_species
+    enhancer:
+      id: ''
+  applied_research_by_fma_staff:
+    disabled: true
+    fieldName: applied_research_by_fma_staff
+    publicName: applied_research_by_fma_staff
+    enhancer:
+      id: ''
+  area:
+    disabled: true
+    fieldName: area
+    publicName: area
+    enhancer:
+      id: ''
+  authorisation_of_research:
+    disabled: true
+    fieldName: authorisation_of_research
+    publicName: authorisation_of_research
+    enhancer:
+      id: ''
+  biodiversity_inventories:
+    disabled: true
+    fieldName: biodiversity_inventories
+    publicName: biodiversity_inventories
+    enhancer:
+      id: ''
+  blocks_units_compartments:
+    disabled: true
+    fieldName: blocks_units_compartments
+    publicName: blocks_units_compartments
+    enhancer:
+      id: ''
+  boundary_demarcation:
+    disabled: true
+    fieldName: boundary_demarcation
+    publicName: boundary_demarcation
+    enhancer:
+      id: ''
+  boundary_plan:
+    disabled: true
+    fieldName: boundary_plan
+    publicName: boundary_plan
+    enhancer:
+      id: ''
+  boundary_surveys_maintenance:
+    disabled: true
+    fieldName: boundary_surveys_maintenance
+    publicName: boundary_surveys_maintenance
+    enhancer:
+      id: ''
+  cfr_global_id:
+    disabled: false
+    fieldName: cfr_global_id
+    publicName: cfr_global_id
+    enhancer:
+      id: ''
+  chemical_application_in_forestry:
+    disabled: true
+    fieldName: chemical_application_in_forestry
+    publicName: chemical_application_in_forestry
+    enhancer:
+      id: ''
+  climate_change_mitigation:
+    disabled: true
+    fieldName: climate_change_mitigation
+    publicName: climate_change_mitigation
+    enhancer:
+      id: ''
+  climate_weather_variation:
+    disabled: true
+    fieldName: climate_weather_variation
+    publicName: climate_weather_variation
+    enhancer:
+      id: ''
+  collaboration_with_naforri:
+    disabled: true
+    fieldName: collaboration_with_naforri
+    publicName: collaboration_with_naforri
+    enhancer:
+      id: ''
+  community_benefits:
+    disabled: true
+    fieldName: community_benefits
+    publicName: community_benefits
+    enhancer:
+      id: ''
+  community_forest_mgmt_roles:
+    disabled: true
+    fieldName: community_forest_mgmt_roles
+    publicName: community_forest_mgmt_roles
+    enhancer:
+      id: ''
+  community_infrastructure:
+    disabled: true
+    fieldName: community_infrastructure
+    publicName: community_infrastructure
+    enhancer:
+      id: ''
+  community_organisation:
+    disabled: true
+    fieldName: community_organisation
+    publicName: community_organisation
+    enhancer:
+      id: ''
+  community_participation:
+    disabled: true
+    fieldName: community_participation
+    publicName: community_participation
+    enhancer:
+      id: ''
+  demo_forest_ecosystem_services:
+    disabled: true
+    fieldName: demo_forest_ecosystem_services
+    publicName: demo_forest_ecosystem_services
+    enhancer:
+      id: ''
+  description_of_plans_and_sheets:
+    disabled: true
+    fieldName: description_of_plans_and_sheets
+    publicName: description_of_plans_and_sheets
+    enhancer:
+      id: ''
+  drainage:
+    disabled: true
+    fieldName: drainage
+    publicName: drainage
+    enhancer:
+      id: ''
+  environmental_values:
+    disabled: true
+    fieldName: environmental_values
+    publicName: environmental_values
+    enhancer:
+      id: ''
+  est_year_gazetted:
+    disabled: true
+    fieldName: est_year_gazetted
+    publicName: est_year_gazetted
+    enhancer:
+      id: ''
+  feedback_research_findings:
+    disabled: true
+    fieldName: feedback_research_findings
+    publicName: feedback_research_findings
+    enhancer:
+      id: ''
+  fire_protection:
+    disabled: true
+    fieldName: fire_protection
+    publicName: fire_protection
+    enhancer:
+      id: ''
+  forest_infrastructure:
+    disabled: true
+    fieldName: forest_infrastructure
+    publicName: forest_infrastructure
+    enhancer:
+      id: ''
+  forest_landscape_restoration:
+    disabled: true
+    fieldName: forest_landscape_restoration
+    publicName: forest_landscape_restoration
+    enhancer:
+      id: ''
+  forest_products_growth_yield:
+    disabled: true
+    fieldName: forest_products_growth_yield
+    publicName: forest_products_growth_yield
+    enhancer:
+      id: ''
+  forest_products_inventories:
+    disabled: true
+    fieldName: forest_products_inventories
+    publicName: forest_products_inventories
+    enhancer:
+      id: ''
+  forest_roads:
+    disabled: true
+    fieldName: forest_roads
+    publicName: forest_roads
+    enhancer:
+      id: ''
+  forest_stations_and_buildings:
+    disabled: true
+    fieldName: forest_stations_and_buildings
+    publicName: forest_stations_and_buildings
+    enhancer:
+      id: ''
+  funding_arrangements:
+    disabled: true
+    fieldName: funding_arrangements
+    publicName: funding_arrangements
+    enhancer:
+      id: ''
+  general_description:
+    disabled: true
+    fieldName: general_description
+    publicName: general_description
+    enhancer:
+      id: ''
+  geology_soils:
+    disabled: true
+    fieldName: geology_soils
+    publicName: geology_soils
+    enhancer:
+      id: ''
+  harvesting_activities:
+    disabled: true
+    fieldName: harvesting_activities
+    publicName: harvesting_activities
+    enhancer:
+      id: ''
+  high_conservation_values:
+    disabled: true
+    fieldName: high_conservation_values
+    publicName: high_conservation_values
+    enhancer:
+      id: ''
+  historical_context:
+    disabled: true
+    fieldName: historical_context
+    publicName: historical_context
+    enhancer:
+      id: ''
+  human_wildlife_conflict:
+    disabled: true
+    fieldName: human_wildlife_conflict
+    publicName: human_wildlife_conflict
+    enhancer:
+      id: ''
+  impacts_forest_mgmt_operations:
+    disabled: true
+    fieldName: impacts_forest_mgmt_operations
+    publicName: impacts_forest_mgmt_operations
+    enhancer:
+      id: ''
+  indigenous_peoples_community:
+    disabled: true
+    fieldName: indigenous_peoples_community
+    publicName: indigenous_peoples_community
+    enhancer:
+      id: ''
+  issues_concerns:
+    disabled: true
+    fieldName: issues_concerns
+    publicName: issues_concerns
+    enhancer:
+      id: ''
+  key_resources:
+    disabled: true
+    fieldName: key_resources
+    publicName: key_resources
+    enhancer:
+      id: ''
+  landscape_connectivity:
+    disabled: true
+    fieldName: landscape_connectivity
+    publicName: landscape_connectivity
+    enhancer:
+      id: ''
+  landscape_topology:
+    disabled: true
+    fieldName: landscape_topology
+    publicName: landscape_topology
+    enhancer:
+      id: ''
+  land_use_and_forest_condition:
+    disabled: true
+    fieldName: land_use_and_forest_condition
+    publicName: land_use_and_forest_condition
+    enhancer:
+      id: ''
+  legal_category:
+    disabled: true
+    fieldName: legal_category
+    publicName: legal_category
+    enhancer:
+      id: ''
+  legal_customary_rights:
+    disabled: true
+    fieldName: legal_customary_rights
+    publicName: legal_customary_rights
+    enhancer:
+      id: ''
+  livelihoods_in_the_fma_zone:
+    disabled: true
+    fieldName: livelihoods_in_the_fma_zone
+    publicName: livelihoods_in_the_fma_zone
+    enhancer:
+      id: ''
+  management_goals_objectives:
+    disabled: true
+    fieldName: management_goals_objectives
+    publicName: management_goals_objectives
+    enhancer:
+      id: ''
+  map_ref_sheets:
+    disabled: true
+    fieldName: map_ref_sheets
+    publicName: map_ref_sheets
+    enhancer:
+      id: ''
+  map_sheet_uploads:
+    disabled: true
+    fieldName: map_sheet_uploads
+    publicName: map_sheet_uploads
+    enhancer:
+      id: ''
+  monitoring_evaluations:
+    disabled: true
+    fieldName: monitoring_evaluations
+    publicName: monitoring_evaluations
+    enhancer:
+      id: ''
+  monitoring_forest_governance:
+    disabled: true
+    fieldName: monitoring_forest_governance
+    publicName: monitoring_forest_governance
+    enhancer:
+      id: ''
+  opportunities:
+    disabled: true
+    fieldName: opportunities
+    publicName: opportunities
+    enhancer:
+      id: ''
+  original_management_objectives:
+    disabled: true
+    fieldName: original_management_objectives
+    publicName: original_management_objectives
+    enhancer:
+      id: ''
+  participatory_development:
+    disabled: true
+    fieldName: participatory_development
+    publicName: participatory_development
+    enhancer:
+      id: ''
+  partnerships:
+    disabled: true
+    fieldName: partnerships
+    publicName: partnerships
+    enhancer:
+      id: ''
+  previous_management_track_record:
+    disabled: true
+    fieldName: previous_management_track_record
+    publicName: previous_management_track_record
+    enhancer:
+      id: ''
+  priority_actions:
+    disabled: true
+    fieldName: priority_actions
+    publicName: priority_actions
+    enhancer:
+      id: ''
+  progress_mgmt_environment:
+    disabled: true
+    fieldName: progress_mgmt_environment
+    publicName: progress_mgmt_environment
+    enhancer:
+      id: ''
+  progress_mgmt_hcvs:
+    disabled: true
+    fieldName: progress_mgmt_hcvs
+    publicName: progress_mgmt_hcvs
+    enhancer:
+      id: ''
+  proposed_strategies:
+    disabled: true
+    fieldName: proposed_strategies
+    publicName: proposed_strategies
+    enhancer:
+      id: ''
+  protection_against_illegal_acts:
+    disabled: true
+    fieldName: protection_against_illegal_acts
+    publicName: protection_against_illegal_acts
+    enhancer:
+      id: ''
+  representative_sample_areas:
+    disabled: true
+    fieldName: representative_sample_areas
+    publicName: representative_sample_areas
+    enhancer:
+      id: ''
+  research_by_professionals:
+    disabled: true
+    fieldName: research_by_professionals
+    publicName: research_by_professionals
+    enhancer:
+      id: ''
+  serial:
+    disabled: true
+    fieldName: serial
+    publicName: serial
+    enhancer:
+      id: ''
+  silvicultural_field_operations:
+    disabled: true
+    fieldName: silvicultural_field_operations
+    publicName: silvicultural_field_operations
+    enhancer:
+      id: ''
+  size_location_desc:
+    disabled: true
+    fieldName: size_location_desc
+    publicName: size_location_desc
+    enhancer:
+      id: ''
+  social_economic_cultural:
+    disabled: true
+    fieldName: social_economic_cultural
+    publicName: social_economic_cultural
+    enhancer:
+      id: ''
+  threats_assessment:
+    disabled: true
+    fieldName: threats_assessment
+    publicName: threats_assessment
+    enhancer:
+      id: ''
+  total_boundary_length:
+    disabled: true
+    fieldName: total_boundary_length
+    publicName: total_boundary_length
+    enhancer:
+      id: ''
+  total_cutline_length:
+    disabled: true
+    fieldName: total_cutline_length
+    publicName: total_cutline_length
+    enhancer:
+      id: ''
+  total_economic_valuation_fma:
+    disabled: true
+    fieldName: total_economic_valuation_fma
+    publicName: total_economic_valuation_fma
+    enhancer:
+      id: ''
+  total_natural_boundary_length:
+    disabled: true
+    fieldName: total_natural_boundary_length
+    publicName: total_natural_boundary_length
+    enhancer:
+      id: ''
+  tourism_development:
+    disabled: true
+    fieldName: tourism_development
+    publicName: tourism_development
+    enhancer:
+      id: ''
+  vegetation:
+    disabled: true
+    fieldName: vegetation
+    publicName: vegetation
+    enhancer:
+      id: ''
+  vegetation_biodiversity:
+    disabled: true
+    fieldName: vegetation_biodiversity
+    publicName: vegetation_biodiversity
+    enhancer:
+      id: ''
+  water_bodies_riparian_zones:
+    disabled: true
+    fieldName: water_bodies_riparian_zones
+    publicName: water_bodies_riparian_zones
+    enhancer:
+      id: ''
+  year_of_survey:
+    disabled: true
+    fieldName: year_of_survey
+    publicName: year_of_survey
+    enhancer:
+      id: ''
+  zonation_date:
+    disabled: true
+    fieldName: zonation_date
+    publicName: zonation_date
+    enhancer:
+      id: ''
+  zonation_description:
+    disabled: true
+    fieldName: zonation_description
+    publicName: zonation_description
+    enhancer:
+      id: ''
+  zonation_map_file_upload:
+    disabled: true
+    fieldName: zonation_map_file_upload
+    publicName: zonation_map_file_upload
+    enhancer:
+      id: ''
