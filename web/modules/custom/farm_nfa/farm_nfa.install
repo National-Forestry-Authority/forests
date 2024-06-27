@@ -107,3 +107,10 @@ function farm_nfa_update_10006(&$sandbox) {
 function farm_nfa_update_10007(&$sandbox) {
   farm_nfa_update_helper(10007);
 }
+
+/**
+ * Configure OAuth2 private key directory.
+ */
+function farm_nfa_update_10008(&$sandbox) {
+  farm_nfa_update_helper(10008);
+}

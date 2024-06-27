@@ -46,12 +46,15 @@ class FarmNfaAssetPresaveEventSubscriber implements EventSubscriberInterface {
   public function onAssetPresave(AssetEvent $event): void {
     // If the update is from a JSON:API request, do not allow the cfr_global_id
     // field to be overwritten.
-    $defaults = $this->routeMatch->getRouteObject()->getDefaults();
-    if (!empty($defaults['_is_jsonapi']) && !empty($defaults['resource_type'])) {
-      $asset = $event->asset;
-      if ($asset->bundle() === 'cfr') {
-        $original = $asset->original;
-        $asset->cfr_global_id->setValue($original->cfr_global_id->value);
+    $route = $this->routeMatch->getRouteObject();
+    if (!empty($route)) {
+      $defaults = $route->getDefaults();
+      if (!empty($defaults['_is_jsonapi']) && !empty($defaults['resource_type'])) {
+        $asset = $event->asset;
+        if ($asset->bundle() === 'cfr') {
+          $original = $asset->original;
+          $asset->cfr_global_id->setValue($original->cfr_global_id->value);
+        }
       }
     }
   }
