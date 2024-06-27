@@ -23,3 +23,13 @@ services:
     class: Drupal\farm_nfa\PlanEditRouteChecker
     tags:
       - { name: access_check, applies_to: _edit_access_check }
+  farm_nfa.route_subscriber:
+    class: Drupal\farm_nfa\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  farm_nfa.asset_presave_event_subscriber:
+    class: Drupal\farm_nfa\EventSubscriber\FarmNfaAssetPresaveEventSubscriber
+    arguments:
+      [ '@current_route_match' ]
+    tags:
+      - { name: 'event_subscriber' }

@@ -100,3 +100,10 @@ function farm_nfa_update_10005(&$sandbox) {
 function farm_nfa_update_10006(&$sandbox) {
   farm_nfa_update_helper(10006);
 }
+
+/**
+ * Add JSON:API user role.
+ */
+function farm_nfa_update_10007(&$sandbox) {
+  farm_nfa_update_helper(10007);
+}
