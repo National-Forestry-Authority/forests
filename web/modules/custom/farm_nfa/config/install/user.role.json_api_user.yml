@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - asset
+    - farm_nfa
+id: json_api_user
+label: 'JSON:API user'
+weight: 3
+is_admin: null
+permissions:
+  - 'access jsonapi routes'
+  - 'update any cfr asset'
+  - 'view any cfr asset'
