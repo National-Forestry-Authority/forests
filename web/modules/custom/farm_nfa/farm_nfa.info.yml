@@ -160,10 +160,12 @@ config_devel:
   - system.action.user_add_role_action.farm_manager
   - system.action.user_add_role_action.farm_viewer
   - system.action.user_add_role_action.farm_worker
+  - system.action.user_add_role_action.json_api_user
+  - system.action.user_remove_role_action.admin
   - system.action.user_remove_role_action.farm_manager
   - system.action.user_remove_role_action.farm_viewer
   - system.action.user_remove_role_action.farm_worker
-  - system.action.user_remove_role_action.admin
+  - system.action.user_remove_role_action.json_api_user
   - system.file
   - system.performance
   - system.site
@@ -179,6 +181,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.admin
+  - user.role.json_api_user
   - user.settings
   - views.settings
   - views.view.block_content
