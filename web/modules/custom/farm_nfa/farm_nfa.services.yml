@@ -23,3 +23,7 @@ services:
     class: Drupal\farm_nfa\PlanEditRouteChecker
     tags:
       - { name: access_check, applies_to: _edit_access_check }
+  farm_nfa.breadcrumb:
+    class: Drupal\farm_nfa\BreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 1003 }
