@@ -1,0 +1,14 @@
+jsonapi_user:
+  description: 'Grants access to the JSON:API user role.'
+  umbrella: false
+  grant_types:
+    authorization_code:
+      status: true
+    client_credentials:
+      status: true
+    refresh_token:
+      status: true
+  parent: ''
+  granularity: 'role'
+  role: 'json_api_user'
+  permission: ''

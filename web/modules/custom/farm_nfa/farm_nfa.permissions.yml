@@ -2,3 +2,6 @@ grant edit on plans to other users:
   title: 'Grant edit on plans to other users'
   description: 'Allow users to grant edit access to other users on plan entities.'
   restrict access: true
+access jsonapi routes:
+  title: 'Access JSON:API routes'
+  description: 'Allows access to JSON:API routes.'

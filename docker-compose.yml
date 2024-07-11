@@ -42,7 +42,7 @@ services:
     volumes:
       #DISCUSS ENV VARS
       - drupal-files:/var/www/web/sites/default/files
-      - drupal-private:/var/www/web/private
+      - drupal-private:/var/www/private
 
 volumes:
   db-data:
