@@ -47,14 +47,14 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
       $asset_type = $asset_type == 'cfr' ? strtoupper($asset_type) : ucfirst($asset_type);
       $links[] = Link::createFromRoute($asset_type, 'farm_nfa.assets.asset', ['asset' => strtolower($asset_type)]);
-      $links[] = Link::createFromRoute($asset->label(), 'entity.asset.canonical', ['asset' => $asset->id()]);
+      $links[] = Link::createFromRoute($asset->label(), '<none>');
     }
     elseif ($plan instanceof PlanInterface) {
       $plan_type = $plan->bundle();
       $plan_text = $plan_type == 'natural' ? 'Natural forest' : 'Plantation';
       $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
       $links[] = Link::createFromRoute($plan_text, 'farm_nfa.plans.plan', ['plan' => $plan_type]);
-      $links[] = Link::createFromRoute($plan->label(), 'entity.plan.canonical', ['plan' => $plan->id()]);
+      $links[] = Link::createFromRoute($plan->label(), '<none>');
     }
     return $breadcrumb->setLinks($links);
   }
