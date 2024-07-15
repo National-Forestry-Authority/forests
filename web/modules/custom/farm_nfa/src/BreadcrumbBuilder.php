@@ -45,6 +45,9 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $links[] = Link::createFromRoute('Home', '<front>');
     if ($asset instanceof EntityInterface) {
       $asset_type = $asset->bundle();
+      if ($asset_type == 'land') {
+        $asset_type = $asset->get('land_type')->value;
+      }
       $links[] = Link::createFromRoute('Records', '<front>');
       $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
       $asset_type = $asset_type == 'cfr' ? strtoupper($asset_type) : ucfirst($asset_type);
@@ -59,7 +62,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       $links[] = Link::createFromRoute($plan->label(), '<none>');
     }
     elseif ($view == 'farm_asset') {
-      $view_type = $route_match->getParameter('arg_0');
+      $view_type = $route_match->getParameter('arg_0') ? $route_match->getParameter('arg_0') : $route_match->getParameter('display_id');
       $links[] = Link::createFromRoute('Records', '<front>');
       $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
       if ($view_type) {
