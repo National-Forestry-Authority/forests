@@ -25,7 +25,8 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $route = $route_match->getRouteObject();
     $asset = $route_match->getParameter('asset');
     $plan = $route_match->getParameter('plan');
-    if ($asset instanceof EntityInterface || $plan instanceof PlanInterface) {
+    $view = $route_match->getParameter('view_id');
+    if ($asset instanceof EntityInterface || $plan instanceof PlanInterface || $view == 'farm_asset' || $view == 'farm_plan') {
       return TRUE;
     }
     return FALSE;
@@ -40,6 +41,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $asset = $route_match->getParameter('asset');
     $plan = $route_match->getParameter('plan');
     $breadcrumb->addCacheContexts(['url.path']);
+    $view = $route_match->getParameter('view_id');
     $links[] = Link::createFromRoute('Home', '<front>');
     if ($asset instanceof EntityInterface) {
       $asset_type = $asset->bundle();
@@ -55,6 +57,21 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
       $links[] = Link::createFromRoute($plan_text, 'farm_nfa.plans.plan', ['plan' => $plan_type]);
       $links[] = Link::createFromRoute($plan->label(), '<none>');
+    }
+    elseif ($view == 'farm_asset') {
+      $view_type = $route_match->getParameter('arg_0');
+      $links[] = Link::createFromRoute('Records', '<front>');
+      $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
+      if ($view_type) {
+        $view_type = $view_type == 'cfr' ? strtoupper($view_type) : ucfirst($view_type);
+        $links[] = Link::createFromRoute($view_type . 's', '<none>');
+      }
+    }
+    elseif ($view == 'farm_plan') {
+      $plan_type = $route_match->getParameter('arg_0');
+      $plan_text = $plan_type == 'natural' ? 'Natural forest' : 'Plantation';
+      $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
+      $links[] = Link::createFromRoute($plan_text, '<none>');
     }
     return $breadcrumb->setLinks($links);
   }
