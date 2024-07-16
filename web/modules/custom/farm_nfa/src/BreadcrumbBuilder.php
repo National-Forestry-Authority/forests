@@ -35,7 +35,6 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
    * {@inheritdoc}
    */
   public function build(RouteMatchInterface $route_match) {
-    error_log(print_r('testing 12345', TRUE));
     $breadcrumb = new Breadcrumb();
     $links = [];
     $asset = $route_match->getParameter('asset');
