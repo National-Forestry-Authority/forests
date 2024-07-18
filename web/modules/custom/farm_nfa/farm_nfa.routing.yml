@@ -146,6 +146,28 @@ farm_nfa.plan.add_task:
       plan:
         type: entity:plan
       task_route: farm_nfa.plan.add_task
+farm_nfa.assets.asset:
+  path: '/assets/{asset}/'
+  defaults:
+    _title: 'Assets'
+  requirements:
+    _entity_access: 'asset.view'
+    _module_dependencies: 'asset'
+  options:
+    parameters:
+      asset:
+        type: entity:asset
+farm_nfa.plans.plan:
+  path: '/plans/{plan}/'
+  defaults:
+    _title: 'Plan'
+  requirements:
+    _entity_access: 'plan.view'
+    _module_dependencies: 'plan'
+  options:
+    parameters:
+      plan:
+        type: entity:plan
 farm_nfa.plan.add_inventory:
   path: '/plan/{plan}/add-inventory'
   defaults:

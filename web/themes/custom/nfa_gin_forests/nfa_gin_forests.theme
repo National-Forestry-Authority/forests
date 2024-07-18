@@ -41,3 +41,22 @@ function nfa_gin_forests_preprocess_form(&$variables) {
   // Attach form styles.
   $variables['#attached']['library'][] = 'nfa_gin_forests/forms';
 }
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function nfa_gin_forests_preprocess_breadcrumb(&$variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  $breadcrumb_last_index = count($breadcrumb) - 1;
+  foreach ($breadcrumb as $key => $value) {
+    $should_remove_breadcrumb = ($key == $breadcrumb_last_index) && (strpos($value['text'], 'Edit')) !== FALSE && $value['url'] == NULL;
+    if ($value['text'] == 'Back to site') {
+      $breadcrumb[$key]['text'] = 'Home';
+      $breadcrumb[$key]['url'] = '/';
+    }
+    elseif ($should_remove_breadcrumb) {
+      unset($breadcrumb[$key]);
+    }
+  }
+  $variables['breadcrumb'] = $breadcrumb;
+}
