@@ -29,7 +29,7 @@ entity.plan.inventory:
         type: entity:plan
       task_route: farm_nfa.plan.add_inventory
 entity.plan.edit_permissions:
-  path: '/plan/{plan}/edit-permissions'
+  path: '/plan/{plan}/permissions'
   defaults:
     _title: 'Edit (Permissions Form mode)'
     _entity_form: 'plan.permissions'
