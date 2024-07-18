@@ -33,3 +33,9 @@ services:
       [ '@current_route_match' ]
     tags:
       - { name: 'event_subscriber' }
+  farm_nfa.breadcrumb:
+    class: Drupal\farm_nfa\BreadcrumbBuilder
+    arguments:
+      [ '@entity_type.manager' ]
+    tags:
+      - { name: breadcrumb_builder, priority: 1003 }
