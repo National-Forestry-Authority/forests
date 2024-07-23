@@ -521,6 +521,7 @@ function farm_nfa_preprocess_field_multiple_value_without_order_form(&$variables
  * Implements hook_form_FORM_ID_alter().
  */
 function farm_nfa_form_asset_cfr_edit_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
-  // CFR global id is always read-only.
+  // CFR global id and Geometry are always read-only.
   $form['cfr_global_id']['#disabled'] = TRUE;
+  $form['intrinsic_geometry']['widget'][0]['#disabled'] = TRUE;
 }
