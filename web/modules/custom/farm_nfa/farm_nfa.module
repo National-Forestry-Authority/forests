@@ -17,6 +17,7 @@ use Drupal\farm_nfa\Form\FarmNfaContentEntityDeleteForm;
 use Drupal\farm_nfa\Form\FarmNfaQuantityInlineForm;
 use Drupal\log\Entity\LogInterface;
 use Drupal\plan\Entity\PlanInterface;
+use Drupal\user\UserInterface;
 use Drupal\views\ViewExecutable;
 use Drush\Drush;
 
@@ -220,7 +221,7 @@ function farm_nfa_entity_operation_alter(array &$operations, EntityInterface $en
   $plan = \Drupal::routeMatch()->getParameter('plan') ?? \Drupal::service('farm_nfa.referer_plan_loader')->load();
   $entity_type = !empty($asset) && $asset->bundle() == 'cfr' ? $asset : $plan;
 
-  if(!$entity_type) {
+  if (!$entity_type) {
     return;
   }
 
@@ -292,8 +293,8 @@ function farm_nfa_views_pre_render(ViewExecutable $view) {
     $filters = [
       'type' => ['land'],
       'land_type_value' => [$land_type],
-      'status' => isset($exposed_filters['status']) ? $exposed_filters['status'] : 'active',
-      'items_per_page' => isset($exposed_filters['items_per_page']) ? $exposed_filters['items_per_page'] : 50,
+      'status' => $exposed_filters['status'] ?? 'active',
+      'items_per_page' => $exposed_filters['items_per_page'] ?? 50,
     ];
 
     // Add a cluster layer for summarizing asset counts.
@@ -444,9 +445,9 @@ function farm_nfa_update_helper(int $version, string $module = 'farm_nfa'): void
  * Implements hook_theme().
  */
 function farm_nfa_theme($existing, $type, $theme, $path) {
-  // We have created a custom template for multiple value field so that we
-  // can remove the default draggable/reorder functionality. We have taken the
-  // login from this core issue: https://www.drupal.org/project/drupal/issues/2264739.
+  // We have created a custom template for multiple value field so that we can
+  // remove the default draggable/reorder functionality. We have taken the logic
+  // from this core issue: https://www.drupal.org/project/drupal/issues/2264739.
   // @todo when/if that issue is accepted into core we can remove this template
   // and its preprocess function.
   return [
@@ -524,4 +525,24 @@ function farm_nfa_form_asset_cfr_edit_form_alter(&$form, FormStateInterface &$fo
   // CFR global id and Geometry are always read-only.
   $form['cfr_global_id']['#disabled'] = TRUE;
   $form['intrinsic_geometry']['widget'][0]['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_user_login().
+ *
+ * Redirect to home page on login.
+ */
+function farm_nfa_user_login(UserInterface $account) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  // Ignore the password reset route.
+  if ($route_name !== 'user.reset.login') {
+    // Do not interfere if a destination was already set.
+    $current_request = \Drupal::service('request_stack')->getCurrentRequest();
+    if (!$current_request->query->get('destination')) {
+      // Default login destination to the home page.
+      $current_request->query->set(
+        'destination', Url::fromRoute('<front>')->toString()
+      );
+    }
+  }
 }
