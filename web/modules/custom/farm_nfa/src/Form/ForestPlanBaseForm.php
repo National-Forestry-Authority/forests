@@ -231,7 +231,8 @@ abstract class ForestPlanBaseForm extends FormBase implements ForestPlanBaseForm
           $plan->save();
         }
       }
-      $view = views_embed_view('plan_logs', 'embed', $plan->id(), implode('+', $log_types));
+      $display = in_array('activity', $log_types) ? 'embed_plan_level' : 'embed';
+      $view = views_embed_view('plan_logs', $display, $plan->id(), implode('+', $log_types));
       $response->addCommand(new ReplaceCommand('.view-plan-logs', $view));
       $response->setAttachments($form['#attached']);
       $response->addCommand(new MessageCommand($this->t('The task %name has been saved.', ['%name' => $log->label()]), NULL, ['type' => 'status'], TRUE));
