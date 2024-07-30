@@ -121,3 +121,10 @@ function farm_nfa_update_10008(&$sandbox) {
 function farm_nfa_update_10009(&$sandbox) {
   farm_nfa_update_helper(10009);
 }
+
+/**
+ * Anonymous user cannot view media.
+ */
+function farm_nfa_update_10010(&$sandbox) {
+  farm_nfa_update_helper(10010);
+}
