@@ -62,17 +62,20 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       // If the asset parameter is a valid entity.
       $asset_type = $asset->bundle();
       if ($asset_type == 'land') {
-        // If the asset type is 'land', further refine it based on land type as land type can be either 'Sector' or 'Range'.
+        // If the asset type is 'land', further refine it based on land type as
+        // land type can be either 'Sector' or 'Range'.
         $asset_type = $asset->get('land_type')->value;
       }
       // @todo Records should link to a Records landing page, not the home page.
       $links[] = Link::createFromRoute('Records', '<front>');
       $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
       $asset_type = $asset_type == 'cfr' ? strtoupper($asset_type) : ucfirst($asset_type);
-      // The breadcrumb on the assets overview page is plural, so we pluralize the fragment on the individual asset page for consistency.
+      // The breadcrumb on the assets overview page is plural, so we pluralize
+      // the fragment on the individual asset page for consistency.
       $links[] = Link::createFromRoute($asset_type . 's', 'farm_nfa.assets.asset', ['asset' => strtolower($asset_type)]);
       if ($current_tab) {
-        // If there is a current tab, add it to the breadcrumb as we are a sub route.
+        // If there is a current tab, add it to the breadcrumb as we are a sub
+        // route.
         $links[] = Link::createFromRoute($asset->label(), 'entity.asset.canonical', ['asset' => $asset->id()]);
         $links[] = Link::createFromRoute(ucfirst($current_tab), '<none>');
       }
@@ -84,11 +87,12 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     elseif ($plan instanceof PlanInterface) {
       // If the plan parameter is a valid plan entity.
       $plan_type = $plan->bundle();
-      $plan_text = $plan_type == 'natural' ? 'Natural forest' : 'Plantation';
+      $plan_text = $plan_type == 'natural' ? 'Natural forest' : '';
       $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
       $links[] = Link::createFromRoute($plan_text, 'farm_nfa.plans.plan', ['plan' => $plan_type]);
       if ($current_tab) {
-        // If there is a current tab, add it to the breadcrumb as we are on a sub route.
+        // If there is a current tab, add it to the breadcrumb as we are on a
+        // sub route.
         $links[] = Link::createFromRoute($plan->label(), 'entity.plan.canonical', ['plan' => $plan->id()]);
         $links[] = Link::createFromRoute(ucfirst($current_tab), '<none>');
       }
@@ -105,7 +109,8 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       if ($view_type && $view_type != 'page') {
         $view_type = $view_type == 'cfr' ? strtoupper($view_type) : ucfirst($view_type);
         $links[] = Link::createFromRoute('Locations', 'entity.asset.collection');
-        // The breadcrumb on the assets overview page is plural, so we pluralize the fragment on the individual asset page for consistency.
+        // The breadcrumb on the assets overview page is plural, so we
+        // pluralize the fragment on the individual asset page for consistency.
         $links[] = Link::createFromRoute($view_type . 's', '<none>');
       }
       else {
@@ -116,7 +121,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     elseif ($view == 'farm_plan') {
       // If the view is related to farm plans.
       $plan_type = $route_match->getParameter('arg_0');
-      $plan_text = $plan_type == 'natural' ? 'Natural forest' : 'Plantation';
+      $plan_text = $plan_type == 'natural' ? 'Natural forest' : '';
       $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
       $links[] = Link::createFromRoute($plan_text, '<none>');
     }
