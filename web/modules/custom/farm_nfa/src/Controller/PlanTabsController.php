@@ -47,12 +47,7 @@ class PlanTabsController extends ControllerBase implements ContainerInjectionInt
       $build['maps'] = views_embed_view('plan_blocks', 'maps', $plan->id());
     }
     else {
-      if (in_array('activity', $log_types)) {
-        $display = 'embed_plan_level';
-      }
-      else {
-        $display = 'embed';
-      }
+      $display = in_array('activity', $log_types) ? 'embed_plan_level' : 'embed';
       $build['logs'] = views_embed_view('plan_logs', $display, $plan->id(), implode('+', $log_types));
     }
     return $build;

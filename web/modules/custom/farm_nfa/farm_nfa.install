@@ -116,8 +116,22 @@ function farm_nfa_update_10008(&$sandbox) {
 }
 
 /**
- * Rename logs to tasks.
+ * Change media file system from public to private.
  */
 function farm_nfa_update_10009(&$sandbox) {
   farm_nfa_update_helper(10009);
+}
+
+/**
+ * Anonymous user cannot view media.
+ */
+function farm_nfa_update_10010(&$sandbox) {
+  farm_nfa_update_helper(10010);
+}
+
+/**
+ * Rename logs to tasks.
+ */
+function farm_nfa_update_10011(&$sandbox) {
+  farm_nfa_update_helper(10011);
 }
