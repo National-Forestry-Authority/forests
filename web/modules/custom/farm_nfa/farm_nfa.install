@@ -114,3 +114,10 @@ function farm_nfa_update_10007(&$sandbox) {
 function farm_nfa_update_10008(&$sandbox) {
   farm_nfa_update_helper(10008);
 }
+
+/**
+ * Rename logs to tasks.
+ */
+function farm_nfa_update_10009(&$sandbox) {
+  farm_nfa_update_helper(10009);
+}
