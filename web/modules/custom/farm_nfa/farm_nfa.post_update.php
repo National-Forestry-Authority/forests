@@ -2504,12 +2504,12 @@ function farm_nfa_post_update_cfr_global_ids(&$sandbox) {
       // Run sanity checks and log a warning if the CFR names don't match and
       // if the asset already has a CFR ID.
       $asset = reset($asset);
-      if (!empty($asset->cfr_global_id->getValue())) {
-        \Drupal::logger('Farm NFA')->warning('Asset @asset_id already has a CFR ID @cfr_id', ['@asset_id' => $asset_id, '@cfr_id' => $cfr_id]);
-      }
-      if ($asset->getName() != $name) {
-        \Drupal::logger('Farm NFA')->warning('Asset @asset_name and BRMS CFR name @cfr_name are not the same.', ['@asset_name' => $asset->getName(), '@cfr_name' => $name]);
-      }
+      // if (!empty($asset->cfr_global_id->getValue())) {
+      //   \Drupal::logger('Farm NFA')->warning('Asset @asset_id already has a CFR ID @cfr_id', ['@asset_id' => $asset_id, '@cfr_id' => $cfr_id]);
+      // }
+      // if ($asset->getName() != $name) {
+      //   \Drupal::logger('Farm NFA')->warning('Asset @asset_name and BRMS CFR name @cfr_name are not the same.', ['@asset_name' => $asset->getName(), '@cfr_name' => $name]);
+      // }
       $asset->cfr_global_id = $cfr_id;
       $asset->save();
     }
