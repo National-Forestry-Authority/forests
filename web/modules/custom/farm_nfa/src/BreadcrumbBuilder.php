@@ -130,10 +130,6 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     elseif ($log instanceof EntityInterface) {
       // If the log parameter is a valid entity.
       $task_type = $log->bundle();
-      error_log(print_r($log->get('name')->value, TRUE));
-      foreach ($route_match->getParameters() as $key => $value) {
-        error_log(print_r($key, TRUE));
-      }
       $links[] = Link::createFromRoute('Records', '<front>');
       $links[] = Link::createFromRoute('Tasks', 'farm_nfa.tasks');
       $links[] = Link::createFromRoute(ucfirst($task_type), 'farm_nfa.task_type', ['task_type' => $task_type]);
