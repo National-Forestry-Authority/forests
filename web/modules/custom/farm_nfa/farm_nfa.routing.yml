@@ -71,6 +71,14 @@ entity.plan.harvest:
       plan:
         type: entity:plan
       task_route: farm_nfa.plan.add_harvest
+farm_nfa.tasks:
+  path: '/tasks'
+  requirements:
+    _permission: 'access content'
+farm_nfa.task_type:
+  path: '/tasks/{task_type}'
+  requirements:
+    _permission: 'access content'
 entity.plan.management:
   path: '/plan/{plan}/management'
   defaults:

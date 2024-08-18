@@ -39,7 +39,8 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $asset = $route_match->getParameter('asset');
     $plan = $route_match->getParameter('plan');
     $view = $route_match->getParameter('view_id');
-    if ($asset || $plan || $view == 'farm_asset' || $view == 'farm_plan') {
+    $log = $route_match->getParameter('log');
+    if ($asset || $plan || $view == 'farm_asset' || $view == 'farm_plan' || $log) {
       return TRUE;
     }
     return FALSE;
@@ -53,6 +54,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $links = [];
     $asset = $route_match->getParameter('asset');
     $plan = $route_match->getParameter('plan');
+    $log = $route_match->getParameter('log');
     $breadcrumb->addCacheContexts(['url.path']);
     $view = $route_match->getParameter('view_id');
     $links[] = Link::createFromRoute('Home', '<front>');
@@ -124,6 +126,18 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface {
       $plan_text = $plan_type == 'natural' ? 'Natural forest' : '';
       $links[] = Link::createFromRoute('Plans', 'entity.plan.collection');
       $links[] = Link::createFromRoute($plan_text, '<none>');
+    }
+    elseif ($log instanceof EntityInterface) {
+      // If the log parameter is a valid entity.
+      $task_type = $log->bundle();
+      error_log(print_r($log->get('name')->value, TRUE));
+      foreach ($route_match->getParameters() as $key => $value) {
+        error_log(print_r($key, TRUE));
+      }
+      $links[] = Link::createFromRoute('Records', '<front>');
+      $links[] = Link::createFromRoute('Tasks', 'farm_nfa.tasks');
+      $links[] = Link::createFromRoute(ucfirst($task_type), 'farm_nfa.task_type', ['task_type' => $task_type]);
+      $links[] = Link::createFromRoute($log->get('name')->value, '<none>');
     }
     return $breadcrumb->setLinks($links);
   }
