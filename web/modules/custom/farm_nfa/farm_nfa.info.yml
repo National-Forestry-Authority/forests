@@ -203,6 +203,7 @@ config_devel:
   - views.view.entity_reference_cfr_by_sector
   - views.view.entity_reference_sectors
   - views.view.assets_in_use
+  - views.view.farm_log
 default_content:
   taxonomy_term:
     - 40143a27-e0d1-4d5a-aefe-9c22c9ca15e4

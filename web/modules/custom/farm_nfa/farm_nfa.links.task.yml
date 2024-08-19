@@ -42,7 +42,7 @@ entity.plan.permissions:
   title: 'Permissions'
   route_name: entity.plan.edit_permissions
   parent_id: entity.plan.canonical
-  weight: 6
+  weight: 7
 entity.asset.gfw:
   title: 'GFW'
   route_name: entity.asset.gfw_tab
