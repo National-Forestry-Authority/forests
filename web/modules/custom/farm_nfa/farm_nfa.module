@@ -148,6 +148,9 @@ function farm_nfa_menu_local_tasks_alter(&$data, $route_name) {
   if ($route_name == ('farm.asset.locations' || 'entity.asset.canonical')) {
     $data['tabs'][0]['farm.asset.locations']['#link']['title'] = t('Sectors & CFRs');
     $data['tabs'][0]['entity.asset.canonical']['#link']['title'] = t('Sectors & CFRs');
+    if (isset($data['tabs'][0]['farm.asset.logs.type:logs'])) {
+      $data['tabs'][0]['farm.asset.logs.type:logs']['#link']['title'] = t('Tasks');
+    }
   }
   // If route_name starts with 'entity.plan.' remove the Natural Forest tab
   // provided by FarmOS.
@@ -544,5 +547,15 @@ function farm_nfa_user_login(UserInterface $account) {
         'destination', Url::fromRoute('<front>')->toString()
       );
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function farm_nfa_preprocess_page_title(&$variables) {
+  if (isset($variables['title']) && is_array($variables['title']) && isset($variables['title']['#markup'])) {
+    $title = $variables['title']['#markup'];
+    $variables['title']['#markup'] = str_replace('log', 'task', $title);
   }
 }
