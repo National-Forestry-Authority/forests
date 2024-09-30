@@ -135,3 +135,10 @@ function farm_nfa_update_10010(&$sandbox) {
 function farm_nfa_update_10011(&$sandbox) {
   farm_nfa_update_helper(10011);
 }
+
+/**
+ * Update to FarmOS 3.3.1.
+ */
+function farm_nfa_update_10012(&$sandbox) {
+  farm_nfa_update_helper(10012);
+}
