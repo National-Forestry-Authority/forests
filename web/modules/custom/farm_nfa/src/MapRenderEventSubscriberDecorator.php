@@ -9,6 +9,7 @@ use Drupal\farm_map\LayerStyleLoaderInterface;
 use Drupal\farm_ui_map\EventSubscriber\MapRenderEventSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\key\KeyRepositoryInterface;
 
 /**
  * Decorates MapRenderEventSubscriber to exclude some routes.
@@ -30,6 +31,13 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
   protected $request;
 
   /**
+   * The key repository.
+   *
+   * @var \Drupal\key\KeyRepositoryInterface
+   */
+  protected $keyRepository;
+
+  /**
    * Constructs a new MapRenderEventSubscriberDecorator.
    *
    *   The entity type manager service.
@@ -37,11 +45,16 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
    *
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The current route match.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *  The current request.
+   * @param \Drupal\key\KeyRepositoryInterface $keyRepository
+   *  The key repository.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, LayerStyleLoaderInterface $layer_style_loader, RouteMatchInterface $routeMatch, RequestStack $requestStack) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, LayerStyleLoaderInterface $layer_style_loader, RouteMatchInterface $routeMatch, RequestStack $requestStack, KeyRepositoryInterface $keyRepository) {
     parent::__construct($entity_type_manager, $layer_style_loader);
     $this->routeMatch = $routeMatch;
     $this->request = $requestStack->getCurrentRequest();
+    $this->keyRepository = $keyRepository;
   }
 
   /**
@@ -52,7 +65,9 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
       $container->get('entity_type.manager'),
       $container->get('farm_map.layer_style_loader'),
       $container->get('current_route_match'),
-      $container->get('request_stack')->getCurrentRequest());
+      $container->get('request_stack')->getCurrentRequest(),
+      $container->get('key.repository')
+    );
   }
 
   /**
@@ -91,12 +106,15 @@ class MapRenderEventSubscriberDecorator extends MapRenderEventSubscriber {
       $asset = $this->routeMatch->getParameter('asset');
       if ($asset->bundle() == 'land' && $asset->hasField('land_type') && !$asset->get('land_type')->isEmpty()) {
         $event->addBehavior('farm_nfa_land_cfr_layer');
+        $gfw_api_key = $this->keyRepository->getKey('gfw_api_key');
+        $gfw_api_key = $gfw_api_key ? $gfw_api_key->getKeyValue() : '';
         // Add the GFW layer.
         $settings[$event->getMapTargetId()] = [
           'asset' => $this->routeMatch->getRawParameter('asset'),
           'host' => $this->request->getHost(),
           'asset_type' => $asset->bundle(),
           'land_type' => $asset->get('land_type')->value,
+          'gfw_api_key' => $gfw_api_key,
         ];
         $event->addSettings($settings);
         $event->addBehavior('farm_nfa_gfw_alerts');

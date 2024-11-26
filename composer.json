@@ -76,6 +76,7 @@
         "drupal/field_group": "^3.4",
         "drupal/gin_lb": "^1",
         "drupal/hal": "^2.0",
+        "drupal/key": "^1.19",
         "drupal/layout_builder_styles": "^2",
         "drupal/lb_routing": "^1.0",
         "drupal/limited_field_widgets": "^2.1@beta",

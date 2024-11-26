@@ -9,9 +9,11 @@ const gfwGeoListOptions = {
   valueNames: [ 'latitude', 'longitude', 'alertType', 'timeStamp' ],
   item: '<tr><td class="latitude"></td><td class="longitude"></td><td class="alertType"></td><td class="timeStamp"></td></tr>'
 };
+let GFW_API_KEY;
 (function ($, Drupal) {
   farmOS.map.behaviors.farm_nfa_gfw_layers = {
     attach: async function (instance) {
+      GFW_API_KEY = instance.farmMapSettings.gfw_api_key;
       let defaultNoOfMonths = 3;
       let defaultNoOfDays = 0;
 
@@ -67,7 +69,7 @@ const gfwGeoListOptions = {
       }
     }
   }
-}(jQuery, Drupal))
+}(jQuery, Drupal, drupalSettings))
 
 // Function to update the map layers when the date range is changed.
 async function updateMapLayers(instance, fireAlertsUrl, deforestationAlertsUrl, geometry) {
@@ -186,7 +188,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
               method: 'POST',
               body: JSON.stringify(gfwApiBody),
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-api-key': GFW_API_KEY
               }
             })
           );
