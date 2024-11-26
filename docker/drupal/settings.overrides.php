@@ -65,3 +65,8 @@ elseif ($_SERVER['APP_DOMAIN'] == 'forests.stg.envs.utils.nfa.go.ug') {
   $config['environment_indicator.indicator']['fg_color'] = '#FFFFFF';
   $config['environment_indicator.indicator']['name'] = 'Staging';
 }
+
+// GFW variables.
+$settings['farm_nfa'] = [
+  'gfw_api_key' => $_ENV['GFW_API_KEY'],
+];

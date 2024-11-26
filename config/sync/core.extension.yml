@@ -103,6 +103,7 @@ module:
   jsonapi: 0
   jsonapi_extras: 0
   jsonapi_schema: 0
+  key: 0
   layout_builder: 0
   layout_builder_styles: 0
   layout_discovery: 0

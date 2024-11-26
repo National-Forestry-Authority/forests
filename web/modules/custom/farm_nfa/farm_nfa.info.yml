@@ -141,6 +141,7 @@ config_devel:
   - inspire_tree.settings
   - jsonapi_extras.settings
   - jsonapi.settings
+  - key.key.gfw_api_key
   - layout_builder_styles.style.details
   - layout_builder_styles.group.default
   - log.type.activity

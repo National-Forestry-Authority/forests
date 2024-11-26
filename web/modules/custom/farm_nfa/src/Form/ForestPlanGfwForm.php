@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\key\KeyRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -28,6 +29,13 @@ class ForestPlanGfwForm extends FormBase {
    * @var \Symfony\Component\HttpFoundation\Request
    */
   protected $request;
+  
+  /**
+   * The key repository.
+   *
+   * @var \Drupal\key\KeyRepositoryInterface
+   */
+  protected $keyRepository;
 
   /**
    * Constructs a new ForestPlanGfwForm.
@@ -37,9 +45,10 @@ class ForestPlanGfwForm extends FormBase {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request.
    */
-  public function __construct(RouteMatchInterface $routeMatch, Request $request) {
+  public function __construct(RouteMatchInterface $routeMatch, Request $request, KeyRepositoryInterface $keyRepository) {
     $this->routeMatch = $routeMatch;
     $this->request = $request;
+    $this->keyRepository = $keyRepository;
   }
 
   /**
@@ -48,7 +57,8 @@ class ForestPlanGfwForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_route_match'),
-      $container->get('request_stack')->getCurrentRequest()
+      $container->get('request_stack')->getCurrentRequest(),
+      $container->get('key.repository')
     );
   }
 
@@ -74,7 +84,8 @@ class ForestPlanGfwForm extends FormBase {
     if ($asset && $asset->hasField('land_type') && !$asset->get('land_type')->isEmpty()) {
       $landType = $asset->get('land_type')->value;
     }
-
+    $gfw_api_key = $this->keyRepository->getKey('gfw_api_key');
+    $gfw_api_key = $gfw_api_key ? $gfw_api_key->getKeyValue() : '';
     $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
@@ -84,6 +95,7 @@ class ForestPlanGfwForm extends FormBase {
         'host' => $this->request->getHost(),
         'asset_type' => $assetType,
         'land_type' => $landType,
+        'gfw_api_key' => $gfw_api_key,
       ],
       '#attached' => [
         'library' => [
