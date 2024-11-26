@@ -2504,7 +2504,7 @@ function farm_nfa_post_update_cfr_global_ids(&$sandbox) {
       // Run sanity checks and log a warning if the CFR names don't match and
       // if the asset already has a CFR ID.
       $asset = reset($asset);
-      if (!empty($asset->cfr_global_id->getValue())) {
+      if (!empty($asset->cfr_global_id)) {
         \Drupal::logger('Farm NFA')->warning('Asset @asset_id already has a CFR ID @cfr_id', ['@asset_id' => $asset_id, '@cfr_id' => $cfr_id]);
       }
       if ($asset->getName() != $name) {

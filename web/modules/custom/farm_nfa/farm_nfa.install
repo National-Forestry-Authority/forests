@@ -142,3 +142,11 @@ function farm_nfa_update_10011(&$sandbox) {
 function farm_nfa_update_10012(&$sandbox) {
   farm_nfa_update_helper(10012);
 }
+
+/**
+ * Add keys module and configure GFW_API_KEY.
+ */
+function farm_nfa_update_10013(&$sandbox) {
+  \Drupal::service('module_installer')->install(['key']);
+  farm_nfa_update_helper(10013);
+}
