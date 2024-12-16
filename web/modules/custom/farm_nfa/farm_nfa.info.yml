@@ -27,7 +27,6 @@ dependencies:
   - farm:farm_ui_dashboard
   - farm_forest:farm_forest
   - month_year:month_year
-  - select_or_other:select_or_other
   - state_machine:state_machine
   - views_geojson:views_geojson
 
