@@ -11,7 +11,6 @@ dependencies:
     - farm_map
     - file
     - image
-    - select_or_other
     - text
 _core:
   default_config_hash: i-roQn8pl5tV6tj6nDXnAM8yT5IYx-E0MnWFF3Ibbq8
