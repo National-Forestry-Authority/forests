@@ -152,4 +152,6 @@ $config['farm_map_mapbox.settings']['api_key'] = 'pk.eyJ1IjoibmF0LWZvci1hdXRoLXV
 // GFW variables.
 $settings['farm_nfa'] = [
   'gfw_api_key' => $_ENV['GFW_API_KEY'],
+  'gfw_api_user' => $_ENV['GFW_API_USER'],
+  'gfw_api_password' => $_ENV['GFW_API_PASSWORD'],
 ];
