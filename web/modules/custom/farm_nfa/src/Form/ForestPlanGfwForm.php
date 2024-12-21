@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Datetime\DateTime;
 use Drupal\key\KeyRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -84,8 +85,13 @@ class ForestPlanGfwForm extends FormBase {
     if ($asset && $asset->hasField('land_type') && !$asset->get('land_type')->isEmpty()) {
       $landType = $asset->get('land_type')->value;
     }
-    $gfw_api_key = $this->keyRepository->getKey('gfw_api_key');
-    $gfw_api_key = $gfw_api_key ? $gfw_api_key->getKeyValue() : '';
+    $gfw_api_user = $this->keyRepository->getKey('gfw_api_user');
+    $gfw_api_password = $this->keyRepository->getKey('gfw_api_password');
+    $gfw_api_user = $gfw_api_user ? $gfw_api_user->getKeyValue() : '';
+    $gfw_api_password = $gfw_api_password ? $gfw_api_password->getKeyValue() : '';
+    $gfw_api_key = $this->generateGfwApiKey('https://data-api.globalforestwatch.org', ['username' => $gfw_api_user, 'password' => $gfw_api_password]);
+    error_log(print_r(is_string($gfw_api_key), TRUE));
+    error_log(print_r('testing 123', TRUE));
     $form['gfw_map'] = [
       '#type' => 'farm_map',
       '#map_type' => 'farm_nfa_plan_locations',
@@ -132,7 +138,66 @@ class ForestPlanGfwForm extends FormBase {
 
     return $form;
   }
-
+  
+  /**
+   * Fetches data from the GFW API.
+   *
+   * @param string $endpoint
+   *   The API endpoint to call.
+   * @param array $options
+   *   An optional array of options to pass to the HTTP client.
+   *
+   * @return string|null
+   *   The API Key as a string, or NULL on failure.
+   */
+  private function generateGfwApiKey(string $endpoint, array $options = []) {
+    try {
+      if (empty($options['username']) || empty($options['password'])) {
+        return NULL;
+      }
+      // Generate Auth Token
+      $client = \Drupal::httpClient();
+      // 'e08964ab-1bc0-4b29-b6fe-0d2de9b522d1'
+      $params = [
+        'username' => $options['username'],
+        'password' => $options['password'],
+        'grant_type' => 'password',
+      ];
+      // Make the POST request with x-www-form-urlencoded data.
+      $response = $client->post($endpoint.'/auth/token', [
+        'form_params' => $params,
+        'headers' => [
+          'Content-Type' => 'application/x-www-form-urlencoded',
+        ],
+      ]);
+      $response = json_decode($response->getBody(), TRUE);
+      $accessToken = $response['data']['access_token'];
+      // Make the GET request with the token tp generate API key.
+      $queryParams = [
+        'alias' => 'nfa-api-key-'.time(),
+        'organization' => 'nfa',
+        'email' => $options['username'],
+      ];
+      error_log(print_r($accessToken, true));
+      $response = $client->post($endpoint.'/auth/apikey', [
+        'headers' => [
+          'Authorization' => 'Bearer ' . $accessToken,
+          'Content-Type' => 'application/json',
+        ],
+        'json' => $queryParams,
+      ]);
+      $response = json_decode($response->getBody(), TRUE);
+      $api_key = $response['data']['api_key'];
+      error_log(print_r($api_key, true));
+      return $api_key;
+    }
+    catch (\Exception $e) {
+      // Log the error and return NULL.
+      \Drupal::logger('farm_nfa')->error('GFW API call failed: @message', ['@message' => $e->getMessage()]);
+      return NULL;
+    }
+  }
+  
   /**
    * {@inheritdoc}
    */
