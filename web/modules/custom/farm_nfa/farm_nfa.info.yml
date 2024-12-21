@@ -141,6 +141,8 @@ config_devel:
   - jsonapi_extras.settings
   - jsonapi.settings
   - key.key.gfw_api_key
+  - key.key.gfw_api_user
+  - key.key.gfw_api_password
   - layout_builder_styles.style.details
   - layout_builder_styles.group.default
   - log.type.activity

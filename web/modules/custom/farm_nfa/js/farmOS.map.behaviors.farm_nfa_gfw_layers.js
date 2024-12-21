@@ -14,6 +14,7 @@ let GFW_API_KEY;
   farmOS.map.behaviors.farm_nfa_gfw_layers = {
     attach: async function (instance) {
       GFW_API_KEY = instance.farmMapSettings.gfw_api_key;
+      console.log('GFW_API_KEY:', GFW_API_KEY);
       let defaultNoOfMonths = 3;
       let defaultNoOfDays = 0;
 
@@ -183,6 +184,8 @@ async function farmNfaPlotGfwApiMap(instance, mapType, gfwApiUrl, dateRange, geo
         };
         if (locationGeometry && locationGeometry.coordinates) {
           gfwApiBody.geometry.coordinates.push(locationGeometry.coordinates[0]);
+          console.log(GFW_API_KEY);
+          console.log('testing');
           gfwLocationData.push(
             fetch(gfwApiUrl,{
               method: 'POST',

@@ -28,6 +28,8 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       GFW_API_KEY:
+      GFW_API_USER:
+      GFW_API_PASSWORD:
       MAIL_SMTP_HOST: ${MAIL_SMTP_HOST:-host.docker.internal}
 
   backup:
